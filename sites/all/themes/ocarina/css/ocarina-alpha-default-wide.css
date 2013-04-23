@@ -1,0 +1,111 @@
+/* This file will hold styles that are loaded using the same media query as the wide grid. */
+
+/* Main menu */
+ul#main-menu li a {
+  padding: 10px 30px;
+  text-transform: uppercase;
+  font-weight: nomal;
+}
+/* Footer menu */
+.zone-footer ul.menu li a {
+  font-size: 100%;
+}
+
+/* Block box */
+.zone-postscript .region .block-inner,
+.region-sidebar-second-inner {
+  padding: 20px;
+}
+
+/* New products */
+.jcarousel-skin-default .jcarousel-container-horizontal,
+.jcarousel-skin-default .jcarousel-clip-horizontal {
+  width: 1120px;
+  padding: 0;
+  height: 240px;
+}
+.jcarousel-skin-default .jcarousel-item {
+  width: 205px;
+  margin: 0 10px;
+  height: 210px;
+  border: none;
+  background: none;
+}
+
+.jcarousel-skin-default .jcarousel-item article.node-products.node-teaser {
+  width: 203px;
+}
+
+
+
+/* Blog */
+.view-list-articles .views-field-field-image img,
+article.node-article .field-name-field-image img {
+  width: 278px;
+}
+.block-latest-news .views-field-field-image, .block-latest-articles .views-field-field-image {
+  width: 100px;
+}
+
+/* Block slideshow */
+.view-slideshow .views-field-field-image img {
+  width: 1180px;
+}
+.view-slideshow .views-slideshow-pager-field-item  .views-field-field-image img {
+  width: 124px;
+}
+.view-slideshow .views-slideshow-controls-text-previous a,
+.view-slideshow .views-slideshow-controls-text-next a {
+  top: 10px;
+}
+
+
+/* List product */
+article.node-products.node-teaser {
+  width: 245px;
+}
+article.node-products.node-teaser .field-name-field-image img {
+  width: 243px;
+  margin-right: 0px;
+}
+article.node-products .field-name-commerce-price .field-item {
+   width: 345px;
+   margin-right: 20px;
+  font-size: 250%;
+}
+article.node-products .field-name-field-image img {
+ width: 343px;
+}
+
+/* Block social icons */
+.block-copyright {
+  float: right;
+  clear: right;
+}
+
+/* Contact form */
+.contact-form .form-item label {
+  float: left;
+  width: 250px;
+  font-size: 110%;
+  font-weight: bold;
+}
+.contact-form .form-item.form-type-checkbox label {
+  float: none;
+  font-size: 100%;
+  font-weight: normal;
+}
+.contact-form .form-item .form-textarea-wrapper {
+  float: left;
+  width: 66%;
+}
+.contact-form .form-item.form-type-checkbox,
+.contact-form .form-actions {
+  margin-left: 250px;
+  width: auto;
+  clear: left;
+  float: left;
+}
+.contact-form .form-actions {
+  margin-left: 260px;
+}

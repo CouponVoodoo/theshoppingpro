@@ -1,0 +1,524 @@
+<?php
+
+define('BUYER_PERCENTAGE', 50);
+define('REFERRER_PERCENTAGE', 25);
+define('BUYER_TYPE', 'Buyer');
+define('REFERRER_TYPE', 'Referrer');
+
+/**
+ * Implementation of hook_menu
+ */
+function corp_enhancements_menu() {
+  $items['login_register'] = array(
+    'title' => '',
+    'description' => 'Header Images upload for site header',
+    'page callback' => 'corp_enhancements_login_register_decision',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['update_user_reward'] = array(
+    'title' => 'User Rewards',
+    'description' => 'Update User Rewards for the site',
+    'page callback' => 'corp_enhancement_user_reward_calculation',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['getdata'] = array(
+    'title' => '',
+    'page callback' => 'get_data',
+    'file' => 'corp_enhancements.api.inc',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Implementation of hook_views_query_alter
+ */
+function corp_enhancements_views_query_alter($view, $query) {
+  if ($view->name == 'Competitor_list') {
+    $term_name->name = '';
+    $id = '';
+    if (isset($_GET['url'])) {
+      $query_nid = db_select('field_data_field_url', 'fdfu');
+      $query_nid->fields('fdfu', array('entity_id'))//SELECT the fields from node
+        ->condition('fdfu.field_url_value', $_GET['url'], '=');
+      $result = $query_nid->execute();
+
+      foreach ($result as $record) {
+        $id = $record->entity_id;
+      }
+
+      if (isset($id)) {
+        $node_data = node_load($id);
+        if ($node_data->type == 'retailers') {
+          $term_name = taxonomy_term_load($node_data->field_type['und'][0]['tid']);
+        }
+      }
+      $i = 0;
+      $option_raw = array();
+      foreach ($node_data->field_category[LANGUAGE_NONE] as $guardian) {
+        $entity_id = $node_data->field_category[LANGUAGE_NONE][$i]['tid'];
+        $option_raw[$entity_id] = $entity_id;
+        $i++;
+      }
+      $query->where[1]['conditions'][3]['value'] = $node_data->field_country[LANGUAGE_NONE][0]['tid'];
+      unset($query->where[1]['conditions'][4]['value']);
+      $query->where[1]['conditions'][4]['value'] = $option_raw;
+      $query->where[1]['conditions'][5]['value'] = $id;
+      $query->where[1]['conditions'][5]['operator'] = '=';
+    }
+  }
+
+  if ($view->name == 'partner_retailers') {
+    $term_name->name = '';
+    $id = '';
+    if (isset($_GET['url'])) {
+      $query_nid = db_select('field_data_field_url', 'fdfu');
+      $query_nid->fields('fdfu', array('entity_id'))//SELECT the fields from node
+        ->condition('fdfu.field_url_value', $_GET['url'], '=');
+      $result = $query_nid->execute();
+
+      foreach ($result as $record) {
+        $id = $record->entity_id;
+      }
+
+      if (isset($id)) {
+        $node_data = node_load($id);
+        if ($node_data->type == 'retailers') {
+          $term_name = taxonomy_term_load($node_data->field_type['und'][0]['tid']);
+        }
+      }
+      $i = 0;
+      $j = 0;
+      $option_raw = array();
+
+      foreach ($node_data->field_primary_category[LANGUAGE_NONE] as $guardian) {
+        $entity_id = $node_data->field_primary_category[LANGUAGE_NONE][$i]['tid'];
+        $option_raw[$entity_id] = $entity_id;
+        $i++;
+      }
+//      $primary_cat_id[$node_data->field_primary_category[LANGUAGE_NONE][0]['tid']] = $node_data->field_primary_category[LANGUAGE_NONE][0]['tid'];
+//print_r($query);exit;
+
+      if ($term_name->name == 'Partner') {
+        unset($query->where[1]['conditions'][2]['value']);
+        unset($query->where[1]['conditions'][2]['operator']);
+        $query->where[1]['conditions'][2]['value'] = 13;
+        $query->where[1]['conditions'][2]['operator'] = '=';
+        unset($query->where[1]['conditions'][5]['value']);
+        unset($query->where[1]['conditions'][5]['operator']);
+        $query->where[1]['conditions'][5]['value'] = $id;
+        $query->where[1]['conditions'][5]['operator'] = '=';
+      } else {
+        unset($query->where[1]['conditions'][4]['value']);
+	unset($query->where[1]['conditions'][4]['operator']);
+	$query->where[1]['conditions'][4]['value']= array('29', '30');
+	$query->where[1]['conditions'][4]['operator']= 'NOT IN';
+        
+        unset($query->where[1]['conditions'][6]['value']);
+        $query->where[1]['conditions'][6]['value'] = $option_raw;
+        $query->where[1]['conditions'][3]['value'] = $node_data->field_country[LANGUAGE_NONE][0]['tid'];
+        
+      }
+    }
+  }
+
+
+
+
+  if ($view->name == 'partner_retailers_with_category') {
+    //print_r($query);exit;
+    $term_name->name = '';
+    $id = '';
+    if (isset($_GET['url'])) {
+      $query_nid = db_select('field_data_field_url', 'fdfu');
+      $query_nid->fields('fdfu', array('entity_id'))//SELECT the fields from node
+        ->condition('fdfu.field_url_value', $_GET['url'], '=');
+      $result = $query_nid->execute();
+
+      foreach ($result as $record) {
+        $id = $record->entity_id;
+      }
+
+      if (isset($id)) {
+        $node_data = node_load($id);
+        if ($node_data->type == 'retailers') {
+          $term_name1 = taxonomy_term_load($node_data->field_type['und'][0]['tid']);
+        }
+      }
+      $j = 0;
+      $option_raw2 = array();
+
+      foreach ($node_data->field_category[LANGUAGE_NONE] as $guardian) {
+        $entity_id2 = $node_data->field_category[LANGUAGE_NONE][$j]['tid'];
+        $option_raw2[$entity_id2] = $entity_id2;
+        $j++;
+      }
+
+      $primary_cat_id[$node_data->field_primary_category[LANGUAGE_NONE][0]['tid']] = $node_data->field_primary_category[LANGUAGE_NONE][0]['tid'];
+
+      if ($term_name1->name == 'Partner') {
+        unset($query->where[1]['conditions'][2]['value']);
+        unset($query->where[1]['conditions'][2]['operator']);
+        $query->where[1]['conditions'][2]['value'] = 13;
+        $query->where[1]['conditions'][2]['operator'] = '=';
+//
+//      $query->where[1]['conditions'][3]['value'] = $node_data->field_country[LANGUAGE_NONE][0]['tid'];
+//      unset($query->where[1]['conditions'][4]['value']);
+        unset($query->where[1]['conditions'][4]['operator']);
+        $query->where[1]['conditions'][4]['value'] = $primary_cat_id;
+//      $query->where[1]['conditions'][4]['operator'] = 'in';
+//
+        $query->where[1]['conditions'][5]['value'] = $id;
+        $query->where[1]['conditions'][5]['operator'] = '!=';
+//
+        //print_r($query);exit;
+        $query->where[1]['conditions'][6]['value'] = $primary_cat_id;
+        $query->where[1]['conditions'][6]['operator'] = 'NOT IN';
+      } else {
+        $query->where[1]['conditions'][3]['value'] = $node_data->field_country[LANGUAGE_NONE][0]['tid'];
+        unset($query->where[1]['conditions'][4]['value']);
+        $query->where[1]['conditions'][4]['value'] = $primary_cat_id;
+
+      }
+    }
+  }
+
+
+
+
+  if ($view->name == 'retailers_partners_list') {
+    global $user;
+    if (isset($user->uid) && $user->uid != 0) {
+      $query->where[1]['conditions'][1]['value'] = $user->uid;
+    } else {
+      unset($query->where[1]['conditions'][1]);
+    }
+  }
+}
+
+/*
+ * Implements hook_theme
+ */
+function corp_enhancements_theme() {
+  $themes = array(
+    'corp_enhancements_login_register' => array(
+      'template' => 'corp-enhancements-login-register', // your template file called custompage.tpl.php
+      'arguments' => array(),
+    ),
+    'corp_enhancement_competitor_info' => array(
+      'template' => 'corp-enhancement-competitor-info', // your template file called custompage.tpl.php
+      'arguments' => array('competitor_data'),
+    ),
+  );
+
+  return $themes;
+}
+
+function corp_enhancements_login_register_decision() {
+  return theme('corp_enhancements_login_register');
+}
+
+function theme_login_register_decision($vars) {
+  drupal_add_js(path_to_theme() . '/js/colorbox.js');
+}
+
+/**
+ * Implementation of hook_block_info().
+ */
+function sports_enhancements_block_info() {
+  $blocks['competitor-list'] = array(
+    'info' => t('Competitor List'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implementation of hook_block_view().
+ */
+function sports_enhancements_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'competitor-list':
+      $block['subject'] = t('');
+      $block['content'] = corp_enhancements_account_options_block();
+      break;
+  }
+}
+
+function corp_enhancements_account_options_block() {
+  global $user;
+  if (isset($_GET['url'])) {
+    $query_nid = db_select('field_data_field_url', 'fdfu');
+    $query_nid->fields('fdfu', array('entity_id'))//SELECT the fields from node
+      ->condition('fdfu.field_url_value', $_GET['url'], '=');
+    $result = $query_nid->execute();
+
+    foreach ($result as $record) {
+      $id = $record->entity_id;
+    }
+
+    $node_data = node_load($id);
+    $term_name = taxonomy_term_load($node_data->field_type[LANGUAGE_NONE][0]['tid']);
+    $term_name_country = taxonomy_term_load($node_data->field_country[LANGUAGE_NONE][0]['tid']);
+
+    if ($user->uid) {
+      if (isset($data->field_url_part1[LANGUAGE_NONE][0]['value'])) {
+        $a = '';
+        $url = urldecode($node_data->field_url[LANGUAGE_NONE][0]['value']);
+      } else {
+        $a = 'http:\\';
+        $url = urldecode($node_data->field_url[LANGUAGE_NONE][0]['value']);
+      }
+      $link = l($node_data->title . ' (' . $term_name_country->name . ')', $a . $url, array('attributes' => array('target' => '_blank'), 'external' => TRUE));
+      //print l($row->title . ' (' . $term_name->name . ')', 'http://' . $data->field_field_url[0]['rendered']['#markup'], array('query' => array('url' => $data->field_field_url[0]['rendered']['#markup'], 'destination' =>$data->field_field_url_part1[0]['rendered']['#markup'], 'nid' => $data->nid, 'uid' => $user->uid), 'attributes'=>array('target'=>'_blank'), 'external' => TRUE));
+    } else {
+      $link = l($node_data->title . ' (' . $term_name_country->name . ')', 'login_register', array('colorbox' => true, 'attributes' => array('class' => 'colorbox_form', 'id' => 'colorbox_form')));
+    }
+    $image = $node_data->field_image[LANGUAGE_NONE][0]['uri'];
+  }
+  return theme('corp_enhancement_competitor_info', array('competitor_data' => array('link' => $link, 'iamge' => $image)));
+}
+
+function corp_enhancements_form_user_login_block_alter(&$form, &$form_state) {
+  $form['#validate'][3] = 'corp_enhancements_final_validate';
+//  $form['name']['#placeholder'] = 'Username';
+//  $form['pass']['#placeholder'] = 'Password';
+}
+
+function corp_enhancements_form_alter(&$form, &$form_state) {
+  $form['name']['#placeholder'] = 'Username';
+  $form['pass']['#placeholder'] = 'Password';
+}
+
+/**
+ * The final validation handler on the login form.
+ *
+ * Sets a form error if user has not been authenticated, or if too many
+ * logins have been attempted. This validation function should always
+ * be the last one.
+ */
+function corp_enhancements_final_validate($form, &$form_state) {
+  if (empty($form_state['uid'])) {
+    // Always register an IP-based failed login event.
+    flood_register_event('failed_login_attempt_ip', variable_get('user_failed_login_ip_window', 3600));
+    // Register a per-user failed login event.
+    if (isset($form_state['flood_control_user_identifier'])) {
+      flood_register_event('failed_login_attempt_user', variable_get('user_failed_login_user_window', 21600), $form_state['flood_control_user_identifier']);
+    }
+
+    if (isset($form_state['flood_control_triggered'])) {
+      if ($form_state['flood_control_triggered'] == 'user') {
+        form_set_error('name', format_plural(variable_get('user_failed_login_user_limit', 5), 'Sorry, there has been more than one failed login attempt for this account. It is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', 'Sorry, there have been more than @count failed login attempts for this account. It is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', array('@url' => url('user/password'))));
+      } else {
+        // We did not find a uid, so the limit is IP-based.
+        form_set_error('name', t('Sorry, too many failed login attempts from your IP address. This IP address is temporarily blocked. Try again later or <a href="@url">request a new password</a>.', array('@url' => url('user/password'))));
+      }
+    } else {
+      form_set_error('name', t('Wrong username/password. <a href="@password" target="_blank">Forgot Password?</a>', array('@password' => url('user/password'))));
+      watchdog('user', 'Login attempt failed for %user.', array('%user' => $form_state['values']['name']));
+      drupal_goto($_GET['destination']);
+    }
+  } elseif (isset($form_state['flood_control_user_identifier'])) {
+    // Clear past failures for this user so as not to block a user who might
+    // log in and out more than once in an hour.
+    flood_clear_event('failed_login_attempt_user', $form_state['flood_control_user_identifier']);
+  }
+}
+
+function corp_enhancement_user_reward_calculation() {
+  $type = "OMG_Transaction_Records";
+
+  $node_query = db_select('node', 'n');
+
+  $node_query->join('field_data_field_drupal_processing_status', 'fdps', 'fdps.entity_id = n.nid'); // inner_join file_usage table against file_managed
+
+  $node_query->fields('n', array('nid'))  // specifying fields from file_usage table
+    ->condition('n.type', $type, '=')
+    ->condition('fdps.field_drupal_processing_status_value', 0, '=');
+
+  $node_query = $node_query->execute();
+
+  foreach ($node_query as $node_data_nid) {
+    $nodes[$node_data_nid->nid] = node_load($node_data_nid->nid);
+  }
+ $nodes = node_load_multiple(array(), array('type' => $type));
+  foreach ($nodes as $node_data) {
+    if (isset($node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value']) && isset($node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'])) {
+
+      $query = db_select('omg_user_rewards', 'our');
+      $query->fields('our', array('id', 'drupal_uid'))//SELECT the fields from node
+        ->condition('our.omg_transaction_id', $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'], '=')
+        ->condition('our.drupal_uid', $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'], '=');
+      $result = $query->execute();
+      $id = '';
+
+
+      $query2 = db_select('omg_user_rewards', 'our');
+      $query2->fields('our', array('id', 'drupal_uid'))//SELECT the fields from node
+        ->condition('our.omg_transaction_id', $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'], '=')
+        ->condition('our.drupal_uid', $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'], '=');
+      $result2 = $query2->execute()->rowCount();
+      $id = '';
+
+
+      $record = array();
+      if ($result2 != 0) {
+        foreach ($result as $record) {
+          $id = $record->id;
+          if (isset($record) && $id != '') {
+            $update_transaction_record = db_update('omg_user_rewards')
+              ->fields(array('drupal_uid' => $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'],
+                'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
+                'omg_transaction_id' => $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'],
+                'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * BUYER_PERCENTAGE) / 100,
+                'omg_reward_percentage' => BUYER_PERCENTAGE,
+                'omg_reward_type' => BUYER_TYPE
+              ))
+              ->condition('id', $id, '=')
+              ->execute();
+
+            if (isset($record->drupal_uid)) {
+              $query_referrar = db_select('referral', 'rf');
+              $query_referrar->fields('rf', array('referral_uid'))//SELECT the fields from node
+                ->condition('rf.uid', $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'], '=');
+              $result_referrer = $query_referrar->execute();
+
+              $ref_data_uid = '';
+              foreach ($result_referrer as $ref_data) {
+                $ref_data_uid = $ref_data->referral_uid;
+                if (isset($ref_data) && $ref_data_uid != '') {
+                  $ref_uid = $ref_data->referral_uid;
+                  $update_transaction_record = db_update('omg_user_rewards')
+                    ->fields(array('drupal_uid' => $ref_uid,
+                      'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
+                      'omg_transaction_id' => $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'],
+                      'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * REFERRER_PERCENTAGE) / 100,
+                      'omg_reward_percentage' => REFERRER_PERCENTAGE,
+                      'omg_reward_type' => REFERRER_TYPE
+                    ))
+                    ->condition('id', $_SESSION['last_inserted_id'], '=')
+                    ->execute();
+                }
+              }
+            }
+
+//                  $update_node = db_update('field_data_field_drupal_processing_status')
+//                                    ->fields(array('field_drupal_processing_status_value' => 1
+//                                    ))
+//                                    ->condition('entity_id', $node_data->nid, '=')
+//                                    ->execute();
+
+            $update_node = node_load($node_data->nid);
+            $update_node->field_drupal_processing_status[LANGUAGE_NONE][0]['value'] = 1;
+            node_save($update_node);
+          }
+        }
+      } else {
+        $queryinsert = db_insert('omg_user_rewards')
+          ->fields(array('drupal_uid',
+            'omg_status',
+            'omg_transaction_id',
+            'omg_reward',
+            'omg_reward_percentage',
+            'omg_reward_type'
+          ))
+          ->values(array('drupal_uid' => $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'],
+            'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
+            'omg_transaction_id' => $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'],
+            'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * BUYER_PERCENTAGE) / 100,
+            'omg_reward_percentage' => BUYER_PERCENTAGE,
+            'omg_reward_type' => BUYER_TYPE
+          ))
+          ->execute();
+        //foreach ($result as $record) {
+        // if (isset($record->drupal_uid)) {
+        $query_referrar2 = db_select('referral', 'rf');
+        $query_referrar2->fields('rf', array('referral_uid'))//SELECT the fields from node
+          ->condition('rf.uid', $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'], '=');
+        $result_referrer2 = $query_referrar2->execute();
+        $ref_data_uid2 = '';
+        foreach ($result_referrer2 as $ref_data2) {
+          $ref_data_uid2 = $ref_data2->referral_uid;
+          if (isset($ref_data2) && $ref_data_uid2 != '') {
+            db_insert('omg_user_rewards')
+              ->fields(array('drupal_uid',
+                'omg_status',
+                'omg_transaction_id',
+                'omg_reward',
+                'omg_reward_percentage',
+                'omg_reward_type'
+              ))
+              ->values(array('drupal_uid' => $ref_data_uid2,
+                'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
+                'omg_transaction_id' => $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'],
+                'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * REFERRER_PERCENTAGE) / 100,
+                'omg_reward_percentage' => REFERRER_PERCENTAGE,
+                'omg_reward_type' => REFERRER_TYPE
+              ))
+              ->execute();
+          }
+          //}
+        }
+//                    $update_node = db_update('field_data_field_drupal_processing_status')
+//                                    ->fields(array('field_drupal_processing_status_value' => 1
+//                                    ))
+//                                    ->condition('entity_id', $node_data->nid, '=')
+//                                    ->execute();
+        $update_node = node_load($node_data->nid);
+        $update_node->field_drupal_processing_status[LANGUAGE_NONE][0]['value'] = 1;
+        node_save($update_node);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_node_update
+ */
+function corp_enhancement_node_update($node) {
+  $update_node = node_load($node->nid);
+  $update_node->field_drupal_processing_status[LANGUAGE_NONE][0]['value'] = 0;
+  node_save($update_node);
+}
+
+/**
+ * To try an solve hybrid auth on the widget issue (not redirecting to widget page)
+ */
+function corp_enhancements_token_info() {
+  $types['yourplaceholder'] = array(
+    'name' => t("yourplaceholder Tokens"),
+    'description' => t("Tokens for yourplaceholder."),
+  );
+ 
+  $yourplaceholder['referer'] = array(
+    'name' => t("Referer"),
+    'description' => t("The refering page for this page."),
+  );
+  return array(
+    'types' => $types,
+    'tokens' => array(
+      'yourplaceholder' => $yourplaceholder,
+    ),
+  );
+}
+
+/**
+* Implements hook_tokens().
+*/
+function corp_enhancements_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+ 
+  if ($type == 'yourplaceholder') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'referer':
+          $replacements[$original] = $_SERVER['HTTP_REFERER'];
+        break;
+      }
+    }
+  }
+  return $replacements;
+}

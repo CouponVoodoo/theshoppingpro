@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the OMG Transaction Records Feature feature.
+ */
+
+include_once 'omg_transaction_records_feature.features.inc';

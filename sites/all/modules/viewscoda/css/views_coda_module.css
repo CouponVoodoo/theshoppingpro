@@ -1,0 +1,14 @@
+.views-coda-paneltitle {
+  display: none;
+}
+
+.coda-nav ul {
+}
+
+/* This will override the default drupal list item styling */
+.coda-nav ul li {
+  background: none;
+  list-style-image: none;
+  list-style-type: none;
+  padding: 0 0 0.2em 1.5em;
+}

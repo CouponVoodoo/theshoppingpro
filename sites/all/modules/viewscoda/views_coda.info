@@ -1,0 +1,12 @@
+; $Id$
+name = Views Coda
+description = Provides a views coda slider style.
+dependencies[] = views
+package = Views
+core = 6.x
+; Information added by drupal.org packaging script on January 1, 1970 - 00:00
+version = "7.x-1.0-alpha1"
+core = "7.x"
+project = "viewscoda"
+datestamp = "1297435451"
+

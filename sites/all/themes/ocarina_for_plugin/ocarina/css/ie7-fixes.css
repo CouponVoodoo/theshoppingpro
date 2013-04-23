@@ -1,0 +1,17 @@
+/* $Id: red-style.css,v 1.0.0 2010/01/29 08:18:15 symphonythemes Exp $ */
+
+.item-list .pager li,
+ul#main-menu li,
+.zone-footer ul.menu li,
+.view-list-products .view-filters .views-exposed-widget,
+article.node-products .field-name-commerce-price,
+article.node-products .field-name-field-product {
+      zoom: 1;
+    *display:inline;
+}
+
+
+.view-slideshow .views-slideshow-controls-text-previous a,
+.view-slideshow .views-slideshow-controls-text-next a {
+  top: 30px;
+}

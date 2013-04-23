@@ -1,0 +1,1459 @@
+/* This file will hold the main styles for your website. */
+html {
+  font-family: "Arial", Georgia, Helvetica, sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 81.25%; /* 13px */
+  line-height: 1.846;
+  font-family: "trebuchet MS", Arial, Helvetica, sans-serif;
+  background: black;
+  color: #000;
+}
+a,
+a:link,
+a:visited {
+  color:#ff9400;
+  text-decoration: none;
+}
+a:focus,
+a:hover,
+a:active {
+  color: #A66000;
+}
+h1, h2, h3, h4 {
+  font-weight: bold;
+}
+
+/*--- HEADINGS ---*/
+h1{
+  font-size:1.846em;      /* 24px */
+  margin-bottom:1em;  /* 24px */
+  line-height:1;    /* 24px */
+}
+h2{
+  font-size: 12px;    /* 19.5px */
+  margin-bottom:1.3333em;    /* 24px */
+  line-height:1.3333;      /* 24px */
+ font-family: Arial;
+}
+h3{
+  font-size:1.25em;    /* 16.25 */
+  margin-bottom:1.477em;  /* 24px */
+  line-height:1.477;    /* 24px */
+}
+h4{
+  font-size:1.125em;    /* 14.6px */
+  margin-bottom:1.64em;  /* 24px */
+  line-height:1.64;    /* 24px */
+}
+h5{
+  font-weight:bold;
+}
+h5,
+h6{
+  font-size:1em;      /* 16px */
+  margin-bottom:1.5em;  /* 24px */
+  line-height:1.5;    /* 24px */
+}
+address, pre, table {
+    margin-bottom: 1.846em;
+}
+p {
+  margin: 0.9em 0;
+}
+ul, ol {
+  margin: 0 0 1.846em 60px;
+}
+pre,
+div.code {
+  border-left: 5px solid #ff9400;
+  background: #f7f7f7;
+  padding: 0.2em 10px;
+}
+.highlight {
+  background: #ff9400;
+  color: #000;
+}
+blockquote {
+  background: url(../images/blockquote-open.png) 0 0 no-repeat;
+  padding-left: 50px;
+  text-indent: 0;
+}
+blockquote p {
+  background: url(../images/blockquote-close.png) bottom right no-repeat;
+  padding-right: 50px;
+  font-style: italic;
+}
+
+#node-page-27 {
+  background: url(../images/grid.gif) -40px 0 repeat;
+  color: #000;
+}
+
+.zone-content #block-system-main #node-page-27 .content {
+  padding: 6px 35px 0 0px;
+}
+
+.typo-label {
+  font-size:1.4em;    /* 18px */
+  margin-bottom:1.333em;    /* 24px */
+  line-height:1.333;  
+  padding: 0px 10px;
+  color: #fff;
+  background: #151E25;
+  border: 0px solid #17a1c8;
+}
+
+/*------------------------------------*\
+	Zone CSS
+\*------------------------------------*/
+#page {
+}
+.section-header {
+}
+
+/* Zone user */
+.zone-user-wrapper {
+  color: #fff;
+  background: url(../images/header-footer-bg.jpg);
+}
+.zone-user-wrapper a {
+  color: #77654B;
+}
+
+/*  Zone branding  */
+.zone-branding-wrapper {
+  padding-top: 12px;
+}
+
+/*  Zone menu  */
+.zone-menu {
+}
+/*  Zone header  */
+.zone-header {
+  padding-bottom: 12px;
+}
+
+/*  Zone content  */
+.zone-content-wrapper {
+}
+.zone-content {
+}
+
+/*  Zone postscript */
+.zone-postscript-wrapper {
+}
+.zone-postscript {
+}
+
+/*  Zone footer  */
+.zone-footer-wrapper {
+  background: url(../images/header-footer-bg.jpg);
+  padding-top: 20px;
+  margin-top: 10px;
+  color: #fff;
+}
+.zone-footer {
+  padding-bottom: 20px;
+}
+
+/*------------------------------------*\
+	Pages CSS
+\*------------------------------------*/
+/*
+ * The skip-link link will be completely hidden until a user tabs to the link.
+ * See the element-focusable rule in system.base.css.
+ */
+#skip-link a,
+#skip-link a:visited {
+  display: block;
+  width: 100%;
+  padding: 2px 0 3px 0;
+  text-align: center;
+  background-color: #666;
+  color: #fff;
+}
+
+/*
+ * Header
+ */
+.branding-data {
+  margin: 0 0 13px 0;
+  text-align: center;
+}
+.logo-img /* Wrapping link for logo */ {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+.logo img {
+  vertical-align: bottom;
+}
+
+#name-and-slogan /* Wrapper for website name and slogan */ {
+  float: left;
+}
+
+h1#site-name,
+div#site-name /* The name of the website */ {
+  margin: 0;
+  font-size:1.4em;    /* 19.5px */
+  line-height:1.3333; 
+}
+
+#site-slogan /* The slogan (or tagline) of a website */ {
+}
+
+
+.zone-user-wrapper a:hover {
+  text-decoration: underline;
+}
+.breadcrumb /* The path to the current page in the form of a list of links */ {
+  padding-bottom: 13px;
+}
+
+h2.node-title, /* Title of a piece of content when it is given in a list of content */
+h2.block-title, /* Block title */
+h2.title, /* Comment section heading */
+h2.comment-form, /* Comment form heading */
+h3.title /* Comment title */ {
+  margin: 0;
+}
+/* Page and full node titles */
+h1.title {
+  margin: 10px 0 20px;
+  color: #191510;
+}
+
+h2.element-invisible {
+  margin:0;
+}
+.block-system-main .node .content p {
+  margin: 0 0 1.846em 0;
+}
+table.no-border {
+  margin: 0;
+}
+table.no-border td {
+  border: none;
+}
+thead tr {
+  background: #bdbec1 url(../images/table-header-bg.jpg) 0 bottom repeat-x;
+  color: #fff;
+}
+tr:hover td,
+tr.even:hover td.active,
+tr.odd:hover td.active {
+  background: none;
+} 
+tr.even /* Some tables have rows marked even or odd. */ {
+  /* background-color: #eee; */ /* Drupal core uses a #eee background */
+}
+
+tr.odd {
+  /* background-color: #eee; */ /* Drupal core uses a #eee background */
+}
+
+div.messages /* Important messages (status, warning, and error) for the user. See also the declarations in messages.css. */ {
+  margin: 1.846em 0; /* Drupal core uses "6px 0" margin */
+}
+
+div.messages ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+div.status /* Normal priority messages */ {
+}
+
+div.warning,
+tr.warning /* Medium priority messages */ {
+  /* border: 1px solid #f0c020; */ /* Drupal core uses: 1px solid #f0c020 */
+}
+
+div.error,
+tr.error /* High priority messages. See also the .error declaration below. */ {
+}
+
+.error /* Errors that are separate from div.messages status messages. */ {
+  /* color: #e55; */ /* Drupal core uses a #e55 background */
+}
+
+.warning /* Warnings that are separate from div.messages status messages. */ {
+  /* color: #e09010; */ /* Drupal core uses a #e09010 background */
+}
+
+div.tabs /* See also the tabs.css file. */ {
+}
+
+.more-help-link /* Link to more help */ {
+}
+
+
+ul.links /* List of links */ {
+}
+
+ul.links.inline {
+  display: block; /* Let the links be inline, but the container be a block. */
+}
+
+ul.links li {
+  padding: 0 1em 0 0; /* LTR */
+}
+
+/* List style */
+ul.red-list-style-1 li {
+  list-style: none;
+  background: url(../images/list-style/red-list-style-1.png) 0  6px no-repeat;
+  text-indent: 20px;
+  margin-left: 0px;
+}
+ul.red-list-style-2 li {
+  list-style: none;
+  background: url(../images/list-style/red-list-style-2.png) 0  5px no-repeat;
+  text-indent: 20px;
+  margin-left: -20px;
+}
+ul.red-list-style-3 li {
+  list-style: none;
+  background: url(../images/list-style/red-list-style-3.png) 0  10px no-repeat;
+  text-indent: 20px;
+  margin-left: -20px;
+}
+ul.red-list-style-4 li {
+  list-style: none;
+  background: url(../images/list-style/red-list-style-4.png) 0  8px no-repeat;
+  text-indent: 17px;
+  margin-left: -17px;
+}
+ul.red-list-style-5 li {
+  list-style: none;
+  background: url(../images/list-style/red-list-style-5.png) 0  10px no-repeat;
+  text-indent: 15px;
+  margin-left: -15px;
+}
+/* Orange list style */
+ul.orange-list-style-1 li {
+  list-style: none;
+  background: url(../images/list-style/orange-list-style-1.png) 0  6px no-repeat;
+  text-indent: 20px;
+  margin-left: -20px;
+}
+ul.orange-list-style-2 li {
+  list-style: none;
+  background: url(../images/list-style/orange-list-style-2.png) 0  5px no-repeat;
+  text-indent: 20px;
+  margin-left: -20px;
+}
+ul.orange-list-style-3 li {
+  list-style: none;
+  background: url(../images/list-style/orange-list-style-3.png) 0  10px no-repeat;
+  text-indent: 20px;
+  margin-left: -20px;
+}
+ul.orange-list-style-4 li {
+  list-style: none;
+  background: url(../images/list-style/orange-list-style-4.png) 0  8px no-repeat;
+  text-indent: 17px;
+  margin-left: -17px;
+}
+ul.orange-list-style-5 li {
+  list-style: none;
+  background: url(../images/list-style/orange-list-style-5.png) 0  10px no-repeat;
+  text-indent: 15px;
+  margin-left: -15px;
+}
+
+/* --------------- System Tabs  --------------- */
+.tabs {
+}
+.tabs ul.primary {
+  padding: 0 3px;
+  margin: 20px 0;
+  overflow: hidden;
+  border: none;
+  background: transparent url(../images/tabs-border.png) repeat-x left bottom;
+}
+.tabs ul.primary li {
+  display: block;
+  float: left; /* LTR */
+  vertical-align: bottom;
+  margin: 0 5px 0 0; /* LTR */
+}
+.tabs ul.primary li a {
+  color: #000;
+  background: #F1ECE3;
+  border: 1px solid #CEC9BB;
+  height: 1.8em;
+  line-height: 1.9;
+  display: block;
+  font-size: 0.929em;
+  float: left; /* not LTR */
+  padding: 3px 10px 5px;
+  margin: 0;
+}
+
+.tabs ul.primary li.active a,
+.tabs ul.primary li a:hover {
+  background: #fff;
+  color: #000;
+  border: 1px solid #CEC9BB;
+  border-bottom: 1px solid #fff;
+}
+.tabs ul.secondary {
+  border-bottom: none;
+  padding: 0.5em 0;
+}
+.tabs ul.secondary li {
+  display: block;
+  float: left; /* LTR */
+}
+.tabs ul.secondary li:last-child {
+  border-right: none; /* LTR */
+}
+.tabs ul.secondary li:first-child {
+  padding-left: 0; /* LTR */
+}
+.tabs ul.secondary li a {
+  padding: 0.25em 0.5em;
+}
+.tabs ul.secondary li a.active {
+  background: #f2f2f2;
+  border-bottom: none;
+}
+ul.action-links {
+  list-style: none;
+  margin: 5px;
+  padding: 0.5em 1em;
+}
+ul.action-links li {
+  display: inline-block;
+  margin-left: 10px;
+}
+ul.action-links li a {
+  padding-left: 15px;
+  background: url(../images/add.png) no-repeat left center;
+  margin: 0 10px 0 0;
+}
+
+/* Pager */
+.item-list .pager /* A list of page numbers when more than 1 page of content is available */ {
+  padding: 20px 0 0;
+  margin: 0;
+  text-align: center;
+}
+.not-front .item-list .pager {
+  padding: 10px 0 20px 0;
+}
+
+.item-list .pager li /* Each page number in the pager list */ {
+  padding: 5px 10px;
+  margin:0 2px;
+  border: 1px solid #DBD7D2;
+}
+.item-list .pager li a {
+  color: #000;
+}
+.item-list .pager .pager-current,
+.item-list .pager li a:hover {
+  color:#ff9400;
+}
+.feed-icon /* The link to the RSS or Atom feed for the current list of content */ {
+}
+
+.more-link /* Aggregator, blog, and forum more link */ {
+  text-align: right;
+  padding-bottom: 5px;
+}
+.more-link a {
+  font-weight: bold;
+  margin-left: 10px;
+  padding-left: 15px;
+}
+input.form-submit,
+.checkout-buttons .checkout-cancel,
+.checkout-buttons .checkout-back {
+  background: url(../images/button-bg.png) 0 0 repeat-x;
+  border: 2px solid #fff;
+  font-weight: bold;
+  padding: 7px 25px;
+  margin: 2px;
+  text-shadow: none;
+  color: #000;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  font-size: 110%;
+  font-weight: normal;
+  box-shadow: 0 0 3px #999;
+  -moz-box-shadow: 0 0 3px #999;
+  -webkit-box-shadow: 0 0 3px #999;
+}
+input.form-submit:hover,
+.checkout-buttons .checkout-cancel:hover,
+.checkout-buttons .checkout-back:hover {
+  background: #ff9400;
+}
+button:focus, button:active, input:focus, input:active, select:focus, select:active, textarea:focus, textarea:active {
+  box-shadow: 0 0 7px #f3b700;
+  -moz-box-shadow: 0 0 7px #f3b700;
+  -webkit-box-shadow: 0 0 7px #f3b700;
+}
+
+/* Contact form */
+.contact-form .form-item {
+  padding: 10px 10px;
+  margin:0;
+  float: left;
+  width: 90%;
+}
+.contact-form .form-item:hover,
+.contact-form .form-item:active {
+  background: #f7f7f7;
+}
+
+/*------------------------------------*\
+	NAVIGATION CSS
+\*------------------------------------*/
+/*
+ * The active item in a Drupal menu
+ */
+li a.active {
+  color: #000;
+}
+
+/*
+ * Navigation bar
+ */
+#navigation {
+  /* overflow: hidden; /* Sometimes you want to prevent overlapping with main div. */
+}
+
+#navigation ul.links, /* Main menu and secondary menu links */
+#navigation .content ul /* Menu block links */ {
+  margin: 0;
+  padding: 0;
+  text-align: left; /* LTR */
+}
+
+#navigation ul.links li, /* A simple method to get navigation links to appear in one line. */
+#navigation .content li {
+  float: left; /* LTR */
+  padding: 0 10px 0 0; /* LTR */
+  list-style-type: none;
+  list-style-image: none;
+}
+
+/*
+ * Main menu links
+ */
+ul#main-menu {
+  margin: 0 0 13px;
+  padding: 0;
+  text-align: center;
+  background: #fff url(../images/mainmenu-bg.jpg) 0 bottom repeat-x;
+  -moz-box-shadow: 3px 3px 5px #666;
+  -webkit-box-shadow: 3px 3px 5px #666;
+  box-shadow: 3px 3px 5px #666;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+ul#main-menu li {
+  display: inline-block;
+  float: left;
+  margin:0;
+  padding: 0 3px 0 0;
+  background: url(../images/mainmenu-border.png) right top no-repeat;
+}
+ul#main-menu li.first a {
+  background: url(../images/mainmenu-home.png) center center no-repeat;
+  text-indent: -200px;
+  width: 24px;
+  overflow: hidden;
+}
+ul#main-menu li.last {
+  background: none;
+}
+ul#main-menu li a {
+  display: block;
+  padding: 10px 13px;
+  margin: 0;
+  color: #747474;
+  font-size: 13px;
+  float: left;
+}
+ul#main-menu li a.active,
+ul#main-menu li a:hover {
+  color:#ff9400;
+}
+ul#main-menu li.first a.active,
+ul#main-menu li.first a:hover {
+  background: url(../images/mainmenu-home-active.png) center center no-repeat;
+}
+
+
+#block-system-main-menu {
+  float: right;
+  width: 100%;
+  padding: 10px 0 0;
+}
+#block-system-main-menu ul.menu {
+  float: right;
+  margin:0;
+  padding: 0;
+  width: 100%;
+}
+#block-system-main-menu ul.menu li {
+  float: left;
+  margin:0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+#block-system-main-menu ul.menu li a {
+  float: left;
+  padding: 5px 20px;
+  color: #77654b;
+}
+#block-system-main-menu ul.menu li a:hover,
+#block-system-main-menu ul.menu li a.active {
+  color: #ff9400;
+}
+
+
+/* Shopping menu */
+.region-user-first .block-menu {
+  float: right;
+  width: 100%;
+  text-align: left;
+  padding:15px 0 0px;
+}
+.region-user-first .block-menu ul {
+  margin: 0;
+  padding: 0;
+}
+.region-user-first .block-menu ul li {
+  display: inline;
+  margin:0;
+  padding:0;
+  list-style: none;
+}
+.region-user-first .block-menu ul li a {
+  color: #fff;
+  padding: 0 10px;
+  line-height:1;
+}
+.region-user-first .block-menu ul li.last a {
+  border: none;
+}
+.region-user-first .block-menu ul li a:hover,
+.region-user-first .block-menu ul li a.active {
+  color: #ff9400;
+}
+
+/* User menu */
+.block-user-menu .content ul.menu {
+  float: right;
+  width: 100%;
+  text-align: center;
+  margin:0;
+  padding:20px 0 0 0;
+}
+.block-user-menu ul li {
+  float: right;
+  margin:0 0 0 5px;
+  padding:0;
+  list-style: none;
+}
+.block-user-menu ul li a {
+  float: left;
+  color: white;
+  padding: 5px 13px;
+  background: black;  
+  -moz-box-shadow: -5px -5px 5px #333;
+  -webkit-box-shadow: -5px -5px 5px #333;
+  box-shadow: -5px -5px 5px #333;
+  border-top-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -webkit-border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -webkit-border-top-right-radius: 10px;
+}
+.block-user-menu ul li.last a {
+  border: none;
+}
+.block-user-menu ul li a:hover,
+.block-user-menu ul li a.active {
+  color: #ff9400;
+}
+
+/* Block list */
+.block.block-list .content ul {
+  margin: 0;
+  padding:0;
+  float: left;
+}
+.block-list .content ul li {
+  clear: left;
+  list-style: none;
+  margin:0;
+  padding: 0 0 0 20px;
+  background: url(../images/bullet.png) 5px 10px no-repeat;
+}
+.block-list .content ul li li a {
+  padding-left: 50px;
+}
+.zone-footer .block-list ul li {
+  background: url(../images/footer-bullet.png) 0 10px no-repeat;
+  padding-left: 10px;
+}
+
+/* Footer menu */
+.zone-footer .block-menu {
+  width: 100%;
+}
+.zone-footer .block-menu .content ul.menu {
+  margin: 0px 0 0;
+  padding:0;
+  text-align: center;
+}
+.zone-footer ul.menu li {
+  margin:0;
+  padding:0;
+  list-style: none;
+  display: inline-block;
+}
+.zone-footer ul.menu li a {
+  display: block;
+  padding: 0px 25px;
+  font-size: 90%;
+  color: #fff;
+  border-right: 1px solid #77654b;
+}
+.zone-footer ul.menu li a:hover,
+.zone-footer ul.menu li a.active {
+  color: #ff9400;
+}
+.zone-footer ul.menu li.last a {
+  border: none;
+}
+
+/*------------------------------------*\
+	NODES CSS
+\*------------------------------------*/
+
+.node /* Node wrapper */ {
+}
+.preview .node /* Preview of the content before submitting new or updated content */ {
+  /* background-color: #ffffea; */ /* Drupal core uses a #ffffea background */
+}
+
+.node-promoted /* A node that has been promoted to the front page */ {
+}
+
+.node-sticky /* A sticky node (displayed before others in a list) */ {
+}
+
+.node-unpublished /* Unpublished nodes */ {
+  /* background-color: #fff4f4; */ /* Drupal core uses a #fff4f4 background */
+}
+
+.node-unpublished div.unpublished,
+.comment-unpublished div.unpublished /* The word "Unpublished" displayed underneath the content. */ {
+  height: 0;
+  overflow: visible;
+  color: #d8d8d8;
+  text-align: center;
+  word-wrap: break-word; /* A very nice CSS3 property */
+}
+
+.node-by-viewer /* A node created by the current user */ {
+}
+
+.node-teaser /* A node displayed as teaser */ {
+}
+
+/* All nodes are given a node-FOO class that describes the type of content that
+ * it is. If you create a new content type called "my-custom-type", it will
+ * receive a "node-my-custom-type" class.
+ */
+.node-page /* Page content node */ {
+}
+
+.node-article /* Article content node */ {
+}
+
+h2.node-title /* Node title */ {
+}
+
+.node .user-picture /* The picture of the node author */ {
+}
+
+.node .submitted /* The "posted by" information */ {
+  color: #666;
+  font-style:italic;
+}
+
+.node .content /* Node's content wrapper */ {
+}
+
+.node ul.links /* Node links. See also the ul.links declaration in the pages.css. */ {
+  margin-left: 0;
+  text-align: right;
+}
+
+/*------------------------------------*\
+	FIELDS CSS
+\*------------------------------------*/
+
+.field /* Wrapper for any field. */ {
+}
+
+/*
+ * Field types (Core)
+ */
+.field-type-text {
+}
+
+.field-type-text-long {
+}
+
+.field-type-text-with-summary {
+}
+
+.field-type-image {
+}
+
+.field-type-file {
+}
+
+.field-type-taxonomy-term-reference {
+}
+
+.field-type-number-integer {
+}
+
+.field-type-number-decimal {
+}
+
+.field-type-number-float {
+}
+
+.field-type-list-text {
+}
+
+.field-type-list-boolean {
+}
+
+.field-type-list-integer {
+}
+
+.field-type-list-float {
+}
+
+/*
+ * Field types (Contrib)
+ */
+.field-type-datetime /* Always use "datetime" when creating new CCK date fields. "date" and "datestamp" are legacy types. */ {
+}
+
+.field-type-node-reference {
+}
+
+.field-type-user-reference {
+}
+
+
+/*
+ * Named fields
+ */
+.field-name-body {
+}
+
+.field-name-field-image {
+  float: left;
+  margin: 7px 20px 10px 0;
+}
+.field-name-field-image img,
+.views-field-field-image img {
+}
+.field-name-field-tags {
+}
+
+
+/*------------------------------------*\
+	COMMENTS CSS
+\*------------------------------------*/
+#comments /* Wrapper for the list of comments and its title */ {
+  margin: 1.5em 0;
+}
+
+#comments h2.title /* Heading for the list of comments */ {
+  margin-bottom: 10px;
+}
+
+#comments h2.comment-form /* Heading for the comment form */ {
+}
+.comment-wrapper h3 {
+  margin-bottom: 10px;
+}
+article.comment footer {
+  color: #999;
+  font-style: italic;
+}
+article.comment footer .coment-user {
+  color: #000;
+}
+article.comment footer .coment-user span,
+article.comment footer .coment-user a {
+  font-size: 120%;
+  font-weight: bold;
+  color: #a66000;
+}
+.comment /* Wrapper for a single comment */ {
+  border-bottom: 1px solid #cfcfcf;
+  margin-bottom: 10px;
+}
+
+.comment-preview /* Preview of the comment before submitting new or updated comment */ {
+  background-color: #ffffea; /* Drupal core will use a #ffffea background. See #1110842 */
+}
+
+.comment.new /* A new comment since the user last viewed the page. */ {
+}
+
+.comment.first /* The first comment in the list of comments */ {
+}
+
+.comment.last /* The last comment in the list of comments */ {
+}
+
+.comment.odd /* An odd-numbered comment in the list of comments */ {
+}
+
+.comment.even /* An even-numbered comment in the list of comments */ {
+}
+
+.comment-unpublished /* Unpublished comments */ {
+  /* background-color: #fff4f4; */ /* Drupal core uses a #fff4f4 background */
+}
+
+.comment-unpublished div.unpublished /* The word "Unpublished" displayed underneath the content. See also the div.unpublished declaration in the nodes.css. */ {
+}
+
+.comment-by-anonymous /* A comment created by an anonymous user */ {
+}
+
+.comment-by-node-author /* A comment created by the node's author */ {
+}
+
+.comment-by-viewer /* A comment created by the current user */ {
+}
+
+h3.comment-title /* Comment title */ {
+}
+
+.new /* "New" marker for comments that are new for the current user */ {
+  color: #c00;
+}
+
+.comment .user-picture /* The picture of the comment author */ {
+  float: left;
+  margin: 5px 20px 0 0;
+}
+
+.comment .submitted /* The "posted by" information */ {
+}
+
+.comment .content /* Comment's content wrapper */ {
+}
+
+.comment .user-signature /* The user's signature */ {
+}
+
+.comment ul.links /* Comment links. See also the ul.links declaration in the pages.css. */ {
+  margin-left: 0;
+}
+form.comment-form .form-actions input.form-submit {
+  margin: 3px;
+}
+.indented /* Nested comments are indented */ {
+  /* margin-left: 25px; */ /* Drupal core uses a 25px left margin */
+}
+
+.comment-form .form-item.form-type-textarea,
+.comment-form .form-item.form-item-subject,
+.comment-form .form-item.form-type-item {
+  padding: 5px 10px;
+  margin:0;
+}
+.comment-form fieldset {
+  margin: 0 10px;
+}
+.comment-form .form-item.form-type-textarea:hover,
+.comment-form .form-item.form-item-subject:hover,
+.comment-form .form-item.form-type-item:hover,
+.comment-form .form-item.form-type-textarea:active,
+.comment-form .form-item.form-item-subject:active,
+.comment-form .form-item.form-type-item:active {
+  background: #f7f7f7;
+}
+
+/*------------------------------------*\
+	BLOCKS CSS
+\*------------------------------------*/
+.region-sidebar-first .block,
+.region-sidebar-second .block,
+.zone-footer .block {
+  margin-bottom: 20px;
+}
+.block .content ul,
+.block .content ol {
+  margin-left: -20px;
+  margin-bottom: 5px;
+}
+#block-system-main .content article.node ul,
+#block-system-main .content article.node ol {
+  margin-left: 60px;
+}
+h2.block-title {
+  margin-bottom: 10px;
+  color: #191510;
+  font-size: 150%;
+}
+.region-sidebar-second h2.block-title {
+  color: #000;
+  text-transform: capitalize;
+  font-size: 11px;
+}
+.region-sidebar-second h2.block-title .last-word {
+  margin-left: -5px;
+  color: #ff9400;
+  font-size: 11px;
+}
+.zone-postscript .region h2.block-title {
+  color: #ff9400;
+}
+
+.zone-footer h2.block-title {
+  color: #fff;
+}
+
+.view-list-articles .views-field-field-image img,
+article.node-article .field-name-field-image img  {
+  width: 150px;
+}
+
+.view-slideshow .views_slideshow_cycle_main {
+  margin: 0
+}
+.view-slideshow .views-field-field-image img {
+  width: 100%;
+}
+
+/* BLock box */
+// .region-content,
+// .region-sidebar-second,
+// .zone-postscript .region {
+//  background: transparent url(../images/home-block-bg.png) 0 bottom repeat-x;
+//  -moz-box-shadow: 3px 3px 5px #666;
+//  -webkit-box-shadow: 3px 3px 5px #666;
+//  box-shadow: 3px 3px 5px #666;
+//  border-radius: 20px;
+//  -moz-border-radius: 20px;
+//  -webkit-border-radius: 20px;
+//  margin-bottom: 13px;
+// }
+.zone-postscript .region .block-inner,
+.region-sidebar-second-inner {
+  padding: 20px;
+}
+.region-content-inner {
+  padding: 13px;
+}
+
+/* List article */
+.view-list-articles .views-row {
+  float: left;
+  width: 100%;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #dbd7d2;
+}
+.view-list-articles .views-field-field-image {
+  float: left;
+  margin: 10px 20px 10px 0px;
+  border: 1px solid #dbd7d2;
+}
+
+.view-list-articles .views-field-title a {
+  font-weight: bold;
+  font-size: 150%;
+}
+.view-list-articles .views-field-created {
+  font-size: 90%;
+  color: #999;
+  font-style: italic;
+}
+.view-list-articles .views-field-view-node a {
+  float: left;
+  padding-left: 15px;
+  background: url(../images/bullet.png) left 8px no-repeat;
+}
+.views-field-view-node a {
+  font-weight: bold;
+  font-style: italic;
+  float: right;
+  padding-right: 15px;
+  background: url(../images/bullet.png) right 8px no-repeat;
+}
+
+/* Block blog */
+.block-latest-news .views-row,
+.block-latest-articles .views-row {
+  float: left;
+  width: 100%;
+  padding-bottom: 10px;
+}
+.block-latest-news .views-field-field-image,
+.block-latest-articles .views-field-field-image {
+  float: left;
+  margin-right: 20px;
+  border: 1px solid #dbd7d2;
+}
+.block-latest-news .views-field-title a,
+.block-latest-articles .views-field-title a {
+  font-weight: bold;
+}
+.block-latest-news .views-field-created,
+.block-latest-articles .views-field-created {
+  padding-right: 10px;
+  margin-right: 10px;
+  color: #999;
+  font-style: italic;
+}
+
+/* New products slideshow */
+.jcarousel-skin-default .jcarousel-container-horizontal,
+.jcarousel-skin-default .jcarousel-clip-horizontal {
+  width: 100%;
+  padding: 0;
+  height: 200px;
+}
+.jcarousel-skin-default .jcarousel-item {
+  width: 195px;
+  margin: 0 10px;
+  height: 200px;
+  border: none;
+  background: none;
+}
+
+.jcarousel-skin-default .jcarousel-item article.node-products.node-teaser {
+  width: 193px;
+}
+.jcarousel-skin-default .jcarousel-next,
+.jcarousel-skin-default .jcarousel-prev {
+  width: 55px;
+  height: 55px;
+  top: 35%;
+}
+.jcarousel-skin-default .jcarousel-prev {
+  background: url(../images/product-slider-prev.png) 0 0 no-repeat;
+  left: -60px;
+}
+.jcarousel-skin-default .jcarousel-next {
+  background: url(../images/product-slider-next.png) 0 0 no-repeat;
+  right: -60px;
+}
+.jcarousel-skin-default .jcarousel-prev:hover {
+  background: url(../images/product-slider-prev-hover.png) 0 0 no-repeat;
+}
+.jcarousel-skin-default .jcarousel-next:hover {
+  background: url(../images/product-slider-next-hover.png) 0 0 no-repeat;
+}
+
+.jcarousel-skin-default .jcarousel-item article.node-products.node-teaser {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+.jcarousel-skin-default .jcarousel-item article.node-products.node-teaser:hover {
+  border: none;
+}
+.jcarousel-skin-default .jcarousel-item article.node-products.node-teaser .content {
+  padding: 0;
+}
+.jcarousel-skin-default .jcarousel-item article.node-products.node-teaser h2.node-title {
+  margin-right: 0;
+}
+.jcarousel-skin-default .jcarousel-item  article.node-products.node-teaser .content .field.field-name-field-image {
+  margin-right: 0;
+  width: 100%;
+}
+.jcarousel-skin-default .jcarousel-item  article.node-products.node-teaser img {
+  width: 100%;
+  border: 1px solid #9d9d9d;
+  padding: 0;
+}
+
+
+/* List products */
+.term-listing-heading .vocabulary-catalog .field-name-field-image {
+  width: 100%;
+  margin: 0 0 20px 0;
+}
+.view-list-products {
+  float: left;
+  width: 100%;
+}
+article.node-products.node-teaser {
+  float: left;
+  width: 182px;
+  margin: 10px;
+  position: relative;
+}
+article.node-products.node-teaser:hover {
+}
+article.node-products.node-teaser .content {
+  padding: 0px;
+  margin:0;
+  border: none;
+}
+article.node-products.node-teaser .field-name-field-image img {
+  width: 100%;
+  float: left;
+  padding: 0;
+}
+article.node-products.node-teaser h2.node-title {
+  font-size: 120%;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0 20px;
+}
+article.node-products.node-teaser h2.node-title a {
+  font-weight: bold;
+  font-size: 120%;
+}
+article.node-products.node-teaser .content .field {
+  margin: 10px 0;
+}
+article.node-products.node-teaser .content .field.field-name-field-image {
+  margin-right: 0px;
+  width: 100%;
+}
+article.node-products.node-teaser .field-name-field-product {
+  width: 100%;
+}
+
+article.node-products.node-teaser .content .field.field-name-commerce-price {
+  width: 50%;
+  border: 1px solid #DBD7D2;
+  border-right: none;
+  float: left;
+}
+
+#block-system-main .content article.node-products.node-teaser ul.links {
+  margin: 0;
+  float:left;
+  width: 80%;
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  border: 1px solid #DBD7D2;
+  border-left: none;
+}
+article.node-products.node-teaser .field-name-commerce-price .field-item {
+  color: #000;
+  font-size: 120%;
+  line-height: 32px;
+  width: auto;
+  padding-left: 10px;
+  margin: 0;
+  background: none;
+}
+#block-system-main .content article.node-products.node-teaser ul.links a {
+  color: #000;
+  text-transform: uppercase;
+  font-weight: bold;
+  line-height: 32px;
+}
+#block-system-main .content article.node-products.node-teaser ul.links a {
+  background: url(../images/black-more.png) 0 center no-repeat;
+  padding-left: 15px;
+}
+#block-system-main .content article.node-products.node-teaser ul.links a:hover {
+  color: #FF9400;
+}
+
+/* Product detail */
+article.node-products .field-name-field-image img {
+  border: 1px solid #dbd7d2;
+  padding: 0px;
+  width: 150px;
+}
+article.node-products .field-name-commerce-price .field-item {
+  float: left;
+  clear: left;
+  width: 150px;
+  background: #ff9400;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 200%;
+  line-height:1;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+article.node-products .form-item-quantity {
+  display: inline-block;
+  margin-right: 15px;
+}
+article.node-products form.commerce-add-to-cart .form-submit {
+  display: inline-block;
+  background: url(../images/add-to-cart-button.png) 0 center no-repeat;
+  padding: 0 20px 0 60px;
+  height: 32px;
+  color: #fff;
+  font-weight: bold;
+}
+article.node-products form.commerce-add-to-cart #edit-line-item-fields,
+article.node-products form.commerce-add-to-cart #edit-line-item-fields--1,
+article.node-products form.commerce-add-to-cart #edit-line-item-fields--2,
+article.node-products form.commerce-add-to-cart #edit-line-item-fields--3,
+article.node-products form.commerce-add-to-cart #edit-line-item-fields--4 {
+  display: none;
+}
+article.node-products .attribute-widgets .form-item {
+  display: inline-block;
+  margin-right: 20px;
+}
+article.node-products .field-label {  
+  margin-bottom: 0.846em;
+}
+
+
+/* Block search */
+.block-search {
+}
+.block-search #search-block-form {
+}
+.block-search .form-item {
+  margin:0;
+}
+.block-search input.form-text {
+  width: 100%;
+  padding: 5px 20px 5px 10px;
+  border: 1px solid #c1c1c1;
+  background: #fff url(../images/search-icon.png) 98% center no-repeat;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  height: 34px;
+}
+.block-search input.form-submit {
+  display: none;
+}
+
+/* Block newsleter */
+.block-simplenews {
+  border-bottom: 1px dashed #dbd7d2;
+}
+.block-simplenews .form-item {
+  text-align: left;
+}
+.block-simplenews .form-item label {
+  display: none;
+}
+.block-simplenews form {
+  text-align: center;
+}
+.block-simplenews input.form-text {
+  width: 100%;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  height: 34px;
+  background: #fff url(../images/email-icon.png) 5px center no-repeat;
+  padding-left: 40px;
+  
+}
+
+/* Block social icons */
+.block-social-icon .content img {
+  width: 32px;
+}
+.block-copyright {
+  width: 100%;
+  text-align: center;
+}
+
+/* Block poll */
+.block.block-poll .content ul {
+  margin: 10px 0 0 10px;
+}
+.block.block-poll .content ul li {
+  list-style: none;
+  background: url("../images/list-style-3.png") no-repeat 0 10px;
+  padding-left: 20px;
+}
+
+/* Commerce */
+#commerce-checkout-form-checkout legend {
+  font-weight: bold;
+  font-size: 120%;
+}
+.customer_profile_billing label {
+  float: left;
+  display: inline;
+  width: 150px;
+  font-weight: bold;
+}
+.checkout-buttons .checkout-cancel,
+.checkout-buttons .checkout-continue,
+.checkout-buttons .checkout-back {
+  margin: 0 10px;
+}
+.checkout-buttons .checkout-cancel:hover,
+.checkout-buttons .checkout-continue:hover,
+.checkout-buttons .checkout-back:hover {
+  text-decoration: none;
+  color: #000;
+}
+.breadcrumb {display: none;}
+
+
+.retailers .region-content, .retailers .region-sidebar-second, .retailers .zone-postscript .region{background: none; background-color: #F1ECE3;}
+.retailers .container-16 .grid-16{width: 100%; !important}
+
+
+
+
+div.error{background-image: none;}
+div.messages{padding: 11px 10px 10px 0px}
+
+
+#quicktabs-tab-plugin_user_tabs-0 {
+    background: url("http://localhost/corp/sites/default/files/login.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 20px;
+    text-indent: -1000px;
+    width: 20px;
+}
+
+#quicktabs-tab-plugin_user_tabs-1 {
+    background: url("http://localhost/corp/sites/default/files/user_reward.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 20px;
+    text-indent: -1000px;
+    width: 20px;
+}

@@ -1,0 +1,554 @@
+/* $Id: blue-style.css,v 1.0.0 2010/01/29 08:18:15 symphonythemes Exp $ */
+
+/*------------------------------------*\
+	Basic Typography & Colors
+\*------------------------------------*/
+/* Hover/active link styles. Don't forget :focus for accessibility */
+a,
+a:link,
+a:visited {
+  color:#25ADE3;
+  text-decoration: none;
+}
+a:focus,
+a:hover,
+a:active {
+  color: #0E374B;
+}
+
+
+pre,
+div.code {
+  border-left: 5px solid #25ADE3;
+  background: #f7f7f7;
+  padding: 0.2em 10px;
+}
+.highlight {
+  background: #25ADE3;
+  color: #fff;
+}
+
+/* Pager */
+.item-list .pager li a {
+  color: #000;
+}
+.item-list .pager .pager-current,
+.item-list .pager li a:hover {
+  color:#25ADE3;
+}
+
+/* Button */
+input.form-submit,
+.checkout-buttons .checkout-cancel,
+.checkout-buttons .checkout-back {
+  background: url(../images/blue/button-bg.png) 0 0 repeat-x;
+  color: #fff;
+}
+input.form-submit:hover,
+.checkout-buttons .checkout-cancel:hover,
+.checkout-buttons .checkout-back:hover {
+  background: #25ADE3;
+}
+button:focus, button:active, input:focus, input:active, select:focus, select:active, textarea:focus, textarea:active {
+  box-shadow: 0 0 7px #f3b700;
+  -moz-box-shadow: 0 0 7px #f3b700;
+  -webkit-box-shadow: 0 0 7px #f3b700;
+}
+
+/*------------------------------------*\
+	Zone CSS
+\*------------------------------------*/
+
+.zone-user-wrapper {
+  color: #fff;
+  background: url(../images/blue/header-footer-bg.jpg);
+}
+/*  Zone footer  */
+.zone-footer-wrapper {
+  background: url(../images/blue/header-footer-bg.jpg);
+  color: #fff;
+}
+
+
+/*------------------------------------*\
+	NAVIGATION
+\*------------------------------------*/
+/* Main menu links */
+ul#main-menu li a {
+  color: #747474;
+}
+ul#main-menu li a.active,
+ul#main-menu li a:hover {
+  color:#25ADE3;
+}
+ul#main-menu li.first a.active,
+ul#main-menu li.first a:hover {
+  background: url(../images/blue/mainmenu-home-active.png) center center no-repeat;
+}
+
+/* Shopping menu */
+.region-user-first .block-menu ul li a {
+  color: #fff;
+}
+.region-user-first .block-menu ul li a:hover,
+.region-user-first .block-menu ul li a.active {
+  color: #25ADE3;
+}
+
+
+/* User menu */
+.block-user-menu ul li a {
+  color: white;
+}
+.block-user-menu ul li a:hover,
+.block-user-menu ul li a.active {
+  color: #25ADE3;
+}
+
+
+/*------------------------------------*\
+	BLOCKS CSS
+\*------------------------------------*/
+/* Block title */
+.region-sidebar-second h2.block-title .last-word {
+  color: #25ADE3;
+}
+.zone-postscript .region h2.block-title {
+  color: #25ADE3;
+}
+
+/* News */
+.view-list-articles .views-field-view-node a {
+  background: url(../images/blue/bullet.png) 5px 8px no-repeat;
+}
+
+/* Block list */
+.block-list .content ul li {
+  background: url(../images/blue/bullet.png) 5px 10px no-repeat;
+}
+.zone-footer .block-list ul li {
+  background: url(../images/footer-bullet.png) 0 10px no-repeat;
+}
+.zone-footer .block-list ul li a {
+  color: #ff9400;
+}
+.zone-footer .block-list ul li a:hover {
+  color: #fff;
+}
+
+/* Block slideshow products */
+.jcarousel-skin-default .jcarousel-prev:hover {
+  background: url(../images/blue/product-slider-prev-hover.png) 0 0 no-repeat;
+}
+.jcarousel-skin-default .jcarousel-next:hover {
+  background: url(../images/blue/product-slider-next-hover.png) 0 0 no-repeat;
+}
+
+
+/* List product on category */
+#block-system-main .content article.node-products.node-teaser ul.links a:hover {
+  color: #25ADE3;
+}
+
+/* Product detail */
+article.node-products .field-name-commerce-price .field-item {
+  background: #25ADE3;
+  color: #fff;
+}
+article.node-products form.commerce-add-to-cart .form-submit {
+  background: url(../images/blue/add-to-cart-button.png) 0 center no-repeat;
+}
+
+
+/* Block poll */
+.block.block-poll .content ul li {
+  background: url(../images/blue/blue-list-style-3.png) no-repeat 0 10px;
+}
+
+
+
+/*------------------------------------*\
+	BY ASHISH WEBSITE
+\*------------------------------------*/
+
+
+/* By Ashish to make homepage image ok in firefox:" NEED TO CORRECT AS THIS WILL MAKE THE SITE ACT WEIRD ON MOBILE*/
+ .views-slideshow-cycle-main-frame .field-content{
+	width: 840px;
+	padding: 20px;
+}
+
+
+
+
+/* By Ashish to make homepage list of retailers ok */
+.jcarousel-container-horizontal{
+	width: 90% !important;
+}
+
+.jcarousel-clip-horizontal{
+	width: 100% !important;
+}
+
+
+
+/* By Ashish to make blocks have background - NEED TO WORK ON PADDING*/
+.block{
+	background: #ffffff;
+	padding: 0px 10px;
+	box-shadow: 7px 7px 7px #26ADE3;
+	-moz-border-radius: 15px;	
+	border-radius: 15px;
+	margin: 0px 0px 20px 0px;
+}
+
+/* By Ashish to make background black*/
+
+.region{
+background: black;
+box-shadow: none !important;
+padding: 0px !important;
+}
+.region-sidebar-second-inner{
+padding: 0px !important;
+}
+
+
+/* By Ashish to remove padding inside a region*/
+.region-content-inner{
+padding: 0px !important;
+}
+
+/* By Ashish to make left and right coumns top aligned*/
+.node{
+padding: -20px -20px -20px -20px !important;
+margin: -20px -20px -20px -20px!important;
+}
+
+/* By Ashish to make jcarousel button on right side*/
+.region-sidebar-second .jcarousel-prev{
+    visibility:hidden;
+}
+
+
+/* By Ashish to make jcarousel button on right side*/
+.region-sidebar-second .jcarousel-next{
+    visibility:hidden;
+}
+
+/* By Ashish to remove user account title on login page*/
+.page-user-login .title{
+	display: none;
+	padding: -20px -20px -20px -20px !important;
+	margin: -20px -20px -20px -20px!important;
+}
+
+/* By Ashish to have a padding in the user login block*/
+.page-user-login .content{
+padding: 10px !important;
+}
+
+.block-title{
+padding: 5px;
+text-align:center;
+}
+
+
+/* By Ashish make title white*/
+h1.title {
+    color: #ffffff;
+    margin: 10px 0 20px;
+}
+
+/* By Ashish to make user menu come to right*/
+.secondary-menu{
+float:right;
+}
+
+/* By Ashish to make color of active link green - THIS NEEDS TO BE CORRECTED SHOULD ONLY BE FOR SECONDARY MENU*/
+li a.active{
+color: #95C94A !important;
+}
+
+
+/* By Ashish to make background transparent*/
+.page-retailers-partners-list{
+background:transparent !important;
+}
+/* By Ashish to remove gap in the login*/
+.page-retailers-partners-list .block-user-login{
+margin: 0 !important;
+padding: 0 !important;
+}
+
+/* By Ashish to reduce header space*/
+.page-retailers-partners-list .block-main{
+margin: 0 !important;
+padding: 0px 5px 0px 5px !important;
+}
+
+/* By Ashish make title white*/
+h1.title {
+    color: #ffffff;
+    margin: 10px 0 20px;
+}
+
+/* By Ashish to make user menu come to right*/
+.secondary-menu{
+float:right;
+}
+
+
+/* By Ashish to increase space below the user reward blog*/
+.block-views-user-rewards-post-login-block{
+margin: 0px 0px 40px 0px !important;
+padding: 0px 0px 20px 20px !important;
+box-shadow: 5px 5px 5px #96CA4B !important;	
+background: green;
+
+}
+
+/* By Ashish to make user reward TITLE white*/
+.block-views-user-rewards-post-login-block .block-title{
+color: white !important;
+}
+
+
+/* By Ashish to make user reward list white*/
+.block-views-user-rewards-post-login-block .views-field-php{
+font-size:14px !important;
+color: white !important;
+}
+
+
+/* By Ashish to make footer spread across*/
+.container-16 .grid-7 {
+  background: none;
+  width: 100% !important;
+}
+
+
+/* By Ashish to make footer spread and match the above columns in width*/
+.block-menu-menu-footer{
+  width: 100% !important;
+  padding: 0px 0px 0px 0px;
+}
+
+
+/* By Ashish to remove the title of the footer*/
+.block-menu-menu-footer .block-title{
+  float: right;
+  margin: 0px 10px 0px 0px;
+  font-size: 12px !important;
+  font-weightt: normal ! important;
+}
+
+.zone-footer h2.block-title {
+    color: #25ADE3 !important;    
+    font-weight: normal;
+    font-family: times new roman;
+}
+
+
+/* By Ashish to make height of the foooter more - make text look neat*/
+.block-menu-menu-footer .menu{
+  margin: 10px !important;
+}
+
+
+/* By Ashish to make color of link ok*/
+.zone-footer ul.menu li a {
+  color: #25ADE3;
+  border-right: 1px solid #25ADE3;
+}
+
+
+/* By Ashish to make color of link ok*/
+.zone-footer ul.menu li a:hover,
+.zone-footer ul.menu li a.active {
+  color: #96CA4B;
+}
+
+
+
+
+/* By Ashish to make blue background disappea and make the footer come closer to the main content*/
+.zone-footer-wrapper {
+    background: none;
+    color: #FFFFFF;
+    padding: 0px !important;
+}
+
+.field-item{
+margin-left: 40px !important;
+margin-right: 40px !important;
+margin-top: 10px !important;
+}
+
+.password-suggestions {
+padding-left: 40px !important;
+}
+
+.messages {
+padding-left: 40px !important;
+}
+
+.block-block-9{
+margin: -20px 0px -20px 0px !important;
+padding: -20px 0px -20px 0px !important;
+}
+
+.front #region-sidebar-second {margin-top:-20px;}
+
+#region-sidebar-second {margin-top:-10px;}
+
+#user-register-form {padding:10px}
+
+#user-login {padding:10px}
+
+.view-rewards {padding:20px 10px}
+
+/* By Ashish to increase spacing in the welcome message slideshow */
+
+.views-slideshow-controls-text views_slideshow_controls_text{
+padding-right: 20px;
+}
+
+
+/*------------------------------------*\
+	BY ASHISH PLUGIN
+\*------------------------------------*/
+/* By Ashish to make the accordian content ok */
+.ui-accordion-content-active{
+height:160px !important;
+font-size:10px !important;
+color:#25ADE3 !important;
+text-align: center !important;
+}
+
+/* By Ashish to make competitor text better */
+.views-field-php-1{
+font-size:10px !important;
+color:black !important;
+text-align: justify !important;
+}
+
+
+/* By Ashish to make tab text better */
+.views-field-php{
+font-size:10px !important;
+color:#000000 !important;
+text-align: justify !important;
+}
+
+
+/* By Ashish to hide the retailer name in accordion*/
+.ui-accordion-content-active .views-field-php {
+display:None !important;
+}
+
+/* By Ashish to highlight comeptitor block*/
+.ui-accordion-header{
+font-size:10px !important;
+font-weight:bold !important;
+}
+
+
+/* By Ashish to highlight user block*/
+.block-quicktabs{
+background: #96CA4B !important;
+box-shadow: 5px 5px 5px #888888 !important;
+-moz-border-radius: 5px !important;
+border-radius: 5px !important;
+}
+
+/* By Ashish to MAKE POINTS DISPLAY WHITE*/
+.block-quicktabs .views-field-php{
+color: #ffffff !important;
+font-weight: bold !important;
+margin-top: 10px;
+}
+
+.block-quicktabs a,
+a:link,
+a:visited {
+  color: #3B8EC6;
+  text-decoration: none;
+}
+.block-quicktabs a:focus,
+a:hover,
+a:active {
+  color: #7D7D7D;
+}
+
+
+/* By Ashish to cOMPETITOR MESSAGE WHTE*/
+.block-views-competitor-list-block .views-field-php-1{
+color: #ffffff !important;
+}
+
+/* By Ashish to hide quicktabs tabs -NEEDS TO BE CORRECTED - TAB TITLES SHOUDL COME HERE*/
+.quicktabs-tabs{
+display:none;
+}
+
+/* By Ashish to highlight comeptitor block*/
+.block-views-competitor-list-block{
+background: #25ADE3 !important;
+box-shadow: 5px 5px 5px #888888 !important;
+-moz-border-radius: 5px !important;
+border-radius: 5px !important;
+text-align: center !important;
+}
+
+/* By Ashish to push accordion down*/
+.accordion_blocks_container{
+padding: 0px 0px 0px 0px !important;
+}
+
+
+/* By Ashish to hide the retailer name in competitor block*/
+.block-views-competitor-list-block .views-field-php {
+display:None !important;
+}
+
+/* By Ashish to centre align register now*/
+.links{
+text-align: center !important;
+font-weight:bold !important;
+}
+/* By Ashish to custoize block for plugin*/
+.page-retailers-partners-list .block{
+background: none;
+padding: 5px;
+margin: 7px;
+box-shadow:none;
+text-align: center;
+line-height:95%;
+}
+
+/* By Ashish to customive overall region for plugin*/
+.page-retailers-partners-list .region{
+background: #F7F7F7;
+box-shadow: 5px 5px 5px #888888 !important;
+-moz-border-radius: 15px !important;
+border-radius: 15px !important;
+padding: 0px !important;
+margin: 10px !important;
+}
+
+/* By Ashish to make the social login no come on the plugin*/
+
+.plugin .footer #branding a{
+DISPLAY: NONE !IMPORTANT;
+}
+
+
+.page-retailers-partners-list .oneall_social_login{
+color: #ffffff;
+font-size: 10;
+display: none;
+}
+
+
+

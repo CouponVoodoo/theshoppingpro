@@ -1,0 +1,174 @@
+/* This file will hold styles that are loaded using the same media query as the wide grid. */
+
+/* Main menu */
+ul#main-menu {
+  float: right;
+}
+ul#main-menu li a {
+  padding: 10px 30px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+/* User menu */
+.block-user-menu .content ul.menu {
+  text-align: right;
+}
+/* Footer menu */
+.zone-footer .block-menu {
+  float: right;
+  width: auto;
+}
+.zone-footer ul.menu li a {
+  font-size: 100%;
+}
+
+h1.title {
+
+  font-family: tahoma;
+  font-size: 1.8em;
+}
+h2.block-title {
+font-family: tahoma;
+margin-top: 10px;  
+font-size: 110%;
+padding-top: 20px;
+color: #25ADE3 !important;
+}
+.region-sidebar-second h2.block-title {
+font-family: tahoma;
+padding-top: 20px;
+  font-size:110%;
+}
+.region-sidebar-second h2.block-title .last-word {
+font-family: tahoma;
+  font-size: 110%;
+}
+
+
+/* Blog */
+.view-list-articles .views-field-field-image img,
+article.node-article .field-name-field-image img {
+  width: 218px;
+}
+.block-latest-news .views-field-field-image, .block-latest-articles .views-field-field-image {
+  width: 80px;
+}
+
+/* Block box */
+.zone-postscript .region .block-inner,
+.region-sidebar-second-inner {
+  padding: 20px;
+}
+
+/* Block slideshow */
+.view-slideshow .views-field-field-image img {
+  width: 940px;
+}
+.view-slideshow .views-slideshow-pager-field-item  .views-field-field-image img {
+  width: 94px;
+}
+.view-slideshow .views-slideshow-controls-text-previous a,
+.view-slideshow .views-slideshow-controls-text-next a {
+  top: 10px;
+}
+
+/* New products */
+.jcarousel-skin-default .jcarousel-container-horizontal,
+.jcarousel-skin-default .jcarousel-clip-horizontal {
+  width: 860px;
+  padding: 0;
+  height: 300px;
+}
+.jcarousel-skin-default .jcarousel-item {
+  width: 195px;
+  margin: 0 10px;
+  height: 300px;
+  border: none;
+  background: none;
+}
+
+.jcarousel-skin-default .jcarousel-item article.node-products.node-teaser {
+  width: 193px;
+}
+
+/* List product */
+article.node-products.node-teaser {
+  width: 190px;
+  margin: 10px;
+  position: relative;
+}
+article.node-products.node-teaser .content .field {
+  float: left;
+  width: 100%;
+}
+#block-system-main .content article.node-products.node-teaser ul.links li {
+  padding: 0 10px 0 0;
+  margin: 0;
+}
+article.node-products.node-teaser .content .field.field-name-field-image {
+  margin-right: 0;
+}
+article.node-products.node-teaser h2.node-title,
+article.node-products.node-teaser .field-name-field-product {
+  text-align: center;
+}
+article.node-products.node-teaser .field-name-field-image img {
+  width: 100%;
+  margin-right: 0px;
+}
+article.node-products.node-teaser .field-name-commerce-price .field-item {
+  text-align: left;
+  width: 100%;
+}
+article.node-products .field-name-commerce-price .field-item {
+  width: 268px;
+}
+article.node-products .field-name-field-image img {
+  width: 268px;
+}
+
+
+/* Block social icons */
+.block-social-icon .content img {
+  width: 41px;
+}
+.block-copyright {
+  float: right;
+  clear: right;
+  width: auto;
+}
+.block-hotline {
+  text-align: left;
+}
+
+/* Contact form */
+.contact-form .form-item label {
+  float: left;
+  width: 200px;
+  font-size: 110%;
+  font-weight: bold;
+}
+.contact-form .form-item.form-type-checkbox label {
+  float: none;
+  font-size: 100%;
+  font-weight: normal;
+}
+.contact-form .form-item .form-textarea-wrapper {
+  float: left;
+  width: 68%;
+}
+.contact-form .form-item.form-type-checkbox,
+.contact-form .form-actions {
+  margin-left: 200px;
+  width: auto;
+  clear: left;
+  float: left;
+}
+.contact-form .form-actions {
+  margin-left: 210px;
+}
+
+.block-views h2.block-title{
+padding-top: 20px;  
+font-size: 110%;
+}

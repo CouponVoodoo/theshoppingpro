@@ -1,0 +1,10 @@
+Row #,Click Time,Transaction Time,Transaction ID,UID,UID2,MID,Merchant,PID,Product,Referrer,SR,VR,NVR,Status,Paid,Completed,UKey,Transaction Value,Drupal Processing Status
+1,12/11/2012 16:12,12/11/2012 16:17,17609551,13, ,341368,GM Campaigns,9706,Domino's Pizza,Ashish,20,0,20,Pending,Yes,Yes,36976801,20,0
+1,12/11/2012 16:12,12/11/2012 16:17,17609552,13, ,341368,GM Campaigns,9706,Domino's Pizza, ,20,0,20,Pending, , ,36976802,,0
+1,12/11/2012 16:12,12/11/2012 16:17,17609553,13, ,341368,GM Campaigns,9706,Domino's Pizza, ,20,0,20,Pending, , ,36976803,,0
+1,12/11/2012 16:12,12/11/2012 16:17,17609554,13, ,341368,GM Campaigns,9706,Domino's Pizza, ,20,20,20,Validated, , ,36976804,,0
+1,12/11/2012 16:12,12/11/2012 16:17,17609555,13, ,341368,GM Campaigns,9706,Domino's Pizza, ,20,20,20,Validated, , ,36976805,,0
+1,12/11/2012 16:12,12/11/2012 16:17,17609556,13, ,341368,GM Campaigns,9706,Domino's Pizza, ,20,20,20,Validated, , ,36976806,,0
+1,12/11/2012 16:12,12/11/2012 16:17,17609557,13, ,341368,GM Campaigns,9706,Domino's Pizza, ,20,0,20,Rejected, , ,36976807,,0
+1,12/11/2012 16:12,12/11/2012 16:17,17609558,13, ,341368,GM Campaigns,9706,Domino's Pizza, ,20,0,20,Rejected, , ,36976808,,0
+1,12/11/2012 16:12,12/11/2012 16:17,17609559,13, ,341368,GM Campaigns,9706,Domino's Pizza, ,20,0,20,Rejected, , ,36976809,,0

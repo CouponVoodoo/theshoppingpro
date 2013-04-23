@@ -1,0 +1,168 @@
+/* $Id: purple-style.css,v 1.0.0 2010/01/29 08:18:15 symphonythemes Exp $ */
+
+/*------------------------------------*\
+	Basic Typography & Colors
+\*------------------------------------*/
+/* Hover/active link styles. Don't forget :focus for accessibility */
+a,
+a:link,
+a:visited {
+  color:#72297d;
+  text-decoration: none;
+}
+a:focus,
+a:hover,
+a:active {
+  color: #490D51;
+}
+
+
+pre,
+div.code {
+  border-left: 5px solid #72297d;
+  background: #f7f7f7;
+  padding: 0.2em 10px;
+}
+.highlight {
+  background: #72297d;
+  color: #fff;
+}
+
+/* Pager */
+.item-list .pager li a {
+  color: #000;
+}
+.item-list .pager .pager-current,
+.item-list .pager li a:hover {
+  color:#72297d;
+}
+
+/* Button */
+input.form-submit,
+.checkout-buttons .checkout-cancel,
+.checkout-buttons .checkout-back {
+  background: url(../images/purple/button-bg.png) 0 0 repeat-x;
+  color: #fff;
+}
+input.form-submit:hover,
+.checkout-buttons .checkout-cancel:hover,
+.checkout-buttons .checkout-back:hover {
+  background: #72297d;
+}
+button:focus, button:active, input:focus, input:active, select:focus, select:active, textarea:focus, textarea:active {
+  box-shadow: 0 0 7px #f3b700;
+  -moz-box-shadow: 0 0 7px #f3b700;
+  -webkit-box-shadow: 0 0 7px #f3b700;
+}
+
+/*------------------------------------*\
+	Zone CSS
+\*------------------------------------*/
+
+.zone-user-wrapper {
+  color: #fff;
+  background: url(../images/purple/header-footer-bg.jpg);
+}
+/*  Zone footer  */
+.zone-footer-wrapper {
+  background: url(../images/purple/header-footer-bg.jpg);
+  color: #fff;
+}
+
+
+/*------------------------------------*\
+	NAVIGATION
+\*------------------------------------*/
+/* Main menu links */
+ul#main-menu li a {
+  color: #747474;
+}
+ul#main-menu li a.active,
+ul#main-menu li a:hover {
+  color:#72297d;
+}
+ul#main-menu li.first a.active,
+ul#main-menu li.first a:hover {
+  background: url(../images/purple/mainmenu-home-active.png) center center no-repeat;
+}
+
+/* Shopping menu */
+.region-user-first .block-menu ul li a {
+  color: #fff;
+}
+.region-user-first .block-menu ul li a:hover,
+.region-user-first .block-menu ul li a.active {
+  color: #72297d;
+}
+
+
+/* User menu */
+.block-user-menu ul li a {
+  color: #464b50;
+  -moz-box-shadow: -5px -5px 5px #001403;
+  -webkit-box-shadow: -5px -5px 5px #001403;
+  box-shadow: -5px -5px 5px #001403;
+}
+.block-user-menu ul li a:hover,
+.block-user-menu ul li a.active {
+  color: #72297d;
+}
+
+/*------------------------------------*\
+	BLOCKS CSS
+\*------------------------------------*/
+/* Block title */
+.region-sidebar-second h2.block-title .last-word {
+  color: #72297d;
+}
+.zone-postscript .region h2.block-title {
+  color: #72297d;
+}
+
+/* News */
+.view-list-articles .views-field-view-node a {
+  background: url(../images/purple/bullet.png) 5px 8px no-repeat;
+}
+
+/* Block list */
+.block-list .content ul li {
+  background: url(../images/purple/bullet.png) 5px 10px no-repeat;
+}
+.zone-footer .block-list ul li {
+  background: url(../images/footer-bullet.png) 0 10px no-repeat;
+}
+.zone-footer .block-list ul li a {
+  color: #ff9400;
+}
+.zone-footer .block-list ul li a:hover {
+  color: #fff;
+}
+
+/* Block slideshow products */
+.jcarousel-skin-default .jcarousel-prev:hover {
+  background: url(../images/purple/product-slider-prev-hover.png) 0 0 no-repeat;
+}
+.jcarousel-skin-default .jcarousel-next:hover {
+  background: url(../images/purple/product-slider-next-hover.png) 0 0 no-repeat;
+}
+
+
+/* List product on category */
+#block-system-main .content article.node-products.node-teaser ul.links a:hover {
+  color: #72297d;
+}
+
+/* Product detail */
+article.node-products .field-name-commerce-price .field-item {
+  background: #72297d;
+  color: #fff;
+}
+article.node-products form.commerce-add-to-cart .form-submit {
+  background: url(../images/purple/add-to-cart-button.png) 0 center no-repeat;
+}
+
+
+/* Block poll */
+.block.block-poll .content ul li {
+  background: url(../images/purple/purple-list-style-3.png) no-repeat 0 10px;
+}

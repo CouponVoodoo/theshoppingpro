@@ -1,0 +1,35 @@
+<?php
+/**
+ * @file
+ * views_slideshow_liquid_slider.views_slideshow.install
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function views_slideshow_liquid_slider_requirements($phase) {
+  $requirements = array();
+  $t = get_t();
+  module_load_include('module', 'libraries', 'libraries');
+  module_load_include('module', 'views_slideshow_liquid_slider', 'views_slideshow_liquid_slider');
+
+  if ($phase == 'runtime') {
+    $requirements['liquidslider'] = array(
+      'title' => $t('jQuery Liquid Slider'),
+    );
+
+    if (!_views_slideshow_liquid_slider_library_path()) {
+      $requirements['liquidslider']['description'] = _views_slideshow_liquid_slider_get_install_error_message();
+      $requirements['liquidslider']['severity'] = REQUIREMENT_ERROR;
+      if ($phase == 'runtime') {
+        $requirements['liquidslider']['value'] = $t('Missing');
+      }
+    }
+    else {
+      $requirements['liquidslider']['value'] = "1.2";
+      $requirements['liquidslider']['severity'] = REQUIREMENT_OK;
+    }
+  }
+
+  return $requirements;
+}
