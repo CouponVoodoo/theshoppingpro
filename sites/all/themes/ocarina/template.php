@@ -10,33 +10,29 @@
  * for your subtheme grows. Please read the README.txt in the /preprocess and /process subfolders
  * for more information on this topic.
  */
- 
-
-
-function ocarina_preprocess_html(&$vars) { 
+function ocarina_preprocess_html(&$vars) {
   $file = theme_get_setting('theme_color') . '-style.css';
-  drupal_add_css(path_to_theme() . '/css/'. $file, array('group' => CSS_THEME, 'weight' => 115,'browsers' => array(), 'preprocess' => FALSE));
- 
+  drupal_add_css(path_to_theme() . '/css/' . $file, array('group' => CSS_THEME, 'weight' => 115, 'browsers' => array(), 'preprocess' => FALSE));
 }
 
 function ocarina_preprocess_page(&$variables) {
-    drupal_add_js(path_to_theme() . '/js/colorbox.js');
+  drupal_add_js(path_to_theme() . '/js/colorbox.js');
   // Different template and additional stylsheet for colorbox content.
   if (isset($_GET['colorbox']) && $_GET['colorbox'] == TRUE) {
-   $variables['theme_hook_suggestions'][] = 'page__embed';
+    $variables['theme_hook_suggestions'][] = 'page__embed';
     //drupal_add_css(path_to_theme() .'/iframe.css');
     $variables['styles'] = drupal_get_css();
   }
 }
 
-
 function ocarina_theme(&$existing, $type, $theme, $path) {
-   $hooks['user_login_block'] = array(
-     'template' => 'templates/user-login-block',
-     'render element' => 'form',
-   );
-   return $hooks;
+  $hooks['user_login_block'] = array(
+      'template' => 'templates/user-login-block',
+      'render element' => 'form',
+  );
+  return $hooks;
 }
+
 function ocarina_preprocess_user_login_block(&$vars) {
   unset($vars['form']['links']);
   unset($vars['form']['#block']->subject);

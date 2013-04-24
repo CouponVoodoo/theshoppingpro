@@ -36,7 +36,7 @@
   <?php print $page_top; ?>
     <?php } ?>
   <?php print $page; ?>
-    <?php if(arg(0)!='login_register') { ?>
+    <?php if (arg(0)!='login_register') { ?>
   <?php print $page_bottom; ?>
     <?php } ?>
 

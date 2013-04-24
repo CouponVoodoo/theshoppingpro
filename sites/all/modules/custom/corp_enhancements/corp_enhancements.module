@@ -282,15 +282,23 @@ function corp_enhancements_account_options_block() {
   return theme('corp_enhancement_competitor_info', array('competitor_data' => array('link' => $link, 'iamge' => $image)));
 }
 
+/**
+ * Implements hook_form_FORM_ID_alter
+ */
 function corp_enhancements_form_user_login_block_alter(&$form, &$form_state) {
   $form['#validate'][3] = 'corp_enhancements_final_validate';
-//  $form['name']['#placeholder'] = 'Username';
-//  $form['pass']['#placeholder'] = 'Password';
 }
 
-function corp_enhancements_form_alter(&$form, &$form_state) {
-  $form['name']['#placeholder'] = 'Username';
-  $form['pass']['#placeholder'] = 'Password';
+/**
+ * Implements hook_form_alter
+ */
+function corp_enhancements_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'user_login' || $form_id == 'user_login_block') {
+    $form['forgot_pwd']['#markup'] = '<span id="frgt_pwd">' . l(t('Forgot Password ?'), 'user/password', array('attributes' => array('target'=>'_blank'))) . '</span>';
+    $form['new_user']['#markup'] = '<span id="new_user">' . l(t('New User ?'), 'user/register', array('attributes' => array('target'=>'_blank'))) . '</span>';
+  }
+  #$form['name']['#placeholder'] = 'Username';
+  #$form['pass']['#placeholder'] = 'Password';
 }
 
 /**
