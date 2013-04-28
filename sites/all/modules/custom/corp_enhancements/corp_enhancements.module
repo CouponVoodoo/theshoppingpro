@@ -127,7 +127,7 @@ function corp_enhancements_views_query_alter($view, $query) {
 
 
 
-
+/*
   if ($view->name == 'partner_retailers_with_category') {
     //print_r($query);exit;
     $term_name->name = '';
@@ -185,7 +185,7 @@ function corp_enhancements_views_query_alter($view, $query) {
       }
     }
   }
-
+*/
 
 
 
@@ -514,8 +514,8 @@ function corp_enhancements_token_info() {
 }
 
 /**
-* Implements hook_tokens().
-*/
+ * Implements hook_tokens().
+ */
 function corp_enhancements_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $replacements = array();
  
@@ -530,3 +530,34 @@ function corp_enhancements_tokens($type, $tokens, array $data = array(), array $
   }
   return $replacements;
 }
+
+/**
+ * Function used in partner_retailers_in_category View
+ * @return boolean
+ */
+function partner_retail_with_category_url_check() {
+  if (isset($_GET['url'])) {
+    // Select information for Retailer type Node
+    $query_nid = db_select('field_data_field_url', 'fdfu');
+    $query_nid->fields('fdfu', array('entity_id'))
+            ->condition('fdfu.field_url_value', $_GET['url'], '=');
+    $result = $query_nid->execute();
+
+    foreach ($result as $record) {
+      $id = $record->entity_id;
+    }
+
+    if (isset($id)) {
+      $node_data = node_load($id);
+      if ($node_data->type == 'retailers') {
+        $term_name1 = taxonomy_term_load($node_data->field_type['und'][0]['tid']);
+      }
+    }
+    //$primary_cat_id[$node_data->field_primary_category[LANGUAGE_NONE][0]['tid']] = $node_data->field_primary_category[LANGUAGE_NONE][0]['tid'];
+
+    if ($term_name1->name == 'Partner') {
+      return TRUE;
+    }
+  }
+}
+
