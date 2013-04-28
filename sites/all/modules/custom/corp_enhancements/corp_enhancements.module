@@ -77,6 +77,13 @@ function corp_enhancements_views_query_alter($view, $query) {
       $query_nid = db_select('field_data_field_url', 'fdfu');
       $query_nid->fields('fdfu', array('entity_id'))//SELECT the fields from node
         ->condition('fdfu.field_url_value', $_GET['url'], '=');
+      $num = $query_nid->countQuery()->execute()->fetchField();
+      // if count = 0, check for Sites of interest type
+      if ($num == 0) {
+        $query_nid = db_select('field_data_field_url_site_of_interest', 'fdfusoa');
+        $query_nid->fields('fdfusoa', array('entity_id'))//SELECT the fields from node
+          ->condition('fdfusoa.field_url_site_of_interest_value', $_GET['url'], '=');
+      }
       $result = $query_nid->execute();
 
       foreach ($result as $record) {
@@ -92,12 +99,21 @@ function corp_enhancements_views_query_alter($view, $query) {
       $i = 0;
       $j = 0;
       $option_raw = array();
-
-      foreach ($node_data->field_primary_category[LANGUAGE_NONE] as $guardian) {
-        $entity_id = $node_data->field_primary_category[LANGUAGE_NONE][$i]['tid'];
-        $option_raw[$entity_id] = $entity_id;
-        $i++;
+      if ($node_data->type == 'retailers') {
+        foreach ($node_data->field_primary_category[LANGUAGE_NONE] as $guardian) {
+          $entity_id = $node_data->field_primary_category[LANGUAGE_NONE][$i]['tid'];
+          $option_raw[$entity_id] = $entity_id;
+          $i++;
+        }
       }
+      else {
+        foreach ($node_data->field_primary_category_soi[LANGUAGE_NONE] as $guardian) {
+          $entity_id = $node_data->field_primary_category_soi[LANGUAGE_NONE][$i]['tid'];
+          $option_raw[$entity_id] = $entity_id;
+          $i++;
+        }
+      }
+      
 //      $primary_cat_id[$node_data->field_primary_category[LANGUAGE_NONE][0]['tid']] = $node_data->field_primary_category[LANGUAGE_NONE][0]['tid'];
 //print_r($query);exit;
 
@@ -110,16 +126,15 @@ function corp_enhancements_views_query_alter($view, $query) {
         unset($query->where[1]['conditions'][5]['operator']);
         $query->where[1]['conditions'][5]['value'] = $id;
         $query->where[1]['conditions'][5]['operator'] = '=';
-      } else {
+      } 
+      else {
         unset($query->where[1]['conditions'][4]['value']);
-	unset($query->where[1]['conditions'][4]['operator']);
-	$query->where[1]['conditions'][4]['value']= array('29', '30');
-	$query->where[1]['conditions'][4]['operator']= 'NOT IN';
-        
+        unset($query->where[1]['conditions'][4]['operator']);
+        $query->where[1]['conditions'][4]['value']= array('29', '30');
+        $query->where[1]['conditions'][4]['operator']= 'NOT IN';
         unset($query->where[1]['conditions'][6]['value']);
         $query->where[1]['conditions'][6]['value'] = $option_raw;
-        $query->where[1]['conditions'][3]['value'] = $node_data->field_country[LANGUAGE_NONE][0]['tid'];
-        
+        //$query->where[1]['conditions'][3]['value'] = $node_data->field_country[LANGUAGE_NONE][0]['tid'];
       }
     }
   }
