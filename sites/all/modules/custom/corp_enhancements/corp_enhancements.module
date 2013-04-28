@@ -70,8 +70,7 @@ function corp_enhancements_views_query_alter($view, $query) {
       $query->where[1]['conditions'][5]['operator'] = '=';
     }
   }
-
-  if ($view->name == 'partner_retailers') {
+  else if ($view->name == 'partner_retailers') {
     $term_name->name = '';
     $id = '';
     if (isset($_GET['url'])) {
@@ -124,18 +123,22 @@ function corp_enhancements_views_query_alter($view, $query) {
       }
     }
   }
-
-
-
-
-  if ($view->name == 'partner_retailers_with_category') {
+  else if ($view->name == 'partner_retailers_with_category') {
     //print_r($query);exit;
     $term_name->name = '';
     $id = '';
     if (isset($_GET['url'])) {
+      // Check for retailer type
       $query_nid = db_select('field_data_field_url', 'fdfu');
       $query_nid->fields('fdfu', array('entity_id'))//SELECT the fields from node
         ->condition('fdfu.field_url_value', $_GET['url'], '=');
+      $num = $query_nid->countQuery()->execute()->fetchField();
+      // if count = 0, check for Sites of interest type
+      if ($num == 0) {
+        $query_nid = db_select('field_data_field_url_site_of_interest', 'fdfusoa');
+        $query_nid->fields('fdfusoa', array('entity_id'))//SELECT the fields from node
+          ->condition('fdfusoa.field_url_site_of_interest_value', $_GET['url'], '=');
+      }
       $result = $query_nid->execute();
 
       foreach ($result as $record) {
@@ -146,8 +149,13 @@ function corp_enhancements_views_query_alter($view, $query) {
         $node_data = node_load($id);
         if ($node_data->type == 'retailers') {
           $term_name1 = taxonomy_term_load($node_data->field_type['und'][0]['tid']);
+          $primary_cat_id[$node_data->field_primary_category[LANGUAGE_NONE][0]['tid']] = $node_data->field_primary_category[LANGUAGE_NONE][0]['tid'];
+        }
+        else if ($node_data->type == 'sites_of_interest') {
+          $primary_cat_id[$node_data->field_primary_category_soi[LANGUAGE_NONE][0]['tid']] = $node_data->field_primary_category_soi[LANGUAGE_NONE][0]['tid'];
         }
       }
+
       $j = 0;
       $option_raw2 = array();
 
@@ -157,37 +165,28 @@ function corp_enhancements_views_query_alter($view, $query) {
         $j++;
       }
 
-      $primary_cat_id[$node_data->field_primary_category[LANGUAGE_NONE][0]['tid']] = $node_data->field_primary_category[LANGUAGE_NONE][0]['tid'];
-
       if ($term_name1->name == 'Partner') {
         unset($query->where[1]['conditions'][2]['value']);
         unset($query->where[1]['conditions'][2]['operator']);
         $query->where[1]['conditions'][2]['value'] = 13;
         $query->where[1]['conditions'][2]['operator'] = '=';
-//
-//      $query->where[1]['conditions'][3]['value'] = $node_data->field_country[LANGUAGE_NONE][0]['tid'];
-//      unset($query->where[1]['conditions'][4]['value']);
+
         unset($query->where[1]['conditions'][4]['operator']);
         $query->where[1]['conditions'][4]['value'] = $primary_cat_id;
-//      $query->where[1]['conditions'][4]['operator'] = 'in';
-//
+
         $query->where[1]['conditions'][5]['value'] = $id;
         $query->where[1]['conditions'][5]['operator'] = '!=';
-//
-        //print_r($query);exit;
+
         $query->where[1]['conditions'][6]['value'] = $primary_cat_id;
         $query->where[1]['conditions'][6]['operator'] = 'NOT IN';
-      } else {
-        $query->where[1]['conditions'][3]['value'] = $node_data->field_country[LANGUAGE_NONE][0]['tid'];
+      } 
+      else {
+        //$query->where[1]['conditions'][3]['value'] = $node_data->field_country[LANGUAGE_NONE][0]['tid'];
         unset($query->where[1]['conditions'][4]['value']);
         $query->where[1]['conditions'][4]['value'] = $primary_cat_id;
-
       }
     }
   }
-
-
-
 
   if ($view->name == 'retailers_partners_list') {
     global $user;
