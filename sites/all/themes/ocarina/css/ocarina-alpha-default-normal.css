@@ -32,7 +32,7 @@ font-family: tahoma;
 margin-top: 10px;  
 font-size: 110%;
 padding-top: 20px;
-color: #25ADE3 !important;
+color: #F7971C !important;
 }
 .region-sidebar-second h2.block-title {
 font-family: tahoma;
@@ -170,5 +170,5 @@ article.node-products .field-name-field-image img {
 
 .block-views h2.block-title{
 padding-top: 20px;  
-font-size: 110%;
+font-size: 120%;
 }

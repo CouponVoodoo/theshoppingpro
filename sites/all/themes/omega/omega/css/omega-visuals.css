@@ -154,36 +154,36 @@ th a img {
 
 th.active {
   background: #DDD;
+ background: rgba(0, 0, 0, 0.4)
   border-left: 1px solid #CCC;
   border-right: 1px solid #CCC;
 }
 
 /* Odd & Even Styles */
 tr.even td {
-  background: #F1F5FA;
-}
+ background: rgba(0, 0, 0, 0.4)}
 
 tr.odd td {
-  background: #fff;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 td.active {
   border-left: 1px solid #CCC;
   border-right: 1px solid #CCC;
+ background: rgba(0, 0, 0, 0.4)
 }
 
 tr.even td.active {
-  background: #e5e9ed;
+ background: rgba(0, 0, 0, 0.4)
 }
 
 tr.odd td.active {
-  background: #f2f2f2;
-}
+ background: rgba(0, 0, 0, 0.4)}
 
 tr:hover td,
 tr.even:hover td.active,
 tr.odd:hover td.active {
-  background: #FFFEEE;
+ background: rgba(0, 0, 0, 0.4)
 }
 
 td ul.links {
@@ -232,5 +232,5 @@ td ul.links {
 .tips,
 .description {
   font-size: 10px;
-  color: #6a6a6a;
+  color: #FFFFFF;
 }

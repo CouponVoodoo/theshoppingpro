@@ -241,22 +241,20 @@ table.no-border td {
   border: none;
 }
 thead tr {
-
-  background: rgba(0,  0, 0, 0.4);
-  color: #F7971C;
+  background: #bdbec1 url(../images/table-header-bg.jpg) 0 bottom repeat-x;
+  color: #fff;
 }
 tr:hover td,
 tr.even:hover td.active,
 tr.odd:hover td.active {
-  background: rgba(0,  0, 0, 0.4);
+  background: none;
 } 
-
 tr.even /* Some tables have rows marked even or odd. */ {
-  background: rgba(0,  0, 0, 0.4);
+  /* background-color: #eee; */ /* Drupal core uses a #eee background */
 }
 
 tr.odd {
-  background: rgba(0,  0, 0, 0.4);
+  /* background-color: #eee; */ /* Drupal core uses a #eee background */
 }
 
 div.messages /* Important messages (status, warning, and error) for the user. See also the declarations in messages.css. */ {
@@ -560,7 +558,7 @@ ul#main-menu {
 //  -moz-box-shadow: 3px 3px 5px #666;
 //  -webkit-box-shadow: 3px 3px 5px #666;
   background: rgba(0, 0, 0, 0.4);
-  border: 1px solid #F7971C;
+  border: 1px solid #ffffff;
 //  box-shadow: 3px 3px 5px #666;
   border-radius: 10px;
   -moz-border-radius: 10px;
@@ -574,7 +572,7 @@ ul#main-menu li {
   background: url(../images/mainmenu-border.png) right top no-repeat;
 }
 ul#main-menu li.first a {
-  background: url(http://www.theshoppingpro.com/sites/all/themes/ocarina/images/blue/mainmenu-home-active.png) center center no-repeat;
+  background: url(../images/mainmenu-home.png) center center no-repeat;
   text-indent: -200px;
   width: 24px;
   overflow: hidden;
@@ -596,7 +594,7 @@ ul#main-menu li a:hover {
 }
 ul#main-menu li.first a.active,
 ul#main-menu li.first a:hover {
-  background: url(http://www.theshoppingpro.com/sites/all/themes/ocarina/images/blue/mainmenu-home-active.png) center center no-repeat;
+  background: url(../images/mainmenu-home-active.png) center center no-repeat;
 }
 
 

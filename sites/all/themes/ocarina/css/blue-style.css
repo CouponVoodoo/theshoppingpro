@@ -7,7 +7,7 @@
 a,
 a:link,
 a:visited {
-  color:#25ADE3;
+  color:#F7971C;
   text-decoration: none;
 }
 a:focus,
@@ -19,22 +19,22 @@ a:active {
 
 pre,
 div.code {
-  border-left: 5px solid #25ADE3;
+  border-left: 5px solid #F7971C;
   background: #f7f7f7;
   padding: 0.2em 10px;
 }
 .highlight {
-  background: #25ADE3;
+  background: #F7971C;
   color: #fff;
 }
 
 /* Pager */
 .item-list .pager li a {
-  color: #000;
+  color: #ffffff;
 }
 .item-list .pager .pager-current,
 .item-list .pager li a:hover {
-  color:#25ADE3;
+  color:#F7971C;
 }
 
 /* Button */
@@ -47,7 +47,7 @@ input.form-submit,
 input.form-submit:hover,
 .checkout-buttons .checkout-cancel:hover,
 .checkout-buttons .checkout-back:hover {
-  background: #25ADE3;
+  background: #F7971C;
 }
 button:focus, button:active, input:focus, input:active, select:focus, select:active, textarea:focus, textarea:active {
   box-shadow: 0 0 7px #f3b700;
@@ -75,11 +75,11 @@ button:focus, button:active, input:focus, input:active, select:focus, select:act
 \*------------------------------------*/
 /* Main menu links */
 ul#main-menu li a {
-  color: #747474;
+  color: #F7971C;
 }
 ul#main-menu li a.active,
 ul#main-menu li a:hover {
-  color:#25ADE3;
+  color:#747474;
 }
 ul#main-menu li.first a.active,
 ul#main-menu li.first a:hover {
@@ -88,21 +88,21 @@ ul#main-menu li.first a:hover {
 
 /* Shopping menu */
 .region-user-first .block-menu ul li a {
-  color: #fff;
+  color: #F7971C;
 }
 .region-user-first .block-menu ul li a:hover,
 .region-user-first .block-menu ul li a.active {
-  color: #25ADE3;
+  color: #747474;
 }
 
 
 /* User menu */
 .block-user-menu ul li a {
-  color: white;
+  color: #F7971C;
 }
 .block-user-menu ul li a:hover,
 .block-user-menu ul li a.active {
-  color: #25ADE3;
+  color: #747474;
 }
 
 
@@ -111,10 +111,10 @@ ul#main-menu li.first a:hover {
 \*------------------------------------*/
 /* Block title */
 .region-sidebar-second h2.block-title .last-word {
-  color: #25ADE3;
+  color: #F7971C;
 }
 .zone-postscript .region h2.block-title {
-  color: #25ADE3;
+  color: #F7971C;
 }
 
 /* News */
@@ -147,12 +147,12 @@ ul#main-menu li.first a:hover {
 
 /* List product on category */
 #block-system-main .content article.node-products.node-teaser ul.links a:hover {
-  color: #25ADE3;
+  color: #F7971C;
 }
 
 /* Product detail */
 article.node-products .field-name-commerce-price .field-item {
-  background: #25ADE3;
+  background: #F7971C;
   color: #fff;
 }
 article.node-products form.commerce-add-to-cart .form-submit {
@@ -176,6 +176,7 @@ article.node-products form.commerce-add-to-cart .form-submit {
  .views-slideshow-cycle-main-frame .field-content{
 	width: 840px;
 	padding: 20px;
+	color: #ffffff !important;
 }
 
 
@@ -194,9 +195,9 @@ article.node-products form.commerce-add-to-cart .form-submit {
 
 /* By Ashish to make blocks have background - NEED TO WORK ON PADDING*/
 .block{
-	background: #ffffff;
+	background: rgba(0, 0, 0, 0.4);
+	border: 1px solid #ffffff;
 	padding: 0px 10px;
-	box-shadow: 7px 7px 7px #26ADE3;
 	-moz-border-radius: 15px;	
 	border-radius: 15px;
 	margin: 0px 0px 20px 0px;
@@ -204,7 +205,7 @@ article.node-products form.commerce-add-to-cart .form-submit {
 
 /* By Ashish to make background black*/
 .region{
-background: black;
+background: #000;
 box-shadow: none !important;
 padding: 0px !important;
 }
@@ -266,7 +267,7 @@ float:right;
 
 /* By Ashish to make color of active link green - THIS NEEDS TO BE CORRECTED SHOULD ONLY BE FOR SECONDARY MENU*/
 li a.active{
-color: #95C94A !important;
+color: #25ADE3 !important;
 }
 
 
@@ -313,8 +314,7 @@ float:right;
 .block-views-user-rewards-post-login-block{
 margin: 0px 0px 40px 0px !important;
 padding: 0px 0px 20px 20px !important;
-box-shadow: 5px 5px 5px #FFFC63 !important;	
-background: #96CA4B;
+background: rgba(0, 0, 0, 0.4);
 }
 
 /* By Ashish to make user reward TITLE white*/
@@ -353,7 +353,7 @@ color: white !important;
 }
 
 .zone-footer h2.block-title{
-    color: #25ADE3 !important;    
+    color: #F7971C !important;    
     font-weight: normal;
     font-family: arial;
 }
@@ -367,15 +367,15 @@ color: white !important;
 
 /* By Ashish to make color of link ok*/
 .zone-footer ul.menu li a{
-  color: #25ADE3;
-  border-right: 1px solid #25ADE3;
+  color: #F7971C;
+  border-right: 1px solid #F7971C;
 }
 
 
 /* By Ashish to make color of link ok*/
 .zone-footer ul.menu li a:hover,
 .zone-footer ul.menu li a.active{
-  color: #96CA4B;
+  color: #25ADE3;
 }
 
 
@@ -409,10 +409,12 @@ padding: -20px 0px -20px 0px !important;
 
 .front #region-sidebar-second{
 margin-top:-20px;
+background: none;
 }
 
 #region-sidebar-second{
 margin-top:-10px;
+background: none;
 }
 
 #user-register-form {padding:10px}
@@ -432,8 +434,8 @@ padding-bottom: 20px !important;
 #hybridauth-user-identity .item-list {margin-left: 20px}
 
 /* By Ashish to make the hybrid auth icons on login goto right in login and position properly in register*/
-#user-login .item-list {float: right; position: relative; top: 10px; right: 30px; color: #25ADE3;}
-#user-register-form .item-list {margin-left: 20px; margin-top: 10px; color: #25ADE3;}
+#user-login .item-list {float: right; position: relative; top: 10px; right: 30px; color: #F7971C;}
+#user-register-form .item-list {margin-left: 20px; margin-top: 10px; color: #F7971C;}
 
 /* By Ashish to centre vertical align the dealer name centre aligned vertical*/
 .centeralign {text-align:left; vertical-align:middle;}
@@ -443,7 +445,7 @@ padding-bottom: 20px !important;
 #views_slideshow_controls_text_previous_post_installation_welcome_message-block {float: left; margin-left: 20px;}
 #views_slideshow_controls_text_pause_post_installation_welcome_message-block {float: left; text-align: right; width: 49%;}
 #views_slideshow_controls_text_next_post_installation_welcome_message-block {float:right}
-#views_slideshow_slide_counter_post_installation_welcome_message-block {padding-bottom: 10px; float: right; width: 47%; color:#3B8EC6;}
+#views_slideshow_slide_counter_post_installation_welcome_message-block {padding-bottom: 10px; float: right; width: 47%; color:#F7971C;}
 
 
 /* By Ashish to make space below share this buttons*/
@@ -451,15 +453,14 @@ padding-bottom: 20px !important;
 
 /* By Ashish to make share this stand out in green - friends inviter*/
 .block-sharethis{
-	background: #96CA4B;
-	color: #ffffff;
-	box-shadow: 7px 7px 7px #FFFC63;
+	background: rgba(0, 0, 0, 0.4);
+	border: 1px solid #ffffff;
 	-moz-border-radius: 15px;	
 	border-radius: 15px;
 	margin: 0px 0px 20px 0px;
 }
 /* By Ashish to make sharethis title white  - friends inviter*/
-.block-sharethis span.first-word {color: #ffffff; text-shadow: 1px 2px 0px #2F2F2F;}
+// .block-sharethis span.first-word {color: #ffffff; text-shadow: 1px 2px 0px #2F2F2F;}
 
 /* By Ashish to make FAQ section ok*/
 
@@ -472,7 +473,7 @@ padding-top: 20px !important;
 padding-bottom: 20px !important;
 }
 
-.view-faq ul li {list-style : disc; color: #96CA4B; margin: 0 0 0 2em;}
+.view-faq ul li {list-style : disc; color: #25ADE3; margin: 0 0 0 2em;}
 .view-faq ul  {margin: 5px 0 0;}
 .view-faq .views-field-title h3 a {text-decoration: none;}
 
@@ -485,7 +486,7 @@ padding-bottom: 20px !important;
 /* By Ashish to make competitor text better */
 .views-field-php-1{
 font-size:10px !important;
-color:black !important;
+color:#ffffff !important;
 text-align: center !important;
 padding-top: 3px !important;
 }
@@ -494,7 +495,7 @@ padding-top: 3px !important;
 /* By Ashish to make tab text better */
 .views-field-php{
 font-size:10px !important;
-color:#000000 !important;
+color:#ffffff !important;
 text-align: justify !important;
 padding-top: 3px !important;
 }
@@ -514,7 +515,7 @@ font-weight:bold !important;
 
 /* By Ashish to highlight user block*/
 .block-quicktabs{
-background: #96CA4B !important;
+background: #25ADE3 !important;
 box-shadow: 5px 5px 5px #888888 !important;
 -moz-border-radius: 5px !important;
 border-radius: 5px !important;
@@ -530,7 +531,7 @@ margin-top: 10px;
 .block-quicktabs a,
 a:link,
 a:visited {
-  color: #3B8EC6;
+  color: #F7971C;
   text-decoration: none;
 }
 .block-quicktabs a:focus,
@@ -552,7 +553,7 @@ color: #ffffff !important;
 
 /* By Ashish to highlight comeptitor block*/
 .block-views-competitor-list-block{
-background: #25ADE3 !important;
+background: #F7971C !important;
 box-shadow: 5px 5px 5px #888888 !important;
 -moz-border-radius: 5px !important;
 border-radius: 5px !important;
@@ -673,7 +674,7 @@ margin: 0px 0px 0px 0px !important;
 }
 /* By Ashish to reduce spacing in accordian title*/
 #block-accordion-blocks-accordian-test-1 h2.block-title{
-background: #96CA4B !important;
+background: #25ADE3 !important;
 padding: 0px 0px 0px 0px !important;
 margin: 0px -10px 5px -10px !important;
 }
@@ -699,7 +700,7 @@ margin-top: -10px !important;
 .accordion_blocks_container .views-row{
 background: #ffffff;
 text-decoration:blink;
-border:solid 1px #25ADE3;
+border:solid 1px #F7971C;
 box-shadow: 5px 5px 5px #888888 !important;
 -moz-border-radius: 5px !important;
 border-radius: 5px !important;
@@ -708,14 +709,14 @@ margin: 3px 3px 5px 3px;
 }
 ui-accordion-content .views-row span.field-content{
 margin-top: -10px !important;
-background: red;
+color: #ffffff !important;
 }
 
 
 /* By Ashish to size the accordian titles*/
 .ui-accordion-icons .ui-accordion-header a{
 Font-size: 11px;
-color: #25ADE3;
+color: #F7971C;
 text-align: left;
 font-weight: bold !important;
 }
@@ -736,7 +737,7 @@ padding: 10px !important;
 .ui-accordion-content-active{
 height:300px !important;
 font-size:10px !important;
-color:#25ADE3 !important;
+color:#F7971C !important;
 text-align: center !important;
 }
 
@@ -752,7 +753,7 @@ accordion_blocks_container{
 #block-views-ab4bb613d08f9b0562ac9cb76e64da10 .views-row{
 background: #ffffff;
 text-decoration:blink;
-border:solid 1px #25ADE3;
+border:solid 1px #F7971C;
 box-shadow: 5px 5px 5px #888888 !important;
 -moz-border-radius: 5px !important;
 border-radius: 5px !important;
@@ -782,7 +783,7 @@ margin: 0px !important;
 // }
 /* By Ashish to customize user login - link only block*/
 #block-block-11 .block-title{
-	background: #96CA4B !important;
+	background: #25ADE3 !important;
 	padding: 0px 0px 0px 0px !important;
 	margin: -10px -10px 15px -10px !important;
 
@@ -816,7 +817,7 @@ font-family: arial !important;
 
 /* By Ashish to customize user login - link only block*/
 #block-block-12 .block-title{
-	background: #96CA4B !important;
+	background: #25ADE3 !important;
 	padding: 0px 0px 0px 0px !important;
 	margin: -10px -10px 15px -10px !important;
 
@@ -850,7 +851,7 @@ font-family: arial !important;
 
 
 #block-block-14 h2.block-title{
-color: #25ADE3 !important;
+color: #F7971C !important;
 // display:inline-block !important;
 // width: 100% !important;
 font-size: 14px !important;
@@ -858,14 +859,14 @@ font-size: 14px !important;
 
 
 #block-block-14 h2.block-title span.first-word{
-color: #25ADE3 !important;
+color: #F7971C !important;
 // display:inline-block !important;
 // width: 100% !important;
 font-size: 14px !important;
 }
 
 #block-block-14 h2.block-title span.last-word{
-color: #25ADE3 !important;
+color: #F7971C !important;
 font-size: 14px !important;
 // position:relative !important; 
 // top:-7px;
@@ -873,21 +874,21 @@ margin-left: 2px !important;
 }
 
 #block-block-16 h2.block-title{
-color: #25ADE3 !important;
+color: #F7971C !important;
 // display:inline-block !important;
 // width: 100% !important;
 font-size: 14px !important;
 }
 
 #block-block-16 h2.block-title span.first-word{
-color: #25ADE3 !important;
+color: #F7971C !important;
 // display:inline-block !important;
 // width: 100% !important;
 font-size: 14px !important;
 }
 
 #block-block-16 h2.block-title span.last-word{
-color: #25ADE3 !important;
+color: #F7971C !important;
 font-size: 14px !important;
 // position:relative !important; 
 // top:-7px;
@@ -955,7 +956,7 @@ margin-left: -10px !important;
 }
 
 div.ctools-modal-content #user-login .item-list {
-    color: #25ADE3;
+    color: #F7971C;
     float: left !important;
     position: relative !important;
     font-size: 8px;
@@ -978,7 +979,7 @@ padding-left: 2px !important;
 
 /* By Ashish to adjust display of the widget pop up for register*/
 div.ctools-modal-content #user-register-form .item-list{
-    color: #25ADE3;
+    color: #F7971C;
     float: left !important;
     position: relative !important;
     font-size: 8px;
@@ -1002,8 +1003,8 @@ div#field-markup-add-more-wrapper{
 /* By Ashish to make login and get cashback messages in one line*/
 .view-partner-retailers-with-category .colorbox_form {display: inline-block; width:100%; margin-bottom: 5px;}
 .view-partner-retailers-with-category .colorbox_form p {display:inline; margin:0; padding:0}
-.view-partner-retailers-with-category .views-row .field-content a {display: inline-block; width: 100%; margin-bottom: 5px;}
-.view-partner-retailers-with-category .views-row .field-content a p {display:inline; margin:0; padding:0}
+.view-partner-retailers-with-category .views-row .field-content a {display: inline-block; width: 100%; margin-bottom: 5px; color: #ffffff !important;}
+.view-partner-retailers-with-category .views-row .field-content a p {display:inline; margin:0; padding:0;  #ffffff !important;}
 
 
 /* By Ashish to remove error message on widget login post facebook login THIS IS A BAD HACK AND SHOULD BE CORRECTED*/

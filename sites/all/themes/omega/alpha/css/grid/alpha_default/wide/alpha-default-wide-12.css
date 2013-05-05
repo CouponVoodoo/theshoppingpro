@@ -41,12 +41,14 @@
 
 body {
   min-width: 1200px;
+  background: none;
 }
 
 .container-12 {
   margin-left: auto;
   margin-right: auto;
   width: 1200px;
+  background: none;
 }
 
 /*
@@ -57,50 +59,62 @@ body {
 
 .container-12 .grid-1 {
   width: 80px;
+  background: none;
 }
 
 .container-12 .grid-2 {
   width: 180px;
+  background: none;
 }
 
 .container-12 .grid-3 {
   width: 280px;
+  background: none;
 }
 
 .container-12 .grid-4 {
   width: 380px;
+  background: none;
 }
 
 .container-12 .grid-5 {
   width: 480px;
+  background: none;
 }
 
 .container-12 .grid-6 {
   width: 580px;
+  background: none;
 }
 
 .container-12 .grid-7 {
   width: 680px;
+  background: none;
 }
 
 .container-12 .grid-8 {
   width: 780px;
+  background: none;
 }
 
 .container-12 .grid-9 {
   width: 880px;
+  background: none;
 }
 
 .container-12 .grid-10 {
   width: 980px;
+  background: none;
 }
 
 .container-12 .grid-11 {
   width: 1080px;
+  background: none;
 }
 
 .container-12 .grid-12 {
   width: 1180px;
+  background: none;
 }
 
 /*
