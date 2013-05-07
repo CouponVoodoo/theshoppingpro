@@ -558,6 +558,7 @@ fieldset .fieldset-legend {
   padding-left: 15px; /* LTR */
   position: absolute;
   text-transform: uppercase;
+  color: #ffffff;
 }
 fieldset .fieldset-wrapper {
   padding: 0 13px 13px 15px; /* LTR */
@@ -599,6 +600,7 @@ div.teaser-checkbox .form-item,
 .form-item label {
   margin: 0;
   padding: 0;
+  color: #ffffff;
 }
 .form-item label.option {
   font-size: 0.923em;
@@ -636,7 +638,7 @@ div.description,
   margin: 5px 0;
   line-height: 1.231em;
   font-size: 0.923em;
-  color: #666;
+  color: #ffffff;
 }
 ul.tips li {
   margin: 0.25em 0 0.25em 1.5em; /* LTR */
