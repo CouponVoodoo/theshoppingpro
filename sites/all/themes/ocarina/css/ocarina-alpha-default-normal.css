@@ -28,20 +28,20 @@ h1.title {
   font-size: 1.8em;
 }
 h2.block-title {
-font-family: tahoma;
-margin-top: 10px;  
-font-size: 110%;
-padding-top: 20px;
-color: #F7971C !important;
+// font-family: tahoma;
+// margin-top: 10px;  
+// font-size: 110%;
+// padding-top: 20px;
+   color: #F7971C !important;
 }
 .region-sidebar-second h2.block-title {
-font-family: tahoma;
-padding-top: 20px;
-  font-size:110%;
+// font-family: tahoma;
+   padding-top: 20px;
+   text-transform: uppercase;
 }
 .region-sidebar-second h2.block-title .last-word {
-font-family: tahoma;
-  font-size: 110%;
+// font-family: tahoma;
+// font-size: 110%;
 }
 
 
@@ -170,5 +170,4 @@ article.node-products .field-name-field-image img {
 
 .block-views h2.block-title{
 padding-top: 20px;  
-font-size: 120%;
 }

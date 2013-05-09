@@ -308,12 +308,12 @@ function corp_enhancements_form_user_login_block_alter(&$form, &$form_state) {
  */
 function corp_enhancements_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'user_login') {
-    $form['forgot_pwd']['#markup'] = '<span id="frgt_pwd">' . l(t('Forgot Password ?'), 'user/password', array('attributes' => array('target'=>'_blank'))) . '</span>';
-    $form['new_user']['#markup'] = '<span id="new_user">' . l(t('Register'), 'user/register', array('attributes' => array('target'=>'_blank'))) . '</span>';
+    $form['forgot_pwd']['#markup'] = '<div id="frgt_pwd">' . l(t('Forgot Password?'), 'user/password', array('attributes' => array('target'=>'_blank'))) . '</div>';
+    $form['new_user']['#markup'] = '<div id="new_user">' . l(t('Register'), 'user/register', array('attributes' => array('target'=>'_blank'))) . '</div>';
   }
   else if ($form_id == 'user_login_block') {
-    $form['forgot_pwd']['#markup'] = '<span id="frgt_pwd_block">' . l(t('Forgot Password ?'), 'user/password', array('attributes' => array('target'=>'_blank'))) . '</span>';
-    $form['new_user']['#markup'] = '<span id="new_user_block">' . l(t('Register'), 'user/register', array('attributes' => array('target'=>'_blank'))) . '</span>';
+    $form['forgot_pwd']['#markup'] = '<div id="frgt_pwd_block">' . l(t('Forgot Password ?'), 'user/password', array('attributes' => array('target'=>'_blank'))) . '</div>';
+    $form['new_user']['#markup'] = '<div id="new_user_block">' . l(t('Register'), 'user/register', array('attributes' => array('target'=>'_blank'))) . '</div>';
   }
   #$form['name']['#placeholder'] = 'Username';
   #$form['pass']['#placeholder'] = 'Password';

@@ -33,10 +33,11 @@ h1{
   line-height:1;    /* 24px */
 }
 h2{
-  font-size: 12px;    /* 19.5px */
+  font-size: 14px;    /* 19.5px */
   margin-bottom:1.3333em;    /* 24px */
   line-height:1.3333;      /* 24px */
- font-family: Arial;
+  font-family: Arial;
+  text-transform: uppercase;
 }
 h3{
   font-size:1.25em;    /* 16.25 */
@@ -386,9 +387,9 @@ ul.orange-list-style-5 li {
   margin: 0 5px 0 0; /* LTR */
 }
 .tabs ul.primary li a {
-  color: #000;
-  background: #F1ECE3;
-  border: 1px solid #CEC9BB;
+  color: #F7971C;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid #ffffff;
   height: 1.8em;
   line-height: 1.9;
   display: block;
@@ -400,10 +401,10 @@ ul.orange-list-style-5 li {
 
 .tabs ul.primary li.active a,
 .tabs ul.primary li a:hover {
-  background: #fff;
-  color: #000;
-  border: 1px solid #CEC9BB;
-  border-bottom: 1px solid #fff;
+  background: rgba(0, 0, 0, 0.4);
+  color: #647474;
+  border: 1px solid #ffffff;
+
 }
 .tabs ul.secondary {
   border-bottom: none;
@@ -512,10 +513,10 @@ button:focus, button:active, input:focus, input:active, select:focus, select:act
   float: left;
   width: 90%;
 }
-.contact-form .form-item:hover,
-.contact-form .form-item:active {
-  background: #f7f7f7;
-}
+// .contact-form .form-item:hover,
+// .contact-form .form-item:active {
+//   background: #f7f7f7;
+// }
 
 /*------------------------------------*\
 	NAVIGATION CSS
@@ -1036,7 +1037,6 @@ h2.block-title {
   font-size: 11px;
 }
 .region-sidebar-second h2.block-title .last-word {
-  margin-left: -5px;
   color: #ff9400;
   font-size: 11px;
 }

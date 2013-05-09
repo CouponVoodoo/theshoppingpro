@@ -699,7 +699,6 @@ margin-top: -10px !important;
 /* By Ashish to size the accordian display of cashback offers*/
 .accordion_blocks_container .views-row{
 background: #ffffff;
-text-decoration:blink;
 border:solid 1px #F7971C;
 box-shadow: 5px 5px 5px #888888 !important;
 -moz-border-radius: 5px !important;
@@ -752,7 +751,6 @@ accordion_blocks_container{
 /* By Ashish to customize the is popular bloack outside accordian*/
 #block-views-ab4bb613d08f9b0562ac9cb76e64da10 .views-row{
 background: #ffffff;
-text-decoration:blink;
 border:solid 1px #F7971C;
 box-shadow: 5px 5px 5px #888888 !important;
 -moz-border-radius: 5px !important;
@@ -873,27 +871,27 @@ font-size: 14px !important;
 margin-left: 2px !important;
 }
 
-#block-block-16 h2.block-title{
-color: #F7971C !important;
+// #block-block-16 h2.block-title{
+// color: #F7971C !important;
 // display:inline-block !important;
 // width: 100% !important;
-font-size: 14px !important;
-}
+// font-size: 14px !important;
+// }
 
-#block-block-16 h2.block-title span.first-word{
-color: #F7971C !important;
+// #block-block-16 h2.block-title span.first-word{
+// color: #F7971C !important;
 // display:inline-block !important;
 // width: 100% !important;
-font-size: 14px !important;
-}
+// font-size: 14px !important;
+// }
 
-#block-block-16 h2.block-title span.last-word{
-color: #F7971C !important;
-font-size: 14px !important;
+// #block-block-16 h2.block-title span.last-word{
+// color: #F7971C !important;
+// font-size: 14px !important;
 // position:relative !important; 
 // top:-7px;
-margin-left: 2px !important;
-}
+// margin-left: 2px !important;
+// }
 
 /* By Ashish to hide description in the widget pop up for login*/
 div.ctools-modal-content .form-item .description{
@@ -917,12 +915,14 @@ div.ctools-modal-content .form-item label{
 width: 6em !important;
 padding-left: -10px !important;
 margin-left: -10px !important;
+color: #F7971C;
 }
 
 div.ctools-modal-content .form-item-name label{
 padding-top: 30px !important;
 padding-left: -10px !important;
 margin-left: -10px !important;
+color: #F7971C;
 }
 
 div.ctools-modal-content button,
@@ -1003,8 +1003,8 @@ div#field-markup-add-more-wrapper{
 /* By Ashish to make login and get cashback messages in one line*/
 .view-partner-retailers-with-category .colorbox_form {display: inline-block; width:100%; margin-bottom: 5px;}
 .view-partner-retailers-with-category .colorbox_form p {display:inline; margin:0; padding:0}
-.view-partner-retailers-with-category .views-row .field-content a {display: inline-block; width: 100%; margin-bottom: 5px; color: #ffffff !important;}
-.view-partner-retailers-with-category .views-row .field-content a p {display:inline; margin:0; padding:0;  #ffffff !important;}
+.view-partner-retailers-with-category .views-row .field-content a {display: inline-block; width: 100%; margin-bottom: 5px;}
+.view-partner-retailers-with-category .views-row .field-content a p {display:inline; margin:0; padding:0;}
 
 
 /* By Ashish to remove error message on widget login post facebook login THIS IS A BAD HACK AND SHOULD BE CORRECTED*/
@@ -1013,4 +1013,3 @@ display:none;
 }
 
 #new_user { padding:8px; margin:8px; }
-#frgt_pwd_block {  }

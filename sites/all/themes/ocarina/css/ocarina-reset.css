@@ -382,8 +382,9 @@ thead tr:last-of-type th{
   /* Thicker border on the table-headers of the last row in the table head */
   border-bottom-width:2px;
   color: #F7971C;
-  font-size: 14px;
+  font-size: 16px;
   background: rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
 }
 tbody th{
   /* Thicker right border on table-headers in the table body */
