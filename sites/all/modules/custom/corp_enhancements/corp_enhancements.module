@@ -30,6 +30,15 @@ function corp_enhancements_menu() {
           'access arguments' => array('access content'),
           'type' => MENU_CALLBACK,
   );
+
+  $items['admin/reports/omg_transaction_records'] = array(
+          'title' => 'OMG Transaction Records',
+          'page callback' => 'corp_enhancements_admin_reports',
+          'page arguments' => array(2),
+          'file' => 'includes/corp_enhancements_reports.inc',
+          'access arguments' => array('access content'),
+          'type' => MENU_NORMAL_ITEM,
+  );
   return $items;
 }
 
@@ -580,10 +589,42 @@ function partner_retail_with_category_url_check() {
   }
 }
 
+
+/**
+ * Adding is chrome function
+ */
 function is_chrome() {
   if (strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== false) {
     return TRUE;
-  }else{
+  }else {
     return FALSE;
   }
+}
+
+
+
+/**
+ * Export data to csv
+ * @return <type>
+ */
+function corp_enhancements_csv_export($caption,$header, $rows) {
+  // Initialising output
+  $output = '';
+
+ 
+  // Setting the output of the field
+  $output = theme_table(
+          array(
+          'header' => $header,
+          'rows' => $rows,
+          'attributes' => array(),
+          'sticky' => true,
+          'caption' => $caption,
+          'colgroups' => array(),
+          'empty' => t("Table has no rows!") // The message to be displayed if table is empty
+          )
+          ).theme('pager');
+
+  // Returning the output
+  return $output;
 }
