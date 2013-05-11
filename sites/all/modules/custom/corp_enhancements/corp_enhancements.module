@@ -39,6 +39,14 @@ function corp_enhancements_menu() {
           'access arguments' => array('access content'),
           'type' => MENU_NORMAL_ITEM,
   );
+  $items['admin/reports/omg_transaction_records/csv'] = array(
+          'title' => 'OMG Transaction Records Export csv',
+          'page callback' => 'corp_enhancements_admin_reports',
+          'page arguments' => array(2,3),
+          'file' => 'includes/corp_enhancements_reports.inc',
+          'access arguments' => array('access content'),
+          'type' => MENU_NORMAL_ITEM,
+  );
   return $items;
 }
 
@@ -607,11 +615,9 @@ function is_chrome() {
  * Export data to csv
  * @return <type>
  */
-function corp_enhancements_csv_export($caption,$header, $rows) {
+function corp_enhancements_table_export($caption,$header, $rows) {
   // Initialising output
   $output = '';
-
- 
   // Setting the output of the field
   $output = theme_table(
           array(
@@ -627,4 +633,20 @@ function corp_enhancements_csv_export($caption,$header, $rows) {
 
   // Returning the output
   return $output;
+}
+
+/**
+ * Export as csv
+ */
+function corp_enhancements_csv_export($filename, $rows) {
+  // send response headers to the browser
+  drupal_add_http_header('Content-Type', 'text/csv');
+  drupal_add_http_header('Content-Disposition', 'attachment;filename='.$filename."_".date("dmy").'.csv');
+  $fp = fopen('php://output', 'w');
+  foreach($rows as $line) {
+    fputcsv($fp, $line);
+  }
+  
+  fclose($fp);
+  drupal_exit();
 }

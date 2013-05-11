@@ -4,13 +4,13 @@
  * and open the template in the editor.
 */
 
-function corp_enhancements_admin_reports($url) {
+function corp_enhancements_admin_reports($url, $csv = false) {
 
   $return = '';
   $function = 'corp_enhancements_admin_reports_'.$url;
 
   if (function_exists($function)) {
-    $return = call_user_func($function);
+    $return = call_user_func($function, $csv);
   }
 
   return $return;
@@ -20,8 +20,7 @@ function corp_enhancements_admin_reports($url) {
 /**
  * Export omg transaction reocrds to csv.
  */
-function corp_enhancements_admin_reports_omg_transaction_records() {
-
+function corp_enhancements_admin_reports_omg_transaction_records($csv = null) {
   $validated_buyer = db_select('omg_user_rewards', 'o')
           ->fields('o', array('drupal_uid', 'omg_status', 'omg_transaction_id','omg_reward_percentage','omg_reward_type'));
   $validated_buyer->addExpression('sum(omg_reward)', 'validated_buyer');
@@ -74,7 +73,7 @@ function corp_enhancements_admin_reports_omg_transaction_records() {
   $query->addExpression('(validated_buyer+validated_referrer)','total_validated');
   $query->addExpression('(buyer_pending+referral_pending)','total_pending');
 
- 
+
 
   // Setting the sort conditions
   if(isset($_GET['sort']) && isset($_GET['order'])) {
@@ -108,49 +107,63 @@ function corp_enhancements_admin_reports_omg_transaction_records() {
   }
   else {
     $sort = 'ASC';
-    $order = 'drual_uid';
+    $order = 'drupal_uid';
   }
   $sort = $sort . ', omg_status, omg_reward_type';
 
-    // Set order by
+  // Set order by
   $query->orderBy($order, $sort);
 
-  // Pagination
-  $query = $query->extend('TableSort')->extend('PagerDefault')->limit(10);
 
- # echo $query;exit;
+  // Pagination
+  if (empty($csv)) {
+    $query = $query->extend('TableSort')->extend('PagerDefault')->limit(10);
+    $header = array(
+            array('data' => 'Name', 'field' => 'name', 'width'=>'20%'),
+            array('data' => 'Email', 'field' => 'mail'),
+            array('data' => 'UID'),
+            array('data' => 'Validated Buyer Rewards', 'field' => 'validated_buyer'),
+            array('data' => 'Validated Referral Rewards', 'field' => 'validated_referrer'),
+            array('data' => 'Total Validated Rewards'),
+            array('data' => 'Pending Buyer Rewards', 'field' => 'buyer_pending'),
+            array('data' => 'Pending Referral Rewards', 'field' => 'referral_pending'),
+            array('data' => 'Total Pending Rewards'),
+    );
+  }else {
+    $rows[] = array('Name','Email','UID','Validated Buyer Rewards',
+            'Validated Referral Rewards','Total Validated Rewards',
+            'Pending Buyer Rewards','Pending Referral Rewards',
+            'Total Pending Rewards'
+    );
+  }
+
   $result =  $query->execute();
 
-//'width' => '35%'
+  //'width' => '35%'
   // Table header
-  $header = array(
-          array('data' => 'Name', 'field' => 'name', 'width'=>'20%'),
-          array('data' => 'Email', 'field' => 'mail'),
-          array('data' => 'UID'),
-          array('data' => 'Validated Buyer Rewards', 'field' => 'validated_buyer'),
-          array('data' => 'Validated Referral Rewards', 'field' => 'validated_referrer'),
-          array('data' => 'Total Validated Rewards'),
-          array('data' => 'Pending Buyer Rewards', 'field' => 'buyer_pending'),
-          array('data' => 'Pending Referral Rewards', 'field' => 'referral_pending'),
-          array('data' => 'Total Pending Rewards'),
-  );
-  
+
+
 
   while ($row = $result->fetchObject()) {
     #print_r($row);exit;
     $rows[] = array(
-      $row->name,
-      $row->mail,
-      $row->drupal_uid,
-      round($row->validated_buyer,2),
-      round($row->validated_referrer,2),
-      round($row->total_validated,2),
-      round($row->buyer_pending,2),
-      round($row->referral_pending,2),
-      round($row->total_pending,2),
+            $row->name,
+            $row->mail,
+            $row->drupal_uid,
+            round($row->validated_buyer,2),
+            round($row->validated_referrer,2),
+            round($row->total_validated,2),
+            round($row->buyer_pending,2),
+            round($row->referral_pending,2),
+            round($row->total_pending,2),
     );
 
   }
 
-  return corp_enhancements_csv_export('OMG Trasaction Report', $header, $rows);
+  if (empty($csv)) {
+    return corp_enhancements_table_export('OMG Trasaction Report', $header, $rows);
+  }else {
+    corp_enhancements_csv_export('omg_transaction_report', $rows);
+  }
+
 }
