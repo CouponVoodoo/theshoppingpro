@@ -1450,6 +1450,5 @@ div.messages{padding: 11px 10px 10px 0px}
 #user_user_form_group_financial_details input{width:390px;}
 #block-system-main article.node-webform{margin:10px !important}
 #block-system-main article.node-webform .field-item{margin:0px !important; }
-#block-system-main article.node-webform textarea,
-#block-system-main article.node-webform #edit-submitted-retailer
-{width:397px;}
+#block-system-main article.node-webform textarea{width:397px;}
+#block-system-main article.node-webform #edit-submitted-retailer{width:194px;}
