@@ -66,10 +66,15 @@ function corp_enhancements_admin_reports_omg_transaction_records($csv = null) {
   $validated_buyer->union($referral_pending, 'UNION ALL');
 
   $query = db_select($validated_buyer, 'q');
-  $query->fields('q')->groupBy('drupal_uid');
+  $query->fields('q',array('drupal_uid'))->groupBy('drupal_uid');
 
   $query->leftJoin('users','u','u.uid = q.drupal_uid');
   $query->fields('u', array('name','mail'));
+  $query->addExpression('sum(validated_buyer)','validated_buyer');
+  $query->addExpression('sum(validated_referrer)','validated_referrer');
+  $query->addExpression('sum(buyer_pending)','buyer_pending');
+  $query->addExpression('sum(referral_pending)','referral_pending');
+  
   $query->addExpression('(validated_buyer+validated_referrer)','total_validated');
   $query->addExpression('(buyer_pending+referral_pending)','total_pending');
 
@@ -114,10 +119,10 @@ function corp_enhancements_admin_reports_omg_transaction_records($csv = null) {
   // Set order by
   $query->orderBy($order, $sort);
 
-
+#echo $query;exit;
   // Pagination
   if (empty($csv)) {
-    $query = $query->extend('TableSort')->extend('PagerDefault')->limit(10);
+    $query = $query->extend('TableSort')->extend('PagerDefault')->limit(100);
     $header = array(
             array('data' => 'Name', 'field' => 'name', 'width'=>'20%'),
             array('data' => 'Email', 'field' => 'mail'),
@@ -138,11 +143,6 @@ function corp_enhancements_admin_reports_omg_transaction_records($csv = null) {
   }
 
   $result =  $query->execute();
-
-  //'width' => '35%'
-  // Table header
-
-
 
   while ($row = $result->fetchObject()) {
     #print_r($row);exit;

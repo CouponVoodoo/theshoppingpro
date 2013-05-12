@@ -10,42 +10,42 @@ define('REFERRER_TYPE', 'Referrer');
  */
 function corp_enhancements_menu() {
   $items['login_register'] = array(
-          'title' => '',
-          'description' => 'Header Images upload for site header',
-          'page callback' => 'corp_enhancements_login_register_decision',
-          'access callback' => TRUE,
-          'type' => MENU_CALLBACK,
+      'title' => '',
+      'description' => 'Header Images upload for site header',
+      'page callback' => 'corp_enhancements_login_register_decision',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
   );
   $items['update_user_reward'] = array(
-          'title' => 'User Rewards',
-          'description' => 'Update User Rewards for the site',
-          'page callback' => 'corp_enhancement_user_reward_calculation',
-          'access callback' => TRUE,
-          'type' => MENU_CALLBACK,
+      'title' => 'User Rewards',
+      'description' => 'Update User Rewards for the site',
+      'page callback' => 'corp_enhancement_user_reward_calculation',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
   );
   $items['getdata'] = array(
-          'title' => '',
-          'page callback' => 'get_data',
-          'file' => 'corp_enhancements.api.inc',
-          'access arguments' => array('access content'),
-          'type' => MENU_CALLBACK,
+      'title' => '',
+      'page callback' => 'get_data',
+      'file' => 'corp_enhancements.api.inc',
+      'access arguments' => array('access content'),
+      'type' => MENU_CALLBACK,
   );
 
   $items['admin/reports/omg_transaction_records'] = array(
-          'title' => 'OMG Transaction Records',
-          'page callback' => 'corp_enhancements_admin_reports',
-          'page arguments' => array(2),
-          'file' => 'includes/corp_enhancements_reports.inc',
-          'access arguments' => array('access content'),
-          'type' => MENU_NORMAL_ITEM,
+      'title' => 'OMG Transaction Records',
+      'page callback' => 'corp_enhancements_admin_reports',
+      'page arguments' => array(2),
+      'file' => 'includes/corp_enhancements_reports.inc',
+      'access arguments' => array('administer site configuration'),
+      'type' => MENU_NORMAL_ITEM,
   );
   $items['admin/reports/omg_transaction_records/csv'] = array(
-          'title' => 'OMG Transaction Records Export csv',
-          'page callback' => 'corp_enhancements_admin_reports',
-          'page arguments' => array(2,3),
-          'file' => 'includes/corp_enhancements_reports.inc',
-          'access arguments' => array('access content'),
-          'type' => MENU_NORMAL_ITEM,
+      'title' => 'OMG Transaction Records Export csv',
+      'page callback' => 'corp_enhancements_admin_reports',
+      'page arguments' => array(2,3),
+      'file' => 'includes/corp_enhancements_reports.inc',
+      'access arguments' => array('administer site configuration'),
+      'type' => MENU_NORMAL_ITEM,
   );
   return $items;
 }
@@ -60,7 +60,7 @@ function corp_enhancements_views_query_alter($view, $query) {
     if (isset($_GET['url'])) {
       $query_nid = db_select('field_data_field_url', 'fdfu');
       $query_nid->fields('fdfu', array('entity_id'))//SELECT the fields from node
-              ->condition('fdfu.field_url_value', $_GET['url'], '=');
+          ->condition('fdfu.field_url_value', $_GET['url'], '=');
       $result = $query_nid->execute();
 
       foreach ($result as $record) {
@@ -93,13 +93,13 @@ function corp_enhancements_views_query_alter($view, $query) {
     if (isset($_GET['url'])) {
       $query_nid = db_select('field_data_field_url', 'fdfu');
       $query_nid->fields('fdfu', array('entity_id'))//SELECT the fields from node
-              ->condition('fdfu.field_url_value', $_GET['url'], '=');
+          ->condition('fdfu.field_url_value', $_GET['url'], '=');
       $num = $query_nid->countQuery()->execute()->fetchField();
       // if count = 0, check for Sites of interest type
       if ($num == 0) {
         $query_nid = db_select('field_data_field_url_site_of_interest', 'fdfusoa');
         $query_nid->fields('fdfusoa', array('entity_id'))//SELECT the fields from node
-                ->condition('fdfusoa.field_url_site_of_interest_value', $_GET['url'], '=');
+            ->condition('fdfusoa.field_url_site_of_interest_value', $_GET['url'], '=');
       }
       $result = $query_nid->execute();
 
@@ -163,13 +163,13 @@ function corp_enhancements_views_query_alter($view, $query) {
       // Check for retailer type
       $query_nid = db_select('field_data_field_url', 'fdfu');
       $query_nid->fields('fdfu', array('entity_id'))//SELECT the fields from node
-              ->condition('fdfu.field_url_value', $_GET['url'], '=');
+          ->condition('fdfu.field_url_value', $_GET['url'], '=');
       $num = $query_nid->countQuery()->execute()->fetchField();
       // if count = 0, check for Sites of interest type
       if ($num == 0) {
         $query_nid = db_select('field_data_field_url_site_of_interest', 'fdfusoa');
         $query_nid->fields('fdfusoa', array('entity_id'))//SELECT the fields from node
-                ->condition('fdfusoa.field_url_site_of_interest_value', $_GET['url'], '=');
+            ->condition('fdfusoa.field_url_site_of_interest_value', $_GET['url'], '=');
       }
       $result = $query_nid->execute();
 
@@ -235,14 +235,14 @@ function corp_enhancements_views_query_alter($view, $query) {
 */
 function corp_enhancements_theme() {
   $themes = array(
-          'corp_enhancements_login_register' => array(
-                  'template' => 'corp-enhancements-login-register', // your template file called custompage.tpl.php
-                  'arguments' => array(),
-          ),
-          'corp_enhancement_competitor_info' => array(
-                  'template' => 'corp-enhancement-competitor-info', // your template file called custompage.tpl.php
-                  'arguments' => array('competitor_data'),
-          ),
+      'corp_enhancements_login_register' => array(
+          'template' => 'corp-enhancements-login-register', // your template file called custompage.tpl.php
+          'arguments' => array(),
+      ),
+      'corp_enhancement_competitor_info' => array(
+          'template' => 'corp-enhancement-competitor-info', // your template file called custompage.tpl.php
+          'arguments' => array('competitor_data'),
+      ),
   );
 
   return $themes;
@@ -261,7 +261,7 @@ function theme_login_register_decision($vars) {
  */
 function sports_enhancements_block_info() {
   $blocks['competitor-list'] = array(
-          'info' => t('Competitor List'),
+      'info' => t('Competitor List'),
   );
   return $blocks;
 }
@@ -284,7 +284,7 @@ function corp_enhancements_account_options_block() {
   if (isset($_GET['url'])) {
     $query_nid = db_select('field_data_field_url', 'fdfu');
     $query_nid->fields('fdfu', array('entity_id'))//SELECT the fields from node
-            ->condition('fdfu.field_url_value', $_GET['url'], '=');
+        ->condition('fdfu.field_url_value', $_GET['url'], '=');
     $result = $query_nid->execute();
 
     foreach ($result as $record) {
@@ -380,8 +380,8 @@ function corp_enhancement_user_reward_calculation() {
   $node_query->join('field_data_field_drupal_processing_status', 'fdps', 'fdps.entity_id = n.nid'); // inner_join file_usage table against file_managed
 
   $node_query->fields('n', array('nid'))  // specifying fields from file_usage table
-          ->condition('n.type', $type, '=')
-          ->condition('fdps.field_drupal_processing_status_value', 0, '=');
+      ->condition('n.type', $type, '=')
+      ->condition('fdps.field_drupal_processing_status_value', 0, '=');
 
   $node_query = $node_query->execute();
 
@@ -394,16 +394,16 @@ function corp_enhancement_user_reward_calculation() {
 
       $query = db_select('omg_user_rewards', 'our');
       $query->fields('our', array('id', 'drupal_uid'))//SELECT the fields from node
-              ->condition('our.omg_transaction_id', $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'], '=')
-              ->condition('our.drupal_uid', $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'], '=');
+          ->condition('our.omg_transaction_id', $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'], '=')
+          ->condition('our.drupal_uid', $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'], '=');
       $result = $query->execute();
       $id = '';
 
 
       $query2 = db_select('omg_user_rewards', 'our');
       $query2->fields('our', array('id', 'drupal_uid'))//SELECT the fields from node
-              ->condition('our.omg_transaction_id', $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'], '=')
-              ->condition('our.drupal_uid', $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'], '=');
+          ->condition('our.omg_transaction_id', $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'], '=')
+          ->condition('our.drupal_uid', $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'], '=');
       $result2 = $query2->execute()->rowCount();
       $id = '';
 
@@ -414,20 +414,20 @@ function corp_enhancement_user_reward_calculation() {
           $id = $record->id;
           if (isset($record) && $id != '') {
             $update_transaction_record = db_update('omg_user_rewards')
-                    ->fields(array('drupal_uid' => $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'],
-                    'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
-                    'omg_transaction_id' => $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'],
-                    'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * BUYER_PERCENTAGE) / 100,
-                    'omg_reward_percentage' => BUYER_PERCENTAGE,
-                    'omg_reward_type' => BUYER_TYPE
-                    ))
-                    ->condition('id', $id, '=')
-                    ->execute();
+                ->fields(array('drupal_uid' => $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'],
+                'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
+                'omg_transaction_id' => $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'],
+                'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * BUYER_PERCENTAGE) / 100,
+                'omg_reward_percentage' => BUYER_PERCENTAGE,
+                'omg_reward_type' => BUYER_TYPE
+                ))
+                ->condition('id', $id, '=')
+                ->execute();
 
             if (isset($record->drupal_uid)) {
               $query_referrar = db_select('referral', 'rf');
               $query_referrar->fields('rf', array('referral_uid'))//SELECT the fields from node
-                      ->condition('rf.uid', $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'], '=');
+                  ->condition('rf.uid', $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'], '=');
               $result_referrer = $query_referrar->execute();
 
               $ref_data_uid = '';
@@ -436,15 +436,15 @@ function corp_enhancement_user_reward_calculation() {
                 if (isset($ref_data) && $ref_data_uid != '') {
                   $ref_uid = $ref_data->referral_uid;
                   $update_transaction_record = db_update('omg_user_rewards')
-                          ->fields(array('drupal_uid' => $ref_uid,
-                          'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
-                          'omg_transaction_id' => $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'],
-                          'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * REFERRER_PERCENTAGE) / 100,
-                          'omg_reward_percentage' => REFERRER_PERCENTAGE,
-                          'omg_reward_type' => REFERRER_TYPE
-                          ))
-                          ->condition('id', $_SESSION['last_inserted_id'], '=')
-                          ->execute();
+                      ->fields(array('drupal_uid' => $ref_uid,
+                      'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
+                      'omg_transaction_id' => $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'],
+                      'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * REFERRER_PERCENTAGE) / 100,
+                      'omg_reward_percentage' => REFERRER_PERCENTAGE,
+                      'omg_reward_type' => REFERRER_TYPE
+                      ))
+                      ->condition('id', $_SESSION['last_inserted_id'], '=')
+                      ->execute();
                 }
               }
             }
@@ -462,6 +462,32 @@ function corp_enhancement_user_reward_calculation() {
         }
       } else {
         $queryinsert = db_insert('omg_user_rewards')
+            ->fields(array('drupal_uid',
+            'omg_status',
+            'omg_transaction_id',
+            'omg_reward',
+            'omg_reward_percentage',
+            'omg_reward_type'
+            ))
+            ->values(array('drupal_uid' => $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'],
+            'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
+            'omg_transaction_id' => $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'],
+            'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * BUYER_PERCENTAGE) / 100,
+            'omg_reward_percentage' => BUYER_PERCENTAGE,
+            'omg_reward_type' => BUYER_TYPE
+            ))
+            ->execute();
+        //foreach ($result as $record) {
+        // if (isset($record->drupal_uid)) {
+        $query_referrar2 = db_select('referral', 'rf');
+        $query_referrar2->fields('rf', array('referral_uid'))//SELECT the fields from node
+            ->condition('rf.uid', $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'], '=');
+        $result_referrer2 = $query_referrar2->execute();
+        $ref_data_uid2 = '';
+        foreach ($result_referrer2 as $ref_data2) {
+          $ref_data_uid2 = $ref_data2->referral_uid;
+          if (isset($ref_data2) && $ref_data_uid2 != '') {
+            db_insert('omg_user_rewards')
                 ->fields(array('drupal_uid',
                 'omg_status',
                 'omg_transaction_id',
@@ -469,40 +495,14 @@ function corp_enhancement_user_reward_calculation() {
                 'omg_reward_percentage',
                 'omg_reward_type'
                 ))
-                ->values(array('drupal_uid' => $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'],
+                ->values(array('drupal_uid' => $ref_data_uid2,
                 'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
                 'omg_transaction_id' => $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'],
-                'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * BUYER_PERCENTAGE) / 100,
-                'omg_reward_percentage' => BUYER_PERCENTAGE,
-                'omg_reward_type' => BUYER_TYPE
+                'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * REFERRER_PERCENTAGE) / 100,
+                'omg_reward_percentage' => REFERRER_PERCENTAGE,
+                'omg_reward_type' => REFERRER_TYPE
                 ))
                 ->execute();
-        //foreach ($result as $record) {
-        // if (isset($record->drupal_uid)) {
-        $query_referrar2 = db_select('referral', 'rf');
-        $query_referrar2->fields('rf', array('referral_uid'))//SELECT the fields from node
-                ->condition('rf.uid', $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'], '=');
-        $result_referrer2 = $query_referrar2->execute();
-        $ref_data_uid2 = '';
-        foreach ($result_referrer2 as $ref_data2) {
-          $ref_data_uid2 = $ref_data2->referral_uid;
-          if (isset($ref_data2) && $ref_data_uid2 != '') {
-            db_insert('omg_user_rewards')
-                    ->fields(array('drupal_uid',
-                    'omg_status',
-                    'omg_transaction_id',
-                    'omg_reward',
-                    'omg_reward_percentage',
-                    'omg_reward_type'
-                    ))
-                    ->values(array('drupal_uid' => $ref_data_uid2,
-                    'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
-                    'omg_transaction_id' => $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'],
-                    'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * REFERRER_PERCENTAGE) / 100,
-                    'omg_reward_percentage' => REFERRER_PERCENTAGE,
-                    'omg_reward_type' => REFERRER_TYPE
-                    ))
-                    ->execute();
           }
           //}
         }
@@ -533,19 +533,19 @@ function corp_enhancement_node_update($node) {
  */
 function corp_enhancements_token_info() {
   $types['yourplaceholder'] = array(
-          'name' => t("yourplaceholder Tokens"),
-          'description' => t("Tokens for yourplaceholder."),
+      'name' => t("yourplaceholder Tokens"),
+      'description' => t("Tokens for yourplaceholder."),
   );
 
   $yourplaceholder['referer'] = array(
-          'name' => t("Referer"),
-          'description' => t("The refering page for this page."),
+      'name' => t("Referer"),
+      'description' => t("The refering page for this page."),
   );
   return array(
-          'types' => $types,
-          'tokens' => array(
-                  'yourplaceholder' => $yourplaceholder,
-          ),
+      'types' => $types,
+      'tokens' => array(
+          'yourplaceholder' => $yourplaceholder,
+      ),
   );
 }
 
@@ -576,7 +576,7 @@ function partner_retail_with_category_url_check() {
     // Select information for Retailer type Node
     $query_nid = db_select('field_data_field_url', 'fdfu');
     $query_nid->fields('fdfu', array('entity_id'))
-            ->condition('fdfu.field_url_value', $_GET['url'], '=');
+        ->condition('fdfu.field_url_value', $_GET['url'], '=');
     $result = $query_nid->execute();
 
     foreach ($result as $record) {
@@ -620,16 +620,16 @@ function corp_enhancements_table_export($caption,$header, $rows) {
   $output = '';
   // Setting the output of the field
   $output = theme_table(
-          array(
-          'header' => $header,
-          'rows' => $rows,
-          'attributes' => array(),
-          'sticky' => true,
-          'caption' => $caption,
-          'colgroups' => array(),
-          'empty' => t("Table has no rows!") // The message to be displayed if table is empty
-          )
-          ).theme('pager');
+      array(
+      'header' => $header,
+      'rows' => $rows,
+      'attributes' => array(),
+      'sticky' => true,
+      'caption' => $caption,
+      'colgroups' => array(),
+      'empty' => t("Table has no rows!") // The message to be displayed if table is empty
+      )
+      ).theme('pager');
 
   // Returning the output
   return $output;
@@ -646,7 +646,50 @@ function corp_enhancements_csv_export($filename, $rows) {
   foreach($rows as $line) {
     fputcsv($fp, $line);
   }
-  
+
   fclose($fp);
   drupal_exit();
+}
+
+/* 
+   * Provide a select options component to Webform. The values are
+   * populated via a call to _demo_get_options, which returns
+   * an array of nodes.
+   *
+   * @return void
+   * @author Kosta Harlan
+*/
+function corp_enhancements_webform_select_options_info() {
+  $items = array();
+  $items['views'] = array(
+      'title' => t('Retailer'),
+      'options callback' => '_corp_enhancements_get_retailers',
+  );
+
+  return $items;
+}
+
+
+/*
+* Options callback for webform_select_options_info().
+* The assumption is that your view is displaying node data.
+*
+* @return array of items to populate the select list with.
+* @author Kosta Harlan
+*/
+function _corp_enhancements_get_retailers() {
+  // Change 'my_sample_view' to the machine name of your View.
+  $query = db_select('node', 'n')
+      ->fields('n', array('nid','title'))
+      ->condition('n.status',1);
+  $query->join('field_data_field_type','f', 'n.nid = f.entity_id');
+  $query->condition('f.field_type_tid',13);
+  $result = $query->execute();
+  $items = array();
+
+  while($row = $result->fetchObject()){
+    $items[$row->nid] = $row->title;
+  }
+
+  return $items;
 }
