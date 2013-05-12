@@ -684,6 +684,7 @@ function _corp_enhancements_get_retailers() {
       ->condition('n.status',1);
   $query->join('field_data_field_type','f', 'n.nid = f.entity_id');
   $query->condition('f.field_type_tid',13);
+  $query->orderBy('n.title');
   $result = $query->execute();
   $items = array();
 
