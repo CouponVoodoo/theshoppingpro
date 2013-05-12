@@ -1427,10 +1427,3 @@ article.node-products .field-label {
   text-decoration: none;
   color: #000;
 }
-
-#user_user_form_group_financial_details input{width:390px;}
-#block-system-main article.node-webform{margin:10px !important}
-#block-system-main article.node-webform .field-item{margin:0px !important; }
-#block-system-main article.node-webform textarea,
-#block-system-main article.node-webform #edit-submitted-retailer
-{width:397px;}
