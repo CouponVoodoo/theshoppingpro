@@ -22,7 +22,7 @@ function corp_enhancements_admin_reports($url, $csv = false) {
  */
 function corp_enhancements_admin_reports_omg_transaction_records($csv = null) {
   $validated_buyer = db_select('omg_user_rewards', 'o')
-          ->fields('o', array('drupal_uid', 'omg_status', 'omg_transaction_id','omg_reward_percentage','omg_reward_type'));
+      ->fields('o', array('drupal_uid', 'omg_status', 'omg_transaction_id','omg_reward_percentage','omg_reward_type'));
   $validated_buyer->addExpression('sum(omg_reward)', 'validated_buyer');
   $validated_buyer->addExpression('0', 'validated_referrer');
   $validated_buyer->addExpression('0', 'buyer_pending');
@@ -31,7 +31,7 @@ function corp_enhancements_admin_reports_omg_transaction_records($csv = null) {
   $validated_buyer->condition('omg_reward_type', 'Buyer')->groupBy('drupal_uid');
 
   $validated_referrer = db_select('omg_user_rewards', 'o')
-          ->fields('o', array('drupal_uid', 'omg_status', 'omg_transaction_id','omg_reward_percentage','omg_reward_type'));
+      ->fields('o', array('drupal_uid', 'omg_status', 'omg_transaction_id','omg_reward_percentage','omg_reward_type'));
   $validated_referrer->addExpression('0', 'validated_buyer');
   $validated_referrer->addExpression('sum(omg_reward)', 'validated_referrer');
   $validated_referrer->addExpression('0', 'buyer_pending');
@@ -40,7 +40,7 @@ function corp_enhancements_admin_reports_omg_transaction_records($csv = null) {
   $validated_referrer->condition('omg_reward_type', 'Referrer')->groupBy('drupal_uid');
 
   $buyer_pending = db_select('omg_user_rewards', 'o')
-          ->fields('o', array('drupal_uid', 'omg_status', 'omg_transaction_id','omg_reward_percentage','omg_reward_type'));
+      ->fields('o', array('drupal_uid', 'omg_status', 'omg_transaction_id','omg_reward_percentage','omg_reward_type'));
   $buyer_pending->addExpression('0', 'validated_buyer');
   $buyer_pending->addExpression('0', 'validated_referrer');
   $buyer_pending->addExpression('sum(omg_reward)', 'buyer_pending');
@@ -50,7 +50,7 @@ function corp_enhancements_admin_reports_omg_transaction_records($csv = null) {
 
 
   $referral_pending = db_select('omg_user_rewards', 'o')
-          ->fields('o', array('drupal_uid', 'omg_status', 'omg_transaction_id','omg_reward_percentage','omg_reward_type'));
+      ->fields('o', array('drupal_uid', 'omg_status', 'omg_transaction_id','omg_reward_percentage','omg_reward_type'));
   $referral_pending->addExpression('0', 'validated_buyer');
   $referral_pending->addExpression('0', 'validated_referrer');
   $referral_pending->addExpression('0', 'buyer_pending');
@@ -74,10 +74,6 @@ function corp_enhancements_admin_reports_omg_transaction_records($csv = null) {
   $query->addExpression('sum(validated_referrer)','validated_referrer');
   $query->addExpression('sum(buyer_pending)','buyer_pending');
   $query->addExpression('sum(referral_pending)','referral_pending');
-  
-  $query->addExpression('(validated_buyer+validated_referrer)','total_validated');
-  $query->addExpression('(buyer_pending+referral_pending)','total_pending');
-
 
 
   // Setting the sort conditions
@@ -124,38 +120,37 @@ function corp_enhancements_admin_reports_omg_transaction_records($csv = null) {
   if (empty($csv)) {
     $query = $query->extend('TableSort')->extend('PagerDefault')->limit(100);
     $header = array(
-            array('data' => 'Name', 'field' => 'name', 'width'=>'20%'),
-            array('data' => 'Email', 'field' => 'mail'),
-            array('data' => 'UID'),
-            array('data' => 'Validated Buyer Rewards', 'field' => 'validated_buyer'),
-            array('data' => 'Validated Referral Rewards', 'field' => 'validated_referrer'),
-            array('data' => 'Total Validated Rewards'),
-            array('data' => 'Pending Buyer Rewards', 'field' => 'buyer_pending'),
-            array('data' => 'Pending Referral Rewards', 'field' => 'referral_pending'),
-            array('data' => 'Total Pending Rewards'),
+        array('data' => 'Name', 'field' => 'name', 'width'=>'20%'),
+        array('data' => 'Email', 'field' => 'mail'),
+        array('data' => 'UID'),
+        array('data' => 'Validated Buyer Rewards', 'field' => 'validated_buyer'),
+        array('data' => 'Validated Referral Rewards', 'field' => 'validated_referrer'),
+        array('data' => 'Total Validated Rewards'),
+        array('data' => 'Pending Buyer Rewards', 'field' => 'buyer_pending'),
+        array('data' => 'Pending Referral Rewards', 'field' => 'referral_pending'),
+        array('data' => 'Total Pending Rewards'),
     );
   }else {
     $rows[] = array('Name','Email','UID','Validated Buyer Rewards',
-            'Validated Referral Rewards','Total Validated Rewards',
-            'Pending Buyer Rewards','Pending Referral Rewards',
-            'Total Pending Rewards'
+        'Validated Referral Rewards','Total Validated Rewards',
+        'Pending Buyer Rewards','Pending Referral Rewards',
+        'Total Pending Rewards'
     );
   }
 
   $result =  $query->execute();
 
   while ($row = $result->fetchObject()) {
-    #print_r($row);exit;
     $rows[] = array(
-            $row->name,
-            $row->mail,
-            $row->drupal_uid,
-            round($row->validated_buyer,2),
-            round($row->validated_referrer,2),
-            round($row->total_validated,2),
-            round($row->buyer_pending,2),
-            round($row->referral_pending,2),
-            round($row->total_pending,2),
+        $row->name,
+        $row->mail,
+        $row->drupal_uid,
+        round($row->validated_buyer,2),
+        round($row->validated_referrer,2),
+        (round($row->validated_referrer,2) + round($row->validated_buyer,2)),
+        round($row->buyer_pending,2),
+        round($row->referral_pending,2),
+        (round($row->buyer_pending,2) +  round($row->referral_pending,2)),
     );
 
   }
