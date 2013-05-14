@@ -1,4 +1,4 @@
-<?php
+<?php 
 ?>
   <div id="branding" class="clearfix">
     <?php print $breadcrumb; ?>

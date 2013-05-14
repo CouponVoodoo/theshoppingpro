@@ -19,13 +19,13 @@
   <?php } ?>
   <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/lgaakehnefkaeeclkaafaahlbkcoimdh" />
 
-  <script src="sites/all/libraries/fitvids/jquery.fitvids.js"></script>
-  <script>
+  <script type="text/javascript" src="sites/all/libraries/fitvids/jquery.fitvids.js"></script>
+  <script type="text/javascript">
     jQuery(document).ready(function(){
       jQuery('.video-container').fitVids();
     });
   </script>
-
+  <?php require_once("_header.tpl.php"); ?>
 </head>
 <body<?php print $attributes;?>>
 <?php if(arg(0)!='login_register') { ?>
@@ -36,9 +36,11 @@
   <?php print $page_top; ?>
     <?php } ?>
   <?php print $page; ?>
+  
     <?php if (arg(0)!='login_register') { ?>
   <?php print $page_bottom; ?>
     <?php } ?>
+  <?php require_once("_footer.tpl.php"); ?>
 
 </body>
 </html>
