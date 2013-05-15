@@ -586,11 +586,7 @@ function corp_enhancements_token_info() {
       'name' => t("Total Pending Rewards"),
       'description' => t("Total Pending Rewards."),
   );
-  $yourplaceholder['user_referrer_link'] = array(
-      'name' => t("User referral link"),
-      'description' => t("User referral link."),
-  );
-  $yourplaceholder['user_referrer_link_tohome'] = array(
+  $yourplaceholder['user_referrer_link_home'] = array(
       'name' => t("user referral link redirecting to home page"),
       'description' => t("user referral link redirecting to home page."),
   );
@@ -632,11 +628,8 @@ function corp_enhancements_tokens($type, $tokens, array $data = array(), array $
         case 'total_pending_rewards':
           $replacements[$original] = $data['yourplaceholder']['total_pending_rewards'];
           break;
-        case 'user_referrer_link':
-          $replacements[$original] = $data['yourplaceholder']['user_referrer_link'];
-          break;
-        case 'user_referrer_link_tohome':
-          $replacements[$original] = $data['yourplaceholder']['user_referrer_link_tohome'];
+       case 'user_referrer_link_home':
+          $replacements[$original] = $data['yourplaceholder']['user_referrer_link_home'];
           break;
       }
     }
