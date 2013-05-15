@@ -342,11 +342,11 @@ function corp_enhancements_form_alter(&$form, &$form_state, $form_id) {
   #$form['name']['#placeholder'] = 'Username';
   #$form['pass']['#placeholder'] = 'Password';
 
-  switch($form_id){
+  switch($form_id) {
     case 'user_admin_settings':
-    module_load_include('inc', 'corp_enhancements', 'includes/corp_enhancements.email');
-    _corp_enhancements_user_settings_form_alter($form, $form_state);
-    break;
+      module_load_include('inc', 'corp_enhancements', 'includes/corp_enhancements.email');
+      _corp_enhancements_user_settings_form_alter($form, $form_state);
+      break;
   }
 }
 
@@ -630,7 +630,7 @@ function corp_enhancements_tokens($type, $tokens, array $data = array(), array $
         case 'total_pending_rewards':
           $replacements[$original] = $data['yourplaceholder']['total_pending_rewards'];
           break;
-          case 'user_referrer_link':
+        case 'user_referrer_link':
           $replacements[$original] = $data['yourplaceholder']['user_referrer_link'];
           break;
         case 'user_referrer_link_tohome':
@@ -763,7 +763,7 @@ function _corp_enhancements_get_retailers() {
   $result = $query->execute();
   $items = array();
 
-  while($row = $result->fetchObject()){
+  while($row = $result->fetchObject()) {
     $items[$row->nid] = $row->title;
   }
 
@@ -788,26 +788,41 @@ function corp_enhancements_send_email($text, $account, $language = NULL) {
   return empty($mail) ? NULL : $mail['result'];
 }
 
-function test_code(){
+function test_code() {
 
 
-  $node = node_load(17609551);
+  $node = node_load(19421271);
 
-  $text = 'this is a text for test
-[yourplaceholder:user_referrer_link_tohome]====
-[yourplaceholder:user_referrer_link]====
-[yourplaceholder:total_validated_rewards]====
-[yourplaceholder:total_pending_rewards]====
-[yourplaceholder:transaction_amount]====
-[yourplaceholder:transaction_time]====
-[yourplaceholder:transaction_status]====
-[yourplaceholder:merchant]====
-[yourplaceholder:transaction_id]====
-[user:name]====
-[user:uid]
-[user:referral-link]?destination=home
+  #print_r($node);exit;
+  _corp_enhancements_send_point_update_email($node);
+  exit;
 
-';
+
+  $message = array(
+      'to' => 'anilbhatt100in@gmail.com',
+      'subject' => "test",
+      'body' => '<h1>Header 1</h1><h2>header2</h2><p><b>text</b></p>',
+      'headers'=>array(),   //needed
+  );
+
+  $MimeMailSystem = drupal_mail_system('mimemail', 'corp_enhancements');
+  $message = $MimeMailSystem->format($message);
+
+  if($MimeMailSystem->mail($message)) {
+    echo 'Sent.';
+  }else {
+    echo 'fail';
+  }
+  exit;
+
+  echo
+  exit;
+  print_r($node);
+  exit;
+
+}
+
+function _corp_enhancements_send_point_update_email($node) {
   $uid = $node->field_drupal_uid['und'][0]['value'] = 254;
   $omg_validated_rewards = db_select('omg_user_rewards', 'o');
   $omg_validated_rewards->addExpression('sum(omg_reward)', 'omg_validated_rewards');
@@ -825,36 +840,52 @@ function test_code(){
 
   $date = date("d M, Y", strtotime($node->field_omg_transaction_time['und'][0]['value']));
   $yourplaceholder = array(
-    'transaction_id' => $node->field_omg_transaction_id['und'][0]['value'],
-    'merchant' => $node->field_omg_merchant['und'][0]['value'],
-    'transaction_status' => $node->field_omg_status['und'][0]['value'],
-    'transaction_time' => $date,
-    'transaction_amount' => $node->field_omg_transaction_value['und'][0]['value'],
-    'total_validated_rewards' => $total_validated_rewards->omg_validated_rewards,
-    'total_pending_rewards' => $total_pending_rewards->omg_pending_rewards,
-    'user_referrer_link_home' => '[user:referral-link]?destination=home',
+      'transaction_id' => $node->field_omg_transaction_id['und'][0]['value'],
+      'merchant' => $node->field_omg_merchant['und'][0]['value'],
+      'transaction_status' => $node->field_omg_status['und'][0]['value'],
+      'transaction_time' => $date,
+      'transaction_amount' => $node->field_omg_transaction_value['und'][0]['value'],
+      'total_validated_rewards' => $total_validated_rewards->omg_validated_rewards,
+      'total_pending_rewards' => $total_pending_rewards->omg_pending_rewards,
+      'user_referrer_link_home' => '[user:referral-link]?destination=home',
   );
 
+  $user_email_body = variable_get('points_update_email_body', '');
+  $user_email_subject = variable_get('points_update_email_subject', '');
+  $referral_email_body = variable_get('points_update_email_body_referrer', '');
+  $referral_email_subject = variable_get('points_update_email_subject_referrer', '');
+  $user = user_load($uid);
 
-  $message = array(
-      'to' => 'anilbhatt100in@gmail.com',
-      'subject' => "test",
-      'body' => '<h1>Header 1</h1><h2>header2</h2><p><b>text</b></p>',
-      'headers'=>array(),   //needed
+  $user_email_body = token_replace($user_email_body, array('yourplaceholder'=> $yourplaceholder, 'user' => $user));
+  $user_email_subject = token_replace($user_email_subject, array('yourplaceholder'=> $yourplaceholder, 'user' => $user));
+
+  if (variable_get('points_update_email_enable', FALSE)) {
+    $message = array(
+        'to' => $user->mail,
+        'subject' => $user_email_subject.$user->mail,
+        'body' => $user_email_body.$user->mail,
+        'headers'=>array(),   //needed
     );
 
-    $MimeMailSystem = drupal_mail_system('mimemail', 'corp_enhancements');
-    $message = $MimeMailSystem->format($message);
-
-    if($MimeMailSystem->mail($message)){
-      echo 'Sent.';
-    }else{
-      echo 'fail';
+    if(!$MimeMailSystem->mail($message)) {
+      watchdog('user point update email', 'Unable to send user email for uid '.$user->uid);
     }
-    exit;
+    $uid_refer = referral_get_user($uid);
+    if ($uid_refer) {
+      $user_referrer = user_load($uid_refer);
+      $referral_email_body = token_replace($referral_email_body, array('yourplaceholder'=> $yourplaceholder, 'user' => $user_referrer));
+      $referral_email_subject = token_replace($referral_email_subject, array('yourplaceholder'=> $yourplaceholder, 'user' => $user_referrer));
 
-  echo token_replace($text, array('yourplaceholder'=> $yourplaceholder, 'user' => user_load($uid)));
-  exit;
-    print_r($node);exit;
+      $message_ref = array(
+          'to' => $user_referrer->mail,
+          'subject' => $referral_email_subject,
+          'body' => $referral_email_body.$message_ref->mail,
+          'headers'=>array(),   //needed
+      );
 
+      if(!$MimeMailSystem->mail($message_ref)) {
+        watchdog('user point update email', 'Unable to send user referrer email for uid '.$user_referrer->uid);
+      }
+    }
+  }
 }
