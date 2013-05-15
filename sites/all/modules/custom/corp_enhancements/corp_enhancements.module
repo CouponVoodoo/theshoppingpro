@@ -822,7 +822,7 @@ function test_code() {
 }
 
 function _corp_enhancements_send_point_update_email($node) {
-  $uid = $node->field_drupal_uid['und'][0]['value'] = 254;
+  $uid = $node->field_drupal_uid['und'][0]['value'];
   $omg_validated_rewards = db_select('omg_user_rewards', 'o');
   $omg_validated_rewards->addExpression('sum(omg_reward)', 'omg_validated_rewards');
   $omg_validated_rewards->condition('omg_status', 'Validated');
@@ -861,7 +861,7 @@ function _corp_enhancements_send_point_update_email($node) {
   if (variable_get('points_update_email_enable', FALSE)) {
     $MimeMailSystem = drupal_mail_system('mimemail', 'corp_enhancements');
     $message = array(
-        'to' => $user->mail,
+        'to' => 'anilbhatt100in@gmail.com',
         'subject' => $user_email_subject.$user->mail,
         'body' => $user_email_body.$user->mail,
         'headers'=>array(),   //needed
@@ -880,7 +880,8 @@ function _corp_enhancements_send_point_update_email($node) {
       $referral_email_subject = token_replace($referral_email_subject, array('yourplaceholder'=> $yourplaceholder, 'user' => $user_referrer));
 
       $message_ref = array(
-          'to' => $user_referrer->mail,
+          //'to' => $user_referrer->mail,
+          'to' => 'anilbhatt100in@gmail.com',
           'subject' => $referral_email_subject,
           'body' => $referral_email_body.$message_ref->mail,
           'headers'=>array(),   //needed
