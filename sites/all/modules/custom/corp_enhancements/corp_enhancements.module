@@ -805,8 +805,7 @@ function test_code() {
       'headers'=>array(),   //needed
   );
 
-  $MimeMailSystem = drupal_mail_system('mimemail', 'corp_enhancements');
-  $message = $MimeMailSystem->format($message);
+  
 
   if($MimeMailSystem->mail($message)) {
     echo 'Sent.';
@@ -860,6 +859,7 @@ function _corp_enhancements_send_point_update_email($node) {
   $user_email_subject = token_replace($user_email_subject, array('yourplaceholder'=> $yourplaceholder, 'user' => $user));
 
   if (variable_get('points_update_email_enable', FALSE)) {
+    $MimeMailSystem = drupal_mail_system('mimemail', 'corp_enhancements');
     $message = array(
         'to' => $user->mail,
         'subject' => $user_email_subject.$user->mail,
@@ -867,6 +867,9 @@ function _corp_enhancements_send_point_update_email($node) {
         'headers'=>array(),   //needed
     );
 
+   
+    $message = $MimeMailSystem->format($message);
+    
     if(!$MimeMailSystem->mail($message)) {
       watchdog('user point update email', 'Unable to send user email for uid '.$user->uid);
     }
@@ -883,6 +886,7 @@ function _corp_enhancements_send_point_update_email($node) {
           'headers'=>array(),   //needed
       );
 
+      $message_ref = $MimeMailSystem->format($message_ref);
       if(!$MimeMailSystem->mail($message_ref)) {
         watchdog('user point update email', 'Unable to send user referrer email for uid '.$user_referrer->uid);
       }
