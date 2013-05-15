@@ -52,7 +52,7 @@ function corp_enhancements_menu() {
       'title' => 'testcode',
       'page callback' => 'test_code',
       'access arguments' => array('administer site configuration'),
-      'type' => MENU_NORMAL_ITEM,
+      'type' => MENU_CALLBACK,
   );
   return $items;
 }
@@ -528,6 +528,8 @@ function corp_enhancement_user_reward_calculation() {
         $update_node = node_load($node_data->nid);
         $update_node->field_drupal_processing_status[LANGUAGE_NONE][0]['value'] = 1;
         node_save($update_node);
+        // send email to users.
+        _corp_enhancements_send_point_update_email($node);
       }
     }
   }
@@ -789,36 +791,7 @@ function corp_enhancements_send_email($text, $account, $language = NULL) {
 }
 
 function test_code() {
-
-
-  $node = node_load(19421271);
-
-  #print_r($node);exit;
-  _corp_enhancements_send_point_update_email($node);
   exit;
-
-
-  $message = array(
-      'to' => 'anilbhatt100in@gmail.com',
-      'subject' => "test",
-      'body' => '<h1>Header 1</h1><h2>header2</h2><p><b>text</b></p>',
-      'headers'=>array(),   //needed
-  );
-
-  
-
-  if($MimeMailSystem->mail($message)) {
-    echo 'Sent.';
-  }else {
-    echo 'fail';
-  }
-  exit;
-
-  echo
-  exit;
-  print_r($node);
-  exit;
-
 }
 
 function _corp_enhancements_send_point_update_email($node) {
@@ -853,12 +826,11 @@ function _corp_enhancements_send_point_update_email($node) {
   $user_email_subject = variable_get('points_update_email_subject', '');
   $referral_email_body = variable_get('points_update_email_body_referrer', '');
   $referral_email_subject = variable_get('points_update_email_subject_referrer', '');
-  $user = user_load($uid);
-
-  $user_email_body = token_replace($user_email_body, array('yourplaceholder'=> $yourplaceholder, 'user' => $user));
-  $user_email_subject = token_replace($user_email_subject, array('yourplaceholder'=> $yourplaceholder, 'user' => $user));
-
   if (variable_get('points_update_email_enable', FALSE)) {
+    $user = user_load($uid);
+    $user_email_body = token_replace($user_email_body, array('yourplaceholder'=> $yourplaceholder, 'user' => $user));
+    $user_email_subject = token_replace($user_email_subject, array('yourplaceholder'=> $yourplaceholder, 'user' => $user));
+
     $MimeMailSystem = drupal_mail_system('mimemail', 'corp_enhancements');
     $message = array(
         'to' => 'anilbhatt100in@gmail.com',
@@ -873,8 +845,10 @@ function _corp_enhancements_send_point_update_email($node) {
     if(!$MimeMailSystem->mail($message)) {
       watchdog('user point update email', 'Unable to send user email for uid '.$user->uid);
     }
+
     $uid_refer = referral_get_user($uid);
     if ($uid_refer) {
+      
       $user_referrer = user_load($uid_refer);
       $referral_email_body = token_replace($referral_email_body, array('yourplaceholder'=> $yourplaceholder, 'user' => $user_referrer));
       $referral_email_subject = token_replace($referral_email_subject, array('yourplaceholder'=> $yourplaceholder, 'user' => $user_referrer));
