@@ -529,7 +529,7 @@ function corp_enhancement_user_reward_calculation() {
         $update_node->field_drupal_processing_status[LANGUAGE_NONE][0]['value'] = 1;
         node_save($update_node);
         // send email to users.
-        _corp_enhancements_send_point_update_email($node);
+        _corp_enhancements_send_point_update_email($update_node);
       }
     }
   }
