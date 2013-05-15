@@ -35,7 +35,7 @@ function corp_enhancements_menu() {
       'title' => 'OMG Transaction Records',
       'page callback' => 'corp_enhancements_admin_reports',
       'page arguments' => array(2),
-      'file' => 'includes/corp_enhancements_reports.inc',
+      'file' => 'includes/corp_enhancements.reports.inc',
       'access arguments' => array('administer site configuration'),
       'type' => MENU_NORMAL_ITEM,
   );
@@ -43,7 +43,14 @@ function corp_enhancements_menu() {
       'title' => 'OMG Transaction Records Export csv',
       'page callback' => 'corp_enhancements_admin_reports',
       'page arguments' => array(2,3),
-      'file' => 'includes/corp_enhancements_reports.inc',
+      'file' => 'includes/corp_enhancements.reports.inc',
+      'access arguments' => array('administer site configuration'),
+      'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['admin/test'] = array(
+      'title' => 'testcode',
+      'page callback' => 'test_code',
       'access arguments' => array('administer site configuration'),
       'type' => MENU_NORMAL_ITEM,
   );
@@ -334,6 +341,13 @@ function corp_enhancements_form_alter(&$form, &$form_state, $form_id) {
   }
   #$form['name']['#placeholder'] = 'Username';
   #$form['pass']['#placeholder'] = 'Password';
+
+  switch($form_id){
+    case 'user_admin_settings':
+    module_load_include('inc', 'corp_enhancements', 'includes/corp_enhancements.email');
+    _corp_enhancements_user_settings_form_alter($form, $form_state);
+    break;
+  }
 }
 
 /**
@@ -539,13 +553,48 @@ function corp_enhancements_token_info() {
 
   $yourplaceholder['referer'] = array(
       'name' => t("Referer"),
-      'description' => t("The refering page for this page."),
+      'description' => t("Referer."),
+  );
+
+  $yourplaceholder['transaction_id'] = array(
+      'name' => t("Transaction Id"),
+      'description' => t("Transaction Id."),
+  );
+  $yourplaceholder['merchant'] = array(
+      'name' => t("Merchant"),
+      'description' => t("Merchant."),
+  );
+  $yourplaceholder['transaction_status'] = array(
+      'name' => t("Status"),
+      'description' => t("Transcation Status."),
+  );
+  $yourplaceholder['transaction_time'] = array(
+      'name' => t("Transaction Time"),
+      'description' => t("Transaction Time."),
+  );
+  $yourplaceholder['transaction_amount'] = array(
+      'name' => t("Transaction Amount"),
+      'description' => t("Transaction Amount."),
+  );
+  $yourplaceholder['total_validated_rewards'] = array(
+      'name' => t("Total Validated Rewards"),
+      'description' => t("Total Validated Rewards."),
+  );
+  $yourplaceholder['total_pending_rewards'] = array(
+      'name' => t("Total Pending Rewards"),
+      'description' => t("Total Pending Rewards."),
+  );
+  $yourplaceholder['user_referrer_link'] = array(
+      'name' => t("User referral link"),
+      'description' => t("User referral link."),
+  );
+  $yourplaceholder['user_referrer_link_tohome'] = array(
+      'name' => t("user referral link redirecting to home page"),
+      'description' => t("user referral link redirecting to home page."),
   );
   return array(
       'types' => $types,
-      'tokens' => array(
-          'yourplaceholder' => $yourplaceholder,
-      ),
+      'tokens' => array('yourplaceholder' => $yourplaceholder),
   );
 }
 
@@ -554,12 +603,38 @@ function corp_enhancements_token_info() {
  */
 function corp_enhancements_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $replacements = array();
-
   if ($type == 'yourplaceholder') {
     foreach ($tokens as $name => $original) {
       switch ($name) {
         case 'referer':
           $replacements[$original] = $_SERVER['HTTP_REFERER'];
+          break;
+        case 'transaction_id':
+          $replacements[$original] = $data['yourplaceholder']['transaction_id'];
+          break;
+        case 'merchant':
+          $replacements[$original] = $data['yourplaceholder']['merchant'];
+          break;
+        case 'transaction_status':
+          $replacements[$original] = $data['yourplaceholder']['transaction_status'];
+          break;
+        case 'transaction_time':
+          $replacements[$original] = $data['yourplaceholder']['transaction_time'];
+          break;
+        case 'transaction_amount':
+          $replacements[$original] = $data['yourplaceholder']['transaction_amount'];
+          break;
+        case 'total_validated_rewards':
+          $replacements[$original] = $data['yourplaceholder']['total_validated_rewards'];
+          break;
+        case 'total_pending_rewards':
+          $replacements[$original] = $data['yourplaceholder']['total_pending_rewards'];
+          break;
+          case 'user_referrer_link':
+          $replacements[$original] = $data['yourplaceholder']['user_referrer_link'];
+          break;
+        case 'user_referrer_link_tohome':
+          $replacements[$original] = $data['yourplaceholder']['user_referrer_link_tohome'];
           break;
       }
     }
@@ -693,4 +768,93 @@ function _corp_enhancements_get_retailers() {
   }
 
   return $items;
+}
+
+
+function corp_enhancements_send_email($text, $account, $language = NULL) {
+  // By default, we always notify except for canceled and blocked.
+  $default_notify = ($op != 'status_canceled' && $op != 'status_blocked');
+  $notify = variable_get('user_mail_' . $op . '_notify', $default_notify);
+  if ($notify) {
+    $params['account'] = $account;
+    $language = $language ? $language : user_preferred_language($account);
+    $mail = drupal_mail('user', $op, $account->mail, $language, $params);
+    if ($op == 'register_pending_approval') {
+      // If a user registered requiring admin approval, notify the admin, too.
+      // We use the site default language for this.
+      drupal_mail('user', 'register_pending_approval_admin', variable_get('site_mail', ini_get('sendmail_from')), language_default(), $params);
+    }
+  }
+  return empty($mail) ? NULL : $mail['result'];
+}
+
+function test_code(){
+
+
+  $node = node_load(17609551);
+
+  $text = 'this is a text for test
+[yourplaceholder:user_referrer_link_tohome]====
+[yourplaceholder:user_referrer_link]====
+[yourplaceholder:total_validated_rewards]====
+[yourplaceholder:total_pending_rewards]====
+[yourplaceholder:transaction_amount]====
+[yourplaceholder:transaction_time]====
+[yourplaceholder:transaction_status]====
+[yourplaceholder:merchant]====
+[yourplaceholder:transaction_id]====
+[user:name]====
+[user:uid]
+[user:referral-link]?destination=home
+
+';
+  $uid = $node->field_drupal_uid['und'][0]['value'] = 254;
+  $omg_validated_rewards = db_select('omg_user_rewards', 'o');
+  $omg_validated_rewards->addExpression('sum(omg_reward)', 'omg_validated_rewards');
+  $omg_validated_rewards->condition('omg_status', 'Validated');
+  $omg_validated_rewards->condition('drupal_uid', $uid)->groupBy('drupal_uid');
+  $total_validated_result = $omg_validated_rewards->execute();
+  $total_validated_rewards = $total_validated_result->fetchObject();
+
+  $omg_pending_rewards = db_select('omg_user_rewards', 'o');
+  $omg_pending_rewards->addExpression('sum(omg_reward)', 'omg_pending_rewards');
+  $omg_pending_rewards->condition('omg_status', 'Pending');
+  $omg_pending_rewards->condition('drupal_uid', $uid)->groupBy('drupal_uid');
+  $total_pending_result = $omg_pending_rewards->execute();
+  $total_pending_rewards = $total_pending_result->fetchObject();
+
+  $date = date("d M, Y", strtotime($node->field_omg_transaction_time['und'][0]['value']));
+  $yourplaceholder = array(
+    'transaction_id' => $node->field_omg_transaction_id['und'][0]['value'],
+    'merchant' => $node->field_omg_merchant['und'][0]['value'],
+    'transaction_status' => $node->field_omg_status['und'][0]['value'],
+    'transaction_time' => $date,
+    'transaction_amount' => $node->field_omg_transaction_value['und'][0]['value'],
+    'total_validated_rewards' => $total_validated_rewards->omg_validated_rewards,
+    'total_pending_rewards' => $total_pending_rewards->omg_pending_rewards,
+    'user_referrer_link_home' => '[user:referral-link]?destination=home',
+  );
+
+
+  $message = array(
+      'to' => 'anilbhatt100in@gmail.com',
+      'subject' => "test",
+      'body' => '<h1>Header 1</h1><h2>header2</h2><p><b>text</b></p>',
+      'headers'=>array(),   //needed
+    );
+
+    $MimeMailSystem = drupal_mail_system('mimemail', 'corp_enhancements');
+    $message = $MimeMailSystem->format($message);
+
+    if($MimeMailSystem->mail($message)){
+      echo 'Sent.';
+    }else{
+      echo 'fail';
+    }
+    exit;
+
+  echo token_replace($text, array('yourplaceholder'=> $yourplaceholder, 'user' => user_load($uid)));
+  exit;
+    print_r($node);exit;
+
 }
