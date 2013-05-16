@@ -483,6 +483,12 @@ padding-bottom: 20px !important;
 	position: fixed;
 }
 
+.context-welcome-message .body{
+	left: 140px;
+	right: 140px;
+	position: fixed;
+	min-width: 0px;
+}
 
 /*------------------------------------*\
 	BY ASHISH PLUGIN
