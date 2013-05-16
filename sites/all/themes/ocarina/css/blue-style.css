@@ -482,6 +482,10 @@ padding-bottom: 20px !important;
 	margin: auto;
 }
 
+.context-welcome-message body{
+	min-width: 800px;
+}
+
 
 /*------------------------------------*\
 	BY ASHISH PLUGIN
