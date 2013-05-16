@@ -477,6 +477,11 @@ padding-bottom: 20px !important;
 .view-faq ul  {margin: 5px 0 0;}
 .view-faq .views-field-title h3 a {text-decoration: none;}
 
+.page-welcome-message{
+	left: 140px;
+	right: 140px;
+	position: fixed;
+}
 
 
 /*------------------------------------*\
