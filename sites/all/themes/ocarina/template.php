@@ -13,6 +13,15 @@
 function ocarina_preprocess_html(&$vars) {
   $file = theme_get_setting('theme_color') . '-style.css';
   drupal_add_css(path_to_theme() . '/css/' . $file, array('group' => CSS_THEME, 'weight' => 115, 'browsers' => array(), 'preprocess' => FALSE));
+  drupal_add_js(array(
+      'CToolsModal' => array(
+          'closeText'=> '',
+          'closeImage' => theme('image', array(
+          'path' => ctools_image_path('icon-close-window.png'),
+          'title' => t('Close window'),
+          'alt' => t('Close window'),
+          ))
+      )), 'setting');
 }
 
 
@@ -28,8 +37,8 @@ function ocarina_preprocess_page(&$variables) {
 
 function ocarina_theme(&$existing, $type, $theme, $path) {
   $hooks['user_login_block'] = array(
-          'template' => 'templates/user-login-block',
-          'render element' => 'form',
+      'template' => 'templates/user-login-block',
+      'render element' => 'form',
   );
   return $hooks;
 }

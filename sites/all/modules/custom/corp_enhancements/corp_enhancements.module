@@ -836,7 +836,7 @@ function _corp_enhancements_send_point_update_email($node) {
       $user_referrer = user_load($uid_refer);
       $yourplaceholder['total_validated_rewards'] = corp_enhancements_get_rewards($uid_refer,'Validated');
       $yourplaceholder['total_pending_rewards'] = corp_enhancements_get_rewards($uid_refer,'Pending');
-      $yourplaceholder['user_referrer_link_home'] =token_replace("[user:referral-link]?destination=home", array('user'=>$user_referrer));
+      $yourplaceholder['user_referrer_link_home'] = token_replace("[user:referral-link]?destination=home", array('user'=>$user_referrer));
       
       $referral_email_body = token_replace($referral_email_body, array('yourplaceholder'=> $yourplaceholder, 'user' => $user_referrer));
       $referral_email_subject = token_replace($referral_email_subject, array('yourplaceholder'=> $yourplaceholder, 'user' => $user_referrer));
