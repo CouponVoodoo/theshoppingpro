@@ -20,7 +20,8 @@
 <?php endif; ?>
 
 
-<?php if (!(arg(0)=="node" && arg(1) == "17609561")) : ?>
+<?php
+if (!(arg(0)=="retailers-partners-list")) : ?>
 <!-- Google Code for Remarketing tag -->
 <!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
 <script type="text/javascript">
