@@ -478,17 +478,10 @@ padding-bottom: 20px !important;
 .view-faq .views-field-title h3 a {text-decoration: none;}
 
 .context-welcome-message{
-	left: 140px;
-	margin-right: 140px;
-	position: fixed;
+	width: 800 px;
+	margin: auto;
 }
 
-.context-welcome-message .body{
-	left: 140px;
-	right: 140px;
-	position: fixed;
-	min-width: 0px;
-}
 
 /*------------------------------------*\
 	BY ASHISH PLUGIN
