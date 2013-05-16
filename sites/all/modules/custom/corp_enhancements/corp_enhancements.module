@@ -797,6 +797,7 @@ function _corp_enhancements_send_point_update_email($node) {
   $referral_email_subject = variable_get('points_update_email_subject_referrer', '');
 
   if (variable_get('points_update_email_enable', FALSE)) {
+    $uid = $node->field_drupal_uid['und'][0]['value'];
     $user = user_load($uid);
     $date = date("d M, Y", strtotime($node->field_omg_transaction_time['und'][0]['value']));
     $user_referrer_link_home = token_replace("[user:referral-link]?destination=home", array('user'=>$user));
