@@ -628,7 +628,7 @@ function corp_enhancements_tokens($type, $tokens, array $data = array(), array $
         case 'total_pending_rewards':
           $replacements[$original] = $data['yourplaceholder']['total_pending_rewards'];
           break;
-       case 'user_referrer_link_home':
+        case 'user_referrer_link_home':
           $replacements[$original] = $data['yourplaceholder']['user_referrer_link_home'];
           break;
       }
@@ -790,40 +790,28 @@ function test_code() {
 }
 
 function _corp_enhancements_send_point_update_email($node) {
-  $uid = $node->field_drupal_uid['und'][0]['value'];
-  $omg_validated_rewards = db_select('omg_user_rewards', 'o');
-  $omg_validated_rewards->addExpression('sum(omg_reward)', 'omg_validated_rewards');
-  $omg_validated_rewards->condition('omg_status', 'Validated');
-  $omg_validated_rewards->condition('drupal_uid', $uid)->groupBy('drupal_uid');
-  $total_validated_result = $omg_validated_rewards->execute();
-  $total_validated_rewards = $total_validated_result->fetchObject();
-
-  $omg_pending_rewards = db_select('omg_user_rewards', 'o');
-  $omg_pending_rewards->addExpression('sum(omg_reward)', 'omg_pending_rewards');
-  $omg_pending_rewards->condition('omg_status', 'Pending');
-  $omg_pending_rewards->condition('drupal_uid', $uid)->groupBy('drupal_uid');
-  $total_pending_result = $omg_pending_rewards->execute();
-  $total_pending_rewards = $total_pending_result->fetchObject();
-
-  $date = date("d M, Y", strtotime($node->field_omg_transaction_time['und'][0]['value']));
-  $yourplaceholder = array(
-      'transaction_id' => $node->field_omg_transaction_id['und'][0]['value'],
-      'merchant' => $node->field_omg_merchant['und'][0]['value'],
-      'transaction_status' => $node->field_omg_status['und'][0]['value'],
-      'transaction_time' => $date,
-      'transaction_amount' => $node->field_omg_transaction_value['und'][0]['value'],
-      'total_validated_rewards' => $total_validated_rewards->omg_validated_rewards,
-      'total_pending_rewards' => $total_pending_rewards->omg_pending_rewards,
-      'user_referrer_link_home' => '[user:referral-link]?destination=home',
-  );
 
   $user_email_body = variable_get('points_update_email_body', '');
   $user_email_subject = variable_get('points_update_email_subject', '');
   $referral_email_body = variable_get('points_update_email_body_referrer', '');
   $referral_email_subject = variable_get('points_update_email_subject_referrer', '');
-  
+
   if (variable_get('points_update_email_enable', FALSE)) {
     $user = user_load($uid);
+    $date = date("d M, Y", strtotime($node->field_omg_transaction_time['und'][0]['value']));
+    $user_referrer_link_home = token_replace("[user:referral-link]?destination=home", array('user'=>$user));
+    $yourplaceholder = array(
+        'transaction_id' => $node->field_omg_transaction_id['und'][0]['value'],
+        'merchant' => $node->field_omg_merchant['und'][0]['value'],
+        'transaction_status' => $node->field_omg_status['und'][0]['value'],
+        'transaction_time' => $date,
+        'transaction_amount' => $node->field_omg_transaction_value['und'][0]['value'],
+        'total_validated_rewards' => corp_enhancements_get_rewards($uid,'Validated'),
+        'total_pending_rewards' => corp_enhancements_get_rewards($uid,'Pending'),
+        'user_referrer_link_home' => $user_referrer_link_home,
+    );
+
+
     $user_email_body = token_replace($user_email_body, array('yourplaceholder'=> $yourplaceholder, 'user' => $user));
     $user_email_subject = token_replace($user_email_subject, array('yourplaceholder'=> $yourplaceholder, 'user' => $user));
 
@@ -835,17 +823,20 @@ function _corp_enhancements_send_point_update_email($node) {
         'headers'=>array(),   //needed
     );
 
-   
+
     $message = $MimeMailSystem->format($message);
-    
+
     if(!$MimeMailSystem->mail($message)) {
       watchdog('user point update email', 'Unable to send user email for uid '.$user->uid);
     }
 
     $uid_refer = referral_get_user($uid);
     if ($uid_refer) {
-      
       $user_referrer = user_load($uid_refer);
+      $yourplaceholder['total_validated_rewards'] = corp_enhancements_get_rewards($uid_refer,'Validated');
+      $yourplaceholder['total_pending_rewards'] = corp_enhancements_get_rewards($uid_refer,'Pending');
+      $yourplaceholder['user_referrer_link_home'] =token_replace("[user:referral-link]?destination=home", array('user'=>$user_referrer));
+      
       $referral_email_body = token_replace($referral_email_body, array('yourplaceholder'=> $yourplaceholder, 'user' => $user_referrer));
       $referral_email_subject = token_replace($referral_email_subject, array('yourplaceholder'=> $yourplaceholder, 'user' => $user_referrer));
 
@@ -862,4 +853,17 @@ function _corp_enhancements_send_point_update_email($node) {
       }
     }
   }
+}
+
+function corp_enhancements_get_rewards($uid, $type = 'Validated', $reward_type = null) {
+  $omg_validated_rewards = db_select('omg_user_rewards', 'o');
+  $omg_validated_rewards->addExpression('sum(omg_reward)', 'omg_reward');
+  $omg_validated_rewards->condition('omg_status', $type);
+  if ($reward_type) {
+    $omg_validated_rewards->condition('omg_reward_type', $type);
+  }
+  $omg_validated_rewards->condition('drupal_uid', $uid)->groupBy('drupal_uid');
+  $total_validated_result = $omg_validated_rewards->execute();
+  $total_validated_rewards = $total_validated_result->fetchObject();
+  return round($total_validated_rewards->omg_reward);
 }
