@@ -1,5 +1,4 @@
 /* $Id: blue-style.css,v 1.0.0 2010/01/29 08:18:15 symphonythemes Exp $ */
-
 /*------------------------------------*\
 	Basic Typography & Colors
 \*------------------------------------*/
@@ -434,15 +433,8 @@ padding-bottom: 20px !important;
 #hybridauth-user-identity .item-list {margin-left: 20px}
 
 /* By Ashish to make the hybrid auth icons on login goto right in login and position properly in register*/
-#user-login .item-list {float: right; position: relative; width:163px; color: #F7971C;}
-#user-login .item-list h3{text-align: center;}
-#user-login .form-item-name{clear:left;}
-#user-login .hybridauth-widget {margin-left:0px;}
-#user-login .hybridauth-widget li{margin:4px;}
-#user-register-form .item-list {margin-left: 0; margin-top: 10px; color: #F7971C;}
-#user-register-form ul.hybridauth-widget{margin-left:0px;}
-#user-register-form ul.hybridauth-widget li{margin-left:10px;}
-
+#user-login .item-list {float: right; position: relative; top: 10px; right: 30px; color: #F7971C;}
+#user-register-form .item-list {margin-left: 20px; margin-top: 10px; color: #F7971C;}
 
 /* By Ashish to centre vertical align the dealer name centre aligned vertical*/
 .centeralign {text-align:left; vertical-align:middle;}
