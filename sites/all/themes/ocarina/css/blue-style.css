@@ -477,7 +477,7 @@ padding-bottom: 20px !important;
 .view-faq .views-field-title h3 a {text-decoration: none;}
 
 
-/*by ashish: hacks to remove header and footer from the welcome page*\
+/* by ashish: hacks to remove header and footer from the welcome page */
 .context-welcome-message .section-header{
 display: none !important;
 }
