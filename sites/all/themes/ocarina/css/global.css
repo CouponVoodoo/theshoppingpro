@@ -1437,7 +1437,7 @@ article.node-products .field-label {
 
 
 .retailers .region-content, .retailers .region-sidebar-second, .retailers .zone-postscript .region{background: none; background-color: #F1ECE3;}
-.retailers .container-16 .grid-16{width: 100%!important}
+.retailers .container-16 .grid-16{width: 100%; !important}
 
 
 
@@ -1446,9 +1446,19 @@ div.error{background-image: none;}
 div.messages{padding: 11px 10px 10px 0px}
 
 
+#quicktabs-tab-plugin_user_tabs-0 {
+    background: url("http://localhost/corp/sites/default/files/login.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 20px;
+    text-indent: -1000px;
+    width: 20px;
+}
 
+#quicktabs-tab-plugin_user_tabs-1 {
+    background: url("http://localhost/corp/sites/default/files/user_reward.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 20px;
+    text-indent: -1000px;
+    width: 20px;
+}
 #user_user_form_group_financial_details input{width:390px;}
-#block-system-main article.node-webform{margin:10px !important}
-#block-system-main article.node-webform .field-item{margin:0px !important; }
-#block-system-main article.node-webform textarea{width:397px;}
-#block-system-main article.node-webform #edit-submitted-retailer{width:194px;}
