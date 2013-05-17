@@ -487,6 +487,10 @@ display: none !important;
 display: none !important;
 }
 
+.zopim {width:240px !important}
+
+.page-node .zopim {width:240px !important}
+
 
 /*------------------------------------*\
 	BY ASHISH PLUGIN
