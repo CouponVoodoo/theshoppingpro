@@ -486,6 +486,19 @@ padding-bottom: 20px !important;
 	min-width: 800px;
 }
 
+.context-test-landing .zone-branding-wrapper{
+display:none !important;
+}
+
+context-test-landing .zone-branding-wrapper{
+display:none !important;
+}
+
+context-test-landing .zone-footer-wrapper
+{
+display:none !important;
+}
+
 
 /*------------------------------------*\
 	BY ASHISH PLUGIN
