@@ -486,11 +486,11 @@ padding-bottom: 20px !important;
 	min-width: 800px;
 }
 
-.context-test-landing .zone-branding-wrapper{
+.context-test-landing .section-header{
 display: none !important;
 }
 
-context-test-landing .zone-footer-wrapper{
+.context-test-landing .section-footer{
 display: none !important;
 }
 
