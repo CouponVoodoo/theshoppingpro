@@ -477,20 +477,11 @@ padding-bottom: 20px !important;
 .view-faq ul  {margin: 5px 0 0;}
 .view-faq .views-field-title h3 a {text-decoration: none;}
 
-.context-welcome-message{
-	width: 800px;
-	margin: auto;
-}
-
-.context-welcome-message body{
-	min-width: 800px;
-}
-
-.context-test-landing .section-header{
+.context-welcome-message .section-header{
 display: none !important;
 }
 
-.context-test-landing .section-footer{
+.context-welcome-message .section-footer{
 display: none !important;
 }
 
