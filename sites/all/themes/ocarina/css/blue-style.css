@@ -477,7 +477,6 @@ padding-bottom: 20px !important;
 .view-faq .views-field-title h3 a {text-decoration: none;}
 
 
-/* by ashish: hacks to remove header and footer from the welcome page */
 .context-welcome-message .section-header{
 display: none !important;
 }
@@ -485,10 +484,6 @@ display: none !important;
 .context-welcome-message .section-footer{
 display: none !important;
 }
-
-.zopim {width:140px !important}
-
-.page-node .zopim {width:140px !important}
 
 
 /*------------------------------------*\
