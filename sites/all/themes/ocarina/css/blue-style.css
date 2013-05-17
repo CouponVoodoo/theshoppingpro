@@ -487,16 +487,11 @@ padding-bottom: 20px !important;
 }
 
 .context-test-landing .zone-branding-wrapper{
-display:none !important;
+display: none !important;
 }
 
-context-test-landing .zone-branding-wrapper{
-display:none !important;
-}
-
-context-test-landing .zone-footer-wrapper
-{
-display:none !important;
+context-test-landing .zone-footer-wrapper{
+display: none !important;
 }
 
 
