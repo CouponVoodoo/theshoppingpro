@@ -1,0 +1,5 @@
+name = Corp Retailers Views
+description= display the list of retailers
+core = "7.x"
+project = "corp_retailers"
+

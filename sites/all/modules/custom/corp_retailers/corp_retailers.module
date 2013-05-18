@@ -1,0 +1,194 @@
+<?php
+define("CORP_RETAILERS_CATEGORY_VID", 3);
+define("CORP_RETAILERS_PARTNER_TID", 13);
+define("CORP_RETAILERS_COMPETITOR_TID", 14);
+
+/**
+ * Implementation of hook_menu
+ */
+function corp_retailers_menu() {
+  $items['retailers-partners-list1'] = array(
+      'title' => 'TheShoppingPro',
+      'description' => 'TheShoppingPro - retailers partner list',
+      'page callback' => 'corp_retailers_list',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+
+/**
+ * Implementation of hook_menu
+ */
+function corp_retailers_theme() {
+  $themes = array(
+      'corp_retailers_list_page' => array(
+          'template' => 'corp-retailers-list-page',
+          'variables' =>  array('data' => null),
+      ),
+  );
+
+  return $themes;
+}
+
+function corp_retailers_list() {
+
+  $redirect = $_GET['redirect'];
+  $url = strtolower($_GET['url']);
+  $uid2 = $_GET['uid2'];
+
+  // categories
+  $category = taxonomy_get_tree(CORP_RETAILERS_CATEGORY_VID);
+  foreach($category  as $cat) {
+    $categories[$cat->tid] = $cat->name;
+  }
+  list($partner_type) = array_keys($partners);
+  $output = corp_retailers_search_url($url, $categories);
+
+  $data = array(
+      'items' => $output,
+      'categories' => $categories,
+      'url' => $url,
+      'uid2'=> $uid2,
+      'redirect'=>$redirect,
+  );
+
+  return theme('corp_retailers_list_page', array('data'=>$data));
+
+
+}
+
+
+function corp_retailers_search_url($url, $category) {
+  $url = strtolower($url);
+
+  $site_of_interest = corp_retailers_get_siteofinterest();
+  if (in_array($url,array_map('strtolower', $site_of_interest))) {
+    return array('site_of_interest'=>$site_of_interest);
+  }
+
+  $partners = corp_retailers_get_partners(CORP_RETAILERS_PARTNER_TID, $category, $url);
+  if (count($partners) > 0) {
+    return $partners;
+  }
+
+  $comp = corp_retailers_get_partners($url, CORP_RETAILERS_COMPETITOR_TID, $category, $url);
+  if (count($partner) > 0) {
+    return array('competitor'=>$partner);
+  }
+}
+
+
+function corp_retailers_get_partners($taxnomomy_id, $categories, $url = null, $country_tid =4) {
+  
+  $return = array(
+      'partners' => array(),
+      'most_populars' => array(),
+  );
+  
+  $query = db_select('node','n')
+      ->fields('n', array('nid','title'));
+
+  $query->join('field_data_field_type','fd',"n.nid = fd.entity_id and fd.entity_type='node' AND fd.deleted=0");
+  $query->join('field_data_field_display_text','dt',"n.nid = dt.entity_id and dt.entity_type='node' AND dt.deleted=0");
+  $query->join('field_data_field_image','img',"n.nid = img.entity_id and img.entity_type='node' AND img.deleted=0");
+
+  $query->join('field_data_field_country','cntry',"n.nid = cntry.entity_id and cntry.entity_type='node' AND cntry.deleted=0");
+  $query->join('field_data_field_primary_category','prmcat',"n.nid = prmcat.entity_id and prmcat.entity_type='node' AND prmcat.deleted=0");
+  $query->join('field_revision_field_is_popular','pop',"n.nid = pop.entity_id and pop.entity_type='node' AND pop.deleted=0");
+
+  $query->join('field_data_field_category','cat',"n.nid = cat.entity_id and cat.entity_type='node' AND cat.deleted=0");
+  $query->join('field_data_field_url','url',"n.nid = url.entity_id and url.entity_type='node' AND url.deleted=0");
+  $query->leftJoin('weight_weights','weight',"n.nid = weight.entity_id");
+  $query->leftJoin('field_data_field_tracking_url','tu',"n.nid = tu.entity_id and tu.entity_type='node' AND tu.deleted=0");
+  $query->fields('tu', array('field_tracking_url_value'));
+  $query->leftJoin('field_collection_item','fci',"tu.field_tracking_url_value = fci.item_id");
+
+  $query->leftJoin('field_data_field_url_part1','p1',"p1.entity_id = tu.field_tracking_url_value");
+  $query->leftJoin('field_data_field_url_part2','p2',"p2.entity_id = tu.field_tracking_url_value");
+  $query->leftJoin('field_data_field_url_part3','p3',"p3.entity_id = tu.field_tracking_url_value");
+  $query->leftJoin('field_data_field_url_part4','p4',"p4.entity_id = tu.field_tracking_url_value");
+  $query->fields('p1', array('field_url_part1_value'));
+  $query->fields('p2', array('field_url_part2_value'));
+  $query->fields('p3', array('field_url_part3_value'));
+  $query->fields('p4', array('field_url_part4_value'));
+  $query->fields('url', array('field_url_value'));
+  $query->fields('dt', array('field_display_text_value'));
+  $query->fields('img', array('field_image_fid'));
+
+  $query->condition('n.type', 'retailers', '=');
+  $query->condition('n.status','1');
+  if ($url) {
+    $query->where('lower(url.field_url_value) = :arg OR pop.field_is_popular_value = :val', array(':arg' => $url,':val'=>1));
+  }
+  $query->condition('fd.field_type_tid', $taxnomomy_id, '=');
+  $query->condition('cntry.field_country_tid', $country_tid, '=');
+  $query->condition('prmcat.field_primary_category_tid', array_keys($categories), 'IN');
+  $query->condition('cat.field_category_tid', array_keys($categories), 'IN');
+  $query->orderBy('weight.weight');
+  $query->orderBy('weight.weight');
+  $query->groupBy('n.nid');
+
+
+  $result = $query->execute();
+  while($row = $result->fetchObject()) {
+    if ($row->field_url_value == $url) {
+      $return['partners'][] = $row;
+    }else {
+      $return['most_populars'][] = $row;
+    }
+  }
+
+  return $return;
+}
+
+
+
+function corp_retailers_get_siteofinterest() {
+  $return = array();
+  $query = db_select('node','n')
+      ->fields('n', array('nid','title'));
+  $query->condition('n.type', 'sites_of_interest', '=');
+  $result = $query->execute();
+  while($row = $result->fetchObject()) {
+    $return[$row->nid]= $row->title;
+  }
+  return $return;
+}
+
+
+
+function corp_retailers_make_url($row, $input_url, $redirect, $uid2) {
+  $url = '';
+  if ((user_is_anonymous())) {
+    $url = url('login_register', array('colorbox'=>true, 'attributes'=>array('class'=>'colorbox_form', 'id'=>'colorbox_form')));
+  }
+  if(isset($row->field_url_part1_value)) {
+    $url = $row->field_url_part1_value;
+  }
+  else {
+    $url ='http://'. $data['url'];
+  }
+  $redirect = '';
+  if(strtolower($row->field_url_value) == $input_url) {
+    $url_part1 = isset ($row->field_url_part1_value) ? $row->field_url_part1_value : '';
+    $url_part2 = isset ($row->field_url_part2_value) ? $row->field_url_part2_value : '';
+    $url_part3 = isset ($row->field_url_part3_value) ? $row->field_url_part3_value : '';
+    $url_part4 = isset ($row->field_url_part4_value) ? $row->field_url_part4_value : '';
+
+    $link_url = url($url);
+    $query = '&uid=' . $user->uid . '&uid2=' . $uid2 . '&redirect=' . urlencode($redirect . $url_part2 . $url_part3 . $url_part4);
+    $url = $link_url.'?'.$query;
+  }
+  return $url;
+}
+
+
+function corp_retailers_page_alter(&$page) {
+  if (arg(0) =="retailers-partners-list1") {
+    foreach (element_children($page) as $region) {
+      $page[$region]['#access'] = ($region == 'content');
+    }
+  }
+}
