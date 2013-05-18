@@ -485,15 +485,6 @@ display: none !important;
 display: none !important;
 }
 
-/* by Ashish to make the olark chat with lesser width */
-
-#habla_window_div{
-width: 100px !important;
-}
-
-#habla_panel_div{
-width: 100px !important;
-}
 
 
 /*------------------------------------*\
