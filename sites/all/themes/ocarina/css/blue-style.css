@@ -485,7 +485,9 @@ display: none !important;
 display: none !important;
 }
 
-
+div.hbl_pal_main_width{
+width: 100px !important;
+}
 
 /*------------------------------------*\
 	BY ASHISH PLUGIN
