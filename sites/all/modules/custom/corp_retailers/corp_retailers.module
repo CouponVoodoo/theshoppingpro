@@ -34,20 +34,42 @@ function corp_retailers_theme() {
 }
 
 function corp_retailers_list() {
-
   $redirect = $_GET['redirect'];
   $url = strtolower($_GET['url']);
   $uid2 = $_GET['uid2'];
 
-// categories
+  // categories
   $category = taxonomy_get_tree(CORP_RETAILERS_CATEGORY_VID);
   foreach($category  as $cat) {
     $categories[$cat->tid] = $cat->name;
   }
 
+
+
+
   $url = strtolower($url);
 
-  $node = corp_retailers_get_url_node($url, true);
+  $node = corp_retailers_get_matching($url);
+
+
+  $node_type = '';
+  if ($node->field_type_tid == CORP_RETAILERS_PARTNER_TID) {
+    $node_type  = 'partner';
+  }elseif($node->field_type_tid == CORP_RETAILERS_COMPETITOR_TID) {
+    $node_type  = 'competitor';
+  }else {
+    if ($node->nid) {
+      $node_type  = 'sites_of_interest';
+    }else {
+      $node_type  = 'notfound';
+    }
+  }
+
+  $output  = array();
+  if ($node->nid) {
+    $output = array('partners'=> array(0=> $node));
+  }
+
 
   $matching_node = array(
       'url' => isset($node->field_url_value) ? $node->field_url_value : $node->field_url_site_of_interest_value,
@@ -57,7 +79,20 @@ function corp_retailers_list() {
       'category'=> ($node->field_type_tid == CORP_RETAILERS_PARTNER_TID) ? array_keys($categories) : explode(',', $node->field_category_tid),
   );
 
-  $output =  corp_retailers_get_nodes($matching_node);
+  switch ($node_type) {
+    case 'partner':
+      $output = array_merge($output, corp_retailers_get_mostpopulars($matching_node));
+      break;
+    case 'competitor':
+    case 'sites_of_interest':
+      $output = corp_retailers_get_recommended($matching_node);
+      $output = array_merge($output, corp_retailers_get_mostpopulars($matching_node));
+      break;
+    case 'notfound':
+      $output = array_merge($output, corp_retailers_get_mostpopulars($matching_node));
+      break;
+  }
+
   $data = array(
       'items' => $output,
       'categories' => $matching_node['category'],
@@ -70,17 +105,13 @@ function corp_retailers_list() {
 }
 
 
-function corp_retailers_get_nodes($matching_node) {
-#print_r($matching_node);exit;
+function corp_retailers_get_recommended($matching_node) {
   $return = array(
-      'partners' => array(),
-      'most_populars' => array(),
       'recommended' => array(
           'popular' => array(),
           'megastore' => array(),
           'rest' => array(),
       ),
-
   );
 
   $query = db_select('node','n')
@@ -89,7 +120,7 @@ function corp_retailers_get_nodes($matching_node) {
   $query->leftJoin('field_data_field_type','fd',"n.nid = fd.entity_id and fd.entity_type='node' AND fd.deleted=0");
   $query->leftJoin('field_data_field_display_text','dt',"n.nid = dt.entity_id and dt.entity_type='node' AND dt.deleted=0");
   $query->leftJoin('field_data_field_image','img',"n.nid = img.entity_id and img.entity_type='node' AND img.deleted=0");
-
+  $query->leftJoin('field_data_field_url_site_of_interest','soi',"n.nid = soi.entity_id and soi.entity_type='node' AND soi.deleted=0");
   $query->leftJoin('field_data_field_country','cntry',"n.nid = cntry.entity_id and cntry.entity_type='node' AND cntry.deleted=0");
   $query->leftJoin('field_data_field_primary_category','prmcat',"n.nid = prmcat.entity_id and prmcat.entity_type='node' AND prmcat.deleted=0");
   $query->leftJoin('field_revision_field_is_popular','pop',"n.nid = pop.entity_id and pop.entity_type='node' AND pop.deleted=0");
@@ -113,52 +144,101 @@ function corp_retailers_get_nodes($matching_node) {
   $query->fields('dt', array('field_display_text_value'));
   $query->fields('img', array('field_image_fid'));
   $query->fields('pop', array('field_is_popular_value'));
+  $query->fields('soi', array('field_url_site_of_interest_value'));
   $query->addExpression('GROUP_CONCAT(prmcat.field_primary_category_tid)', 'field_primary_category_tid');
-  $query->condition('n.type', 'retailers', '=');
+
   $query->condition('n.status','1');
-  if ($matching_node['type'] == CORP_RETAILERS_PARTNER_TID) {
-    $query->where('n.nid = :arg OR pop.field_is_popular_value = :val', array(':arg' => $matching_node['nid'],':val'=>1));
-  }
-  
+  $query->condition('n.type', 'retailers', '=');
+  $query->condition('n.nid', $matching_node['nid'], '<>');
   $query->condition('fd.field_type_tid', CORP_RETAILERS_PARTNER_TID, '=');
+
+  if (isset($matching_node['category'][0]) && !empty($matching_node['category'][0])) {
+#    $query->condition('prmcat.field_primary_category_tid', array_values($matching_node['category']), 'IN');
+    $query->condition('cat.field_category_tid', array_values($matching_node['category']), 'IN');
+  }
+  $query->where('(fd.field_type_tid = :arg OR  fd.field_type_tid IS NULL )', array(':arg'=>CORP_RETAILERS_PARTNER_TID));
   if (isset($matching_node['country'][0]) && !empty($matching_node['country'][0])) {
     $query->condition('cntry.field_country_tid', $matching_node['country'], 'IN');
   }
- # exit;
-  if (isset($matching_node['category'][0]) && !empty($matching_node['category'][0])) {
-    $query->condition('prmcat.field_primary_category_tid', array_values($matching_node['category']), 'IN');
-    $query->condition('cat.field_category_tid', array_values($matching_node['category']), 'IN');
+  $query->orderBy('weight.weight');
+  $query->orderBy('url.field_url_value');
+  $query->groupBy('n.nid');
+
+  # echo $query;
+
+  $result = $query->execute();
+  while($row = $result->fetchObject()) {
+    $primary_cat = explode(',', $row->field_primary_category_tid);
+    if(in_array(CORP_RETAILERS_MEGASTORE_TID, $primary_cat)) {
+      $return['recommended']['megastore'][] = $row;
+    }else {
+      $return['recommended']['rest'][] = $row;
+    }
   }
+
+  $return['recommended'] = array_merge($return['recommended']['megastore'], $return['recommended']['rest']);
+
+  return $return;
+}
+
+function corp_retailers_get_mostpopulars($matching_node) {
+  $return = array(
+      'most_populars' => array(),
+  );
+
+  $query = db_select('node','n')
+      ->fields('n', array('nid','title'));
+
+  $query->leftJoin('field_data_field_type','fd',"n.nid = fd.entity_id and fd.entity_type='node' AND fd.deleted=0");
+  $query->leftJoin('field_data_field_display_text','dt',"n.nid = dt.entity_id and dt.entity_type='node' AND dt.deleted=0");
+  $query->leftJoin('field_data_field_image','img',"n.nid = img.entity_id and img.entity_type='node' AND img.deleted=0");
+  $query->leftJoin('field_data_field_url_site_of_interest','soi',"n.nid = soi.entity_id and soi.entity_type='node' AND soi.deleted=0");
+  $query->leftJoin('field_data_field_country','cntry',"n.nid = cntry.entity_id and cntry.entity_type='node' AND cntry.deleted=0");
+  $query->leftJoin('field_data_field_primary_category','prmcat',"n.nid = prmcat.entity_id and prmcat.entity_type='node' AND prmcat.deleted=0");
+  $query->leftJoin('field_revision_field_is_popular','pop',"n.nid = pop.entity_id and pop.entity_type='node' AND pop.deleted=0");
+
+  $query->leftJoin('field_data_field_category','cat',"n.nid = cat.entity_id and cat.entity_type='node' AND cat.deleted=0");
+  $query->leftJoin('field_data_field_url','url',"n.nid = url.entity_id and url.entity_type='node' AND url.deleted=0");
+  $query->leftJoin('weight_weights','weight',"n.nid = weight.entity_id");
+  $query->leftJoin('field_data_field_tracking_url','tu',"n.nid = tu.entity_id and tu.entity_type='node' AND tu.deleted=0");
+  $query->fields('tu', array('field_tracking_url_value'));
+  $query->leftJoin('field_collection_item','fci',"tu.field_tracking_url_value = fci.item_id");
+
+  $query->leftJoin('field_data_field_url_part1','p1',"p1.entity_id = tu.field_tracking_url_value");
+  $query->leftJoin('field_data_field_url_part2','p2',"p2.entity_id = tu.field_tracking_url_value");
+  $query->leftJoin('field_data_field_url_part3','p3',"p3.entity_id = tu.field_tracking_url_value");
+  $query->leftJoin('field_data_field_url_part4','p4',"p4.entity_id = tu.field_tracking_url_value");
+  $query->fields('p1', array('field_url_part1_value'));
+  $query->fields('p2', array('field_url_part2_value'));
+  $query->fields('p3', array('field_url_part3_value'));
+  $query->fields('p4', array('field_url_part4_value'));
+  $query->fields('url', array('field_url_value'));
+  $query->fields('dt', array('field_display_text_value'));
+  $query->fields('img', array('field_image_fid'));
+  $query->fields('pop', array('field_is_popular_value'));
+  $query->fields('soi', array('field_url_site_of_interest_value'));
+  $query->addExpression('GROUP_CONCAT(prmcat.field_primary_category_tid)', 'field_primary_category_tid');
+
+  $query->condition('n.status','1');
+  $query->condition('n.type', 'retailers', '=');
+  $query->condition('pop.field_is_popular_value', '1', '=');
+  if ($matching_node->nid) {
+    $query->condition('n.nid', $matching_node['nid'], '<>');
+  }
+  $query->condition('cntry.field_country_tid', array(4), 'IN');
+  $query->condition('fd.field_type_tid', CORP_RETAILERS_PARTNER_TID, '=');
   $query->orderBy('weight.weight');
   $query->orderBy('url.field_url_value');
   $query->groupBy('n.nid');
 
   $result = $query->execute();
   while($row = $result->fetchObject()) {
-    if ($matching_node['type'] == CORP_RETAILERS_PARTNER_TID) {
-      if ($row->field_url_value == $matching_node['url']) {
-        $return['partners'][] = $row;
-      }else {
-        $return['most_populars'][] = $row;
-      }
-    }else {
-      $primary_cat = explode(',', $row->field_primary_category_tid);
-      if ($row->field_is_popular_value == '1') {
-        $return['recommended']['popular'][] = $row;
-      }else if(in_array(CORP_RETAILERS_MEGASTORE_TID, $primary_cat)) {
-        $return['recommended']['megastore'][] = $row;
-      }else {
-        $return['recommended']['rest'][] = $row;
-      }
-    }
+    $return['most_populars'][] = $row;
   }
-
-  $return['recommended'] = array_merge($return['recommended']['popular'],  $return['recommended']['megastore'], $return['recommended']['rest']);
-
   return $return;
 }
 
-function corp_retailers_get_url_node($url) {
+function corp_retailers_get_matching($url) {
   $return = array();
   $query = db_select('node','n')
       ->fields('n', array('nid','title'));
@@ -167,17 +247,38 @@ function corp_retailers_get_url_node($url) {
   $query->leftJoin('field_data_field_url_site_of_interest','soi',"n.nid = soi.entity_id and soi.entity_type='node' AND soi.deleted=0");
   $query->leftJoin('field_data_field_country','cntry',"n.nid = cntry.entity_id and cntry.entity_type='node' AND cntry.deleted=0");
   $query->leftJoin('field_data_field_category','cat',"n.nid = cat.entity_id and cat.entity_type='node' AND cat.deleted=0");
+  $query->leftJoin('field_data_field_primary_category','prmcat',"n.nid = prmcat.entity_id and prmcat.entity_type='node' AND prmcat.deleted=0");
+  $query->leftJoin('field_data_field_display_text','dt',"n.nid = dt.entity_id and dt.entity_type='node' AND dt.deleted=0");
+  $query->leftJoin('field_data_field_tracking_url','tu',"n.nid = tu.entity_id and tu.entity_type='node' AND tu.deleted=0");
+  $query->leftJoin('field_revision_field_is_popular','pop',"n.nid = pop.entity_id and pop.entity_type='node' AND pop.deleted=0");
+  $query->leftJoin('field_collection_item','fci',"tu.field_tracking_url_value = fci.item_id");
+  $query->leftJoin('field_data_field_url_part1','p1',"p1.entity_id = tu.field_tracking_url_value");
+  $query->leftJoin('field_data_field_url_part2','p2',"p2.entity_id = tu.field_tracking_url_value");
+  $query->leftJoin('field_data_field_url_part3','p3',"p3.entity_id = tu.field_tracking_url_value");
+  $query->leftJoin('field_data_field_url_part4','p4',"p4.entity_id = tu.field_tracking_url_value");
+  $query->fields('tu', array('field_tracking_url_value'));
+  $query->fields('p1', array('field_url_part1_value'));
+  $query->fields('p2', array('field_url_part2_value'));
+  $query->fields('p3', array('field_url_part3_value'));
+  $query->fields('p4', array('field_url_part4_value'));
 
   $query->fields('fd',array('field_type_tid'));
   $query->fields('url', array('field_url_value'));
   $query->fields('soi', array('field_url_site_of_interest_value'));
+  $query->fields('dt', array('field_display_text_value'));
+  $query->fields('pop', array('field_is_popular_value'));
   $query->addExpression('GROUP_CONCAT(cntry.field_country_tid)', 'field_country_tid');
   $query->addExpression('GROUP_CONCAT(cat.field_category_tid)', 'field_category_tid');
+  $query->addExpression('GROUP_CONCAT(prmcat.field_primary_category_tid)', 'field_primary_category_tid');
+
   $query->condition('n.status','1');
   $query->condition('n.type', array('sites_of_interest','retailers'), 'IN');
   $query->where('((lower(url.field_url_value) = :arg) OR soi.field_url_site_of_interest_value = :arg1)',
       array(':arg' => $url, ':arg1'=>$url));
+
+  #echo $query;exit;
   return $query->execute()->fetchObject();
+
 }
 
 
@@ -185,7 +286,7 @@ function corp_retailers_get_url_node($url) {
 function corp_retailers_make_url($row, $input_url, $redirect, $uid2) {
   $url = '';
   if ((user_is_anonymous())) {
-    $url = url('login_register', array('colorbox'=>true, 'attributes'=>array('class'=>'colorbox_form', 'id'=>'colorbox_form')));
+    return url('login_register', array('attributes'=>array('class'=>'colorbox_form', 'id'=>'colorbox_form')));
   }
   if(isset($row->field_url_part1_value)) {
     $url = $row->field_url_part1_value;

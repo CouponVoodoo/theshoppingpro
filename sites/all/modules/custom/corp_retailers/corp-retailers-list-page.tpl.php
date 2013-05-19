@@ -1,60 +1,55 @@
 <?php global $user; ?>
+<div id="id_retailer_content" class="retailer_content">
+  <div class="retailer_header_image">
+    <?php print '<img src="' . theme_get_setting('logo') . '"  typeof="foaf:Image"/>';?>
+  </div>
+  <div id="retailer_content" class="retailer_content">
+    <?php
+    foreach($data['items'] as $key=> $item) {
+      if ($key =="partners") {
+        $title = 'Matching';
+      }elseif($key == "most_populars") {
+        $title = 'Most Popular';
+      }else {
+        $title = 'Recommended';
+      }
+      $content = '<div class="'.$key.' retailer_content_row" id="id_'.$key.'">
+            <div class="header_row"><h2>'.$title.'</h2></div>';
 
-<div class="view-header">
-  <?php print '<img src="' . theme_get_setting('logo') . '"  typeof="foaf:Image"/>';?>
-</div>
-<?php
+      foreach($item as $k => $row) {
+        // $image = file_load($row->field_image_fid);
+        $class = user_is_logged_in() ? '' : 'ctools-use-modal';
 
-#($data);exit;
+        $url = corp_retailers_make_url($row, $data['url'], $data['redirect'], $data['uid2']);
+        # echo $url;exit;
+        //$desc_link = user_is_logged_in() ? $url : url('modal_forms/nojs/login');
+        // $image_path = file_create_url($image->uri);
 
-foreach($data['items'] as $key=> $item) {
-  $partner_block = new stdClass();
-  if ($key =="partners"){
-    $partner_block->title = 'Matching';
-  }elseif($key == "most_populars"){
-    $partner_block->title = 'Most Popular';
-  }else{
-    $partner_block->title = 'Recommended';
-  }
-  
-  $partner_block->content = '';
-  foreach($item as $k => $row) {
-   // $image = file_load($row->field_image_fid);
-    $class = user_is_logged_in() ? '' : 'ctools-use-modal';
-
-    $url = corp_retailers_make_url($row, $data['url'], $data['redirect'], $data['uid2']);
-    $desc_link = user_is_logged_in() ? $url : url('/modal_forms/nojs/login');
-   // $image_path = file_create_url($image->uri);
-
-    $desc_text = user_is_logged_in() ? 'CLICK & '.$row->field_display_text_value : 'LOGIN &amp;'.$row->field_display_text_value;
+        $desc_text = $row->field_display_text_value;
 
 
-    if (user_is_logged_in()) {
-      $target = "_blank";
-      $link_title = l($row->title,  $url, array('query' => array('uid'=>$user->uid, 'uid2'=>$data['uid2']), 'attributes'=>array('target'=>'_blank'), 'external' => TRUE));
-    }else {
-      $target = '';
-      $link_title = l($row->title, $url, array('colorbox'=>true, 'attributes'=>array('class'=>'colorbox_form', 'id'=>'colorbox_form')));
+        if (user_is_logged_in()) {
+          $target = "_blank";
+          $link_title = l($row->title,  $url, array('query' => array('uid'=>$user->uid, 'uid2'=>$data['uid2']), 'attributes'=>array('target'=>'_blank',),'html'=>TRUE, 'external' => TRUE));
+          $desc_link = l($desc_text,  $url, array('query' => array('uid'=>$user->uid, 'uid2'=>$data['uid2']), 'attributes'=>array('target'=>'_blank'),'html'=>TRUE, 'external' => TRUE));
+        }else {
+          $target = '';
+          $link_title = l($row->title, 'modal_forms/nojs/login' , array('attributes'=>array( 'class'=>array($class)),'html'=>TRUE));
+          $desc_link = l($desc_text, 'modal_forms/nojs/login' , array('attributes'=>array( 'class'=>array($class)),'html'=>TRUE));
+        }
+
+        $content .= '<div class="'.$key.'_row">
+                    <div class="row_header"><h3>'.$link_title.'</h3></div>
+                    <div class="row_content">
+                       '.$desc_link.'
+                    </div>
+                  </div>';
+
+      }
+      $content .= '</div>';
+      echo $content;
     }
 
-    $partner_block->content .= '
-    <div class="view-content">
-      <div class="views-row">
-      <div class="views-field">
-          <span class="field-content">
-            <strong>'.$link_title.'</strong>
-          </span>
-      </div>
-      <div class="views-field">
-          <span class="field-content">
-            <a class="'.$class.'" href="'.$desc_link.'" target="'.$target.'">'.$desc_text.'</a>
-          </span>
-      </div>
-      </div>
-    </div>';
-
-  }
-  $contents[] = $partner_block;
-}
-echo theme('accordion_block', array('content'=>$contents));
-?>
+    ?>
+  </div>
+</div>
