@@ -499,6 +499,13 @@ float: right;
 font-size: 10px !important;
 }
 
+.hbl_txt_wrapper{
+height: 50px !important;
+}
+
+#hbl_txt_wrapper{
+height: 50px !important;
+}
  
 /*------------------------------------*\
 	BY ASHISH PLUGIN
