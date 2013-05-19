@@ -193,7 +193,7 @@ function corp_retailers_make_url($row, $input_url, $redirect, $uid2) {
   else {
     $url ='http://'. $input_url;
   }
-  $redirect = '';
+
   if(strtolower($row->field_url_value) == $input_url) {
     $url_part1 = isset ($row->field_url_part1_value) ? $row->field_url_part1_value : '';
     $url_part2 = isset ($row->field_url_part2_value) ? $row->field_url_part2_value : '';
