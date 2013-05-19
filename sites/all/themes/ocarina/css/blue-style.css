@@ -490,11 +490,13 @@ display: none !important;
 #habla_window_div{
 width: 100px !important;
 float: right;
+font-size: 10px !important;
 }
 
 #habla_panel_div{
 width: 100px !important;
 float: right;
+font-size: 10px !important;
 }
 
  
