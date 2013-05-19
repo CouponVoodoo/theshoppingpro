@@ -19,12 +19,12 @@ foreach($data['items'] as $key=> $item) {
   
   $partner_block->content = '';
   foreach($item as $k => $row) {
-    $image = file_load($row->field_image_fid);
+   // $image = file_load($row->field_image_fid);
     $class = user_is_logged_in() ? '' : 'ctools-use-modal';
 
     $url = corp_retailers_make_url($row, $data['url'], $data['redirect'], $data['uid2']);
     $desc_link = user_is_logged_in() ? $url : url('/modal_forms/nojs/login');
-    $image_path = file_create_url($image->uri);
+   // $image_path = file_create_url($image->uri);
 
     $desc_text = user_is_logged_in() ? 'CLICK & '.$row->field_display_text_value : 'LOGIN &amp;'.$row->field_display_text_value;
 
@@ -42,14 +42,11 @@ foreach($data['items'] as $key=> $item) {
       <div class="views-row">
       <div class="views-field">
           <span class="field-content">
-            '.$link_title.'
+            <strong>'.$link_title.'</strong>
           </span>
       </div>
       <div class="views-field">
           <span class="field-content">
-            <a class="'.$class.'" href="'.$desc_link.'">
-              <img width="100" height="100" typeof="foaf:Image" src="'.$image_path.'">
-            </a>
             <a class="'.$class.'" href="'.$desc_link.'" target="'.$target.'">'.$desc_text.'</a>
           </span>
       </div>
