@@ -499,11 +499,11 @@ float: right;
 font-size: 10px !important;
 }
 
-.hbl_txt_wrapper{
+.hbl_txt_wrapper textarea{
 height: 50px !important;
 }
 
-#hbl_txt_wrapper{
+#hbl_txt_wrapper textarea{
 height: 50px !important;
 }
  
