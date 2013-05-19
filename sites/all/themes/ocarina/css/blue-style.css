@@ -763,7 +763,7 @@ padding: 10px !important;
 
 /* By Ashish to make the accordian content ok */
 .ui-accordion-content-active{
-height:250px !important;
+height:225px !important;
 font-size:10px !important;
 color:#F7971C !important;
 text-align: center !important;
