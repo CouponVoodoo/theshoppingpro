@@ -11,8 +11,10 @@ foreach($data['items'] as $key=> $item) {
   $partner_block = new stdClass();
   if ($key =="partners"){
     $partner_block->title = 'Matching';
-  }else{
+  }elseif($key == "most_populars"){
     $partner_block->title = 'Most Popular';
+  }else{
+    $partner_block->title = 'Recommended';
   }
   
   $partner_block->content = '';
