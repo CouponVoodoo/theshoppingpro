@@ -844,7 +844,7 @@ accordion_blocks_container{
 
 /* By Ashish to customize user login - link only block*/
 #block-block-12 .block-title{
-  background: #25ADE3 !important;
+  background: #F7971C !important;
   padding: 0px 0px 0px 0px !important;
   margin: -10px 0px 0px 0px !important;
 
@@ -1057,13 +1057,13 @@ div#field-markup-add-more-wrapper{
   color: white;
   font-size: 13px;
   font-weight: bold;
-  padding: 5px;
+  padding: 5px 0px 5px 0px;
   text-align: center;
   text-transform: none;
   margin:0px !important;
 }
 
-#id_retailer_content_plugin .content_plugin{border-bottom:1px solid #CCCCCC;}
+#id_retailer_content_plugin .content_plugin{border-bottom:1px solid #CCCCCC; background: #F7F7F7}
 #id_retailer_content_plugin .content_plugin:hover {background:#E4E4E4}
 #id_retailer_content_plugin .title_plugin{
   color: #25ADE3;
