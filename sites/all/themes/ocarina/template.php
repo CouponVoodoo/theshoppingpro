@@ -34,6 +34,10 @@ function ocarina_preprocess_page(&$variables) {
     $variables['styles'] = drupal_get_css();
   }
 
+//  if (arg(0)=="retailers-partners-list1") {
+//    $variables['theme_hook_suggestions'][] = 'page__plugin';
+//  }
+
 
   # print_r($page);exit;
 
