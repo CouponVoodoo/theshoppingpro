@@ -284,6 +284,7 @@ function corp_retailers_get_matching($url) {
 
 
 function corp_retailers_make_url($row, $input_url, $redirect, $uid2) {
+  global $user;
   $url = '';
   if ((user_is_anonymous())) {
     return url('login_register', array('attributes'=>array('class'=>'colorbox_form', 'id'=>'colorbox_form')));

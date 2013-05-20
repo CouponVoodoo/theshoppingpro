@@ -30,8 +30,8 @@
 
         if (user_is_logged_in()) {
           $target = "_blank";
-          $link_title = l($row->title,  $url, array('query' => array('uid'=>$user->uid, 'uid2'=>$data['uid2']), 'attributes'=>array('target'=>'_blank',),'html'=>TRUE, 'external' => TRUE));
-          $desc_link = l($desc_text,  $url, array('query' => array('uid'=>$user->uid, 'uid2'=>$data['uid2']), 'attributes'=>array('target'=>'_blank'),'html'=>TRUE, 'external' => TRUE));
+          $link_title = l($row->title,  $url, array('attributes'=>array('target'=>'_blank',),'html'=>TRUE, 'external' => TRUE));
+          $desc_link = l($desc_text,  $url, array('attributes'=>array('target'=>'_blank'),'html'=>TRUE, 'external' => TRUE));
         }else {
           $target = '';
           $link_title = l($row->title, 'modal_forms/nojs/login' , array('attributes'=>array( 'class'=>array($class)),'html'=>TRUE));
