@@ -310,17 +310,22 @@ function corp_retailers_make_url($row, $input_url, $redirect, $uid2) {
   else {
     $url ='http://'. $input_url;
   }
-
+  
+  $link_url = url($url);
   if(strtolower($row->field_url_value) == $input_url) {
     $url_part1 = isset ($row->field_url_part1_value) ? $row->field_url_part1_value : '';
     $url_part2 = isset ($row->field_url_part2_value) ? $row->field_url_part2_value : '';
     $url_part3 = isset ($row->field_url_part3_value) ? $row->field_url_part3_value : '';
     $url_part4 = isset ($row->field_url_part4_value) ? $row->field_url_part4_value : '';
 
-    $link_url = url($url);
-    $query = '&uid=' . $user->uid . '&uid2=' . $uid2 . '&redirect=' . urlencode($redirect . $url_part2 . $url_part3 . $url_part4);
-    $url = $link_url.'?'.$query;
+    
+    $redirect = urlencode($redirect . $url_part2 . $url_part3 . $url_part4);
+    //$url = $link_url.'?'.$query;
+  }else{
+    $redirect = urlencode($redirect);
   }
+  $query = '&uid=' . $user->uid . '&uid2=' . $uid2 . '&redirect=' . $redirect;
+  $url = $link_url.'?'.$query;
   return $url;
 }
 

@@ -9,11 +9,11 @@
     
     foreach($data['items'] as $key=> $item) {
       if ($key =="partners") {
-        $title = 'Matching';
+        $title = 'Cashback';
       }elseif($key == "most_populars") {
         $title = 'Most Popular';
       }else {
-        $title = 'Recommended';
+        $title = ' Best Cashback';
       }
 
       
