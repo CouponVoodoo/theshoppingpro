@@ -1069,7 +1069,7 @@ div#field-markup-add-more-wrapper{
   color: #25ADE3;
   font-size: 10px;
   font-weight: bold;
-  padding: 2px 2px 2px 2px;
+  padding: 2px 2px 2px 3px;
   text-align: left;
   text-decoration: none !important;
   margin:0px;
@@ -1084,6 +1084,6 @@ div#field-markup-add-more-wrapper{
   font-size: 10px;
   text-decoration: none !important;
 }
-#id_retailer_content_plugin .body_row_plugin p{margin:0px;padding:2px 2px 2px 2px;}
+#id_retailer_content_plugin .body_row_plugin p{margin:0px;padding:0px 2px 2px 3px;}
 
 .page-retailers-partners-list #page{background-image: none !important;}
