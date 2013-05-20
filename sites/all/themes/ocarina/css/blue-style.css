@@ -1040,3 +1040,30 @@ div#field-markup-add-more-wrapper{
 .page-retailers-partners-list div.messages{
 display:none;
 }
+
+ 
+/*------------------------------------*\
+	BY ASHISH NEW PLUGIN PAGE
+\*------------------------------------*/
+
+
+
+.page-retailers-partners-list1{
+background: none !important;
+}
+
+
+.page-retailers-partners-list1{
+background: none !important;
+}
+
+.page-retailers-partners-list1 h2{
+    background: none repeat scroll 0 0 #F7971C;
+    color: white;
+    font-family: Arial;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+    text-transform: none
+}
