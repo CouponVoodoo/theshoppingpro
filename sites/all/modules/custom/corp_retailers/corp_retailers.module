@@ -44,9 +44,6 @@ function corp_retailers_list() {
     $categories[$cat->tid] = $cat->name;
   }
 
-
-
-
   $url = strtolower($url);
 
   $node = corp_retailers_get_matching($url);
@@ -104,6 +101,24 @@ function corp_retailers_list() {
 
 }
 
+function corp_retailers_block_info() {
+  $blocks['corp_retailers'] = array(
+      'info' => t('Retailers: configurable text string'),
+  );
+  return $blocks;
+}
+
+function corp_retailers_block_view($delta = '') {
+  // The $delta parameter tells us which block is being requested.
+  switch ($delta) {
+    case 'corp_retailers':
+    // Create your block content here
+      $block['content'] = corp_retailers_list();
+      break;
+  }
+
+  return $block;
+}
 
 function corp_retailers_get_recommended($matching_node) {
   $return = array(
