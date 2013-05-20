@@ -1063,13 +1063,13 @@ div#field-markup-add-more-wrapper{
   margin:0px !important;
 }
 
-#id_retailer_content_plugin .content_plugin{border:1px solid #CCCCCC;}
+#id_retailer_content_plugin .content_plugin{border-bottom:1px solid #CCCCCC;}
 #id_retailer_content_plugin .content_plugin:hover {background:#E4E4E4}
 #id_retailer_content_plugin .title_plugin{
   color: #25ADE3;
   font-size: 10px;
   font-weight: bold;
-  padding-bottom: 2px;
+  padding-bottom: 2px 2px 2px 2px;
   padding-top: 2px;
   text-align: left;
   text-decoration: none !important;
@@ -1085,6 +1085,6 @@ div#field-markup-add-more-wrapper{
   font-size: 10px;
   text-decoration: none !important;
 }
-#id_retailer_content_plugin .body_row_plugin p{margin:0px;padding:0px;}
+#id_retailer_content_plugin .body_row_plugin p{margin:0px;padding:0px 2px 0px 2px;}
 
 .page-retailers-partners-list #page{background-image: none !important;}
