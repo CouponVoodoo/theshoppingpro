@@ -1094,14 +1094,13 @@ div#field-markup-add-more-wrapper{
 	display: none;
 }
 
-.block-multiblock-1 span.st_facebook_button{
-	padding: 3px;
+.block-multiblock-1 .sharethis-wrapper{
+	padding: 5px !important;
 }
 
-.block-multiblock-1 span.st_twitter_button{
-	padding: 3px;
+.block-multiblock-1 span.stMainServices{
+	padding:5px;
 }
-
 
 .block-multiblock-1 h2.block-title{
   background: none repeat scroll 0 0 #F7971C;
