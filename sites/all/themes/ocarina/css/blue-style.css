@@ -1094,9 +1094,13 @@ div#field-markup-add-more-wrapper{
 	display: none;
 }
 
+.block-multiblock-1 span.stMainServices{
+	padding: 3px;
+}
+
 .block-multiblock-1 h2.block-title{
   background: none repeat scroll 0 0 #F7971C;
-  color: white;
+  color: white !important;
   font-size: 13px;
   font-weight: bold;
   padding: 5px 0px 5px 0px;
