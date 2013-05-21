@@ -1042,7 +1042,9 @@ div#field-markup-add-more-wrapper{
 }
 
 
-/*Plugin page css */
+/*------------------------------------*\
+	NEW PLUGIN PAGE
+\*------------------------------------*/
 
 #id_retailer_content_plugin {background:white;}
 #id_retailer_content_plugin .retailer_header_image{text-align: center;margin:0px auto;}
@@ -1087,3 +1089,7 @@ div#field-markup-add-more-wrapper{
 #id_retailer_content_plugin .body_row_plugin p{margin:0px;padding:0px 2px 2px 3px;}
 
 .page-retailers-partners-list #page{background-image: none !important;}
+
+div.sharethis-wrapper p{
+	display: none;
+}
