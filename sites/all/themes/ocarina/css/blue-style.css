@@ -1090,6 +1090,17 @@ div#field-markup-add-more-wrapper{
 
 .page-retailers-partners-list #page{background-image: none !important;}
 
-div.sharethis-wrapper p{
+block-multiblock-1 p{
 	display: none;
+}
+
+block-multiblock-1 h2.block-title{
+  background: none repeat scroll 0 0 #F7971C;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 5px 0px 5px 0px;
+  text-align: center;
+  text-transform: none;
+  margin:0px !important;
 }
