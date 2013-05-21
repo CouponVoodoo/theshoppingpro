@@ -1090,11 +1090,11 @@ div#field-markup-add-more-wrapper{
 
 .page-retailers-partners-list #page{background-image: none !important;}
 
-block-multiblock-1 p{
+.block-multiblock-1 p{
 	display: none;
 }
 
-block-multiblock-1 h2.block-title{
+.block-multiblock-1 h2.block-title{
   background: none repeat scroll 0 0 #F7971C;
   color: white;
   font-size: 13px;
