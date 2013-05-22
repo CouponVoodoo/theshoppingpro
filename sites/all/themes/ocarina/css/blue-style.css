@@ -171,6 +171,10 @@ article.node-products form.commerce-add-to-cart .form-submit {
 \*------------------------------------*/
 
 
+.site-slogan{
+   color: #F7971C;
+}
+
 /* By Ashish to make homepage image ok in firefox:" NEED TO CORRECT AS THIS WILL MAKE THE SITE ACT WEIRD ON MOBILE*/
 .views-slideshow-cycle-main-frame .field-content{
   width: 840px;
