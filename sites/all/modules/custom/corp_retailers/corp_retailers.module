@@ -312,7 +312,8 @@ function corp_retailers_get_matching($url) {
  */
 
 
-function corp_retailers_make_url($row, $input_url, $redirect, $uid2, $affiliate_id = 19) {
+function corp_retailers_make_url($row,$found_url, $input_url, $redirect, $uid2, $affiliate_id = 19) {
+  
   if ((user_is_anonymous())) {
     return url('login_register', array('attributes'=>array('class'=>'colorbox_form', 'id'=>'colorbox_form')));
   }
@@ -330,7 +331,7 @@ function corp_retailers_make_url($row, $input_url, $redirect, $uid2, $affiliate_
 
   switch($affiliate_id) {
     case 36: //DGMPRO
-      if(strtolower($row->field_url_value) == $input_url) {
+      if(strtolower($found_url) == $input_url) {
         $url_part1 = isset ($row->field_url_part1_value) ? $row->field_url_part1_value : '';
         $url_part2 = isset ($row->field_url_part2_value) ? $row->field_url_part2_value : '';
         $url_part3 = isset ($row->field_url_part3_value) ? $row->field_url_part3_value : '';
@@ -344,7 +345,7 @@ function corp_retailers_make_url($row, $input_url, $redirect, $uid2, $affiliate_
       }
       break;
     case 19: //OMGPM
-      if(strtolower($row->field_url_value) == $input_url) {
+      if(strtolower($found_url) == $input_url) {
         $url_part2 = isset ($row->field_url_part2_value) ? $row->field_url_part2_value : '';
         $url_part3 = isset ($row->field_url_part3_value) ? $row->field_url_part3_value : '';
         $url_part4 = isset ($row->field_url_part4_value) ? $row->field_url_part4_value : '';
@@ -360,7 +361,7 @@ function corp_retailers_make_url($row, $input_url, $redirect, $uid2, $affiliate_
     case 33: //Tyroo
     case 34: //Shoogloo
     case 35: //Komli
-      if(strtolower($row->field_url_value) == $input_url) {
+      if(strtolower($found_url) == $input_url) {
         $url_part2 = isset ($row->field_url_part2_value) ? $row->field_url_part2_value : '';
         $url_part3 = isset ($row->field_url_part3_value) ? $row->field_url_part3_value : '';
         $url_part4 = isset ($row->field_url_part4_value) ? $row->field_url_part4_value : '';
