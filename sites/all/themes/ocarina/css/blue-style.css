@@ -173,6 +173,9 @@ article.node-products form.commerce-add-to-cart .form-submit {
 
 .site-slogan{
    color: #F7971C;
+   font-family: arial;
+   font-weight: bold;
+   padding-left: 20px;
 }
 
 /* By Ashish to make homepage image ok in firefox:" NEED TO CORRECT AS THIS WILL MAKE THE SITE ACT WEIRD ON MOBILE*/
