@@ -338,10 +338,10 @@ function corp_retailers_make_url($row,$found_url, $input_url, $redirect, $uid2, 
         $url_part4 = isset ($row->field_url_part4_value) ? $row->field_url_part4_value : '';
         $redirect = urlencode($redirect . $url_part2 . $url_part3 . $url_part4);
         $query = '&k=' . $user->uid . '|' . $uid2 . '&t=' . $redirect;
-        $url = $link_url.'?'.$query;
+        $url = $link_url.$query;
       }else {
         $query = '&k=' . $user->uid . '|' . $uid2;
-        $url = $link_url.'?'.$query;
+        $url = $link_url.$query;
       }
       break;
     case 19: //OMGPM
