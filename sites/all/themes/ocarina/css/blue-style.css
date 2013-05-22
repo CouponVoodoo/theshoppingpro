@@ -1071,20 +1071,21 @@ div#field-markup-add-more-wrapper{
   color: #25ADE3;
   font-weight: bold;
   font-size: 11px;
-  font-family: arial;
+  font-family: arial !important;
   padding: 2px 2px 2px 3px;
   text-align: left;
   text-decoration: none !important;
   margin:0px;
 }
-#id_retailer_content_plugin .title_plugin a{color: #25ADE3; font-size: 11px; font-family: arial;}
-#id_retailer_content_plugin .body_row_plugin a {color: #333333 !important; font-size: 11px; font-family: arial;}
+#id_retailer_content_plugin .title_plugin a{color: #25ADE3; font-size: 11px; font-family: arial !important;}
+#id_retailer_content_plugin .body_row_plugin a {color: #333333 !important; font-size: 11px; font-family: arial !important;}
 
 #id_retailer_content_plugin .body_row_plugin{
   color: #333333 !important;
   text-align: left;
+  font-family: arial !important;
   cursor: pointer;
-  font-size: 10px;
+  font-size: 11px;
   text-decoration: none !important;
 }
 #id_retailer_content_plugin .body_row_plugin p{margin:0px;padding:0px 2px 2px 3px;}
