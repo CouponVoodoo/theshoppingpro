@@ -34,6 +34,7 @@ function corp_retailers_theme() {
 }
 
 function corp_retailers_list() {
+
   $redirect = $_GET['redirect'];
   $url = strtolower($_GET['url']);
   $uid2 = $_GET['uid2'];
@@ -48,7 +49,7 @@ function corp_retailers_list() {
 
   $node = corp_retailers_get_matching($url);
 
-
+  #print_r($node);exit;
   $node_type = '';
   if ($node->field_type_tid == CORP_RETAILERS_PARTNER_TID) {
     $node_type  = 'partner';
@@ -141,20 +142,11 @@ function corp_retailers_get_recommended($matching_node) {
   $query->leftJoin('field_revision_field_is_popular','pop',"n.nid = pop.entity_id and pop.entity_type='node' AND pop.deleted=0");
 
   $query->leftJoin('field_data_field_category','cat',"n.nid = cat.entity_id and cat.entity_type='node' AND cat.deleted=0");
+  $query->leftJoin('field_data_field_active_affiliate','aa',"n.nid = aa.entity_id and aa.entity_type='node' AND aa.deleted=0");
   $query->leftJoin('field_data_field_url','url',"n.nid = url.entity_id and url.entity_type='node' AND url.deleted=0");
   $query->leftJoin('weight_weights','weight',"n.nid = weight.entity_id");
-  $query->leftJoin('field_data_field_tracking_url','tu',"n.nid = tu.entity_id and tu.entity_type='node' AND tu.deleted=0");
-  $query->fields('tu', array('field_tracking_url_value'));
-  $query->leftJoin('field_collection_item','fci',"tu.field_tracking_url_value = fci.item_id");
 
-  $query->leftJoin('field_data_field_url_part1','p1',"p1.entity_id = tu.field_tracking_url_value");
-  $query->leftJoin('field_data_field_url_part2','p2',"p2.entity_id = tu.field_tracking_url_value");
-  $query->leftJoin('field_data_field_url_part3','p3',"p3.entity_id = tu.field_tracking_url_value");
-  $query->leftJoin('field_data_field_url_part4','p4',"p4.entity_id = tu.field_tracking_url_value");
-  $query->fields('p1', array('field_url_part1_value'));
-  $query->fields('p2', array('field_url_part2_value'));
-  $query->fields('p3', array('field_url_part3_value'));
-  $query->fields('p4', array('field_url_part4_value'));
+  $query->fields('aa',array('field_active_affiliate_tid'));
   $query->fields('url', array('field_url_value'));
   $query->fields('dt', array('field_display_text_value'));
   $query->fields('img', array('field_image_fid'));
@@ -183,6 +175,9 @@ function corp_retailers_get_recommended($matching_node) {
 
   $result = $query->execute();
   while($row = $result->fetchObject()) {
+    $row->urls = _corp_retailers_load_field_collection_tracking_url($row->nid, $row->field_active_affiliate_tid);
+
+
     $primary_cat = explode(',', $row->field_primary_category_tid);
     if(in_array(CORP_RETAILERS_MEGASTORE_TID, $primary_cat)) {
       $return['recommended']['megastore'][] = $row;
@@ -195,6 +190,31 @@ function corp_retailers_get_recommended($matching_node) {
 
   return $return;
 }
+
+function _corp_retailers_load_field_collection_tracking_url($nid, $active_affiliate_id) {
+  //echo $active_affiliate_id;exit;
+  $return = array();
+  if (empty($active_affiliate_id)) {
+    return $return;
+  }
+  $query = db_select('field_data_field_tracking_url','tu');
+  $query->fields('tu', array('field_tracking_url_value'));
+  $query->fields('p1', array('field_url_part1_value'));
+  $query->fields('p2', array('field_url_part2_value'));
+  $query->fields('p3', array('field_url_part3_value'));
+  $query->fields('p4', array('field_url_part4_value'));
+  $query->join('field_data_field_affiliate','fa',"fa.entity_id = tu.field_tracking_url_value");
+  $query->leftJoin('field_data_field_url_part1','p1',"p1.entity_id = fa.entity_id");
+  $query->leftJoin('field_data_field_url_part2','p2',"p2.entity_id = fa.entity_id");
+  $query->leftJoin('field_data_field_url_part3','p3',"p3.entity_id = fa.entity_id");
+  $query->leftJoin('field_data_field_url_part4','p4',"p4.entity_id = fa.entity_id");
+  $query->condition('fa.field_affiliate_tid', array($active_affiliate_id), 'IN');
+  $query->condition('tu.entity_id', $nid);
+
+  $return = $query->execute()->fetchObject();
+  return $return;
+}
+
 
 function corp_retailers_get_mostpopulars($matching_node) {
   $return = array(
@@ -212,21 +232,13 @@ function corp_retailers_get_mostpopulars($matching_node) {
   $query->leftJoin('field_data_field_primary_category','prmcat',"n.nid = prmcat.entity_id and prmcat.entity_type='node' AND prmcat.deleted=0");
   $query->leftJoin('field_revision_field_is_popular','pop',"n.nid = pop.entity_id and pop.entity_type='node' AND pop.deleted=0");
 
+  $query->leftJoin('field_data_field_active_affiliate','aa',"n.nid = aa.entity_id and aa.entity_type='node' AND aa.deleted=0");
+
   $query->leftJoin('field_data_field_category','cat',"n.nid = cat.entity_id and cat.entity_type='node' AND cat.deleted=0");
   $query->leftJoin('field_data_field_url','url',"n.nid = url.entity_id and url.entity_type='node' AND url.deleted=0");
   $query->leftJoin('weight_weights','weight',"n.nid = weight.entity_id");
-  $query->leftJoin('field_data_field_tracking_url','tu',"n.nid = tu.entity_id and tu.entity_type='node' AND tu.deleted=0");
-  $query->fields('tu', array('field_tracking_url_value'));
-  $query->leftJoin('field_collection_item','fci',"tu.field_tracking_url_value = fci.item_id");
 
-  $query->leftJoin('field_data_field_url_part1','p1',"p1.entity_id = tu.field_tracking_url_value");
-  $query->leftJoin('field_data_field_url_part2','p2',"p2.entity_id = tu.field_tracking_url_value");
-  $query->leftJoin('field_data_field_url_part3','p3',"p3.entity_id = tu.field_tracking_url_value");
-  $query->leftJoin('field_data_field_url_part4','p4',"p4.entity_id = tu.field_tracking_url_value");
-  $query->fields('p1', array('field_url_part1_value'));
-  $query->fields('p2', array('field_url_part2_value'));
-  $query->fields('p3', array('field_url_part3_value'));
-  $query->fields('p4', array('field_url_part4_value'));
+  $query->fields('aa',array('field_active_affiliate_tid'));
   $query->fields('url', array('field_url_value'));
   $query->fields('dt', array('field_display_text_value'));
   $query->fields('img', array('field_image_fid'));
@@ -248,6 +260,7 @@ function corp_retailers_get_mostpopulars($matching_node) {
 
   $result = $query->execute();
   while($row = $result->fetchObject()) {
+    $row->urls = _corp_retailers_load_field_collection_tracking_url($row->nid, $row->field_active_affiliate_tid);
     $return['most_populars'][] = $row;
   }
   return $return;
@@ -264,19 +277,10 @@ function corp_retailers_get_matching($url) {
   $query->leftJoin('field_data_field_category','cat',"n.nid = cat.entity_id and cat.entity_type='node' AND cat.deleted=0");
   $query->leftJoin('field_data_field_primary_category','prmcat',"n.nid = prmcat.entity_id and prmcat.entity_type='node' AND prmcat.deleted=0");
   $query->leftJoin('field_data_field_display_text','dt',"n.nid = dt.entity_id and dt.entity_type='node' AND dt.deleted=0");
-  $query->leftJoin('field_data_field_tracking_url','tu',"n.nid = tu.entity_id and tu.entity_type='node' AND tu.deleted=0");
   $query->leftJoin('field_revision_field_is_popular','pop',"n.nid = pop.entity_id and pop.entity_type='node' AND pop.deleted=0");
-  $query->leftJoin('field_collection_item','fci',"tu.field_tracking_url_value = fci.item_id");
-  $query->leftJoin('field_data_field_url_part1','p1',"p1.entity_id = tu.field_tracking_url_value");
-  $query->leftJoin('field_data_field_url_part2','p2',"p2.entity_id = tu.field_tracking_url_value");
-  $query->leftJoin('field_data_field_url_part3','p3',"p3.entity_id = tu.field_tracking_url_value");
-  $query->leftJoin('field_data_field_url_part4','p4',"p4.entity_id = tu.field_tracking_url_value");
-  $query->fields('tu', array('field_tracking_url_value'));
-  $query->fields('p1', array('field_url_part1_value'));
-  $query->fields('p2', array('field_url_part2_value'));
-  $query->fields('p3', array('field_url_part3_value'));
-  $query->fields('p4', array('field_url_part4_value'));
+  $query->leftJoin('field_data_field_active_affiliate','aa',"n.nid = aa.entity_id and aa.entity_type='node' AND aa.deleted=0");
 
+  $query->fields('aa',array('field_active_affiliate_tid'));
   $query->fields('fd',array('field_type_tid'));
   $query->fields('url', array('field_url_value'));
   $query->fields('soi', array('field_url_site_of_interest_value'));
@@ -291,51 +295,87 @@ function corp_retailers_get_matching($url) {
   $query->where('((lower(url.field_url_value) = :arg) OR soi.field_url_site_of_interest_value = :arg1)',
       array(':arg' => $url, ':arg1'=>$url));
 
-  #echo $query;exit;
-  return $query->execute()->fetchObject();
+  //echo $query;exit;
+  $row = $query->execute()->fetchObject();
+
+  $row->urls = _corp_retailers_load_field_collection_tracking_url($row->nid, $row->field_active_affiliate_tid);
+  return $row;
 
 }
+/**
+ * 36 : DGMPRO
+ * 10 : Direct
+ * 35 : Komli
+ * 19 : OMG
+ * 34 : Shoogloo
+ * 33 : Tyroo
+ */
 
 
-
-function corp_retailers_make_url($row, $input_url, $redirect, $uid2) {
-  global $user;
-  $url = '';
+function corp_retailers_make_url($row, $input_url, $redirect, $uid2, $affiliate_id = 19) {
   if ((user_is_anonymous())) {
     return url('login_register', array('attributes'=>array('class'=>'colorbox_form', 'id'=>'colorbox_form')));
   }
+
+  global $user;
+  $url = '';
+
   if(isset($row->field_url_part1_value)) {
     $url = $row->field_url_part1_value;
   }
   else {
     $url ='http://'. $input_url;
   }
-
   $link_url = url($url);
-  if(strtolower($row->field_url_value) == $input_url) {
-    $url_part1 = isset ($row->field_url_part1_value) ? $row->field_url_part1_value : '';
-    $url_part2 = isset ($row->field_url_part2_value) ? $row->field_url_part2_value : '';
-    $url_part3 = isset ($row->field_url_part3_value) ? $row->field_url_part3_value : '';
-    $url_part4 = isset ($row->field_url_part4_value) ? $row->field_url_part4_value : '';
 
+  switch($affiliate_id) {
+    case 36: //DGMPRO
+      if(strtolower($row->field_url_value) == $input_url) {
+        $url_part1 = isset ($row->field_url_part1_value) ? $row->field_url_part1_value : '';
+        $url_part2 = isset ($row->field_url_part2_value) ? $row->field_url_part2_value : '';
+        $url_part3 = isset ($row->field_url_part3_value) ? $row->field_url_part3_value : '';
+        $url_part4 = isset ($row->field_url_part4_value) ? $row->field_url_part4_value : '';
+        $redirect = urlencode($redirect . $url_part2 . $url_part3 . $url_part4);
+        $query = '&k=' . $user->uid . '|' . $uid2 . '&t=' . $redirect;
+        $url = $link_url.'?'.$query;
+      }else {
+        $query = '&k=' . $user->uid . '|' . $uid2;
+        $url = $link_url.'?'.$query;
+      }
+      break;
+    case 19: //OMGPM
+      if(strtolower($row->field_url_value) == $input_url) {
+        $url_part2 = isset ($row->field_url_part2_value) ? $row->field_url_part2_value : '';
+        $url_part3 = isset ($row->field_url_part3_value) ? $row->field_url_part3_value : '';
+        $url_part4 = isset ($row->field_url_part4_value) ? $row->field_url_part4_value : '';
 
-    $redirect = urlencode($redirect . $url_part2 . $url_part3 . $url_part4);
-    $query = '&uid=' . $user->uid . '&uid2=' . $uid2 . '&redirect=' . $redirect;
-    $url = $link_url.'?'.$query;
-    //$url = $link_url.'?'.$query;
-  }else {
-    $query = '&uid=' . $user->uid . '&uid2=' . $uid2;
-    $url = $link_url.'?'.$query;
+        $redirect = urlencode($redirect . $url_part2 . $url_part3 . $url_part4);
+        $query = '&uid=' . $user->uid . '&uid2=' . $uid2 . '&redirect=' . $redirect;
+        $url = $link_url.'?'.$query;
+      }else {
+        $query = '&uid=' . $user->uid . '&uid2=' . $uid2;
+        $url = $link_url.'?'.$query;
+      }
+      break;
+    case 33: //Tyroo
+    case 34: //Shoogloo
+    case 35: //Komli
+      if(strtolower($row->field_url_value) == $input_url) {
+        $url_part2 = isset ($row->field_url_part2_value) ? $row->field_url_part2_value : '';
+        $url_part3 = isset ($row->field_url_part3_value) ? $row->field_url_part3_value : '';
+        $url_part4 = isset ($row->field_url_part4_value) ? $row->field_url_part4_value : '';
+
+        $redirect = urlencode($redirect . $url_part2 . $url_part3 . $url_part4);
+        $query = '&subid1=' . $user->uid . '&subid2=' . $uid2 . '&lnkurl=' . $redirect;
+        $url = $link_url.'?'.$query;
+      }else {
+        $query = '&subid1=' . $user->uid . '&subid2=' . $uid2;
+        $url = $link_url.'?'.$query;
+      }
+      break;
+    case 10: //Direct : ignored.
+      break;
   }
-
   return $url;
 }
 
-
-function corp_retailers_page_alter(&$page) {
-  if (arg(0) =="retailers-partners-list1") {
-    foreach (element_children($page) as $region) {
-      $page[$region]['#access'] = ($region == 'content');
-    }
-  }
-}

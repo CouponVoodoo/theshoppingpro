@@ -25,7 +25,7 @@
         // $image = file_load($row->field_image_fid);
         $class = user_is_logged_in() ? '' : 'ctools-use-modal';
 
-        $url = corp_retailers_make_url($row, $data['url'], $data['redirect'], $data['uid2']);
+        $url = corp_retailers_make_url($row->urls, $data['url'], $data['redirect'], $data['uid2'], $row->field_active_affiliate_tid);
         $desc_text = $row->field_display_text_value;
         if (user_is_logged_in()) {
           $target = "_blank";
