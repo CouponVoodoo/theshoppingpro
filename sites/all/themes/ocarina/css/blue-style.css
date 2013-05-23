@@ -1121,3 +1121,7 @@ div#field-markup-add-more-wrapper{
   text-transform: none;
   margin:0px !important;
 }
+
+ul#main-menu{
+background: none repeat scroll 0 0 rgba(0, 0, 0, 0.4) !important;
+}
