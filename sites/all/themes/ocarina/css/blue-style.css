@@ -1125,3 +1125,7 @@ div#field-markup-add-more-wrapper{
 ul#main-menu{
 background: none repeat scroll 0 0 rgba(0, 0, 0, 0.4) !important;
 }
+
+ul#main-menu li a{
+padding: 10px 20px;
+}
