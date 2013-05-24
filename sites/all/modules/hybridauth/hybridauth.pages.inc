@@ -67,16 +67,15 @@ function _hybridauth_window_close($redirect = TRUE) {
   // Prevent devel module from spewing.
   $GLOBALS['devel_shutdown'] = FALSE;
   // Visitors can register accounts without admin approval.
-  if ((!variable_get('hybridauth_register', 0) && variable_get('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL) == USER_REGISTER_VISITORS)
-    || variable_get('hybridauth_register', 0) == 1) {
+  //if ((!variable_get('hybridauth_register', 0) && variable_get('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL) == USER_REGISTER_VISITORS)
+  //  || variable_get('hybridauth_register', 0) == 1) {
     $destination = drupal_get_destination();
     $destination = token_replace($destination['destination'], array('user' => $user), array('clear' => TRUE));
-  }
+  //}
   //redirect to front page
   //else {
   //  $destination = '';
   //}
- # echo $destination;exit;
   drupal_add_js('
     var redirect = ' . ($redirect ? 'true' : 'false') . ';
     if (window.opener && redirect) {
@@ -90,7 +89,6 @@ function _hybridauth_window_close($redirect = TRUE) {
       window.location.replace(window.location.href);
     }
   ', 'inline');
-   
   $page = element_info('page');
   $page['#children'] = 'Closing...';
   print theme('html', array('page' => $page));
@@ -196,6 +194,10 @@ function _hybridauth_window_process_auth($data) {
   }
   // Handle duplicate email addresses.
   elseif (variable_get('hybridauth_duplicate_emails', 1) && !empty($data['email']) && $account = user_load_by_mail($data['email'])) {
+    print_r(variable_get('hybridauth_duplicate_emails', 1));
+    print_r($data['email']);
+    print_r($account);
+    exit;
     // Add identity to existing account, only if emailVerified.
     if (variable_get('hybridauth_duplicate_emails', 1) == 2 && $data['email'] == $data['emailVerified']) {
       _hybridauth_identity_save($data, $account->uid);
@@ -452,9 +454,7 @@ function hybridauth_additional_info_form_validate($form, &$form_state) {
 }
 
 function hybridauth_additional_info_form_submit($form, &$form_state) {
-  
   $data = $form_state['values']['data'];
- 
   $required_fields = array_filter(variable_get('hybridauth_required_fields', array('email' => 'email')));
   
   foreach ($required_fields as $key => $value) {
@@ -469,8 +469,7 @@ function hybridauth_additional_info_form_submit($form, &$form_state) {
     $data['manual'][] = 'username';
   }
   $data['manual'] = implode(',', $data['manual']);
-
-   print_r($data);exit;
+  
   _hybridauth_window_process_auth($data);
 }
 
