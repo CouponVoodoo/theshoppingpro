@@ -67,19 +67,36 @@ function _hybridauth_window_close($redirect = TRUE) {
   // Prevent devel module from spewing.
   $GLOBALS['devel_shutdown'] = FALSE;
   // Visitors can register accounts without admin approval.
-  //if ((!variable_get('hybridauth_register', 0) && variable_get('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL) == USER_REGISTER_VISITORS)
-  //  || variable_get('hybridauth_register', 0) == 1) {
+  if ((!variable_get('hybridauth_register', 0) && variable_get('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL) == USER_REGISTER_VISITORS)
+    || variable_get('hybridauth_register', 0) == 1) {
     $destination = drupal_get_destination();
     $destination = token_replace($destination['destination'], array('user' => $user), array('clear' => TRUE));
-  //}
+  }
   //redirect to front page
   //else {
   //  $destination = '';
   //}
-  drupal_add_js('
+ /* drupal_add_js('
     var redirect = ' . ($redirect ? 'true' : 'false') . ';
     if (window.opener && redirect) {
       window.opener.location.href = "' . url($destination, array('absolute' => TRUE)) . '";
+      window.self.close();
+    }
+    else if (redirect) {
+      window.location.href = "' . url($destination, array('absolute' => TRUE)) . '";
+    }
+    else {
+      window.location.replace(window.location.href);
+    }
+  ', 'inline');*/
+   drupal_add_js('
+    var redirect = ' . ($redirect ? 'true' : 'false') . ';
+    if (window.opener && redirect) {
+      window.opener.location.href = "' . url($destination, array('absolute' => TRUE)) . '";
+      window.self.close();
+    }
+    else if (window.opener) {
+      window.opener.location.replace(window.opener.location.href);
       window.self.close();
     }
     else if (redirect) {
