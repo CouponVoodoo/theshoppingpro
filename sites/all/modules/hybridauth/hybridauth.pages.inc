@@ -76,27 +76,11 @@ function _hybridauth_window_close($redirect = TRUE) {
   //else {
   //  $destination = '';
   //}
- /* drupal_add_js('
+  echo $destination;exit;
+  drupal_add_js('
     var redirect = ' . ($redirect ? 'true' : 'false') . ';
     if (window.opener && redirect) {
       window.opener.location.href = "' . url($destination, array('absolute' => TRUE)) . '";
-      window.self.close();
-    }
-    else if (redirect) {
-      window.location.href = "' . url($destination, array('absolute' => TRUE)) . '";
-    }
-    else {
-      window.location.replace(window.location.href);
-    }
-  ', 'inline');*/
-   drupal_add_js('
-    var redirect = ' . ($redirect ? 'true' : 'false') . ';
-    if (window.opener && redirect) {
-      window.opener.location.href = "' . url($destination, array('absolute' => TRUE)) . '";
-      window.self.close();
-    }
-    else if (window.opener) {
-      window.opener.location.replace(window.opener.location.href);
       window.self.close();
     }
     else if (redirect) {
@@ -106,6 +90,7 @@ function _hybridauth_window_close($redirect = TRUE) {
       window.location.replace(window.location.href);
     }
   ', 'inline');
+   
   $page = element_info('page');
   $page['#children'] = 'Closing...';
   print theme('html', array('page' => $page));
