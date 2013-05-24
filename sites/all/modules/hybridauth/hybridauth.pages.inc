@@ -452,7 +452,9 @@ function hybridauth_additional_info_form_validate($form, &$form_state) {
 }
 
 function hybridauth_additional_info_form_submit($form, &$form_state) {
+  
   $data = $form_state['values']['data'];
+  print_r($data);exit;
   $required_fields = array_filter(variable_get('hybridauth_required_fields', array('email' => 'email')));
   
   foreach ($required_fields as $key => $value) {
