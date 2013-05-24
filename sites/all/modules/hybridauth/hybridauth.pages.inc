@@ -195,7 +195,7 @@ function _hybridauth_window_process_auth($data) {
   // Handle duplicate email addresses.
   elseif (variable_get('hybridauth_duplicate_emails', 1) && !empty($data['email']) && $account = user_load_by_mail($data['email'])) {
     print_r(variable_get('hybridauth_duplicate_emails', 1));
-    print_r($data['email']);
+    print_r($data);
     print_r($account);
     exit;
     // Add identity to existing account, only if emailVerified.
