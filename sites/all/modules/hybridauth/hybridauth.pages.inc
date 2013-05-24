@@ -76,7 +76,7 @@ function _hybridauth_window_close($redirect = TRUE) {
   //else {
   //  $destination = '';
   //}
-  echo $destination;exit;
+ # echo $destination;exit;
   drupal_add_js('
     var redirect = ' . ($redirect ? 'true' : 'false') . ';
     if (window.opener && redirect) {
