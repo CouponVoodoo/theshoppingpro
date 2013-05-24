@@ -265,6 +265,7 @@ function corp_retailers_get_mostpopulars($matching_node) {
     $row->urls = _corp_retailers_load_field_collection_tracking_url($row->nid, $row->field_active_affiliate_tid);
     $return['most_populars'][] = $row;
   }
+  shuffle($return['most_populars']);
   return $return;
 }
 

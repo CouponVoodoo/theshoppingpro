@@ -472,6 +472,8 @@ function corp_enhancement_user_reward_calculation() {
             $update_node = node_load($node_data->nid);
             $update_node->field_drupal_processing_status[LANGUAGE_NONE][0]['value'] = 1;
             node_save($update_node);
+            // send email to users.
+            _corp_enhancements_send_point_update_email($update_node);
           }
         }
       } else {
@@ -784,8 +786,31 @@ function corp_enhancements_send_email($text, $account, $language = NULL) {
 }
 
 function test_code() {
-  $id = $_GET['q'];
-  _corp_enhancements_send_point_update_email(node_load($id));
+
+  $transcation_id = "registration_".REQUEST_TIME;
+  db_insert('omg_user_rewards')
+      ->fields(
+      array('drupal_uid',
+      'omg_status',
+      'omg_transaction_id',
+      'omg_reward',
+      'omg_reward_percentage',
+      'omg_reward_type',
+      'time'
+      ))
+      ->values(
+      array('drupal_uid' => 1,
+      'omg_status' => 'Validated',
+      'omg_transaction_id' => $transcation_id,
+      'omg_reward' => '125',
+      'omg_reward_percentage' => '100',
+      'omg_reward_type' => 'Buyer',
+      $transcation_id
+      ))
+      ->execute();
+  
+
+  //_corp_enhancements_send_point_update_email(node_load($id));
   exit;
 }
 
@@ -837,7 +862,7 @@ function _corp_enhancements_send_point_update_email($node) {
       $yourplaceholder['total_validated_rewards'] = corp_enhancements_get_rewards($uid_refer,'Validated');
       $yourplaceholder['total_pending_rewards'] = corp_enhancements_get_rewards($uid_refer,'Pending');
       $yourplaceholder['user_referrer_link_home'] = token_replace("[user:referral-link]?destination=home", array('user'=>$user_referrer));
-      
+
       $referral_email_body = token_replace($referral_email_body, array('yourplaceholder'=> $yourplaceholder, 'user' => $user_referrer));
       $referral_email_subject = token_replace($referral_email_subject, array('yourplaceholder'=> $yourplaceholder, 'user' => $user_referrer));
 
