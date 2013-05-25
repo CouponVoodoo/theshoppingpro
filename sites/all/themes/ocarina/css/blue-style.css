@@ -179,10 +179,14 @@ article.node-products form.commerce-add-to-cart .form-submit {
 } 
 
 /* By Ashish to make homepage image ok in firefox:" NEED TO CORRECT AS THIS WILL MAKE THE SITE ACT WEIRD ON MOBILE*/
-.views-slideshow-cycle-main-frame .field-content{
+/*.views-slideshow-cycle-main-frame .field-content{
   width: 840px;
   padding: 20px;
   color: #ffffff !important;
+}*/
+.views-slideshow-cycle-main-frame .field-content{
+	color: #fff !important;
+	text-align:center;
 }
 
 
@@ -1128,4 +1132,43 @@ background: none repeat scroll 0 0 rgba(0, 0, 0, 0.4) !important;
 
 ul#main-menu li a{
 padding: 10px 20px;
+}
+
+#views_slideshow_cycle_main_retailer_list_for_home_page-block{}
+#views_slideshow_cycle_main_retailer_list_for_home_page-block
+.views-slideshow-cycle-main-frame-row-item {
+	float: left;
+	width: 190px;
+	border: 1px solid #111;
+	margin: 10px;
+	padding: 5px;
+	background: transparent;
+	min-height: 200px;
+}
+
+#views_slideshow_cycle_main_retailer_list_for_home_page-block
+.views-slideshow-cycle-main-frame-row-item .field-content img {
+	width: 100px;
+	border: 1px solid #eee;
+}
+
+#views_slideshow_cycle_main_retailer_list_for_home_page-block
+.views-slideshow-cycle-main-frame-row-item h2 {
+	text-align:center;
+}
+
+#views_slideshow_cycle_main_retailer_list_for_home_page-block
+.views-slideshow-cycle-main-frame-row-item .views-field-field-image{
+	text-align:center;
+}
+.view-retailer-list-for-home-page .view-footer{
+	text-align:right;
+
+}
+.view-retailer-list-for-home-page .view-footer a{
+		color:#fff;
+}
+.views-slideshow-cycle-main-frame-row-item .views-field-title{
+	text-align: center;
+	margin-top: 9px;
 }
