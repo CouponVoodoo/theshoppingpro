@@ -9,9 +9,19 @@
     
     foreach($data['items'] as $key=> $item) {
       if ($key =="partners") {
-        $title = 'Cashback';
+        $row = $item[0];
+        $class = user_is_logged_in() ? 'plugin_title_row' : 'ctools-use-modal plugin_title_row';
+        if (user_is_logged_in()) {
+          $target = "_blank";
+          $link_title = l(($item[0]->title),  $url, array('attributes'=>array('target'=>'_blank', 'class'=>array($class)),'html'=>TRUE, 'external' => TRUE));
+        }else {
+          $target = '';
+          $link_title = l(($item[0]->title), 'modal_forms/nojs/login' , array('attributes'=>array( 'class'=>array($class)),'html'=>TRUE));
+        }
+        $item[0]->title = '';
+        $title = 'Cashback @ ' . $link_title;
       }elseif($key == "most_populars") {
-        $title = 'Most Popular';
+        $title = 'Popular Cashback';
       }else {
         $title = ' Best Cashback';
       }
@@ -37,8 +47,13 @@
           $desc_link = l(($desc_text), 'modal_forms/nojs/login' , array('attributes'=>array( 'class'=>array($class)),'html'=>TRUE));
         }
 
+        $header_row = '';
+        if ($row->title){
+          $header_row = '<div class="row_header"><h3 class="title_plugin">'.$link_title.'</h3></div>';
+        }
+        
         $content .= '<div class="'.$key.'_row content_plugin">
-                    <div class="row_header"><h3 class="title_plugin">'.$link_title.'</h3></div>
+                    '.$header_row.'
                     <div class="body_row_plugin">
                        '.$desc_link.'
                     </div>
