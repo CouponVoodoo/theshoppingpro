@@ -1105,9 +1105,9 @@ div#field-markup-add-more-wrapper{
 #id_partners .h2_plugin
 {font-size:15px;}
 
-#id_partners .body_row_plugin p{font-weight:bold}
+#id_partners .body_row_plugin p{font-weight:bold, padding: 5px 2px 5px 2px !important;}
 
-#id_retailer_content_plugin .body_row_plugin p{margin:2px;padding:5px 2px 5px 2px; line-height: 120%;}
+#id_retailer_content_plugin .body_row_plugin p{margin:2px;padding:2px 2px 2px 2px; line-height: 120%;}
 
 .page-retailers-partners-list #page{background-image: none !important;}
 
