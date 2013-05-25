@@ -1170,6 +1170,9 @@ padding: 10px 15px !important;
 .view-retailer-list-for-home-page1 .view-footer a{
 		color:#fff;
 }
+.views-slideshow-cycle-main-frame-row-item .views-field-field-testimonial-image{
+	text-align: center;
+}
 .views-slideshow-cycle-main-frame-row-item .views-field-title{
 	text-align: center;
 	margin-top: 9px;
