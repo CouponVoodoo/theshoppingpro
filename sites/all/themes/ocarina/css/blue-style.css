@@ -1134,8 +1134,8 @@ ul#main-menu li a{
 padding: 5px 20px;
 }
 
-#views_slideshow_cycle_main_retailer_list_for_home_page-block{}
-#views_slideshow_cycle_main_retailer_list_for_home_page-block
+
+#views_slideshow_cycle_main_retailer_list_for_home_page1-block
 .views-slideshow-cycle-main-frame-row-item {
 	float: left;
 	width: 190px;
@@ -1146,18 +1146,18 @@ padding: 5px 20px;
 	min-height: 200px;
 }
 
-#views_slideshow_cycle_main_retailer_list_for_home_page-block
+#views_slideshow_cycle_main_retailer_list_for_home_page1-block
 .views-slideshow-cycle-main-frame-row-item .field-content img {
 	width: 100px;
 	border: 1px solid #eee;
 }
 
-#views_slideshow_cycle_main_retailer_list_for_home_page-block
+#views_slideshow_cycle_main_retailer_list_for_home_page1-block
 .views-slideshow-cycle-main-frame-row-item h2 {
 	text-align:center;
 }
 
-#views_slideshow_cycle_main_retailer_list_for_home_page-block
+#views_slideshow_cycle_main_retailer_list_for_home_page1-block
 .views-slideshow-cycle-main-frame-row-item .views-field-field-image{
 	text-align:center;
 }
