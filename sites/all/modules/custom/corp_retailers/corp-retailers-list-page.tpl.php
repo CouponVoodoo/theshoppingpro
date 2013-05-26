@@ -6,7 +6,7 @@
   <div id="retailer_content" class="plugin_wrapper">
     <?php
 
-    
+
     foreach($data['items'] as $key=> $item) {
       if ($key =="partners") {
         $row = $item[0];
@@ -21,12 +21,15 @@
         $item[0]->title = '';
         $title = 'Cashback @ ' . $link_title;
       }elseif($key == "most_populars") {
+        // Track user.
+        $referrer = token_replace("[user:referral-link]", array('user'=>$user));
+        echo l('',corp_retailers_track_user($data['url'], $user->uid, $data['uid2'], $referrer));
         $title = 'Popular Cashback';
       }else {
         $title = ' Best Cashback';
       }
 
-      
+
       $content = '<div class="'.$key.' retailer_content_row" id="id_'.$key.'">
             <div class="header_row_h2"><h2 class="h2_plugin">'.$title.'</h2></div>
             <div class="'.$key.'_plugin_scroll">';
@@ -48,10 +51,10 @@
         }
 
         $header_row = '';
-        if ($row->title){
+        if ($row->title) {
           $header_row = '<div class="row_header"><h3 class="title_plugin">'.$link_title.'</h3></div>';
         }
-        
+
         $content .= '<div class="'.$key.'_row content_plugin">
                     '.$header_row.'
                     <div class="body_row_plugin">

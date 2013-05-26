@@ -384,5 +384,6 @@ function corp_retailers_track_user($url, $uid, $uid2, $referrer) {
   if (empty ($uid)){
     return false;
   }
-  $response = file_get_contents('http://plugin.theshoppingpro.com/drupalLog.php?url=' . $url . '&drupalUserID=' . $uid . '&uid2=' . $uid2 . '&referralLink=' . $referrer);
+  //$response = file_get_contents('http://plugin.theshoppingpro.com/drupalLog.php?url=' . $url . '&drupalUserID=' . $uid . '&uid2=' . $uid2 . '&referralLink=' . $referrer);
+  return 'http://plugin.theshoppingpro.com/drupalLog.php?url=' . $url . '&drupalUserID=' . $uid . '&uid2=' . $uid2 . '&referralLink=' . $referrer;
 }
