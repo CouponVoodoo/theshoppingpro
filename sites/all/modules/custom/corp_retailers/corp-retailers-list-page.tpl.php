@@ -27,7 +27,7 @@
         drupal_add_js('jQuery(document).ready(function () {
                        jQuery.ajax({
                           url: "'.corp_retailers_track_user($data["url"], $user->uid, $data["uid2"], $referrer).'",
-                          async: false,
+                          async: true,
                           dataType: "jsonp",
                           success: function (data) {
                             //alert(1);
