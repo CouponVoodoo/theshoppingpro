@@ -30,7 +30,7 @@
                           async: false,
                           dataType: "jsonp",
                           success: function (data) {
-                            alert(1);
+                            //alert(1);
                           }
                         });
                       });', 'inline');
