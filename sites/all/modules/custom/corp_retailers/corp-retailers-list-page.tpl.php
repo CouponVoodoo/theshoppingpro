@@ -23,7 +23,19 @@
       }elseif($key == "most_populars") {
         // Track user.
         $referrer = token_replace("[user:referral-link]", array('user'=>$user));
-        echo l('',corp_retailers_track_user($data['url'], $user->uid, $data['uid2'], $referrer));
+
+        drupal_add_js('jQuery(document).ready(function () {
+                       jQuery.ajax({
+                          url: "'.corp_retailers_track_user($data["url"], $user->uid, $data["uid2"], $referrer).'",
+                          async: false,
+                          dataType: "jsonp",
+                          success: function (data) {
+                            alert(1);
+                          }
+                        });
+                      });', 'inline');
+
+       # echo l('',corp_retailers_track_user($data['url'], $user->uid, $data['uid2'], $referrer));
         $title = 'Popular Cashback';
       }else {
         $title = ' Best Cashback';
