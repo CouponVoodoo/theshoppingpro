@@ -61,6 +61,32 @@ function corp_enhancements_menu() {
  * Implementation of hook_views_query_alter
  */
 function corp_enhancements_views_query_alter($view, $query) {
+  switch ($view->name) {
+    case 'retailer_list_for_home_page1' :
+    case 'rewards' :
+      $ga_join = new views_join();
+      $ga_join->table = 'field_data_field_active_affiliate';
+      $ga_join->field = 'entity_id';
+      $ga_join->left_table = 'node';
+      $ga_join->left_field = 'nid';
+      $ga_join->type = 'INNER';
+      $ga_join->extra = 'field_data_field_active_affiliate.entity_type = \'node\' AND field_data_field_active_affiliate.deleted = \'0\'';
+      $query->add_relationship('field_data_field_active_affiliate', $ga_join, 'node', null);
+
+      $ga_join = new views_join();
+      $ga_join->table = 'field_data_field_affiliate';
+      $ga_join->field = 'entity_id';
+      $ga_join->left_table = 'field_data_field_tracking_url';
+      $ga_join->left_field = 'field_tracking_url_value';
+      $ga_join->type = 'INNER';
+      $ga_join->extra = 'field_data_field_active_affiliate.field_active_affiliate_tid = field_data_field_affiliate.field_affiliate_tid';
+
+      $query->add_relationship('field_data_field_affiliate', $ga_join, 'field_data_field_affiliate', null);
+      break;
+  }
+
+
+
   if ($view->name == 'Competitor_list') {
     $term_name->name = '';
     $id = '';
@@ -473,7 +499,7 @@ function corp_enhancement_user_reward_calculation() {
             $update_node->field_drupal_processing_status[LANGUAGE_NONE][0]['value'] = 1;
             node_save($update_node);
             // send email to users.
-           // _corp_enhancements_send_point_update_email($update_node);
+            // _corp_enhancements_send_point_update_email($update_node);
           }
         }
       } else {
