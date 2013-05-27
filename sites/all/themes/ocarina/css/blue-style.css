@@ -1094,11 +1094,6 @@ div#field-markup-add-more-wrapper{
   font-size: 11px;
   text-decoration: none !important;
 }
-#id_partners .body_row_plugin p,
-#id_partners .h2_plugin
-{font-size:15px;}
-
-#id_partners .body_row_plugin p{font-weight:bold, padding: 5px 2px 5px 2px !important;}
 
 #id_retailer_content_plugin .body_row_plugin p{margin:2px;padding:2px 2px 2px 2px; line-height: 120%;}
 
