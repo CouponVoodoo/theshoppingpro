@@ -20,7 +20,7 @@
         }
         $item[0]->title = '';
         $title = 'Cashback @ ' . $link_title;
-		$row->field_display_text_value = '&nbsp;  (Cashback cannot exceed order value)';
+		$row->field_display_text_value = $row->field_display_text_value .'&nbsp;  (Cashback cannot exceed order value)';
       }elseif($key == "most_populars") {
         // Track user.
         $referrer = token_replace("[user:referral-link]", array('user'=>$user));
