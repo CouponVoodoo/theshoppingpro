@@ -702,19 +702,17 @@ function partner_retail_with_category_url_check() {
   }
 }
 
-
 /**
  * Adding is chrome function
  */
 function is_chrome() {
   if (strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== false) {
     return TRUE;
-  }else {
+  } 
+  else {
     return FALSE;
   }
 }
-
-
 
 /**
  * Export data to csv
