@@ -1175,3 +1175,13 @@ padding: 10px 15px !important;
 .views-slideshow-cycle-main-frame .field-content{
   color: #ffffff !important;
 }
+
+.page-retailers-partners-list .block{
+   border:none !important;
+}
+.page-retailers-partners-list #block-block-12 .content{
+   background:black;
+}
+.page-retailers-partners-list .region{
+  border-bottom:none !important;
+}
