@@ -33,6 +33,9 @@ function ocarina_preprocess_page(&$variables) {
     //drupal_add_css(path_to_theme() .'/iframe.css');
     $variables['styles'] = drupal_get_css();
   }
+  if (arg(0) == "welcome-message") {
+    $variables['theme_hook_suggestions'][] = 'page--welcome_message';
+  }
 
 //  if (arg(0)=="retailers-partners-list1") {
 //    $variables['theme_hook_suggestions'][] = 'page__plugin';

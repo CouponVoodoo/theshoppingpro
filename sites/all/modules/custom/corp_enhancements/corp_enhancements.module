@@ -54,6 +54,13 @@ function corp_enhancements_menu() {
       'access arguments' => array('administer site configuration'),
       'type' => MENU_CALLBACK,
   );
+  
+  $items['welcome-message'] = array(
+      'title' => 'Welcome',
+      'page callback' => 'welcome_message',
+      'access arguments' => array('access content'),
+      'type' => MENU_CALLBACK,
+  );
   return $items;
 }
 
@@ -268,14 +275,14 @@ function corp_enhancements_views_query_alter($view, $query) {
 */
 function corp_enhancements_theme() {
   $themes = array(
-      'corp_enhancements_login_register' => array(
-          'template' => 'corp-enhancements-login-register', // your template file called custompage.tpl.php
-          'arguments' => array(),
-      ),
-      'corp_enhancement_competitor_info' => array(
-          'template' => 'corp-enhancement-competitor-info', // your template file called custompage.tpl.php
-          'arguments' => array('competitor_data'),
-      ),
+    'corp_enhancements_login_register' => array(
+      'template' => 'corp-enhancements-login-register', // your template file called custompage.tpl.php
+      'arguments' => array(),
+    ),
+    'corp_enhancement_competitor_info' => array(
+      'template' => 'corp-enhancement-competitor-info', // your template file called custompage.tpl.php
+      'arguments' => array('competitor_data'),
+    ),
   );
 
   return $themes;
@@ -891,4 +898,11 @@ function corp_enhancements_mail($key, &$message, $params) {
     $message['subject'] = $params['subject'];
     $message['body'] = $params['body'];
   }
+}
+
+/**
+ * Function to call menu item welcome_message 
+ */
+function welcome_message() {
+  return theme('welcome_message');
 }
