@@ -400,7 +400,7 @@ h1.title {
 }
 
 .front #region-sidebar-second{
-  margin-top:-15px;
+  margin-top:-10px;
   background: none;
 }
 
@@ -808,7 +808,7 @@ accordion_blocks_container{
 {
   background: #F7971C !important;
   padding: 5px 0px 5px 0px !important;
-  margin: -14px 0px 0px 0px !important;
+  margin: -7px 0px 0px 0px !important;
   color:white !important;
   color: white;
   font-size: 13px;
@@ -1139,5 +1139,5 @@ padding: 10px 15px !important;
   margin: 0px 0px 0px 0px !important;
 }
 
-.page-retailers-partners-list .view-header{float:left;}
+.page-retailers-partners-list .view-header{float:left; margin left: -8px;}
 .page-retailers-partners-list .view-header img{width:85%;}
