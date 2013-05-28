@@ -277,12 +277,9 @@ li a.active{
 }
 /* By Ashish to set the plugin background*/
 .page-retailers-partners-list .region{
-  background: #F7F7F7 !important;
+  background: #000000 !important;
   border: solid 1px #cccccc;
-  box-shadow: 0px 0px 0px 0px #888888 !important;
-  -moz-border-radius: 5px !important;
-  border-radius: 5px !important;
-  margin: 0px 0px 0px 0px !important;
+   margin: 0px 0px 0px 0px !important;
 }
 
 
@@ -1046,7 +1043,7 @@ div#field-markup-add-more-wrapper{
 	NEW PLUGIN PAGE
 \*------------------------------------*/
 
-#id_retailer_content_plugin {background:white;}
+#id_retailer_content_plugin {background: #000000;}
 #id_retailer_content_plugin .retailer_header_image{text-align: center;margin:0px auto;}
 #id_retailer_content_plugin .plugin_wrapper{}
 #id_retailer_content_plugin .retailer_content_row{margin:0px 0px;}
@@ -1065,10 +1062,10 @@ div#field-markup-add-more-wrapper{
   margin:0px !important;
 }
 
-#id_retailer_content_plugin .content_plugin{border-bottom:1px solid #CCCCCC; background: #F7F7F7; font-family: arial !important;}
-#id_retailer_content_plugin .content_plugin:hover {background:#E4E4E4}
+#id_retailer_content_plugin .content_plugin{border-bottom:1px solid #CCCCCC; background: #000000; font-family: arial !important;}
+#id_retailer_content_plugin .content_plugin:hover {background:#000000;}
 #id_retailer_content_plugin .title_plugin{
-  color: #25ADE3;
+  color: #F7971C;
   font-weight: bold;
   font-size: 11px;
   font-family: arial !important;
@@ -1077,8 +1074,8 @@ div#field-markup-add-more-wrapper{
   text-decoration: none !important;
   margin:0px;
 }
-#id_retailer_content_plugin .title_plugin a{color: #25ADE3; font-size: 11px; font-family: arial !important;}
-#id_retailer_content_plugin .body_row_plugin a {color: #333333 !important; font-size: 11px; font-family: arial !important;}
+#id_retailer_content_plugin .title_plugin a{color: #F7971C; font-size: 11px; font-family: arial !important;}
+#id_retailer_content_plugin .body_row_plugin a {color: #000000 !important; font-size: 11px; font-family: arial !important;}
 
 #id_retailer_content_plugin .plugin_title_row{
   color: white;
@@ -1087,7 +1084,7 @@ div#field-markup-add-more-wrapper{
   text-transform: none;
 }
 #id_retailer_content_plugin .body_row_plugin{
-  color: #333333 !important;
+  color: #000000 !important;
   text-align: left;
   font-family: arial !important;
   cursor: pointer;
@@ -1097,7 +1094,7 @@ div#field-markup-add-more-wrapper{
 
 #id_retailer_content_plugin .body_row_plugin p{margin:2px;padding:2px 2px 2px 2px; line-height: 120%;}
 
-.page-retailers-partners-list #page{background-image: none !important;}
+.page-retailers-partners-list #page{background-image: none !important; background: #000000 !important}
 
 .block-multiblock-1 p{
 	display: none;
