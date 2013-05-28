@@ -1075,7 +1075,7 @@ div#field-markup-add-more-wrapper{
   margin:0px;
 }
 #id_retailer_content_plugin .title_plugin a{color: #F7971C; font-size: 11px; font-family: arial !important;}
-#id_retailer_content_plugin .body_row_plugin a {color: #F7971C; !important; font-size: 11px; font-family: arial !important;}
+#id_retailer_content_plugin .body_row_plugin a {color: #ffffff; !important; font-size: 11px; font-family: arial !important;}
 
 #id_retailer_content_plugin .plugin_title_row{
   color: white;
