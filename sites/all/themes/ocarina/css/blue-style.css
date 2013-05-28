@@ -276,11 +276,6 @@ li a.active{
   background: transparent !important;
 }
 /* By Ashish to set the plugin background*/
-.page-retailers-partners-list .region{
-  background: #000000 !important;
-  border: solid 1px #cccccc;
-   margin: 0px 0px 0px 0px !important;
-}
 
 
 /* By Ashish to remove gap in the login*/
@@ -806,63 +801,22 @@ accordion_blocks_container{
   //	-moz-border-radius: 5px;
   //	border-radius: 5px;
   // }
-/* By Ashish to customize user login - link only block*/
-#block-block-11 .block-title{
-  background: #25ADE3 !important;
-  padding: 0px 0px 0px 0px !important;
-  margin: -10px -10px 15px -10px !important;
-
-}
-
-/* By Ashish to take care of first and second word issue*/
-#block-block-11 h2.block-title span.first-word{
-  color: #ffffff !important;
-  // display:inline-block !important;
-  // width: 100% !important;
-  font-family: arial !important;
-  font-size: 12px !important;
-}
-
-#block-block-11 h2.block-title span.last-word{
-  color: #ffffff !important;
-  font-family: arial !important;
-  font-size: 12px !important;
-  /* position:relative !important;
-  // top:-7px;*/
-}
-#block-block-11 .content{
-  margin-top: -10px !important;
-  font-family: arial !important;
-  border: solid 1px #cccccc;
-  background: #ffffff;
-  box-shadow: 5px 5px 5px #888888;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
 
 /* By Ashish to customize user login - link only block*/
-#block-block-12 .block-title{
+#block-block-12 .block-title,
+#block-block-11 .block-title
+{
   background: #F7971C !important;
   padding: 0px 0px 0px 0px !important;
-  margin: -10px 0px 0px 0px !important;
-
+  margin: 0px 0px 0px 0px !important;
+  color:white !important;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: none;
 }
 
-#block-block-12 h2.block-title span.first-word{
-  color: #ffffff !important;
-  // display:inline-block !important;
-  // width: 100% !important;
-  font-family: arial !important;
-  font-size: 12px !important;
-}
 
-#block-block-12 h2.block-title span.last-word{
-  color: #ffffff !important;
-  font-family: arial !important;
-  font-size: 12px !important;
-  // position:relative !important;
-  // top:-7px;
-}
 #block-block-12 .content{
   margin-top: 8px !important;
   font-family: arial !important;
@@ -1179,9 +1133,15 @@ padding: 10px 15px !important;
 .page-retailers-partners-list .block{
    border:none !important;
 }
-.page-retailers-partners-list #block-block-12 .content{
+.page-retailers-partners-list #block-block-12 .content,
+.page-retailers-partners-list #block-block-11 .content {
    background:black;
 }
 .page-retailers-partners-list .region{
-  border-bottom:none !important;
+  border:none !important;
+  background: #000000 !important;
+  margin: 0px 0px 0px 0px !important;
 }
+
+.page-retailers-partners-list .view-header{float:left;}
+.page-retailers-partners-list .view-header img{width:85%;}
