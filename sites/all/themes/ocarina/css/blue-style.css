@@ -400,7 +400,7 @@ h1.title {
 }
 
 .front #region-sidebar-second{
-  margin-top:-20px;
+  margin-top:-15px;
   background: none;
 }
 
@@ -807,8 +807,8 @@ accordion_blocks_container{
 #block-block-11 .block-title
 {
   background: #F7971C !important;
-  padding: 0px 0px 0px 0px !important;
-  margin: 0px 0px 0px 0px !important;
+  padding: 5px 0px 5px 0px !important;
+  margin: -14px 0px 0px 0px !important;
   color:white !important;
   color: white;
   font-size: 13px;
