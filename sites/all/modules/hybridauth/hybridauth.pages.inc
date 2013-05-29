@@ -80,7 +80,8 @@ function _hybridauth_window_close($redirect = TRUE) {
   //  || variable_get('hybridauth_register', 0) == 1) {
   #print_r($_SESSION['hybridauth_referrer']);exit;
   if (isset($_SESSION['hybridauth_referrer'])){
-    echo $destination=  $_SESSION['hybridauth_referrer'];exit;
+    $destination=  $_SESSION['hybridauth_referrer'];
+    unset($_SESSION['hybridauth_referrer']);
   }else{
     $destination = drupal_get_destination();
     $destination = token_replace($destination['destination'], array('user' => $user), array('clear' => TRUE));
