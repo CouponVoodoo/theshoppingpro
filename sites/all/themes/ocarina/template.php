@@ -33,27 +33,9 @@ function ocarina_preprocess_page(&$variables) {
     //drupal_add_css(path_to_theme() .'/iframe.css');
     $variables['styles'] = drupal_get_css();
   }
-  if (arg(0) == "welcome-message") {
-    $variables['theme_hook_suggestions'][] = 'page--welcome_message';
-  }
-
-//  if (arg(0)=="retailers-partners-list1") {
-//    $variables['theme_hook_suggestions'][] = 'page__plugin';
-//  }
-
-
-  # print_r($page);exit;
-
 }
 
 
-function ocarina_page_alter(&$page) {
-  if (arg(0) =="retailers-partners-list1") {
-    foreach (element_children($page) as $region) {
-      $page[$region]['#access'] = ($region == 'content');
-    }
-  }
-}
 
 function ocarina_theme(&$existing, $type, $theme, $path) {
   $hooks['user_login_block'] = array(

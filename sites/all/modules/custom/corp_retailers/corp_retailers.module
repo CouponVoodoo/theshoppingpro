@@ -33,6 +33,13 @@ function corp_retailers_theme() {
   return $themes;
 }
 
+function corp_retailers_init(){
+  if (arg(0) == "retailers-partners-list"){
+     module_invoke('admin_menu', 'suppress');
+  }
+  
+}
+
 function corp_retailers_list() {
   global $user;
   $redirect = $_GET['redirect'];

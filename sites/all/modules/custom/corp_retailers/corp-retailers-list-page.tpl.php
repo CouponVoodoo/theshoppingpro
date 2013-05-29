@@ -1,8 +1,6 @@
 <?php global $user, $base_url;?>
 <div id="id_retailer_content_plugin" class="retailer_content">
-  <div class="retailer_header_image">
     <?php /// print '<img src="'.$base_url . "/" . drupal_get_path('theme', 'ocarina') . '/images/TheShoppingPro-small.png"  typeof="foaf:Image"/>';?>
-  </div>
   <div id="retailer_content" class="plugin_wrapper">
     <?php
 
@@ -11,6 +9,8 @@
       if ($key =="partners") {
         $row = $item[0];
         $class = user_is_logged_in() ? 'plugin_title_row' : 'ctools-use-modal plugin_title_row';
+        $item[0]->field_display_text_value = strip_tags($item[0]->field_display_text_value);
+        $item[0]->field_display_text_value .= '&nbsp; <img src="'.$base_url . "/" . drupal_get_path('theme', 'ocarina') . '/images/greenbutton.png"  typeof="foaf:Image"/>';
         if (user_is_logged_in()) {
           $target = "_blank";
           $link_title = l(($item[0]->title),  $url, array('attributes'=>array('target'=>'_blank', 'class'=>array($class)),'html'=>TRUE, 'external' => TRUE));
