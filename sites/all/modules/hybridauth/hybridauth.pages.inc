@@ -71,8 +71,12 @@ function _hybridauth_window_close($redirect = TRUE) {
   //if ((!variable_get('hybridauth_register', 0) && variable_get('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL) == USER_REGISTER_VISITORS)
   //  || variable_get('hybridauth_register', 0) == 1) {
   print_r($_SESSION['hybridauth_referrer']);exit;
+  if (isset($_SESSION['hybridauth_referrer'])){
+    $destination=  $_SESSION['hybridauth_referrer'];
+  }else{
     $destination = drupal_get_destination();
     $destination = token_replace($destination['destination'], array('user' => $user), array('clear' => TRUE));
+  }
   //}
   //redirect to front page
   //else {
