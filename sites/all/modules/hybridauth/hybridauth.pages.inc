@@ -48,6 +48,7 @@ function hybridauth_window_start($provider_id) {
   drupal_session_start();
   // Flag to show that this session was started by HybridAuth module.
   $_SESSION['hybridauth_session'] = TRUE;
+  $_SESSION['hybridauth_referrer'] = $_SERVER['HTTP_REFERER'];
   
   // Try to get HybridAuth instance.
   if ($hybridauth = hybridauth_get_instance()) {
@@ -69,6 +70,7 @@ function _hybridauth_window_close($redirect = TRUE) {
   // Visitors can register accounts without admin approval.
   //if ((!variable_get('hybridauth_register', 0) && variable_get('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL) == USER_REGISTER_VISITORS)
   //  || variable_get('hybridauth_register', 0) == 1) {
+  print_r($_SESSION['hybridauth_referrer']);exit;
     $destination = drupal_get_destination();
     $destination = token_replace($destination['destination'], array('user' => $user), array('clear' => TRUE));
   //}
