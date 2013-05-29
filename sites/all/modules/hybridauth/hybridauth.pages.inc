@@ -49,9 +49,9 @@ function hybridauth_window_start($provider_id) {
   // Flag to show that this session was started by HybridAuth module.
   $_SESSION['hybridauth_session'] = TRUE;
   $url = parse_url($_SERVER['HTTP_REFERER']);
+  $query_args = array();
+  parse_str($url['query'], $query_args);
   
-  $query_args  = parse_str($url['query']);
-  print_r($query_args);
   if (isset($query_args['url']) && isset($query_args['redirect'])){
     $_SESSION['hybridauth_referrer'] = $_SERVER['HTTP_REFERER'];
   }
