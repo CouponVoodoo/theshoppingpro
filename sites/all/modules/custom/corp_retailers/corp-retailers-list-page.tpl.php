@@ -7,20 +7,21 @@
 
     foreach($data['items'] as $key=> $item) {
       if ($key =="partners") {
-        $row = $item[0];
+        $row = &$item[0];
         $class = user_is_logged_in() ? 'plugin_title_row' : 'ctools-use-modal plugin_title_row';
-        $item[0]->field_display_text_value = strip_tags($item[0]->field_display_text_value);
-        $item[0]->field_display_text_value .= '&nbsp; <img src="'.$base_url . "/" . drupal_get_path('theme', 'ocarina') . '/images/greenbutton.png"  typeof="foaf:Image"/>';
+        $row->field_display_text_value = strip_tags($row->field_display_text_value);
+        $row->field_display_text_value = $row->field_display_text_value .'&nbsp;  (Cashback cannot exceed order value)';
+        $row->field_display_text_value .= '&nbsp; <img src="'.$base_url . "/" . drupal_get_path('theme', 'ocarina') . '/images/greenbutton.png"  typeof="foaf:Image"/>';
         if (user_is_logged_in()) {
           $target = "_blank";
-          $link_title = l(($item[0]->title),  $url, array('attributes'=>array('target'=>'_blank', 'class'=>array($class)),'html'=>TRUE, 'external' => TRUE));
+          $link_title = l(($row->title),  $url, array('attributes'=>array('target'=>'_blank', 'class'=>array($class)),'html'=>TRUE, 'external' => TRUE));
         }else {
           $target = '';
-          $link_title = l(($item[0]->title), 'modal_forms/nojs/login' , array('attributes'=>array( 'class'=>array($class)),'html'=>TRUE));
+          $link_title = l(($row->title), 'modal_forms/nojs/login' , array('attributes'=>array( 'class'=>array($class)),'html'=>TRUE));
         }
-        $item[0]->title = '';
+        $row->title = '';
         $title = 'Cashback @ ' . $link_title;
-		$row->field_display_text_value = $row->field_display_text_value .'&nbsp;  (Cashback cannot exceed order value)';
+
       }elseif($key == "most_populars") {
         // Track user.
         $referrer = token_replace("[user:referral-link]", array('user'=>$user));
