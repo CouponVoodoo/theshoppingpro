@@ -48,10 +48,14 @@ function hybridauth_window_start($provider_id) {
   drupal_session_start();
   // Flag to show that this session was started by HybridAuth module.
   $_SESSION['hybridauth_session'] = TRUE;
-  print_r($_SERVER['HTTP_REFERER']);exit;
-  if ($_SERVER['HTTP_REFERER']){
+  $url = parse_url($_SERVER['HTTP_REFERER']);
+  $query_args  = parse_str($url['query']);
+  
+  if (isset($query_args['url']) && isset($query_args['redirect'])){
     $_SESSION['hybridauth_referrer'] = $_SERVER['HTTP_REFERER'];
   }
+  print_r($_SESSION);exit;
+  print_r($query_args);exit;
   
   // Try to get HybridAuth instance.
   if ($hybridauth = hybridauth_get_instance()) {
