@@ -55,8 +55,8 @@ function hybridauth_window_start($provider_id) {
   if (isset($query_args['url']) && isset($query_args['redirect'])){
     $_SESSION['hybridauth_referrer'] = $_SERVER['HTTP_REFERER'];
   }
-  print_r($_SESSION);exit;
-  print_r($query_args);exit;
+ # print_r($_SESSION);exit;
+ # print_r($query_args);exit;
   
   // Try to get HybridAuth instance.
   if ($hybridauth = hybridauth_get_instance()) {
@@ -80,7 +80,6 @@ function _hybridauth_window_close($redirect = TRUE) {
   //  || variable_get('hybridauth_register', 0) == 1) {
   #print_r($_SESSION['hybridauth_referrer']);exit;
   if (isset($_SESSION['hybridauth_referrer'])){
-
     echo $destination=  $_SESSION['hybridauth_referrer'];exit;
   }else{
     $destination = drupal_get_destination();
