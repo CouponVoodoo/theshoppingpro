@@ -33,6 +33,11 @@ function ocarina_preprocess_page(&$variables) {
     //drupal_add_css(path_to_theme() .'/iframe.css');
     $variables['styles'] = drupal_get_css();
   }
+  if (arg(0)=="node" && drupal_get_path_alias(arg(0)."/".arg(1)) =="installation_page" && is_null(arg(2))){
+    $variables['theme_hook_suggestions'][] = 'page__welcome_message';
+  }
+  
+  #print_r($variables['theme_hook_suggestions']);exit;
 }
 
 
