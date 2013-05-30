@@ -34,7 +34,7 @@ function ocarina_preprocess_page(&$variables) {
     $variables['styles'] = drupal_get_css();
   }
   if (arg(0)=="node" && drupal_get_path_alias(arg(0)."/".arg(1)) =="installation_page" && is_null(arg(2))){
-    $variables['theme_hook_suggestions'][] = 'page__welcome_message';
+    $variables['theme_hook_suggestions'][] = 'page__installation_page';
   }
   
   #print_r($variables['theme_hook_suggestions']);exit;
