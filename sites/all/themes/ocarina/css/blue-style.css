@@ -15,7 +15,7 @@ a:active {
   color: #0E374B;
 }
 
- 
+
 pre,
 div.code {
   border-left: 5px solid #F7971C;
@@ -172,10 +172,10 @@ article.node-products form.commerce-add-to-cart .form-submit {
 
 
 .site-slogan{
-   color: #25ade3;
-   font-family: arial;
-   font-weight: bold;
-   padding-left: 5px;
+  color: #25ade3;
+  font-family: arial;
+  font-weight: bold;
+  padding-left: 5px;
 } 
 
 /* By Ashish to make homepage image ok in firefox:" NEED TO CORRECT AS THIS WILL MAKE THE SITE ACT WEIRD ON MOBILE*/
@@ -1025,7 +1025,7 @@ div#field-markup-add-more-wrapper{
   margin:0px;
 }
 #id_retailer_content_plugin .title_plugin a{color: #F7971C; font-size: 11px; font-family: arial !important;}
-#id_retailer_content_plugin .body_row_plugin a {color: #25ade3; !important; font-size: 11px; font-family: arial !important;}
+#id_retailer_content_plugin .body_row_plugin a {display: block;color: #25ade3!important; font-size: 11px; font-family: arial !important;}
 
 #id_retailer_content_plugin .plugin_title_row{
   color: white;
@@ -1047,15 +1047,15 @@ div#field-markup-add-more-wrapper{
 .page-retailers-partners-list #page{background-image: none !important; background: #000000 !important}
 
 .block-multiblock-1 p{
-	display: none;
+  display: none;
 }
 
 .block-multiblock-1 .sharethis-wrapper{
-	padding: 5px !important;
+  padding: 5px !important;
 }
 
 .block-multiblock-1 span.stMainServices{
-	padding:5px;
+  padding:5px;
 }
 
 .block-multiblock-1 h2.block-title{
@@ -1070,32 +1070,32 @@ div#field-markup-add-more-wrapper{
 }
 
 ul#main-menu{
-background: none repeat scroll 0 0 rgba(0, 0, 0, 0.4) !important;
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.4) !important;
 }
 
 ul#main-menu li a{
-padding: 10px 15px !important;
+  padding: 10px 15px !important;
 }
 
 
 #views_slideshow_cycle_main_retailer_list_for_home_page1-block
 .views-slideshow-cycle-main-frame-row-item {
-	float: left;
-	width: 33%;
-	margin: 0px;
-	padding: 0px;
-	background: transparent;
-	min-height: 200px;
+  float: left;
+  width: 33%;
+  margin: 0px;
+  padding: 0px;
+  background: transparent;
+  min-height: 200px;
 }
 
 #views_slideshow_cycle_main_retailer_list_for_home_page1-block
 .views-slideshow-cycle-main-frame-row-item .field-content img {
-	width: 100px;
+  width: 100px;
 }
 
 #views_slideshow_cycle_main_retailer_list_for_home_page1-block
 .views-slideshow-cycle-main-frame-row-item h2 {
-	text-align:center;
+  text-align:center;
 }
 
 #views_slideshow_cycle_main_retailer_list_for_home_page1-block
@@ -1103,21 +1103,21 @@ padding: 10px 15px !important;
 #views_slideshow_cycle_main_retailer_list_for_home_page1-block
 .views-slideshow-cycle-main-frame-row-item .views-field-body
 {
-	text-align:center;
+  text-align:center;
 }
 .view-retailer-list-for-home-page1 .view-footer{
-	text-align:right;
+  text-align:right;
 
 }
 .view-retailer-list-for-home-page1 .view-footer a{
-		color:#fff;
+  color:#fff;
 }
 .views-slideshow-cycle-main-frame-row-item .views-field-field-testimonial-image{
-	text-align: center;
+  text-align: center;
 }
 .views-slideshow-cycle-main-frame-row-item .views-field-title{
-	text-align: center;
-	margin-top: 9px;
+  text-align: center;
+  margin-top: 9px;
 }
 .views-slideshow-cycle-main-frame-row{
   width:100%;
@@ -1127,11 +1127,11 @@ padding: 10px 15px !important;
 }
 
 .page-retailers-partners-list .block{
-   border:none !important;
+  border:none !important;
 }
 .page-retailers-partners-list #block-block-12 .content,
 .page-retailers-partners-list #block-block-11 .content {
-   background:black;
+  background:black;
 }
 .page-retailers-partners-list .region{
   border:none !important;
@@ -1141,3 +1141,10 @@ padding: 10px 15px !important;
 
 .page-retailers-partners-list .view-header{float:left; margin-left: -10px;}
 .page-retailers-partners-list .view-header img{width:85%;}
+#id_retailer_content_plugin .plugin_desc {float:left;width:78%;margin-right:1%;display: table;}
+#id_retailer_content_plugin .plugin_image {float:left;width:20%;}
+#id_retailer_content_plugin  #makecenter{
+  display: inline-block;
+  vertical-align: middle;
+  height:100%;
+}

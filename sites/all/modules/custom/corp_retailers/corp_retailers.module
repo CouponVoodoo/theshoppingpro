@@ -85,8 +85,8 @@ function corp_retailers_list() {
   );
 
   // Track user.
-  $referrer = token_replace("[user:referral-link]", array('user'=>$user));
-  corp_retailers_track_user($url, $user->uid, $uid2, $referrer);
+ // $referrer = token_replace("[user:referral-link]", array('user'=>$user));
+ // corp_retailers_track_user($url, $user->uid, $uid2, $referrer);
   
   switch ($node_type) {
     case 'partner':
