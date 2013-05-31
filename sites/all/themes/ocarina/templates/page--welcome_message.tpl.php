@@ -6,7 +6,14 @@
     Easy, Intelligent & Personalized Shopping
   </div>
   <div>
-    <img src="sites/all/themes/ocarina/images/Play_Video.png" />
+    <?php
+    print l('<img src="sites/all/themes/ocarina/images/Play_Video.png" />', 'http://www.youtube.com/embed/dj9UXzyDsOA',
+      array(
+        'query' => array('width' => '560', 'height' => '315', 'iframe' => 'true'),
+        'html' =>TRUE,
+        'attributes' => array('class' => 'colorbox-load'))
+      );     
+    ?>
   </div>
   <div>
     <?php
