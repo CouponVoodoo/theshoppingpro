@@ -5,13 +5,13 @@
     drupal_goto('https://chrome.google.com/webstore/detail/theshoppingpro/lgaakehnefkaeeclkaafaahlbkcoimdh');
   } elseif ($browser['name']=="Apple Safari") {
     $url = 'http://crossrider.com/download/28108';
-    print '<img id="makecenter"  src="sites/all/themes/ocarina/images/Safari_Installation.png" />';
+    print '<img id="makecenter"  src="sites/all/themes/ocarina/images/Safari_Installation.png?q='.time().'" />';
   }elseif ($browser['name']=="Mozilla Firefox") {
     $url = 'http://crossrider.com/download/28108';
-    print '<img id="makecenter" src="sites/all/themes/ocarina/images/Firefox_Intallation.png" />';
+    print '<img id="makecenter" src="sites/all/themes/ocarina/images/Firefox_Intallation.png?q='.time().'" />';
   }elseif($browser['name']=="Internet Explorer") {
     $url = 'http://crossrider.com/download/28108';
-    print '<img id="makecenter"  src="sites/all/themes/ocarina/images/IE_Installation.png" />';
+    print '<img id="makecenter"  src="sites/all/themes/ocarina/images/IE_Installation.png?q='.time().'" />';
   }
   ?>
 </div>
