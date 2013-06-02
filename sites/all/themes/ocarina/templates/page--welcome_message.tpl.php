@@ -1,4 +1,4 @@
-<div style="text-align:center;">
+<div style="text-align:center;" id="welcome-message">
   <div>
     <img src="sites/default/files/The_Shopping_Pro_Logo-250px.png" />
   </div>
@@ -7,12 +7,13 @@
   </div>
   <div>
     <?php
-    print l('<img src="sites/all/themes/ocarina/images/Play_Video.png" />', 'http://www.youtube.com/embed/dj9UXzyDsOA',
+    print l('<img src="sites/all/themes/ocarina/images/Play_Video.png" />', 'http://www.youtube.com/embed/-iTMCF4gCgA',
       array(
+        'external' => TRUE,
         'query' => array('width' => '560', 'height' => '315', 'iframe' => 'true'),
         'html' =>TRUE,
         'attributes' => array('class' => 'colorbox-load'))
-      );     
+      );
     ?>
   </div>
   <div>
@@ -43,4 +44,7 @@
   <div>
     Free for <img src="sites/all/themes/ocarina/images/OS_Logo.png" /> on <img src="sites/all/themes/ocarina/images/browser-logos-small.png" />
   </div>
+</div>
+<div id="video" style="display: none;">
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/-iTMCF4gCgA" frameborder="0" allowfullscreen></iframe>
 </div>
