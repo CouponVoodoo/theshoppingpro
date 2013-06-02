@@ -8,7 +8,7 @@
     print '<img id="makecenter"  src="sites/all/themes/ocarina/images/Safari_Installation.png?q='.time().'" />';
   }elseif ($browser['name']=="Mozilla Firefox") {
     $url = 'http://crossrider.com/download/28108';
-    print '<img id="makecenter" src="sites/all/themes/ocarina/images/Firefox_Intallation.png?q='.time().'" />';
+    print '<img id="makecenter" src="sites/all/themes/ocarina/images/Firefox_Installation.png?q='.time().'" />';
   }elseif($browser['name']=="Internet Explorer") {
     $url = 'http://crossrider.com/download/28108';
     print '<img id="makecenter"  src="sites/all/themes/ocarina/images/IE_Installation.png?q='.time().'" />';
