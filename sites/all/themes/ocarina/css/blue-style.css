@@ -1149,3 +1149,13 @@ ul#main-menu li a{
   vertical-align: middle;
   height:100%;
 }
+
+#modal-content .webform-client-form .form-item label{
+  width:15em !important;
+  margin-left: 0px !important;
+}
+#modal-content .webform-client-form .form-item input[type="text"],
+#modal-content .webform-client-form .form-actions input#edit-submit{
+  width:auto !important;
+  margin-left: 0px !important;
+}

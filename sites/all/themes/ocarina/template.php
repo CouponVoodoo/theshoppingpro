@@ -22,6 +22,11 @@ function ocarina_preprocess_html(&$vars) {
           'alt' => t('Close window'),
           ))
       )), 'setting');
+
+  // Use a different html template for Ajax requests
+  if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' ) {
+    $variables['theme_hook_suggestions'][] = 'page__ajax';
+  }
 }
 
 
@@ -33,10 +38,10 @@ function ocarina_preprocess_page(&$variables) {
     //drupal_add_css(path_to_theme() .'/iframe.css');
     $variables['styles'] = drupal_get_css();
   }
-  if (arg(0)=="node" && drupal_get_path_alias(arg(0)."/".arg(1)) == "installation_page" && is_null(arg(2))){
+  if (arg(0)=="node" && drupal_get_path_alias(arg(0)."/".arg(1)) == "installation_page" && is_null(arg(2))) {
     $variables['theme_hook_suggestions'][] = 'page__installation_page';
   }
-  
+
   #print_r($variables['theme_hook_suggestions']);exit;
 }
 
