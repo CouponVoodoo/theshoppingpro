@@ -480,23 +480,23 @@ h1.title {
 
 /* by Ashish to make the olark chat with lesser width */
 
-#habla_window_div{
+.page-retailers-partners-list #habla_window_div{
   width: 100px !important;
   float: right;
   font-size: 10px !important;
 }
 
-#habla_panel_div{
+.page-retailers-partners-list #habla_panel_div{
   width: 100px !important;
   float: right;
   font-size: 10px !important;
 }
 
-.hbl_txt_wrapper textarea{
+.page-retailers-partners-list .hbl_txt_wrapper textarea{
   height: 75px !important;
 }
 
-#hbl_txt_wrapper textarea{
+.page-retailers-partners-list #hbl_txt_wrapper textarea{
   height: 75px !important;
 }
 
