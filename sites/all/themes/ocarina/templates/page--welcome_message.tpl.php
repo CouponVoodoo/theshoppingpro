@@ -3,7 +3,7 @@
     <div style="margin:0 auto; width: 548px">
       <div style="display:table-cell; text-align: center; padding-top: 20px" id="welcome-message">
         <div>
-<!--          <img src="sites/default/files/The_Shopping_Pro_Logo-250px.png" style="width: 300px;" />-->
+          <img src="sites/default/files/The_Shopping_Pro_Logo-250px.png" style="width: 300px;" />
         </div>
         <div style="color:#25ade3; margin-bottom: 10px;float:left; width:100%;">
           Easy, Intelligent & Regarding Shopping
