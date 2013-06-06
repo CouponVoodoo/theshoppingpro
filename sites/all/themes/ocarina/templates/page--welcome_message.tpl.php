@@ -10,7 +10,7 @@
         </div>
         <div style="float:left; width:100%; margin: 10px 0">
           <?php
-          print l('<img src="sites/all/themes/ocarina/images/Play_Video.png" />', 'http://www.youtube.com/embed/2Y042npkFFY?wmode=transparent&amp;rel=0&amp;autoplay=1&amp;end=76', array(
+          print l('<img src="sites/all/themes/ocarina/images/Play_Video.png" />', 'http://www.youtube.com/embed/2Y042npkFFY?wmode=transparent&amp;rel=0&amp;autoplay=0&amp;end=76', array(
               'external' => TRUE,
               'query' => array('width' => '640', 'height' => '400', 'iframe' => 'true'),
               'html' => TRUE,
@@ -59,7 +59,7 @@
       </div>
     </div>
     <div id="video" style="display: none;">
-      <iframe width="560" height="315" src="http://www.youtube.com/embed/2Y042npkFFY?wmode=transparent&amp;rel=0&amp;autoplay=1&amp;end=76" frameborder="0" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="http://www.youtube.com/embed/2Y042npkFFY?wmode=transparent&amp;rel=0&amp;autoplay=0&amp;end=76" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 </div>
