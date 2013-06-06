@@ -58,8 +58,10 @@
         <?php print l('Enter Site >>', 'get_the_plugin'); ?>
       </div>
     </div>
- //   <div id="video" style="display: none;">
- //     <iframe width="560" height="315" src="http://www.youtube.com/embed/2Y042npkFFY?wmode=transparent&amp;rel=0&amp;autoplay=0&amp;end=76" frameborder="0" allowfullscreen></iframe>
- //   </div>
+/*
+   <div id="video" style="display: none;">
+      <iframe width="560" height="315" src="http://www.youtube.com/embed/2Y042npkFFY?wmode=transparent&amp;rel=0&amp;autoplay=0&amp;end=76" frameborder="0" allowfullscreen></iframe>
+    </div>
+*/
   </div>
 </div>
