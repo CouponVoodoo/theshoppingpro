@@ -1142,8 +1142,8 @@ ul#main-menu li a{
 
 .page-retailers-partners-list .view-header{float:left; margin-left: -10px;}
 .page-retailers-partners-list .view-header img{width:85%;}
-#id_retailer_content_plugin .plugin_desc {float:left;width:78%;margin-right:1%;display: table; color: #25ade3;}
-#id_retailer_content_plugin .plugin_image {float:left;width:20%;}
+#id_retailer_content_plugin .plugin_desc {float:left;width:100%;margin-right:1%;display: table; color: #25ade3;}
+// #id_retailer_content_plugin .plugin_image {float:left;width:20%;}
 #id_retailer_content_plugin  #makecenter{
   display: inline-block;
   vertical-align: middle;
