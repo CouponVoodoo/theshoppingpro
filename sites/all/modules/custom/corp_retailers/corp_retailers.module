@@ -10,11 +10,11 @@ define("CORP_RETAILERS_COMPETITOR_TID", 14);
  */
 function corp_retailers_menu() {
   $items['retailers-partners-list1'] = array(
-    'title' => 'TheShoppingPro',
-    'description' => 'TheShoppingPro - retailers partner list',
-    'page callback' => 'corp_retailers_list',
-    'access callback' => TRUE,
-    'type' => MENU_CALLBACK,
+      'title' => 'TheShoppingPro',
+      'description' => 'TheShoppingPro - retailers partner list',
+      'page callback' => 'corp_retailers_list',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
   );
   return $items;
 }
@@ -24,20 +24,20 @@ function corp_retailers_menu() {
  */
 function corp_retailers_theme() {
   $themes = array(
-    'corp_retailers_list_page' => array(
-      'template' => 'corp-retailers-list-page',
-      'variables' => array('data' => null),
-    ),
+      'corp_retailers_list_page' => array(
+          'template' => 'corp-retailers-list-page',
+          'variables' => array('data' => null),
+      ),
   );
 
   return $themes;
 }
 
-function corp_retailers_init(){
-  if (arg(0) == "retailers-partners-list"){
-     module_invoke('admin_menu', 'suppress');
+function corp_retailers_init() {
+  if (arg(0) == "retailers-partners-list") {
+    module_invoke('admin_menu', 'suppress');
   }
-  
+
 }
 
 function corp_retailers_list() {
@@ -77,17 +77,13 @@ function corp_retailers_list() {
 
 
   $matching_node = array(
-    'url' => isset($node->field_url_value) ? $node->field_url_value : $node->field_url_site_of_interest_value,
-    'nid' => $node->nid,
-    'type' => ($node->field_type_tid == CORP_RETAILERS_PARTNER_TID) ? $node->field_type_tid : CORP_RETAILERS_COMPETITOR_TID,
-    'country' => isset($node->field_country_tid) ? explode(",", $node->field_country_tid) : 4,
-    'category' => ($node->field_type_tid == CORP_RETAILERS_PARTNER_TID) ? array_keys($categories) : explode(',', $node->field_category_tid),
+      'url' => isset($node->field_url_value) ? $node->field_url_value : $node->field_url_site_of_interest_value,
+      'nid' => $node->nid,
+      'type' => ($node->field_type_tid == CORP_RETAILERS_PARTNER_TID) ? $node->field_type_tid : CORP_RETAILERS_COMPETITOR_TID,
+      'country' => isset($node->field_country_tid) ? explode(",", $node->field_country_tid) : 4,
+      'category' => ($node->field_type_tid == CORP_RETAILERS_PARTNER_TID) ? array_keys($categories) : explode(',', $node->field_category_tid),
   );
 
-  // Track user.
- // $referrer = token_replace("[user:referral-link]", array('user'=>$user));
- // corp_retailers_track_user($url, $user->uid, $uid2, $referrer);
-  
   switch ($node_type) {
     case 'partner':
       $output = array_merge($output, corp_retailers_get_mostpopulars($matching_node));
@@ -103,18 +99,18 @@ function corp_retailers_list() {
   }
 
   $data = array(
-    'items' => $output,
-    'categories' => $matching_node['category'],
-    'url' => $url,
-    'uid2' => $uid2,
-    'redirect' => $redirect,
+      'items' => $output,
+      'categories' => $matching_node['category'],
+      'url' => $url,
+      'uid2' => $uid2,
+      'redirect' => $redirect,
   );
   return theme('corp_retailers_list_page', array('data' => $data));
 }
 
 function corp_retailers_block_info() {
   $blocks['corp_retailers'] = array(
-    'info' => t('Retailers: configurable text string'),
+      'info' => t('Retailers: configurable text string'),
   );
   return $blocks;
 }
@@ -123,7 +119,7 @@ function corp_retailers_block_view($delta = '') {
   // The $delta parameter tells us which block is being requested.
   switch ($delta) {
     case 'corp_retailers':
-      // Create your block content here
+    // Create your block content here
       $block['content'] = corp_retailers_list();
       break;
   }
@@ -133,15 +129,15 @@ function corp_retailers_block_view($delta = '') {
 
 function corp_retailers_get_recommended($matching_node) {
   $return = array(
-    'recommended' => array(
-      'popular' => array(),
-      'megastore' => array(),
-      'rest' => array(),
-    ),
+      'recommended' => array(
+          'popular' => array(),
+          'megastore' => array(),
+          'rest' => array(),
+      ),
   );
 
   $query = db_select('node', 'n')
-          ->fields('n', array('nid', 'title'));
+      ->fields('n', array('nid', 'title'));
 
   $query->leftJoin('field_data_field_type', 'fd', "n.nid = fd.entity_id and fd.entity_type='node' AND fd.deleted=0");
   $query->leftJoin('field_data_field_display_text', 'dt', "n.nid = dt.entity_id and dt.entity_type='node' AND dt.deleted=0");
@@ -227,11 +223,11 @@ function _corp_retailers_load_field_collection_tracking_url($nid, $active_affili
 
 function corp_retailers_get_mostpopulars($matching_node) {
   $return = array(
-    'most_populars' => array(),
+      'most_populars' => array(),
   );
 
   $query = db_select('node', 'n')
-          ->fields('n', array('nid', 'title'));
+      ->fields('n', array('nid', 'title'));
 
   $query->leftJoin('field_data_field_type', 'fd', "n.nid = fd.entity_id and fd.entity_type='node' AND fd.deleted=0");
   $query->leftJoin('field_data_field_display_text', 'dt', "n.nid = dt.entity_id and dt.entity_type='node' AND dt.deleted=0");
@@ -279,7 +275,7 @@ function corp_retailers_get_mostpopulars($matching_node) {
 function corp_retailers_get_matching($url) {
   $return = array();
   $query = db_select('node', 'n')
-          ->fields('n', array('nid', 'title'));
+      ->fields('n', array('nid', 'title'));
   $query->leftJoin('field_data_field_url', 'url', "n.nid = url.entity_id and url.entity_type='node' AND url.deleted=0");
   $query->leftJoin('field_data_field_type', 'fd', "n.nid = fd.entity_id and fd.entity_type='node' AND fd.deleted=0");
   $query->leftJoin('field_data_field_url_site_of_interest', 'soi', "n.nid = soi.entity_id and soi.entity_type='node' AND soi.deleted=0");
@@ -366,7 +362,6 @@ function corp_retailers_make_url($row, $found_url, $input_url, $redirect, $uid2,
       }
       break;
     case 33: //Tyroo
-    case 34: //Shoogloo
     case 35: //Komli
       if (strtolower($found_url) == $input_url) {
         $url_part2 = isset($row->field_url_part2_value) ? $row->field_url_part2_value : '';
@@ -374,13 +369,26 @@ function corp_retailers_make_url($row, $found_url, $input_url, $redirect, $uid2,
         $url_part4 = isset($row->field_url_part4_value) ? $row->field_url_part4_value : '';
 
         $redirect = urlencode($redirect . $url_part2 . $url_part3 . $url_part4);
-        $query = '&subid1=' . $user->uid . '&subid2=' . $uid2 . '&lnkurl=' . $redirect;
+        $query = '&subid1=' . $user->uid . '&subid2=' . $uid2 . '&subid3=%TRANSACTION_ID%&lnkurl=' . $redirect;
+        $url = $link_url . '?' . $query;
+      } else {
+        $query = '&subid1=' . $user->uid . '&subid2=' . $uid2. '&subid3=%TRANSACTION_ID%';
+        $url = $link_url . '?' . $query;
+      }
+      break;
+    case 34: //Shoogloo
+      if (strtolower($found_url) == $input_url) {
+        $url_part2 = isset($row->field_url_part2_value) ? $row->field_url_part2_value : '';
+        $url_part3 = isset($row->field_url_part3_value) ? $row->field_url_part3_value : '';
+        $url_part4 = isset($row->field_url_part4_value) ? $row->field_url_part4_value : '';
+
+        $redirect = urlencode($redirect . $url_part2 . $url_part3 . $url_part4);
+        $query = '&subid1=' . $user->uid . '&subid2=' . $uid2 . '&subid3=%TRANSACTION_ID%&lnkurl=' . $redirect;
         $url = $link_url . '?' . $query;
       } else {
         $query = '&subid1=' . $user->uid . '&subid2=' . $uid2;
         $url = $link_url . '?' . $query;
       }
-      break;
     case 10: //Direct : ignored.
       break;
   }
@@ -388,7 +396,7 @@ function corp_retailers_make_url($row, $found_url, $input_url, $redirect, $uid2,
 }
 
 function corp_retailers_track_user($url, $uid, $uid2, $referrer) {
-  if (empty ($uid)){
+  if (empty ($uid)) {
     return false;
   }
   //$response = file_get_contents('http://plugin.theshoppingpro.com/drupalLog.php?url=' . $url . '&drupalUserID=' . $uid . '&uid2=' . $uid2 . '&referralLink=' . $referrer);

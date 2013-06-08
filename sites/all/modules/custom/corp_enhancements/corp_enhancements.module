@@ -373,15 +373,15 @@ function corp_enhancements_form_alter(&$form, &$form_state, $form_id) {
     $form['forgot_pwd']['#markup'] = '<div id="frgt_pwd_block">' . l(t('Forgot Password ?'), 'user/password', array('attributes' => array('target'=>'_blank'))) . '</div>';
     $form['new_user']['#markup'] = '<div id="new_user_block">' . l(t('Register'), 'user/register', array('attributes' => array('target'=>'_blank'))) . '</div>';
   }
-  #$form['name']['#placeholder'] = 'Username';
-  #$form['pass']['#placeholder'] = 'Password';
-#echo $form_id;exit;
+
   switch($form_id) {
     case 'user_admin_settings':
       module_load_include('inc', 'corp_enhancements', 'includes/corp_enhancements.email');
       _corp_enhancements_user_settings_form_alter($form, $form_state);
       break;
-    case 'webform_client_form_1972382615' :
+    case 'webform_client_form_1972382659' :
+
+      
       $redeem_user = user_load($user->uid);
       $submitted = &$form['submitted'];
       $submitted['account_holder_name']['#default_value'] = $redeem_user->field_account_holder_name['und'][0]['value'];
@@ -404,7 +404,7 @@ function corp_enhancements_node_update($node) {
     $yourplaceholder['redeem_cashback_cancellation_comment'] = $node->field_cashback_comment_cancellat['und']['0']['value'];
     // Reset votes when node is updated:
     $origingal = $node->original;
-    
+
     if ($node->field_redeem_status['und']['0']['value'] =="cashback_processed" &&
         $origingal->field_redeem_status['und']['0']['value'] =="cashback_requested" ) {
 
@@ -414,8 +414,9 @@ function corp_enhancements_node_update($node) {
       $email_body = token_replace($email_body, array('yourplaceholder'=> $yourplaceholder, 'user' => $redeem_user));
       $email_subject = token_replace($email_subject, array('yourplaceholder'=> $yourplaceholder, 'user' => $redeem_user));
 
-      $params['subject'] = $email_body;
-      $params['body']    = array($email_subject);
+      $params['subject'] = $email_subject;
+      $params['body']    = array($email_body);
+      _corp_enhancements_set_transaction_status($redeem_user->uid, 'Cashback Requested', 'Cashback Processed');
       drupal_mail('corp_enhancements','cashback_processed', $redeem_user->mail, $language, $params);
 
     }
@@ -427,11 +428,10 @@ function corp_enhancements_node_update($node) {
       $email_body = token_replace($email_body, array('yourplaceholder'=> $yourplaceholder, 'user' => $redeem_user));
       $email_subject = token_replace($email_subject, array('yourplaceholder'=> $yourplaceholder, 'user' => $redeem_user));
 
-      $params['subject'] = $email_body;
-      $params['body']    = array($email_subject);
-      
+      $params['subject'] = $email_subject;
+      $params['body']    = array($email_body);
+      _corp_enhancements_set_transaction_status($redeem_user->uid, 'Cashback Requested', 'Validated');
       drupal_mail('corp_enhancements','request_cancelled', $redeem_user->mail, $language, $params);
-
     }
   }
 }
@@ -450,39 +450,37 @@ function corp_enhancements_node_update($node) {
  *   The Webform submission that was just inserted into the database.
  */
 function corp_enhancements_webform_submission_insert($node, $submission) {
-  # print_r($submission);
-  # print_r($node);
-  # exit;
   global $user;
   // save user bank details..
-  if ($submission->nid == "1972382615") {
-
+  if ($submission->nid == "1972382659") {
     // Can be used for all entity types
     $obj = entity_metadata_wrapper('user', $user);
-
+    // var_dump($obj);var_dump($submission);exit;
     foreach($node->webform['components'] as $key => $data) {
       if ($data['form_key']=="account_holder_name") {
-        $obj->field_account_holder_name = $submission->data[$key]['value'][0];
+        $obj->field_account_holder_name = (string) $submission->data[$key]['value'][0];
       }
       if ($data['form_key']=="account_number") {
-        $obj->field_account_number = (integer) $submission->data[$key]['value'][0];
+        $obj->field_account_number = (string) $submission->data[$key]['value'][0];
       }
       if ($data['form_key']=="bank") {
-        $obj->field_bank = $submission->data[$key]['value'][0];
+        $obj->field_bank = (string) $submission->data[$key]['value'][0];
+        $user_bank = (string) $submission->data[$key]['value'][0];
       }
       if ($data['form_key']=="ifsc_code") {
-        $obj->field_ifsc_code = $submission->data[$key]['value'][0];
+        $obj->field_ifsc_code = (string) $submission->data[$key]['value'][0];
       }
       if ($data['form_key']=="micr_code") {
-        $obj->field_micr_code = $submission->data[$key]['value'][0];
+        $obj->field_micr_code = (string)  $submission->data[$key]['value'][0];
       }
       if ($data['form_key']=="address") {
-        $obj->field_bank_address = $submission->data[$key]['value'][0];
+        $obj->field_bank_address = (string) $submission->data[$key]['value'][0];
       }
     }
     // save changes
     $obj->save();
     $nodes = _corp_enhancements_set_transaction_status($user->uid, 'Validated', 'Cashback Requested');
+
     if ($nodes) {
       //_corp_enhancements_send_point_update_email(node_load(1234564));
       $values = array(
@@ -496,34 +494,33 @@ function corp_enhancements_webform_submission_insert($node, $submission) {
       $nid = $nid+1;
       //echo $last_id = db_last_insert_id('node', 'nid');exit;
       $entity = entity_create('node', $values);
+
       $ewrapper = entity_metadata_wrapper('node', $entity);
-      $ewrapper->title->set($nid);
-      $ewrapper->field_drupal_uid->set($user->uid);
-      $ewrapper->field_redeem_username->set($user->name);
-      $ewrapper->field_redeem_user_email->set($user->mail);
+      // var_dump($ewrapper);
+      //  var_dump($user);exit;
+      $ewrapper->title->set((string)$nid);
+      $ewrapper->field_drupal_uid->set((integer)$user->uid);
+      $ewrapper->field_redeem_username->set((string)$user->name);
+      $ewrapper->field_redeem_user_email->set((string)$user->mail);
 
       $ewrapper->field_redeem_status->set('cashback_requested');
-      $ewrapper->field_redeem_bank->set('bank');
-      $ewrapper->field_redeem_comment->set('comment');
+      $ewrapper->field_redeem_bank->set((string)$user_bank);
       $amount = 0;
       foreach($nodes as $row) {
         $new_fc_item = entity_create('field_collection_item', array('field_name' => 'field_redeem_transaction_details'));
         $new_fc_item->setHostEntity('node', $entity);
         $new_fc_item_wrapper = entity_metadata_wrapper('field_collection_item', $new_fc_item);
-        $new_fc_item_wrapper->field_fc_redeem_transaction_id->set($row->omg_transaction_id);
-        $new_fc_item_wrapper->field_fc_redeem_transaction_date->set(strtotime($row->time));
+        $new_fc_item_wrapper->field_fc_redeem_transaction_id->set((string)$row->omg_transaction_id);
+        $new_fc_item_wrapper->field_fc_redeem_transaction_date->set((string)strtotime($row->time));
         $new_fc_item_wrapper->save();
         $amount = $amount + $row->omg_reward;
       }
-
-      $ewrapper->field_redeem_amount_requested->set(round($amount, 2));
-      $ewrapper->field_amount_processed->set(round($amount, 2));
-
+      $ewrapper->field_redeem_amount_requested->set((string)round($amount, 2));
+      $ewrapper->field_amount_processed->set((string)round($amount, 2));
       entity_save('node', $entity);
     }
 
   }
-
 }
 
 function _corp_enhancements_set_transaction_status($uid, $where_status, $set_status) {
@@ -538,30 +535,31 @@ function _corp_enhancements_set_transaction_status($uid, $where_status, $set_sta
     $transcation_ids[$row->omg_transaction_id] = $row;
   }
 
-  $nodeQuery = new EntityFieldQuery();
-  $nodes = $nodeQuery->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', 'omg_transaction_records')
-      ->fieldCondition('field_omg_transaction_id','value', array_keys($transcation_ids), 'IN')
-      ->execute();
+  if ($transcation_ids) {
+    $nodeQuery = new EntityFieldQuery();
+    $nodes = $nodeQuery->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'omg_transaction_records')
+        ->fieldCondition('field_omg_transaction_id','value', array_keys($transcation_ids), 'IN')
+        ->execute();
 
-  if (!empty ($nodes)) {
-    $nodes = array_keys($nodes['node']);
-    foreach ($nodes as $nid) {
-      $node = node_load($nid);
-      $obj = entity_metadata_wrapper('node', $node);
-      $obj->field_omg_status->set($set_status);
-      $obj->save();
+    if (!empty ($nodes)) {
+      $nodes = array_keys($nodes['node']);
+      foreach ($nodes as $nid) {
+        $node = node_load($nid);
+        $obj = entity_metadata_wrapper('node', $node);
+        $obj->field_omg_status->set($set_status);
+        $obj->save();
+      }
     }
+
+    db_update('omg_user_rewards')
+        ->fields(array('omg_status' => $set_status,))
+        ->condition('drupal_uid', $uid, '=')
+        ->condition('omg_status', $where_status, '=')
+        ->execute();
+
   }
-
-  db_update('omg_user_rewards')
-      ->fields(array('omg_status' => $set_status,))
-      ->condition('drupal_uid', $uid, '=')
-      ->condition('omg_status', $where_status, '=')
-      ->execute();
-
   return $transcation_ids;
-
 }
 
 
@@ -617,7 +615,9 @@ function corp_enhancement_user_reward_calculation() {
   foreach ($node_query as $node_data_nid) {
     $nodes[$node_data_nid->nid] = node_load($node_data_nid->nid);
   }
+
   $nodes = node_load_multiple(array(), array('type' => $type));
+
   foreach ($nodes as $node_data) {
     if (isset($node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value']) && isset($node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'])) {
 
@@ -677,18 +677,9 @@ function corp_enhancement_user_reward_calculation() {
                 }
               }
             }
-
-//                  $update_node = db_update('field_data_field_drupal_processing_status')
-//                                    ->fields(array('field_drupal_processing_status_value' => 1
-//                                    ))
-//                                    ->condition('entity_id', $node_data->nid, '=')
-//                                    ->execute();
-
             $update_node = node_load($node_data->nid);
             $update_node->field_drupal_processing_status[LANGUAGE_NONE][0]['value'] = 1;
             node_save($update_node);
-            // send email to users.
-            // _corp_enhancements_send_point_update_email($update_node);
           }
         }
       } else {
@@ -737,11 +728,6 @@ function corp_enhancement_user_reward_calculation() {
           }
           //}
         }
-//                    $update_node = db_update('field_data_field_drupal_processing_status')
-//                                    ->fields(array('field_drupal_processing_status_value' => 1
-//                                    ))
-//                                    ->condition('entity_id', $node_data->nid, '=')
-//                                    ->execute();
         $update_node = node_load($node_data->nid);
         $update_node->field_drupal_processing_status[LANGUAGE_NONE][0]['value'] = 1;
         node_save($update_node);

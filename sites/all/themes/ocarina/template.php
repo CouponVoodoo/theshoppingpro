@@ -23,10 +23,16 @@ function ocarina_preprocess_html(&$vars) {
           ))
       )), 'setting');
 
-  // Use a different html template for Ajax requests
-  if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' ) {
-    $variables['theme_hook_suggestions'][] = 'page__ajax';
+  if (arg(0)=="node" && arg(1)=="17609566") {
+    drupal_add_js("Drupal.behaviors.ModalClickCloseReload = {
+                    attach: function(context, settings) {
+                    jQuery('.close').bind('click', function() {
+                                location.reload();
+                            });
+                    }
+                    };",'inline');
   }
+
 }
 
 
