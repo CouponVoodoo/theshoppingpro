@@ -84,18 +84,3 @@
     ?>
   </div>
 </div>
-
-<script type="text/javascript">
-  jQuery(document).ready(function($){
-    $.fn.extend({
-      center: function () {
-        return this.each(function() {
-          var top = ($("#plugin_desc").height() - $(this).outerHeight()) / 2;
-          var left = ($("#plugin_desc").width() - $(this).outerWidth()) / 2;
-          $(this).css({position:'relative', margin:0, top: (top > 0 ? top : 0)+'px'});
-        });
-      }
-    });
-    jQuery('#plugin_image').center();
-  });
-</script>
