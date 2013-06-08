@@ -997,7 +997,7 @@ div#field-markup-add-more-wrapper{
 #id_retailer_content_plugin .retailer_header_image{text-align: center;margin:0px auto;}
 #id_retailer_content_plugin .plugin_wrapper{}
 #id_retailer_content_plugin .retailer_content_row{margin:0px 0px;}
-#id_retailer_content_plugin .partners_plugin_scroll{max-height:200px !important;overflow-y: scroll; padding: 5px 0px 5px 5px}
+#id_retailer_content_plugin .partners_plugin_scroll{max-height:135px !important;overflow-y: scroll; padding: 5px 0px 5px 5px}
 #id_retailer_content_plugin .partners_plugin_scroll:hover {background: #E4E4E4;}
 #id_retailer_content_plugin .recommended_plugin_scroll{height:135px !important;overflow-y: scroll;}
 #id_retailer_content_plugin .most_populars_plugin_scroll{max-height: 135px !important;overflow-y: scroll;}
