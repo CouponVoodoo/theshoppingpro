@@ -11,7 +11,7 @@
         $class = user_is_logged_in() ? 'plugin_title_row' : 'ctools-use-modal plugin_title_row';
         $row->field_display_text_value = strip_tags($row->field_display_text_value);
         $row->field_display_text_value = '<div class="plugin_desc" id="plugin_desc">'.$row->field_display_text_value .'&nbsp;  (Cashback cannot exceed order value)</div>';
-        $row->field_display_text_value .= '<div class="plugin_image" id="plugin_image"><img id="makecenter" src="'.$base_url . "/" . drupal_get_path('theme', 'ocarina') . '/images/greenbutton.png"  typeof="foaf:Image"/></div>';
+        $row->field_display_text_value .= '<div class="plugin_image" id="plugin_image"><img id="makecenter" src="'.$base_url . "/" . drupal_get_path('theme', 'ocarina') . '/images/greenbutton.png?q=1"  typeof="foaf:Image"/></div>';
         if (user_is_logged_in()) {
           $target = "_blank";
           $link_title = l(($row->title),  $url, array('attributes'=>array('target'=>'_blank', 'class'=>array($class)),'html'=>TRUE, 'external' => TRUE));
