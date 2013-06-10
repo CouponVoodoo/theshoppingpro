@@ -1,10 +1,8 @@
 <?php
-
-define('BUYER_PERCENTAGE', 50);
-define('REFERRER_PERCENTAGE', 25);
 define('BUYER_TYPE', 'Buyer');
 define('REFERRER_TYPE', 'Referrer');
-
+define('BUYER_PERCENTAGE_DEFAULT', 50);
+define('REFERRER_PERCENTAGE_DEFAULT', 25);
 /**
  * Implementation of hook_menu
  */
@@ -381,7 +379,7 @@ function corp_enhancements_form_alter(&$form, &$form_state, $form_id) {
       break;
     case 'webform_client_form_1972382659' :
 
-      
+
       $redeem_user = user_load($user->uid);
       $submitted = &$form['submitted'];
       $submitted['account_holder_name']['#default_value'] = $redeem_user->field_account_holder_name['und'][0]['value'];
@@ -619,7 +617,8 @@ function corp_enhancement_user_reward_calculation() {
   $nodes = node_load_multiple(array(), array('type' => $type));
 
   foreach ($nodes as $node_data) {
-    if (isset($node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value']) && isset($node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'])) {
+    if (isset($node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value']) &&
+        isset($node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'])) {
 
       $query = db_select('omg_user_rewards', 'our');
       $query->fields('our', array('id', 'drupal_uid'))//SELECT the fields from node
@@ -636,6 +635,7 @@ function corp_enhancement_user_reward_calculation() {
       $result2 = $query2->execute()->rowCount();
       $id = '';
 
+      $user_amount = _corp_enhancements_calculate_rewards_amount($node_data);
 
       $record = array();
       if ($result2 != 0) {
@@ -646,8 +646,8 @@ function corp_enhancement_user_reward_calculation() {
                 ->fields(array('drupal_uid' => $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'],
                 'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
                 'omg_transaction_id' => $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'],
-                'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * BUYER_PERCENTAGE) / 100,
-                'omg_reward_percentage' => BUYER_PERCENTAGE,
+                'omg_reward' => $user_amount['user_reward_amount'],
+                'omg_reward_percentage' => $user_amount['user_reward_amount_percentage'],
                 'omg_reward_type' => BUYER_TYPE
                 ))
                 ->condition('id', $id, '=')
@@ -668,8 +668,8 @@ function corp_enhancement_user_reward_calculation() {
                       ->fields(array('drupal_uid' => $ref_uid,
                       'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
                       'omg_transaction_id' => $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'],
-                      'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * REFERRER_PERCENTAGE) / 100,
-                      'omg_reward_percentage' => REFERRER_PERCENTAGE,
+                      'omg_reward' => $user_amount['user_referral_reward_amount'],
+                      'omg_reward_percentage' => $user_amount['user_referral_reward_percentage'],
                       'omg_reward_type' => REFERRER_TYPE
                       ))
                       ->condition('id', $_SESSION['last_inserted_id'], '=')
@@ -694,8 +694,8 @@ function corp_enhancement_user_reward_calculation() {
             ->values(array('drupal_uid' => $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'],
             'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
             'omg_transaction_id' => $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'],
-            'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * BUYER_PERCENTAGE) / 100,
-            'omg_reward_percentage' => BUYER_PERCENTAGE,
+            'omg_reward' => $user_amount['user_reward_amount'],
+            'omg_reward_percentage' => $user_amount['user_reward_amount_percentage'],
             'omg_reward_type' => BUYER_TYPE
             ))
             ->execute();
@@ -720,8 +720,8 @@ function corp_enhancement_user_reward_calculation() {
                 ->values(array('drupal_uid' => $ref_data_uid2,
                 'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
                 'omg_transaction_id' => $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'],
-                'omg_reward' => ($node_data->field_omg_nvr[LANGUAGE_NONE][0]['value'] * REFERRER_PERCENTAGE) / 100,
-                'omg_reward_percentage' => REFERRER_PERCENTAGE,
+                'omg_reward' => $user_amount['user_referral_reward_amount'],
+                'omg_reward_percentage' => $user_amount['user_referral_reward_percentage'],
                 'omg_reward_type' => REFERRER_TYPE
                 ))
                 ->execute();
@@ -736,6 +736,41 @@ function corp_enhancement_user_reward_calculation() {
       }
     }
   }
+}
+
+
+function _corp_enhancements_calculate_rewards_amount($node) {
+  $retailer_node = null;
+  $return = array();
+
+  if (isset($node->field_retailer_node_id[LANGUAGE_NONE][0]['value'])) {
+    $retailer_node = node_load($node_data->field_retailer_node_id[LANGUAGE_NONE][0]['value']);
+  }
+
+  if ($retailer_node->field_reward_percentage_type[LANGUAGE_NONE][0]['value'] =="fixed") {
+    $return['user_reward_amount'] = $retailer_node->field_reward_percentage_amount[LANGUAGE_NONE][0]['value'];
+    $return['user_reward_amount_percentage'] = round(($retailer_node->field_reward_percentage_amount[LANGUAGE_NONE][0]['value'] * 100) / $node->field_omg_nvr[LANGUAGE_NONE][0]['value'],2);
+  }elseif($retailer_node->field_reward_percentage_type[LANGUAGE_NONE][0]['value'] =="percentage") {
+    $return['user_reward_amount'] = ($node->field_omg_nvr[LANGUAGE_NONE][0]['value'] * $retailer_node->field_reward_percentage_amount[LANGUAGE_NONE][0]['value']) / 100 ;
+    $return['user_reward_amount_percentage'] = $retailer_node->field_reward_percentage_amount[LANGUAGE_NONE][0]['value'];
+  }else {
+    $return['user_reward_amount'] = ($node->field_omg_nvr[LANGUAGE_NONE][0]['value'] * BUYER_PERCENTAGE_DEFAULT) / 100;
+    $return['user_reward_amount_percentage'] = BUYER_PERCENTAGE_DEFAULT;
+  }
+
+  if ($retailer_node->field_reward_percentage_ref_type[LANGUAGE_NONE][0]['value'] =="fixed") {
+    $return['user_referral_reward_amount'] = $retailer_node->field_reward_percentage_ref_amt[LANGUAGE_NONE][0]['value'];
+    $return['user_referral_reward_percentage'] = round(($retailer_node->field_reward_percentage_ref_amt[LANGUAGE_NONE][0]['value'] * 100) / $node->field_omg_nvr[LANGUAGE_NONE][0]['value'], 2);
+  }elseif($retailer_node->field_reward_percentage_ref_type[LANGUAGE_NONE][0]['value'] =="percentage") {
+    $return['user_referral_reward_amount'] = ($node->field_omg_nvr[LANGUAGE_NONE][0]['value'] * $retailer_node->field_reward_percentage_ref_amt[LANGUAGE_NONE][0]['value']) / 100 ;
+    $return['user_referral_reward_percentage'] = $retailer_node->field_reward_percentage_ref_amt[LANGUAGE_NONE][0]['value'];
+  }else {
+    $return['user_referral_reward_amount'] = ($node->field_omg_nvr[LANGUAGE_NONE][0]['value'] * REFERRER_PERCENTAGE_DEFAULT) / 100;
+    $return['user_referral_reward_percentage'] = REFERRER_PERCENTAGE_DEFAULT;
+  }
+
+  return $return;
+
 }
 
 /**

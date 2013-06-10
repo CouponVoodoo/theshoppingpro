@@ -3,8 +3,6 @@
     <?php /// print '<img src="'.$base_url . "/" . drupal_get_path('theme', 'ocarina') . '/images/TheShoppingPro-small.png"  typeof="foaf:Image"/>';?>
   <div id="retailer_content" class="plugin_wrapper">
     <?php
-
-
     foreach($data['items'] as $key=> $item) {
       if ($key =="partners") {
         $row = &$item[0];
