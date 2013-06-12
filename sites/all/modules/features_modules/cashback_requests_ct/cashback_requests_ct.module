@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Cashback Requests ct feature.
+ */
+
+include_once 'cashback_requests_ct.features.inc';
