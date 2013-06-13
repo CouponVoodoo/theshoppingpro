@@ -1147,7 +1147,7 @@ ul#main-menu li a{
 #id_retailer_content_plugin  #makecenter{
   display: inline-block;
   vertical-align: middle;
-  height:100%;
+  height:52px;
 }
 
 #modal-content .webform-client-form .form-item label{
