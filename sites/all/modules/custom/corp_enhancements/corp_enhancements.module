@@ -378,8 +378,6 @@ function corp_enhancements_form_alter(&$form, &$form_state, $form_id) {
       _corp_enhancements_user_settings_form_alter($form, $form_state);
       break;
     case 'webform_client_form_1972382662' :
-
-
       $redeem_user = user_load($user->uid);
       $submitted = &$form['submitted'];
       $submitted['account_holder_name']['#default_value'] = $redeem_user->field_account_holder_name['und'][0]['value'];
@@ -394,7 +392,7 @@ function corp_enhancements_node_update($node) {
   if ($node->type == "cashback_requests") {
     $redeem_user = user_load($node->field_drupal_uid['und']['0']['value']);
     $yourplaceholder['redeem_transaction_id'] = $node->field_bank_transaction_id['und']['0']['value'];
-    $yourplaceholder['redeem_transaction_date'] = $node->field_bank_transaction_date['und']['0']['value'];
+    $yourplaceholder['redeem_transaction_date'] = date("d M, Y",strtotime($node->field_bank_transaction_date['und']['0']['value']));
     $yourplaceholder['redeem_amount_processed'] = $node->field_bank_amount_processed['und']['0']['value'];
     $yourplaceholder['redeem_bank'] = $node->field_bank_name['und']['0']['value'];
     $yourplaceholder['redeem_cashback_comment'] = $node->field_cashback_comment['und']['0']['value'];
@@ -456,9 +454,11 @@ function corp_enhancements_webform_submission_insert($node, $submission) {
     foreach($node->webform['components'] as $key => $data) {
       if ($data['form_key']=="account_holder_name") {
         $obj->field_account_holder_name = (string) $submission->data[$key]['value'][0];
+        $user_account_holder_name = (string) $submission->data[$key]['value'][0];
       }
       if ($data['form_key']=="account_number") {
         $obj->field_account_number = (string) $submission->data[$key]['value'][0];
+        $user_account_number = (string) $submission->data[$key]['value'][0];
       }
       if ($data['form_key']=="bank") {
         $obj->field_bank = (string) $submission->data[$key]['value'][0];
@@ -466,9 +466,11 @@ function corp_enhancements_webform_submission_insert($node, $submission) {
       }
       if ($data['form_key']=="ifsc_code") {
         $obj->field_ifsc_code = (string) $submission->data[$key]['value'][0];
+        $user_ifsc_code = (string) $submission->data[$key]['value'][0];
       }
       if ($data['form_key']=="address") {
         $obj->field_bank_address = (string) $submission->data[$key]['value'][0];
+        $user_bank_address = (string) $submission->data[$key]['value'][0];
       }
     }
     // save changes
@@ -499,6 +501,10 @@ function corp_enhancements_webform_submission_insert($node, $submission) {
 
       $ewrapper->field_redeem_status->set('cashback_requested');
       $ewrapper->field_redeem_bank->set((string)$user_bank);
+      $ewrapper->field_redeem_branch->set((string)$user_bank_address);
+      $ewrapper->field_redeem_ifsc_code->set((string)$user_ifsc_code);
+      $ewrapper->field_redeem_account_nr->set((string)$user_account_number);
+      $ewrapper->field_redeem_account_holdr_nm->set((string)$user_account_holder_name);
       $amount = 0;
       foreach($nodes as $row) {
         $new_fc_item = entity_create('field_collection_item', array('field_name' => 'field_redeem_transaction_details'));
