@@ -1161,7 +1161,7 @@ ul#main-menu li a{
 }
 
 #block-block-19 .block{
-	Border: none;
-	background: none;
+	border: none !important;
+	background: none !important;
 }
 
