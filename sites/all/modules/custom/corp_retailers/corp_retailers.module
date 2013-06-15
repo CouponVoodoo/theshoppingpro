@@ -106,7 +106,7 @@ function corp_retailers_list() {
       'uid2' => $uid2,
       'redirect' => $redirect,
   );
-  drupal_set_title($url . " | Cashback, Coupons, Offers, Deals & Discounts");
+  #drupal_set_page_titl ();
   return theme('corp_retailers_list_page', array('data' => $data));
 }
 
@@ -423,4 +423,12 @@ function corp_retailers_html_head_alter(&$head_elements) {
     );
   }
 
+}
+/**
+ * Implement hook_preprocess_html().
+ */
+function corp_retailers_preprocess_html(&$vars) {
+  if (arg(0) =="retailers-partners-list") {
+     $vars['head_title'] = $_GET['url'] . " | Cashback, Coupons, Offers, Deals & Discounts";
+  }
 }
