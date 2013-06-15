@@ -1165,3 +1165,8 @@ ul#main-menu li a{
 	background: none !important;
 }
 
+/* BY ashish to hide most popuar cashback widget */
+
+div#id_most_populars{
+	display: none;
+}
