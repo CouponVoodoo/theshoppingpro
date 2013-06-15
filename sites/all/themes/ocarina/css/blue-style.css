@@ -997,7 +997,7 @@ div#field-markup-add-more-wrapper{
 #id_retailer_content_plugin .retailer_header_image{text-align: center;margin:0px auto;}
 #id_retailer_content_plugin .plugin_wrapper{}
 #id_retailer_content_plugin .retailer_content_row{margin:0px 0px;}
-#id_retailer_content_plugin .partners_plugin_scroll{height:300px !important;overflow-y: scroll; padding: 5px 0px 20px 5px, border: none !important}
+#id_retailer_content_plugin .partners_plugin_scroll{height:300px !important;overflow-y: scroll; padding: 5px 0px 20px 5px;}
 #id_retailer_content_plugin .partners_plugin_scroll:hover {background: #E4E4E4;}
 // #id_retailer_content_plugin .recommended_plugin_scroll{height:135px !important;overflow-y: scroll;}
 #id_retailer_content_plugin .recommended_plugin_scroll{height:300px !important;overflow-y: scroll; padding: 5px 0px 20px 5px}
@@ -1020,6 +1020,7 @@ div#id_most_populars{
 }
 
 #id_retailer_content_plugin .content_plugin{border-bottom:1px solid #CCCCCC; background: #000000; font-family: arial !important;}
+#id_retailer_content_plugin .partners_plugin_scroll .content_plugin{border: none !important;}
 #id_retailer_content_plugin .content_plugin:hover {background:#E4E4E4;}
 #id_retailer_content_plugin .title_plugin{
   color: #F7971C;
