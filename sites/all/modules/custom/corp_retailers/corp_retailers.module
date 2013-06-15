@@ -70,6 +70,7 @@ function corp_retailers_list() {
     }
   }
 
+
   $output = array();
   if ($node->nid) {
     $output = array('partners' => array(0 => $node));
@@ -105,6 +106,7 @@ function corp_retailers_list() {
       'uid2' => $uid2,
       'redirect' => $redirect,
   );
+  drupal_set_title($url . " | Cashback, Coupons, Offers, Deals & Discounts");
   return theme('corp_retailers_list_page', array('data' => $data));
 }
 
@@ -401,4 +403,24 @@ function corp_retailers_track_user($url, $uid, $uid2, $referrer) {
   }
   //$response = file_get_contents('http://plugin.theshoppingpro.com/drupalLog.php?url=' . $url . '&drupalUserID=' . $uid . '&uid2=' . $uid2 . '&referralLink=' . $referrer);
   return 'http://plugin.theshoppingpro.com/drupalLog.php?url=' . $url . '&drupalUserID=' . $uid . '&uid2=' . $uid2 . '&referralLink=' . $referrer;
+}
+
+
+function corp_retailers_html_head_alter(&$head_elements) {
+  if (arg(0) =="retailers-partners-list") {
+    // Force the latest IE rendering engine and Google Chrome Frame.
+    $head_elements['keywords'] = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array('name' => 'keywords', 'content' => $_GET['url'].', offers, price, deals, coupons, discounts'),
+        '#weight' => -1001,
+    );
+    $head_elements['description'] = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array('name' => 'description', 'content' => 'Get cashback, coupons, offers, deals and discounts for '. $_GET['url']),
+        '#weight' => -1001,
+    );
+  }
+
 }
