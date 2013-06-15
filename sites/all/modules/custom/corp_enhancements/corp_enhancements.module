@@ -616,8 +616,6 @@ function corp_enhancement_user_reward_calculation() {
     $nodes[$node_data_nid->nid] = node_load($node_data_nid->nid);
   }
 
-  $nodes = node_load_multiple(array(), array('type' => $type));
-
   foreach ($nodes as $node_data) {
     if (isset($node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value']) &&
         isset($node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'])) {
@@ -629,21 +627,20 @@ function corp_enhancement_user_reward_calculation() {
       $result = $query->execute();
       $id = '';
 
-
       $query2 = db_select('omg_user_rewards', 'our');
       $query2->fields('our', array('id', 'drupal_uid'))//SELECT the fields from node
           ->condition('our.omg_transaction_id', $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'], '=')
           ->condition('our.drupal_uid', $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'], '=');
       $result2 = $query2->execute()->rowCount();
+
       $id = '';
-
       $user_amount = _corp_enhancements_calculate_rewards_amount($node_data);
-
       $record = array();
       if ($result2 != 0) {
         foreach ($result as $record) {
           $id = $record->id;
           if (isset($record) && $id != '') {
+
             $update_transaction_record = db_update('omg_user_rewards')
                 ->fields(array('drupal_uid' => $node_data->field_drupal_uid[LANGUAGE_NONE][0]['value'],
                 'omg_status' => $node_data->field_omg_status[LANGUAGE_NONE][0]['value'],
@@ -663,6 +660,7 @@ function corp_enhancement_user_reward_calculation() {
 
               $ref_data_uid = '';
               foreach ($result_referrer as $ref_data) {
+
                 $ref_data_uid = $ref_data->referral_uid;
                 if (isset($ref_data) && $ref_data_uid != '') {
                   $ref_uid = $ref_data->referral_uid;
@@ -674,7 +672,9 @@ function corp_enhancement_user_reward_calculation() {
                       'omg_reward_percentage' => $user_amount['user_referral_reward_percentage'],
                       'omg_reward_type' => REFERRER_TYPE
                       ))
-                      ->condition('id', $_SESSION['last_inserted_id'], '=')
+                      ->condition('drupal_uid', $ref_uid, '=')
+                      ->condition('omg_status', $node_data->field_omg_status[LANGUAGE_NONE][0]['value'], '=')
+                      ->condition('omg_transaction_id', $node_data->field_omg_transaction_id[LANGUAGE_NONE][0]['value'], '=')
                       ->execute();
                 }
               }
@@ -740,13 +740,12 @@ function corp_enhancement_user_reward_calculation() {
   }
 }
 
-
 function _corp_enhancements_calculate_rewards_amount($node) {
-  $retailer_node = null;
+  $retailer_node = array();
   $return = array();
 
-  if (isset($node->field_retailer_node_id[LANGUAGE_NONE][0]['value'])) {
-    $retailer_node = node_load($node_data->field_retailer_node_id[LANGUAGE_NONE][0]['value']);
+  if (isset($node->field_retailer_node_id[LANGUAGE_NONE][0]['nid'])) {
+    $retailer_node = node_load($node->field_retailer_node_id[LANGUAGE_NONE][0]['nid']);
   }
 
   if ($retailer_node->field_reward_percentage_type[LANGUAGE_NONE][0]['value'] =="fixed") {
