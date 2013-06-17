@@ -405,7 +405,7 @@ function corp_retailers_track_user($url, $uid, $uid2, $referrer) {
   return 'http://plugin.theshoppingpro.com/drupalLog.php?url=' . $url . '&drupalUserID=' . $uid . '&uid2=' . $uid2 . '&referralLink=' . $referrer;
 }
 
-
+/*
 function corp_retailers_html_head_alter(&$head_elements) {
   if (arg(0) =="retailers-partners-list") {
     // Force the latest IE rendering engine and Google Chrome Frame.
@@ -426,9 +426,11 @@ function corp_retailers_html_head_alter(&$head_elements) {
 }
 /**
  * Implement hook_preprocess_html().
- */
+ 
 function corp_retailers_preprocess_html(&$vars) {
   if (arg(0) =="retailers-partners-list") {
      $vars['head_title'] = $_GET['url'] . " | Cashback, Coupons, Offers, Deals & Discounts";
   }
 }
+ * 
+ */

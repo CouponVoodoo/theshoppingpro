@@ -608,6 +608,7 @@ function corp_enhancement_user_reward_calculation() {
 
   $node_query->fields('n', array('nid'))  // specifying fields from file_usage table
       ->condition('n.type', $type, '=')
+      ->condition('n.status', 1, '=')
       ->condition('fdps.field_drupal_processing_status_value', 0, '=');
 
   $node_query = $node_query->execute();
@@ -1071,8 +1072,14 @@ function corp_enhancements_send_email($text, $account, $language = NULL) {
 }
 
 function test_code() {
-  global $user;
-
+  $nodes = node_load_multiple(array(), array('type'=>'retailers'));
+  foreach($nodes as $node){
+    $node->meta_description[LANGUAGE_NONE][0]['metatags_quick'] = 'Get cashback, coupons, offers, deals & discounts for '. $node->title;
+    $node->meta_description[LANGUAGE_NONE][0]['meta_name'] = 'description';
+    $node->meta_keywords[LANGUAGE_NONE][0]['metatags_quick'] = $node->title. ', '. $node->field_url[LANGUAGE_NONE][0]['value'].', offers, price, deals, coupons, discounts';
+    $node->meta_keywords[LANGUAGE_NONE][0]['meta_name'] = 'keywords';
+    node_save($node);
+  }
   exit;
 }
 
