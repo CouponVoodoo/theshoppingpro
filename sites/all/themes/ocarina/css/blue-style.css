@@ -1176,3 +1176,6 @@ ul#main-menu li a{
 
 /* BY ashish to hide most popuar cashback widget */
 
+.page-rewards table,
+.page-rewards table tr,
+.page-rewards table td{background:transparent;}
