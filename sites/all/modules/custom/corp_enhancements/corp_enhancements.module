@@ -358,6 +358,15 @@ function corp_enhancements_form_user_login_block_alter(&$form, &$form_state) {
   $form['#validate'][3] = 'corp_enhancements_final_validate';
 }
 
+function corp_enhancements_form_user_register_form_alter(&$form, &$form_state, $form_id) {
+  $form['#validate'][] = 'corp_enhancements_validate_register_form';
+}
+
+function corp_enhancements_validate_register_form(&$form, &$form_state) {
+  if (substr_count(reset(explode("@", $form_state['values']['mail'])), '.') > 2) {
+    form_set_error('mail', t('Invalid email id.'));
+  }
+}
 /**
  * Implements hook_form_alter
  */
