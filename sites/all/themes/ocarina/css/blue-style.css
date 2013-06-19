@@ -1004,9 +1004,11 @@ div#field-markup-add-more-wrapper{
 #id_retailer_content_plugin .recommended_plugin_scroll{height:275px !important;overflow-y: scroll; padding: 5px 0px 20px 5px}
 #id_retailer_content_plugin .most_populars_plugin_scroll{max-height: 135px !important;overflow-y: scroll;}
 
+/* BY ashish to hide most popuar cashback widget */
 div#id_most_populars{
 	display: none;
 }
+
 #plugin_page_username{color:#25ade3!important;text-align:left;margin: 0px;padding-left:10px;}
 
 
@@ -1174,7 +1176,6 @@ ul#main-menu li a{
 	background: none !important;
 }
 
-/* BY ashish to hide most popuar cashback widget */
 
 .page-rewards table,
 .page-rewards table tr,
