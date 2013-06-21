@@ -22,7 +22,9 @@
   <script type="text/javascript" src="sites/all/libraries/fitvids/jquery.fitvids.js"></script>
   <script type="text/javascript">
     jQuery(document).ready(function(){
-      jQuery('.video-container').fitVids();
+      if(jQuery(".video-container").length > 0){
+        jQuery('.video-container').fitVids();
+      }
     });
   </script>
   <?php require_once("_header.tpl.php"); ?>

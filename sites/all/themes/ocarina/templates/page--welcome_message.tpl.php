@@ -3,14 +3,14 @@
     <div style="margin:0 auto; width: 548px">
       <div style="display:table-cell; text-align: center; padding-top: 20px" id="welcome-message">
         <div>
-          <img src="sites/default/files/The_Shopping_Pro_Logo-250px.png" style="width: 300px;" />
+          <img src="/sites/default/files/The_Shopping_Pro_Logo-250px.png" style="width: 300px;" />
         </div>
         <div style="color:#25ade3; margin-bottom: 10px;float:left; width:100%;">
           Easy, Intelligent & Rewarding Shopping
         </div>
         <div style="float:left; width:100%; margin: 10px 0">
           <?php
-          print l('<img src="sites/all/themes/ocarina/images/Play_Video.png" />', 'http://www.youtube.com/embed/2Y042npkFFY?wmode=transparent&amp;rel=0&amp;autoplay=0&amp;end=76', array(
+          print l('<img src="/sites/all/themes/ocarina/images/Play_Video.png" />', 'http://www.youtube.com/embed/2Y042npkFFY?wmode=transparent&amp;rel=0&amp;autoplay=0&amp;end=76', array(
               'external' => TRUE,
               'query' => array('width' => '640', 'height' => '400', 'iframe' => 'true'),
               'html' => TRUE,
@@ -20,8 +20,11 @@
         </div>
         <div style="float:left; width:100%; margin: 10px 0;">
           <?php
-          if (is_chrome()) {
-            print '<button onclick="chrome.webstore.install()"style="background-image: url(http://theshoppingpro.com/sites/all/themes/ocarina/images/blue/blue_button_big_chrome.png);height: 90px;width: 60%;background-size: 100%;background-repeat: no-repeat;border: none;" id="install-button"> </button>';
+
+          $browser = getBrowserInfo();
+          if ($browser['name']=="Google Chrome") {
+        //  if (is_chrome()) {
+            print '<button onclick="chrome.webstore.install()" style="background-image: url(http://theshoppingpro.com/sites/all/themes/ocarina/images/blue/blue_button_big_chrome.png);height: 90px;width: 60%;background-size: 100%;background-repeat: no-repeat;border: none;" id="install-button"> </button>';
           }
           else {
             ?>
@@ -46,7 +49,7 @@
           ?>
         </div>
         <div style="float:left; width:100%; margin: 10px 0;">
-          Free for <img src="sites/all/themes/ocarina/images/browser-logos-small.png" /> on <img src="sites/all/themes/ocarina/images/OS_Logo.png" style="height: 37px !important;" />
+          Free for <img src="/sites/all/themes/ocarina/images/browser-logos-small.png" /> on <img src="sites/all/themes/ocarina/images/OS_Logo.png" style="height: 37px !important;" />
         </div>
       </div>
       <div style="float: left;">
