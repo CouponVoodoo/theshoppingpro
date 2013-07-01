@@ -62,4 +62,5 @@
       </div>
     </div>
   </div>
+  <a href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_blue.png" alt="Mobile Analytics" /></a>
 </div>
