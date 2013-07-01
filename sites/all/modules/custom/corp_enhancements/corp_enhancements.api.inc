@@ -3,15 +3,16 @@
 /*
  * Function to return data requested via External hits
  */
+
 function get_data() {
   if (isset($_GET['type']) && !empty($_GET['type'])) {
     $type = $_GET['type'];
     if ($type == 'retailers') {
       $nids = db_select('node', 'n')
-        ->fields('n', array('nid'))
-        ->condition('n.type', $type)
-        ->execute()
-        ->fetchAll(PDO::FETCH_COLUMN);
+              ->fields('n', array('nid'))
+              ->condition('n.type', $type)
+              ->execute()
+              ->fetchAll(PDO::FETCH_COLUMN);
       $data = array();
       foreach ($nids as $nid) {
         $node = node_load($nid);
@@ -42,7 +43,7 @@ function get_data() {
           foreach ($node->field_tracking_url['und'] as $field_tracking_url) {
             $tracking_urls_ids[] = $field_tracking_url;
           }
-          $tracking_urls = entity_load('field_collection_item' ,$tracking_urls_ids);
+          $tracking_urls = entity_load('field_collection_item', $tracking_urls_ids);
           foreach ($tracking_urls as $tracking_url) {
             if (!empty($tracking_url->field_affiliate['und'][0]['tid'])) {
               $data[$nid]['tracking_url'][$tracking_url->item_id]['affiliate'] = taxonomy_term_load($tracking_url->field_affiliate['und'][0]['tid'])->name;
@@ -59,7 +60,7 @@ function get_data() {
             if (!empty($tracking_url->field_url_part4['und'][0]['value'])) {
               $data[$nid]['tracking_url'][$tracking_url->item_id]['url_part4'] = $tracking_url->field_url_part4['und'][0]['value'];
             }
-          }          
+          }
         }
         $data[$nid]['primary_category'] = taxonomy_term_load($node->field_primary_category['und'][0]['tid'])->name;
         if (!empty($node->field_active_affiliate['und'][0]['tid'])) {
@@ -67,15 +68,19 @@ function get_data() {
         }
         if (!empty($node->field_is_popular)) {
           $data[$nid]['popular'] = $node->field_is_popular['und'][0]['value'];
-        }        
+        }
+        if (isset($node->field_responsive)) {
+          $data[$nid]['responsive'] = $node->field_responsive['und'][0]['value'];
+        } else {
+          $data[$nid]['responsive'] = 0;
+        }
       }
-    }
-    elseif ($type == 'interest') {
+    } elseif ($type == 'interest') {
       $nids = db_select('node', 'n')
-        ->fields('n', array('nid'))
-        ->condition('n.type', 'sites_of_interest')
-        ->execute()
-        ->fetchAll(PDO::FETCH_COLUMN);
+              ->fields('n', array('nid'))
+              ->condition('n.type', 'sites_of_interest')
+              ->execute()
+              ->fetchAll(PDO::FETCH_COLUMN);
       $data = array();
       foreach ($nids as $nid) {
         $node = node_load($nid);
@@ -100,9 +105,16 @@ function get_data() {
             $data[$nid]['countries'][] = taxonomy_term_load($country['tid'])->name;
           }
         }
+
+        if (isset($node->field_responsive)) {
+          $data[$nid]['responsive'] = $node->field_responsive['und'][0]['value'];
+        } else {
+          $data[$nid]['responsive'] = 0;
+        }
       }
     }
     drupal_json_output($data);
   }
 }
+
 ?>
