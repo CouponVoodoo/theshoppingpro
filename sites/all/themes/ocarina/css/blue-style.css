@@ -220,10 +220,10 @@ article.node-products form.commerce-add-to-cart .form-submit {
 }
 
 /* By Ashish to make left and right coumns top aligned*/
-.node{
-  padding: -20px -20px -20px -20px !important;
-  margin: -20px -20px -20px -20px!important;
-}
+// .node{
+//   padding: -20px -20px -20px -20px !important;
+//   margin: -20px -20px -20px -20px!important;
+// }
 
 /* By Ashish to make jcarousel button on right side*/
 .region-sidebar-second .jcarousel-prev{
