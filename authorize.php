@@ -71,6 +71,7 @@ drupal_bootstrap(DRUPAL_BOOTSTRAP_SESSION);
 
 // This must go after drupal_bootstrap(), which unsets globals!
 global $conf;
+$testing="";
 
 // We have to enable the user and system modules, even to check access and
 // display errors via the maintenance theme.
