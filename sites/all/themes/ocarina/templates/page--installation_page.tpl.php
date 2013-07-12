@@ -15,6 +15,11 @@
   }
   ?>
 </div>
+<!-- Start of StatCounter Code for Drupal --><noscript><div class="statcounter"><a title="drupal counter"
+href="http://statcounter.com/drupal/" target="_blank"><img
+class="statcounter"
+src="http://c.statcounter.com/9090567/0/7811b3fa/1/"
+alt="drupal counter"></a></div></noscript><!-- End of StatCounter Code for Drupal -->
 <script type="text/javascript">
   // redirect to google after 5 seconds
   window.setTimeout(function() {
