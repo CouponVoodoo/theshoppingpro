@@ -223,6 +223,17 @@ function sharethis_configuration_form($form, &$form_state) {
     '#type' => 'textfield',
     '#default_value' => variable_get('sharethis_twitter_handle', ''),
   );
+
+/* vinod patch */
+
+$form['advanced']['sharethis_donotcopy'] = array(
+    '#title' => t('Do Not Copy'),
+    '#description' => t("Disables the pasting of 'See more: yourURL.com#SThashtag' after a user copies-and-pastes text."),
+    '#type' => 'checkbox',
+    '#default_value' => variable_get('sharethis_donotcopy', FALSE),
+  );
+
+
   return system_settings_form($form);
 }
 
@@ -377,6 +388,7 @@ function sharethis_get_options_array() {
     'widget' => variable_get('sharethis_widget_option', 'st_multi'),
     'twitter_suffix' => variable_get('sharethis_twitter_suffix', ''),
     'twitter_handle' => variable_get('sharethis_twitter_handle', ''),
+	  'donotcopy' => variable_get('sharethis_donotcopy', FALSE),
     'late_load' => variable_get('sharethis_late_load', FALSE),
   );
 }
@@ -481,8 +493,16 @@ $mPath = 'http://www.theshoppingpro.com';
   }
 
   // Provide the publisher ID.
+  // doNotCopy option must read 'true'.
+  if ($data_options['donotcopy']) {
+    $data_options['donotcopy'] = 'true';
+  }
+
+  // Provide the options.
+
   $stlight = drupal_json_encode(array(
     'publisher' => $data_options['publisherID'],
+    'doNotCopy' => $data_options['donotcopy'],
   ));
   $st_js .= "<script type='text/javascript'>stLight.options($stlight);</script>";
   return '<div class="sharethis-wrapper">' . $st_sample . $st_spans . $st_js . '</div>';
