@@ -1,4 +1,3 @@
-Test
 <div id ="" style="text-align: center" class="page">
   <?php
   $browser = getBrowserInfo();
