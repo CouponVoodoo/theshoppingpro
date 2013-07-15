@@ -41,6 +41,11 @@ $rid=$cookie['uid'];
 $rid="No Referrer";
 }
 
+if($rid==""){
+$rid="No Referrer";
+}
+
+
   $data = array(
       'referrerid' => $rid,
       'uid' => $user->uid,
