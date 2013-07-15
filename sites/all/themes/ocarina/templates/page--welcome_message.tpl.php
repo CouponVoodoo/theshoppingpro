@@ -64,8 +64,3 @@
   </div>
   <a href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_blue.png" alt="Mobile Analytics" /></a>
 </div>
-<!-- Start of StatCounter Code for Drupal --><noscript><div class="statcounter"><a title="drupal counter"
-href="http://statcounter.com/drupal/" target="_blank"><img
-class="statcounter"
-src="http://c.statcounter.com/9090567/0/7811b3fa/1/"
-alt="drupal counter"></a></div></noscript><!-- End of StatCounter Code for Drupal -->
