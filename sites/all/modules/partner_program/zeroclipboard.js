@@ -108,8 +108,10 @@ ZeroClipboard.Client.prototype = {
 		style.position = 'absolute';
 		style.left = '' + box.left + 'px';
 		style.top = '' + box.top + 'px';
-		style.width = '' + box.width + 'px';
-		style.height = '' + box.height + 'px';
+		//style.width = '' + box.width + 'px';
+		//style.height = '' + box.height + 'px';
+		style.width = '121px';
+		style.height = '25px';
 		style.zIndex = zIndex;
 		
 		 style.backgroundColor = '#f00'; // debug
