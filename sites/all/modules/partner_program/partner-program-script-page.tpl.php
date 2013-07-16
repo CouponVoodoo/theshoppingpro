@@ -12,7 +12,7 @@
 		<textarea class="partner_program"  wrap='off' autocorrect='off' autocapitalize='off' tabindex='0' rows="6" cols="20">
 <!--script start here-->		
 <script type="text/javascript">var referralid='<?php print $data['referrerid'] ?>';</script>
-<script type="text/javascript" src="http://www.theshoppingpro.com/sites/all/modules/custom/partner_program/shoppingpro.js">
+<script type="text/javascript" src="http://www.theshoppingpro.com/sites/all/modules/partner_program/shoppingpro.js">
 </script>
 <!--script end here-->		
 		</textarea>
