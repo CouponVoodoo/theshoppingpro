@@ -115,7 +115,7 @@ ZeroClipboard.Client.prototype = {
 		style.height = '42px';
 		style.zIndex = zIndex;
 		
-		 style.backgroundColor = '#f00'; // debug
+		 //style.backgroundColor = '#f00'; // debug
 		
 		var body = document.getElementsByTagName('body')[0];
 		body.appendChild(this.div);
