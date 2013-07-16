@@ -17,7 +17,7 @@
 <!--script end here-->		
 		</textarea>
                 
-<br /><br />
+<br />
 <p><input type="button" id="copy" name="copy" value="Copy to Clipboard" /></p>	
 <script>		
 		//set path
