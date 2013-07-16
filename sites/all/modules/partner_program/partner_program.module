@@ -46,6 +46,8 @@ function partner_program_script() {
   global $user, $base_url;
   $referrerid=_referral_uid2ref($user->uid);
 
+   drupal_add_js(drupal_get_path('module', 'partner_program') .'/zeroclipboard.js');
+
 /*
    drupal_add_js((drupal_get_path('module', 'partner_program') .'/shoppingpro.js'), 
  array('type' => 'file', 'scope' => 'footer', 'weight' => 5)
@@ -60,4 +62,33 @@ function partner_program_script() {
 
   return theme('partner_program_script_page', array('data' => $data));
 
+}
+
+
+
+
+/**
+* Implements hook_block_info().
+*/
+function partner_program_block_info() {
+  $blocks['current_posts'] = array(
+    'info' => t('Partner Program Script'), //The name that will appear in the block list.
+    'cache' => DRUPAL_CACHE_PER_ROLE, //Default
+  );
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*
+* Prepares the contents of the block.
+*/
+function partner_program_block_view($delta = '') {
+  switch($delta){
+    case 'current_posts':
+      $block['subject'] = t('');
+	  $block['content'] = partner_program_script();
+    return $block;
+  }
+ 
 }
