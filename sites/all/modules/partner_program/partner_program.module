@@ -1,19 +1,32 @@
 <?php
 
 /**
- * Implementation of hook_menu
- */
-function partner_program_menu() {
-  $items['partner_program'] = array(
-      'title' => 'Partner Program Information',
-      'description' => 'TheShoppingPro - Partner Program',
-      'page callback' => 'partner_program_script',
-      'type' => MENU_CALLBACK,
-	  'access callback' => TRUE,
-  );
+* Implements hook_permission().
+*/
+function partner_program_permission() {
+return array(
+'access partner program script' => array(
+'title' => t('Access the partner program script'),
+),
 
-  return $items;
+);
 }
+
+/**
+* Implementation of hook_menu
+*/
+function partner_program_menu() {
+$items['partner_program'] = array(
+'title' => 'Partner Program Information',
+'description' => 'TheShoppingPro - Partner Program',
+'page callback' => 'partner_program_script',
+'type' => MENU_CALLBACK,
+'access arguments' => array('access partner program script'),
+);
+
+return $items;
+}
+
 
 /**
  * Implementation of hook_theme
