@@ -1,0 +1,5 @@
+name = Partner Program Script
+description= Display the script for partner program.
+core = "7.x"
+project = "partner_program"
+
