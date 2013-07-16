@@ -1472,4 +1472,7 @@ div.messages{padding: 11px 10px 10px 0px}
   border: 1px solid #FFFFFF;
   border-radius: 15px 15px 15px 15px;
 }
+/* added by vinod */
+ .partner_program{padding:30px; outline: medium none;overflow:visible;
+font-family:"Monaco","Andale Mono","Lucida Console","Bitstream Vera Sans Mono","Courier New",Courier,monospace;font-size:11px;background:#ccc;}
 
