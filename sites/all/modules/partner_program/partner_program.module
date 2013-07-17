@@ -85,7 +85,7 @@ $data = array(
 );
 
 
-return theme('partner_program_script_page', array('data' => $data));
+return theme('partner_program_php_page', array('data' => $data));
 
 }
 
@@ -119,6 +119,12 @@ if (user_access('access partner program script')){
 $block['subject'] = t('');
 $block['content'] = partner_program_script();
 }
+case 'partner_phpprogram':
+if (user_access('access partner program script')){
+$block['subject'] = t('');
+$block['content'] = partner_phpprogram_script();
+}
+
 return $block;
 }
 
