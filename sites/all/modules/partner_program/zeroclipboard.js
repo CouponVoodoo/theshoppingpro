@@ -101,12 +101,17 @@ ZeroClipboard.Client.prototype = {
 		
 		// find X/Y position of domElement
 		var box = ZeroClipboard.getDOMObjectPosition(this.domElement);
-		
+
+/*		
 if (jQuery.browser.mozilla) {
 var toppo=box.top + 42;
 }else{
 var toppo=box.top;
 }
+
+*/
+
+var toppo=box.top + 42;
 
 // create floating DIV above element
 this.div = document.createElement('div');
