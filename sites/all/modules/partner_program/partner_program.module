@@ -38,7 +38,7 @@ function partner_program_theme() {
 	  'variables' => array('data' => null),
 	),
 	'partner_phpprogram_script_page' => array(
-	'template' => 'partner-phpprogram-php-page',
+	'template' => 'partner-phpprogram-script-page',
 	'variables' => array('data' => null),
 	),
   );
@@ -112,20 +112,22 @@ function partner_program_block_info() {
 * Prepares the contents of the block.
 */
  function partner_program_block_view($delta = '') {
-global $user;
+$block= array();
 switch($delta){
 case 'partner_program_block':
 if (user_access('access partner program script')){
 $block['subject'] = t('');
 $block['content'] = partner_program_script();
 }
+break;
 case 'partner_phpprogram':
 if (user_access('access partner program script')){
 $block['subject'] = t('');
 $block['content'] = partner_phpprogram_script();
 }
+break;
 
-return $block;
 }
+return $block;
 
 }
