@@ -14,7 +14,7 @@ return array(
 
 /**
 * Implementation of hook_menu
-*/
+
 function partner_program_menu() {
 $items['partner_program'] = array(
 'title' => 'Partner Program Information',
@@ -27,7 +27,7 @@ $items['partner_program'] = array(
 return $items;
 }
 
-
+*/
 /**
  * Implementation of hook_theme
  */
@@ -71,7 +71,7 @@ function partner_program_script() {
 * Implements hook_block_info().
 */
 function partner_program_block_info() {
-  $blocks['current_posts'] = array(
+  $blocks['partner_program_block'] = array(
     'info' => t('Partner Program Script'), //The name that will appear in the block list.
     'cache' => DRUPAL_CACHE_PER_ROLE, //Default
   );
@@ -83,12 +83,15 @@ function partner_program_block_info() {
 *
 * Prepares the contents of the block.
 */
-function partner_program_block_view($delta = '') {
-  switch($delta){
-    case 'current_posts':
-      $block['subject'] = t('');
-	  $block['content'] = partner_program_script();
-    return $block;
-  }
- 
+ function partner_program_block_view($delta = '') {
+global $user;
+switch($delta){
+case 'partner_program_block':
+if (user_access('access partner program script')){
+$block['subject'] = t('');
+$block['content'] = partner_program_script();
+}
+return $block;
+}
+
 }
