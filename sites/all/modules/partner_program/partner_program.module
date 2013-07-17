@@ -38,7 +38,7 @@ function partner_program_theme() {
 	  'variables' => array('data' => null),
 	),
 	'partner_phpprogram_script_page' => array(
-	'template' => 'partner-program-php-page',
+	'template' => 'partner-phpprogram-php-page',
 	'variables' => array('data' => null),
 	),
   );
