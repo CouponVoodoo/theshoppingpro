@@ -85,7 +85,7 @@ $data = array(
 );
 
 
-return theme('partner_program_php_page', array('data' => $data));
+return theme('partner_phpprogram_script_page', array('data' => $data));
 
 }
 
