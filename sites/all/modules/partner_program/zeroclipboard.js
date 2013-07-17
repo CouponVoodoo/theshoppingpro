@@ -102,20 +102,24 @@ ZeroClipboard.Client.prototype = {
 		// find X/Y position of domElement
 		var box = ZeroClipboard.getDOMObjectPosition(this.domElement);
 		
-		// create floating DIV above element
-		this.div = document.createElement('div');
-		var style = this.div.style;
-		style.position = 'absolute';
-		style.left = '' + box.left + 'px';
-		//style.top = '' + box.top + 'px';
-		//style.width = '' + box.width + 'px';
-		//style.height = '' + box.height + 'px';
-		style.top = '400px';
-		style.width = '121px';
-		style.height = '42px';
-		style.zIndex = zIndex;
-		
-		 style.backgroundColor = '#f00'; // debug
+if (jQuery.browser.mozilla) {
+var toppo=box.top + 42;
+}else{
+var toppo=box.top;
+}
+
+// create floating DIV above element
+this.div = document.createElement('div');
+var style = this.div.style;
+style.position = 'absolute';
+style.left = '' + box.left + 'px';
+style.top = '' + toppo + 'px';
+//style.top = '660px';
+style.width = '' + box.width + 'px';
+style.height = '' + box.height + 'px';
+style.zIndex = zIndex;
+
+style.backgroundColor = '#f00'; // debug
 		
 		var body = document.getElementsByTagName('body')[0];
 		body.appendChild(this.div);
