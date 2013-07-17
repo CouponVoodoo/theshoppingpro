@@ -43,7 +43,7 @@ function partner_program_theme() {
 }
 
 function partner_program_script() {
-  global $user, $base_url;
+	global $user, $base_url;
   $referrerid=_referral_uid2ref($user->uid);
 
    drupal_add_js(drupal_get_path('module', 'partner_program') .'/zeroclipboard.js');
