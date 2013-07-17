@@ -46,7 +46,12 @@ function partner_program_script() {
 	global $user, $base_url;
   $referrerid=_referral_uid2ref($user->uid);
 
-   drupal_add_js(drupal_get_path('module', 'partner_program') .'/zeroclipboard.js');
+drupal_add_js((drupal_get_path('module', 'partner_program') .'/zeroclipboard.js'),
+array('type' => 'file', 'scope' => 'footer', 'weight' => 49)
+);
+drupal_add_js((drupal_get_path('module', 'partner_program') .'/zeroclipboardclip.js'),
+array('type' => 'file', 'scope' => 'footer', 'weight' => 50)
+);
 
 /*
    drupal_add_js((drupal_get_path('module', 'partner_program') .'/shoppingpro.js'), 
