@@ -1,14 +1,5 @@
 <div id="id_referrer_content_plugin" class="referrer_content">
   <div id="referrer_content" class="plugin_wrapper"> 
-  &nbsp;
-  	<table cell-padding=10>
-	<thead>
-	<tr>
-		<th>Partner Program Script</th>
-	</tr>
-	</thead>
-	<tr>
-	<td>
 		<textarea class="partner_program" id="box-content"  name="box-content"   wrap='off' autocorrect='off' autocapitalize='off' tabindex='0' rows="7" cols="20">
 <!--script start here-->		
 <script type="text/javascript">var referralid='<?php print $data['referrerid'] ?>';</script>
@@ -34,11 +25,6 @@ clip.addEventListener('complete',function(client,text) {
 //glue it to the button
 clip.glue('copy');
 </script>		
-		        
-
-	</td>
-	</tr>
-	</table>
   </div>
 </div>
 
