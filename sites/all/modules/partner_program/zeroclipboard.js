@@ -111,7 +111,7 @@ var toppo=box.top;
 
 */
 
-var toppo=box.top + 42;
+var toppo=box.top;
 
 // create floating DIV above element
 this.div = document.createElement('div');
