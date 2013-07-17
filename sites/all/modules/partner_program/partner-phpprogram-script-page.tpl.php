@@ -7,7 +7,7 @@
 		<textarea class="partner_program" id="box-content"  name="box-content" wrap='off' autocorrect='off' autocapitalize='off' tabindex='0' rows="4" cols="20">
 <div>
 <a href='http://www.theshoppingpro.com/referral/<?php print $data['referrerid'] ?>?destination=welcome-message'><img src='http://www.theshoppingpro.com/sites/all/themes/ocarina/images/TheShoppingPro-Partner_Badge.png'/></a>
-<a href='http://www.theshoppingpro.com/referral/<?php print $data['referrerid'] ?>?destination=welcome-message' id='shopping_txt'>TheShoppingPro</a>
+<a href='http://www.theshoppingpro.com/referral/<?php print $data['referrerid'] ?>?destination=welcome-message' style='text-align:center;color:#F7971C;'>TheShoppingPro</a>
 </div>
 		</textarea>
 <br/><br/>
