@@ -33,10 +33,14 @@ return $items;
  */
 function partner_program_theme() {
   $themes = array(
-      'partner_program_script_page' => array(
-          'template' => 'partner-program-script-page',
-          'variables' => array('data' => null),
-      ),
+	'partner_program_script_page' => array(
+	  'template' => 'partner-program-script-page',
+	  'variables' => array('data' => null),
+	),
+	'partner_phpprogram_script_page' => array(
+	'template' => 'partner-program-php-page',
+	'variables' => array('data' => null),
+	),
   );
 
   return $themes;
@@ -53,13 +57,6 @@ drupal_add_js((drupal_get_path('module', 'partner_program') .'/zeroclipboardclip
 array('type' => 'file', 'scope' => 'footer', 'weight' => 50)
 );
 
-/*
-   drupal_add_js((drupal_get_path('module', 'partner_program') .'/shoppingpro.js'), 
- array('type' => 'file', 'scope' => 'footer', 'weight' => 5)
-  );
- 
- $link = $base_url."/referral/" . _referral_uid2ref($user->uid);
-*/
   $data = array(
       'referrerid' => $referrerid,
   );
@@ -70,16 +67,42 @@ array('type' => 'file', 'scope' => 'footer', 'weight' => 50)
 }
 
 
+function partner_phpprogram_script() {
+global $user, $base_url;
+$referrerid=_referral_uid2ref($user->uid);
+
+// drupal_add_js(drupal_get_path('module', 'partner_program') .'/zeroclipboard.js');
+
+drupal_add_js((drupal_get_path('module', 'partner_program') .'/zeroclipboard.js'),
+array('type' => 'file', 'scope' => 'footer', 'weight' => 49)
+);
+drupal_add_js((drupal_get_path('module', 'partner_program') .'/zeroclipboardclip.js'),
+array('type' => 'file', 'scope' => 'footer', 'weight' => 50)
+);
+
+$data = array(
+'referrerid' => $referrerid,
+);
+
+
+return theme('partner_program_script_page', array('data' => $data));
+
+}
 
 
 /**
 * Implements hook_block_info().
 */
 function partner_program_block_info() {
-  $blocks['partner_program_block'] = array(
-    'info' => t('Partner Program Script'), //The name that will appear in the block list.
-    'cache' => DRUPAL_CACHE_PER_ROLE, //Default
-  );
+	$blocks['partner_program_block'] = array(
+	'info' => t('Partner Program Script'), //The name that will appear in the block list.
+	'cache' => DRUPAL_CACHE_PER_ROLE, //Default
+	);
+
+	$blocks['partner_phpprogram'] = array(
+	'info' => t('Partner Program PHP Script'), //The name that will appear in the block list.
+	'cache' => DRUPAL_CACHE_PER_ROLE, //Default
+	);
   return $blocks;
 }
 
