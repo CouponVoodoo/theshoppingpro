@@ -48,7 +48,7 @@
 
       foreach($item as $k => $row) {
         // $image = file_load($row->field_image_fid);
-        $class = user_is_logged_in() ? '' : 'ctools-use-modal';
+        $class = user_is_logged_in() ? '' : 'ctools-use-modal ctools-modal-modal-popup-small';
 
         $url = corp_retailers_make_url($row->urls, $row->field_url_value, $data['url'], $data['redirect'], $data['uid2'], $row->field_active_affiliate_tid);
         $desc_text = $row->field_display_text_value;
