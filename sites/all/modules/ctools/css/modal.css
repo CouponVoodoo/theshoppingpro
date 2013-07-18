@@ -2,8 +2,8 @@ div.ctools-modal-content {
   background: #fff;
   color: #000;
   padding: 0;
-  margin: 2px;
-  border: 1px solid #000;
+  margin: 2px !important;
+  border: 1px solid #000 !important;
   width: 600px;
   text-align: left;
 }
@@ -17,7 +17,7 @@ div.ctools-modal-content .modal-title {
 }
 
 div.ctools-modal-content .modal-header {
-  background-color: #2385c2;
+  background-color: #2385c2 !important;
   padding: 0 .25em 0 1em;
 }
 
@@ -124,3 +124,9 @@ div.ctools-modal-content .option-text-aligner label.hidden-options {
 div.ctools-modal-content .dependent-options {
   padding-left: 30px;
 }
+.page-retailers-partners-list #user-login .item-list{top:0px;}
+
+.page-retailers-partners-list div.ctools-modal-content .form-item label{width:8em !important;line-height:1.5em;}
+.page-retailers-partners-list .form-type-checkbox label{padding-left:10px;}
+#field-registraton-banner-add-more-wrapper img{padding-top:18px;}
+.page-retailers-partners-list .fieldset-legend{color:#000;}
