@@ -132,3 +132,4 @@ div.ctools-modal-content .dependent-options {
 .page-retailers-partners-list .fieldset-legend{color:#000;}
 #modalContent .field-name-field-registraton-banner{display:none;}
 #modalContent  #user-register-form .form-submit{width: 82px !important;text-align: left !important;padding-left: 3px !important;font-size: 11px !important;margin-left:-12px !important;}
+#clientsidevalidation-user-register-form-errors,#modalContent  #user-register-form .password-strength,#modalContent  #user-register-form .password-confirm{display:none !important;}
