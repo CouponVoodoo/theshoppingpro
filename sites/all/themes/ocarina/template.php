@@ -79,3 +79,21 @@ function ocarina_preprocess_user_login_block(&$vars) {
   $vars['submit'] = render($vars['form']['actions']['submit']);
   $vars['rendered'] = drupal_render_children($vars['form']);
 }
+
+/**
+* Render Block.
+*/
+
+function block_render($module, $block_id) {
+
+$block = block_load($module, $block_id);
+
+$block_content = _block_render_blocks(array($block));
+
+$build = _block_get_renderable_array($block_content);
+
+$block_rendered = drupal_render($build);
+
+return $block_rendered;
+
+}
