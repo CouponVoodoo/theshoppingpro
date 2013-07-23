@@ -908,7 +908,7 @@ div.ctools-modal-content button {
   margin-left: -10px !important;
 }
 
-div.ctools-modal-content input#edit-submit{
+div.ctools-modal-content input.form-submit{
   width: 6em !important;
   padding-left: -10px !important;
   margin-left: -10px !important;
@@ -1167,7 +1167,7 @@ ul#main-menu li a{
   margin-left: 0px !important;
 }
 #modal-content .webform-client-form .form-item input[type="text"],
-#modal-content .webform-client-form .form-actions input#edit-submit{
+#modal-content .webform-client-form .form-actions input.form-submit{
   width:auto !important;
   margin-left: 0px !important;
 }
