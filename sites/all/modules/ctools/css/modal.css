@@ -134,9 +134,10 @@ div.ctools-modal-content .dependent-options {
 #modalContent  #user-register-form .form-submit{width: 82px !important;text-align: left !important;padding-left: 3px !important;font-size: 11px !important;margin-left:-12px !important;}
 #modalContent  #user-register-form .password-strength,#modalContent  #user-register-form .password-confirm{display:none !important;}
 .modal-header{padding-left:5px !important;}
-.page-retailers-partners-list .password-parent{width:auto !important;}
+.page-retailers-partners-list .password-parent,.page-retailers-partners-list .confirm-parent{width:auto !important;}
 
 #modalContent #edit-terms-of-use{border:0px !important;padding:0px;}
 #modalContent #edit-terms-of-use legend{display:none;}
 #clientsidevalidation-user-register-form-errors{width:75px;}
 #modal-title{color:#fff;}
+.#modal-title
