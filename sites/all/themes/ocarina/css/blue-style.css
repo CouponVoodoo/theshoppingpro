@@ -879,7 +879,7 @@ div.ctools-modal-content .form-item .description{
 
 div.ctools-modal-content  #user-login,div.ctools-modal-content #user-login--2,div.ctools-modal-content .ctools-use-modal-processed{
   padding-top: 0px !important;
-  margin-top: -20px !important;
+  margin-top: -10px !important;
 }
 
 div.ctools-modal-content .modal-content{
@@ -946,7 +946,7 @@ div#modalBackdrop{
   background: none repeat scroll 0 0 #000000 !important;
 }
 div#modal-content{
-  margin: 0px -5px 0px -5px !important;
+/*  margin: 0px -5px 0px -5px !important;*/
 }
 
 div.ctools-modal-content div.messages.error{
