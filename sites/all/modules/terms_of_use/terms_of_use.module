@@ -75,7 +75,11 @@ function terms_of_use_form_user_register_form_alter(&$form, $form_state) {
       if (strpos($checkbox_label, '@link') !== FALSE) {
        // $checkbox_label = str_replace('@link', l($node->title, 'node/' . $node->nid), $checkbox_label);
 
-	   $checkbox_label = str_replace('@link', l(check_plain($node->title), 'node/'. $node->nid, array('attributes' => array('target' => '_blank'))), $checkbox_label);
+	 //  $checkbox_label = str_replace('@link', l(check_plain($node->title), 'node/'. $node->nid, array('attributes' => array('target' => '_blank'))), $checkbox_label);
+
+
+	   $checkbox_label = str_replace('@link', l($node->title), 'node/'. $node->nid, array('attributes' => array('target' => '_blank')), $checkbox_label);
+
 
       }
       // If there wasn't a link to the node we add the body field of the node
