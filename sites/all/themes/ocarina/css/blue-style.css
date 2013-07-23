@@ -931,7 +931,7 @@ div.ctools-modal-content input[type="password"]
   margin-left: -10px !important;
 }
 
-div.ctools-modal-content #user-login .item-list {
+div.ctools-modal-content #user-login .item-list,div.ctools-modal-content #user-login--2 .item-list {
   color: #F7971C;
   float: left !important;
   position: relative !important;
