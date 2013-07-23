@@ -145,3 +145,4 @@ div.ctools-modal-content .dependent-options {
 .clientside-error{border:0px !important;}
 #new_user a{padding-left:0px;}
 .form-item-terms-of-use label{font-size:9px;}
+#modalContent .form-item-name label,#modalContent .form-item-mail label,#modalContent .form-item-pass label{display:none;}
