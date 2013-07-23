@@ -10,7 +10,7 @@
         </div>
         <div style="float:left; width:100%; margin: 10px 0">
           <?php
-          print l('<img src="/sites/all/themes/ocarina/images/Play_Video.png" />', 'http://www.youtube.com/embed/2Y042npkFFY?wmode=transparent&amp;rel=0&amp;autoplay=0&amp;end=76', array(
+          print l('<img src="/sites/all/themes/ocarina/images/Play_Video.png" />', 'http://www.youtube.com/embed/rWFoIQTAOQI?wmode=transparent&amp;rel=0&amp;autoplay=0&amp;end=94', array(
               'external' => TRUE,
               'query' => array('width' => '640', 'height' => '400', 'iframe' => 'true'),
               'html' => TRUE,
