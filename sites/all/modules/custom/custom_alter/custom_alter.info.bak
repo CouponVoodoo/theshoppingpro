@@ -1,0 +1,5 @@
+name = Custom Alter
+description= This module is used to alter the forms
+core = "7.x"
+project = "custom_alter"
+

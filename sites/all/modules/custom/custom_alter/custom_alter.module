@@ -1,0 +1,23 @@
+<?php
+
+function custom_alter_form_alter(&$form, &$form_state, $form_id){
+
+
+if($form_id=='user_register_form'){
+
+echo "<pre>";
+
+//print_r($form);
+
+echo $form['account']['name']['#title'];
+ $form['account']['name']['#placeholder']='User Name';
+
+echo "</pre>";
+
+
+
+
+}
+
+}
+
