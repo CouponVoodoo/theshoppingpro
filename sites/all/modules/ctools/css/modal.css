@@ -140,4 +140,4 @@ div.ctools-modal-content .dependent-options {
 #modalContent #edit-terms-of-use legend{display:none;}
 #clientsidevalidation-user-register-form-errors{width:75px;}
 #modal-title{color:#fff;}
-.#modal-title
+#modalContent .messages{width:66px !important;display:block !important;}
