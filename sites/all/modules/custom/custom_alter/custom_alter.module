@@ -4,13 +4,32 @@ function custom_alter_form_alter(&$form, &$form_state, $form_id){
 
 
 if($form_id=='user_register_form'){
+drupal_add_js('jQuery(document).ready(function () { jQuery("#edit-pass-pass1").attr("placeholder", "Password"); });',
+array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
+);
+drupal_add_js('jQuery(document).ready(function () { jQuery("#edit-pass-pass2").attr("placeholder", "Confirm Password"); });',
+array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
+);
+
+//echo $form['account']['name']['#title'];
+// $form['account']['name']['#placeholder']='User Name';
 
 $form['account']['name']['#placeholder']='User Name';
 $form['account']['mail']['#placeholder']='E-mail address';
 $form['account']['pass']['#placeholder']='Password';
 
-
 }
+
+if($form_id=='user_login'){
+
+drupal_add_js('jQuery(document).ready(function () { jQuery("#edit-pass").attr("placeholder", "Password"); });',
+array('type' => 'inline', 'scope' => 'footer', 'weight' => 5)
+);
+
+$form['name']['#placeholder']='User Name';
+}
+
+
 
 }
 
