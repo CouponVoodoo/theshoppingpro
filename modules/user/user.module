@@ -3732,7 +3732,7 @@ function user_register_form($form, &$form_state) {
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
     '#type' => 'submit',
-    '#value' => t('Create account'),
+    '#value' => t('Create'),
   );
 
   $form['#validate'][] = 'user_register_validate';
