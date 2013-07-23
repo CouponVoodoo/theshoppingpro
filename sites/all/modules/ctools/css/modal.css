@@ -124,7 +124,7 @@ div.ctools-modal-content .option-text-aligner label.hidden-options {
 div.ctools-modal-content .dependent-options {
   padding-left: 30px;
 }
-.page-retailers-partners-list #user-login .item-list,.page-retailers-partners-list #user-login--2 .item-list{top:0px;}
+.page-retailers-partners-list #user-login .item-list,.page-retailers-partners-list div.ctools-modal-content .ctools-use-modal-processed .item-list{top:0px;}
 
 .page-retailers-partners-list div.ctools-modal-content .form-item label{width:8em !important;line-height:1.5em;}
 .page-retailers-partners-list .form-type-checkbox label{padding-left:10px;}
