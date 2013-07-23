@@ -964,6 +964,7 @@ div.ctools-modal-content #user-register-form .item-list{
   width: 12em !important;
   width: 100%;
   margin: -10px 0px -10px -10px !important;
+  padding-bottom:10px;
 }
 
 div.ctools-modal-content form#user-register-form{
