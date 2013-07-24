@@ -220,10 +220,10 @@ article.node-products form.commerce-add-to-cart .form-submit {
 }
 
 /* By Ashish to make left and right coumns top aligned*/
-// .node{
-//   padding: -20px -20px -20px -20px !important;
-//   margin: -20px -20px -20px -20px!important;
-// }
+.node{
+  padding: -20px -20px -20px -20px !important;
+  margin: -20px -20px -20px -20px!important;
+}
 
 /* By Ashish to make jcarousel button on right side*/
 .region-sidebar-second .jcarousel-prev{
@@ -360,6 +360,7 @@ h1.title {
 /* By Ashish to make color of link ok*/
 .zone-footer ul.menu li a{
   color: #F7971C;
+
   border-right: 1px solid #F7971C;
 }
 
@@ -411,7 +412,7 @@ h1.title {
 
 #user-register-form {padding:10px}
 
-#user-login {padding:10px}
+#user-login,#user-login--2,div.ctools-modal-content .ctools-use-modal-processed{padding:10px}
 
 .view-rewards {padding:20px 10px}
 
@@ -426,7 +427,7 @@ h1.title {
 #hybridauth-user-identity .item-list {margin-left: 20px}
 
 /* By Ashish to make the hybrid auth icons on login goto right in login and position properly in register*/
-#user-login .item-list {float: right; position: relative; top: 10px; right: 30px; color: #F7971C;}
+#user-login .item-list,#user-login--2 .item-list,div.ctools-modal-content .ctools-use-modal-processed .item-list {float: right; position: relative; top: 10px; right: 30px; color: #F7971C;}
 #user-register-form .item-list {margin-left: 20px; margin-top: 10px; color: #F7971C;}
 
 /* By Ashish to centre vertical align the dealer name centre aligned vertical*/
@@ -877,9 +878,9 @@ div.ctools-modal-content .form-item .description{
 
 /* By Ashish to adjust display of the widget pop up for login*/
 
-div.ctools-modal-content #user-login{
+div.ctools-modal-content  #user-login,div.ctools-modal-content #user-login--2,div.ctools-modal-content .ctools-use-modal-processed{
   padding-top: 0px !important;
-  margin-top: -20px !important;
+  margin-top: -10px !important;
 }
 
 div.ctools-modal-content .modal-content{
@@ -908,7 +909,7 @@ div.ctools-modal-content button {
   margin-left: -10px !important;
 }
 
-div.ctools-modal-content input#edit-submit{
+div.ctools-modal-content input.form-submit{
   width: 6em !important;
   padding-left: -10px !important;
   margin-left: -10px !important;
@@ -931,7 +932,7 @@ div.ctools-modal-content input[type="password"]
   margin-left: -10px !important;
 }
 
-div.ctools-modal-content #user-login .item-list {
+div.ctools-modal-content #user-login .item-list,div.ctools-modal-content .ctools-use-modal-processed .item-list {
   color: #F7971C;
   float: left !important;
   position: relative !important;
@@ -939,14 +940,14 @@ div.ctools-modal-content #user-login .item-list {
   font-weight: normal !important;
   font-family: arial !important;
   width: 12em !important;
-  padding: 0px 0px 0px 20px !important;
+  padding: 0px 0px 10px 20px !important;
   width: 100%;
 }
 div#modalBackdrop{
   background: none repeat scroll 0 0 #000000 !important;
 }
 div#modal-content{
-  margin: 0px -5px 0px -5px !important;
+/*  margin: 0px -5px 0px -5px !important;*/
 }
 
 div.ctools-modal-content div.messages.error{
@@ -964,6 +965,7 @@ div.ctools-modal-content #user-register-form .item-list{
   width: 12em !important;
   width: 100%;
   margin: -10px 0px -10px -10px !important;
+  padding-bottom:10px;
 }
 
 div.ctools-modal-content form#user-register-form{
@@ -1166,7 +1168,7 @@ ul#main-menu li a{
   margin-left: 0px !important;
 }
 #modal-content .webform-client-form .form-item input[type="text"],
-#modal-content .webform-client-form .form-actions input#edit-submit{
+#modal-content .webform-client-form .form-actions input.form-submit{
   width:auto !important;
   margin-left: 0px !important;
 }
