@@ -372,9 +372,14 @@ function corp_enhancements_validate_register_form(&$form, &$form_state) {
  */
 function corp_enhancements_form_alter(&$form, &$form_state, $form_id) {
   global $user;
+  $class_reg = user_is_logged_in() ? '' : 'ctools-use-modal ctools-modal-modal-popup-small';
   if ($form_id == 'user_login') {
+
+    $form['new_user']['#markup'] = '<div id="new_user" style="padding-bottom:5px;">' . l(t('Register'), 'modal_forms/nojs/register',array('attributes'=>array( 'class'=>array($class_reg)),'html'=>TRUE)) . '</div>';
+
     $form['forgot_pwd']['#markup'] = '<div id="frgt_pwd">' . l(t('Forgot Password?'), 'user/password', array('attributes' => array('target'=>'_blank'))) . '</div>';
-    $form['new_user']['#markup'] = '<div id="new_user">' . l(t('Register'), 'user/register', array('attributes' => array('target'=>'_blank'))) . '</div>';
+   // $form['new_user']['#markup'] = '<div id="new_user">' . l(t('Register'), 'user/register', array('attributes' => array('target'=>'_blank'))) . '</div>';
+
   }
   else if ($form_id == 'user_login_block') {
     $form['forgot_pwd']['#markup'] = '<div id="frgt_pwd_block">' . l(t('Forgot Password ?'), 'user/password', array('attributes' => array('target'=>'_blank'))) . '</div>';
