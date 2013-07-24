@@ -139,7 +139,7 @@ div.ctools-modal-content .dependent-options {
 
 #modalContent #edit-terms-of-use{border:0px !important;padding:0px;}
 #modalContent #edit-terms-of-use legend{display:none;}
-#clientsidevalidation-user-register-form-errors{width:75px;}
+#modalContent #clientsidevalidation-user-register-form-errors{width:75px;}
 #modal-title{color:#fff;}
 #modalContent .messages{width:66px !important;display:block !important;font-size:9px;}
 .clientside-error{border:0px !important;}
