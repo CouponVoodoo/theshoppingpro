@@ -1,0 +1,42 @@
+<?php
+
+function custom_alter_form_alter(&$form, &$form_state, $form_id){
+
+
+if($form_id=='user_register_form'){
+
+$form['account']['name']['#placeholder']='User Name';
+$form['account']['mail']['#placeholder']='E-mail address';
+
+    switch ($form_id) {
+        case 'user_register_form':
+            // #process handler to modify the password element expanded by Field API.
+            $form['account']['pass']['#process'] = array('form_process_password_confirm', 'register_alter_password_confirm');
+            break;
+    }
+
+
+}
+
+if($form_id=='user_login'){
+
+$form['pass']['#attributes']['placeholder'] = t( 'Password' );
+$form['name']['#placeholder']='User Name';
+
+}
+
+
+
+}
+
+
+/**
+* Alter password and confirm password fields to remove title and insert placeholder.
+*/
+function register_alter_password_confirm($element) {
+    //$element['pass1']['#title_display'] = "invisible";
+    $element['pass1']['#attributes']['placeholder'] = t("Password");
+    //$element['pass2']['#title_display'] = "invisible";
+    $element['pass2']['#attributes']['placeholder'] = t("Confirm password");
+    return $element;
+}
