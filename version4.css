@@ -1,0 +1,16 @@
+#backgroundPopup{z-index:1;position:fixed;display:none;height:100%;width:100%;background:#000;top:0;left:0}
+#toPopup{font-family:"lucida grande",tahoma,verdana,arial,sans-serif;background:none repeat scroll 0 0 #FFF;border:10px solid #ccc;border-radius:3px 3px 3px 3px;color:#333;display:none;font-size:14px;left:50%;margin-left:-10%;position:fixed;top:20%;width:300px;z-index:2}
+div.loader{background:url(img/loading.gif) no-repeat scroll 0 0 transparent;height:32px;width:32px;display:none;z-index:9999;top:40%;left:50%;position:absolute;margin-left:-10px}
+div.close{background:url(img/closebox.png) no-repeat scroll 0 0 transparent;cursor:pointer;height:30px;position:absolute;right:-27px;top:-24px;width:30px}
+span.ecs_tooltip{background:none repeat scroll 0 0 #000;border-radius:2px 2px 2px 2px;color:#FFF;display:none;font-size:11px;height:16px;opacity:0.7;position:absolute;right:-62px;text-align:center;top:-51px;width:93px;padding:4px 3px 2px 5px}
+span.arrow{border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid #000;display:block;height:1px;left:40px;position:relative;top:3px;width:1px}
+div#popup_content{text-align:center;margin:4px 7px}
+#toPopup .form-text{height:25px;display:block;margin:0 0 20px 40px}
+#toPopup .form-type-textfield,.form-type-password{padding-bottom:15px}
+#toPopup .popups-title{background:none repeat scroll 0 0 #2385C2;color:#FFF;font-size:13pt;font-weight:bold;height:40px;line-height:35px;text-align:center}
+#toPopup .popups-title span{color:#FFF!important}
+#toPopup ul{padding:0!important}
+#toPopup label.error{color:red;display:block}
+#popup_content li{display:block}
+#popup_content .form-submit{display:block;margin:15px 0 0 75px}
+#popup_content a{color:#F7971C;font-family:"trebuchet MS",Arial,Helvetica,sans-serif}
