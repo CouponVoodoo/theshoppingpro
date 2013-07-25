@@ -1,5 +1,5 @@
 /* Generate a script for Popup register Program */
-var referral_url = 'http://localhost/shoppingpro/';
+var referral_url = 'http://54.214.238.119/staging/';
 document.write('<link href="'+referral_url+'version4.css" rel="stylesheet" type="text/css" />');
 document.write('<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>');
 
