@@ -1,0 +1,5 @@
+name = Popup Register Script
+description= This module is used to display the popup register box in third party site.
+core = "7.x"
+project = "popup_register"
+
