@@ -125,8 +125,9 @@ type: "POST",
 data: { uid2: $_GET[uid2], referralID: $referral_info[referrerid],drupalUserID: $referral_info[uid] },
 cache: false,
 success: function (response) {
-
+alert('hello');
 }
+alert('test');
 });
 
 
