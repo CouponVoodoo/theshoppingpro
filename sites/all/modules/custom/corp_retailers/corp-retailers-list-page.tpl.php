@@ -50,8 +50,8 @@
         // $image = file_load($row->field_image_fid);
         $class = user_is_logged_in() ? '' : 'ctools-use-modal ctools-modal-modal-popup-small';
 
-        $urls = corp_retailers_make_url($row->urls, $row->field_url_value, $data['url'], $data['redirect'], $data['uid2'], $row->field_active_affiliate_tid);
-		$url=implode("/", array_map("rawurlencode", explode("/", $urls)));
+        $url = corp_retailers_make_url($row->urls, $row->field_url_value, $data['url'], $data['redirect'], $data['uid2'], $row->field_active_affiliate_tid);
+//$urls=implode("/", array_map("rawurlencode", explode("/", $url)));
 
         $desc_text = $row->field_display_text_value;
         if (user_is_logged_in()) {
