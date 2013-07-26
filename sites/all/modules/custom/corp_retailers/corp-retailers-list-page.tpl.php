@@ -75,10 +75,41 @@
                   </div>';
 
       }
+//Passing referral info for api
+$cookie = unserialize($_COOKIE[referral_data]);
+if($user->uid <> 0){
+$rid=referral_get_user($user->uid);
+}else if(isset($_COOKIE[referral_data])){
+$rid=$cookie['uid'];
+}else if($rid==""){
+$rid="NULL";
+}
+
+if($rid==""){ $rid="NULL";}
+
+$referral_info = array(
+'referrerid' => $rid,
+'uid' => $user->uid,
+);
       $content .= '</div></div>';
+
       echo $content;
     }
 
+//Passing referral info for api
+$referral_uri = '<div id="referral_api"></div><input type="text" value="http://54.243.150.171/partnerReferralMapping.php?uid2='.$_GET[uid2].'&referralID='.$referral_info[referrerid].'&drupalUserID='.$referral_info[uid].'" id="url_value" style="display:none;"/>';
+
+echo $referral_uri;
+
     ?>
+<script>
+jQuery(function(){
+var urlvalue=jQuery('#url_value').val();
+
+jQuery('#referral_api').replaceWith('<iframe style="width:100px;" name="referral_api" src="'+urlvalue+'">');
+
+});
+</script>
+
   </div>
 </div>
