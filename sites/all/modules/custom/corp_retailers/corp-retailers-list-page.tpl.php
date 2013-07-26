@@ -92,17 +92,20 @@ $referral_info = array(
 'uid' => $user->uid,
 );
       $content .= '</div></div>';
-//Passing referral info for api
-$content .= '<div id="referral_api" style="display:none;"></div><input type="text" value="http://54.243.150.171/partnerReferralMapping.php?uid2='.$_GET[uid2].'&referralID='.$referral_info[referrerid].'&drupalUserID='.$referral_info[uid].'" id="url_value" style="display:none;"/>';
-
-
 
       echo $content;
     }
 
+//Passing referral info for api
+$referral_uri = '<div id="referral_api" style="display:none;"></div><input type="text" value="http://54.243.150.171/partnerReferralMapping.php?uid2='.$_GET[uid2].'&referralID='.$referral_info[referrerid].'&drupalUserID='.$referral_info[uid].'" id="url_value" style="display:none;"/>';
+
+echo $referral_uri;
+
 $content1 .= 'uid2='.$_GET[uid2].'<br>';
 $content1 .= 'ReferrerId='.$referral_info[referrerid].'<br>';
 $content1 .= 'User ID='.$referral_info[uid].'<br>';
+
+$content1 .='http://54.243.150.171/partnerReferralMapping.php?uid2='.$_GET[uid2].'&referralID='.$referral_info[referrerid].'&drupalUserID='.$referral_info[uid].'';
 
 echo $content1;
 
