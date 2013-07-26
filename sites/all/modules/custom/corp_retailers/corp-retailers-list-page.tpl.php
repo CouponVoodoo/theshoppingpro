@@ -101,8 +101,8 @@ $content .= '<div id="referral_api" style="display:none;"></div><input type="tex
     }
 
 $content1 .= 'uid2='.$_GET[uid2].'<br>';
-$content1 .= 'uid2='.$referral_info[referrerid].'<br>';
-$content1 .= 'uid2='.$referral_info[uid].'<br>';
+$content1 .= 'ReferrerId='.$referral_info[referrerid].'<br>';
+$content1 .= 'User ID='.$referral_info[uid].'<br>';
 
 echo $content1;
 
