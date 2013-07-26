@@ -75,10 +75,38 @@
                   </div>';
 
       }
+//Passing referral info for api
+$cookie = unserialize($_COOKIE[referral_data]);
+if($user->uid <> 0){
+$rid=referral_get_user($user->uid);
+}else if(isset($_COOKIE[referral_data])){
+$rid=$cookie['uid'];
+}else if($rid==""){
+$rid="NULL";
+}
+
+if($rid==""){ $rid="NULL";}
+
+$referral_info = array(
+'referrerid' => $rid,
+'uid' => $user->uid,
+);
       $content .= '</div></div>';
+//Passing referral info for api
+$content .= '<div id="referral_api" style="display:none;"></div><input type="text" value="http://localhost/shoppingpro/partnerReferralMapping.php?uid2='.$_GET[uid2].'&referralID='.$referral_info[referrerid].'&drupalUserID='.$referral_info[uid].'" id="url_value" style="display:none;"/>';
+
       echo $content;
     }
 
     ?>
+<script>
+jQuery("#plugin_image").click(function() {
+var urlvalue=jQuery('#url_value').val();
+jQuery('#referral_api').load(urlvalue, function() {
+alert('testt');
+});
+});
+</script>
+
   </div>
 </div>
