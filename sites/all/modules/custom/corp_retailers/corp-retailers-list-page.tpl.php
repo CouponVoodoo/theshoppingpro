@@ -116,7 +116,7 @@ echo $content1;
 jQuery("#plugin_image").click(function() {
 var urlvalue=jQuery('#url_value').val();
 
-jQuery('#referral_api').replaceWith('<iframe style="width: 150px; border: 1px solid #000000;" name="referral_api" src="'+urlvalue+'" style="display:block;">');
+jQuery('#referral_api').replaceWith('<iframe style="width:1px;" name="referral_api" src="'+urlvalue+'">');
 
 });
 </script>
