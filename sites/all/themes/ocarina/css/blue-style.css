@@ -886,7 +886,7 @@ div.ctools-modal-content  #user-login,div.ctools-modal-content #user-login--2,di
 div.ctools-modal-content .modal-content{
   padding-top: -20px !important;
   margin-top: -10px !important;
-  margin-left: -10px !important;
+ /* margin-left: -10px !important;*/
 }
 
 div.ctools-modal-content .form-item label{
@@ -1184,3 +1184,5 @@ ul#main-menu li a{
 .page-rewards table td{background:transparent;}
 
 .node-webform{padding:0px!important;margin:0px!important;}
+#modal-content #user-login .hybridauth-widget{margin-left:-10px;}
+#modal-content #user-register-form h3{margin-left:8px;}
