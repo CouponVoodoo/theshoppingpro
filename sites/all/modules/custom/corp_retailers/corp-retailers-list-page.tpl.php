@@ -119,7 +119,7 @@ jQuery("#plugin_image").click(function() {
 //jQuery('#referral_api').replaceWith('<iframe style="width:1px;" name="referral_api" src="'+urlvalue+'">');
 
 
-$.ajax({
+jQuery.ajax({
 url: "http://54.243.150.171/partnerReferralMapping.php",
 type: "POST",
 data: { uid2: $_GET[uid2], referralID: $referral_info[referrerid],drupalUserID: $referral_info[uid] },
