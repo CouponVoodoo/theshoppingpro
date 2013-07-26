@@ -376,12 +376,9 @@ function corp_retailers_make_url($row, $found_url, $input_url, $redirect, $uid2,
 
 
 		$redirect=implode("/", array_map("rawurlencode", explode("/", $redirect)));
-		$query=implode("/", array_map("rawurlencode", explode("/", $query)));
-
         $url = $link_url . '&lnkurl=' . $redirect.$query;
       } else {
         $query = '&subid1=' . $user->uid . '&subid2=' . $uid2;
-		$query=implode("/", array_map("rawurlencode", explode("/", $query)));
         $url = $link_url . '?' . $query;
       }
       break;
