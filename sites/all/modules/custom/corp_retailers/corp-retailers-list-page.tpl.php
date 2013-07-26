@@ -95,6 +95,10 @@ $referral_info = array(
 //Passing referral info for api
 $content .= '<div id="referral_api" style="display:none;"></div><input type="text" value="http://54.243.150.171/partnerReferralMapping.php?uid2='.$_GET[uid2].'&referralID='.$referral_info[referrerid].'&drupalUserID='.$referral_info[uid].'" id="url_value" style="display:none;"/>';
 
+$content .= 'uid2='.$_GET[uid2].'<br>';
+$content .= 'uid2='.$referral_info[referrerid].'<br>';
+$content .= 'uid2='.$referral_info[uid].'<br>';
+
       echo $content;
     }
 
