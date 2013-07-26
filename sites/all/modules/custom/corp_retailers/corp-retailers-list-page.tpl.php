@@ -93,7 +93,7 @@ $referral_info = array(
 );
       $content .= '</div></div>';
 //Passing referral info for api
-$content .= '<div id="referral_api" style="display:none;"></div><input type="text" value="http://localhost/shoppingpro/partnerReferralMapping.php?uid2='.$_GET[uid2].'&referralID='.$referral_info[referrerid].'&drupalUserID='.$referral_info[uid].'" id="url_value" style="display:none;"/>';
+$content .= '<div id="referral_api" style="display:none;"></div><input type="text" value="http://54.243.150.171/partnerReferralMapping.php?uid2='.$_GET[uid2].'&referralID='.$referral_info[referrerid].'&drupalUserID='.$referral_info[uid].'" id="url_value" style="display:none;"/>';
 
       echo $content;
     }
