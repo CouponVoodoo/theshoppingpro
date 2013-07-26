@@ -367,14 +367,11 @@ function corp_retailers_make_url($row, $found_url, $input_url, $redirect, $uid2,
     case 35: //Komli
       $link_url = $url ;
       if (strtolower($found_url) == $input_url) {
-       // $url_part2 = urlencode(isset($row->field_url_part2_value) ? $row->field_url_part2_value : '');
-	    $url_part2 = rawurlencode(isset($row->field_url_part2_value) ? $row->field_url_part2_value : '');
+        $url_part2 = urlencode(isset($row->field_url_part2_value) ? $row->field_url_part2_value : '');
         $url_part3 = isset($row->field_url_part3_value) ? $row->field_url_part3_value : '';
         $url_part4 = isset($row->field_url_part4_value) ? $row->field_url_part4_value : '';
 
-       // $redirect = $redirect . $url_part2 . $url_part3 . $url_part4;
-
-	   $redirect = '<script>document.write(escape("'.$redirect . $url_part2 . $url_part3 . $url_part4.'"));</script>';
+        $redirect = $redirect . $url_part2 . $url_part3 . $url_part4;
         $query = '&subid1=' . $user->uid . '&subid2=' . $uid2;
         $url = $link_url . '&lnkurl=' . $redirect.$query;
       } else {
