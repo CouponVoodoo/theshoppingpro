@@ -112,27 +112,23 @@ echo $content1;
 */
 
     ?>
-<script>
-jQuery("#plugin_image").click(function() {
-//var urlvalue=jQuery('#url_value').val();
 
-//jQuery('#referral_api').replaceWith('<iframe style="width:1px;" name="referral_api" src="'+urlvalue+'">');
+<?php
 
+        drupal_add_js('jQuery(document).ready(function () {
+							jQuery.ajax({
+							url: "http://54.243.150.171/partnerReferralMapping.php",
+							type: "POST",
+							data: { uid2: $_GET[uid2], referralID: $referral_info[referrerid],drupalUserID: $referral_info[uid] },
+							cache: false,
+							success: function (response) {
+							alert('sucess');
+							}
+							});
 
-jQuery.ajax({
-url: "http://54.243.150.171/partnerReferralMapping.php",
-type: "POST",
-data: { uid2: $_GET[uid2], referralID: $referral_info[referrerid],drupalUserID: $referral_info[uid] },
-cache: false,
-success: function (response) {
-alert('sucess');
-}
-});
+                      });', 'inline');
+?>
 
-
-
-});
-</script>
 
   </div>
 </div>
