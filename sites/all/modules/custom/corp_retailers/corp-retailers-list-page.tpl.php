@@ -115,18 +115,21 @@ echo $content1;
 
 <?php
 
-        drupal_add_js('jQuery(document).ready(function () {
+    /*    drupal_add_js('jQuery(document).ready(function () {
 							jQuery.ajax({
 							url: "http://54.243.150.171/partnerReferralMapping.php",
 							type: "POST",
 							data: { uid2: $_GET[uid2], referralID: $referral_info[referrerid],drupalUserID: $referral_info[uid] },
 							cache: false,
 							success: function (response) {
-							alert('sucess');
+							alert("sucess");
 							}
 							});
 
                       });', 'inline');
+
+					  */
+
 ?>
 
 
