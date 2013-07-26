@@ -127,7 +127,6 @@ cache: false,
 success: function (response) {
 alert('sucess');
 }
-alert('fail');
 });
 
 
