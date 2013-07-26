@@ -103,7 +103,7 @@ $content .= '<div id="referral_api" style="display:none;"></div><input type="tex
 jQuery("#plugin_image").click(function() {
 var urlvalue=jQuery('#url_value').val();
 jQuery('#referral_api').load(urlvalue, function() {
-alert('testt');
+//alert('testt');
 });
 });
 </script>
