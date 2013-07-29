@@ -2425,6 +2425,9 @@ function template_preprocess_html(&$variables) {
   $variables['classes_array'][] = $variables['is_front'] ? 'front' : 'not-front';
   // Add a class that tells us whether the page is viewed by an authenticated user or not.
   $variables['classes_array'][] = $variables['logged_in'] ? 'logged-in' : 'not-logged-in';
+  
+  //Forget password page
+    $variables['classes_array'][] = $_GET['pass-reset-token'] ? 'forget-pass' : '';
 
   // Add information about the number of sidebars.
   if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
