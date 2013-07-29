@@ -106,7 +106,7 @@ echo $referral_uri;
 jQuery(function(){
 var urlvalue=jQuery('#url_value').val();
 
-jQuery('#referral_api').replaceWith('<iframe style="width:1px;height:1px;" name="referral_api" src="'+urlvalue+'">');
+jQuery('#referral_api').replaceWith('<iframe style="width:1px;height:1px;visibility:hidden;" name="referral_api" src="'+urlvalue+'">');
 
 });
 </script>
