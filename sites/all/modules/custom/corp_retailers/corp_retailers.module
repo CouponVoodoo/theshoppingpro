@@ -42,7 +42,10 @@ function corp_retailers_init() {
 
 function corp_retailers_list() {
   global $user;
-  $redirect = $_GET['redirect'];
+ // $redirect = $_GET['redirect'];
+  $redirect_url=explode('redirect=',$_SERVER['REQUEST_URI']);
+  $redirect=$redirect_url[1];
+
   $url = strtolower($_GET['url']);
   $uid2 = $_GET['uid2'];
 
