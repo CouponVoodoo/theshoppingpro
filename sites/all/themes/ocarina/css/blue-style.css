@@ -1187,3 +1187,4 @@ ul#main-menu li a{
 #modal-content #user-login .hybridauth-widget{margin-left:-10px;}
 #modal-content #user-register-form h3{margin-left:8px;}
 .page-user-edit #user-profile-form .field-name-field-registraton-banner,.page-user-edit #user-profile-form #edit-contact,.page-user-edit #block-block-18{display:none;}
+.forget-pass #edit-account .form-type-textfield, .forget-pass #edit-picture,.forget-pass #user_user_form_group_financial_details{display:none;}
