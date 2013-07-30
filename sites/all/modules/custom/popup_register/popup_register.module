@@ -1,0 +1,88 @@
+<?php
+
+/**
+ * Implements hook_permission().
+ */
+function popup_register_permission() {
+  return array(
+    'access popup register program script' => array(
+      'title' => t('Access the popup register script'),
+    ),
+
+  );
+}
+
+/**
+ * Implementation of hook_theme
+ */
+function popup_register_theme() {
+  $themes = array(
+      'popup_register_script_page' => array(
+          'template' => 'popup-register-script-page',
+          'variables' => array('data' => null),
+      ),
+  );
+
+  return $themes;
+}
+
+function popup_register_script() {
+  global $user, $base_url;
+  $referrerid=_referral_uid2ref($user->uid);
+  
+  // drupal_add_js(drupal_get_path('module', 'partner_program') .'/zeroclipboard.js');
+
+     drupal_add_js((drupal_get_path('module', 'partner_program') .'/zeroclipboard.js'), 
+ array('type' => 'file', 'scope' => 'footer', 'weight' => 49)
+  );
+	      drupal_add_js((drupal_get_path('module', 'partner_program') .'/zeroclipboardclip.js'), 
+ array('type' => 'file', 'scope' => 'footer', 'weight' => 50)
+  );
+
+  $data = array(
+      'referrerid' => $referrerid,
+  );
+  
+
+  return theme('popup_register_script_page', array('data' => $data));
+
+}
+
+/**
+* Implements hook_block_info().
+*/
+function popup_register_block_info() {
+  $blocks['popup_register_block'] = array(
+    'info' => t('Popup Register Program Script'), //The name that will appear in the block list.
+    'cache' => DRUPAL_CACHE_PER_ROLE, //Default
+  );
+
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*
+* Prepares the contents of the block.
+*/
+function popup_register_block_view($delta = '') {
+$block = array();
+  switch($delta){
+    case 'popup_register_block':
+		 if (user_access('access popup register program script')){
+      $block['subject'] = t('');
+	  $block['content'] = popup_register_script();
+	}
+	break;
+  }
+ return $block;
+}
+
+/* Set cookie for 3rd party users */
+
+function popup_register_set_cookie() {
+//$cook=referral_set_cookie('15384');
+
+$cook="Hello";
+return $cook;
+}
