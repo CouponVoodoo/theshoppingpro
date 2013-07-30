@@ -360,7 +360,9 @@ function corp_retailers_make_url($row, $found_url, $input_url, $redirect, $uid2,
         $url_part3 = isset($row->field_url_part3_value) ? $row->field_url_part3_value : '';
         $url_part4 = isset($row->field_url_part4_value) ? $row->field_url_part4_value : '';
 
-        $redirect = urlencode($redirect . $url_part2 . $url_part3 . $url_part4);
+        $redirect = "http://".$redirect . $url_part2 . $url_part3 . $url_part4;
+		$redirect=implode("/", array_map("rawurlencode", explode("/", $redirect)));
+
         $query = '&uid=' . $user->uid . '&uid2=' . $uid2 . '&redirect=' . $redirect;
         $url = $link_url . '?' . $query;
       } else {
