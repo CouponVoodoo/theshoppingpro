@@ -45,9 +45,7 @@ function corp_retailers_list() {
  // $redirect = $_GET['redirect'];
   $redirect_fullurl=explode('redirect=',$_SERVER['REQUEST_URI']);
   $redirect_url=explode('&uid2=',$redirect_fullurl[1]);
- echo $redirect=$redirect_url[0];
-
- echo "<br>";
+  $redirect=$redirect_url[0];
 
   $url = strtolower($_GET['url']);
   $uid2 = $_GET['uid2'];
@@ -347,7 +345,11 @@ function corp_retailers_make_url($row, $found_url, $input_url, $redirect, $uid2,
         $url_part2 = isset($row->field_url_part2_value) ? $row->field_url_part2_value : '';
         $url_part3 = isset($row->field_url_part3_value) ? $row->field_url_part3_value : '';
         $url_part4 = isset($row->field_url_part4_value) ? $row->field_url_part4_value : '';
-        $redirect = urlencode($redirect . $url_part2 . $url_part3 . $url_part4);
+
+
+        $redirect = urldecode($redirect) . $url_part2 . $url_part3 . $url_part4;
+		$redirect=implode("/", array_map("rawurlencode", explode("/", $redirect)));
+
         $query = '&k=' . $user->uid . '|' . $uid2 . '&t=' . $redirect;
         $url = $link_url . $query;
       } else {
@@ -361,10 +363,8 @@ function corp_retailers_make_url($row, $found_url, $input_url, $redirect, $uid2,
         $url_part3 = isset($row->field_url_part3_value) ? $row->field_url_part3_value : '';
         $url_part4 = isset($row->field_url_part4_value) ? $row->field_url_part4_value : '';
 
-       echo $redirect = urldecode($redirect) . $url_part2 . $url_part3 . $url_part4;
-	   echo "<br>";
-		echo $redirect=implode("/", array_map("rawurlencode", explode("/", $redirect)));
-		echo '<br>';
+         $redirect = urldecode($redirect) . $url_part2 . $url_part3 . $url_part4;
+		 $redirect=implode("/", array_map("rawurlencode", explode("/", $redirect)));
 
         $query = '&uid=' . $user->uid . '&uid2=' . $uid2 . '&redirect=' . $redirect;
         $url = $link_url . '?' . $query;
