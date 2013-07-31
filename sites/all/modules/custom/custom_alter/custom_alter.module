@@ -3,6 +3,11 @@
 function custom_alter_form_alter(&$form, &$form_state, $form_id){
 
 
+
+if($form_id=='user_register_form' && arg(1)<>'register'){
+unset($form['captcha']);
+}
+
 if($form_id=='user_register_form'){
 
 $form['account']['name']['#placeholder']='User Name';
