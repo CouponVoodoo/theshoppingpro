@@ -14,3 +14,12 @@ div#popup_content{text-align:center;margin:4px 7px}
 #popup_content li{display:block}
 #popup_content .form-submit{display:block;margin:15px 0 0 75px}
 #popup_content a{color:#F7971C;font-family:"trebuchet MS",Arial,Helvetica,sans-serif}
+#toPopup .hybridauth-icon-hybridauth-32 {display: block;float: left;width: 32px;height: 32px;opacity: 0.75;filter: alpha(opacity=75);}
+#toPopup .hybridauth-icon-hybridauth-32:hover {opacity: 1;filter: alpha(opacity=100);}
+#toPopup .hybridauth-facebook-hybridauth-32 {background: transparent url(http://www.theshoppingpro.com/sites/all/modules/hybridauth/plugins/icon_pack/hybridauth_32/icons/facebook.png) 0px 0px no-repeat;}
+#toPopup .hybridauth-google-hybridauth-32 {background: transparent url(http://www.theshoppingpro.com/sites/all/modules/hybridauth/plugins/icon_pack/hybridauth_32/icons/google.png) 0px 0px no-repeat;}
+#toPopup .hybridauth-twitter-hybridauth-32 {background: transparent url(http://www.theshoppingpro.com/sites/all/modules/hybridauth/plugins/icon_pack/hybridauth_32/icons/twitter.png) 0px 0px no-repeat;}
+#toPopup .hybridauth-live-hybridauth-32 {background: transparent url(http://www.theshoppingpro.com/sites/all/modules/hybridauth/plugins/icon_pack/hybridauth_32/icons/live.png) 0px 0px no-repeat;
+}
+.hybridauth-widget li{list-style-type:none;padding-right:8px;display:inline-block !important;}
+#toPopup .form-submit{border:2px solid #FFFFFF;border-radius:10px;box-shadow:0 0 3px #999999;color:#fff;background:url("http://www.theshoppingpro.com/sites/all/themes/ocarina/images/blue/button-bg.png") repeat-x scroll 0 0 transparent;padding:7px 25px;cursor:pointer;}
