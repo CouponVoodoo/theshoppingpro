@@ -6,6 +6,10 @@ $mc_retailer=$node->field_mc_retailer;
 $mc_micro_category=$node->field_micro_category;
 $mc_micro_publish=$node->field_mc_publish_options;
 
+echo "<pre>";
+
+print_r($node);
+
 echo $mc_retailer_val=check_plain($mc_retailer['und']['0']['nid']);
 echo $mc_micro_category_val=check_plain($mc_micro_category['und']['0']['tid']);
 echo "<br>";
