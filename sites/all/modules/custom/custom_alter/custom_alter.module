@@ -1,19 +1,14 @@
 <?php
 
-function custom_node_validate($node,$form, &$form_state) {
+function custom_alter_node_validate($node,$form, &$form_state) {
 
 $mc_retailer=$node->field_mc_retailer;
 $mc_micro_category=$node->field_micro_category;
 $mc_micro_publish=$node->field_mc_publish_options;
 
-echo "<pre>";
-
-print_r($node);
-
-echo $mc_retailer_val=check_plain($mc_retailer['und']['0']['nid']);
-echo $mc_micro_category_val=check_plain($mc_micro_category['und']['0']['tid']);
-echo "<br>";
-echo $mc_micro_publish_val=check_plain($mc_micro_publish['und']['0']['value']);
+$mc_retailer_val=check_plain($mc_retailer['und']['0']['nid']);
+$mc_micro_category_val=check_plain($mc_micro_category['und']['0']['tid']);
+$mc_micro_publish_val=check_plain($mc_micro_publish['und']['0']['value']);
 
 if(arg(1)=='add'){
 $result = db_query("SELECT *
@@ -30,9 +25,9 @@ WHERE fmcr.field_mc_retailer_nid=:mrn AND fmc.field_micro_category_tid=:mct AND 
 }
 
 $row_count=$result->rowCount();
-//if($row_count > 0){
+if($row_count > 0){
 form_set_error('field_mc_retailer', t('Retailer already exists. Choose some other retailer or micro category.'));
-//}
+}
 
 }
 
