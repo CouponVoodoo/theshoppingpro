@@ -29,6 +29,8 @@ if($row_count > 0){
 form_set_error('field_mc_retailer', t('Retailer already exists. Choose some other retailer or micro category.'));
 }
 
+}
+
 
 function custom_alter_form_alter(&$form, &$form_state, $form_id){
 
