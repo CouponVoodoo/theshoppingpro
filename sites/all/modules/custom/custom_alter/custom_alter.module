@@ -25,9 +25,9 @@ WHERE fmcr.field_mc_retailer_nid=:mrn AND fmc.field_micro_category_tid=:mct AND 
 }
 
 $row_count=$result->rowCount();
-if($row_count > 0){
+//if($row_count > 0){
 form_set_error('field_mc_retailer', t('Retailer already exists. Choose some other retailer or micro category.'));
-}
+//}
 
 }
 
