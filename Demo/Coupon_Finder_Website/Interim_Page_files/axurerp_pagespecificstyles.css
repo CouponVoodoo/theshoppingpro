@@ -53,7 +53,7 @@ div {
 }
 
 .u3_normal {
-    background-image: url('../Coupon_Finder_Result_files/u3_normal.png');
+    background-image: url('../Interim_Page_files/u3_normal.png');
 }
 
 .u3_container {
@@ -133,7 +133,7 @@ div {
 }
 
 .u8_normal {
-    background-image: url('../Coupon_Finder_Result_files/u8_normal.png');
+    background-image: url('../Interim_Page_files/u8_normal.png');
 }
 
 .u8_container {
@@ -223,7 +223,7 @@ div {
 }
 
 .u14_normal {
-    background-image: url('../Coupon_Finder_Result_files/u14_normal.png');
+    background-image: url('../Interim_Page_files/u14_normal.png');
 }
 
 .u14_container {
@@ -551,7 +551,7 @@ div {
 }
 
 .u37_normal {
-    background-image: url('../Coupon_Finder_Result_files/u14_normal.png');
+    background-image: url('../Interim_Page_files/u14_normal.png');
 }
 
 .u37_container {
@@ -585,7 +585,7 @@ div {
 }
 
 .u39_normal {
-    background-image: url('../Coupon_Finder_Result_files/u14_normal.png');
+    background-image: url('../Interim_Page_files/u14_normal.png');
 }
 
 .u39_container {
@@ -619,7 +619,7 @@ div {
 }
 
 .u41_normal {
-    background-image: url('../Coupon_Finder_Result_files/u14_normal.png');
+    background-image: url('../Interim_Page_files/u14_normal.png');
 }
 
 .u41_container {
@@ -643,6 +643,170 @@ div {
     left:2px;
     top:4px;
     width:147px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u43_normal {
+    background-image: url('../Interim_Page_files/u43_normal.png');
+}
+
+.u43_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:1602px;
+    height:800px;
+}
+
+#u43_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:1608px;
+    height:806px;
+}
+
+.u44 {
+    position:absolute;
+    left:2px;
+    top:392px;
+    width:1598px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u45_normal {
+    background-image: url('../Interim_Page_files/u45_normal.png');
+}
+
+.u45_container {
+    position:absolute;
+    left:297px;
+    top:254px;
+    width:804px;
+    height:213px;
+}
+
+#u45_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:810px;
+    height:219px;
+}
+
+.u46 {
+    position:absolute;
+    left:2px;
+    top:98px;
+    width:800px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u47 {
+    position:absolute;
+    left:585px;
+    top:278px;
+    width:267px;
+    height:22px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u48_normal {
+    background-image: url('../Interim_Page_files/u48_normal.png');
+}
+
+.u48_container {
+    position:absolute;
+    left:343px;
+    top:408px;
+    width:384px;
+    height:23px;
+}
+
+#u48_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:390px;
+    height:29px;
+}
+
+.u49 {
+    position:absolute;
+    left:2px;
+    top:4px;
+    width:380px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u50 {
+    position:absolute;
+    left:343px;
+    top:310px;
+    width:723px;
+    height:64px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u51_normal {
+    background-image: url('../Interim_Page_files/u51_normal.png');
+}
+
+.u51_container {
+    position:absolute;
+    left:803px;
+    top:408px;
+    width:263px;
+    height:23px;
+}
+
+#u51_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:269px;
+    height:29px;
+}
+
+.u52 {
+    position:absolute;
+    left:2px;
+    top:4px;
+    width:259px;
     height:16px;
     ;
     ;

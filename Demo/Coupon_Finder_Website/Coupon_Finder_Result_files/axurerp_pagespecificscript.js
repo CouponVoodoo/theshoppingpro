@@ -1,10 +1,10 @@
-﻿for(var i = 0; i < 43; i++) { var scriptId = 'u' + i; window[scriptId] = document.getElementById(scriptId); }
+﻿for(var i = 0; i < 41; i++) { var scriptId = 'u' + i; window[scriptId] = document.getElementById(scriptId); }
 
 $axure.eventManager.pageLoad(
 function (e) {
 
 });
-gv_vAlignTable['u27'] = 'top';gv_vAlignTable['u16'] = 'top';gv_vAlignTable['u17'] = 'top';gv_vAlignTable['u28'] = 'top';gv_vAlignTable['u42'] = 'center';gv_vAlignTable['u29'] = 'top';document.getElementById('u8_img').tabIndex = 0;
+gv_vAlignTable['u27'] = 'top';gv_vAlignTable['u16'] = 'top';gv_vAlignTable['u17'] = 'top';gv_vAlignTable['u28'] = 'top';gv_vAlignTable['u29'] = 'top';document.getElementById('u8_img').tabIndex = 0;
 
 u8.style.cursor = 'pointer';
 $axure.eventManager.click('u8', function(e) {
@@ -22,29 +22,18 @@ $axure.eventManager.click('u14', function(e) {
 
 if (true) {
 
-	self.location.href=$axure.globalVariableProvider.getLinkUrl('Retailer_Page.html');
+	self.location.href=$axure.globalVariableProvider.getLinkUrl('Interim_Page.html');
 
 }
 });
-gv_vAlignTable['u15'] = 'center';document.getElementById('u41_img').tabIndex = 0;
-
-u41.style.cursor = 'pointer';
-$axure.eventManager.click('u41', function(e) {
-
-if (true) {
-
-	self.location.href=$axure.globalVariableProvider.getLinkUrl('Retailer_Page.html');
-
-}
-});
-gv_vAlignTable['u4'] = 'center';gv_vAlignTable['u1'] = 'center';gv_vAlignTable['u10'] = 'top';document.getElementById('u39_img').tabIndex = 0;
+gv_vAlignTable['u15'] = 'center';gv_vAlignTable['u4'] = 'center';gv_vAlignTable['u1'] = 'center';gv_vAlignTable['u10'] = 'top';document.getElementById('u39_img').tabIndex = 0;
 
 u39.style.cursor = 'pointer';
 $axure.eventManager.click('u39', function(e) {
 
 if (true) {
 
-	self.location.href=$axure.globalVariableProvider.getLinkUrl('Retailer_Page.html');
+	self.location.href=$axure.globalVariableProvider.getLinkUrl('Interim_Page.html');
 
 }
 });
@@ -55,7 +44,7 @@ $axure.eventManager.click('u37', function(e) {
 
 if (true) {
 
-	self.location.href=$axure.globalVariableProvider.getLinkUrl('Retailer_Page.html');
+	self.location.href=$axure.globalVariableProvider.getLinkUrl('Interim_Page.html');
 
 }
 });
