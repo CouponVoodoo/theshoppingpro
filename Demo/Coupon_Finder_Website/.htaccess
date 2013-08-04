@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "restricted area"
+AuthUserFile /var/www/html/corp/Demo/Coupon_Finder_Website/.htpasswd
+require valid-user
