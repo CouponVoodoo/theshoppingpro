@@ -1,5 +1,37 @@
 <?php
 
+
+function custom_alter_node_validate($node,$form, &$form_state) {
+
+$mc_retailer=$node->field_mc_retailer;
+$mc_micro_category=$node->field_micro_category;
+$mc_micro_publish=$node->field_mc_publish_options;
+
+$mc_retailer_val=check_plain($mc_retailer['und']['0']['nid']);
+$mc_micro_category_val=check_plain($mc_micro_category['und']['0']['tid']);
+$mc_micro_publish_val=check_plain($mc_micro_publish['und']['0']['value']);
+
+if(arg(1)=='add'){
+$result = db_query("SELECT *
+FROM {field_revision_field_mc_retailer} fmcr
+INNER JOIN {field_data_field_micro_category} fmc ON fmcr.entity_id=fmc.entity_id
+INNER JOIN {field_data_field_mc_publish_options} fmpo ON fmc.entity_id=fmpo.entity_id
+WHERE fmcr.field_mc_retailer_nid=:mrn AND fmc.field_micro_category_tid=:mct AND fmpo.field_mc_publish_options_value = :mpov" ,array(':mrn'=>$mc_retailer_val,':mct'=>$mc_micro_category_val,':mpov'=>''.$mc_micro_publish_val.''));
+}else{
+$result = db_query("SELECT *
+FROM {field_revision_field_mc_retailer} fmcr
+INNER JOIN {field_data_field_micro_category} fmc ON fmcr.entity_id=fmc.entity_id
+INNER JOIN {field_data_field_mc_publish_options} fmpo ON fmc.entity_id=fmpo.entity_id
+WHERE fmcr.field_mc_retailer_nid=:mrn AND fmc.field_micro_category_tid=:mct AND fmpo.field_mc_publish_options_value = :mpov AND fmcr.entity_id !=:nid" ,array(':mrn'=>$mc_retailer_val,':mct'=>$mc_micro_category_val,':mpov'=>''.$mc_micro_publish_val.'',':nid'=>arg(1)));
+}
+
+$row_count=$result->rowCount();
+if($row_count > 0){
+form_set_error('field_mc_retailer', t('Retailer already exists. Choose some other retailer or micro category.'));
+}
+
+}
+
 function custom_alter_form_alter(&$form, &$form_state, $form_id){
 
 
