@@ -90,8 +90,8 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		 print "<h2>".$term_record[0][0]->name."</h2>"; 
 		
 		
-		if($term_record[0][0]->description <> ""):
-		$maincategory_desc=$term_record[0][0]->description;
+		if($term_record[0][0]->field_display_text_microterm[und][0][safe_value] <> ""):
+		$maincategory_desc=$term_record[0][0]->field_display_text_microterm[und][0][safe_value];
 		else:
 		$maincategory_desc='Retailer - Micro Category Description.';
 		endif;
@@ -102,14 +102,14 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		
 		
 		//Loop one
-		if($child_term[1]->description <> ""):
-		$childcategory_desc1=$child_term[1]->description;
+		if($child_term[1]->field_display_text_microterm[und][0][safe_value] <> ""):
+		$childcategory_desc1=$child_term[1]->field_display_text_microterm[und][0][safe_value];
 		else:
 		$childcategory_desc1='Retailer - Micro Category Description.';
 		endif;
 		//Loop two
-		if($child_term[2]->description <> ""):
-		$childcategory_desc2=$child_term[2]->description;
+		if($child_term[2]->field_display_text_microterm[und][0][safe_value] <> ""):
+		$childcategory_desc2=$child_term[2]->field_display_text_microterm[und][0][safe_value];
 		else:
 		$childcategory_desc2='Retailer - Micro Category Description.';
 		endif;
