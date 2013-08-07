@@ -93,23 +93,26 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		$childcategory_desc3='Retailer - Micro Category Description.';
 		endif;							
 				
-		 //unset($child_term[0]);
-		 if(isset($child_term[1]->name)):
-		 print "<ul class='first-level'><li><h3>".$child_term[1]->name."</h3>"; 
-		 print $childcategory_desc1;
-		 endif;
-		 if(isset($child_term[2]->name)):
-		 print "<ul class='second-level'><li><h3>".$child_term[2]->name."</h3>"; 
-		 print $childcategory_desc2;
-		 else:
+		if(isset($child_term[1]->name)):
+		print "<ul class='first-level'><li><h3>".$child_term[1]->name."</h3>";
+		print $childcategory_desc1;
+		if(!isset($child_term[2]->name)):
 		print "</li></ul>";
-		
-		 endif;
-		 if(isset($child_term[3]->name)):
-		 print "<ul class='third-level'><li><h3>".$child_term[3]->name."</h3>"; 
-		 print $childcategory_desc3;
+		endif;
+		endif;
+		if(isset($child_term[2]->name)):
+		print "<ul class='second-level'><li><h3>".$child_term[2]->name."</h3>";
+		print $childcategory_desc2;
+		if(!isset($child_term[3]->name)):
+		print "</li></ul></li></ul>";
+		endif;
+		endif;
+		if(isset($child_term[3]->name)):
+		print "<ul class='third-level'><li><h3>".$child_term[3]->name."</h3>";
+		print $childcategory_desc3;
 		print "</li></ul></li></ul></li></ul>";
 		endif;
+
 
 			
 		 endforeach; ?>
