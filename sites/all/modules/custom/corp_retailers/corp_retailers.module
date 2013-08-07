@@ -44,9 +44,23 @@ function corp_retailers_list() {
   global $user;
 //  $redirect = $_GET['redirect'];
 
+
+
+
   $redirect_fullurl=explode('redirect=',$_SERVER['REQUEST_URI']);
   $redirect_url=explode('&uid2=',$redirect_fullurl[1]);
   $redirect=$redirect_url[0];
+
+if($user->uid==1):
+echo "Redirect Url - ".$redirect;
+
+echo "<br>";
+$testurl=urldecode($redirect);
+echo "Decode First Url - ".urldecode($redirect);
+
+echo "Decode Twice Url - ".urldecode($testurl);
+
+endif;
 
   $url = strtolower($_GET['url']);
   $uid2 = $_GET['uid2'];
