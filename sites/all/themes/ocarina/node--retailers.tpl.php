@@ -17,7 +17,7 @@
                 <div class="fl" style="margin:20px 0px 0px 50px;">
                 <h1><?php print $title ?></h1>
                 </div>
-            <div style="clear:both;"><h5>Retailer node field</h5></div>    
+           		<div style="clear:both;"><h5>Retailer node field</h5></div>    
             </div>
             <div class="fr" style="width:300px;margin-top:20px;">
 					<a href="<?php print $url_part_1;?>">
@@ -29,6 +29,8 @@
 					</div>
 					</a>
 			</div>
+            
+            </div>
 		</div>
 	</div>
 	
