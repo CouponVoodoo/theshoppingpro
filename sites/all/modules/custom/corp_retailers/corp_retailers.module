@@ -433,25 +433,24 @@ endif;
     case 35: //Komli
       $link_url = $url ;
       if (strtolower($found_url) == $input_url) {
-        $url_part2 = urlencode(isset($row->field_url_part2_value) ? $row->field_url_part2_value : '');
+        $url_part2 = isset($row->field_url_part2_value) ? $row->field_url_part2_value : '';
         $url_part3 = isset($row->field_url_part3_value) ? $row->field_url_part3_value : '';
         $url_part4 = isset($row->field_url_part4_value) ? $row->field_url_part4_value : '';
 
 
-$encoded_url=urlencode($redirect);
+		$url_part2 =urlencode($url_part2);
+		$url_part3 =urlencode($url_part3);
+		$url_part4 =urlencode($url_part4);
 
-if($user->uid==1):
-	echo "<br>";
-echo "Encode".$encoded_url;
-	echo "<br>";
-endif;
+
+$redirect=urlencode($redirect);
 
 
 
 //$double_decode=urldecode($encoded_url);
 
         $redirect = $redirect . $url_part2 . $url_part3 . $url_part4;
-		$redirect=implode("/", array_map("rawurlencode", explode("/", $redirect)));
+		//$redirect=implode("/", array_map("rawurlencode", explode("/", $redirect)));
         $query = '&subid1=' . $user->uid . '&subid2=' . $uid2;
         $url = $link_url . '&lnkurl=' . $redirect.$query;
       } else {
