@@ -32,6 +32,7 @@ global $user;
 		}else{
 		$cashback_url=$base_url."/modal_forms/nojs/login";
 		}
+		$class = user_is_logged_in() ? '' : 'ctools-use-modal ctools-modal-modal-popup-small';
 
 	?>
 	<div id="block-retailers-page" class="block block-system block-main block-system-main">
@@ -48,7 +49,7 @@ global $user;
            		<div style="clear:both;"><h5><?php print render($content['body']);?></h5></div>    
             </div>
             <div class="fr" style="width:300px;margin-top:20px;">
-					<a href="<?php print $cashback_url;?>">
+					<a href="<?php print $cashback_url;?>" class="<?php print $class;?>">
 					<div class="block">
 						<div class="content">							
 							<h2>Cashback Offer</h2>
