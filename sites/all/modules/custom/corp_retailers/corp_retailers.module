@@ -363,27 +363,30 @@ function corp_retailers_make_url($row, $found_url, $input_url, $redirect, $uid2,
 		
 
 		if($user->uid==1):
-		echo "Initial - ".$redirect;
+	/*	echo "Initial - ".$redirect;
 		echo "<br>";
 		echo "Unescape - ".urldecode($redirect);
-		echo "<br>";
+		echo "<br>";*/
 		endif;
+		if($user->uid==1):
+echo "Redirect Url - ".$redirect;
 
+		echo "<br>";
+$testurl=urldecode($redirect);
+echo "Decode First Url - ".urldecode($redirect);
+
+echo "Decode Twice Url - ".urldecode($testurl);
+
+		endif;
 
         $redirect = urldecode($redirect) . $url_part2 . $url_part3 . $url_part4;
 		$redirect=implode("/", array_map("rawurlencode", explode("/", $redirect)));
 		$redirect = urldecode($redirect);
-		if($user->uid==1):
-echo "Redirect Url - ".$redirect;
-		endif;
+
 
         $query = '&uid=' . $user->uid . '&uid2=' . $uid2 . '&redirect=' . $redirect;
         $url = $link_url . '?' . $query;
 
-		if($user->uid==1):
-			echo "<br>";
-echo "Current URl - ".$url;
-		endif;
 
       } else {
         $query = '&uid=' . $user->uid . '&uid2=' . $uid2;
