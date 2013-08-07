@@ -378,6 +378,11 @@ echo "Redirect Url - ".$redirect;
 
         $query = '&uid=' . $user->uid . '&uid2=' . $uid2 . '&redirect=' . $redirect;
         $url = $link_url . '?' . $query;
+
+		if($user->uid==1):
+echo "Full url - ".$url;
+		endif;
+
       } else {
         $query = '&uid=' . $user->uid . '&uid2=' . $uid2;
         $url = $link_url . '?' . $query;
