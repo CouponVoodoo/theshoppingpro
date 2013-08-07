@@ -385,7 +385,7 @@ endif;
 
 
         $redirect = $redirect . $url_part2 . $url_part3 . $url_part4;
-		$redirect=implode("/", array_map("rawurlencode", explode("/", $redirect)));
+		//$redirect=implode("/", array_map("rawurlencode", explode("/", $redirect)));
         $query = '&k=' . $user->uid . '|' . $uid2 . '&t=' . $redirect;
         $url = $link_url . $query;
       } else {
