@@ -1188,3 +1188,14 @@ ul#main-menu li a{
 #modal-content #user-register-form h3{margin-left:8px;}
 .page-user-edit #user-profile-form .field-name-field-registraton-banner,.page-user-edit #user-profile-form #edit-contact,.page-user-edit #block-block-18{display:none;}
 .forget-pass #edit-account .form-type-textfield, .forget-pass #edit-picture,.forget-pass #user_user_form_group_financial_details{display:none;}
+
+#block-retailers-page{margin-top:20px;}
+#block-retailers-page td{border:0px;padding-top:25px;}
+#block-retailers-page h1{color:#f79646;margin-bottom:0px;padding:15px 0 10px 0;}
+#block-retailers-page h2{margin:20px 0 0 0;color:#f79646;text-transform:capitalize;font-size:17px;text-align:center;}
+#block-retailers-page h3{margin:0;color:#f79646;text-transform:capitalize;font-size:14px;font-family:Arial, Helvetica, sans-serif;}
+#block-retailers-page h4{font-family:Arial, Helvetica, sans-serif;}
+.al_center{text-align:center;}
+#block-retailers-page strong{color:#f79646;}
+#block-retailers-page ul{margin-left:30px !important;padding-bottom:15px;}
+#block-retailers-page ul.first-level{margin-top:20px;}
