@@ -9,16 +9,17 @@
 	<div id="block-retailers-page" class="block block-system block-main block-system-main">
 		<div class="block-inner clearfix">
 			<div class="content clearfix">
-			<table style="border:0px">
-			<tr>
-				<td>
-			<?php print render($content['field_image']); ?>
-				</td>
-				<td style="width:40%;">
-				<h1><?php print $title ?></h1>
-				<h4>All Products, Offers &amp; Cashback</h4>
-				</td>
-				<td style="width:70%;height:92px;margin:10px;padding-top:42px;">
+
+			<div class="fl">
+                <div class="fl">
+                <?php print render($content['field_image']); ?>
+                </div>
+                <div class="fl">
+                <h1><?php print $title ?></h1>
+                </div>
+            <div><strong>Retailer node field</strong></div>    
+            </div>
+            <div class="fl">
 					<a href="<?php print $url_part_1;?>">
 					<div class="block">
 						<div class="content">							
@@ -27,11 +28,6 @@
 						</div>
 					</div>
 					</a>
-				
-				</td>
-			</tr>
-			</table>	
-			
 			</div>
 		</div>
 	</div>
