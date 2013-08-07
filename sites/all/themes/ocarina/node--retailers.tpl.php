@@ -10,16 +10,16 @@
 		<div class="block-inner clearfix">
 			<div class="content clearfix">
 
-			<div class="fl">
+			<div class="fl" style="margin-left:20px;">
                 <div class="fl">
                 <?php print render($content['field_image']); ?>
                 </div>
-                <div class="fl">
+                <div class="fl" style="margin:20px 0px 0px 50px;">
                 <h1><?php print $title ?></h1>
                 </div>
-            <div><strong>Retailer node field</strong></div>    
+            <div style="clear:both;"><h5>Retailer node field</h5></div>    
             </div>
-            <div class="fl">
+            <div class="fr" style="width:300px;margin-top:20px;">
 					<a href="<?php print $url_part_1;?>">
 					<div class="block">
 						<div class="content">							
