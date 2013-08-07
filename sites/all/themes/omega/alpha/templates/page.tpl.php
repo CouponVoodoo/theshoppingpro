@@ -4,7 +4,7 @@
  * Alpha's theme implementation to display a single Drupal page.
  */
 
- gobal $user;
+ global $user;
 ?>
  <?php
 function curPageURL() {
