@@ -17,14 +17,14 @@
                 <div class="fl" style="margin:20px 0px 0px 50px;">
                 <h1><?php print $title ?></h1>
                 </div>
-           		<div style="clear:both;"><h5>Retailer node field</h5></div>    
+           		<div style="clear:both;"><h5><?php print render($content['body']);?></h5></div>    
             </div>
             <div class="fr" style="width:300px;margin-top:20px;">
 					<a href="<?php print $url_part_1;?>">
 					<div class="block">
 						<div class="content">							
 							<h2>Cashback Offer</h2>
-							<p>Retailer Display Text.</p>
+							<h5>Retailer Display Text.</h5>
 						</div>
 					</div>
 					</a>
