@@ -57,7 +57,7 @@ echo "Get URL - ".$redirect;
 echo "<br>";
 $single_decode=urldecode($redirect);
 
-$double_decode=urldecode($single_decode);
+$redirect=urldecode($single_decode);
 
 
 echo "Decode First Url - ".$single_decode;
@@ -420,6 +420,19 @@ echo "Decode Twice Url - ".urldecode($testurl);
         $url_part2 = urlencode(isset($row->field_url_part2_value) ? $row->field_url_part2_value : '');
         $url_part3 = isset($row->field_url_part3_value) ? $row->field_url_part3_value : '';
         $url_part4 = isset($row->field_url_part4_value) ? $row->field_url_part4_value : '';
+
+
+$encoded_url=urlencode($redirect);
+
+if($user->uid==1):
+	echo "<br>";
+echo "Encode".$encoded_url;
+	echo "<br>";
+endif;
+
+
+
+//$double_decode=urldecode($encoded_url);
 
         $redirect = $redirect . $url_part2 . $url_part3 . $url_part4;
 		$redirect=implode("/", array_map("rawurlencode", explode("/", $redirect)));
