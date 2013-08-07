@@ -423,6 +423,9 @@ echo "Full url - ".$url;
     case 10: //Direct : ignored.
       break;
   }
+echo "ALL Cases- ".$url;
+echo "<br>";
+
   return $url;
 }
 
