@@ -372,6 +372,7 @@ function corp_retailers_make_url($row, $found_url, $input_url, $redirect, $uid2,
 
         $redirect = urldecode($redirect) . $url_part2 . $url_part3 . $url_part4;
 		$redirect=implode("/", array_map("rawurlencode", explode("/", $redirect)));
+		$redirect = urldecode($redirect);
 		if($user->uid==1):
 echo "Redirect Url - ".$redirect;
 		endif;
