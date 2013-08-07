@@ -438,12 +438,12 @@ endif;
         $url_part4 = isset($row->field_url_part4_value) ? $row->field_url_part4_value : '';
 
 
-		$url_part2 =urlencode($url_part2);
-		$url_part3 =urlencode($url_part3);
-		$url_part4 =urlencode($url_part4);
+		$url_part2 =implode("/", array_map("rawurlencode", explode("/", $url_part2)));
+		$url_part3 =implode("/", array_map("rawurlencode", explode("/", $url_part3)));
+		$url_part4 =implode("/", array_map("rawurlencode", explode("/", $url_part4)));
 
 
-$redirect=urlencode($redirect);
+		$redirect =implode("/", array_map("rawurlencode", explode("/", $redirect)));
 
 
 
