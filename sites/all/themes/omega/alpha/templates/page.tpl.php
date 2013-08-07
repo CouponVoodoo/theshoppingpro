@@ -3,6 +3,8 @@
  * @file
  * Alpha's theme implementation to display a single Drupal page.
  */
+
+ gobal $user;
 ?>
  <?php
 function curPageURL() {
@@ -19,7 +21,10 @@ return $pageURL;
 ?>
 
 <?php
+
+if($user->uid==1):
 echo curPageURL();
+endif;
 ?>
 
 
