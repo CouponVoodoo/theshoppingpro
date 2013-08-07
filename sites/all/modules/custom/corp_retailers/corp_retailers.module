@@ -423,8 +423,10 @@ echo "Full url - ".$url;
     case 10: //Direct : ignored.
       break;
   }
+  if($user->uid==1):
 echo "ALL Cases- ".$url;
 echo "<br>";
+endif;
 
   return $url;
 }
