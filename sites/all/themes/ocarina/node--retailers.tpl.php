@@ -14,7 +14,7 @@
                 <div class="fl">
                 <?php print render($content['field_image']); ?>
                 </div>
-                <div class="fl" style="margin:20px 0px 0px 50px;">
+                <div class="fl" style="margin:20px 0px 0px 26px;">
                 <h1><?php print $title ?></h1>
                 </div>
            		<div style="clear:both;"><h5><?php print render($content['body']);?></h5></div>    
