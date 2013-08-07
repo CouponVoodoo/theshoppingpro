@@ -380,6 +380,7 @@ echo "Redirect Url - ".$redirect;
         $url = $link_url . '?' . $query;
 
 		if($user->uid==1):
+			echo "<br>";
 echo "Full url - ".$url;
 		endif;
 
