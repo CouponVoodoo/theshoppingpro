@@ -103,6 +103,7 @@ $output=db_query("SELECT *
 FROM {field_data_field_display_text_rel} fdtr
 INNER JOIN {field_data_field_micro_category} fmc ON fdtr.entity_id=fmc.entity_id
 INNER JOIN {field_data_field_mc_retailer} fmr ON fmc.entity_id=fmr.entity_id
+INNER JOIN {field_data_field_mc_landing_url} fmlu ON fmc.entity_id=fmlu.entity_id
 WHERE fmc.field_micro_category_tid=:mct AND fmr.field_mc_retailer_nid =:nid" ,array(':mct'=>$loop_id,':nid'=>$nid));
 
 foreach ($output as $output_detail1):
