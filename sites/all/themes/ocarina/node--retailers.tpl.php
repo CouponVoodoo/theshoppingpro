@@ -36,6 +36,8 @@ global $user;
 		$cashback_url=$base_url."/modal_forms/nojs/login";
 		}
 		$class = user_is_logged_in() ? '' : 'ctools-use-modal ctools-modal-modal-popup-small';
+		
+		$type=strip_tags(render($content['field_type']));
 
 	?>
 	<div id="block-retailers-page" class="block block-system block-main block-system-main">
