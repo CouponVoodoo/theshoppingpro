@@ -97,3 +97,24 @@ $block_rendered = drupal_render($build);
 return $block_rendered;
 
 }
+
+function get_microrelation_display_text($loop_id,$nid){
+$output=db_query("SELECT *
+FROM {field_data_field_display_text_rel} fdtr
+INNER JOIN {field_data_field_micro_category} fmc ON fdtr.entity_id=fmc.entity_id
+INNER JOIN {field_data_field_mc_retailer} fmr ON fmc.entity_id=fmr.entity_id
+WHERE fmc.field_micro_category_tid=:mct AND fmr.field_mc_retailer_nid =:nid" ,array(':mct'=>$loop_id,':nid'=>$nid));
+
+foreach ($output as $output_detail1):
+$maincategory_out=$output_detail1->field_display_text_rel_value;
+endforeach;
+$row_count=$output->rowCount();
+
+$data = array(
+'maincategory_desc' => $maincategory_out,
+'row_count' => $row_count,
+);
+
+return $data;
+
+}
