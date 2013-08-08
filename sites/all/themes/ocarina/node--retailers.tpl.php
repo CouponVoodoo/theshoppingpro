@@ -88,55 +88,57 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 	<div class="content clearfix">
 		<?php
 		 print "<h2>".$term_record[0][0]->name."</h2>"; 
-		
-		
-		if($term_record[0][0]->field_display_text_microterm[und][0][safe_value] <> ""):
-		$maincategory_desc=$term_record[0][0]->field_display_text_microterm[und][0][safe_value];
-		else:
-		$maincategory_desc='Retailer - Micro Category Description.';
-		endif;
-		
-		
-		 print $maincategory_desc;
+		 
+		$desc_detail = get_microrelation_display_text($term_record[0][0]->tid,arg(1));	
+		if($desc_detail['row_count'] > 0){
+		$maincategory_desc=$desc_detail['maincategory_desc'];
+		}else{	$maincategory_desc=render($content['field_display_text']); }
+			
+		print $maincategory_desc;
+
 		 foreach ($term_record as $child_item => $child_term): 
-		
-		
+$desc_detail1 = get_microrelation_display_text($child_term[1]->tid,arg(1));	
+$desc_detail2 = get_microrelation_display_text($child_term[2]->tid,arg(1));	
+$desc_detail3 = get_microrelation_display_text($child_term[3]->tid,arg(1));	
+
 		//Loop one
-		if($child_term[1]->field_display_text_microterm[und][0][safe_value] <> ""):
-		$childcategory_desc1=$child_term[1]->field_display_text_microterm[und][0][safe_value];
-		else:
-		$childcategory_desc1='Retailer - Micro Category Description.';
-		endif;
+		if($child_term[1]->name <> ""):
+		if($desc_detail1['row_count'] > 0){
+			$maincategory_desc=$desc_detail1['maincategory_desc'];
+		 }else{	$maincategory_desc=render($content['field_display_text']); }
+		 endif;
 		//Loop two
-		if($child_term[2]->field_display_text_microterm[und][0][safe_value] <> ""):
-		$childcategory_desc2=$child_term[2]->field_display_text_microterm[und][0][safe_value];
-		else:
-		$childcategory_desc2='Retailer - Micro Category Description.';
-		endif;
+		
+		if($child_term[2]->name <> ""):
+		if($desc_detail2['row_count'] > 0){
+			$maincategory_desc=$desc_detail2['maincategory_desc'];
+		 }else{	$maincategory_desc=render($content['field_display_text']); }
+		 endif;
 		//Loop three
-		if($child_term[3]->description <> ""):
-		$childcategory_desc3=$child_term[3]->description;
-		else:
-		$childcategory_desc3='Retailer - Micro Category Description.';
-		endif;							
-				
+		if($child_term[3]->name <> ""):
+		if($desc_detail3['row_count'] > 0){
+			$maincategory_desc=$desc_detail3['maincategory_desc'];
+		 }else{	$maincategory_desc=render($content['field_display_text']); }
+		 endif;		
+						
+		 //unset($child_term[0]);
 		if(isset($child_term[1]->name)):
-		print "<ul class='first-level'><li><h3>".$child_term[1]->name."</h3>";
-		print $childcategory_desc1;
+		print "<ul class='first-level'><li><h3>".$child_term[1]->name."</h3>"; 
+		print $maincategory_desc;
 		if(!isset($child_term[2]->name)):
 		print "</li></ul>";
 		endif;
 		endif;
 		if(isset($child_term[2]->name)):
-		print "<ul class='second-level'><li><h3>".$child_term[2]->name."</h3>";
-		print $childcategory_desc2;
+		print "<ul class='second-level'><li><h3>".$child_term[2]->name."</h3>"; 
+		print $maincategory_desc;
 		if(!isset($child_term[3]->name)):
 		print "</li></ul></li></ul>";
 		endif;
 		endif;
 		if(isset($child_term[3]->name)):
-		print "<ul class='third-level'><li><h3>".$child_term[3]->name."</h3>";
-		print $childcategory_desc3;
+		print "<ul class='third-level'><li><h3>".$child_term[3]->name."</h3>"; 
+		print $maincategory_desc;
 		print "</li></ul></li></ul></li></ul>";
 		endif;
 
