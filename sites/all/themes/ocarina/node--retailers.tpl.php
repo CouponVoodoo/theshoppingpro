@@ -51,6 +51,7 @@ global $user;
                 </div>
            		<div style="clear:both;"><h5><?php print render($content['body']);?></h5></div>    
             </div>
+            <?php if($type=='Partner'): ?>
             <div class="fr" style="width:300px;margin-top:20px;">
 					<a href="<?php print $cashback_url;?>" class="<?php print $class;?>">
 					<div class="block">
@@ -61,7 +62,7 @@ global $user;
 					</div>
 					</a>
 			</div>
-            
+            <?php endif; ?>
             </div>
 		</div>
 	</div>
