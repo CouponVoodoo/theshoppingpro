@@ -6,8 +6,11 @@ global $user;
 	
 	$track_url_all = $content['field_tracking_url'][0]['entity']['field_collection_item'][$track_url]['field_url_part1']['#object'];
 	$track_url_all_1=$track_url_all->field_url_part1;
+	$track_url_all_2=$track_url_all->field_url_part2;
 	$url_part_1=trim($track_url_all_1['und'][0]['safe_value']);
+	$url_part_2=trim($track_url_all_2['und'][0]['safe_value']);
 	$affiliate_name=$track_url_all->field_affiliate;
+
 	
 /**
 * 36 : DGMPRO
@@ -87,19 +90,26 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 <div class="block-inner clearfix">
 	<div class="content clearfix">
 		<?php
-		 print "<h2>".$term_record[0][0]->name."</h2>"; 
-		 
+		
 		$desc_detail = get_microrelation_display_text($term_record[0][0]->tid,arg(1));	
 		if($desc_detail['row_count'] > 0){
 		$maincategory_desc=$desc_detail['maincategory_desc'];
 		}else{	$maincategory_desc=render($content['field_display_text']); }
-			
-		print $maincategory_desc;
+		$landing_url=$desc_detail['landing_url'];
+		 $redirect=strip_tags(render($content['field_url']));
+				
+	if($term_record[0][0]->name<>""):			
+	$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
+	print "<a href='".$corp_landing_url."' class=".$class."><h2>".$term_record[0][0]->name."</h2><p>".$maincategory_desc."</p></a>"; 			
+	endif;	
+		
 
 		 foreach ($term_record as $child_item => $child_term): 
-$desc_detail1 = get_microrelation_display_text($child_term[1]->tid,arg(1));	
-$desc_detail2 = get_microrelation_display_text($child_term[2]->tid,arg(1));	
-$desc_detail3 = get_microrelation_display_text($child_term[3]->tid,arg(1));	
+		$desc_detail1 = get_microrelation_display_text($child_term[1]->tid,arg(1));	
+		$desc_detail2 = get_microrelation_display_text($child_term[2]->tid,arg(1));	
+		$desc_detail3 = get_microrelation_display_text($child_term[3]->tid,arg(1));	
+
+
 
 		//Loop one
 		if($child_term[1]->name <> ""):
@@ -123,22 +133,32 @@ $desc_detail3 = get_microrelation_display_text($child_term[3]->tid,arg(1));
 						
 		 //unset($child_term[0]);
 		if(isset($child_term[1]->name)):
-		print "<ul class='first-level'><li><h3>".$child_term[1]->name."</h3>"; 
-		print $maincategory_desc;
+		$landing_url=$desc_detail1['landing_url'];
+		$redirect=strip_tags(render($content['field_url']));	
+		
+		$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
+		print "<ul class='first-level'><li><a href='".$corp_landing_url."' class=".$class."><h2>".$child_term[1]->name."</h2><p>".$maincategory_desc."</p></a>"; 			
+
 		if(!isset($child_term[2]->name)):
 		print "</li></ul>";
 		endif;
 		endif;
 		if(isset($child_term[2]->name)):
-		print "<ul class='second-level'><li><h3>".$child_term[2]->name."</h3>"; 
-		print $maincategory_desc;
+		$landing_url=$desc_detail2['landing_url'];
+		$redirect=strip_tags(render($content['field_url']));	
+		
+		$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
+		print "<ul class='second-level'><li><a href='".$corp_landing_url."' class=".$class."><h2>".$child_term[2]->name."</h2><p>".$maincategory_desc."</p></a>"; 		
 		if(!isset($child_term[3]->name)):
 		print "</li></ul></li></ul>";
 		endif;
 		endif;
 		if(isset($child_term[3]->name)):
-		print "<ul class='third-level'><li><h3>".$child_term[3]->name."</h3>"; 
-		print $maincategory_desc;
+		$landing_url=$desc_detail2['landing_url'];
+		$redirect=strip_tags(render($content['field_url']));	
+		
+		$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
+		print "<ul class='third-level'><li><a href='".$corp_landing_url."' class=".$class."><h2>".$child_term[3]->name."</h2><p>".$maincategory_desc."</p></a>";		
 		print "</li></ul></li></ul></li></ul>";
 		endif;
 
