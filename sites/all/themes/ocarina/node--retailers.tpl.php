@@ -53,7 +53,7 @@ global $user;
 					<div class="block">
 						<div class="content">							
 							<h2>Cashback Offer</h2>
-							<h5>Retailer Display Text.</h5>
+							<h5><?php render($content['field_display_text']);?></h5>
 						</div>
 					</div>
 					</a>
