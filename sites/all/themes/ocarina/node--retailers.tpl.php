@@ -137,10 +137,10 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		$redirect=strip_tags(render($content['field_url']));	
 		
 		$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
-		print "<ul class='first-level'><li><a href='".$corp_landing_url."' class=".$class."><h2>".$child_term[1]->name."</h2><p>".$maincategory_desc."</p></a>"; 			
+		print "<ul class='first-level'><a href='".$corp_landing_url."' class=".$class."><li><h3>".$child_term[1]->name."</h3><p>".$maincategory_desc."</p>"; 			
 
 		if(!isset($child_term[2]->name)):
-		print "</li></ul>";
+		print "</li></a></ul>";
 		endif;
 		endif;
 		if(isset($child_term[2]->name)):
@@ -148,9 +148,9 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		$redirect=strip_tags(render($content['field_url']));	
 		
 		$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
-		print "<ul class='second-level'><li><a href='".$corp_landing_url."' class=".$class."><h2>".$child_term[2]->name."</h2><p>".$maincategory_desc."</p></a>"; 		
+		print "<ul class='second-level'><a href='".$corp_landing_url."' class=".$class."><li><h3>".$child_term[2]->name."</h3><p>".$maincategory_desc."</p>"; 		
 		if(!isset($child_term[3]->name)):
-		print "</li></ul></li></ul>";
+		print "</li></a></ul></li></a></ul>";
 		endif;
 		endif;
 		if(isset($child_term[3]->name)):
@@ -158,8 +158,8 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		$redirect=strip_tags(render($content['field_url']));	
 		
 		$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
-		print "<ul class='third-level'><li><a href='".$corp_landing_url."' class=".$class."><h2>".$child_term[3]->name."</h2><p>".$maincategory_desc."</p></a>";		
-		print "</li></ul></li></ul></li></ul>";
+		print "<ul class='third-level'><a href='".$corp_landing_url."' class=".$class."><li><h3>".$child_term[3]->name."</h3><p>".$maincategory_desc."</p>";		
+		print "</li></a></ul></li></a></ul></li></a></ul>";
 		endif;
 
 
