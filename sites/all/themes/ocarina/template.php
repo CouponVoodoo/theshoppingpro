@@ -127,7 +127,7 @@ global $base_url;
 global $user;
 
 if($user->uid<>""):
-if($landing_url==""):
+if($landing_url<>""):
 $landing_url=$landing_url;
 else:
 $redirect=strip_tags($redirect);
