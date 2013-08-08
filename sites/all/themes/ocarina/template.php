@@ -107,12 +107,14 @@ WHERE fmc.field_micro_category_tid=:mct AND fmr.field_mc_retailer_nid =:nid" ,ar
 
 foreach ($output as $output_detail1):
 $maincategory_out=$output_detail1->field_display_text_rel_value;
+$landing_url=$output_detail1->field_mc_landing_url_value;
 endforeach;
 $row_count=$output->rowCount();
 
 $data = array(
 'maincategory_desc' => $maincategory_out,
 'row_count' => $row_count,
+'landing_url' => $landing_url,
 );
 
 return $data;
