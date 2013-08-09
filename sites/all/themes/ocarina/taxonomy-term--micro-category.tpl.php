@@ -146,7 +146,7 @@ endforeach;
 				}
 				return false;
 			})
-			.css({cursor:'pointer', 'list-style-image':'url(plusbox.gif)'})
+			.css({cursor:'pointer', 'list-style-image':'url(http://theshoppingpro.com/sites/all/themes/ocarina/images/arrow_trans_alt.png)'})
 			.children().hide();
 		jQuery('.taxonomy_menu_retailer li:not(:has(ul))').css({cursor:'default', 'list-style-image':'none'});
 	});
