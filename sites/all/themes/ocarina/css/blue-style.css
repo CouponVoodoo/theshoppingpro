@@ -1222,7 +1222,7 @@ float:left;
 list-style:none;
 width:255px;
 text-align:center;
-list-style:none;
+list-style-type:none;
 }
 .round_corner ul{float:right;}
 .round_corner ul li ul{float:none;}
