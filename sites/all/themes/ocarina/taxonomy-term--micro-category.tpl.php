@@ -141,7 +141,7 @@ endforeach;
 			.click(function(event){
 				if (this == event.target) {
 					jQuery(this).css('list-style-image',
-						(!jQuery(this).children().is(':hidden')) ? 'url(images/arrow_trans_alt.png)' : 'url(images/arrow_trans_alt_hr.png)');
+						(!jQuery(this).children().is(':hidden')) ? 'url(http://theshoppingpro.com/sites/all/themes/ocarina/images/arrow_trans_alt.png)' : 'url(http://theshoppingpro.com/sites/all/themes/ocarina/images/arrow_trans_alt_hr.png)');
 					jQuery(this).children().toggle('slow');
 				}
 				return false;
