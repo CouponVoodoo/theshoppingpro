@@ -141,7 +141,7 @@ endforeach;
 			.click(function(event){
 				if (this == event.target) {
 					jQuery(this).css('list-style-image',
-						(!jQuery(this).children().is(':hidden')) ? 'url(images/plusbox.gif)' : 'url(images/minusbox.gif)');
+						(!jQuery(this).children().is(':hidden')) ? 'url(images/arrow_trans_alt.png)' : 'url(images/arrow_trans_alt_hr.png)');
 					jQuery(this).children().toggle('slow');
 				}
 				return false;
