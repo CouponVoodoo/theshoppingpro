@@ -1203,3 +1203,29 @@ ul#main-menu li a{
 #block-retailers-page .field-name-field-image div{margin:0px !important}
 .fl{float:left;}.fr{float:right;}
 #block-retailers-page li{list-style-image:url("../images/arrow_trans_alt.png");}
+
+.retailer_block{float:left;margin-right:20px;height:300px;clear:both;overflow-y:scroll;width:838px;}
+.mapped_retailer{width:185px;float:left;min-height:125px;max-height:125px;overflow:hidden;margin:20px 10px;}
+.mapped_image img{width:85px;}
+.mapped_desc{clear:both;padding-top:5px;}
+
+ul.taxonomy_menu li.collapsed ul {display: none;}
+.round_corner{
+background: rgba(0, 0, 0, 0.4);
+border: 1px solid #ffffff;
+padding: 0px 10px !important;
+-moz-border-radius: 15px;
+border-radius: 15px;
+margin:20px !important;
+min-height:225px;
+float:left;
+list-style:none;
+width:255px;
+text-align:center;
+list-style:none;
+}
+.round_corner ul{float:right;}
+.round_corner ul li ul{float:none;}
+.round_corner ul li{text-align:left;}
+.round_corner ul li ul li{text-align:left;}
+.level-1{display:block !important;}
