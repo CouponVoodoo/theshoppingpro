@@ -155,7 +155,7 @@ endforeach;
 	<?php	
 	
  // Taxonomy menu block.
-    $terms = taxonomy_get_tree(7,$parent =46); // Use the correct vocabulary id.
+    $terms = taxonomy_get_tree(7,$parent =$term->tid); // Use the correct vocabulary id.
    
     // Get the active trail tid-s.
     $active = arg(2);
