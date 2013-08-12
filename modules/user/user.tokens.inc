@@ -24,6 +24,11 @@ function user_token_info() {
     'name' => t('User ID'),
     'description' => t("The unique ID of the user account."),
   );
+
+$user['displayname'] = array(
+'name' => t('Display Name'),
+'description' => t("The display name of the user account."),
+);
   $user['name'] = array(
     'name' => t("Name"),
     'description' => t("The login name of the user account."),
@@ -83,6 +88,26 @@ function user_tokens($type, $tokens, array $data = array(), array $options = arr
           // In the case of hook user_presave uid is not set yet.
           $replacements[$original] = !empty($account->uid) ? $account->uid : t('not yet assigned');
           break;
+
+case 'displayname':
+// In the case of hook user_presave uid is not set yet.
+
+
+$user=user_load($account->uid);
+if ($account->uid > 0){
+if (strpos($user->name,'hybridauth') !== false) {
+$user_data=$user->data;
+$user->name=$user_data['hybridauth']['displayName'];
+}else{
+$displayname=$user->name;
+}
+}else{
+$displayname='Guest';
+}
+
+$replacements[$original] = $sanitize ? check_plain($displayname) : $displayname;
+break;
+
 
         case 'name':
           $name = format_username($account);
