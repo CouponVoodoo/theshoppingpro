@@ -101,7 +101,7 @@ $jsonArray = json_decode($jsonData);
 </div>
 
 <?php else:?>
-<h2 style="padding-top:20px;text-align:center;text-transform:none;">Oops! Something went wrong. The current demo works only for Jabond product urls that do not need any size selection.</h2>
+<h2 style="padding-top:20px;text-align:center;text-transform:none;">Oops! Something went wrong. The current demo works only for Jabong product urls that do not need any size selection.</h2>
 
 <?php endif;?>
 
