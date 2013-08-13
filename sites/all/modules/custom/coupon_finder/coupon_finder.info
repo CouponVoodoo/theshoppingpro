@@ -1,0 +1,5 @@
+name = Coupon Finder Script
+description= Find the coupon retailer.
+core = "7.x"
+project = "coupon_finder"
+
