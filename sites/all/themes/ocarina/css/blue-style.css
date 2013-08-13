@@ -1247,3 +1247,6 @@ color: #fff;
 .coupon_finder_content,.coupon_finder_content td,#block-block-26{border:0px !important;}
 #id_referrer_content_plugin #block-block-26{display:none;}
 #coupon-finder-form .form-required{display:none;}
+#coupon-finder-form .form-type-textfield,#coupon-finder-form .form-submit{float:left;}
+#coupon-finder-form .form-submit{margin:9px 0px 0px 20px;}
+#block-block-26{clear:both;}
