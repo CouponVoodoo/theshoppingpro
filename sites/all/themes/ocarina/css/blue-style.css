@@ -1194,7 +1194,7 @@ ul#main-menu li a{
 #block-retailers-page h1{color:#f79646;margin-bottom:0px;padding:15px 0 10px 0;font-family:Arial, Helvetica, sans-serif;}
 #block-retailers-page h2{margin:20px 0 0 0;color:#f79646;text-transform:capitalize;font-size:17px;text-align:center;}
 #block-retailers-page h3{margin:0;color:#f79646;text-transform:capitalize;font-size:14px;font-family:Arial, Helvetica, sans-serif;}
-#block-retailers-page h4{font-family:Arial, Helvetica, sans-serif;}
+#block-retailers-page h4,.best_coupons h4{font-family:Arial, Helvetica, sans-serif;}
 #block-retailers-page h5{font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:12pt;}
 .al_center{text-align:center;}
 #block-retailers-page strong{color:#f79646;}
@@ -1231,3 +1231,8 @@ list-style-image:none !important
 .round_corner ul li{text-align:left;}
 .round_corner ul li ul li{text-align:left;}
 .level-1{display:block !important;}
+
+
+
+.best_coupons td,.best_coupons h4{color:#f7971c;}
+.block .content .best_coupons ol{margin-left:0px !important;}
