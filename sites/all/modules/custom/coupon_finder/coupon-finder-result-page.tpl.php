@@ -36,10 +36,6 @@ $jsonArray = json_decode($jsonData);
 </tr>
 <?php endif;?>
 
-<?php endforeach;?>
-
-	</table>
-    
 <?php
 $domain_value=$value->domain;
 $output=db_query("SELECT * FROM {field_data_field_url} fu WHERE fu.field_url_value=:fuv"  ,array(':fuv'=>$domain_value));
@@ -77,9 +73,12 @@ $redirect = urlencode($redirect) . $url_part1;
 </div>
 
 
-</div>	    
-    
-    
+</div>
+
+<?php endforeach;?>
+
+	</table>
+   
 </div>
 
 <!--Best Coupon 0 & Successful 1-->
@@ -106,9 +105,6 @@ $redirect = urlencode($redirect) . $url_part1;
 </tr>
 <?php endif;?>
 
-<?php endforeach;?>
-	
-	</table>
 
 <?php
 $domain_value=$value->domain;
@@ -147,7 +143,12 @@ $redirect = urlencode($redirect) . $url_part1;
 </div>
 
 
-</div>	     
+</div>	   
+
+<?php endforeach;?>
+	
+	</table>
+  
     
 </div>
 
@@ -175,8 +176,6 @@ $redirect = urlencode($redirect) . $url_part1;
 	<td><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
 <?php endif;?>
-
-<?php endforeach;?>
 
 <?php
 $domain_value=$value->domain;
@@ -216,6 +215,8 @@ $redirect = urlencode($redirect) . $url_part1;
 
 
 </div>	 
+
+<?php endforeach;?>
 	
 	</table>
 </div>
