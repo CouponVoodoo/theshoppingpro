@@ -48,6 +48,7 @@ function coupon_finder_form(){
     '#type' => 'submit',
     '#value' => t('Find Coupon'),
   );
+    $form['bottomcontent'] = array('#markup' => block_render('block','26'));
 
   return $form;
 
