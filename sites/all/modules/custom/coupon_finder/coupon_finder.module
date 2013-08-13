@@ -40,7 +40,6 @@ function coupon_finder_form(){
 
   $form['url'] = array(
     '#type' => 'textfield',
-    '#title' => t('Enter URL'),
     '#maxlength' => 255,
     '#required' => TRUE,
   );
