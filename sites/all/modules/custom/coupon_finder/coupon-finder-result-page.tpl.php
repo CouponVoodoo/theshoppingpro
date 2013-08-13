@@ -32,13 +32,54 @@ $jsonArray = json_decode($jsonData);
 	<td><?php echo $value->couponcode; ?></td>
 	<td><?php echo $value->Saving; ?></td>
 	<td><?php echo $value->description; ?></td>
-	<td><a href="?width=804&height=219&inline=true#popup_coupon_result" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+	<td><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
 <?php endif;?>
 
 <?php endforeach;?>
 
 	</table>
+    
+<?php
+$domain_value=$value->domain;
+$output=db_query("SELECT * FROM {field_data_field_url} fu WHERE fu.field_url_value=:fuv"  ,array(':fuv'=>$domain_value));
+foreach ($output as $output_detail1):
+$node_load=node_load($output_detail1->entity_id);
+$field_url=$node_load->field_url['und'][0]['value'];
+$entity_id=$node_load->field_tracking_url['und'][0]['value'];
+//Traccking URL entity ID to get url part one
+$output_tracking_url=db_query("SELECT * FROM {field_data_field_url_part1} fup WHERE fup.entity_id=:entity_id"  ,array(':entity_id'=>$entity_id));
+foreach ($output_tracking_url as $tracking_url):
+$tracking_url_part1=$tracking_url->field_url_part1_value;
+endforeach;
+endforeach;
+$apply_coupon_url=$tracking_url_part1.$field_url;
+
+$single_decode=urldecode($value->url);
+
+$redirect=urldecode($single_decode);
+
+$redirect = urlencode($redirect) . $url_part1;
+
+?>	
+
+
+<div style="display:none">
+
+<div id="<?php echo $value->couponcode; ?>">
+<h2 style="text-align:center;color:#F7971C;">Transferring to Retailer Page</h2>
+<p>You will now be taken to the retailer page to purchase your product.</p>
+<p>We recommend that you install TheShoppingPro plugin so you have the Find Coupon functionality and other such amazing features right on your favorite retailers.</p>
+</ br>
+</ br>
+<div class="coupon_button"><a>Take Me To The Retailer page & Install The Plugin Too</a></div>
+<div class="coupon_button"><a href="<?php print $redirect;?>" target="_blank">Just Take Me To My Retailer Page</a></div>
+</div>
+
+
+</div>	    
+    
+    
 </div>
 
 <!--Best Coupon 0 & Successful 1-->
@@ -61,13 +102,53 @@ $jsonArray = json_decode($jsonData);
 	<td><?php echo $value->couponcode; ?></td>
 	<td><?php echo $value->Saving; ?></td>
 	<td><?php echo $value->description; ?></td>
-	<td><a href="?width=804&height=219&inline=true#popup_coupon_result" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+	<td><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
 <?php endif;?>
 
 <?php endforeach;?>
 	
 	</table>
+
+<?php
+$domain_value=$value->domain;
+$output=db_query("SELECT * FROM {field_data_field_url} fu WHERE fu.field_url_value=:fuv"  ,array(':fuv'=>$domain_value));
+foreach ($output as $output_detail1):
+$node_load=node_load($output_detail1->entity_id);
+$field_url=$node_load->field_url['und'][0]['value'];
+$entity_id=$node_load->field_tracking_url['und'][0]['value'];
+//Traccking URL entity ID to get url part one
+$output_tracking_url=db_query("SELECT * FROM {field_data_field_url_part1} fup WHERE fup.entity_id=:entity_id"  ,array(':entity_id'=>$entity_id));
+foreach ($output_tracking_url as $tracking_url):
+$tracking_url_part1=$tracking_url->field_url_part1_value;
+endforeach;
+endforeach;
+$apply_coupon_url=$tracking_url_part1.$field_url;
+
+$single_decode=urldecode($value->url);
+
+$redirect=urldecode($single_decode);
+
+$redirect = urlencode($redirect) . $url_part1;
+
+?>	
+
+
+<div style="display:none">
+
+<div id="<?php echo $value->couponcode; ?>">
+<h2 style="text-align:center;color:#F7971C;">Transferring to Retailer Page</h2>
+<p>You will now be taken to the retailer page to purchase your product.</p>
+<p>We recommend that you install TheShoppingPro plugin so you have the Find Coupon functionality and other such amazing features right on your favorite retailers.</p>
+</ br>
+</ br>
+<div class="coupon_button"><a>Take Me To The Retailer page & Install The Plugin Too</a></div>
+<div class="coupon_button"><a href="<?php print $redirect;?>" target="_blank">Just Take Me To My Retailer Page</a></div>
+</div>
+
+
+</div>	     
+    
 </div>
 
 
@@ -91,11 +172,50 @@ $jsonArray = json_decode($jsonData);
 	<td><?php echo $value->couponcode; ?></td>
 	<td><?php echo $value->Saving; ?></td>
 	<td><?php echo $value->description; ?></td>
-	<td><a href="?width=804&height=219&inline=true#popup_coupon_result" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+	<td><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
 <?php endif;?>
 
 <?php endforeach;?>
+
+<?php
+$domain_value=$value->domain;
+$output=db_query("SELECT * FROM {field_data_field_url} fu WHERE fu.field_url_value=:fuv"  ,array(':fuv'=>$domain_value));
+foreach ($output as $output_detail1):
+$node_load=node_load($output_detail1->entity_id);
+$field_url=$node_load->field_url['und'][0]['value'];
+$entity_id=$node_load->field_tracking_url['und'][0]['value'];
+//Traccking URL entity ID to get url part one
+$output_tracking_url=db_query("SELECT * FROM {field_data_field_url_part1} fup WHERE fup.entity_id=:entity_id"  ,array(':entity_id'=>$entity_id));
+foreach ($output_tracking_url as $tracking_url):
+$tracking_url_part1=$tracking_url->field_url_part1_value;
+endforeach;
+endforeach;
+$apply_coupon_url=$tracking_url_part1.$field_url;
+
+$single_decode=urldecode($value->url);
+
+$redirect=urldecode($single_decode);
+
+$redirect = urlencode($redirect) . $url_part1;
+
+?>	
+
+
+<div style="display:none">
+
+<div id="<?php echo $value->couponcode; ?>">
+<h2 style="text-align:center;color:#F7971C;">Transferring to Retailer Page</h2>
+<p>You will now be taken to the retailer page to purchase your product.</p>
+<p>We recommend that you install TheShoppingPro plugin so you have the Find Coupon functionality and other such amazing features right on your favorite retailers.</p>
+</ br>
+</ br>
+<div class="coupon_button"><a>Take Me To The Retailer page & Install The Plugin Too</a></div>
+<div class="coupon_button"><a href="<?php print $redirect;?>" target="_blank">Just Take Me To My Retailer Page</a></div>
+</div>
+
+
+</div>	 
 	
 	</table>
 </div>
@@ -126,7 +246,7 @@ print $coupon_finder_block;
 <!--pOP UP bLOCK-->
 <?php
 //strtolower
-$domain_value=strtolower($value->domain);
+/*$domain_value=strtolower($value->domain);
 $output=db_query("SELECT * FROM {field_data_field_url} fu WHERE fu.field_url_value=:fuv"  ,array(':fuv'=>$domain_value));
 foreach ($output as $output_detail1):
 
@@ -149,11 +269,11 @@ endforeach;
 endforeach;
 
 
-$apply_coupon_url=$tracking_url_part1.$field_url
+$apply_coupon_url=$tracking_url_part1.$field_url*/
 
 ?>
 
-<div style="display:none">
+<?php /*?><div style="display:none">
 
 <div id="popup_coupon_result">
 <h2 style="text-align:center;color:#F7971C;">Transferring to Retailer Page</h2>
@@ -166,7 +286,7 @@ $apply_coupon_url=$tracking_url_part1.$field_url
 </div>
 
 
-</div>
+</div><?php */?>
 
 
 
