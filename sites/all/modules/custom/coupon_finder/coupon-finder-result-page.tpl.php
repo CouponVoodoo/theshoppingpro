@@ -43,7 +43,7 @@ foreach ($output as $output_detail1):
 $node_load=node_load($output_detail1->entity_id);
 $field_url=$node_load->field_url['und'][0]['value'];
 $entity_id=$node_load->field_tracking_url['und'][0]['value'];
-$affiliate_id=$node_load->field_active_affiliate['und'][0]['value'];
+$affiliate_id=$node_load->field_active_affiliate['und'][0]['tid'];
 //Traccking URL entity ID to get url part one
 $output_tracking_url=db_query("SELECT * 
 FROM {field_data_field_url_part1} fup 
@@ -132,7 +132,7 @@ foreach ($output as $output_detail1):
 $node_load=node_load($output_detail1->entity_id);
 $field_url=$node_load->field_url['und'][0]['value'];
 $entity_id=$node_load->field_tracking_url['und'][0]['value'];
-$affiliate_id=$node_load->field_active_affiliate['und'][0]['value'];
+$affiliate_id=$node_load->field_active_affiliate['und'][0]['tid'];
 //Traccking URL entity ID to get url part one
 $output_tracking_url=db_query("SELECT * 
 FROM {field_data_field_url_part1} fup 
@@ -222,7 +222,7 @@ foreach ($output as $output_detail1):
 $node_load=node_load($output_detail1->entity_id);
 $field_url=$node_load->field_url['und'][0]['value'];
 $entity_id=$node_load->field_tracking_url['und'][0]['value'];
-$affiliate_id=$node_load->field_active_affiliate['und'][0]['value'];
+$affiliate_id=$node_load->field_active_affiliate['und'][0]['tid'];
 //Traccking URL entity ID to get url part one
 $output_tracking_url=db_query("SELECT * 
 FROM {field_data_field_url_part1} fup 
