@@ -12,6 +12,7 @@ $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
 
 $jsonArray = json_decode($jsonData);
 ?>
+<?php if(isset($jsonArray)): ?>
 <!--Best Coupon 1-->
 <div class="best_coupons">
 <h4>Best Coupon</h4>
@@ -98,6 +99,12 @@ $jsonArray = json_decode($jsonData);
 	
 	</table>
 </div>
+
+<?php else:?>
+<h2 style="padding-top:20px;text-align:center;text-transform:none;">Oops! Something went wrong. The current demo works only for Jabond product urls that do not need any size selection.</h2>
+
+<?php endif;?>
+
 <h2 style="text-align:center;color:#f7971c;">Try Another Product</h2>
 <p>Just enter the url of the product page that you want to buy or the cart page and check if any coupons apply to it.</p>
 <div>
