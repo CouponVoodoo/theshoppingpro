@@ -87,7 +87,7 @@ endif;
 <p>We recommend that you install TheShoppingPro plugin so you have the Find Coupon functionality and other such amazing features right on your favorite retailers.</p>
 </ br>
 </ br>
-<div class="coupon_button"><a href="<?php print $final_url;?>" target="_blank" onclick="window.open(&quot;https://www.theshoppingpro.com/installation_page");">Take Me To The Retailer page & Install The Plugin Too</a></div>
+<div class="coupon_button"><a href="<?php print $final_url;?>" target="_blank" onclick="window.open('https://www.theshoppingpro.com/installation_page');">Take Me To The Retailer page & Install The Plugin Too</a></div>
 <div class="coupon_button"><a href="<?php print $final_url;?>" target="_blank">Just Take Me To My Retailer Page</a></div>
 </div>
 
@@ -176,7 +176,7 @@ endif;
 <p>We recommend that you install TheShoppingPro plugin so you have the Find Coupon functionality and other such amazing features right on your favorite retailers.</p>
 </ br>
 </ br>
-<div class="coupon_button"><a href="<?php print $final_url;?>" target="_blank" onclick="window.open(&quot;https://www.theshoppingpro.com/installation_page");">Take Me To The Retailer page & Install The Plugin Too</a></div>
+<div class="coupon_button"><a href="<?php print $final_url;?>" target="_blank" onclick="window.open('https://www.theshoppingpro.com/installation_page');">Take Me To The Retailer page & Install The Plugin Too</a></div>
 <div class="coupon_button"><a href="<?php print $final_url;?>" target="_blank">Just Take Me To My Retailer Page</a></div>
 </div>
 
@@ -266,7 +266,7 @@ endif;
 <p>We recommend that you install TheShoppingPro plugin so you have the Find Coupon functionality and other such amazing features right on your favorite retailers.</p>
 </ br>
 </ br>
-<div class="coupon_button"><a href="<?php print $final_url;?>" target="_blank" onclick="window.open(&quot;https://www.theshoppingpro.com/installation_page");">Take Me To The Retailer page & Install The Plugin Too</a></div>
+<div class="coupon_button"><a href="<?php print $final_url;?>" target="_blank" onclick="window.open('https://www.theshoppingpro.com/installation_page');">Take Me To The Retailer page & Install The Plugin Too</a></div>
 <div class="coupon_button"><a href="<?php print $final_url;?>" target="_blank">Just Take Me To My Retailer Page</a></div>
 </div>
 
