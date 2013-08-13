@@ -34,13 +34,7 @@ form_set_error('field_mc_retailer', t('Retailer already exists. Choose some othe
 
 function custom_alter_form_alter(&$form, &$form_state, $form_id){
 
-echo $form_id;
 
-echo "<pre>";
-
-print_r($form);
-
-echo "</pre>";
 if($form_id=='user_register_form' && arg(1)<>'register'){
 unset($form['captcha']);
 }
