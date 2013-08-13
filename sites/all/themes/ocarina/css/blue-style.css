@@ -1245,3 +1245,4 @@ color: #fff;
 .coupon_button{background:#f7971c;float:left;border-radius:4px;padding:6px;margin:20px;}
 .coupon_button a{color:#fff;font-weight:bold;cursor:pointer;}
 .coupon_finder_content,.coupon_finder_content td,#block-block-26{border:0px !important;}
+#id_referrer_content_plugin #block-block-26{display:none;}
