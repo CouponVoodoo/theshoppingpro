@@ -55,7 +55,7 @@ $single_decode=urldecode($value->url);
 
 $redirect=urldecode($single_decode);
 
-$redirect = $tracking_url_part1."&redirect=".urlencode($redirect);
+$redirect = $tracking_url_part1."&redirect=".$redirect;
 
 ?>	
 
@@ -125,7 +125,7 @@ $single_decode=urldecode($value->url);
 
 $redirect=urldecode($single_decode);
 
-$redirect = $tracking_url_part1."&redirect=".urlencode($redirect);
+$redirect = $tracking_url_part1."&redirect=".$redirect;
 
 ?>	
 
@@ -196,7 +196,7 @@ $single_decode=urldecode($value->url);
 
 $redirect=urldecode($single_decode);
 
-$redirect = $tracking_url_part1."&redirect=".urlencode($redirect);
+$redirect = $tracking_url_part1."&redirect=".$redirect;
 
 ?>	
 
