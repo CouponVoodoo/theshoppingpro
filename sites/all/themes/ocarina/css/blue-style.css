@@ -1249,7 +1249,7 @@ color: #fff;
 #coupon-finder-form{padding-left:30px;}
 #coupon-finder-form .form-required{display:none;}
 #coupon-finder-form .form-type-textfield,#coupon-finder-form .form-submit{float:left;}
-#coupon-finder-form .form-submit{margin:10px 0px 0px 20px;background:url("../images/u8_normal.png") no-repeat;border:0px !important;font-size:13px;font-weight:bold;padding-top:8px;}
+#coupon-finder-form .form-submit{margin:10px 0px 0px 20px;background:url("../images/u8_normal.png") no-repeat;border:0px !important;font-size:13px;font-weight:bold;padding-top:8px;box-shadow:transparent;padding-left:16px;}
 #block-block-26{clear:both;background:none !important;padding:0px !important;}
 .coupon_title{text-align:center;padding-top:20px;color:#f7971c;}
 .coupon_finder_content td.active,.coupon_finder_content tr:hover,.coupon_finder_content td:hover, .coupon_finder_content tr.active,.coupon_finder_content tr:hover td{background:none !important;}
