@@ -106,7 +106,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 	//$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
 	 
 	 $corp_landing_url=getcashbackurl(strip_tags(render($content['field_url'])),$landing_url);
-	 if($user->uid<>""):
+	 if($user->uid<>0):
 	 $corp_landing_url=$corp_landing_url;
 	 else:
 	 $corp_landing_url=$base_url."/modal_forms/nojs/login?destination=".$corp_landing_url;
