@@ -98,8 +98,8 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		if($desc_detail['row_count'] > 0){
 		$maincategory_desc=$desc_detail['maincategory_desc'];
 		}else{	$maincategory_desc=render($content['field_display_text']); }
-		$landing_url=$desc_detail['landing_url'];
-		 $redirect=strip_tags(render($content['field_url']));
+		echo $landing_url=$desc_detail['landing_url'];
+		// $redirect=strip_tags(render($content['field_url']));
 				
 	if($term_record[0][0]->name<>""):			
 	//$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
@@ -137,7 +137,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 						
 		 //unset($child_term[0]);
 		if(isset($child_term[1]->name)):
-		$landing_url=$desc_detail1['landing_url'];
+		echo $landing_url=$desc_detail1['landing_url'];
 		//$redirect=strip_tags(render($content['field_url']));	
 		
 		//$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
