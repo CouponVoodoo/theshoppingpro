@@ -31,10 +31,10 @@ $jsonArray = json_decode($jsonData);
 <tr>
 	<td><?php echo $value->couponcode; ?></td>
 	<td><?php echo $value->Saving; ?></td>
-	<td><?php echo $value->description; ?></td>
+	<td class="desc"><?php echo $value->description; ?></td>
 	<td><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
-<?php endif;?>
+
 
 <?php
 $domain_value=$value->domain;
@@ -94,6 +94,8 @@ endif;
 
 </div>
 
+<?php endif;?>
+
 <?php endforeach;?>
 
 	</table>
@@ -119,10 +121,9 @@ endif;
 <tr>
 	<td><?php echo $value->couponcode; ?></td>
 	<td><?php echo $value->Saving; ?></td>
-	<td><?php echo $value->description; ?></td>
+	<td class="desc"><?php echo $value->description; ?></td>
 	<td><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
-<?php endif;?>
 
 
 <?php
@@ -183,6 +184,8 @@ endif;
 
 </div>	   
 
+<?php endif;?>
+
 <?php endforeach;?>
 	
 	</table>
@@ -210,10 +213,9 @@ endif;
 <tr>
 	<td><?php echo $value->couponcode; ?></td>
 	<td><?php echo $value->Saving; ?></td>
-	<td><?php echo $value->description; ?></td>
+	<td class="desc"><?php echo $value->description; ?></td>
 	<td><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
-<?php endif;?>
 
 <?php
 $domain_value=$value->domain;
@@ -272,6 +274,8 @@ endif;
 
 
 </div>	 
+
+<?php endif;?>
 
 <?php endforeach;?>
 	
