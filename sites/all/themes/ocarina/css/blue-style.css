@@ -1245,10 +1245,11 @@ color: #fff;
 .coupon_button{background:#f7971c;float:left;border-radius:4px;padding:6px;margin:20px;}
 .coupon_button a{color:#fff;font-weight:bold;cursor:pointer;}
 .coupon_finder_content,.coupon_finder_content td,#block-block-26{border:0px !important;}
-#id_referrer_content_plugin #block-block-26{display:none;}
+#id_referrer_content_plugin #block-block-26{display:none;padding:0px;}
 #coupon-finder-form .form-required{display:none;}
 #coupon-finder-form .form-type-textfield,#coupon-finder-form .form-submit{float:left;}
 #coupon-finder-form .form-submit{margin:9px 0px 0px 20px;}
 #block-block-26{clear:both;}
 .coupon_title{text-align:center;padding-top:20px;color:#f7971c;}
-.coupon_finder_content td.active,.coupon_finder_content tr:hover,.coupon_finder_content td:hover tr.active{background:none !important;}
+.coupon_finder_content td.active,.coupon_finder_content tr:hover,.coupon_finder_content td:hover, .coupon_finder_content tr.active{background:none !important;}
+.coupon_finder_content td{padding:0px;}
