@@ -35,7 +35,7 @@ global $user;
 		}else{
 		$cashback_url=$base_url."/modal_forms/nojs/login";
 		}*/
-		$class = user_is_logged_in() ? '' : 'ctools-modal-modal-popup-small ctools-use-modal';
+		$class = user_is_logged_in() ? '' : 'ctools-use-modal ctools-modal-modal-popup-small';
 		
 		$type=strip_tags(render($content['field_type']));
 
@@ -108,7 +108,11 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 	 $corp_landing_url=getcashbackurl(strip_tags(render($content['field_url'])),$landing_url);
 	 
 	 
-	print "<a href='".$corp_landing_url."' class=".$class."><h2>".$term_record[0][0]->name."</h2>".strip_tags($maincategory_desc)."</a>"; 			
+	//print "<a href='".$corp_landing_url."' class=".$class."><h2>".$term_record[0][0]->name."</h2>".strip_tags($maincategory_desc)."</a>"; 
+	?>
+    
+	<a href="<?php print $corp_landing_url;?>" class="<?php print $class;?>"><h2><?php print $term_record[0][0]->name;?></h2><?php print strip_tags($maincategory_desc);?></a>		
+    <?php 
 	endif;	
 		
 
