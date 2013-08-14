@@ -98,7 +98,8 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		if($desc_detail['row_count'] > 0){
 		$maincategory_desc=$desc_detail['maincategory_desc'];
 		}else{	$maincategory_desc=render($content['field_display_text']); }
-		echo $landing_url=$desc_detail['landing_url'];
+		$landing_url = get_landing_url($term_record[0][0]->tid,arg(1));
+		$landing_url=$landing_url['landing_url'];
 		// $redirect=strip_tags(render($content['field_url']));
 				
 	if($term_record[0][0]->name<>""):			
@@ -112,8 +113,12 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		$desc_detail1 = get_microrelation_display_text($child_term[1]->tid,arg(1));	
 		$desc_detail2 = get_microrelation_display_text($child_term[2]->tid,arg(1));	
 		$desc_detail3 = get_microrelation_display_text($child_term[3]->tid,arg(1));	
-
-
+		
+		
+		$landing_urll = get_landing_url($child_term[1]->tid,arg(1));
+		$landing_url2 = get_landing_url($child_term[2]->tid,arg(1));
+		$landing_url3 = get_landing_url($child_term[3]->tid,arg(1));
+		
 
 		//Loop one
 		if($child_term[1]->name <> ""):
@@ -137,7 +142,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 						
 		 //unset($child_term[0]);
 		if(isset($child_term[1]->name)):
-		echo $landing_url=$desc_detail1['landing_url'];
+		 $landing_url=$landing_urll['landing_url'];
 		//$redirect=strip_tags(render($content['field_url']));	
 		
 		//$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
@@ -149,7 +154,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		endif;
 		endif;
 		if(isset($child_term[2]->name)):
-		echo $landing_url=$desc_detail2['landing_url'];
+		 $landing_url=$landing_url2['landing_url'];
 		//$redirect=strip_tags(render($content['field_url']));	
 		
 		//$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
@@ -160,7 +165,8 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		endif;
 		endif;
 		if(isset($child_term[3]->name)):
-		echo $landing_url=$desc_detail2['landing_url'];
+		 $landing_url=$landing_url3['landing_url'];
+		 //$landing_url=$desc_detail2['landing_url'];
 		//$redirect=strip_tags(render($content['field_url']));	
 		
 		//$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
