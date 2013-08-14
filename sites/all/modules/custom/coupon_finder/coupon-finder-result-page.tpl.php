@@ -29,10 +29,10 @@ $jsonArray = json_decode($jsonData);
 
 <?php if($value->BestCoupon==1): ?>
 <tr>
-	<td><?php echo $value->couponcode; ?></td>
-	<td><?php echo $value->Saving; ?></td>
+	<td class="code"><?php echo $value->couponcode; ?></td>
+	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+	<td class="apply"><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
 
 
@@ -119,10 +119,10 @@ endif;
 
 <?php if($value->BestCoupon==0 && $value->Successful==1): ?>
 <tr>
-	<td><?php echo $value->couponcode; ?></td>
-	<td><?php echo $value->Saving; ?></td>
+	<td class="code"><?php echo $value->couponcode; ?></td>
+	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+	<td class="apply"><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
 
 
@@ -211,10 +211,10 @@ endif;
 
 <?php if($value->Successful==0): ?>
 <tr>
-	<td><?php echo $value->couponcode; ?></td>
-	<td><?php echo $value->Saving; ?></td>
+	<td class="code"><?php echo $value->couponcode; ?></td>
+	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+	<td class="apply"><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
 
 <?php
