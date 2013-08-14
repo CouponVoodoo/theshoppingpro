@@ -38,6 +38,7 @@ function coupon_finder_theme() {
 
 function coupon_finder_form(){
 
+  $form['title'] = array('#markup' => t('<h2 class="coupon_title">Coupon Finder</h2>'));
   $form['url'] = array(
     '#type' => 'textfield',
     '#maxlength' => 255,
