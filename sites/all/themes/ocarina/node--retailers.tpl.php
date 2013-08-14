@@ -34,8 +34,8 @@ global $user;
 		endif;
 		}else{
 		$cashback_url=$base_url."/modal_forms/nojs/login";
-		}
-		$class = user_is_logged_in() ? '' : 'ctools-use-modal ctools-modal-modal-popup-small';*/
+		}*/
+		$class = user_is_logged_in() ? '' : 'ctools-use-modal ctools-modal-modal-popup-small';
 		
 		$type=strip_tags(render($content['field_type']));
 
