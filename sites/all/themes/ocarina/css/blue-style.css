@@ -1261,5 +1261,5 @@ color: #fff;
 .best_coupons .code,.best_coupons .save{width:20%;}
 .best_coupons .desc{width:42%;}
 .best_coupons .apply{width:14%;}
-.best_coupons .apply a{margin:10px 0px 0px 20px;background:url("../images/u8_normal.png") no-repeat;border:0px !important;font-size:13px;font-weight:bold;padding-top:8px;box-shadow:none;padding-left:16px;}
+.best_coupons .apply a{margin:0px;background:url("../images/u8_normal.png") no-repeat;border:0px !important;font-size:13px;font-weight:bold;box-shadow:none;padding:8px 9px 6px 13px;}
 
