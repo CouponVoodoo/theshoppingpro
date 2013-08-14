@@ -122,6 +122,26 @@ return $data;
 
 }
 
+function get_landing_url($loop_id,$nid){
+$output=db_query("SELECT *
+FROM {field_data_field_micro_category} fmc
+INNER JOIN {field_data_field_mc_retailer} fmr ON fmc.entity_id=fmr.entity_id
+INNER JOIN {field_data_field_mc_landing_url} fmlu ON fmc.entity_id=fmlu.entity_id
+WHERE fmc.field_micro_category_tid=:mct AND fmr.field_mc_retailer_nid =:nid" ,array(':mct'=>$loop_id,':nid'=>$nid));
+
+foreach ($output as $output_detail1):
+$landing_url=$output_detail1->field_mc_landing_url_value;
+endforeach;
+$row_count=$output->rowCount();
+
+$data = array(
+'landing_url' => $landing_url,
+);
+
+return $data;
+
+}
+
 function get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id){
 global $base_url;
 global $user;
