@@ -279,8 +279,9 @@ endif;
 </div>
 
 <?php else:?>
-<h2 style="padding-top:20px;text-align:center;text-transform:none;">Oops! Something went wrong. The current demo works only for Jabong product urls that do not need any size selection.</h2>
-
+<div class="messages error clientside-error">
+<label class="error">Oops! Something went wrong. The current demo works only for Jabong product urls that do not need any size selection.</label>
+</div>
 <?php endif;?>
 
 <h2 style="text-align:center;color:#f7971c;">Try Another Product</h2>
