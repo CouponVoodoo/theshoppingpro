@@ -109,7 +109,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 	 if($user->uid<>""):
 	 $corp_landing_url=$corp_landing_url;
 	 else:
-	 $landing_url=$base_url."/modal_forms/nojs/login?destination=".$corp_landing_url;
+	 $corp_landing_url=$base_url."/modal_forms/nojs/login?destination=".$corp_landing_url;
 	 endif;
 	 
 	 
