@@ -1251,3 +1251,4 @@ color: #fff;
 #coupon-finder-form .form-submit{margin:9px 0px 0px 20px;}
 #block-block-26{clear:both;}
 .coupon_title{text-align:center;padding-top:20px;color:#f7971c;}
+.coupon_finder_content td.active,.coupon_finder_content tr:hover,.coupon_finder_content td:hover tr.active{background:none !important;}
