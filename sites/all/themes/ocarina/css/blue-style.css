@@ -1256,3 +1256,5 @@ color: #fff;
 .coupon_finder_content td{padding:0px;}
 .page-coupon-result #block-coupon-finder-coupon-finder-block{border:0px;background:none;}
 .page-coupon-result #block-coupon-finder-coupon-finder-block #coupon-finder-form .coupon_title,.page-coupon-result #block-coupon-finder-coupon-finder-block #coupon-finder-form p{display:none;}
+.best_coupon h4{margin-bottom:5px;}
+.best_coupon h4,.best_coupon th{color:#f7971c;font-size:13px;font-weight:bold;background:none;border:0px;padding:0px;text-align:left;}
