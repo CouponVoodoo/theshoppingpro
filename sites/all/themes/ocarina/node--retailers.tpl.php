@@ -150,7 +150,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		
 		//$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
 	    $corp_landing_url=getcashbackurl(strip_tags(render($content['field_url'])),$landing_url);
-		print "<ul class='first-level'><li><a href='".$corp_landing_url."' class=".$class.">".$child_term[1]->name."<p>".strip_tags($maincategory_desc)."</p></a>"; 			
+		print "<ul class='first-level'><li><a href='".print $corp_landing_url."' class=".print $class.">".$child_term[1]->name."<p>".strip_tags($maincategory_desc)."</p></a>"; 			
 
 		if(!isset($child_term[2]->name)):
 		print "</li></ul>";
@@ -162,7 +162,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		
 		//$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
 		$corp_landing_url=getcashbackurl(strip_tags(render($content['field_url'])),$landing_url);
-		print "<ul class='second-level'><li><a href='".$corp_landing_url."' class=".$class.">".$child_term[2]->name."<p>".strip_tags($maincategory_desc)."</p></a>"; 		
+		print "<ul class='second-level'><li><a href='".print $corp_landing_url."' class=".print $class.">".$child_term[2]->name."<p>".strip_tags($maincategory_desc)."</p></a>"; 		
 		if(!isset($child_term[3]->name)):
 		print "</li></ul></li></ul>";
 		endif;
@@ -175,7 +175,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		//$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
 		$corp_landing_url=getcashbackurl(strip_tags(render($content['field_url'])),$landing_url);	
 	
-		print "<ul class='third-level'><li><a href='".$corp_landing_url."' class=".$class."><a>".$child_term[3]->name."<p>".strip_tags($maincategory_desc)."</p></a>";		
+		print "<ul class='third-level'><li><a href='".print $corp_landing_url."' class=".print $class."><a>".$child_term[3]->name."<p>".strip_tags($maincategory_desc)."</p></a>";		
 		print "</li></ul></li></ul></li></ul>";
 		endif;
 
