@@ -1234,7 +1234,7 @@ list-style-image:none !important
 
 
 
-.best_coupons td,.best_coupons h4{color:#f7971c;}
+.best_coupons td{color:#fff;font-size:13px;font-weight:bold;background:none;border:0px;padding:0px;text-align:left;}
 .block .content .best_coupons ol{margin-left:20px !important;}
 
 .page-coupon-result #colorbox{
@@ -1244,17 +1244,18 @@ color: #fff;
 .page-coupon-result #cboxContent,.page-coupon-result #cboxWrapper{background:transparent;}
 .coupon_button{background:#f7971c;float:left;border-radius:4px;padding:6px;margin:20px;}
 .coupon_button a{color:#fff;font-weight:bold;cursor:pointer;}
-.coupon_finder_content,.coupon_finder_content td,#block-block-26{border:0px !important;}
+.coupon_finder_content,.coupon_finder_content td,#block-block-26,.page-coupon-result #id_referrer_content_plugin td{border:0px !important;}
 #id_referrer_content_plugin #block-block-26{display:none;padding:0px;}
-#coupon-finder-form{padding-left:30px;}
+#coupon-finder-form,.page-coupon-result #id_referrer_content_plugin{padding-left:30px;}
 #coupon-finder-form .form-required{display:none;}
 #coupon-finder-form .form-type-textfield,#coupon-finder-form .form-submit{float:left;}
 #coupon-finder-form .form-submit{margin:10px 0px 0px 20px;background:url("../images/u8_normal.png") no-repeat;border:0px !important;font-size:13px;font-weight:bold;padding-top:8px;box-shadow:none;padding-left:16px;}
 #block-block-26{clear:both;background:none !important;padding:0px !important;}
 .coupon_title{text-align:center;padding-top:20px;color:#f7971c;}
-.coupon_finder_content td.active,.coupon_finder_content tr:hover,.coupon_finder_content td:hover, .coupon_finder_content tr.active,.coupon_finder_content tr:hover td{background:none !important;}
+.coupon_finder_content td.active,.coupon_finder_content tr:hover,.coupon_finder_content td:hover, .coupon_finder_content tr.active,.coupon_finder_content tr:hover td, .page-coupon-result #id_referrer_content_plugin td.active,.page-coupon-result #id_referrer_content_plugin tr:hover,.page-coupon-result #id_referrer_content_plugin td:hover, .page-coupon-result #id_referrer_content_plugin tr.active,.page-coupon-result #id_referrer_content_plugin tr:hover td{background:none !important;}
 .coupon_finder_content td{padding:0px;}
 .page-coupon-result #block-coupon-finder-coupon-finder-block{border:0px;background:none;}
 .page-coupon-result #block-coupon-finder-coupon-finder-block #coupon-finder-form .coupon_title,.page-coupon-result #block-coupon-finder-coupon-finder-block #coupon-finder-form p{display:none;}
 .best_coupon h4{margin-bottom:5px;}
 .best_coupon h4,.best_coupon th{color:#f7971c;font-size:13px;font-weight:bold;background:none;border:0px;padding:0px;text-align:left;}
+
