@@ -175,6 +175,7 @@ return $landing_url;
 
 function getcashbackurl($domain_value,$value_url){
 global $user;
+global $base_url;
 $output=db_query("SELECT * FROM {field_data_field_url} fu WHERE fu.field_url_value=:fuv" ,array(':fuv'=>$domain_value));
 foreach ($output as $output_detail1):
 $node_load=node_load($output_detail1->entity_id);
@@ -218,6 +219,6 @@ endif;
 if($user->uid<>0):
 return $final_url;
 else:
-$final_url=$base_url."/modal_forms/nojs/login";
+return $final_url=$base_url."/modal_forms/nojs/login";
 endif;
 }
