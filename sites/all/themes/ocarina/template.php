@@ -219,6 +219,7 @@ endif;
 if($user->uid<>0):
 return $final_url;
 else:
-return $final_url=$base_url."/modal_forms/nojs/login?destination=".$final_url;
+$final_url=$base_url."/modal_forms/nojs/login?destination=".$final_url;
+return $final_url;
 endif;
 }
