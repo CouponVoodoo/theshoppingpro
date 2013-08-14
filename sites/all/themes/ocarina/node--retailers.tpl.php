@@ -149,7 +149,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		endif;
 		endif;
 		if(isset($child_term[2]->name)):
-		$landing_url=$desc_detail2['landing_url'];
+		echo $landing_url=$desc_detail2['landing_url'];
 		//$redirect=strip_tags(render($content['field_url']));	
 		
 		//$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
@@ -160,7 +160,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		endif;
 		endif;
 		if(isset($child_term[3]->name)):
-		$landing_url=$desc_detail2['landing_url'];
+		echo $landing_url=$desc_detail2['landing_url'];
 		//$redirect=strip_tags(render($content['field_url']));	
 		
 		//$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
