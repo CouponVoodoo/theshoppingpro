@@ -1258,8 +1258,8 @@ color: #fff;
 .page-coupon-result #block-coupon-finder-coupon-finder-block #coupon-finder-form .coupon_title,.page-coupon-result #block-coupon-finder-coupon-finder-block #coupon-finder-form p{display:none;}
 .best_coupons h4{margin-bottom:5px;}
 .best_coupons h4,.best_coupons th,.best_coupons table{color:#f7971c;font-size:13px;font-weight:bold;background:none;border:0px;padding:0px;text-align:left;}
-.best_coupons .code,.best_coupons .save{width:20%;}
+.best_coupons .code,.best_coupons .save{width:20%;padding-bottom:14px;}
 .best_coupons .desc{width:42%;}
 .best_coupons .apply{width:14%;}
-.best_coupons .apply a{margin:0px;background:url("../images/u8_normal.png") no-repeat;border:0px !important;font-size:13px;font-weight:bold;box-shadow:none;padding:8px 9px 6px 13px;}
+.best_coupons .apply a{margin:0px;background:url("../images/u8_normal.png") no-repeat;border:0px !important;font-size:13px;font-weight:bold;box-shadow:none;padding:8px 9px 6px 13px;color:#fff;}
 
