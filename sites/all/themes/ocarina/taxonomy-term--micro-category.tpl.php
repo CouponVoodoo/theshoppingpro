@@ -85,16 +85,6 @@ $icon_image=file_create_url($icon_generate);
 <!--Second Block start-->
 <?php if($nids = taxonomy_select_nodes($term->tid)): ?>
 
-
-<?php
-echo "<pre>";
-
-print_r($nids);
-
-echo "</pre>";
-
-?>
-
 <div id="block-retailers-page" class="block block-system block-main block-system-main retailer_block">
 <div class="block-inner clearfix">
 	<div class="content clearfix">
