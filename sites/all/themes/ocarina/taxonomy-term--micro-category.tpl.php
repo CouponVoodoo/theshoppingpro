@@ -110,6 +110,12 @@ foreach ($retailer_nodes as $retailer_count => $retailer_build):
 
 $retailer_title=$retailer_build->title;
 
+echo $domain_value=$retailer_build->field_url."Domain Value <br>";
+
+echo $domain_value=$retailer_build->nid."NODE ID <br>";
+
+echo $term->tid."Term ID <br>";
+
 $icon_retailer=$retailer_build->field_image;
 $icon_retailer=$icon_retailer['und'][0]['uri'];
 
