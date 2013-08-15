@@ -39,7 +39,7 @@
  */
 ?>
 <?php
-
+$class = user_is_logged_in() ? '' : 'ctools-use-modal ctools-modal-modal-popup-small';
 
 $icon_generate=$content['field_mc_icon']['#object']->field_mc_icon;
 $icon_generate=$icon_generate['und'][0]['uri'];
@@ -125,7 +125,10 @@ $icon_retailer=file_create_url($icon_retailer);
 $text_retailer=$retailer_build->field_display_text;
 $text_retailer=$text_retailer['und'][0]['safe_value'];
 
-print "<div class='mapped_retailer'><div><div class='mapped_image fl'><img src='".$icon_retailer."'/></div><div class='mapped_title fl'><h3 style='padding-left:20px;'>".$retailer_title."</h3></div></div><div class='mapped_desc'>".$text_retailer."</div></div>";
+$landing_url=get_landing_url($term->tid,$retailer_id);
+$corp_landing_url=getcashbackurl(strip_tags($domain_value,$landing_url);
+
+print "<a href='".$corp_landing_url."' class='".$class."'><div class='mapped_retailer'><div><div class='mapped_image fl'><img src='".$icon_retailer."'/></div><div class='mapped_title fl'><h3 style='padding-left:20px;'>".$retailer_title."</h3></div></div><div class='mapped_desc'>".$text_retailer."</div></div></a>";
 
 endforeach;
 
