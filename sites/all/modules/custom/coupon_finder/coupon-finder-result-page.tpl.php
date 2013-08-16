@@ -15,14 +15,6 @@ $jsonArray = json_decode($jsonData);
 <?php if(isset($jsonArray)): ?>
 <!--Best Coupon 1-->
 <div class="best_coupons">
-
-<div style="display:none;">
-<div id="welcome_home">
-<?php print block_render('block','27'); ?>
-</div>
-
-</div>
-
 <h4>Best Coupon</h4>
 	<table>
 	<tr>
@@ -47,6 +39,61 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="desc"><?php echo $value->description; ?></td>
 	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
+
+
+<div style="display:none;">
+<div id="welcome_home">
+<div style="display:table-cell; text-align: center; padding-top: 20px" id="welcome-message">
+<div>
+<img src="/sites/default/files/The_Shopping_Pro_Logo-250px.png" style="width: 300px;" />
+</div>
+<div style="color:#25ade3; margin-bottom: 10px;float:left; width:100%;">
+Easy, Intelligent & Rewarding Shopping
+</div>
+<div style="float:left; width:100%; margin: 10px 0">
+<a id="video_block" href="#" cursor:pointer>
+<img src="/sites/all/themes/ocarina/images/Play_Video.png"  alt="Play Video"/>
+</a>
+</div>
+<div style="float:left; width:100%; margin: 10px 0;">
+<?php
+
+$browser = getBrowserInfo();
+if ($browser['name']=="Google Chrome") {
+// if (is_chrome()) {
+print '<button onclick="chrome.webstore.install()" style="background-image: url(http://theshoppingpro.com/sites/all/themes/ocarina/images/blue/blue_button_big_chrome.png);height: 90px;width: 60%;background-size: 100%;background-repeat: no-repeat;border: none;" id="install-button"> </button>';
+}
+else {
+?>
+<script type="text/javascript" src="https://w9u6a2p6.ssl.hwcdn.net/javascripts/installer/installer.js"></script>
+<script type="text/javascript">
+var __CRI = new crossriderInstaller({
+app_id:28108,
+app_name:'TheShoppingPro'
+});
+
+var _cr_button = new __CRI.button({
+text:'Click Here to Install TheShoppingPro Plugin',
+button_size:'big',
+color:'blue'
+});
+
+//__CRI.install(); //use this if you want to use your own button
+</script>
+<div id="crossriderInstallButton"></div>
+<?php
+}
+?>
+</div>
+<div style="float:left; width:100%; margin: 10px 0;">
+Free for <img src="/sites/all/themes/ocarina/images/browser-logos-small.png" /> on <img src="sites/all/themes/ocarina/images/OS_Logo.png" style="height: 37px !important;" />
+</div>
+</div>
+<div id="plugin_video" style="display:none">
+<iframe frameborder="0" name="cbox1376655443154" src="http://www.youtube.com/embed/rWFoIQTAOQI?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=0&amp;amp;end=93&amp;width=640&amp;height=400&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>
+</div>
+</div>
+
 
 <?php endif;?>
 
@@ -150,6 +197,16 @@ print $coupon_finder_block;
 </div>
 
 </div>
+
+
+
+
+
+
+
+
+
+
 
 <script>
 jQuery( "#video_block" ).click(function() {
