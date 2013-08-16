@@ -1238,7 +1238,7 @@ list-style-image:none !important
 .block .content .best_coupons ol{margin-left:20px !important;}
 
 .page-coupon-result #colorbox{
-background: url(../images/colorbox_bg.png)transparent no-repeat;
+/*background: url(../images/colorbox_bg.png)transparent no-repeat;*/
 color: #fff;
 }
 .page-coupon-result #cboxContent,.page-coupon-result #cboxWrapper{background:transparent;}
@@ -1264,5 +1264,5 @@ color: #fff;
 .best_coupons .apply a{margin:0px;background:url("../images/u8_normal.png") no-repeat;border:0px !important;font-size:13px;font-weight:bold;box-shadow:none;padding:8px 9px 6px 13px;color:#fff;white-space:nowrap;}
 #coupon-finder-form .form-text{float:left;height:28px;}
 .page-coupon-result #page-title, .page-coupon-finder #page-title{display:none;}
-#block-block-27{background:none;border:0px;}
-#block-block-27 #welcome-message{border:0px;}
+/*#block-block-27{background:none;border:0px;}
+#block-block-27 #welcome-message{border:0px;} */
