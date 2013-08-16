@@ -98,10 +98,11 @@ Free for <img src="/sites/all/themes/ocarina/images/browser-logos-small.png" /> 
 </div>
 
 </div>
+</div>
 <div id="plugin_video" class="block" style="display:none">
 <iframe frameborder="0" name="cbox1376655443154" src="http://www.youtube.com/embed/rWFoIQTAOQI?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=0&amp;amp;end=93&amp;width=774&amp;height=400&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>
 </div>
-</div>
+
 </div>
 
 <?php endif;?>
@@ -137,7 +138,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="code"><?php echo $value->couponcode; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#<?php echo $value->couponcode; ?>" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#<?php echo $value->couponcode; ?>" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Copy Coupon</a></td>
 </tr>
 
 <div style="display:none;">
@@ -237,7 +238,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="code"><?php echo $value->couponcode; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#<?php echo $value->couponcode; ?>" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
 <div style="display:none;">
 <div id="<?php echo $value->couponcode; ?>" class="coupon_block">
