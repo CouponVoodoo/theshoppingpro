@@ -38,44 +38,8 @@ $jsonArray = json_decode($jsonData);
 
 <?php
 $domain_value=$value->domain;
-$output=db_query("SELECT * FROM {field_data_field_url} fu WHERE fu.field_url_value=:fuv"  ,array(':fuv'=>$domain_value));
-foreach ($output as $output_detail1):
-$node_load=node_load($output_detail1->entity_id);
-$field_url=$node_load->field_url['und'][0]['value'];
-$entity_id=$node_load->field_tracking_url['und'][0]['value'];
-$affiliate_id=$node_load->field_active_affiliate['und'][0]['tid'];
-//Traccking URL entity ID to get url part one
-$output_tracking_url=db_query("SELECT * 
-FROM {field_data_field_url_part1} fup 
-INNER JOIN {field_data_field_url_part2} fup2 ON fup.entity_id=fup2.entity_id
-WHERE fup.entity_id=:entity_id"  ,array(':entity_id'=>$entity_id));
-foreach ($output_tracking_url as $tracking_url):
-$tracking_url_part1=$tracking_url->field_url_part1_value;
-$tracking_url_part2=$tracking_url->field_url_part2_value;
-endforeach;
-endforeach;
-
-$single_decode=urldecode($value->url);
-$redirect=urldecode($single_decode);
-$url_part2 =urlencode($tracking_url_part2);
-$redirect1=urlencode($redirect);
-$redirect2 = $redirect1 . $url_part2;
-if($affiliate_id==36):
-$query ='&t=' . $redirect2;
-$final_url = $tracking_url_part1 . $query;
-elseif($affiliate_id==19):
-$query ='&redirect=' . $redirect2;
-$final_url = $tracking_url_part1 . '?' . $query;
-elseif($affiliate_id==33 || $affiliate_id==35):
-$url_part2 =implode("/", array_map("rawurlencode", explode("/", $tracking_url_part2)));
-$redirect1 =implode("/", array_map("rawurlencode", explode("/", $redirect)));
-$redirect2 = $redirect1 . $url_part2;
-$final_url = $tracking_url_part1 . '&lnkurl=' . $redirect2;
-elseif($affiliate_id==34):
-$query ='&subid3=%TRANSACTION_ID%&lnkurl=' . $redirect2;
-$final_url = $tracking_url_part1 . $query;
-endif;
-
+$landing_url=$value->url;
+$final_url=getcashbackurl($domain_value,$landing_url);
 ?>	
 
 
