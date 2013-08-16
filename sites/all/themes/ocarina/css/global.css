@@ -478,7 +478,7 @@ ul.action-links li a {
 }
 input.form-submit,
 .checkout-buttons .checkout-cancel,
-.checkout-buttons .checkout-back {
+.checkout-buttons .checkout-back,.coupon_button a {
   background: url(../images/button-bg.png) 0 0 repeat-x;
   border: 2px solid #fff;
   font-weight: bold;
