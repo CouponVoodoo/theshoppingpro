@@ -45,7 +45,7 @@ input.form-submit,
 }
 input.form-submit:hover,
 .checkout-buttons .checkout-cancel:hover,
-.checkout-buttons .checkout-back:hover,.coupon_button a {
+.checkout-buttons .checkout-back:hover,.coupon_button a:hover {
   background: #F7971C;
 }
 button:focus, button:active, input:focus, input:active, select:focus, select:active, textarea:focus, textarea:active,.coupon_button a {
@@ -1261,7 +1261,7 @@ color: #fff;
 .best_coupons .code,.best_coupons .save{width:20%;padding-bottom:14px;}
 .best_coupons .desc{width:42%;}
 .best_coupons .apply{width:14%;}
-.best_coupons .apply a{margin:0px;background:url("../images/u8_normal.png") no-repeat;border:0px !important;font-size:13px;font-weight:bold;box-shadow:none;padding:8px 9px 6px 13px;color:#fff;white-space:nowrap;}
+.best_coupons .apply a{/*margin:0px;background:url("../images/u8_normal.png") no-repeat;border:0px !important;font-size:13px;font-weight:bold;box-shadow:none;padding:8px 9px 6px 13px;color:#fff;*/white-space:nowrap;}
 #coupon-finder-form .form-text{float:left;height:28px;}
 .page-coupon-result #page-title, .page-coupon-finder #page-title{display:none;}
 #block-block-27{background:none;border:0px;}
