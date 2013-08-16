@@ -45,7 +45,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="code"><?php echo $value->couponcode; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply"><a href="?width=804&height=219&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+	<td class="apply"><a href="?width=804&height=525&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
 
 <?php endif;?>
@@ -81,7 +81,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="code"><?php echo $value->couponcode; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply"><a href="?width=804&height=219&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+	<td class="apply"><a href="?width=804&height=525&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>	   
 
 <?php endif;?>
@@ -119,7 +119,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="code"><?php echo $value->couponcode; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply"><a href="?width=804&height=470&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+	<td class="apply"><a href="?width=804&height=525&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
 
 <?php endif;?>
