@@ -79,6 +79,18 @@ function ocarina_preprocess_user_login_block(&$vars) {
   $vars['submit'] = render($vars['form']['actions']['submit']);
   $vars['rendered'] = drupal_render_children($vars['form']);
 }
+/* Current Page URL */
+function curPageURL() {
+$pageURL = 'http';
+if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+$pageURL .= "://";
+if ($_SERVER["SERVER_PORT"] != "80") {
+$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+} else {
+$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+}
+return $pageURL;
+}
 
 /**
 * Render Block.
@@ -190,7 +202,7 @@ endif;
 if($user->uid<>0):
 return $final_url;
 else:
-$final_url=$base_url."/modal_forms/nojs/login?destination=".$final_url;
+$final_url=$base_url."/modal_forms/nojs/login?destination=".curPageURL();
 return $final_url;
 endif;
 }
