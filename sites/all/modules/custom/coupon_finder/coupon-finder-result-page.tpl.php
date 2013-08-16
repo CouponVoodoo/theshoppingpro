@@ -337,7 +337,7 @@ Free for <img src="/sites/all/themes/ocarina/images/browser-logos-small.png" /> 
 
 <script>
 jQuery( "#video_block" ).click(function() {
-jQuery( "#plugin_video" ).css( "display", "block" );
 jQuery( "#hide_content" ).css( "display", "none" );
+jQuery( "#plugin_video" ).css( "display", "block" );
 });
 </script>
