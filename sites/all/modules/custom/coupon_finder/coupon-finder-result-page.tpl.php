@@ -176,7 +176,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 
 <?php else:?>
 <div class="messages error clientside-error">
-<label class="error">Oops! Something went wrong. The current demo works only for Jabong product urls that do not need any size selection.</label>
+<label class="error">Oops! Something went wrong. The current demo works only for Jabong product urls.</label>
 </div>
 <?php endif;?>
 
