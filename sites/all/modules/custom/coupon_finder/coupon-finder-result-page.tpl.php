@@ -2,7 +2,11 @@
   <div id="referrer_content" class="plugin_wrapper"> 
   <h2 class="coupon_title">Coupon Finder</h2>
 <?php  $data['url'] ?>
-
+<script>
+function get_coupon_id(){
+var getvalue = jQuery(this).attr('rel');
+}
+</script>
 <?php
 
 
@@ -37,7 +41,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="code"><?php echo $value->couponcode; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline" rel="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
+	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');get_coupon_id(this)" class="apply_coupon colorbox-inline" rel="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
 
 <?php endif;?>
@@ -112,7 +116,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="code"><?php echo $value->couponcode; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline" rel="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
+	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline" rel="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
 
 <?php endif;?>
@@ -158,10 +162,10 @@ Easy, Intelligent & Rewarding Shopping
 <div style="float:left; width:100%; margin: 10px 0;">
 
 
-<div class="block" style="width:200px;padding:10px;font-size:12pt;font-weight:bold;text-align:center;margin-left:180px;>
+<div class="block" style="width:200px;padding:10px;font-size:12pt;font-weight:bold;text-align:center;margin-left:180px;">
 
 <?php echo $value->couponcode; ?>
-
+<script>var xx=get_coupon_id();alert(xx);</script>
 </div>
 
 <div style="float:left; width:100%; margin: 10px 0;">
