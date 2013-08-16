@@ -59,7 +59,7 @@ Easy, Intelligent & Rewarding Shopping
 
 <div class="block"><?php echo $value->couponcode; ?></div>
 
-</div>
+
 
 <div style="float:left; width:100%; margin: 10px 0;">
 <?php
@@ -94,12 +94,15 @@ color:'blue'
 <div style="float:left; width:100%; margin: 10px 0;">
 Free for <img src="/sites/all/themes/ocarina/images/browser-logos-small.png" /> on <img src="sites/all/themes/ocarina/images/OS_Logo.png" style="height: 37px !important;" />
 </div>
+
+</div>
+
 </div>
 <div id="plugin_video" class="block" style="display:none">
 <iframe frameborder="0" name="cbox1376655443154" src="http://www.youtube.com/embed/rWFoIQTAOQI?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=0&amp;amp;end=93&amp;width=774&amp;height=400&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>
 </div>
 </div>
-
+</div>
 
 <?php endif;?>
 
@@ -134,7 +137,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="code"><?php echo $value->couponcode; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#<?php echo $value->couponcode; ?>" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
 
 <div style="display:none;">
@@ -155,7 +158,7 @@ Easy, Intelligent & Rewarding Shopping
 
 <div class="block"><?php echo $value->couponcode; ?></div>
 
-</div>
+
 
 <div style="float:left; width:100%; margin: 10px 0;">
 <?php
@@ -190,21 +193,15 @@ color:'blue'
 <div style="float:left; width:100%; margin: 10px 0;">
 Free for <img src="/sites/all/themes/ocarina/images/browser-logos-small.png" /> on <img src="sites/all/themes/ocarina/images/OS_Logo.png" style="height: 37px !important;" />
 </div>
+
+</div>
+
 </div>
 <div id="plugin_video" class="block" style="display:none">
 <iframe frameborder="0" name="cbox1376655443154" src="http://www.youtube.com/embed/rWFoIQTAOQI?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=0&amp;amp;end=93&amp;width=774&amp;height=400&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>
 </div>
 </div>
-
-
-<?php endif;?>
-
-<?php endforeach;?>
-
-	</table>
-   
-</div>	   
-
+</div>
 <?php endif;?>
 
 <?php endforeach;?>
@@ -240,10 +237,10 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="code"><?php echo $value->couponcode; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#<?php echo $value->couponcode; ?>" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
 </tr>
-<div style="display:none;" class="coupon_block">
-<div id="<?php echo $value->couponcode; ?>">
+<div style="display:none;">
+<div id="<?php echo $value->couponcode; ?>" class="coupon_block">
 <div style="display:table-cell; text-align: center; padding-top: 20px" id="welcome-message">
 <div>
 <img src="/sites/default/files/The_Shopping_Pro_Logo-250px.png" style="width: 300px;" />
@@ -260,7 +257,7 @@ Easy, Intelligent & Rewarding Shopping
 
 <div class="block"><?php echo $value->couponcode; ?></div>
 
-</div>
+
 
 <div style="float:left; width:100%; margin: 10px 0;">
 <?php
@@ -295,21 +292,15 @@ color:'blue'
 <div style="float:left; width:100%; margin: 10px 0;">
 Free for <img src="/sites/all/themes/ocarina/images/browser-logos-small.png" /> on <img src="sites/all/themes/ocarina/images/OS_Logo.png" style="height: 37px !important;" />
 </div>
+
+</div>
+
 </div>
 <div id="plugin_video" class="block" style="display:none">
 <iframe frameborder="0" name="cbox1376655443154" src="http://www.youtube.com/embed/rWFoIQTAOQI?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=0&amp;amp;end=93&amp;width=774&amp;height=400&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>
 </div>
 </div>
-
-
-<?php endif;?>
-
-<?php endforeach;?>
-
-	</table>
-   
 </div>
-
 <?php endif;?>
 
 <?php endforeach;?>
