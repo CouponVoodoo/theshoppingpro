@@ -39,16 +39,16 @@ div.code {
 /* Button */
 input.form-submit,
 .checkout-buttons .checkout-cancel,
-.checkout-buttons .checkout-back {
+.checkout-buttons .checkout-back,.coupon_button a {
   background: url(../images/blue/button-bg.png) 0 0 repeat-x;
   color: #fff;
 }
 input.form-submit:hover,
 .checkout-buttons .checkout-cancel:hover,
-.checkout-buttons .checkout-back:hover {
+.checkout-buttons .checkout-back:hover,.coupon_button a {
   background: #F7971C;
 }
-button:focus, button:active, input:focus, input:active, select:focus, select:active, textarea:focus, textarea:active {
+button:focus, button:active, input:focus, input:active, select:focus, select:active, textarea:focus, textarea:active,.coupon_button a {
   box-shadow: 0 0 7px #f3b700;
   -moz-box-shadow: 0 0 7px #f3b700;
   -webkit-box-shadow: 0 0 7px #f3b700;
@@ -1242,8 +1242,8 @@ background: url(../images/colorbox_bg.png)transparent no-repeat;
 color: #fff;
 }
 .page-coupon-result #cboxContent,.page-coupon-result #cboxWrapper{background:transparent;}
-.coupon_button{background:#f7971c;float:left;border-radius:4px;padding:6px;margin:20px;}
-.coupon_button a{color:#fff;font-weight:bold;cursor:pointer;}
+/*.coupon_button{background:#f7971c;float:left;border-radius:4px;padding:6px;margin:20px;}*/
+.coupon_button a{color:#fff;cursor:pointer;}
 .coupon_finder_content,.coupon_finder_content td,#block-block-26,.page-coupon-result #id_referrer_content_plugin td{border:0px !important;}
 #id_referrer_content_plugin #block-block-26{display:none;padding:0px;}
 #coupon-finder-form,.page-coupon-result #id_referrer_content_plugin{padding-left:30px;}
