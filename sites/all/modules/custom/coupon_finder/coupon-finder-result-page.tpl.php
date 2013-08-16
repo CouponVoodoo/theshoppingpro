@@ -163,7 +163,12 @@ Easy, Intelligent & Rewarding Shopping
 <?php if($value->BestCoupon==1): ?>
 <div class="block"><?php echo $value->couponcode; ?></div>
 <?php endif;?>
-
+<?php if($value->BestCoupon==0 && $value->Successful==1): ?>
+<div class="block"><?php echo $value->couponcode; ?></div>
+<?php endif;?>
+<?php if($value->Successful==0): ?>
+<div class="block"><?php echo $value->couponcode; ?></div>
+<?php endif;?>
 <?php endforeach;?>
 
 
@@ -204,7 +209,7 @@ Free for <img src="/sites/all/themes/ocarina/images/browser-logos-small.png" /> 
 
 </div>
 </div>
-<div id="plugin_video" class="block" style="display:none;width:640px;height:281px">
+<div id="plugin_video" style="display:none;width:640px;height:281px">
 <iframe frameborder="0" name="cbox1376655443154" src="http://www.youtube.com/embed/rWFoIQTAOQI?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=0&amp;amp;end=93&amp;width=640&amp;height=281&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>
 </div>
 </div>
@@ -224,5 +229,10 @@ Free for <img src="/sites/all/themes/ocarina/images/browser-logos-small.png" /> 
 jQuery( "#video_block" ).click(function() {
 jQuery( "#hide_content" ).css( "display", "none" );
 jQuery( "#plugin_video" ).css( "display", "block" );
+});
+
+jQuery( ".apply_coupon" ).click(function() {
+jQuery( "#plugin_video" ).css( "display", "none" );
+jQuery( "#hide_content" ).css( "display", "block" );
 });
 </script>
