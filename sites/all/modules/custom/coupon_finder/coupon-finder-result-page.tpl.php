@@ -37,7 +37,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="code"><?php echo $value->couponcode; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Copy Coupon</a></td>
+	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline" rel="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
 
 <?php endif;?>
@@ -73,7 +73,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="code"><?php echo $value->couponcode; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#<?php echo $value->couponcode; ?>" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Copy Coupon</a></td>
+	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline" rel="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
 
 
@@ -112,7 +112,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="code"><?php echo $value->couponcode; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline" rel="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
 
 <?php endif;?>
@@ -158,20 +158,11 @@ Easy, Intelligent & Rewarding Shopping
 <div style="float:left; width:100%; margin: 10px 0;">
 
 
-<?php foreach ($jsonArray as $key => $value): ?>
+<div class="block" style="width:200px;padding:10px;font-size:12pt;font-weight:bold;text-align:center;margin-left:180px;>
 
-<?php if($value->BestCoupon==1): ?>
-<div class="block"><?php echo $value->couponcode; ?></div>
-<?php endif;?>
-<?php if($value->BestCoupon==0 && $value->Successful==1): ?>
-<div class="block"><?php echo $value->couponcode; ?></div>
-<?php endif;?>
-<?php if($value->Successful==0): ?>
-<div class="block"><?php echo $value->couponcode; ?></div>
-<?php endif;?>
-<?php endforeach;?>
+<?php echo $value->couponcode; ?>
 
-
+</div>
 
 <div style="float:left; width:100%; margin: 10px 0;">
 <?php
