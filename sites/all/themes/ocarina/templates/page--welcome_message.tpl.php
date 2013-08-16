@@ -58,7 +58,9 @@
         ?>
       </div>
       <div style="float: right;">
-	<?php echo 'Patent Pending                '; ?>
+      		<div style="padding-right: 50;">
+			<?php echo 'Patent Pending'; ?>
+      		</div>
         <?php print l('Enter Site >>', 'get_the_plugin'); ?>
       </div>
     </div>
