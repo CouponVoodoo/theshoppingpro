@@ -5,6 +5,7 @@
 <script>
 jQuery( "#plugin_video" ).click(function() {
 jQuery( this ).css( "display", "block" );
+jQuery( this ).css( "border", "2px solid red" );
 });
 </script>
 <?php
