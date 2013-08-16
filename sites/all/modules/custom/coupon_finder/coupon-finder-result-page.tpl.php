@@ -152,8 +152,8 @@ print $coupon_finder_block;
 </div>
 
 <script>
-jQuery( "#video_run" ).click(function() {
-jQuery( this ).css( "display", "block" );
-jQuery( this ).css( "border", "2px solid red" );
+jQuery( "#video_block" ).click(function() {
+jQuery( "#plugin_video" ).css( "display", "block" );
+jQuery( "#welcome-message" ).css( "display", "none" );
 });
 </script>
