@@ -16,10 +16,8 @@ $jsonArray = json_decode($jsonData);
 <!--Best Coupon 1-->
 <div class="best_coupons">
 
-<a href="?width=804&height=219&inline=true#testpopup" class="apply_coupon colorbox-inline">Test popup</a>
-
 <div style="display:none;">
-<div id="testpopup">
+<div id="welcome_home">
 <?php print block_render('block','27'); ?>
 </div>
 
@@ -38,35 +36,17 @@ $jsonArray = json_decode($jsonData);
 <?php foreach ($jsonArray as $key => $value): ?>
 
 <?php if($value->BestCoupon==1): ?>
-<tr>
-	<td class="code"><?php echo $value->couponcode; ?></td>
-	<td class="save"><?php echo $value->Saving; ?></td>
-	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply"><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
-</tr>
-
-
 <?php
 $domain_value=$value->domain;
 $landing_url=$value->url;
 $final_url=getcashbackurl($domain_value,$landing_url);
-?>	
-
-
-<div style="display:none">
-
-<div id="<?php echo $value->couponcode; ?>">
-<h2 style="text-align:center;color:#F7971C;">Transferring to Retailer Page</h2>
-<p>You will now be taken to the retailer page to purchase your product.</p>
-<p>We recommend that you install TheShoppingPro plugin so you have the Find Coupon functionality and other such amazing features right on your favorite retailers.</p>
-</ br>
-</ br>
-<div class="coupon_button"><a href="<?php print $final_url;?>" target="_blank" onclick="window.open('https://www.theshoppingpro.com/installation_page');">Take Me To The Retailer page & Install The Plugin Too</a></div>
-<div class="coupon_button"><a href="<?php print $final_url;?>" target="_blank">Just Take Me To My Retailer Page</a></div>
-</div>
-
-
-</div>
+?>
+<tr>
+	<td class="code"><?php echo $value->couponcode; ?></td>
+	<td class="save"><?php echo $value->Saving; ?></td>
+	<td class="desc"><?php echo $value->description; ?></td>
+	<td class="apply"><a href="?width=804&height=219&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+</tr>
 
 <?php endif;?>
 
@@ -92,35 +72,17 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 <?php foreach ($jsonArray as $key => $value): ?>
 
 <?php if($value->BestCoupon==0 && $value->Successful==1): ?>
-<tr>
-	<td class="code"><?php echo $value->couponcode; ?></td>
-	<td class="save"><?php echo $value->Saving; ?></td>
-	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply"><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
-</tr>
-
-
 <?php
 $domain_value=$value->domain;
 $landing_url=$value->url;
 $final_url=getcashbackurl($domain_value,$landing_url);
-?>		
-
-
-<div style="display:none">
-
-<div id="<?php echo $value->couponcode; ?>">
-<h2 style="text-align:center;color:#F7971C;">Transferring to Retailer Page</h2>
-<p>You will now be taken to the retailer page to purchase your product.</p>
-<p>We recommend that you install TheShoppingPro plugin so you have the Find Coupon functionality and other such amazing features right on your favorite retailers.</p>
-</ br>
-</ br>
-<div class="coupon_button"><a href="<?php print $final_url;?>" target="_blank" onclick="window.open('https://www.theshoppingpro.com/installation_page');">Take Me To The Retailer page & Install The Plugin Too</a></div>
-<div class="coupon_button"><a href="<?php print $final_url;?>" target="_blank">Just Take Me To My Retailer Page</a></div>
-</div>
-
-
-</div>	   
+?>
+<tr>
+	<td class="code"><?php echo $value->couponcode; ?></td>
+	<td class="save"><?php echo $value->Saving; ?></td>
+	<td class="desc"><?php echo $value->description; ?></td>
+	<td class="apply"><a href="?width=804&height=219&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+</tr>	   
 
 <?php endif;?>
 
@@ -148,34 +110,17 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 <?php foreach ($jsonArray as $key => $value): ?>
 
 <?php if($value->Successful==0): ?>
-<tr>
-	<td class="code"><?php echo $value->couponcode; ?></td>
-	<td class="save"><?php echo $value->Saving; ?></td>
-	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply"><a href="?width=804&height=219&inline=true#<?php echo $value->couponcode; ?>" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
-</tr>
-
 <?php
 $domain_value=$value->domain;
 $landing_url=$value->url;
 $final_url=getcashbackurl($domain_value,$landing_url);
-?>	
-
-
-<div style="display:none">
-
-<div id="<?php echo $value->couponcode; ?>">
-<h2 style="text-align:center;color:#F7971C;">Transferring to Retailer Page</h2>
-<p>You will now be taken to the retailer page to purchase your product.</p>
-<p>We recommend that you install TheShoppingPro plugin so you have the Find Coupon functionality and other such amazing features right on your favorite retailers.</p>
-</ br>
-</ br>
-<div class="coupon_button"><a href="<?php print $final_url;?>" target="_blank" onclick="window.open('https://www.theshoppingpro.com/installation_page');">Take Me To The Retailer page & Install The Plugin Too</a></div>
-<div class="coupon_button"><a href="<?php print $final_url;?>" target="_blank">Just Take Me To My Retailer Page</a></div>
-</div>
-
-
-</div>	 
+?>s
+<tr>
+	<td class="code"><?php echo $value->couponcode; ?></td>
+	<td class="save"><?php echo $value->Saving; ?></td>
+	<td class="desc"><?php echo $value->description; ?></td>
+	<td class="apply"><a href="?width=804&height=219&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline">Apply Coupon</a></td>
+</tr>
 
 <?php endif;?>
 
