@@ -58,6 +58,7 @@
         ?>
       </div>
       <div style="float: right;">
+	<?php echo "Patent Pending"; ?>
         <?php print l('Enter Site >>', 'get_the_plugin'); ?>
       </div>
     </div>
