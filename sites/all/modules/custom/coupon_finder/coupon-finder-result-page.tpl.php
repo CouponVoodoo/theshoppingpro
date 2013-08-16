@@ -2,7 +2,11 @@
   <div id="referrer_content" class="plugin_wrapper"> 
   <h2 class="coupon_title">Coupon Finder</h2>
 <?php  $data['url'] ?>
-
+<script>
+jQuery( "#plugin_video" ).click(function() {
+jQuery( this ).css( "display", "block" );
+});
+</script>
 <?php
 
 
