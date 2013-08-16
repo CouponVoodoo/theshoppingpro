@@ -2,39 +2,6 @@
 global $base_url;
 global $user;
 
-/*	$track_url=$content['field_tracking_url']['#items'][0]['value'];
-	
-	$track_url_all = $content['field_tracking_url'][0]['entity']['field_collection_item'][$track_url]['field_url_part1']['#object'];
-	$track_url_all_1=$track_url_all->field_url_part1;
-	$track_url_all_2=$track_url_all->field_url_part2;
-	$url_part_1=trim($track_url_all_1['und'][0]['safe_value']);
-	$url_part_2=trim($track_url_all_2['und'][0]['safe_value']);
-	$affiliate_name=$track_url_all->field_affiliate;*/
-
-	
-/**
-* 36 : DGMPRO
-* 10 : Direct
-* 35 : Komli
-* 19 : OMG
-* 34 : Shoogloo
-* 33 : Tyroo
-*/
-/*
-		$affiliate_id=$affiliate_name=$affiliate_name['und'][0]['tid'];
-		
-		if($user->uid<>0)
-		{
-		if($affiliate_id==19):
-		$cashback_url=$url_part_1."&uid1=$user->uid";
-		elseif($affiliate_id==33 || $affiliate_id==35):
-		$cashback_url=$url_part_1."&subid1=$user->uid";
-		elseif($affiliate_id==36):
-		$cashback_url=$url_part_1."&k=$user->uid";
-		endif;
-		}else{
-		$cashback_url=$base_url."/modal_forms/nojs/login";
-		}*/
 		$class = user_is_logged_in() ? '' : 'ctools-use-modal ctools-modal-modal-popup-small';
 		
 		$type=strip_tags(render($content['field_type']));
@@ -55,15 +22,13 @@ global $user;
             </div>
             <?php if($type=='Partner'): ?>
             <div class="fr" style="width:300px;margin-top:20px;">
-<?php /*?>					<a href="<?php print $cashback_url;?>" class="<?php print $class;?>">
-<?php */?>					<div class="block">
+					<div class="block">
 						<div class="content">							
 							<h2>Cashback Offer</h2>
 							<h5><?php print render($content['field_display_text']);?></h5>
 						</div>
 					</div>
-<!--					</a>
--->			</div>
+			</div>
             <?php endif; ?>
             </div>
 		</div>
@@ -100,7 +65,6 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		}else{	$maincategory_desc=render($content['field_display_text']); }
 		$landing_url = get_landing_url($term_record[0][0]->tid,arg(1));
 		$landing_url=$landing_url['landing_url'];
-		// $redirect=strip_tags(render($content['field_url']));
 				
 	if($term_record[0][0]->name<>""):			
 	$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
@@ -145,10 +109,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 						
 		 //unset($child_term[0]);
 		if(isset($child_term[1]->name)):
-		 $landing_url=$landing_urll['landing_url'];
-		//$redirect=strip_tags(render($content['field_url']));	
-		
-		//$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
+		$landing_url=$landing_urll['landing_url'];
 	    $corp_landing_url=getcashbackurl(strip_tags(render($content['field_url'])),$landing_url);
 		print "<ul class='first-level'><li><a href='".$corp_landing_url."' class='".$class."'>".$child_term[1]->name."<p>".strip_tags($maincategory_desc)."</p></a>"; 			
 
@@ -157,10 +118,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		endif;
 		endif;
 		if(isset($child_term[2]->name)):
-		 $landing_url=$landing_url2['landing_url'];
-		//$redirect=strip_tags(render($content['field_url']));	
-		
-		//$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
+		$landing_url=$landing_url2['landing_url'];
 		$corp_landing_url=getcashbackurl(strip_tags(render($content['field_url'])),$landing_url);
 		print "<ul class='second-level'><li><a href='".$corp_landing_url."' class='".$class."'>".$child_term[2]->name."<p>".strip_tags($maincategory_desc)."</p></a>"; 		
 		if(!isset($child_term[3]->name)):
@@ -168,11 +126,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		endif;
 		endif;
 		if(isset($child_term[3]->name)):
-		 $landing_url=$landing_url3['landing_url'];
-		 //$landing_url=$desc_detail2['landing_url'];
-		//$redirect=strip_tags(render($content['field_url']));	
-		
-		//$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
+		$landing_url=$landing_url3['landing_url'];
 		$corp_landing_url=getcashbackurl(strip_tags(render($content['field_url'])),$landing_url);	
 	
 		print "<ul class='third-level'><li><a href='".$corp_landing_url."' class='".$class."'><a>".$child_term[3]->name."<p>".strip_tags($maincategory_desc)."</p></a>";		
