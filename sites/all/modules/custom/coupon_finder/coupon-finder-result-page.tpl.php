@@ -80,7 +80,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="code"><?php echo $value->couponcode; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline" rel="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
+	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');getcouponid(this.id); return false;" class="apply_coupon colorbox-inline" id="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
 
 
@@ -119,7 +119,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="code"><?php echo $value->couponcode; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
-	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome_home" target="_blank" onclick="window.open('<?php print $final_url;?>');" class="apply_coupon colorbox-inline" rel="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
+	<td class="apply coupon_button"><a href="?width=804&height=525&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');getcouponid(this.id); return false;" class="apply_coupon colorbox-inline" id="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
 
 <?php endif;?>
@@ -165,10 +165,10 @@ Easy, Intelligent & Rewarding Shopping
 <div style="float:left; width:100%; margin: 10px 0;">
 
 
-<div class="block" style="width:200px;padding:10px;font-size:12pt;font-weight:bold;text-align:center;margin-left:180px;">
+<p style="width:auto;padding:5px;font-size:11pt;font-weight:bold;text-align:center;border:1px solid #fff;border-radius: 10px;">
 
-<div id="coupon_copy"></div>
-</div>
+<span id="coupon_copy"></span>
+</p>
 
 <div style="float:left; width:100%; margin: 10px 0;">
 <?php
