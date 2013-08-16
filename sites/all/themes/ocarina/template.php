@@ -142,37 +142,8 @@ return $data;
 
 }
 
-/*function get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id){
-global $base_url;
-global $user;
 
-if($user->uid<>""):
-if($landing_url<>""):
-$landing_url=$landing_url;
-else:
-$redirect=strip_tags($redirect);
-$single_decode=urldecode($redirect);
-$url_part_2=urlencode($url_part_2);
-$redirect=urlencode($redirect);
-$redirect=$redirect . $url_part_2;
-
-if($affiliate_id==19):
-$landing_url=$url_part_1."?&uid=". $user->uid ."&redirect=".$redirect;
-elseif($affiliate_id==33 || $affiliate_id==35):
-$landing_url=$url_part_1."?&subid1=". $user->uid ."&redirect=".$redirect;
-elseif($affiliate_id==36):
-$landing_url=$url_part_1."?&k=". $user->uid ."&redirect=".$redirect;
-endif;
-
-endif;
-else:
-$landing_url=$base_url."/modal_forms/nojs/login";
-endif;
-
-
-return $landing_url;
-}*/
-
+//Cash back url with sub id's for Retailer page and ter micro category page.
 function get_corp_url($domain_value,$value_url){
 global $user;
 global $base_url;
@@ -225,7 +196,7 @@ endif;
 }
 
 
-
+//Cash back url with out subid's for coupon finder.
 function getcashbackurl($domain_value,$value_url){
 global $user;
 global $base_url;
@@ -269,10 +240,6 @@ $query ='&subid3=%TRANSACTION_ID%&lnkurl=' . $redirect2;
 $final_url = $tracking_url_part1 . $query;
 endif;
 
-if($user->uid<>0):
 return $final_url;
-else:
-$final_url=$base_url."/modal_forms/nojs/login?destination=".$final_url;
-return $final_url;
-endif;
+
 }
