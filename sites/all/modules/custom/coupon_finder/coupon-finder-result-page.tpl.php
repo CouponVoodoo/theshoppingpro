@@ -2,12 +2,7 @@
   <div id="referrer_content" class="plugin_wrapper"> 
   <h2 class="coupon_title">Coupon Finder</h2>
 <?php  $data['url'] ?>
-<script>
-jQuery( "#video_run" ).click(function() {
-jQuery( this ).css( "display", "block" );
-jQuery( this ).css( "border", "2px solid red" );
-});
-</script>
+
 <?php
 
 
@@ -156,3 +151,9 @@ print $coupon_finder_block;
 
 </div>
 
+<script>
+jQuery( "#video_run" ).click(function() {
+jQuery( this ).css( "display", "block" );
+jQuery( this ).css( "border", "2px solid red" );
+});
+</script>
