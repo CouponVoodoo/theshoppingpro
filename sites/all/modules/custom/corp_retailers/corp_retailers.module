@@ -420,10 +420,11 @@ $redirect=urlencode($redirect);
 
         $redirect = $redirect . $url_part2 . $url_part3 . $url_part4;
 		//$redirect=implode("/", array_map("rawurlencode", explode("/", $redirect)));
-        $query = '&subid1=' . $user->uid . '&subid2=' . $uid2;
+        //$query = '&subid1=' . $user->uid . '&subid2=' . $uid2;
+		$query = '%2526subid1%253D' . $user->uid . '%2526subid2%253D' . $uid2;
         $url = $link_url . '&lnkurl=' . $redirect.$query;
       } else {
-        $query = '&subid1=' . $user->uid . '&subid2=' . $uid2;
+        $query = '%2526subid1%253D' . $user->uid . '%2526subid2%253D' . $uid2;
         $url = $link_url . '?' . $query;
       }
       break;
