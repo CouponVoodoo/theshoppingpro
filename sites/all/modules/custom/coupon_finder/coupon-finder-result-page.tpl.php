@@ -15,6 +15,16 @@ $jsonArray = json_decode($jsonData);
 <?php if(isset($jsonArray)): ?>
 <!--Best Coupon 1-->
 <div class="best_coupons">
+
+<a href="?width=804&height=219&inline=true#testpopup" class="apply_coupon colorbox-inline">Test popup</a>
+
+<div style="display:none;">
+<div id="testpopup">
+<?php print block_render('block','27'); ?>
+</div>
+
+</div>
+
 <h4>Best Coupon</h4>
 	<table>
 	<tr>
