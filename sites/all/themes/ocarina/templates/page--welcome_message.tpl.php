@@ -57,10 +57,8 @@
         print l('Login', 'user') . ' / ' . l('Register', 'user/register');
         ?>
       </div>
-      <div style="text-align: center;">
-	<?php echo "Patent Pending"; ?>
-      </div>
       <div style="float: right;">
+	<?php echo "Patent Pending                "; ?>
         <?php print l('Enter Site >>', 'get_the_plugin'); ?>
       </div>
     </div>
