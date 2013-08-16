@@ -114,7 +114,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 $domain_value=$value->domain;
 $landing_url=$value->url;
 $final_url=getcashbackurl($domain_value,$landing_url);
-?>s
+?>
 <tr>
 	<td class="code"><?php echo $value->couponcode; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>
