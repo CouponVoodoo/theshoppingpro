@@ -3,7 +3,7 @@
   <h2 class="coupon_title">Coupon Finder</h2>
 <?php  $data['url'] ?>
 <script>
-jQuery( "#plugin_video" ).click(function() {
+jQuery( "#video_run" ).click(function() {
 jQuery( this ).css( "display", "block" );
 jQuery( this ).css( "border", "2px solid red" );
 });
