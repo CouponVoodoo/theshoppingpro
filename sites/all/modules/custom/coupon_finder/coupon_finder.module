@@ -40,7 +40,7 @@ function coupon_finder_form(){
 
   $form['title'] = array('#markup' => t('<h2 class="coupon_title">Coupon Finder</h2>'));
   $form['descrip'] = array('#markup' => t('<p>Coupon finder is your magical tool that automatically finds coupons for the product that you want to buy. Just enter the URL of the product you want to buy below and get the best coupons that work right away:</p>'));
-  $form['url'] = array(
+  $form['URL'] = array(
     '#type' => 'textfield',
 	'#size' => 100,
     '#maxlength' => 255,
@@ -59,8 +59,8 @@ function coupon_finder_form(){
 function coupon_finder_form_validate($form, &$form_state) {
 
 
- if (($form_state['values']['url'] == "")){
-    form_set_error('url', t('URL shouldn\'t be empty.'));
+ if (($form_state['values']['URL'] == "")){
+    form_set_error('URL', t('URL shouldn\'t be empty.'));
   }
 
 }
@@ -68,7 +68,7 @@ function coupon_finder_form_validate($form, &$form_state) {
 
 function coupon_finder_form_submit($form, &$form_state) {
 
-	$form_state['redirect'] = 'coupon-result/'.urlencode($form_state['values']['url']);
+	$form_state['redirect'] = 'coupon-result/'.urlencode($form_state['values']['URL']);
 }
 
 function coupon_finder_result(){
@@ -80,7 +80,7 @@ $output=urldecode(arg(1));
 
 
  $data = array(
-      'url' => $output,
+      'URL' => $output,
   );
 
 
