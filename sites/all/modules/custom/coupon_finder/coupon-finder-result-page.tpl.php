@@ -22,7 +22,7 @@ $jsonArray = json_decode($jsonData);
 <?php if(isset($jsonArray)): ?>
 <!--Best Coupon 1-->
 <div class="best_coupons">
-<h4>Best Coupon</h4>
+<h4>BEST COUPON:</h4>
 	<table>
 	<tr>
 		<th>Coupon</th>
@@ -58,7 +58,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 <!--Best Coupon 0 & Successful 1-->
 
 <div class="best_coupons">
-<h4>Other Coupon That Worked</h4>
+<h4>OTHER COUPONS THAT WORK:</h4>
 	<table>
 	<tr>
 		<th>Coupon</th>
@@ -97,7 +97,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 <!--Successful 0-->
 
 <div class="best_coupons">
-<h4>Coupon That Did Not Worked</h4>
+<h4>COUPONS THAT DID NOT WORK:</h4>
 	<table>
 	<tr>
 		<th>Coupon</th>
@@ -136,7 +136,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 <?php endif;?>
 
 <h2 style="text-align:center;color:#f7971c;">Try Another Product</h2>
-<p style="padding-left:40px;">Just enter the url of the product page that you want to buy or the cart page and check if any coupons apply to it.</p>
+<p style="padding-left:40px;">Coupon finder is your magical tool that automatically finds coupons for the product that you want to buy. Just enter the URL of the product you want to buy below and get the best coupons that work right away:</p>
 <div>
 <?php $coupon_finder_block=block_render('coupon_finder','coupon_finder_block'); 
 
