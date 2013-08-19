@@ -226,7 +226,7 @@ array('type' => 'file', 'scope' => 'header', 'weight' => 1)
 
 ?>
 
-<input type="button" id="copyss" name="copyss"  value="Copy to Clipboard" />
+<!--<input type="button" id="copyss" name="copyss"  value="Copy to Clipboard" />-->
 
 
 <script>
