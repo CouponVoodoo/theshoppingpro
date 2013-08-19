@@ -236,7 +236,7 @@ array('type' => 'file', 'scope' => 'header', 'weight' => 1)
 alert(button_name);*/
 //alert(id);
 //set path
-var id='SAVE  @%';
+var id='SAVE  oo';
 ZeroClipboard.setMoviePath('http://davidwalsh.name/demo/ZeroClipboard.swf');
 //create client
 var clip = new ZeroClipboard.Client();
