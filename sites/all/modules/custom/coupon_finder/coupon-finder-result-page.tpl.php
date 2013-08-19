@@ -225,8 +225,15 @@ color:'blue'
 </div>
 
 </div>
+<input type="button" id="copys" name="copys" value="Copy to Clipboard" />
 
-<input type="button" id="copys"/>
+<textarea class="partner_program" id="box-contentphp" name="box-contentphp" wrap='off' autocorrect='off' autocapitalize='off' tabindex='0' rows="7" cols="20">
+<!--script start here-->
+
+<a href='http://www.theshoppingpro.com/referral/<?php print $data['referrerid'] ?>?destination=welcome-message'><img src='http://www.theshoppingpro.com/sites/all/themes/ocarina/images/TheShoppingPro-Partner_Badge.png'/></a>
+
+<!--script end here-->
+</textarea>
 
 <script>
 /*var button_name=jQuery('#coupon_copy').text();
