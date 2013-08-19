@@ -247,7 +247,7 @@ clip.addEventListener('complete',function(client,text) {
 alert('copied: ' + text);
 });
 //glue it to the button
-clip.glue('copyss');
+clip.glue('SAVE25');
 
 }
 
