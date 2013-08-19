@@ -152,28 +152,21 @@ print $coupon_finder_block;
 <div style="display:table-cell; text-align: center; padding-top:5px" id="welcome-message">
 <div id="hide_content">
 <div>
-<img src="/sites/default/files/The_Shopping_Pro_Logo-250px.png" style="width: 300px;" />
+<img src="/sites/default/files/The_Shopping_Pro_Logo-250px.png" style="width:150px;" />
 </div>
-<div style="color:#25ade3; margin-bottom: 10px;float:left; width:100%;">
+<!--<div style="color:#25ade3; margin-bottom: 10px;float:left; width:100%;">
 Easy, Intelligent & Rewarding Shopping
-</div>
+</div>-->
 <div style="float:left; width:100%; margin:5px 0;">
 
-<h4>Code copied! Paste it in the coupon code box on the retailer site</h4>
+<h2>Coupon Code "<span id="coupon_copy"></span>" copied! Paste it in the coupon code box on the retailer site</h2>
 <p style="width:auto;padding:5px;font-size:11pt;font-weight:bold;margin-top:0px;">
 
-<span id="coupon_copy" style="border:1px solid #fff;border-radius: 10px;padding:10px 20px;"></span>
-</p>
+<!--<span id="coupon_copy" style="border:1px solid #fff;border-radius: 10px;padding:10px 20px;"></span>
+--></p>
 
 <div style="float:left; width:100%; margin:0">
-<p>We strongly recommend that you install TheShoppingPro plugin that will get the coupon finder functionality, prices and cashback offers right to you as you shop. Here's a quick video to get you started:</p>
-<iframe frameborder="0" name="cbox1376655443154" src="http://www.youtube.com/embed/rWFoIQTAOQI?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=0&amp;amp;end=93&amp;width=300&amp;height=281&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>
-<!--<a id="video_block" href="#" cursor:pointer>
-<img src="/sites/all/themes/ocarina/images/Play_Video.png"  alt="Play Video"/>
-</a>-->
-</div>
-
-<div style="float:left; width:100%; margin: 10px 0;">
+<!--Installer Button-->
 <?php
 
 $browser = getBrowserInfo();
@@ -202,10 +195,18 @@ color:'blue'
 <?php
 }
 ?>
+
+
+<p>We strongly recommend that you install TheShoppingPro plugin that will get the coupon finder functionality, prices and cashback offers right to you as you shop. Here's a quick video to get you started:</p>
+<iframe frameborder="0" name="cbox1376655443154" src="http://www.youtube.com/embed/rWFoIQTAOQI?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=0&amp;amp;end=93&amp;width=300&amp;height=281&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>
+<!--<a id="video_block" href="#" cursor:pointer>
+<img src="/sites/all/themes/ocarina/images/Play_Video.png"  alt="Play Video"/>
+</a>-->
 </div>
-<div style="float:left; width:100%; margin: 10px 0;">
+
+<!--<div style="float:left; width:100%; margin: 10px 0;">
 Free for <img src="/sites/all/themes/ocarina/images/browser-logos-small.png" /> on <img src="sites/all/themes/ocarina/images/OS_Logo.png" style="height: 37px !important;" />
-</div>
+</div>-->
 
 </div>
 
