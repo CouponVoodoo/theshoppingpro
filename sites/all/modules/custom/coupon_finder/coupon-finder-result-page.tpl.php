@@ -6,6 +6,7 @@
   function getcouponid(id)
   {
 document.getElementById("coupon_copy").innerHTML = id;
+var id=id;
   }
 
 </script>
@@ -44,7 +45,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 <tr>
 	<td class="desc"><?php echo $value->description; ?></td>
     <td class="save"><?php echo $value->Saving; ?></td>
-	<td class="apply coupon_button"><a href="?width=804&height=560&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');getcouponid(this.id); return false;" class="apply_coupon colorbox-inline" id="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
+	<td class="apply coupon_button"><a href="?width=804&height=560&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');getcouponid(this.id);getcopy(this.id); return false;" class="apply_coupon colorbox-inline" id="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
 
 <?php endif;?>
@@ -229,21 +230,25 @@ array('type' => 'file', 'scope' => 'header', 'weight' => 1)
 
 
 <script>
+
+function getcopy(id){
 /*var button_name=jQuery('#coupon_copy').text();
 alert(button_name);*/
-
+alert(id);
 //set path
 ZeroClipboard.setMoviePath('http://davidwalsh.name/demo/ZeroClipboard.swf');
 //create client
 var clip = new ZeroClipboard.Client();
 //event
 clip.addEventListener('mousedown',function() {
-clip.setText(document.getElementById('coupon_copy').value);
+clip.setText(id);
 });
 clip.addEventListener('complete',function(client,text) {
 alert('copied: ' + text);
 });
 //glue it to the button
 clip.glue('copyss');
+
+}
 
 </script>
