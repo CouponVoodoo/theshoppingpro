@@ -165,6 +165,14 @@ Easy, Intelligent & Rewarding Shopping
 <span id="coupon_copy" style="border:1px solid #fff;border-radius: 10px;padding:10px 20px;"></span>
 </p>
 
+<div style="float:left; width:100%; margin:0">
+<p>We strongly recommend that you install TheShoppingPro plugin that will get the coupon finder functionality, prices and cashback offers right to you as you shop. Here's a quick video to get you started:</p>
+<iframe frameborder="0" name="cbox1376655443154" src="http://www.youtube.com/embed/rWFoIQTAOQI?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=0&amp;amp;end=93&amp;width=300&amp;height=281&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>
+<!--<a id="video_block" href="#" cursor:pointer>
+<img src="/sites/all/themes/ocarina/images/Play_Video.png"  alt="Play Video"/>
+</a>-->
+</div>
+
 <div style="float:left; width:100%; margin: 10px 0;">
 <?php
 
@@ -202,13 +210,7 @@ Free for <img src="/sites/all/themes/ocarina/images/browser-logos-small.png" /> 
 </div>
 
 
-<div style="float:left; width:100%; margin:0">
-<p>We strongly recommend that you install TheShoppingPro plugin that will get the coupon finder functionality, prices and cashback offers right to you as you shop. Here's a quick video to get you started:</p>
-<iframe frameborder="0" name="cbox1376655443154" src="http://www.youtube.com/embed/rWFoIQTAOQI?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=0&amp;amp;end=93&amp;width=640&amp;height=281&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>
-<!--<a id="video_block" href="#" cursor:pointer>
-<img src="/sites/all/themes/ocarina/images/Play_Video.png"  alt="Play Video"/>
-</a>-->
-</div>
+
 </div>
 <div id="plugin_video" style="display:none;width:640px;height:281px">
 <iframe frameborder="0" name="cbox1376655443154" src="http://www.youtube.com/embed/rWFoIQTAOQI?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=0&amp;amp;end=93&amp;width=640&amp;height=281&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>
