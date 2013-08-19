@@ -227,8 +227,8 @@ color:'blue'
 </div>
 
 <script>
-var button_name=jQuery('#coupon_copy').text();
-alert(button_name);
+/*var button_name=jQuery('#coupon_copy').text();
+alert(button_name);*/
 
 //set path
 ZeroClipboard.setMoviePath('http://davidwalsh.name/demo/ZeroClipboard.swf');
@@ -242,6 +242,6 @@ clip.addEventListener('complete',function(client,text) {
 alert('copied: ' + text);
 });
 //glue it to the button
-clip.glue('copys');
+clip.glue('SAVE25');
 
 </script>
