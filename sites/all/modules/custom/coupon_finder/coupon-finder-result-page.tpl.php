@@ -226,6 +226,8 @@ color:'blue'
 
 </div>
 
+<input type="button" id="copys"/>
+
 <script>
 /*var button_name=jQuery('#coupon_copy').text();
 alert(button_name);*/
@@ -242,6 +244,6 @@ clip.addEventListener('complete',function(client,text) {
 alert('copied: ' + text);
 });
 //glue it to the button
-clip.glue('SAVE25');
+clip.glue('copys');
 
 </script>
