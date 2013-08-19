@@ -6,7 +6,7 @@
   function getcouponid(id)
   {
 document.getElementById("coupon_copy").innerHTML = id;
-document.write('<input type="text" value="'+id+'">');
+document.write('<input type="hidden" value="'+id+'">');
   }
 
 </script>
