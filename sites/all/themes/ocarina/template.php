@@ -237,7 +237,7 @@ $url_part2 =urlencode($tracking_url_part2);
 $redirect1=urlencode($redirect);
 $redirect2 = $redirect1 . $url_part2;
 if($affiliate_id==36):
-$query ='&t=' . $redirect2;
+$query ='&k=' . $redirect2;
 $final_url = $tracking_url_part1 . $query;
 elseif($affiliate_id==19):
 $query ='&redirect=' . $redirect2;
