@@ -157,14 +157,9 @@ print $coupon_finder_block;
 <div style="color:#25ade3; margin-bottom: 10px;float:left; width:100%;">
 Easy, Intelligent & Rewarding Shopping
 </div>
-<div style="float:left; width:100%; margin:0">
-<a id="video_block" href="#" cursor:pointer>
-<img src="/sites/all/themes/ocarina/images/Play_Video.png"  alt="Play Video"/>
-</a>
-</div>
 <div style="float:left; width:100%; margin:5px 0;">
 
-<h2>Copy coupon code</h2>
+<h4>Code copied! Paste it in the coupon code box on the retailer site</h4>
 <p style="width:auto;padding:5px;font-size:11pt;font-weight:bold;margin-top:0px;">
 
 <span id="coupon_copy" style="border:1px solid #fff;border-radius: 10px;padding:10px 20px;"></span>
@@ -204,6 +199,15 @@ color:'blue'
 Free for <img src="/sites/all/themes/ocarina/images/browser-logos-small.png" /> on <img src="sites/all/themes/ocarina/images/OS_Logo.png" style="height: 37px !important;" />
 </div>
 
+</div>
+
+
+<div style="float:left; width:100%; margin:0">
+<p>We strongly recommend that you install TheShoppingPro plugin that will get the coupon finder functionality, prices and cashback offers right to you as you shop. Here's a quick video to get you started:</p>
+<iframe frameborder="0" name="cbox1376655443154" src="http://www.youtube.com/embed/rWFoIQTAOQI?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=0&amp;amp;end=93&amp;width=640&amp;height=281&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>
+<!--<a id="video_block" href="#" cursor:pointer>
+<img src="/sites/all/themes/ocarina/images/Play_Video.png"  alt="Play Video"/>
+</a>-->
 </div>
 </div>
 <div id="plugin_video" style="display:none;width:640px;height:281px">
