@@ -11,13 +11,6 @@ document.getElementById("coupon_copy").innerHTML = id;
 </script>
 
 
-<?php
-drupal_add_js((drupal_get_path('module', 'partner_program') .'/zeroclipboard.js'),
-array('type' => 'file', 'scope' => 'header', 'weight' => 49)
-);
-
-?>
-
 
 <?php
 
@@ -225,9 +218,18 @@ color:'blue'
 </div>
 
 </div>
-<input type="button" id="copys" name="copys" value="Copy to Clipboard" />
 
-<textarea class="partner_program" id="box-contentphp" name="box-contentphp" wrap='off' autocorrect='off' autocapitalize='off' tabindex='0' rows="7" cols="20">
+
+
+<?php
+drupal_add_js((drupal_get_path('module', 'partner_program') .'/zeroclipboard.js'),
+array('type' => 'file', 'scope' => 'header', 'weight' => 49)
+);
+
+?>
+<input type="button" id="copyss" name="copyss" value="Copy to Clipboard" />
+
+<textarea class="partner_program" id="box-contentbox" name="box-contentbox" wrap='off' autocorrect='off' autocapitalize='off' tabindex='0' rows="7" cols="20">
 <!--script start here-->
 
 <a href='http://www.theshoppingpro.com/referral/<?php print $data['referrerid'] ?>?destination=welcome-message'><img src='http://www.theshoppingpro.com/sites/all/themes/ocarina/images/TheShoppingPro-Partner_Badge.png'/></a>
@@ -245,12 +247,12 @@ ZeroClipboard.setMoviePath('http://davidwalsh.name/demo/ZeroClipboard.swf');
 var clip = new ZeroClipboard.Client();
 //event
 clip.addEventListener('mousedown',function() {
-clip.setText(document.getElementById('box-contentphp').value);
+clip.setText(document.getElementById('box-contentbox').value);
 });
 clip.addEventListener('complete',function(client,text) {
 alert('copied: ' + text);
 });
 //glue it to the button
-clip.glue('copys');
+clip.glue('copyss');
 
 </script>
