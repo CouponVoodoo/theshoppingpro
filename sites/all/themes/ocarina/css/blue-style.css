@@ -48,7 +48,7 @@ input.form-submit:hover,
 .checkout-buttons .checkout-back:hover,.coupon_button a:hover {
   background: #F7971C;
 }
-button:focus, button:active, input:focus, input:active, select:focus, select:active, textarea:focus, textarea:active,.coupon_button a {
+button:focus, button:active, input:focus, input:active, select:focus, select:active, textarea:focus, textarea:active{
   box-shadow: 0 0 7px #f3b700;
   -moz-box-shadow: 0 0 7px #f3b700;
   -webkit-box-shadow: 0 0 7px #f3b700;
