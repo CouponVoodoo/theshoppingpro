@@ -130,7 +130,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 <?php endif;?>
 
 <h2 style="text-align:center;color:#f7971c;">Try Another Product</h2>
-<p style="padding-left:40px;">Coupon finder is your magical tool that automatically finds coupons for the product that you want to buy. Just enter the URL of the product you want to buy below and get the best coupons that work right away:</p>
+<p style="padding-left:10px;">Coupon finder is your magical tool that automatically finds coupons for the product that you want to buy. Just enter the URL of the product you want to buy below and get the best coupons that work right away:</p>
 <div>
 <?php $coupon_finder_block=block_render('coupon_finder','coupon_finder_block'); 
 
