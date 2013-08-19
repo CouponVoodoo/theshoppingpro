@@ -226,7 +226,7 @@ array('type' => 'file', 'scope' => 'header', 'weight' => 1)
 
 ?>
 
-<input type="button" id="copyss" name="copyss" value="Copy to Clipboard" />
+<input type="button" id="copyss"  value="Copy to Clipboard" />
 
 
 <script>
@@ -248,7 +248,7 @@ clip.addEventListener('complete',function(client,text) {
 alert('copied: ' + text);
 });
 //glue it to the button
-clip.glue('SAVE25');
+clip.glue('copyss');
 
 //}
 
