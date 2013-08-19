@@ -1266,3 +1266,4 @@ color: #fff;
 .page-coupon-result #page-title, .page-coupon-finder #page-title{display:none;}
 #block-block-27{background:none;border:0px;}
 /*#block-block-27 #welcome-message{border:0px;} */
+#welcome-message .cboxIframe{width:500px;height:281px;padding-left:150px;}
