@@ -37,7 +37,7 @@ function custom_alter_form_alter(&$form, &$form_state, $form_id){
 
 if($form_id=='coupon_finder_form'){
 
-$form['url']['#placeholder']='Enter URL';
+$form['url']['#placeholder']='Enter URL: eg. http://www.jabong.com/giordano-Victory-Black-P9275-Black-Black-Analog-Watch-168021.html';
 
 }
 
