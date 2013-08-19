@@ -153,11 +153,9 @@ Easy, Intelligent & Rewarding Shopping
 </div>-->
 <div style="float:left; width:100%; margin:5px 0;">
 
-<h2>Coupon Code "<span id="coupon_copy"></span>" copied! Paste it in the coupon code box on the retailer site</h2>
+<h2 style="color:#F7971C">Coupon Code "<span id="coupon_copy"></span>" copied! Paste it in the coupon code box on the retailer site</h2>
 <p style="width:auto;padding:5px;font-size:11pt;font-weight:bold;margin-top:0px;">
-
-<!--<span id="coupon_copy" style="border:1px solid #fff;border-radius: 10px;padding:10px 20px;"></span>
---></p>
+</p>
 
 <div style="float:left; width:100%; margin:0">
 <!--Installer Button-->
@@ -198,9 +196,6 @@ color:'blue'
 </a>-->
 </div>
 
-<!--<div style="float:left; width:100%; margin: 10px 0;">
-Free for <img src="/sites/all/themes/ocarina/images/browser-logos-small.png" /> on <img src="sites/all/themes/ocarina/images/OS_Logo.png" style="height: 37px !important;" />
-</div>-->
 
 </div>
 
