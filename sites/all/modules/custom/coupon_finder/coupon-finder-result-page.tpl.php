@@ -13,7 +13,7 @@ document.getElementById("coupon_copy").innerHTML = id;
 <?php
 
 
-$url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=".urldecode($data['url']);
+$url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=".urldecode($data['URL']);
 $json = file_get_contents($url);
 $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
 
