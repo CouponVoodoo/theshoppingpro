@@ -150,9 +150,6 @@ print $coupon_finder_block;
 <div>
 <img src="/sites/default/files/The_Shopping_Pro_Logo-250px.png" style="width:150px;" />
 </div>
-<!--<div style="color:#25ade3; margin-bottom: 10px;float:left; width:100%;">
-Easy, Intelligent & Rewarding Shopping
-</div>-->
 <div style="float:left; width:100%; margin:5px 0;">
 
 <h2 style="color:#F7971C">Coupon Code "<span id="coupon_copy"></span>" copied! Paste it in the coupon code box on the retailer site</h2>
@@ -227,15 +224,6 @@ array('type' => 'file', 'scope' => 'header', 'weight' => 1)
 );
 
 ?>
-<input type="button" id="copyss" name="copyss" value="Copy to Clipboard" />
-
-<textarea class="partner_program" id="box-contentbox" name="box-contentbox" wrap='off' autocorrect='off' autocapitalize='off' tabindex='0' rows="7" cols="20">
-<!--script start here-->
-
-<a href='http://www.theshoppingpro.com/referral/<?php print $data['referrerid'] ?>?destination=welcome-message'><img src='http://www.theshoppingpro.com/sites/all/themes/ocarina/images/TheShoppingPro-Partner_Badge.png'/></a>
-
-<!--script end here-->
-</textarea>
 
 <script>
 /*var button_name=jQuery('#coupon_copy').text();
@@ -247,12 +235,12 @@ ZeroClipboard.setMoviePath('http://davidwalsh.name/demo/ZeroClipboard.swf');
 var clip = new ZeroClipboard.Client();
 //event
 clip.addEventListener('mousedown',function() {
-clip.setText(document.getElementById('box-contentbox').value);
+clip.setText(document.getElementById('coupon_copy').value);
 });
 clip.addEventListener('complete',function(client,text) {
 alert('copied: ' + text);
 });
 //glue it to the button
-clip.glue('copyss');
+clip.glue('SAVE25');
 
 </script>
