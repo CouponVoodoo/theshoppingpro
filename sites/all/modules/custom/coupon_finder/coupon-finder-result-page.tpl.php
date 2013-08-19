@@ -6,9 +6,19 @@
   function getcouponid(id)
   {
 document.getElementById("coupon_copy").innerHTML = id;
+var idval=id;
   }
 
 </script>
+
+
+<?php
+drupal_add_js((drupal_get_path('module', 'partner_program') .'/zeroclipboard.js'),
+array('type' => 'file', 'scope' => 'header', 'weight' => 49)
+);
+
+?>
+
 
 <?php
 
@@ -76,7 +86,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 <tr>
 	<td class="desc"><?php echo $value->description; ?></td>
 	<td class="save"><?php echo $value->Saving; ?></td>    
-	<td class="apply coupon_button"><a href="?width=804&height=560&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');getcouponid(this.id); return false;" class="apply_coupon colorbox-inline" id="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
+	<td class="apply coupon_button"><a href="?width=804&height=560&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');getcouponid(this.id); return false;" class="apply_coupon colorbox-inline" id="<?php echo $value->couponcode; ?>" name="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
 
 
@@ -217,15 +227,21 @@ color:'blue'
 
 </div>
 
-
 <script>
-jQuery( "#video_block" ).click(function() {
-jQuery( "#hide_content" ).css( "display", "none" );
-jQuery( "#plugin_video" ).css( "display", "block" );
-});
 
-jQuery( ".apply_coupon" ).click(function() {
-jQuery( "#plugin_video" ).css( "display", "none" );
-jQuery( "#hide_content" ).css( "display", "block" );
+alert(idval);
+//set path
+ZeroClipboard.setMoviePath('http://davidwalsh.name/demo/ZeroClipboard.swf');
+//create client
+var clip = new ZeroClipboard.Client();
+//event
+clip.addEventListener('mousedown',function() {
+clip.setText(document.getElementById('coupon_copy').value);
 });
+clip.addEventListener('complete',function(client,text) {
+alert('copied: ' + text);
+});
+//glue it to the button
+clip.glue('copys');
+
 </script>
