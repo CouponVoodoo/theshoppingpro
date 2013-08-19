@@ -25,9 +25,8 @@ $jsonArray = json_decode($jsonData);
 <h4>BEST COUPON:</h4>
 	<table>
 	<tr>
-		<th>Coupon</th>
-		<th>Savings</th>
 		<th>Description</th>
+		<th>Savings</th>
 		<th>&nbsp;</th>
 	</tr>
 
@@ -41,9 +40,8 @@ $landing_url=$value->url;
 $final_url=getcashbackurl($domain_value,$landing_url);
 ?>
 <tr>
-	<td class="code"><?php echo $value->couponcode; ?></td>
-	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
+    <td class="save"><?php echo $value->Saving; ?></td>
 	<td class="apply coupon_button"><a href="?width=804&height=560&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');getcouponid(this.id); return false;" class="apply_coupon colorbox-inline" id="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
 
@@ -61,9 +59,8 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 <h4>OTHER COUPONS THAT WORK:</h4>
 	<table>
 	<tr>
-		<th>Coupon</th>
-		<th>Savings</th>
 		<th>Description</th>
+		<th>Savings</th>
 		<th>&nbsp;</th>
 	</tr>
 	
@@ -77,9 +74,8 @@ $landing_url=$value->url;
 $final_url=getcashbackurl($domain_value,$landing_url);
 ?>
 <tr>
-	<td class="code"><?php echo $value->couponcode; ?></td>
-	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
+	<td class="save"><?php echo $value->Saving; ?></td>    
 	<td class="apply coupon_button"><a href="?width=804&height=560&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');getcouponid(this.id); return false;" class="apply_coupon colorbox-inline" id="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
 
@@ -100,9 +96,8 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 <h4>COUPONS THAT DID NOT WORK:</h4>
 	<table>
 	<tr>
-		<th>Coupon</th>
-		<th>Savings</th>
 		<th>Description</th>
+		<th>Savings</th>
 		<th>&nbsp;</th>
 	</tr>
 	
@@ -116,9 +111,8 @@ $landing_url=$value->url;
 $final_url=getcashbackurl($domain_value,$landing_url);
 ?>
 <tr>
-	<td class="code"><?php echo $value->couponcode; ?></td>
-	<td class="save"><?php echo $value->Saving; ?></td>
 	<td class="desc"><?php echo $value->description; ?></td>
+    <td class="save"><?php echo $value->Saving; ?></td>
 	<td class="apply coupon_button"><a href="?width=804&height=560&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');getcouponid(this.id); return false;" class="apply_coupon colorbox-inline" id="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
 
