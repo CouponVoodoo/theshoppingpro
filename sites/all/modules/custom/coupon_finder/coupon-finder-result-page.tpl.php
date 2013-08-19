@@ -225,6 +225,9 @@ array('type' => 'file', 'scope' => 'header', 'weight' => 1)
 
 ?>
 
+<input type="button" id="copyss" name="copyss" value="Copy to Clipboard" />
+
+
 <script>
 /*var button_name=jQuery('#coupon_copy').text();
 alert(button_name);*/
@@ -241,6 +244,6 @@ clip.addEventListener('complete',function(client,text) {
 alert('copied: ' + text);
 });
 //glue it to the button
-clip.glue('SAVE25');
+clip.glue('copyss');
 
 </script>
