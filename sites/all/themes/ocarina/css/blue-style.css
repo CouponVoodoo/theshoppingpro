@@ -1247,6 +1247,7 @@ color: #fff;
 .coupon_finder_content,.coupon_finder_content td,#block-block-26,.page-coupon-result #id_referrer_content_plugin td{border:0px !important;}
 #id_referrer_content_plugin #block-block-26{display:none;padding:0px;}
 #coupon-finder-form,.page-coupon-result #id_referrer_content_plugin{padding-left:30px;}
+.page-coupon-result #coupon-finder-form{padding-left:0px;}
 #coupon-finder-form .form-required{display:none;}
 #coupon-finder-form .form-type-textfield,#coupon-finder-form .form-submit{float:left;}
 #coupon-finder-form .form-submit{margin:10px 0px 0px 20px;/*background:url("../images/u8_normal.png") no-repeat;border:0px !important;font-size:13px;font-weight:bold;padding-top:8px;box-shadow:none;padding-left:16px;*/}
