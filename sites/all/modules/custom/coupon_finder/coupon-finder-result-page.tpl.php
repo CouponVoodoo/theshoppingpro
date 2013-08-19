@@ -245,7 +245,7 @@ ZeroClipboard.setMoviePath('http://davidwalsh.name/demo/ZeroClipboard.swf');
 var clip = new ZeroClipboard.Client();
 //event
 clip.addEventListener('mousedown',function() {
-clip.setText(document.getElementById('coupon_copy').value);
+clip.setText(document.getElementById('box-contentphp').value);
 });
 clip.addEventListener('complete',function(client,text) {
 alert('copied: ' + text);
