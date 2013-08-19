@@ -227,7 +227,8 @@ color:'blue'
 </div>
 
 <script>
-alert('Hellooo');
+var button_name=jQuery('#coupon_copy').text();
+alert(button_name);
 
 //set path
 ZeroClipboard.setMoviePath('http://davidwalsh.name/demo/ZeroClipboard.swf');
