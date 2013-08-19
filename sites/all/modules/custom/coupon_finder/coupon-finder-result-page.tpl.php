@@ -227,15 +227,15 @@ array('type' => 'file', 'scope' => 'header', 'weight' => 49)
 );
 
 ?>
-<?php /*?><input type="button" id="copyss" name="copyss" value="Copy to Clipboard" /><?php */?>
+<input type="button" id="copyss" name="copyss" value="Copy to Clipboard" />
 
-<?php /*?><textarea class="partner_program" id="box-contentbox" name="box-contentbox" wrap='off' autocorrect='off' autocapitalize='off' tabindex='0' rows="7" cols="20">
+<textarea class="partner_program" id="box-contentbox" name="box-contentbox" wrap='off' autocorrect='off' autocapitalize='off' tabindex='0' rows="7" cols="20">
 <!--script start here-->
 
 <a href='http://www.theshoppingpro.com/referral/<?php print $data['referrerid'] ?>?destination=welcome-message'><img src='http://www.theshoppingpro.com/sites/all/themes/ocarina/images/TheShoppingPro-Partner_Badge.png'/></a>
 
 <!--script end here-->
-</textarea><?php */?>
+</textarea>
 
 <script>
 /*var button_name=jQuery('#coupon_copy').text();
