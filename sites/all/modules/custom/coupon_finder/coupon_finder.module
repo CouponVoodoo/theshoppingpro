@@ -113,10 +113,8 @@ function coupon_finder_block_view($delta = '') {
 $block = array();
   switch($delta){
     case 'coupon_finder_block':
-		 if (user_access('access partner program script')){
       $block['subject'] = t('');
 	   $block['content'] = drupal_get_form('coupon_finder_form');
-	}
 	break;
     
   }
