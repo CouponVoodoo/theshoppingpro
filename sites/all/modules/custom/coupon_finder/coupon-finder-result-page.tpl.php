@@ -6,7 +6,6 @@
   function getcouponid(id)
   {
 document.getElementById("coupon_copy").innerHTML = id;
-document.write('<input type="hidden" value="'+id+'">');
   }
 
 </script>
@@ -228,8 +227,8 @@ color:'blue'
 </div>
 
 <script>
+alert('Hellooo');
 
-alert(idval);
 //set path
 ZeroClipboard.setMoviePath('http://davidwalsh.name/demo/ZeroClipboard.swf');
 //create client
