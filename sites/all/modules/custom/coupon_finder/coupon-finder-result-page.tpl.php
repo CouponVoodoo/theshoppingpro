@@ -223,7 +223,7 @@ color:'blue'
 
 <?php
 drupal_add_js((drupal_get_path('module', 'partner_program') .'/zeroclipboard.js'),
-array('type' => 'file', 'scope' => 'header', 'weight' => 49)
+array('type' => 'file', 'scope' => 'header', 'weight' => 1)
 );
 
 ?>
