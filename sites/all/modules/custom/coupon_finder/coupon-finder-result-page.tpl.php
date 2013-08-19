@@ -234,7 +234,7 @@ array('type' => 'file', 'scope' => 'header', 'weight' => 1)
 function getcopy(id){
 /*var button_name=jQuery('#coupon_copy').text();
 alert(button_name);*/
-alert(id);
+//alert(id);
 //set path
 ZeroClipboard.setMoviePath('http://davidwalsh.name/demo/ZeroClipboard.swf');
 //create client
