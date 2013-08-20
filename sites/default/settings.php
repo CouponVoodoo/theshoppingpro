@@ -216,6 +216,8 @@ $databases = array (
   ),
 );
 
+$conf['https'] = TRUE;
+
 /**
  * Access control for update.php script.
  *
