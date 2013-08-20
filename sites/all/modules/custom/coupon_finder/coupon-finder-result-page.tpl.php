@@ -75,6 +75,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 
 <?php if($value->BestCoupon==0 && $value->Successful==1): ?>
 <?php
+$sucessful=1;
 $domain_value=$value->domain;
 $landing_url=$value->url;
 $final_url=getcashbackurl($domain_value,$landing_url);
@@ -87,6 +88,9 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 <?php endif;?>
 
 <?php endforeach;?>
+<?php if($sucessful <> 1):?>
+<tr><td colspan="3">No Coupons of this type found.</td></tr>
+<?php endif;?>
 	
 	</table>
   
@@ -110,6 +114,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 
 <?php if($value->Successful==0): ?>
 <?php
+$unsucessful=1;
 $domain_value=$value->domain;
 $landing_url=$value->url;
 $final_url=getcashbackurl($domain_value,$landing_url);
@@ -122,6 +127,9 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 <?php endif;?>
 
 <?php endforeach;?>
+<?php if($unsucessful <> 1):?>
+<tr><td colspan="3">No Coupons of this type found.</td></tr>
+<?php endif;?>
 	
 	</table>
 </div>
