@@ -226,8 +226,9 @@ array('type' => 'file', 'scope' => 'header', 'weight' => 1)
 
 ?>
 
-<!--<input type="button" id="copyss" name="copyss"  value="Copy to Clipboard" />-->
+<input type="text" name="boxcopy" id="boxcopy" value="COPY TEXT"/>
 
+<input type="button" id="copys" name="copys" value="Copy to Clipboard" />
 
 <script>
 
@@ -236,19 +237,18 @@ array('type' => 'file', 'scope' => 'header', 'weight' => 1)
 alert(button_name);*/
 //alert(id);
 //set path
-var id='SAVE  oo';
 ZeroClipboard.setMoviePath('http://davidwalsh.name/demo/ZeroClipboard.swf');
 //create client
 var clip = new ZeroClipboard.Client();
 //event
 clip.addEventListener('mousedown',function() {
-clip.setText(id);
+clip.setText(document.getElementById('boxcopy').value);
 });
 clip.addEventListener('complete',function(client,text) {
 alert('copied: ' + text);
 });
 //glue it to the button
-clip.glue('copyss');
+clip.glue('copys');
 
 //}
 
