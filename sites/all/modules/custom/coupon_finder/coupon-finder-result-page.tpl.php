@@ -36,7 +36,7 @@ $jsonArray = json_decode($jsonData);
 	
 <?php foreach ($jsonArray as $key => $value): ?>
 
-<?php if($value->BestCoupon==1): ?>
+<?php if($value->BestCoupon==10): ?>
 <?php
 $domain_value=$value->domain;
 $landing_url=$value->url;
@@ -47,6 +47,8 @@ $final_url=getcashbackurl($domain_value,$landing_url);
     <td class="save"><?php echo $value->Saving; ?></td>
 	<td class="apply coupon_button"><a href="?width=804&height=560&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');getcouponid(this.id); return false;" class="apply_coupon colorbox-inline" id="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
+<?php else:?>
+<tr><td colspan="3">No Coupons of this type found.</td></tr>
 
 <?php endif;?>
 
@@ -81,7 +83,8 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="save"><?php echo $value->Saving; ?></td>    
 	<td class="apply coupon_button"><a href="?width=804&height=560&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');getcouponid(this.id); return false;" class="apply_coupon colorbox-inline" id="<?php echo $value->couponcode; ?>" name="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
-
+<?php else:?>
+<tr><td colspan="3">No Coupons of this type found.</td></tr>
 
 <?php endif;?>
 
@@ -118,7 +121,8 @@ $final_url=getcashbackurl($domain_value,$landing_url);
     <td class="save"><?php echo $value->Saving; ?></td>
 	<td class="apply coupon_button"><a href="?width=804&height=560&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');getcouponid(this.id); return false;" class="apply_coupon colorbox-inline" id="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
-
+<?php else:?>
+<tr><td colspan="3">No Coupons of this type found.</td></tr>
 <?php endif;?>
 
 <?php endforeach;?>
