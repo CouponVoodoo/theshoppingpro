@@ -47,12 +47,12 @@ $final_url=getcashbackurl($domain_value,$landing_url);
     <td class="save"><?php echo $value->Saving; ?></td>
 	<td class="apply coupon_button"><a href="?width=804&height=560&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');getcouponid(this.id); return false;" class="apply_coupon colorbox-inline" id="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
-<?php else:?>
-<tr><td colspan="3">No Coupons of this type found.</td></tr>
-
 <?php endif;?>
 
 <?php endforeach;?>
+<?php if($value->couponcode == ''):?>
+<tr><td colspan="3">No Coupons of this type found.</td></tr>
+<?php endif;?>
 
 	</table>
    
@@ -83,9 +83,6 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 	<td class="save"><?php echo $value->Saving; ?></td>    
 	<td class="apply coupon_button"><a href="?width=804&height=560&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');getcouponid(this.id); return false;" class="apply_coupon colorbox-inline" id="<?php echo $value->couponcode; ?>" name="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
-<?php else:?>
-<tr><td colspan="3">No Coupons of this type found.</td></tr>
-
 <?php endif;?>
 
 <?php endforeach;?>
@@ -121,8 +118,6 @@ $final_url=getcashbackurl($domain_value,$landing_url);
     <td class="save"><?php echo $value->Saving; ?></td>
 	<td class="apply coupon_button"><a href="?width=804&height=560&inline=true#welcome-message" target="_blank" onclick="window.open('<?php print $final_url;?>');getcouponid(this.id); return false;" class="apply_coupon colorbox-inline" id="<?php echo $value->couponcode; ?>">Copy Coupon</a></td>
 </tr>
-<?php else:?>
-<tr><td colspan="3">No Coupons of this type found.</td></tr>
 <?php endif;?>
 
 <?php endforeach;?>
