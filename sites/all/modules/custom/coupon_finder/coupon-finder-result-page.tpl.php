@@ -38,6 +38,7 @@ $jsonArray = json_decode($jsonData);
 
 <?php if($value->BestCoupon==10): ?>
 <?php
+$best_coupon=1;
 $domain_value=$value->domain;
 $landing_url=$value->url;
 $final_url=getcashbackurl($domain_value,$landing_url);
@@ -50,7 +51,7 @@ $final_url=getcashbackurl($domain_value,$landing_url);
 <?php endif;?>
 
 <?php endforeach;?>
-<?php if($value->couponcode == ''):?>
+<?php if($best_coupon <> 1):?>
 <tr><td colspan="3">No Coupons of this type found.</td></tr>
 <?php endif;?>
 
