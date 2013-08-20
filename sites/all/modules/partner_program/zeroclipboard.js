@@ -112,7 +112,7 @@ var toppo=box.top;
 */
 
 if (jQuery.browser.mozilla) {
-var toppo=box.top + 8;
+var toppo=box.top + 40;
 }else{
 var toppo=box.top;
 }
