@@ -112,10 +112,12 @@ var toppo=box.top;
 */
 
 if (jQuery.browser.mozilla) {
-var toppo=box.top + 40;
+var toppo=box.top + 8;
 }else{
 var toppo=box.top;
 }
+
+var toppo=box.top + 40;
 
 // create floating DIV above element
 this.div = document.createElement('div');
