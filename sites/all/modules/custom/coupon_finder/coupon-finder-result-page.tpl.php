@@ -36,7 +36,7 @@ $jsonArray = json_decode($jsonData);
 	
 <?php foreach ($jsonArray as $key => $value): ?>
 
-<?php if($value->BestCoupon==10): ?>
+<?php if($value->BestCoupon==1): ?>
 <?php
 $best_coupon=1;
 $domain_value=$value->domain;
