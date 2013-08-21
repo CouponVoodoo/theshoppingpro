@@ -1226,7 +1226,7 @@ list-style-type:none !important;
 list-style-image:none !important
 }
 .round_corner li{list-style-type:none !important;}
-.round_corner ul{float:right;margin-left:20px;}
+.round_corner ul{float:right;margin-left:20px !important;}
 .round_corner ul li ul{float:none;}
 .round_corner ul li{text-align:left;}
 .round_corner ul li ul li{text-align:left;}
