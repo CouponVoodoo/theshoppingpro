@@ -199,16 +199,16 @@ endforeach;
 	  
 	 // if($depth==0) $classes .= 'expanded active-trail ';
      
-      if ($i == 0) $cont .= '<li class="first '.$classes.'">'.$terms[$i]->name;
+      if ($i == 0) $cont .= '<li class="first '.$classes.'">'.$terms[$i]->name.'<br/><strong>'.$term->description.'</strong>';
       else {
-        if ($terms[$i]->depth == $depth) $cont .= '</li><li class="'.$classes.'">'.$terms[$i]->name;
-        elseif ($terms[$i]->depth > $depth) $cont .= '<ul class="level-'.$terms[$i]->depth.'"><li class="first '.$classes.'">'.$terms[$i]->name;
+        if ($terms[$i]->depth == $depth) $cont .= '</li><li class="'.$classes.'">'.$terms[$i]->name.'<br/><strong>'.$term->description.'</strong>';
+        elseif ($terms[$i]->depth > $depth) $cont .= '<ul class="level-'.$terms[$i]->depth.'"><li class="first '.$classes.'">'.$terms[$i]->name.'<br/><strong>'.$term->description.'</strong>';
         elseif ($terms[$i]->depth < $depth) {
           // Add missing end-tags depending of depth level difference.
           for ($j = $terms[$i]->depth; $j < $depth; $j++) {
             $cont .= '</li></ul>';
           }
-          $cont .= '</li><li class="'.$classes.'">'.$terms[$i]->name;
+          $cont .= '</li><li class="'.$classes.'">'.$terms[$i]->name.'<br/><strong>'.$term->description.'</strong>';
         }
         // If we have reached the last element add all possibly missing end-tags.
         if (!isset($terms[$i+1])) {
