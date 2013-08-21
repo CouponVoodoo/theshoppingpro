@@ -232,9 +232,9 @@ array('type' => 'file', 'scope' => 'header', 'weight' => 1)
 
 ?>
 
-<input type="text" name="boxcopy" id="boxcopy" value="COPY TEXT"/>
+<!--<input type="text" name="boxcopy" id="boxcopy" value="COPY TEXT"/>
 
-<input type="button" id="copys" name="copys" value="Copy to Clipboard" />
+<input type="button" id="copys" name="copys" value="Copy to Clipboard" />-->
 
 <script>
 
