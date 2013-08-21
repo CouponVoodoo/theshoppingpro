@@ -63,7 +63,7 @@ $icon_image=file_create_url($icon_generate);
   <div class="content">	
 		<div class="fl" style="margin:30px 0px 40px 40px;">
 			<div class="fl" style="margin-right:30px;">
-				<img src="<?php print $icon_image;?>"/>	
+				<img src="<?php print $icon_image;?>" style="width:150px;"/>	
 			</div>
 			<div class="fl" style="margin:20px 0px 0px 26px;">
 			<h1 style="color:#f79646;font-family:arial;"><?php print $term->name; ?></h1>
