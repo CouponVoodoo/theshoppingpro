@@ -21,12 +21,6 @@ $json = file_get_contents($url);
 $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
 
 $jsonArray = json_decode($jsonData);
-
-echo "<pre>";
-
-print_r($jsonArray);
-
-echo "</pre>";
 ?>
 <?php if(isset($jsonArray)): ?>
 <!--Best Coupon 1-->
