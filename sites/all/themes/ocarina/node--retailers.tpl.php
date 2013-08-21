@@ -111,16 +111,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 	print "<a href='".$corp_landing_url."' class='".$class."'><h2>".$term_record[0][0]->name."</h2>".strip_tags($maincategory_desc)."</a>"; 
 	endif;	
 		
-		
-				
-	if($term_record[1][1]->name<>""):			
-	//$corp_landing_url=get_corp_url($landing_url,$redirect,$url_part_1,$url_part_2,$affiliate_id);
-	 
-	 $corp_landing_url=get_corp_url(strip_tags(render($content['field_url'])),$landing_url);
-	 
-	 
-	print "<a href='".$corp_landing_url."' class='".$class."'><h2>".$term_record[1][1]->name."</h2>".strip_tags($maincategory_desc)."</a>"; 
-	endif;		
+			
 
 		 foreach ($term_record as $child_item => $child_term): 
 		$desc_detail1 = get_microrelation_display_text($child_term[1]->tid,arg(1));	
@@ -154,7 +145,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		 endif;		
 						
 		 //unset($child_term[0]);
-		if(isset($child_term[1]->name)):
+		if(isset($child_term[1]->name) && !isset($child_term[2]->name)):
 		 $landing_url=$landing_urll['landing_url'];
 		//$redirect=strip_tags(render($content['field_url']));	
 		
