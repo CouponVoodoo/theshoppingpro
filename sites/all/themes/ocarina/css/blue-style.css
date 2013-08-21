@@ -1269,5 +1269,5 @@ color: #fff;
 /*#block-block-27 #welcome-message{border:0px;} */
 #welcome-message .cboxIframe{width:560px;height:281px;padding-left:120px;}
 #block-retailers-page .second-level{margin-left:60px !important;}
-.taxonomy_menu_retailer li{margin:20px 0 0 0;color:#f79646;text-transform:capitalize;font-size:17px;text-align:center;font-family:arial;}
-.taxonomy_menu_retailer li strong{color:#fff;}
+.taxonomy_menu_retailer li{color:#f79646;text-transform:capitalize;font-size:14px;text-align:center;font-family:arial;font-weight:bold;}
+.taxonomy_menu_retailer li span{color:#fff;display:block;}
