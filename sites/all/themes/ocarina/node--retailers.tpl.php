@@ -157,7 +157,7 @@ WHERE fmcr.field_mc_retailer_nid=:mrn ORDER BY fmc.field_micro_category_tid"  ,a
 		print "</li></ul>";
 		endif;
 		endif;
-		if(isset($child_term[2]->name)):
+		if(isset($child_term[2]->name) && !isset($child_term[3]->name)):
 		 $landing_url=$landing_url2['landing_url'];
 		//$redirect=strip_tags(render($content['field_url']));	
 		
