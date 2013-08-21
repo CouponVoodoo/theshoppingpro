@@ -144,7 +144,7 @@ endforeach;
 <?php endif;?>
 
 <!--Third Block start-->
-<script type="text/javascript">
+<?php /*?><script type="text/javascript">
 	jQuery(function(){
 		jQuery('.taxonomy_menu_retailer li')
 			.css('pointer','default')
@@ -162,7 +162,7 @@ endforeach;
 			.children().hide();
 		jQuery('.taxonomy_menu_retailer li:not(:has(ul))').css({cursor:'default', 'list-style-image':'none'});
 	});
-</script>
+</script><?php */?>
 
 	<?php	
 	
