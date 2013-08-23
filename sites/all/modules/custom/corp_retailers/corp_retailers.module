@@ -406,14 +406,23 @@ $redirect=urlencode($redirect);
         $url_part3 = isset($row->field_url_part3_value) ? $row->field_url_part3_value : '';
         $url_part4 = isset($row->field_url_part4_value) ? $row->field_url_part4_value : '';
 
+/**
+ * Encoding Once
+ */
 
 		$url_part2 =implode("/", array_map("rawurlencode", explode("/", $url_part2)));
 		$url_part3 =implode("/", array_map("rawurlencode", explode("/", $url_part3)));
 		$url_part4 =implode("/", array_map("rawurlencode", explode("/", $url_part4)));
-
-
 		$redirect =implode("/", array_map("rawurlencode", explode("/", $redirect)));
 
+/**
+ * Encoding Twice
+ */
+
+		$url_part2 =implode("/", array_map("rawurlencode", explode("/", $url_part2)));
+		$url_part3 =implode("/", array_map("rawurlencode", explode("/", $url_part3)));
+		$url_part4 =implode("/", array_map("rawurlencode", explode("/", $url_part4)));
+		$redirect =implode("/", array_map("rawurlencode", explode("/", $redirect)));
 
 
 //$double_decode=urldecode($encoded_url);
