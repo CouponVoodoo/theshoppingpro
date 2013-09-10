@@ -1,4 +1,5 @@
 <?php
+ini_set('apc.cache_by_default',0);
 	$g_hostname = 'localhost';
 	$g_db_type = 'mysql';
 	$g_database_name = 'bugtracker';

@@ -270,7 +270,7 @@ $drupal_hash_salt = 'XwPGNudIQTPZkJhqO7ZreU0XA80KvYUla73lEVI8wrQ';
  * It is not allowed to have a trailing slash; Drupal will add it
  * for you.
  */
- $base_url = 'http://www.theshoppingpro.com';  // NO trailing slash!
+ $base_url = 'https://www.theshoppingpro.com';  // NO trailing slash!
 
 /* PHP settings:
  *
@@ -279,7 +279,7 @@ $drupal_hash_salt = 'XwPGNudIQTPZkJhqO7ZreU0XA80KvYUla73lEVI8wrQ';
  * http://www.php.net/manual/en/ini.list.php
  * See drupal_environment_initialize() in includes/bootstrap.inc for required
  * runtime settings and the .htaccess file for non-runtime settings. Settings
- * defined there should not be duplicated here so as to avoid conflict issues.
+* defined there should not be duplicated here so as to avoid conflict issues.
  */
 
 /**
