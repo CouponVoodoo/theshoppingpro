@@ -29,9 +29,9 @@ div {
 .u0_container {
     position:absolute;
     left:0px;
-    top:240px;
+    top:0px;
     width:1579px;
-    height:544px;
+    height:207px;
 }
 
 #u0_img {
@@ -39,13 +39,13 @@ div {
     left:0px;
     top:0px;
     width:1579px;
-    height:544px;
+    height:207px;
 }
 
 .u1 {
     position:absolute;
     left:2px;
-    top:264px;
+    top:96px;
     width:1575px;
     height:16px;
     ;
@@ -62,25 +62,25 @@ div {
 
 .u2_container {
     position:absolute;
-    left:0px;
-    top:0px;
-    width:1579px;
-    height:207px;
+    left:302px;
+    top:168px;
+    width:976px;
+    height:39px;
 }
 
 #u2_img {
     position:absolute;
-    left:0px;
-    top:0px;
-    width:1579px;
-    height:207px;
+    left:-3px;
+    top:-3px;
+    width:982px;
+    height:45px;
 }
 
 .u3 {
     position:absolute;
     left:2px;
-    top:96px;
-    width:1575px;
+    top:12px;
+    width:972px;
     height:16px;
     ;
     ;
@@ -96,13 +96,47 @@ div {
 
 .u4_container {
     position:absolute;
+    left:0px;
+    top:238px;
+    width:1579px;
+    height:544px;
+}
+
+#u4_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:1579px;
+    height:544px;
+}
+
+.u5 {
+    position:absolute;
+    left:2px;
+    top:264px;
+    width:1575px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6_normal {
+    background-image: url('../91Mobiles_Home_files/u6_normal.png');
+}
+
+.u6_container {
+    position:absolute;
     left:971px;
     top:168px;
     width:143px;
     height:40px;
 }
 
-#u4_img {
+#u6_img {
     position:absolute;
     left:0px;
     top:0px;
@@ -110,7 +144,7 @@ div {
     height:40px;
 }
 
-.u5 {
+.u7 {
     position:absolute;
     left:2px;
     top:12px;
@@ -124,11 +158,11 @@ div {
     word-wrap:break-word;
 }
 
-.u6_line {
-    background-image: url('../91Mobiles_Home_files/u6_line.png');
+.u8_line {
+    background-image: url('../91Mobiles_Home_files/u8_line.png');
 }
 
-.u6_line {
+.u8_line {
     position:absolute;
     left:0px;
     top:3px;
@@ -136,7 +170,7 @@ div {
     height:5px;
 }
 
-.u6 {
+.u8 {
     position:absolute;
     left:1124px;
     top:168px;
@@ -145,11 +179,11 @@ div {
     
 }
 
-.u7_line {
-    background-image: url('../91Mobiles_Home_files/u7_line.png');
+.u9_line {
+    background-image: url('../91Mobiles_Home_files/u9_line.png');
 }
 
-.u7_line {
+.u9_line {
     position:absolute;
     left:0px;
     top:4px;
@@ -157,7 +191,7 @@ div {
     height:3px;
 }
 
-.u7 {
+.u9 {
     position:absolute;
     left:1124px;
     top:197px;
@@ -166,7 +200,7 @@ div {
     
 }
 
-.u8 {
+.u10 {
     position:absolute;
     left:1128px;
     top:178px;
@@ -180,77 +214,11 @@ div {
     word-wrap:break-word;
 }
 
-.u9_normal {
-    background-image: url('../91Mobiles_Home_files/u9_normal.png');
+.u11_normal {
+    background-image: url('../91Mobiles_Home_files/u11_normal.png');
 }
 
-.u9_container {
-    position:absolute;
-    left:302px;
-    top:168px;
-    width:976px;
-    height:39px;
-}
-
-#u9_img {
-    position:absolute;
-    left:-3px;
-    top:-3px;
-    width:982px;
-    height:45px;
-}
-
-.u10 {
-    position:absolute;
-    left:2px;
-    top:12px;
-    width:972px;
-    height:16px;
-    ;
-    ;
-    ;
-    font-family:Arial;
-    text-align:left;
-    word-wrap:break-word;
-}
-
-.u11 {
-    position:absolute;
-    left:626px;
-    top:167px;
-    width:382px;
-    height:16px;
-    ;
-    ;
-    ;
-    font-family:Arial;
-    text-align:left;
-    word-wrap:break-word;
-}
-
-.u12 {
-    position:absolute;
-    left:1012px;
-    top:165px;
-    width:130px;
-    height:20px;
-    ;
-    ;
-    text-align: left;;
-    font-family:'Arial';
-    font-size: 13px;
-    color:#949494;
-    font-style:normal;
-    font-weight:normal;
-    text-decoration:none;
-    
-}
-
-.u13_normal {
-    background-image: url('../91Mobiles_Home_files/u13_normal.png');
-}
-
-.u13_container {
+.u11_container {
     position:absolute;
     left:301px;
     top:188px;
@@ -258,7 +226,7 @@ div {
     height:40px;
 }
 
-#u13_img {
+#u11_img {
     position:absolute;
     left:0px;
     top:0px;
@@ -266,7 +234,7 @@ div {
     height:40px;
 }
 
-.u14 {
+.u12 {
     position:absolute;
     left:2px;
     top:12px;
@@ -280,31 +248,65 @@ div {
     word-wrap:break-word;
 }
 
+.u13_normal {
+    background-image: url('../91Mobiles_Home_files/u13_normal.png');
+}
+
+.u13_container {
+    position:absolute;
+    left:287px;
+    top:208px;
+    width:14px;
+    height:31px;
+}
+
+#u13_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:14px;
+    height:31px;
+}
+
+.u14 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:10px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
 .u15_normal {
-    background-image: url('../91Mobiles_Home_files/u15_normal.png');
+    background-image: url('../91Mobiles_Home_files/u13_normal.png');
 }
 
 .u15_container {
     position:absolute;
-    left:1147px;
-    top:165px;
-    width:52px;
-    height:18px;
+    left:1279px;
+    top:208px;
+    width:14px;
+    height:31px;
 }
 
 #u15_img {
     position:absolute;
-    left:-3px;
-    top:-3px;
-    width:58px;
-    height:24px;
+    left:0px;
+    top:0px;
+    width:14px;
+    height:31px;
 }
 
 .u16 {
     position:absolute;
     left:2px;
-    top:1px;
-    width:48px;
+    top:8px;
+    width:10px;
     height:16px;
     ;
     ;
@@ -315,30 +317,30 @@ div {
 }
 
 .u17_normal {
-    background-image: url('../91Mobiles_Home_files/u17_normal.png');
+    background-image: url('../resources/images/transparent.gif');
 }
 
 .u17_container {
     position:absolute;
-    left:1211px;
-    top:165px;
-    width:60px;
-    height:18px;
+    left:1124px;
+    top:191px;
+    width:154px;
+    height:36px;
 }
 
 #u17_img {
     position:absolute;
     left:-3px;
     top:-3px;
-    width:66px;
-    height:24px;
+    width:160px;
+    height:42px;
 }
 
 .u18 {
     position:absolute;
     left:2px;
-    top:1px;
-    width:56px;
+    top:10px;
+    width:150px;
     height:16px;
     ;
     ;
@@ -354,25 +356,29 @@ div {
 
 .u19_container {
     position:absolute;
-    left:287px;
-    top:208px;
-    width:14px;
-    height:31px;
+    left:308px;
+    top:163px;
+    width:970px;
+    height:27px;-webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+
 }
 
 #u19_img {
     position:absolute;
-    left:0px;
-    top:0px;
-    width:14px;
-    height:31px;
+    left:-3px;
+    top:-3px;
+    width:976px;
+    height:33px;
 }
 
 .u20 {
     position:absolute;
     left:2px;
-    top:8px;
-    width:10px;
+    top:6px;
+    width:966px;
     height:16px;
     ;
     ;
@@ -382,66 +388,98 @@ div {
     word-wrap:break-word;
 }
 
-.u21_normal {
-    background-image: url('../91Mobiles_Home_files/u19_normal.png');
-}
-
-.u21_container {
+.u21 {
     position:absolute;
-    left:1279px;
-    top:208px;
-    width:14px;
-    height:31px;
-}
-
-#u21_img {
-    position:absolute;
-    left:0px;
-    top:0px;
-    width:14px;
-    height:31px;
+    left:556px;
+    top:167px;
+    width:382px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
 }
 
 .u22 {
     position:absolute;
-    left:2px;
-    top:8px;
-    width:10px;
+    left:948px;
+    top:168px;
+    width:194px;
     height:16px;
     ;
     ;
-    ;
-    font-family:Arial;
-    text-align:left;
-    word-wrap:break-word;
+    text-align: left;;
+    font-family:'Arial';
+    font-size: 11px;
+    color:#949494;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
 }
 
 .u23_normal {
-    background-image: url('../resources/images/transparent.gif');
+    background-image: url('../91Mobiles_Home_files/u23_normal.png');
 }
 
 .u23_container {
     position:absolute;
-    left:1124px;
-    top:191px;
-    width:154px;
-    height:36px;
+    left:1147px;
+    top:167px;
+    width:52px;
+    height:15px;
 }
 
 #u23_img {
     position:absolute;
     left:-3px;
     top:-3px;
-    width:160px;
-    height:42px;
+    width:58px;
+    height:21px;
 }
 
 .u24 {
     position:absolute;
     left:2px;
-    top:10px;
-    width:150px;
-    height:16px;
+    top:0px;
+    width:48px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u25_normal {
+    background-image: url('../91Mobiles_Home_files/u25_normal.png');
+}
+
+.u25_container {
+    position:absolute;
+    left:1211px;
+    top:167px;
+    width:60px;
+    height:15px;
+}
+
+#u25_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:66px;
+    height:21px;
+}
+
+.u26 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:56px;
+    height:14px;
     ;
     ;
     ;

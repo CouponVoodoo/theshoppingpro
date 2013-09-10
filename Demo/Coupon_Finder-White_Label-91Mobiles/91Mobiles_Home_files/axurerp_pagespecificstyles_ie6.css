@@ -13,19 +13,24 @@
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="91Mobiles_Home_files/u4_normal.png");
 }
 
-* html .u6_line {
+* html .u6_normal {
     background-image: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="91Mobiles_Home_files/u6_line.png");
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="91Mobiles_Home_files/u6_normal.png");
 }
 
-* html .u7_line {
+* html .u8_line {
     background-image: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="91Mobiles_Home_files/u7_line.png");
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="91Mobiles_Home_files/u8_line.png");
 }
 
-* html .u9_normal {
+* html .u9_line {
     background-image: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="91Mobiles_Home_files/u9_normal.png");
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="91Mobiles_Home_files/u9_line.png");
+}
+
+* html .u11_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="91Mobiles_Home_files/u11_normal.png");
 }
 
 * html .u13_normal {
@@ -35,12 +40,7 @@
 
 * html .u15_normal {
     background-image: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="91Mobiles_Home_files/u15_normal.png");
-}
-
-* html .u17_normal {
-    background-image: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="91Mobiles_Home_files/u17_normal.png");
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="91Mobiles_Home_files/u13_normal.png");
 }
 
 * html .u19_normal {
@@ -48,8 +48,13 @@
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="91Mobiles_Home_files/u19_normal.png");
 }
 
-* html .u21_normal {
+* html .u23_normal {
     background-image: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="91Mobiles_Home_files/u19_normal.png");
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="91Mobiles_Home_files/u23_normal.png");
+}
+
+* html .u25_normal {
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="91Mobiles_Home_files/u25_normal.png");
 }
 
