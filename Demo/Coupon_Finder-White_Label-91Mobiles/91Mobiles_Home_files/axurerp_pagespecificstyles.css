@@ -1,0 +1,452 @@
+﻿body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../91Mobiles_Home_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:0px;
+    top:240px;
+    width:1579px;
+    height:544px;
+}
+
+#u0_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:1579px;
+    height:544px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:264px;
+    width:1575px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_normal {
+    background-image: url('../91Mobiles_Home_files/u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:1579px;
+    height:207px;
+}
+
+#u2_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:1579px;
+    height:207px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:96px;
+    width:1575px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_normal {
+    background-image: url('../91Mobiles_Home_files/u4_normal.png');
+}
+
+.u4_container {
+    position:absolute;
+    left:971px;
+    top:168px;
+    width:143px;
+    height:40px;
+}
+
+#u4_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:143px;
+    height:40px;
+}
+
+.u5 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:139px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6_line {
+    background-image: url('../91Mobiles_Home_files/u6_line.png');
+}
+
+.u6_line {
+    position:absolute;
+    left:0px;
+    top:3px;
+    width:147px;
+    height:5px;
+}
+
+.u6 {
+    position:absolute;
+    left:1124px;
+    top:168px;
+    width:147px;
+    height:10px;
+    
+}
+
+.u7_line {
+    background-image: url('../91Mobiles_Home_files/u7_line.png');
+}
+
+.u7_line {
+    position:absolute;
+    left:0px;
+    top:4px;
+    width:147px;
+    height:3px;
+}
+
+.u7 {
+    position:absolute;
+    left:1124px;
+    top:197px;
+    width:147px;
+    height:10px;
+    
+}
+
+.u8 {
+    position:absolute;
+    left:1128px;
+    top:178px;
+    width:127px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u9_normal {
+    background-image: url('../91Mobiles_Home_files/u9_normal.png');
+}
+
+.u9_container {
+    position:absolute;
+    left:302px;
+    top:168px;
+    width:976px;
+    height:39px;
+}
+
+#u9_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:982px;
+    height:45px;
+}
+
+.u10 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:972px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u11 {
+    position:absolute;
+    left:626px;
+    top:167px;
+    width:382px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u12 {
+    position:absolute;
+    left:1012px;
+    top:165px;
+    width:130px;
+    height:20px;
+    ;
+    ;
+    text-align: left;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#949494;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u13_normal {
+    background-image: url('../91Mobiles_Home_files/u13_normal.png');
+}
+
+.u13_container {
+    position:absolute;
+    left:301px;
+    top:188px;
+    width:977px;
+    height:40px;
+}
+
+#u13_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:977px;
+    height:40px;
+}
+
+.u14 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:973px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u15_normal {
+    background-image: url('../91Mobiles_Home_files/u15_normal.png');
+}
+
+.u15_container {
+    position:absolute;
+    left:1147px;
+    top:165px;
+    width:52px;
+    height:18px;
+}
+
+#u15_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:58px;
+    height:24px;
+}
+
+.u16 {
+    position:absolute;
+    left:2px;
+    top:1px;
+    width:48px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u17_normal {
+    background-image: url('../91Mobiles_Home_files/u17_normal.png');
+}
+
+.u17_container {
+    position:absolute;
+    left:1211px;
+    top:165px;
+    width:60px;
+    height:18px;
+}
+
+#u17_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:66px;
+    height:24px;
+}
+
+.u18 {
+    position:absolute;
+    left:2px;
+    top:1px;
+    width:56px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u19_normal {
+    background-image: url('../91Mobiles_Home_files/u19_normal.png');
+}
+
+.u19_container {
+    position:absolute;
+    left:287px;
+    top:208px;
+    width:14px;
+    height:31px;
+}
+
+#u19_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:14px;
+    height:31px;
+}
+
+.u20 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:10px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u21_normal {
+    background-image: url('../91Mobiles_Home_files/u19_normal.png');
+}
+
+.u21_container {
+    position:absolute;
+    left:1279px;
+    top:208px;
+    width:14px;
+    height:31px;
+}
+
+#u21_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:14px;
+    height:31px;
+}
+
+.u22 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:10px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u23_normal {
+    background-image: url('../resources/images/transparent.gif');
+}
+
+.u23_container {
+    position:absolute;
+    left:1124px;
+    top:191px;
+    width:154px;
+    height:36px;
+}
+
+#u23_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:160px;
+    height:42px;
+}
+
+.u24 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:150px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
