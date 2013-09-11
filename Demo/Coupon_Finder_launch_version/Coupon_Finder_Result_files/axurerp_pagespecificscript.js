@@ -1,24 +1,13 @@
-﻿for(var i = 0; i < 85; i++) { var scriptId = 'u' + i; window[scriptId] = document.getElementById(scriptId); }
+﻿for(var i = 0; i < 83; i++) { var scriptId = 'u' + i; window[scriptId] = document.getElementById(scriptId); }
 
 $axure.eventManager.pageLoad(
 function (e) {
 
 });
-gv_vAlignTable['u21'] = 'center';gv_vAlignTable['u51'] = 'top';gv_vAlignTable['u25'] = 'center';gv_vAlignTable['u55'] = 'top';gv_vAlignTable['u46'] = 'center';gv_vAlignTable['u68'] = 'top';gv_vAlignTable['u76'] = 'center';gv_vAlignTable['u48'] = 'top';gv_vAlignTable['u27'] = 'center';gv_vAlignTable['u32'] = 'top';gv_vAlignTable['u23'] = 'center';gv_vAlignTable['u62'] = 'top';document.getElementById('u53_img').tabIndex = 0;
+document.getElementById('u51_img').tabIndex = 0;
 
-u53.style.cursor = 'pointer';
-$axure.eventManager.click('u53', function(e) {
-
-if (true) {
-
-	NewTab($axure.globalVariableProvider.getLinkUrl('Interim_Page.html'), "");
-
-}
-});
-gv_vAlignTable['u1'] = 'center';gv_vAlignTable['u38'] = 'center';gv_vAlignTable['u67'] = 'top';gv_vAlignTable['u60'] = 'center';gv_vAlignTable['u34'] = 'top';gv_vAlignTable['u64'] = 'top';gv_vAlignTable['u19'] = 'center';gv_vAlignTable['u79'] = 'center';gv_vAlignTable['u81'] = 'center';gv_vAlignTable['u11'] = 'center';gv_vAlignTable['u17'] = 'center';gv_vAlignTable['u15'] = 'center';document.getElementById('u45_img').tabIndex = 0;
-
-u45.style.cursor = 'pointer';
-$axure.eventManager.click('u45', function(e) {
+u51.style.cursor = 'pointer';
+$axure.eventManager.click('u51', function(e) {
 
 if (true) {
 
@@ -26,10 +15,10 @@ if (true) {
 
 }
 });
-gv_vAlignTable['u36'] = 'center';gv_vAlignTable['u66'] = 'center';document.getElementById('u83_img').tabIndex = 0;
+gv_vAlignTable['u16'] = 'center';gv_vAlignTable['u55'] = 'top';gv_vAlignTable['u46'] = 'top';gv_vAlignTable['u68'] = 'center';document.getElementById('u76_img').tabIndex = 0;
 
-u83.style.cursor = 'pointer';
-$axure.eventManager.click('u83', function(e) {
+u76.style.cursor = 'pointer';
+$axure.eventManager.click('u76', function(e) {
 
 if (true) {
 
@@ -37,10 +26,21 @@ if (true) {
 
 }
 });
-gv_vAlignTable['u57'] = 'top';gv_vAlignTable['u13'] = 'center';gv_vAlignTable['u52'] = 'top';gv_vAlignTable['u43'] = 'top';gv_vAlignTable['u3'] = 'center';gv_vAlignTable['u47'] = 'top';gv_vAlignTable['u6'] = 'top';gv_vAlignTable['u50'] = 'center';gv_vAlignTable['u54'] = 'center';gv_vAlignTable['u84'] = 'center';gv_vAlignTable['u31'] = 'center';gv_vAlignTable['u61'] = 'top';document.getElementById('u65_img').tabIndex = 0;
+gv_vAlignTable['u48'] = 'center';gv_vAlignTable['u8'] = 'center';gv_vAlignTable['u32'] = 'top';gv_vAlignTable['u62'] = 'top';gv_vAlignTable['u53'] = 'top';gv_vAlignTable['u1'] = 'center';gv_vAlignTable['u38'] = 'center';gv_vAlignTable['u30'] = 'top';gv_vAlignTable['u60'] = 'top';gv_vAlignTable['u34'] = 'center';gv_vAlignTable['u64'] = 'center';gv_vAlignTable['u49'] = 'top';gv_vAlignTable['u79'] = 'center';document.getElementById('u81_img').tabIndex = 0;
 
-u65.style.cursor = 'pointer';
-$axure.eventManager.click('u65', function(e) {
+u81.style.cursor = 'pointer';
+$axure.eventManager.click('u81', function(e) {
+
+if (true) {
+
+    self.location.href="resources/reload.html#" + encodeURI($axure.globalVariableProvider.getLinkUrl($axure.pageData.url));
+
+}
+});
+gv_vAlignTable['u41'] = 'top';gv_vAlignTable['u45'] = 'top';gv_vAlignTable['u36'] = 'center';gv_vAlignTable['u66'] = 'top';gv_vAlignTable['u2'] = 'top';document.getElementById('u57_img').tabIndex = 0;
+
+u57.style.cursor = 'pointer';
+$axure.eventManager.click('u57', function(e) {
 
 if (true) {
 
@@ -48,10 +48,32 @@ if (true) {
 
 }
 });
-gv_vAlignTable['u56'] = 'top';gv_vAlignTable['u5'] = 'top';gv_vAlignTable['u82'] = 'top';gv_vAlignTable['u9'] = 'center';gv_vAlignTable['u42'] = 'center';gv_vAlignTable['u72'] = 'center';gv_vAlignTable['u63'] = 'top';gv_vAlignTable['u58'] = 'top';document.getElementById('u80_img').tabIndex = 0;
+gv_vAlignTable['u22'] = 'center';gv_vAlignTable['u52'] = 'center';document.getElementById('u43_img').tabIndex = 0;
 
-u80.style.cursor = 'pointer';
-$axure.eventManager.click('u80', function(e) {
+u43.style.cursor = 'pointer';
+$axure.eventManager.click('u43', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('Interim_Page.html'), "");
+
+}
+});
+gv_vAlignTable['u3'] = 'top';gv_vAlignTable['u6'] = 'center';gv_vAlignTable['u77'] = 'center';gv_vAlignTable['u28'] = 'center';gv_vAlignTable['u20'] = 'center';gv_vAlignTable['u50'] = 'top';gv_vAlignTable['u24'] = 'center';gv_vAlignTable['u54'] = 'top';gv_vAlignTable['u61'] = 'top';gv_vAlignTable['u26'] = 'center';gv_vAlignTable['u65'] = 'top';gv_vAlignTable['u56'] = 'top';gv_vAlignTable['u82'] = 'center';gv_vAlignTable['u12'] = 'center';gv_vAlignTable['u42'] = 'top';gv_vAlignTable['u72'] = 'center';document.getElementById('u63_img').tabIndex = 0;
+
+u63.style.cursor = 'pointer';
+$axure.eventManager.click('u63', function(e) {
+
+if (true) {
+
+	NewTab($axure.globalVariableProvider.getLinkUrl('Interim_Page.html'), "");
+
+}
+});
+gv_vAlignTable['u18'] = 'center';gv_vAlignTable['u58'] = 'center';gv_vAlignTable['u80'] = 'top';gv_vAlignTable['u10'] = 'center';gv_vAlignTable['u40'] = 'center';gv_vAlignTable['u70'] = 'center';gv_vAlignTable['u14'] = 'center';gv_vAlignTable['u44'] = 'center';document.getElementById('u78_img').tabIndex = 0;
+
+u78.style.cursor = 'pointer';
+$axure.eventManager.click('u78', function(e) {
 
 if (true) {
 
@@ -59,26 +81,4 @@ if (true) {
 
 }
 });
-gv_vAlignTable['u40'] = 'center';gv_vAlignTable['u70'] = 'center';gv_vAlignTable['u44'] = 'top';document.getElementById('u78_img').tabIndex = 0;
-
-u78.style.cursor = 'pointer';
-$axure.eventManager.click('u78', function(e) {
-
-if (true) {
-
-    self.location.href="resources/reload.html#" + encodeURI($axure.globalVariableProvider.getLinkUrl($axure.pageData.url));
-
-}
-});
-gv_vAlignTable['u74'] = 'center';gv_vAlignTable['u29'] = 'center';document.getElementById('u59_img').tabIndex = 0;
-
-u59.style.cursor = 'pointer';
-$axure.eventManager.click('u59', function(e) {
-
-if (true) {
-
-	NewTab($axure.globalVariableProvider.getLinkUrl('Interim_Page.html'), "");
-
-}
-});
-gv_vAlignTable['u4'] = 'top';
+gv_vAlignTable['u74'] = 'center';gv_vAlignTable['u29'] = 'top';gv_vAlignTable['u59'] = 'top';
