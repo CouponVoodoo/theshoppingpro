@@ -4,10 +4,10 @@ function coupon_finder_menu() {
   $items = array();
 
   $items['coupon-finder'] = array( //this creates a URL that will call this form at "examples/form-example"
-    'title' => 'Coupon Finder', //page title
-    'page callback' => 'drupal_get_form', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
-    'page arguments' => array('coupon_finder_form'), //put the name of the form here
-    'access callback' => TRUE
+      'title' => 'Coupon Finder', //page title
+      'page callback' => 'drupal_get_form', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
+      'page arguments' => array('coupon_finder_form'), //put the name of the form here
+      'access callback' => TRUE
   );
 
   $items['coupon-result/%'] = array(
@@ -36,21 +36,21 @@ function coupon_finder_theme() {
 }
 
 
-function coupon_finder_form(){
+function coupon_finder_form() {
 
   $form['title'] = array('#markup' => t('<h2 class="coupon_title">Coupon Finder</h2>'));
   $form['descrip'] = array('#markup' => t('<p>Coupon finder is your magical tool that automatically finds coupons for the product that you want to buy. Just enter the URL of the product you want to buy below and get the best coupons that work right away:</p>'));
   $form['URL'] = array(
-    '#type' => 'textfield',
-	'#size' => 100,
-    '#maxlength' => 255,
-    '#required' => TRUE,
+      '#type' => 'textfield',
+      '#size' => 100,
+      '#maxlength' => 255,
+      '#required' => TRUE,
   );
-   $form['actions']['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Find Coupon'),
+  $form['actions']['submit'] = array(
+      '#type' => 'submit',
+      '#value' => t('Find Coupon'),
   );
-    $form['bottomcontent'] = array('#markup' => block_render('block','26'));
+  $form['bottomcontent'] = array('#markup' => block_render('block','26'));
 
   return $form;
 
@@ -59,7 +59,7 @@ function coupon_finder_form(){
 function coupon_finder_form_validate($form, &$form_state) {
 
 
- if (($form_state['values']['URL'] == "")){
+  if (($form_state['values']['URL'] == "")) {
     form_set_error('URL', t('URL shouldn\'t be empty.'));
   }
 
@@ -68,23 +68,23 @@ function coupon_finder_form_validate($form, &$form_state) {
 
 function coupon_finder_form_submit($form, &$form_state) {
 
-	$form_state['redirect'] = 'coupon-result/'.urlencode($form_state['values']['URL']);
+  $form_state['redirect'] = 'coupon-result/'.urlencode($form_state['values']['URL']);
 }
 
-function coupon_finder_result(){
+function coupon_finder_result() {
 
 
 //$oo=coupon_finder_form_submit($form, &$form_state);
 
-$output=urldecode(arg(1));
+  $output=urldecode(arg(1));
 
 
- $data = array(
+  $data = array(
       'URL' => $output,
   );
 
 
-return theme('coupon_finder_result_page', array('data' => $data));
+  return theme('coupon_finder_result_page', array('data' => $data));
 
 }
 
@@ -94,29 +94,29 @@ return theme('coupon_finder_result_page', array('data' => $data));
  * Implementation of hook_theme
  */
 /**
-* Implements hook_block_info().
-*/
+ * Implements hook_block_info().
+ */
 function coupon_finder_block_info() {
   $blocks['coupon_finder_block'] = array(
-    'info' => t('Coupon finder block.'), //The name that will appear in the block list.
-    'cache' => DRUPAL_CACHE_PER_ROLE, //Default
+      'info' => t('Coupon finder block.'), //The name that will appear in the block list.
+      'cache' => DRUPAL_CACHE_PER_ROLE, //Default
   );
   return $blocks;
 }
 
 /**
-* Implements hook_block_view().
-*
-* Prepares the contents of the block.
-*/
+ * Implements hook_block_view().
+ *
+ * Prepares the contents of the block.
+ */
 function coupon_finder_block_view($delta = '') {
-$block = array();
-  switch($delta){
+  $block = array();
+  switch($delta) {
     case 'coupon_finder_block':
       $block['subject'] = t('');
-	   $block['content'] = drupal_get_form('coupon_finder_form');
-	break;
-    
+      $block['content'] = drupal_get_form('coupon_finder_form');
+      break;
+
   }
- return $block;
+  return $block;
 }
