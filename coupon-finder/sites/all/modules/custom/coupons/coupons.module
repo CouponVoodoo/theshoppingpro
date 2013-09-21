@@ -127,7 +127,6 @@ function coupons_finder_form($form, &$form_state, $small = true) {
         '#title'=>t('Got it? Try it Out'),
         '#type' => 'textfield',
         '#size' => 70,
-        '#required'=>TRUE,
         '#default'=>t('Enter URL of the Product Page'),
         '#maxlength' => 255,
     );
@@ -147,7 +146,6 @@ function coupons_finder_form($form, &$form_state, $small = true) {
       '#title'=>t('Try Another Product'),
       '#type' => 'textfield',
       '#size' => 100,
-      '#required'=>TRUE,
       '#default'=>t('Enter URL of the Product Page'),
       '#maxlength' => 255,
   );
@@ -172,7 +170,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
 
     $site_info = '<div class="name-and-slogan">
                         <div id="site-name">
-                          <a href="/coupon_finder/" title="Home" rel="home">'. $site_name.'</a>
+                          <a href="/coupon_finder /" title="Home" rel="home">'. $site_name.'</a>
                         </div>
                      <div id="site-slogan">'.variable_get('site_slogan', 'Drupal').'</div>
                   </div>';
@@ -189,7 +187,9 @@ function coupons_finder_form($form, &$form_state, $small = true) {
 }
 
 function coupons_finder_form_validate($form, &$form_state) {
-
+  if (($form_state['values']['url'] == "")) {
+    form_set_error('URL', t('URL shouldn\'t be empty.'));
+  }
 }
 
 function coupons_finder_form_submit($form, &$form_state) {
@@ -229,7 +229,7 @@ function coupons_result($raw_url) {
         $coupons['c_'.$i] = $value->couponCode;
       }
     }
-   # print_r($jsonArray);exit;
+    # print_r($jsonArray);exit;
     drupal_add_js(array('coupons' => $coupons), 'setting');
     drupal_add_js("jQuery(document).ready(function($){
           $('.unlock_coupon').click(function(){

@@ -37,7 +37,7 @@ function basic_preprocess_html(&$vars) {
           )),
           'modalSize'=>array(
               'width' =>'0.38',
-              'height' =>'0.7',
+              'height' =>'0.8',
           ),
           'modalOptions' => array(
               'background'=> '#333',
