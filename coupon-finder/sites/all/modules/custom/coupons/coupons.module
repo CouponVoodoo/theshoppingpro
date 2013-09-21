@@ -25,9 +25,45 @@ function coupons_menu() {
       'type' => MENU_CALLBACK,
   );
 
+  $items['coupons_viewdemo/%ctools_js'] = array(
+      'page callback' => 'coupons_viewdemo',
+      'page arguments' => array(1),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+  );
 
   return $items;
 }
+
+function coupons_viewdemo($ajax) {
+  if ($ajax) {
+    ctools_include('ajax');
+    ctools_include('modal');
+
+    $form_state = array(
+        'ajax' => TRUE,
+        'title' => t('Coupon Voodoo Demo'),
+    );
+
+    // Use ctools to generate ajax instructions for the browser to create
+    // a form in a modal popup.
+    $output = ctools_modal_form_wrapper('coupons_finder_form', $form_state);
+
+    // If the form has been submitted, there may be additional instructions
+    // such as dismissing the modal popup.
+    if (!empty($form_state['ajax_commands'])) {
+      $output = $form_state['ajax_commands'];
+    }
+
+    // Return the ajax instructions to the browser via ajax_render().
+    print ajax_render($output);
+    drupal_exit();
+  }
+  else {
+    return drupal_get_form('coupons_finder_form',true, true);
+  }
+}
+
 
 function coupons_redirect_interim_page() {
   $url = $_GET['s'];
@@ -74,47 +110,105 @@ function coupons_theme() {
 
 
 function coupons_finder_form($form, &$form_state, $small = true) {
+  global $base_url;
+  // Load the modal library and add the modal javascript.
+  ctools_include('modal');
+  ctools_include('ajax');
+  ctools_modal_add_js();
+
+  if ($form_state['ajax']) {
+
+    $form['video'] = array(
+        '#markup' => '<iframe style="margin:0px auto;text-align:center;" frameborder="0" name="cbox1376655443154" width="450" height="400" src="http://www.youtube.com/embed/-dRM0wbydec?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=1&amp;amp;end=93&amp;width=400&amp;height=500&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>',
+    );
+    //Customize modal window
+
+    $form['url'] = array(
+        '#title'=>t('Got it? Try it Out'),
+        '#type' => 'textfield',
+        '#size' => 70,
+        '#required'=>TRUE,
+        '#default'=>t('Enter URL of the Product Page'),
+        '#maxlength' => 255,
+    );
+
+    $form['actions']['submit'] = array(
+        '#type' => 'submit',
+        '#prefix'=>'<div class="submit">',
+        '#suffix'=>'</div>',
+        '#value' => t('Find My Coupons'),
+    );
+
+
+    return $form;
+  }
+
   $form['url'] = array(
       '#title'=>t('Try Another Product'),
       '#type' => 'textfield',
       '#size' => 100,
+      '#required'=>TRUE,
       '#default'=>t('Enter URL of the Product Page'),
       '#maxlength' => 255,
   );
 
+
+
+
   $form['actions']['submit'] = array(
       '#type' => 'submit',
+      '#prefix'=>'<div class="submit">',
+      '#suffix'=>'</div>',
       '#value' => t('Find My Coupons'),
   );
 
   if ($small) {
-    $form['url']['#title'] = t('Know what you want to buy? Just enter the url of the product page and let coupons find you:');
+    $site_name = variable_get('site_name', 'Drupal');
+    $site_name  = explode(" ", $site_name);
+    foreach ($site_name as $key => $value) {
+      $site_name[$key] = "<span class='site_name_$key'>".$value.'</span>';
+    }
+    $site_name = implode(" ", $site_name);
+
+    $site_info = '<div class="name-and-slogan">
+                        <div id="site-name">
+                          <a href="/coupon_finder/" title="Home" rel="home">'. $site_name.'</a>
+                        </div>
+                     <div id="site-slogan">'.variable_get('site_slogan', 'Drupal').'</div>
+                  </div>';
+    $form['url']['#title'] = $site_info. t('Know what you want to buy? Just enter the url of the product page and let coupons find you:');
     $form['url']['#description'] = t('e.g. http://www.jabong.com/giordano-P6868-Black-Analog-Watch-183702.html');
+    //return '<div id="magical-modal-link">' . l($link_text, 'coupons_viewdemo/nojs', array('attributes' => array('class' => 'ctools-use-modal'))) . '</div>';
     $form['actions']['view_video'] = array(
-        '#markup' => l('View Demo','test'),
+        '#markup' => '<a href="'.$base_url.'/coupons_viewdemo/nojs" id="edit-view_video" class="ctools-use-modal form-view_video">View Video</a>',
+        '#prefix'=>'<div class="view_video">',
+        '#suffix'=>'</div>',
     );
   }
   return $form;
 }
 
 function coupons_finder_form_validate($form, &$form_state) {
-  if (($form_state['values']['url'] == "")) {
-    form_set_error('URL', t('URL shouldn\'t be empty.'));
-  }
+
 }
 
 function coupons_finder_form_submit($form, &$form_state) {
-  $form_state['redirect'] = 'coupon-result/'.urlencode($form_state['values']['url']);
+  $redirect = 'coupon-result/'.urlencode($form_state['values']['url']);
+  $form_state['redirect'] = $redirect;
+  if ($form_state['ajax']) {
+    $form_state['ajax_commands'][]  = ctools_ajax_command_redirect($redirect);
+  }
+
 }
 
-function coupons_result($url) {
-  $url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=".urldecode($url);
+function coupons_result($raw_url) {
+  $url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=".urldecode($raw_url);
   $json = file_get_contents($url);
   $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
   $jsonArray = json_decode($jsonData);
   $output = '';
   if(isset($jsonArray)) {
-    $title = t('Results for:'.urldecode($url));
+    $title = t('<span>Results for: </span>  '.urldecode($raw_url));
     $items = array();
     $type = 'ul';
     $attributes = array(
@@ -135,11 +229,13 @@ function coupons_result($url) {
         $coupons['c_'.$i] = $value->couponCode;
       }
     }
+   # print_r($jsonArray);exit;
     drupal_add_js(array('coupons' => $coupons), 'setting');
     drupal_add_js("jQuery(document).ready(function($){
           $('.unlock_coupon').click(function(){
               var coupon_code = Drupal.settings.coupons.c_1;
               $(this).html(Drupal.settings.coupons.c_1);
+              $(this).addClass('copied_coupon')
               var url = $(this).attr('href')+'&c='+coupon_code;
               $(this).attr('href',url);
               return true;

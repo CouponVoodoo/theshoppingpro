@@ -19,6 +19,34 @@ if (theme_get_setting('basic_tabs')) {
 }
 
 function basic_preprocess_html(&$vars) {
+  global $base_url;
+
+  $settings = array(
+      'CToolsModal' => array(
+          'loadingText' => t('Loading...'),
+          'closeText' => t(''),
+          'closeImage' => theme('image', array(
+          'path' => $base_url. "/". drupal_get_path('theme', 'basic')."/images/u6_normal.png",
+          'title' => t('Close window'),
+          'alt' => t('Close window'),
+          )),
+          'throbber' => theme('image', array(
+          'path' => ctools_image_path('throbber.gif'),
+          'title' => t('Loading...'),
+          'alt' => t('Loading'),
+          )),
+          'modalSize'=>array(
+              'width' =>'0.38',
+              'height' =>'0.7',
+          ),
+          'modalOptions' => array(
+              'background'=> '#333',
+          )
+      ),
+  );
+
+  drupal_add_js($settings, 'setting');
+
   global $user;
 
   // Add role name classes (to allow css based show for admin/hidden from user)
@@ -95,6 +123,15 @@ function basic_preprocess_html(&$vars) {
 }
 
 function basic_preprocess_page(&$vars, $hook) {
+
+  $site_name = $vars['site_name'];
+  $site_name  = explode(" ", $site_name);
+  foreach ($site_name as $key => $value) {
+    $site_name[$key] = "<span class='site_name_$key'>".$value.'</span>';
+  }
+  $vars['site_name'] = implode(" ", $site_name);
+
+#print_r($vars);exit;
   if (isset($vars['node_title'])) {
     $vars['title'] = $vars['node_title'];
   }
