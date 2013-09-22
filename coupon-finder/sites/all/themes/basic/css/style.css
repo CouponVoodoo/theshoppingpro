@@ -252,16 +252,23 @@ body:before {
 }
 
 
-#header{background:#000000}
+#header{background:#000000;}
+.front #header  {height:75px}
+#header #logo {padding-top:10px;}
 .headcolor{color:#ff9900}
-#navigation, #header #name-and-slogan ,
+#navigation, #header #logo ,
 #primary,#secondary,#main,#footer
-{width:920px;margin:0px auto;}
-
+{width:920px;margin:0px auto;display:block}
+#main{min-height:450px;}
 .front h1.title{display:none;}
 
-.front #main {padding:10px;background:#f2f2f2;border:1px solid #d7d7d7;margin-top:120px;}
-.front #content{width:720px;margin:50px auto;}
+.front #main {padding:10px;margin-top:50px;}
+.front #content{padding: 50px;
+                background: #f2f2f2;
+                border: 1px solid #d7d7d7;
+                margin: 0px auto;
+                text-align: center;
+}
 .front #coupons-finder-form .form-item-url label{color: #666666;font-size: 13px;font-style: normal;font-weight: normal;text-decoration: none;}
 .front #coupons-finder-form .name-and-slogan{ color: #FF9900;
                                               font-family: Heartbreaker;
@@ -349,6 +356,7 @@ body:before {
                           font-weight: bold;
                           text-decoration: none;
                           padding: 1px;
+                          display:none;
 }
 
 #header .site_name_0{
@@ -393,8 +401,14 @@ body:before {
   margin-top:20px;
 }
 
+.front #coupons-finder-form{
+  width: 670px;
+  margin: 0px auto;
+  text-align: left;
+}
+
 .front #footer{
-  margin-top:200px;
+  margin-top:50px;
 }
 
 #footer .region-footer{margin:0px auto;width:920px;}
@@ -496,6 +510,8 @@ div.ctools-modal-content .modal-content{
   text-decoration: none;
   display:table;
 }
+.search_listing_row .saving{float:left;}
+.row_3{margin-top:20px;}
 .unlock_coupon{
   background: #ff9900;
   padding: 15px;
@@ -515,7 +531,7 @@ a.copied_coupon {
   text-decoration: none;
   font-weight: bold;
   text-align: center;
-  background: green;
+  background: #25ade3;
   border: 1px solid #fff;
 }
 .copy_coupon {
@@ -533,6 +549,7 @@ a.copied_coupon {
   display: inline-block;
   margin-left: 6px;
   padding: 5px;
+  margin-top:-5px;
 }
 
 .best_coupon_image{
@@ -544,6 +561,7 @@ a.copied_coupon {
   display:inline-block;
   margin-top: -5px;
   margin-left: 8px;
+  
 }
 .page-coupon-result .block h3{font-size: 13px;
                               color: #666;
@@ -575,16 +593,18 @@ a.copied_coupon {
 }
 .coupon_window{
   background: none repeat scroll 0 0 #FFFFFF;
-  height: 253px;
+  height: 220px;
   left: 35%;
   margin: auto;
   padding: 15px;
   position: fixed;
   text-align: center;
   top: 32%;
-  width: 464px;
+  width: 400px;
 
 }
+
+
 .coupon_window h1, .coupon_window h2 {
   color: #FF9900;
   font-family: Arial;
@@ -593,9 +613,13 @@ a.copied_coupon {
   font-weight: bold;
   text-decoration: none;
 }
+.coupon_window h2{
+  font-weight:normal;
+  margin-top:20px;
+  font-size: 18px;
+}
 .bridgecode{
   background: none repeat scroll 0 0 #FF9900;
-  border: 1px solid #CC6600;
   border-radius: 15px 15px 15px 15px;
   color: #FFFFFF;
   display: block;
@@ -605,4 +629,10 @@ a.copied_coupon {
   margin: 0 auto;
   padding: 13px;
   width: 140px;
+  text-decoration:none;
 }
+.bridgecode:hover{text-decoration:none;}
+.footer_links{float: right;
+              margin-top: -24px;}
+.footer_links ul {list-style:none;}
+.footer_links ul a {color:#999999;font-weight:bold;}
