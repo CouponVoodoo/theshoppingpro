@@ -340,10 +340,12 @@ body:before {
   display: inline-block;
   background: #ff9900;
   color: white;
+  border:none;
   font-weight: bold;
   font-size: 14px;
   padding: 5px 10px;
   border-radius: 15px;
+  text-decoration:none;
 }
 .front #coupons-finder-form  #edit-submit {float:right;}
 .front #coupons-finder-form  #edit-view_video {float:left;}
