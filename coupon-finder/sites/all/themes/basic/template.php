@@ -20,7 +20,6 @@ if (theme_get_setting('basic_tabs')) {
 
 function basic_preprocess_html(&$vars) {
   global $base_url;
-
   $settings = array(
       'CToolsModal' => array(
           'loadingText' => t('Loading...'),
