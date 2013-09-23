@@ -70,7 +70,9 @@
             <?php endif; ?>
 
             <?php print render($title_suffix); ?>
-            <?php print $messages; ?>
+              <?php if (!$is_front): ?>
+                <?php print $messages; ?>
+              <?php endif; ?>
             <?php print render($page['help']); ?>
 
             <?php if ($tabs): ?>
@@ -85,6 +87,14 @@
         <?php endif; ?>
 
         <div id="content-area">
+          <?php if (($logo) && $is_front): ?>
+            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+              <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>"/>
+            </a>
+          <?php endif; ?>
+          <?php if ($is_front): ?>
+                <?php print $messages; ?>
+          <?php endif; ?>
           <?php print render($page['content']) ?>
         </div>
 
