@@ -255,6 +255,7 @@ body:before {
 #header{background:#000000;}
 .front #header  {height:75px}
 #header #logo {padding-top:10px;}
+#header #logo img{height:55px;}
 .headcolor{color:#ff9900}
 #navigation, #header #logo ,
 #primary,#secondary,#main,#footer
