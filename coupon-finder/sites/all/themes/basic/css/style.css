@@ -342,7 +342,7 @@ body:before {
 #header #coupons-finder-form [type="submit"],
 .front #coupons-finder-form  #edit-view_video
 {
-  height: 30px;
+  height: 40px;
   margin: 0px auto;
   display: inline-block;
   background: #ff9900;
@@ -350,8 +350,9 @@ body:before {
   border:none;
   font-weight: bold;
   font-size: 14px;
-  padding: 5px 10px;
-  border-radius: 15px;
+  padding: 10px 20px;
+  margin: 0px 5px;
+//  border-radius: 15px;
   text-decoration:none;
 }
 .front #coupons-finder-form  #edit-submit {float:right;}
