@@ -100,8 +100,7 @@ function coupons_theme() {
         ),
     );
 
-    return
-    $themes;
+    return $themes;
 }
 
 function coupons_finder_form($form, &$form_state, $small = true) {
@@ -181,6 +180,27 @@ function coupons_finder_form_validate($form, &$form_state) {
     }
     if ((filter_var(($form_state['values']['url']), FILTER_VALIDATE_URL) === false)) {
         form_set_error('url', t('Please enter a valid URL.'));
+    } else {
+        global $base_url;
+        $url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=" . urldecode($form_state['values']['url']);
+        $json = file_get_contents($url);
+        $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
+        $jsonArray = json_decode($jsonData);
+        $output = '';
+        if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "1")) {
+             form_set_error('url','Sorry! This retailer is not covered yet. Please view <a href="http://www.couponvoodoo.com/Retailers-Covered" target="_blank">list</a> of retailers that we cover.');
+        }
+        if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "2")) {
+             form_set_error('url', 'CouponVoodoo only works with the product page url e.g. http://www.jabong.com/giordano-Victory-Black-P9275-Black-Black-Analog-Watch-168021.html.');
+        }
+
+        if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "3")) {
+             form_set_error('url',$jsonArray[0]->Description);
+        }
+
+        if (empty($jsonArray)){
+            form_set_error('url','Bummer! Something went wrong. Please try another product.');
+        }
     }
 }
 
@@ -201,7 +221,7 @@ function coupons_result($raw_url) {
     $output = '';
 
     if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "1")) {
-        return '<span class="error">Sorry! This retailer is not covered yet. Please view list of retailers that we cover.</span>';
+        return '<span class="error">Sorry! This retailer is not covered yet. Please view <a href="http://www.couponvoodoo.com/Retailers-Covered" target="_blank">list</a> of retailers that we cover.</span>';
     }
     if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "2")) {
         return '<span class="error">CouponVoodoo only works with the product page url e.g. http://www.jabong.com/giordano-Victory-Black-P9275-Black-Black-Analog-Watch-168021.html.</span>';
