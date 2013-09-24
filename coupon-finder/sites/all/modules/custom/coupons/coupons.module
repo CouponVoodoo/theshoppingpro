@@ -164,7 +164,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
         $site_name = implode(" ", $site_name);
 
         $form['url']['#title'] = t('Know what you want to buy? Just enter the url of the product page and let coupons find you:');
-        $form['url']['#description'] = t('e.g. http://www.jabong.com/giordano-P6868-Black-Analog-Watch-183702.html');
+        $form['url']['#description'] = t('e.g. http://www.jabong.com/giordano-Victory-Black-P9275-Black-Black-Analog-Watch-168021.html');
         $form['actions']['view_video'] = array(
             '#markup' => '<a href="' . $base_url . '/coupons_viewdemo/nojs" id="edit-view_video" class="ctools-use-modal form-view_video">View Video</a>',
             '#prefix' => '<div class="view_video">',
