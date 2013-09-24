@@ -168,6 +168,10 @@ div.messages {
   background: #bbddff;
   border: 1px solid #aaccee;
 }
+div.messages a{
+  color:#fff;
+  text-decoration:underline;
+}
 
 div.warning {
   color: #884400;
