@@ -664,3 +664,9 @@ a.copied_coupon {
   padding:0px 0px 0px 0px;
 
 }
+
+.shareaholic-canvas {
+    clear: both;
+    left: 0;
+    position: fixed;
+}
