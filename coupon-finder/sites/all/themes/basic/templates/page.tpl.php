@@ -121,7 +121,6 @@
   <?php if ($page['footer']): ?>
     <footer id="footer">
       <?php print render($page['footer']); ?>
-      <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='331143'></div>
     </footer> <!-- /footer -->
   <?php endif; ?>
 
