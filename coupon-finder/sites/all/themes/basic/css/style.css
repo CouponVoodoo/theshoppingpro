@@ -306,12 +306,14 @@ body:before {
                                       font-size: 13px;
                                       font-style: normal;
                                       font-weight: normal;
-                                      height: 25px;
+                                      height: 40px;
                                       left: 300px;
                                       text-align: left;
                                       text-decoration: none;
                                       top: 323px;
                                       width: 670px;
+				      padding: 10px;
+				      margin: 10px 0px;
 }
 
 #site-slogan{color: #FF9900;
