@@ -11,7 +11,7 @@ $axure.eventManager.click('u51', function(e) {
 
 if (true) {
 
-	NewTab($axure.globalVariableProvider.getLinkUrl('Interim_Page.html'), "");
+	NewTab($axure.globalVariableProvider.getLinkUrl('Interim_Page_1.html'), "");
 
 }
 });
@@ -33,7 +33,7 @@ $axure.eventManager.click('u81', function(e) {
 
 if (true) {
 
-    self.location.href="resources/reload.html#" + encodeURI($axure.globalVariableProvider.getLinkUrl($axure.pageData.url));
+	self.location.href=$axure.globalVariableProvider.getLinkUrl('Interim_Page_1.html');
 
 }
 });
@@ -44,7 +44,7 @@ $axure.eventManager.click('u57', function(e) {
 
 if (true) {
 
-	NewTab($axure.globalVariableProvider.getLinkUrl('Interim_Page.html'), "");
+	NewTab($axure.globalVariableProvider.getLinkUrl('Interim_Page_1.html'), "");
 
 }
 });
@@ -55,7 +55,7 @@ $axure.eventManager.click('u43', function(e) {
 
 if (true) {
 
-	NewTab($axure.globalVariableProvider.getLinkUrl('Interim_Page.html'), "");
+	NewTab($axure.globalVariableProvider.getLinkUrl('Interim_Page_1.html'), "");
 
 }
 });
@@ -66,7 +66,7 @@ $axure.eventManager.click('u63', function(e) {
 
 if (true) {
 
-	NewTab($axure.globalVariableProvider.getLinkUrl('Interim_Page.html'), "");
+	NewTab($axure.globalVariableProvider.getLinkUrl('Interim_Page_1.html'), "");
 
 }
 });

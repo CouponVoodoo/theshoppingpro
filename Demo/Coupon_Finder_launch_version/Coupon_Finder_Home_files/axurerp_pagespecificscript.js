@@ -22,7 +22,7 @@ $axure.eventManager.click('u36', function(e) {
 
 if (true) {
 
-	self.location.href=$axure.globalVariableProvider.getLinkUrl('Coupon_Finder_Result.html');
+	self.location.href=$axure.globalVariableProvider.getLinkUrl('Interim_Page.html');
 
 }
 });
