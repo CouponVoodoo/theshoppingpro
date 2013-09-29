@@ -593,7 +593,7 @@ a.copied_coupon {
 #header #coupons-finder-form .form-item-url
 {display:inline-block;}
 #header #coupons-finder-form label{color:#ff9900}
-#header #coupons-finder-form #edit-url{width:600px;height:25px;}
+#header #coupons-finder-form #edit-url{width:600px;height:40px; padding: 10px;}
 
 
 /*Redirecting page*/
