@@ -173,7 +173,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
     }
     
     $loading_image = $base_path . drupal_get_path('theme', 'basic') . '/images/Frugal_Froggy.jpg';
-    $dollor_image = $base_path . drupal_get_path('theme', 'basic') . '/images/loader-dollar.gif';
+    $dollor_image = $base_path . drupal_get_path('theme', 'basic') . '/images/Loader-Dollar.GIF';
     $loading_image_content = '';
     $loading_image_content = "<p text-align='center'>";
     $loading_image_content .= "<frog_title>Frugal Froggy Is Casting His Spell</frog_title>";
