@@ -176,7 +176,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
     $dollor_image = $base_path . drupal_get_path('theme', 'basic') . '/images/Loader-Dollar.gif';
     $loading_image_content = '';
     $loading_image_content = "<p text-align='center'>";
-    $loading_image_content .= "<h3>Frugal Froggy Is Casting His Spell</h3>";
+    $loading_image_content .= "<frog_title>Frugal Froggy Is Casting His Spell</frog_title>";
     $loading_image_content .= "<img class='frog' src='$loading_image' width='400px' alt='Loading...'/>";
     $loading_image_content .= "<img class='dollor' src='$dollor_image' />";
     $loading_image_content .= "</p>";
