@@ -1,6 +1,5 @@
 <?php
 global $base_url;
-$title="Let Coupons Find You!";
 if ($row->Successful=="1") {
   $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u67_normal.png";
 }else {
