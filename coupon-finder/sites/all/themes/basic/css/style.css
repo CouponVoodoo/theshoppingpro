@@ -674,3 +674,27 @@ a.copied_coupon {
     position: fixed;
     top: 16%;
 }
+
+/* By Ashish to make images overlap */
+
+frog_title{
+	text-align: center;
+	color: #F7971C;
+	font-size: 16px;
+	font-weight: bold;}
+img.frog{
+    position: absolute;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: -10;
+    left: 600px;
+    top: 225px;}
+img.dollor{
+    position: absolute;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: -1;
+    left: 773px;
+    top: 525px; }
