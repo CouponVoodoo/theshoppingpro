@@ -678,6 +678,8 @@ a.copied_coupon {
 /* By Ashish to make images overlap */
 
 frog_title{
+	float: left;
+	width:100%;
 	text-align: center;
 	color: #F7971C;
 	font-size: 16px;
