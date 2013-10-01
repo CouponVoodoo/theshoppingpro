@@ -677,15 +677,12 @@ a.copied_coupon {
 
 /* By Ashish to make images overlap */
 
-.frog_title {postion:relative; float:left; width:100%; text-align:center}
+.frog_title {postion:relative; float:left; width:100%; text-align:center;}
 
 img.dollor{
+    left: 645px;
     position: absolute;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: -1;
-    left: 773px;
-    top: 525px; }
+    top: 529px;
+    z-index: 0;}
 
-.page-coupon-finder #content {border:none}
+.page-coupon-finder #content {border:none;}
