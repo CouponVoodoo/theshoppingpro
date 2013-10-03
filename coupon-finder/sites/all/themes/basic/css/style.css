@@ -684,6 +684,6 @@ img.dollor { left: 425px; position: absolute; top: 330px; z-index: 0;}
 
 .page-coupon-result {position:relative;}
 .page-coupon-result .frog_title {margin-top:0;}
-.page-coupon-result .content {position:relative;}
-.page-coupon-result img.dollor {top:300px; left: 180px}
+.page-coupon-result #content {position:relative;}
+.page-coupon-result img.dollor {top:300px; left: 180px;}
 
