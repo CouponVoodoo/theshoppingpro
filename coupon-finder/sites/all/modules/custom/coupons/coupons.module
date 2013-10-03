@@ -222,7 +222,7 @@ function coupons_finder_form_validate($form, &$form_state) {
         if (empty($jsonArray)){
             form_set_error('url','Bummer! Something went wrong. Please try another product.');
         }
-        cache_set($cid, $jsonArray, 'cache', time() + 60*60);
+        cache_set($cid, $jsonArray, 'cache', time() + 1*60);
   //  }
 }
 
