@@ -6,7 +6,8 @@ if ($row->Successful=="1") {
   $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u71_normal.png";
 }
 
-$best_coupon = !empty($row->BestCoupon) ? '<span class="best_coupon">Best Coupon</span>' : '<span class="best_coupon_image"> <img src="'.$image_right.'"  width="100%" /> </span>';
+//$best_coupon = !empty($row->BestCoupon) ? '<span class="best_coupon">Best Coupon</span>' : '<span class="best_coupon_image"> <img src="'.$image_right.'"  width="100%" /> </span>';
+$best_coupon = !empty($row->BestCoupon) ? '<span class="best_coupon">Best Coupon</span>' : '<span class="best_coupon_image red">This coupon does not work for your product</span>';
 ?>
 
 <div class="search_listing_left">
@@ -19,7 +20,7 @@ $best_coupon = !empty($row->BestCoupon) ? '<span class="best_coupon">Best Coupon
     <?php if ($row->Successful=="1") : ?>
     <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving">INR <?php print $row->Saving;?></div><?php print $best_coupon; ?></div>
     <?php else: ?>
-    <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"> - </div><?php print $best_coupon; ?></div>
+    <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"></div><?php print $best_coupon; ?></div>
     <?php endif; ?>
   </div>
   <?php if ($row->Successful != "1") : ?>

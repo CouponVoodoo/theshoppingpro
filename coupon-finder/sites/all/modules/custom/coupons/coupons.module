@@ -1,80 +1,80 @@
 <?php
 
 function coupons_menu() {
-    $items = array();
+  $items = array();
 
-    $items['coupon-finder'] = array(//this creates a URL that will call this form at "examples/form-example"
-        'title' => 'Coupon Finder', //page title
-        'page callback' => 'drupal_get_form', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
-        'page arguments' => array('coupons_finder_form'), //put the name of the form here
-        'access callback' => TRUE
-    );
+  $items['coupon-finder'] = array(//this creates a URL that will call this form at "examples/form-example"
+      'title' => 'Coupon Finder', //page title
+      'page callback' => 'drupal_get_form', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
+      'page arguments' => array('coupons_finder_form'), //put the name of the form here
+      'access callback' => TRUE
+  );
 
-    $items['coupon-result/%'] = array(
-        'title' => t(''),
-        'page callback' => 'coupons_result',
-        'page arguments' => array(1),
-        'access callback' => TRUE,
-        'type' => MENU_CALLBACK,
-    );
+  $items['coupon-result/%'] = array(
+      'title' => t(''),
+      'page callback' => 'coupons_result',
+      'page arguments' => array(1),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+  );
 
-    $items['coupon-redirect'] = array(
-        'page callback' => 'coupons_redirect_interim_page',
-        'page arguments' => array(),
-        'access callback' => TRUE,
-        'type' => MENU_CALLBACK,
-    );
+  $items['coupon-redirect'] = array(
+      'page callback' => 'coupons_redirect_interim_page',
+      'page arguments' => array(),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+  );
 
-    $items['coupons_viewdemo/%ctools_js'] = array(
-        'page callback' => 'coupons_viewdemo',
-        'page arguments' => array(1),
-        'access callback' => TRUE,
-        'type' => MENU_CALLBACK,
-    );
+  $items['coupons_viewdemo/%ctools_js'] = array(
+      'page callback' => 'coupons_viewdemo',
+      'page arguments' => array(1),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+  );
 
-    return $items;
+  return $items;
 }
 
 function coupons_viewdemo($ajax) {
-    if ($ajax) {
-        ctools_include('ajax');
-        ctools_include('modal');
+  if ($ajax) {
+    ctools_include('ajax');
+    ctools_include('modal');
 
-        $form_state = array(
-            'ajax' => TRUE,
-            'title' => t('Coupon Voodoo Demo'),
-        );
+    $form_state = array(
+        'ajax' => TRUE,
+        'title' => t('Coupon Voodoo Demo'),
+    );
 
-        // Use ctools to generate ajax instructions for the browser to create
-        // a form in a modal popup.
-        $output = ctools_modal_form_wrapper('coupons_finder_form', $form_state);
+    // Use ctools to generate ajax instructions for the browser to create
+    // a form in a modal popup.
+    $output = ctools_modal_form_wrapper('coupons_finder_form', $form_state);
 
-        // If the form has been submitted, there may be additional instructions
-        // such as dismissing the modal popup.
-        if (!empty($form_state['ajax_commands'])) {
-            $output = $form_state['ajax_commands'];
-        }
-
-        // Return the ajax instructions to the browser via ajax_render().
-        print ajax_render($output);
-        drupal_exit();
-    } else {
-        return drupal_get_form('coupons_finder_form', true, true);
+    // If the form has been submitted, there may be additional instructions
+    // such as dismissing the modal popup.
+    if (!empty($form_state['ajax_commands'])) {
+      $output = $form_state['ajax_commands'];
     }
+
+    // Return the ajax instructions to the browser via ajax_render().
+    print ajax_render($output);
+    drupal_exit();
+  } else {
+    return drupal_get_form('coupons_finder_form', true, true);
+  }
 }
 
 function coupons_redirect_interim_page() {
-    global $base_url;
-    $url = $_GET['s'];
-    $coupon_code = $_GET['c'];
-    $url = urldecode($url);
-    drupal_add_js("jQuery(window).load(function(){
+  global $base_url;
+  $url = $_GET['s'];
+  $coupon_code = $_GET['c'];
+  $url = urldecode($url);
+  drupal_add_js("jQuery(window).load(function(){
                   setTimeout(function(){
                      window.location.replace(\"" . $url . "\");
                   }, 3000);
         });", array('type' => 'inline', 'scope' => 'footer'));
 
-    return '<div class="coupon_window">
+  return '<div class="coupon_window">
             <h1>Yippee! Coupon Code Copied.</h1>
             <div class="clear"> </div>
             <div class="coupon_window_title">
@@ -93,58 +93,39 @@ function coupons_redirect_interim_page() {
  * Implementation of hook_menu
  */
 function coupons_theme() {
-    $themes = array(
-        'coupons_result_page' => array(
-            'template' => 'coupon-finder-search-page',
-            'variables' => array('data' => null),
-        ),
-    );
+  $themes = array(
+      'coupons_result_page' => array(
+          'template' => 'coupon-finder-search-page',
+          'variables' => array('data' => null),
+      ),
+  );
 
-    return $themes;
+  return $themes;
 }
 
 function coupons_finder_form($form, &$form_state, $small = true) {
-    global $base_url, $logo, $base_path;
+  global $base_url, $logo, $base_path;
 
-    // Load the modal library and add the modal javascript.
-    ctools_include('modal');
-    ctools_include('ajax');
-    ctools_modal_add_js();
+  // Load the modal library and add the modal javascript.
+  ctools_include('modal');
+  ctools_include('ajax');
+  ctools_modal_add_js();
 
-    if ($form_state['ajax']) {
+  if ($form_state['ajax']) {
 
 
-        $form['video'] = array(
-            '#markup' => '<iframe style="margin:0px auto;
+    $form['video'] = array(
+        '#markup' => '<iframe style="margin:0px auto;
         text-align:center;
         " frameborder="0" name="cbox1376655443154" width="450" height="400" src="http://www.youtube.com/embed/-dRM0wbydec?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=1&amp;amp;end=93&amp;width=400&amp;height=500&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>',
-        );
-        //Customize modal window
-
-        $form['url'] = array(
-            '#title' => t('Got it? Try it Out'),
-            '#type' => 'textfield',
-            '#size' => 70,
-            '#attributes' => array('placeholder' => t('Enter Product Page URL')),
-            '#maxlength' => 255,
-        );
-
-        $form['actions']['submit'] = array(
-            '#type' => 'submit',
-            '#prefix' => '<div class="submit">',
-            '#suffix' => '</div>',
-            '#value' => t('Find My Coupons'),
-        );
-
-
-        return $form;
-    }
+    );
+    //Customize modal window
 
     $form['url'] = array(
-        '#title' => t('Try Another Product'),
+        '#title' => t('Got it? Try it Out'),
         '#type' => 'textfield',
-        '#size' => 100,
-        '#attributes' => array('placeholder' => t('Enter Product Page URL')),
+        '#size' => 70,
+        '#attributes' => array('placeholder' => t('Enter Product URL, eg: http://www.jabong.com/Reebok-Linea-White-Running-Shoes-328055.html')),
         '#maxlength' => 255,
     );
 
@@ -155,136 +136,155 @@ function coupons_finder_form($form, &$form_state, $small = true) {
         '#value' => t('Find My Coupons'),
     );
 
-    if ($small) {
-        $site_name = variable_get('site_name', 'Drupal');
-        $site_name = explode(" ", $site_name);
-        foreach ($site_name as $key => $value) {
-            $site_name[$key] = "<span class='site_name_$key'>" . $value . '</span>';
-        }
-        $site_name = implode(" ", $site_name);
 
-        $form['url']['#title'] = t('Know what you want to buy? Just enter the url of the product page and let coupons find you:');
-        $form['url']['#description'] = t('e.g. http://www.jabong.com/giordano-Victory-Black-P9275-Black-Black-Analog-Watch-168021.html');
-        $form['actions']['view_video'] = array(
-            '#markup' => '<a href="' . $base_url . '/coupons_viewdemo/nojs" id="edit-view_video" class="ctools-use-modal form-view_video">View Video</a>',
-            '#prefix' => '<div class="view_video">',
-            '#suffix' => '</div>',
-        );
-    }
-   
- 
-     $loading_image = $base_path . drupal_get_path('theme', 'basic') . '/images/Frugal_Froggy.jpg';
-     $dollor_image = $base_path . drupal_get_path('theme', 'basic') . '/images/Loader-Dollar.gif';
+    return $form;
+  }
+
+  $form['url'] = array(
+      '#title' => t('Try Another Product'),
+      '#type' => 'textfield',
+      '#size' => 100,
+      '#attributes' => array('placeholder' => t('Enter Product URL, eg: http://www.jabong.com/Reebok-Linea-White-Running-Shoes-328055.html')),
+      '#maxlength' => 255,
+  );
+
+  $form['actions']['submit'] = array(
+      '#type' => 'submit',
+      '#prefix' => '<div class="submit">',
+      '#suffix' => '</div>',
+      '#value' => t('Find My Coupons'),
+  );
+
+  if ($small) {
+    $form['url']['#suffix'] = '<div class="whatisthis"><a href="http://www.couponvoodoo.com/Product_Page_Url" target="_blank">Whats this?</a></div>';
+    $form['url']['#title'] = t('Know what you want to buy? Just enter the url of the product page and let coupons find you:');
+    $form['url']['#description'] = t('Try It: <a href="" target="_blank">Nike Dewired Grey Sneakers at Jabong</a>');
+    $form['actions']['view_video'] = array(
+        '#markup' => '<a href="' . $base_url . '/coupons_viewdemo/nojs" id="edit-view_video" class="ctools-use-modal form-view_video">View Video</a>',
+        '#prefix' => '<div class="view_video">',
+        '#suffix' => '</div>',
+    );
+  }
+
+
+  $loading_image = $base_path . drupal_get_path('theme', 'basic') . '/images/Frugal_Froggy.jpg';
+  $dollor_image = $base_path . drupal_get_path('theme', 'basic') . '/images/Loader-Dollar.gif';
 //   $loading_image_content = '';
 //   $loading_image_content = "<p text-align='center' position='relative'>";
-     $loading_image_content .= "<div><p style='text-align:center; position:relative;'><p class='frog_title'> Frugal Froggy Is Casting His Spell</p>";
-     $loading_image_content .= "<img class='frog' src='$loading_image' width='400px' alt='Loading...'/>";
-     $loading_image_content .= "<img class='dollor' src='$dollor_image' /></p></div>";
+  $loading_image_content .= "<div><p style='text-align:center; position:relative;'><p class='frog_title'> Frugal Froggy Is Casting His Spell</p>";
+  $loading_image_content .= "<img class='frog' src='$loading_image' width='400px' alt='Loading...'/>";
+  $loading_image_content .= "<img class='dollor' src='$dollor_image' /></p></div>";
 //   $loading_image_content .= "</p>";
-     $form['loading_image'] = array(
-        '#markup' => $loading_image_content,
-        '#prefix' => '<div id="loading_image_div" style="display:none">',
-        '#suffix' => '</div>',
+  $form['loading_image'] = array(
+      '#markup' => $loading_image_content,
+      '#prefix' => '<div id="loading_image_div" style="display:none">',
+      '#suffix' => '</div>',
 
-    );
-    drupal_add_js(drupal_get_path('module', 'coupons') . '/coupons_loading.js');
-    
-    return $form;
+  );
+  drupal_add_js(drupal_get_path('module', 'coupons') . '/coupons_loading.js');
+
+  return $form;
 }
 
 function coupons_finder_form_validate($form, &$form_state) {
- //   if (($form_state['values']['url'] == "")) {
-    //    form_set_error('url', t('URL shouldn\'t be empty.'));
-   // }
-   // if ((filter_var(($form_state['values']['url']), FILTER_VALIDATE_URL) === false)) {
+  //   if (($form_state['values']['url'] == "")) {
+  //    form_set_error('url', t('URL shouldn\'t be empty.'));
+  // }
+  // if ((filter_var(($form_state['values']['url']), FILTER_VALIDATE_URL) === false)) {
   //      form_set_error('url', t('Please enter a valid URL.'));
-   // } else {
-        global $base_url;
-        $cid = urldecode($form_state['values']['url']);
-        if (cache_get($cid)) {
-          return;
-        }
-        $url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=" . urldecode($form_state['values']['url']);
-        $json = file_get_contents($url);
-        $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
-        $jsonArray = json_decode($jsonData);
-        $output = '';
-        if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "1")) {
-             form_set_error('url','Sorry! This retailer is not covered yet. Please view <a href="http://www.couponvoodoo.com/Retailers-Covered" target="_blank">list</a> of retailers that we cover.');
-        }
-        if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "2")) {
-             form_set_error('url', 'CouponVoodoo only works with the product page url e.g. http://www.jabong.com/giordano-Victory-Black-P9275-Black-Black-Analog-Watch-168021.html for products that are still in stock. Please recheck if the url you entered is that of a product and if so that the product is still in stock.');
-        }
+  // } else {
+  global $base_url;
+  $cid = urldecode($form_state['values']['url']);
+  if (cache_get($cid)) {
+    return;
+  }
+  $url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=" . urldecode($form_state['values']['url']);
+  $json = file_get_contents($url);
+  $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
+  $jsonArray = json_decode($jsonData);
+  $output = '';
+  if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "1")) {
+    form_set_error('url','Sorry! This retailer is not covered yet. Please view <a href="http://www.couponvoodoo.com/Retailers-Covered" target="_blank">list</a> of retailers that we cover.');
+  }
+  if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "2")) {
+    form_set_error('url', 'CouponVoodoo only works with the product page url e.g. http://www.jabong.com/giordano-Victory-Black-P9275-Black-Black-Analog-Watch-168021.html for products that are still in stock. Please recheck if the url you entered is that of a product and if so that the product is still in stock.');
+  }
 
-        if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "3")) {
-             form_set_error('url',$jsonArray[0]->Description);
-        }
+  if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "3")) {
+    form_set_error('url',$jsonArray[0]->Description);
+  }
 
-        if (empty($jsonArray)){
-            form_set_error('url','Bummer! Something went wrong. Please try another product.');
-        }
-        cache_set($cid, $jsonArray, 'cache', time() + 1*60);
+  if (empty($jsonArray)) {
+    form_set_error('url','Bummer! Something went wrong. Please try another product.');
+  }
+  cache_set($cid, $jsonArray, 'cache', time() + 1*60);
   //  }
 }
 
 function coupons_finder_form_submit($form, &$form_state) {
-    $redirect = 'coupon-result/' . urlencode($form_state['values']['url']);
-    $form_state['redirect'] = $redirect;
-    if ($form_state['ajax']) {
-        $form_state['ajax_commands'][] = ctools_ajax_command_redirect($redirect);
-    }
+  $redirect = 'coupon-result/' . urlencode($form_state['values']['url']);
+  $form_state['redirect'] = $redirect;
+  if ($form_state['ajax']) {
+    $form_state['ajax_commands'][] = ctools_ajax_command_redirect($redirect);
+  }
 }
 
 function coupons_result($raw_url) {
-    global $base_url;
-    $url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=" . urldecode($raw_url);
-    $cid = urldecode($raw_url);
-    if ($data = cache_get($cid)) {
-      $jsonArray = $data->data;
-    }
-    else {
-      $json = file_get_contents($url);
-      $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
-      $jsonArray = json_decode($jsonData);
-    }
-    $output = '';
+  global $base_url;
+  $url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=" . urldecode($raw_url);
+  $cid = urldecode($raw_url);
 
-    if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "1")) {
-        return '<span class="error">Sorry! This retailer is not covered yet. Please view <a href="http://www.couponvoodoo.com/Retailers-Covered" target="_blank">list</a> of retailers that we cover.</span>';
-    }
-    if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "2")) {
-        return '<span class="error">CouponVoodoo only works with the product page url e.g. http://www.jabong.com/giordano-Victory-Black-P9275-Black-Black-Analog-Watch-168021.html.</span>';
-    }
+  if ($data = cache_get($cid)) {
+    $jsonArray = $data->data;
+  }
+  else {
+    $json = file_get_contents($url);
+    $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
+    $jsonArray = json_decode($jsonData);
+  }
+  $output = '';
 
-    if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "3")) {
-        return '<span class="error">' . $jsonArray[0]->Description . '</span>';
-    }
+  if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "1")) {
+    return '<span class="error">Sorry! This retailer is not covered yet. Please view <a href="http://www.couponvoodoo.com/Retailers-Covered" target="_blank">list</a> of retailers that we cover.</span>';
+  }
+  if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "2")) {
+    return '<span class="error">CouponVoodoo only works with the product page url e.g. http://www.jabong.com/giordano-Victory-Black-P9275-Black-Black-Analog-Watch-168021.html.</span>';
+  }
 
-    if (isset($jsonArray)) {
-        $title = t('<span>Results for: </span>  ' . urldecode($raw_url));
-        $items = array();
-        $type = 'ul';
-        $attributes = array(
-            'id' => 'coupon_search_listing',
-            'class' => 'custom-coupon_search_listing',
-        );
-        $i = 0;
-        $coupons = array();
-        foreach ($jsonArray as $key => $value) {
-            if (is_object($value)) {
-                $i++;
-                $value->counter = $i;
-                $items[] = array(
-                    'data' => theme('coupons_result_page', array('row' => $value)),
-                    'id' => 'search_listing_li_row_' . $i,
-                    'class' => array('search_listing_row_li'),
-                );
-                $coupons['c_' . $i] = $value->couponCode;
-            }
+  if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "3")) {
+    return '<span class="error">' . $jsonArray[0]->Description . '</span>';
+  }
+
+  $is_success = true;
+ # print_r($jsonArray);exit;
+  if (isset($jsonArray)) {
+    $title = t('<span>Results for: </span>  ' . urldecode($raw_url));
+    $items = array();
+    $type = 'ul';
+    $attributes = array(
+        'id' => 'coupon_search_listing',
+        'class' => 'custom-coupon_search_listing',
+    );
+    $i = 0;
+    $coupons = array();
+    foreach ($jsonArray as $key => $value) {
+      if (is_object($value)) {
+        if ($value->Successful =="1") {
+          $is_success = false;
         }
-        # print_r($jsonArray);exit;
-        drupal_add_js(array('coupons' => $coupons), 'setting');
-        drupal_add_js("jQuery(document).ready(function($){
+        $i++;
+        $value->counter = $i;
+        $items[] = array(
+            'data' => theme('coupons_result_page', array('row' => $value)),
+            'id' => 'search_listing_li_row_' . $i,
+            'class' => array('search_listing_row_li'),
+        );
+        $coupons['c_' . $i] = $value->couponCode;
+      }
+    }
+    # print_r($jsonArray);exit;
+    drupal_add_js(array('coupons' => $coupons), 'setting');
+    drupal_add_js("jQuery(document).ready(function($){
           $('.unlock_coupon').click(function(){
               var coupon_code = '';
               var c = jQuery(this).attr('rel');
@@ -304,10 +304,10 @@ function coupons_result($raw_url) {
         });", array('type' => 'inline', 'scope' => 'footer'));
 
 
-        drupal_add_js(drupal_get_path('theme', 'basic') . '/js/jquery.zclip.min.js');
-        drupal_add_js(drupal_get_path('module', 'coupons') . '/coupons.js');
-        $path = $base_url . "/" . drupal_get_path('theme', 'basic') . "/js/ZeroClipboard1.swf";
-        drupal_add_js("jQuery(window).load(function($){
+    drupal_add_js(drupal_get_path('theme', 'basic') . '/js/jquery.zclip.min.js');
+    drupal_add_js(drupal_get_path('module', 'coupons') . '/coupons.js');
+    $path = $base_url . "/" . drupal_get_path('theme', 'basic') . "/js/ZeroClipboard1.swf";
+    drupal_add_js("jQuery(window).load(function($){
                      jQuery('.unlock_coupon').zclip({
                             path:'" . $path . "',
                             copy: function() {
@@ -322,10 +322,16 @@ function coupons_result($raw_url) {
                 });", array('type' => 'inline', 'scope' => 'footer'));
 
 
-        return theme_item_list(array('items' => $items, 'title' => $title, 'type' => $type, 'attributes' => $attributes));
-    } else {
-        return '<span class="error">Bummer! Something went wrong. Please try another product.</span>';
+    if ($is_success) {
+      $error_msg = '<div class="messages error">
+                <h2 class="element-invisible">Error message</h2>
+                    Sorry! We tried our best but no coupons work for your product. Here is a list of coupons we tried:
+          </div>';
     }
+    return theme_item_list(array('items' => $items, 'title' => $title.$error_msg, 'type' => $type, 'attributes' => $attributes));
+  } else {
+    return '<span class="error">Bummer! Something went wrong. Please try another product.</span>';
+  }
 }
 
 /**
@@ -336,10 +342,10 @@ function coupons_result($raw_url) {
  * Implements hook_block_info().
  */
 function coupons_block_info() {
-    $blocks['coupons_block_form'] = array(
-        'info' => t('Coupon finder block.'),
-    );
-    return $blocks;
+  $blocks['coupons_block_form'] = array(
+      'info' => t('Coupon finder block.'),
+  );
+  return $blocks;
 }
 
 /**
@@ -348,11 +354,11 @@ function coupons_block_info() {
  * Prepares the contents of the block.
  */
 function coupons_block_view($delta = '') {
-    $block = array();
-    switch ($delta) {
-        case 'coupons_block_form':
-            $block['content'] = drupal_get_form('coupons_finder_form', false);
-            break;
-    }
-    return $block;
+  $block = array();
+  switch ($delta) {
+    case 'coupons_block_form':
+      $block['content'] = drupal_get_form('coupons_finder_form', false);
+      break;
+  }
+  return $block;
 }

@@ -274,7 +274,13 @@ body:before {
                 margin: 0px auto;
                 text-align: center;
 }
-.front #coupons-finder-form .form-item-url label{color: #666666;font-size: 13px;font-style: normal;font-weight: normal;text-decoration: none;}
+.front #coupons-finder-form .form-item-url label{
+  color: #666666;font-size: 13px;font-style: normal;font-weight: normal;text-decoration: none;
+  
+}
+.front #coupons-finder-form .form-item-url{
+  float:left;width:88%;
+}
 .front #coupons-finder-form .name-and-slogan{ color: #FF9900;
                                               font-family: Heartbreaker;
                                               font-size: 48px;
@@ -311,11 +317,17 @@ body:before {
                                       text-align: left;
                                       text-decoration: none;
                                       top: 323px;
-                                      width: 670px;
-				      padding: 10px;
-				      margin: 10px 0px;
+                                      width: 590px;
+                                      padding: 10px;
+                                      margin: 10px 0px;
 }
+.whatisthis{
+  float: right;
+  position: relative;
+  top: 50px;
+  left: 10px;
 
+}
 #site-slogan{color: #FF9900;
              font-family: Monotype Corsiva;
              font-size: 20px;
@@ -352,7 +364,7 @@ body:before {
   font-size: 14px;
   padding: 10px 20px;
   margin: 0px 5px;
-//  border-radius: 15px;
+  //  border-radius: 15px;
   text-decoration:none;
 }
 .front #coupons-finder-form  #edit-submit {float:right;}
@@ -492,8 +504,8 @@ div.ctools-modal-content .modal-content{
 
 #coupon_search_listing > li{list-style:none;  background-color: #F2F2F2;
                             border: 1px solid #D7D7D7;margin-bottom:15px;
-display: table;
-min-width: 100%;}
+                            display: table;
+                            min-width: 100%;}
 #coupon_search_listing > li .row_1{margin-bottom:10px;}
 .search_listing_left{
   min-height: 86px;
@@ -570,13 +582,9 @@ a.copied_coupon {
 .best_coupon_image{
   text-decoration: none;
   display:inline-block;
-  margin-top: -5px;
-  margin-left: 8px;
-  position:absolute;
-  display:inline-block;
-  margin-top: -5px;
-  margin-left: 8px;
-
+}
+.red{
+  color:red;
 }
 .page-coupon-result .block h3{font-size: 13px;
                               color: #666;
@@ -669,10 +677,10 @@ a.copied_coupon {
 }
 
 .shareaholic-canvas {
-    clear: both;
-    left: 0;
-    position: fixed;
-    top: 20%;
+  clear: both;
+  left: 0;
+  position: fixed;
+  top: 20%;
 }
 
 /* By Ashish to make images overlap */
