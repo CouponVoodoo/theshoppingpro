@@ -221,11 +221,12 @@ function coupons_finder_form_validate($form, &$form_state) {
   if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "3")) {
     form_set_error('url',$jsonArray[0]->Description);
   }
+  //http://www.lenskart.com/kagawa-y2307-black-white-design-c01-eyeglasses.html
 
   if (empty($jsonArray)) {
     form_set_error('url','Bummer! Something went wrong. Please try another product.');
   }
-  cache_set($cid, $jsonArray, 'cache', time() + 1*60);
+  cache_set(base64_decode($cid), $jsonArray, 'cache', time() + 1*60);
   //  }
 }
 
@@ -242,7 +243,7 @@ function coupons_result($raw_url) {
   $url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=" . urldecode($raw_url);
   $cid = urldecode($raw_url);
 
-  if ($data = cache_get($cid)) {
+  if ($data = cache_get(base64_decode($cid))) {
     $jsonArray = $data->data;
   }
   else {
@@ -250,6 +251,7 @@ function coupons_result($raw_url) {
     $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
     $jsonArray = json_decode($jsonData);
   }
+
   $output = '';
 
   if (isset($jsonArray[0]->ErrorCode) && ($jsonArray[0]->ErrorCode == "1")) {
