@@ -119,7 +119,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
  //       text-align:center;
  //       "frameborder="0" name="cbox1376655443154" width="420" height="315" src="//www.youtube.com/embed/M55fFakqGZo?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=1&amp;amp;&amp;width=400&amp;height=500&amp;iframe=true; iframe=true" scrolling="no" class="cboxIframe"></iframe>',
  
-	'#markup' => <iframe width="420" height="315" src="//www.youtube.com/embed/M55fFakqGZo" frameborder="0" allowfullscreen></iframe>;
+	'#markup' => '<iframe width="420" height="315" src="//www.youtube.com/embed/M55fFakqGZo" frameborder="0" allowfullscreen></iframe>';
 
    );
     //Customize modal window
