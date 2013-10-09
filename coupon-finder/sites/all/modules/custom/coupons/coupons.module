@@ -327,8 +327,7 @@ function coupons_result($raw_url) {
 
     if ($is_success) {
       $error_msg = '<div class="messages error">
-                <h2 class="element-invisible">Error message</h2>
-                    Sorry! We tried our best but no coupons work for your product. Here is a list of coupons we tried:
+                Sorry! We tried our best but no coupons work for your products. Well atleast we saved you some time and effort. Here is a list of coupons we tried:
           </div>';
     }
     return theme_item_list(array('items' => $items, 'title' => $title.$error_msg, 'type' => $type, 'attributes' => $attributes));
