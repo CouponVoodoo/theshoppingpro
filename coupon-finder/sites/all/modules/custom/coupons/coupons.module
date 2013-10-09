@@ -117,7 +117,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
     $form['video'] = array(
         '#markup' => '<iframe style="margin:0px auto;
         text-align:center;
-        " frameborder="0" name="cbox1376655443154" width="450" height="400" src="http://www.youtube.com/embed/-dRM0wbydec?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=1&amp;amp;end=93&amp;width=400&amp;height=500&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>',
+        " frameborder="0" name="cbox1376655443154" width="450" height="400" src="http://www.youtube.com/embed/M55fFakqGZo?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=1&amp;amp;&amp;width=400&amp;height=500&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>',
     );
     //Customize modal window
 
