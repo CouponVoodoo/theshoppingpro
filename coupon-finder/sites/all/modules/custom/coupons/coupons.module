@@ -239,7 +239,7 @@ $json = $json->data;
   }
 
  if (strpos($json,'ErrorCode') === false) {
- cache_set(base64_decode($cid), $jsonArray, 'cache', time() + 5*60);   
+ cache_set(base64_decode($cid), $jsonArray, 'cache', time() + 60*60);   
   }
 }
 
