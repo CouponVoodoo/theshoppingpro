@@ -212,12 +212,12 @@ function coupons_finder_form_validate($form, &$form_state) {
 $fullProdUrl = urldecode($form_state['values']['url']);
 
 if(strpos($fullProdUrl,'?') > 1) {
-$prodUrl = explode("?",$fullProdUrl)[0];}
+$prodUrl = reset(explode("?",$fullProdUrl));
+}
 else $prodUrl = $fullProdUrl;
 
 $retailerDomain = get_domain($fullProdUrl);
-$brand = explode(".",$retailerDomain)[0];
-
+$brand = reset(explode(".",$retailerDomain));
 mixpanel_track('URL Search', array(
 'Brand' => $brand,
 'RetailerDomain' => $retailerDomain,
@@ -331,11 +331,11 @@ function coupons_result($raw_url) {
   $fullProdUrl = $cid;
 
 if(strpos($fullProdUrl,'?') > 1) {
-$prodUrl = explode("?",$fullProdUrl)[0];}
+$prodUrl = reset(explode("?",$fullProdUrl));}
 else $prodUrl = $fullProdUrl;
 
 $retailerDomain = get_domain($fullProdUrl);
-$brand = explode(".",$retailerDomain)[0];
+$brand = reset(explode(".",$retailerDomain));
 /*Mixpanel End */
  
   if ($data = cache_get(base64_decode($cid))) {
