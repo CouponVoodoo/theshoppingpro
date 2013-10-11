@@ -207,7 +207,10 @@ function coupons_finder_form_validate($form, &$form_state) {
     return;
   }
   $url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=" . urldecode($form_state['values']['url']);
-  
+ 
+
+ // file_get_contents('http://api.mixpanel.com/track/?data='+)
+mixpanel_track('couponVoodooTest'); 
 
   $json = drupal_http_request($url, array('timeout' => 600.0));
 
