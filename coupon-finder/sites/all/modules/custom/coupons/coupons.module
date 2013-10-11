@@ -34,7 +34,7 @@ function coupons_menu() {
 
   return $items;
 }
- 
+
  function coupons_init(){
 	// this funciton required. please don't remove it until u are not aware fully.
 	// set it to 600 second
@@ -208,10 +208,28 @@ function coupons_finder_form_validate($form, &$form_state) {
   }
   $url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=" . urldecode($form_state['values']['url']);
  
+/* start By Lavesh to track event on mixpanel */
+$fullProdUrl = urldecode($form_state['values']['url']);
 
- // file_get_contents('http://api.mixpanel.com/track/?data='+)
-mixpanel_track('couponVoodooTest'); 
+if(strpos($fullProdUrl,'?') > 1) {
+$prodUrl = explode("?",$fullProdUrl)[0];}
+else $prodUrl = $fullProdUrl;
 
+$retailerDomain = get_domain($fullProdUrl);
+$brand = explode(".",$retailerDomain)[0];
+
+mixpanel_track('URL Search', array(
+'Brand' => $brand,
+'RetailerDomain' => $retailerDomain,
+'FullUrl' => $fullProdUrl,
+'ProdUrl' => $prodUrl
+)
+ );
+
+
+//exit;
+/* End By Lavesh to track event on mixpanel */
+ 
   $json = drupal_http_request($url, array('timeout' => 600.0));
 
 $json = $json->data;
@@ -221,7 +239,46 @@ $json = $json->data;
 
   $jsonArray = json_decode($jsonData);
 
-   
+/* Start By Lavesh to track event on mixpanel */
+//var_dump($jsonArray);
+
+$bestCouponVal = $jsonArray[0]->BestCoupon ;
+if ($bestCouponVal == 1) {
+$isSuccessful = 'yes';
+$couponCode = $jsonArray[0]->couponCode ;
+$saving = $jsonArray[0]->Saving ;
+}
+else {
+$isSuccessful = 'no';
+$couponCode = 'N/A' ;
+$saving = 0;
+}
+$cpnResultJson = '';
+foreach ($jsonArray as $couponResult)
+{if ($couponResult->Successful == 1){
+$cpnSaving = $couponResult->Saving;
+}
+else {
+$cpnSaving = 0;
+}
+$cpnResultJson = $cpnResultJson . $couponResult->couponCode.'~'.$cpnSaving.'|';
+}
+
+ 
+mixpanel_track('Coupon Result', array(
+'Brand' => $brand,
+'RetailerDomain' => $retailerDomain,
+'FullUrl' => $fullProdUrl,
+'ProdUrl' => $prodUrl,
+'isSuccessful' => $isSuccessful,
+'CouponCode' => $couponCode ,
+'Saving' => $saving,
+'FullResultArray' => $cpnResultJson
+)
+ );
+
+
+/* End By Lavesh to track event on mixpanel */   
 
 
   $output = '';
@@ -245,6 +302,18 @@ $json = $json->data;
  cache_set(base64_decode($cid), $jsonArray, 'cache', time() + 60*60);   
   }
 }
+/* Function added by Lavesh to get domain from url */
+
+function get_domain($url)
+{
+  $pieces = parse_url($url);
+  $domain = isset($pieces['host']) ? $pieces['host'] : '';
+  if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) {
+    return $regs['domain'];
+  }
+  return 'N/A.';
+}
+
 
 function coupons_finder_form_submit($form, &$form_state) {
   $redirect = 'coupon-result/' . urlencode($form_state['values']['url']);
@@ -258,7 +327,17 @@ function coupons_result($raw_url) {
   global $base_url;
   $url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=" . urldecode($raw_url);
   $cid = urldecode($raw_url);
+/* Mixpanel start*/
+  $fullProdUrl = $cid;
 
+if(strpos($fullProdUrl,'?') > 1) {
+$prodUrl = explode("?",$fullProdUrl)[0];}
+else $prodUrl = $fullProdUrl;
+
+$retailerDomain = get_domain($fullProdUrl);
+$brand = explode(".",$retailerDomain)[0];
+/*Mixpanel End */
+ 
   if ($data = cache_get(base64_decode($cid))) {
     $jsonArray = $data->data;
   }
@@ -269,9 +348,9 @@ function coupons_result($raw_url) {
 
   $json = $json->data;
 
-
   $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
   $jsonArray = json_decode($jsonData);
+
   }
 
   $output = '';
@@ -312,17 +391,31 @@ function coupons_result($raw_url) {
             'class' => array('search_listing_row_li'),
         );
         $coupons['c_' . $i] = $value->couponCode;
+/* Mixpanel start*/
+        $savings['c_' . $i] = $value->Saving;
+/* Mixpanel end*/
       }
     }
     # print_r($jsonArray);exit;
-    drupal_add_js(array('coupons' => $coupons), 'setting');
-    drupal_add_js("jQuery(document).ready(function($){
+//    drupal_add_js(array('coupons' => $coupons), 'setting');
+    /* mixpanel */
+drupal_add_js(array('coupons' => $coupons, 'savings' => $savings, 'fullProdUrl' => $fullProdUrl, 'prodUrl' => $prodUrl, 'retailerDomain' => $retailerDomain, 'brand' => $brand), 'setting');
+    /* mixpanel */
+drupal_add_js("jQuery(document).ready(function($){
           $('.unlock_coupon').click(function(){
               var coupon_code = '';
+              
               var c = jQuery(this).attr('rel');
               for (var item in Drupal.settings.coupons) {
                 if (item == c){
                   coupon_code = Drupal.settings.coupons[item];
+/*mixpanel*/
+saving = Drupal.settings.savings[item];
+brand =  Drupal.settings.brand;
+fullProdUrl =  Drupal.settings.fullProdUrl;
+prodUrl =  Drupal.settings.prodUrl;
+retailerDomain =  Drupal.settings.retailerDomain;
+/*mixpanel*/
                 }
               }
 
@@ -331,7 +424,13 @@ function coupons_result($raw_url) {
               var url = $(this).attr('href')+'&c='+coupon_code;
               $(this).attr('href',url);
               window.open($(this).attr('href'));
-              return true;
+/* Mixpanel integration Start*/
+mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
+
+/* Mixpanel integration Close*/
+
+
+             return true;
           });
         });", array('type' => 'inline', 'scope' => 'footer'));
 
