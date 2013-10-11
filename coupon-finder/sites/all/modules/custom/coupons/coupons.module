@@ -34,7 +34,7 @@ function coupons_menu() {
 
   return $items;
 }
-
+ 
  function coupons_init(){
 	// this funciton required. please don't remove it until u are not aware fully.
 	// set it to 600 second
