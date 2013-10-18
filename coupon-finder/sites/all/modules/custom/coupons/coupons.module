@@ -455,7 +455,7 @@ mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'B
 
     if ($is_success) {
       $error_msg = '<div class="messages error">
-                Sorry! We tried our best but no coupons work for your product. Here is a list of coupons we tried, please read the response field for each coupon, you maybe able to avail discounts by increasing your cart value or selecting anther product:
+                Sorry! We tried our best but no coupons work for your product. Here is a list of coupons we tried, please read the response field for each coupon, you maybe able to avail discounts by increasing your cart value or selecting a differect product:
           </div>';
     }
     return theme_item_list(array('items' => $items, 'title' => $title.$error_msg, 'type' => $type, 'attributes' => $attributes));
