@@ -166,7 +166,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
   if ($small) {
     $form['url']['#suffix'] = '<div class="whatisthis"><a href="http://www.couponvoodoo.com/Product_Page_Url" target="_blank">Whats this?</a></div>';
     $form['url']['#title'] = t('Know what you want to buy? Just enter the url of the product page and let coupons find you:');
-    $form['url']['#description'] = t('Try It: <a href="http://www.couponvoodoo.com/coupon-result/http%253A%252F%252Fwww.jabong.com%252FNike-Dewired-Grey-Sneakers-325034.html" target="_blank">Nike Dewired Grey Sneakers at Jabong</a>');
+    $form['url']['#description'] = t('Try It: <a href="http://www.couponvoodoo.com/coupon-result/http%253A%252F%252Fwww.jabong.com%252FPuma-917-Mid-20-Ind-Blue-Sneakers-362539.html" target="_blank">Puma 917 Mid 2.0 Ind. Blue Sneakers</a>');
     $form['actions']['view_video'] = array(
         '#markup' => '<a href="' . $base_url . '/coupons_viewdemo/nojs" id="edit-view_video" class="ctools-use-modal form-view_video">View Video</a>',
         '#prefix' => '<div class="view_video">',
