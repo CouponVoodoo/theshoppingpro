@@ -1,0 +1,13 @@
+name = Nice Taxonomy Menu
+description = "Generate block for fast access taxonomy relates contents."
+core = 7.x
+package = Taxonomy
+dependencies[] = taxonomy
+configure = admin/structure/taxonomy/nice_taxonomy_menu
+
+; Information added by drupal.org packaging script on 2013-10-22
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "nice_taxonomy_menu"
+datestamp = "1382427216"
+

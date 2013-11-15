@@ -223,17 +223,6 @@ function sharethis_configuration_form($form, &$form_state) {
     '#type' => 'textfield',
     '#default_value' => variable_get('sharethis_twitter_handle', ''),
   );
-
-/* vinod patch */
-
-$form['advanced']['sharethis_donotcopy'] = array(
-    '#title' => t('Do Not Copy'),
-    '#description' => t("Disables the pasting of 'See more: yourURL.com#SThashtag' after a user copies-and-pastes text."),
-    '#type' => 'checkbox',
-    '#default_value' => variable_get('sharethis_donotcopy', FALSE),
-  );
-
-
   return system_settings_form($form);
 }
 
@@ -388,7 +377,6 @@ function sharethis_get_options_array() {
     'widget' => variable_get('sharethis_widget_option', 'st_multi'),
     'twitter_suffix' => variable_get('sharethis_twitter_suffix', ''),
     'twitter_handle' => variable_get('sharethis_twitter_handle', ''),
-	  'donotcopy' => variable_get('sharethis_donotcopy', FALSE),
     'late_load' => variable_get('sharethis_late_load', FALSE),
   );
 }
@@ -398,32 +386,16 @@ function sharethis_get_options_array() {
  * It returns the appropriate html based on your settings.
  */
 function sharethis_get_button_HTML($data_options, $mPath, $mTitle) {
-$mPath = 'http://www.theshoppingpro.com';
-  $mTitle = 'TheShoppingPro.com | Intelligent Shopping';
   // Inject the extra services.
   foreach ($data_options['option_extras'] as $service) {
     $data_options['services'] .= ',"' . $service . '"';
   }
-  global $user;
+
   // The share buttons are simply spans of the form class='st_SERVICE_BUTTONTYPE' -- "st" stands for ShareThis.
   $type = substr($data_options['buttons'], 4);
   $type = $type == "_" ? "" : check_plain($type);
   $service_array = explode(",", $data_options['services']);
   $st_spans = "";
-  $link = "";
-  if($user->uid)
-  {//$mPath = 'http://www.theshoppingpro.com/referral/777777fb?destination=home';
-  $mPath = url('referral/'. _st_referral_uid2ref($user->uid), array('query' => NULL, 'fragment' => NULL, 'absolute' => TRUE)). "?destination=home"  ;
-  }
-  $st_sample = "";
-     $st_sample .= theme('html_tag', array(
-          'element' => array(
-            '#tag' => 'span',
-            '#attributes' => $attributes,
-            '#value' => '<p><span style="font:14px Georgia;"><h9>Refer Your Friends & get cashback on their purchases for life.</h9></br></span> <span style="font:10px Georgia;"><h8>(Please use buttons below so we can track effectively, also ensure that you are logged in)</h8></span></p>',
-          ),
-      ));
-  
   foreach ($service_array as $service_full) {
     // Strip the quotes from the element in the array (They are there for javascript)
     $service = explode(":", $service_full);
@@ -493,19 +465,11 @@ $mPath = 'http://www.theshoppingpro.com';
   }
 
   // Provide the publisher ID.
-  // doNotCopy option must read 'true'.
-  if ($data_options['donotcopy']) {
-    $data_options['donotcopy'] = 'true';
-  }
-
-  // Provide the options.
-
   $stlight = drupal_json_encode(array(
     'publisher' => $data_options['publisherID'],
-    'doNotCopy' => $data_options['donotcopy'],
   ));
   $st_js .= "<script type='text/javascript'>stLight.options($stlight);</script>";
-  return '<div class="sharethis-wrapper">' . $st_sample . $st_spans . $st_js . '</div>';
+  return '<div class="sharethis-wrapper">' . $st_spans . $st_js . '</div>';
 }
 
 /**
@@ -580,32 +544,6 @@ function sharethis_contextual_links_view_alter(&$element, $items) {
       'href' => 'admin/config/services/sharethis',
     );
   }
-}
-
-function _st_referral_uid2ref($uid) {
-  
-  if ($uid) {
-    if (is_numeric($uid)) {
-      $ref = dechex(_st_referral_hex_seed() + $uid);
-      return $ref;
-    }
-  }
-  return FALSE;
-}
-
-function _st_referral_hex_seed() {
-  $base_url = 'http://www.theshoppingpro.com/';
-  
-  $seed = hexdec(_st_referral_asc2hex(substr($base_url, 7, 4)));
-  return $seed;
-}
-
-function _st_referral_asc2hex($asc_str) {
-  $hex_str = '';
-  for ($i=0; $i<strlen($asc_str); $i++) {
-    $hex_str .= sprintf("%02x", ord(substr($asc_str, $i, 1)));
-  }
-  return $hex_str;
 }
 
 /**

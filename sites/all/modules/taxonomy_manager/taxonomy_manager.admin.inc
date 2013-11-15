@@ -960,8 +960,8 @@ function _taxonomy_manager_term_data_form_filter_file_fields(&$form) {
           $form['term_data']['file_field_info'] = array(
             '#markup' => '<div class="term-data-form-file-field-info">' . t('Edit file fields <a href="!url" target="_blank">here</a>.', array('!url' => url('taxonomy/term/' . $form['term_data']['#term']['tid'] . '/edit'))) . '</div>',
           );
-        //  unset($form['term_data'][$key]);
-        //  break;
+          unset($form['term_data'][$key]);
+          break;
         }
       }
     }

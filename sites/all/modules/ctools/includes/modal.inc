@@ -47,7 +47,7 @@ function ctools_modal_add_js() {
 
   $settings = array(
     'CToolsModal' => array(
-      'loadingText' => t('Wait'),
+      'loadingText' => t('Loading...'),
       'closeText' => t('Close Window'),
       'closeImage' => theme('image', array(
         'path' => ctools_image_path('icon-close-window.png'),
