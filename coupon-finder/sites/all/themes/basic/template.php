@@ -134,7 +134,13 @@ function basic_preprocess_html(&$vars) {
 }
 
 function basic_preprocess_page(&$vars, $hook) {
-
+    
+    /*if (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2))) {
+        $tid = arg(2);
+        $vid = db_query("SELECT vid FROM {taxonomy_term_data} WHERE tid = :tid", array(':tid' => $tid))->fetchField();
+        $vars['theme_hook_suggestions'][] = 'page__vocabulary__' . $vid;
+    }*/
+    
     if (isset($vars['node_title'])) {
         $vars['title'] = $vars['node_title'];
     }
@@ -173,6 +179,20 @@ function basic_preprocess_page(&$vars, $hook) {
 }
 
 function basic_preprocess_node(&$vars) {
+    
+    if (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2))) {
+        $tid = arg(2);
+        $vid = db_query("SELECT vid FROM {taxonomy_term_data} WHERE tid = :tid", array(':tid' => $tid))->fetchField();
+        $vars['theme_hook_suggestions'][] = 'page__vocabulary__' . $vid;
+    }
+    /*if (arg(0) == 'search' && arg(1) == 'site') {
+        //echo '---->'.arg(0);
+        //$tid = arg(2);
+        //$vid = db_query("SELECT vid FROM {taxonomy_term_data} WHERE tid = :tid", array(':tid' => $tid))->fetchField();
+        //$vars['theme_hook_suggestions'][] = 'page__vocabulary__' . $vid;
+        $vars['theme_hook_suggestions'][] = 'custom__search' ;
+    }*/
+    
     // Add a striping class.
     $vars['classes_array'][] = 'node-' . $vars['zebra'];
 

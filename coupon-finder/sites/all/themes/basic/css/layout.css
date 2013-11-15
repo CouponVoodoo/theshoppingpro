@@ -109,11 +109,16 @@ body:before {
   }
 }
 .one-sidebar.sidebar-first #content {
-  display: block;
+  /* display: block;
   float: left;
   margin-right: 2.12766%;
   width: 82.97872%;
-  margin-left: 17.02128%;
+  margin-left: 17.02128%; */
+  display: block;
+    float: left;
+    margin-left: 24.02%;
+    margin-right: 2.12766%;
+    width: 77.98%;
 }
 .one-sidebar.sidebar-first #content:last-child {
   margin-right: 0;
@@ -181,14 +186,14 @@ body:before {
   display: block;
   float: left;
   margin-right: 2.12766%;
-  width: 14.89362%;
+  width: /* 14.89362%; */25.8936%;
   margin-left: -76.59574%;
 }
 #sidebar-first:last-child {
   margin-right: 0;
 }
 .sidebar-first #sidebar-first {
-  margin-left: -102.12766%;
+  margin-left:/*  -102.12766%; */-108.13%
 }
 @media screen and (max-width: 768px) {
   #sidebar-first {

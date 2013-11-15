@@ -3,12 +3,18 @@
   <!-- ______________________ HEADER _______________________ -->
 
   <header id="header">
-
+   <div class="wrap">
     <?php if ($logo): ?>
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
         <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>"/>
+        <!-- <img src="http://10.0.0.108/coupon/sites/default/files/CoupponVoodoo_header_logo_60px2.png" alt="<?php print t('Home'); ?>"/> -->
       </a>
     <?php endif; ?>
+    <div class="main_menu">
+    <?php if ($page['main_menu']): ?>
+      <?php print render($page['main_menu']) ?>
+    <?php endif; ?>  
+    </div>  
 
     <?php if ($site_name || $site_slogan): ?>
       <div id="name-and-slogan">
@@ -37,7 +43,7 @@
         <?php print render($page['header']); ?>
       </div>
     <?php endif; ?>
-
+</div>
   </header> <!-- /header -->
 
   <?php if ($main_menu || $secondary_menu): ?>
@@ -65,9 +71,7 @@
 
             <?php print render($title_prefix); ?>
 
-            <?php if ($title): ?>
-              <h1 class="title"><?php print $title; ?></h1>
-            <?php endif; ?>
+       
 
             <?php print render($title_suffix); ?>
               <?php if (!$is_front): ?>
@@ -78,6 +82,9 @@
             <?php if ($tabs): ?>
               <div class="tabs"><?php print render($tabs); ?></div>
             <?php endif; ?>
+            <?php if ($page['top_search']): ?>
+              <?php print render($page['top_search']) ?>
+            <?php endif; ?>  
 
             <?php if ($action_links): ?>
               <ul class="action-links"><?php print render($action_links); ?></ul>
@@ -87,9 +94,14 @@
         <?php endif; ?>
 
         <div id="content-area">
-          <?php if ($is_front): ?>
+		     <?php if ($title): ?>
+              <h1 class="title"><?php print $title; ?></h1>
+            <?php endif; ?>
+          <?php if ($is_front):
+          global $base_url;
+          ?>
             <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
-              <img src="<?php print $base_url . "/" . drupal_get_path('theme', 'basic') . "/images/CouponVoodoo_main_logo.png" ?>" alt="<?php print t('Home'); ?>"/>
+              <img src="<?php print base_path() . "/" . drupal_get_path('theme', 'basic') . "/images/CouponVoodoo_main_logo.png" ?>" alt="<?php print t('Home'); ?>"/>
             </a>
           <?php endif; ?>
           <?php if ($is_front): ?>
