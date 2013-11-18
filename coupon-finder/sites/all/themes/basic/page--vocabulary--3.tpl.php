@@ -27,7 +27,7 @@
       hide($content['comments']);
       hide($content['links']);
       
-      echo "<div class='product_name'><a href='{$node->field_page_url[und][0]['value']}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 47)."</a></div>";
+      
       
       if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
         echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>Coupons Found</div></div>";
@@ -48,6 +48,9 @@
       }                        
       echo  $img .=    "</div>
                 </div>";
+      
+      echo "<div class='product_name'><a href='{$node->field_page_url[und][0]['value']}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 47)."</a></div>";
+      
       echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
                         <div class='field-label'>List Price:&nbsp;</div>
                         <div class='field-items'>
