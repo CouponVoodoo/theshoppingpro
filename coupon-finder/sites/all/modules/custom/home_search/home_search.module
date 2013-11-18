@@ -1,0 +1,18 @@
+<?php
+
+function custom_api_block_info(){
+    $blocks = array();
+    $blocks['custom_coupons']['info'] = "Custom coupons search";
+    // Not worth caching.
+    $blocks['custom_coupons']['cache'] = DRUPAL_NO_CACHE;
+
+    return $blocks;
+}
+
+function custom_api_block_view($delta = '') {
+  $data['subject'] = "";
+  $data['content'] = drupal_get_form('coupons_finder_form');
+  return $data;
+}
+
+?>
