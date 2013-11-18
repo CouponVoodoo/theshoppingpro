@@ -104,7 +104,7 @@ function custom_api_addproduct($ProInfo){
 	  $node->field_best_coupon_netpriceafters[und][0][value]= ( $jsonArray->header->bestCouponResult->NetPriceAfterSaving)?$jsonArray->header->bestCouponResult->NetPriceAfterSaving:0;
 	  $node->field_best_coupon_url[und][0][value]		= trim( $jsonArray->header->bestCouponResult->url );
 	//}
-	mail('sanjay.kumar1@mail.vinove.com','jsonArray','jsonArray--->'.print_r($jsonArray->data,1));
+	//mail('sanjay.kumar1@mail.vinove.com','jsonArray','jsonArray--->'.print_r($jsonArray->data,1));
 	$node->field_best_coupon_info[und][0][value]		= serialize( $jsonArray->data );
 	
 	//$node->	field_page_url[und][0][value]		= $Pageurl;
