@@ -1,0 +1,268 @@
+<?php
+
+function custom_api_menu() {
+  $items = array();
+
+  $items['add-product/%'] = array(//this creates a URL that will call this form at "examples/form-example"
+      'title' => 'Add Product in database', //page title
+      'page callback' => 'custom_api_addproduct', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
+      'page arguments' => array(1),
+      'access callback' => TRUE
+  );
+
+  return $items;
+}
+
+function custom_api_addproduct($ProInfo){
+    //print_r($_REQUEST['url']);
+    
+    //die;
+    //$baseUrl = base64_decode( ($ProInfo) );
+    $baseUrl = $_REQUEST['url'];
+    $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
+    
+    $url = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" . urldecode( $baseUrl );
+    
+    $json = drupal_http_request($url, array('timeout' => 600.0));
+    //print_r($url);
+    //die;
+    $json = $json->data;
+    
+    $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
+    $jsonArray = json_decode($jsonData);
+    
+    //mail('sanjay.kumar1@mail.vinove.com', 'jsonArray', 'jsonArray-->'.print_r($jsonArray,1));
+    
+    /**added by sanjay*/
+    //if($jsonArray->header->Use == 1 || $jsonArray->header->Use == 0){
+    if($jsonArray->header->Use == 1){
+      //$proTitle = $jsonArray->header->ProductName;
+      $proTitle = $jsonArray->header->PageTitle;
+      
+      $baseUrl = $jsonArray->header->BaseUrl;
+      
+      $query = db_select('field_data_field_base_url', 'n')
+		   ->fields('n', array('ntity_id') )
+		   ->condition('n.field_base_url_value', $baseUrl, '=')
+		   ->countQuery();
+      $result = $query->execute();
+      $record = $result->fetch();
+      
+      
+      $brand_name = $jsonArray->header->ProductBrand;
+      //$brand_name = 'nike';
+      $vocabulary_name = 'brand';
+      $BrandId = coupons_get_term_from_name($brand_name, $vocabulary_name);
+      //echo '===='.$brand_name;
+      if($BrandId == 0){
+	$BrandId = coupons_create_taxonomy_term($brand_name, 4);
+      }
+      
+      if($record->expression == 0){
+	//echo 'add';
+	//die;
+	
+	/*
+	Make sure your php.ini allows allow_url_fopen. Then you can use something like this in your module:
+
+	$image = file_get_contents('http://drupal.org/files/issues/druplicon_2.png'); // string
+	$file = file_save_data($image, 'public://druplicon.png',FILE_EXISTS_REPLACE);
+	Use php's file_get_contents() function
+	
+	http://www.php.net/manual/en/function.file-get-contents.php
+	
+	and then use Drupal API's file_save_data()
+	
+	http://api.drupal.org/api/drupal/includes--file.inc/function/file_save_data/7
+	
+	Then you should be able to call it using and save it to a node etc ..
+	
+	$node = new stdClass;
+	$node->type = 'node_type';
+	node_object_prepare($node);
+	$node->field_product_image[LANGUAGE_NONE]['0']['fid'] = $file->fid;
+	node_save($node);
+	*/
+	
+	$node = new stdClass();
+	$node->language = LANGUAGE_NONE;
+	$node->type     = '_product_and_coupon';	
+	$node->uid      = 1;
+    
+	$node->field_category['und'][0]['tid']			= trim( $jsonArray->header->Category );;
+	//$node->field_category['und'][0]['tid']			= 1;
+	
+	$node->title    				  	= $proTitle;
+	$node->field_description[und][0][value]	 	  	= trim( $jsonArray->header->ProductDescription );
+	$node->field_product_price[und][0][value]	  	= ( $jsonArray->header->ListingProductPrice )?$jsonArray->header->ListingProductPrice:0;
+	//$node->field_product_price[und][0][value]	  	= 10;
+	//$node->field_retailer[und][0]['tid'] 		  	= ($jsonArray->header->Retailer > 0)?$jsonArray->header->Retailer:1;
+	$node->field_retailer[und][0]['tid'] 		  	= $jsonArray->header->Retailer;
+	//$node->field_retailer[und][0]['tid'] 		  	= 1;
+	$node->field_base_url[und][0][value] 		  	= trim( $jsonArray->header->BaseUrl);
+	$node->field_retailer_product_name[und][0][value] 	= trim( $jsonArray->header->ProductName );
+	$node->field_product_image[und][0][value] 	  	= trim( $jsonArray->header->ProductImage );
+	$node->field_brand[und][0]['tid'] 		  	= trim($jsonArray->header->ProductBrand);
+	$node->field_brand[und][0]['tid'] 		  	= $BrandId;
+	
+	$node->field_mrpproductprice[und][0][value]	  	= ($jsonArray->header->MRPProductPrice!='')?$jsonArray->header->MRPProductPrice:0 ;
+	//$node->field_mrpproductprice[und][0][value]	  	= 0 ;
+	$expDate = explode('=' , $jsonArray->header->LastCheckedTime);	
+	$node->field_lastcheckedtime[und][0][value]	  	= $expDate[0];
+	$node->field_affiliateurl[und][0][value]	  	= trim( $jsonArray->header->AffiliateURL );
+	$node->body[und][0][value]			  	= trim( $jsonArray->header->MetaDescription );
+	///$node->metatag[und][0]['data']			= trim( $jsonArray->header->MetaDescription );
+	$node->field_best_coupon_description[und][0][value]	= trim( $jsonArray->header->bestCouponResult->CouponDesc );
+	
+	$node->field_best_coupon_status[und][0][value]	  	= trim( $jsonArray->header->CouponResult );
+	//$node->field_product_popularity[und][0][value]	= ( $jsonArray->header->Popularity )?$jsonArray->header->Popularity:0;
+	$node->field_product_popularity[und][0][value]	  	= $jsonArray->header->Popularity;
+	
+	///if($jsonArray->header->CouponResult == 1){
+	  $node->field_best_coupon_couponcode[und][0][value] 	= trim( $jsonArray->header->bestCouponResult->CouponCode );
+	  $node->field_best_coupon_saving[und][0][value]	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
+	  $node->field_best_coupon_netpriceafters[und][0][value]= ( $jsonArray->header->bestCouponResult->NetPriceAfterSaving)?$jsonArray->header->bestCouponResult->NetPriceAfterSaving:0;
+	  $node->field_best_coupon_url[und][0][value]		= trim( $jsonArray->header->bestCouponResult->url );
+	//}	
+	$node->field_best_coupon_info[und][0][value]		= serialize( $jsonArray->data );
+	
+	/*
+	Array
+	(
+	    [dirname] => http://static1.jassets.com/p/Phosphorus-Black-Wayfarer-5704-273882-1-product2.jpghttp://static2.jassets.com/p
+	    [basename] => Phosphorus-Black-Wayfarer-5706-273882-2-product2.jpg
+	    [extension] => jpg
+	    [filename] => Phosphorus-Black-Wayfarer-5706-273882-2-product2
+	)
+	*/
+	$ImgPath = $jsonArray->header->ProductImage;
+	$ImgFile = pathinfo($ImgPath);         // $file is set to "index.php"
+	
+	$image = file_get_contents($ImgPath); // string
+	$file = file_save_data($image, 'public://'.$ImgFile['basename'] ,FILE_EXISTS_REPLACE);
+	$node->field_product_images[LANGUAGE_NONE]['0']['fid'] = $file->fid;
+	
+	//$node->	field_page_url[und][0][value]		= $Pageurl;
+	
+	node_save($node);
+	global $base_url;
+	
+	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
+	
+	$node2 = node_load( $node->nid );
+	$node2->field_page_url[und][0][value] = $urlAlias;
+	node_save($node2);
+	
+	if( !empty($node->nid) ){
+	  $response = json_encode( array('ResponseCode' => '1', 'Response' => 'Node added.', "Page_URL" => "$urlAlias") );
+	  echo $response;
+	}else{
+	  $response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
+	  echo $response;
+	}
+	
+      }elseif($record->expression == 1){
+	//echo 'update';
+	$expDate = explode('=' , $jsonArray->header->LastCheckedTime);
+
+	//check product exist or not
+	$query = db_select('field_data_field_base_url', 'n')
+		     ->fields('n', array('entity_id','field_base_url_value') )
+		     ->condition('n.field_base_url_value', $baseUrl, '=');		   
+	$result = $query->execute();
+	$record = $result->fetch();
+
+	$queryLastUpdate = db_select('field_data_field_lastcheckedtime', 'n')
+		     ->fields('n', array('field_lastcheckedtime_value') )
+		     ->condition('n.entity_id ', $record->entity_id , '=');		   
+	$resultLastUpdate = $queryLastUpdate->execute();
+	$recordLastUpdate = $resultLastUpdate->fetch();
+	
+	$lastUpdatedDate = $recordLastUpdate->field_lastcheckedtime_value;
+	global $base_url;
+	  
+	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$record->entity_id);
+	
+	if( $expDate[0] != $lastUpdatedDate){
+	  $brand_name = $jsonArray->header->ProductBrand;
+	  //$brand_name = 'nike';
+	  $vocabulary_name = 'brand';
+	  $BrandId = coupons_get_term_from_name($brand_name, $vocabulary_name);
+	  if($BrandId == 0){
+	    $BrandId = coupons_create_taxonomy_term($brand_name, 4);
+	  }
+	  
+	  $node = node_load($record->entity_id);
+	  $node->field_category['und'][0]['tid']			= 1;
+	  
+	  $node->title    				  	= $proTitle;
+	  $node->field_description[und][0][value]	 	= trim( $jsonArray->header->ProductDescription );
+	  $node->field_product_price[und][0][value]	  	= ( $jsonArray->header->ListingProductPrice )?$jsonArray->header->ListingProductPrice:0;
+	  //$node->field_product_price[und][0][value]	  	= 10;
+	  //$node->field_retailer[und][0]['tid'] 		  	= ($jsonArray->header->Retailer > 0)?$jsonArray->header->Retailer:1;
+	  $node->field_retailer[und][0]['tid'] 		  	= $jsonArray->header->Retailer;
+	  
+	  //$node->field_retailer[und][0]['tid'] 		  	= 1;
+	  $node->field_base_url[und][0][value] 		  	= trim( $jsonArray->header->BaseUrl);
+	  $node->field_retailer_product_name[und][0][value] 	= trim( $jsonArray->header->ProductName );
+	  $node->field_product_image[und][0][value] 	  	= trim( $jsonArray->header->ProductImage );
+	  $node->field_brand[und][0]['tid'] 		  	= trim($jsonArray->header->ProductBrand);
+	  $node->field_brand[und][0]['tid'] 		  	= $BrandId;
+	  
+	  $node->field_mrpproductprice[und][0][value]	  	= ($jsonArray->header->MRPProductPrice!='')?$jsonArray->header->MRPProductPrice:0 ;
+	  //$node->field_mrpproductprice[und][0][value]	  	= 0 ;
+	  
+	  $node->field_lastcheckedtime[und][0][value]	  	= $expDate[0];
+	  $node->field_affiliateurl[und][0][value]	  	= trim( $jsonArray->header->AffiliateURL );
+	  $node->body[und][0][value]			  	= trim( $jsonArray->header->MetaDescription );
+	  ///$node->metatag[und][0]['data']			= trim( $jsonArray->header->MetaDescription );
+	  $node->field_best_coupon_description[und][0][value]	= trim( $jsonArray->header->bestCouponResult->CouponDesc );
+	  
+	  $node->field_best_coupon_status[und][0][value]	= trim( $jsonArray->header->CouponResult );
+	  //$node->field_product_popularity[und][0][value]	= ( $jsonArray->header->Popularity )?$jsonArray->header->Popularity:0;
+	  $node->field_product_popularity[und][0][value]	= $jsonArray->header->Popularity;
+	  
+	  //if($jsonArray->header->CouponResult == 1){
+	    $node->field_best_coupon_couponcode[und][0][value] 	= trim( $jsonArray->header->bestCouponResult->CouponCode );
+	    $node->field_best_coupon_saving[und][0][value]	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
+	    $node->field_best_coupon_netpriceafters[und][0][value]= ( $jsonArray->header->bestCouponResult->NetPriceAfterSaving)?$jsonArray->header->bestCouponResult->NetPriceAfterSaving:0;
+	    $node->field_best_coupon_url[und][0][value]		= trim( $jsonArray->header->bestCouponResult->url );
+	  //}	
+	  $node->field_best_coupon_info[und][0][value]		= serialize( $jsonArray->data );
+	  
+	  //$node->field_page_url[und][0][value]		= $Pageurl;
+	  
+	  /*
+	  $ImgPath = $jsonArray->header->ProductImage;
+	  $ImgFile = pathinfo($ImgPath);         // $file is set to "index.php"
+	  
+	  $image = file_get_contents($ImgPath); // string
+	  $file = file_save_data($image, 'public://'.$ImgFile['basename'] ,FILE_EXISTS_REPLACE);
+	  $node->field_product_images[LANGUAGE_NONE]['0']['fid'] = $file->fid;
+	  */
+	  node_save($node);
+	  
+	  $urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$record->entity_id);
+	  
+	  $node2 = node_load( $record->entity_id );
+	  $node2->field_page_url[und][0][value] = $urlAlias;
+	  node_save($node2);
+	  
+	  if( !empty($node->nid) ){
+	    $response = json_encode( array('ResponseCode' => '4', 'Response' => 'Node Updated.', "Page_URL" => "$urlAlias") );
+	    echo $response;
+	  }else{
+	    $response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
+	    echo $response;
+	  }
+	  
+	}else{
+	    $response = json_encode( array('ResponseCode' => '3', 'Response' => 'Node Ignored - Node Already Updated.', "Page_URL" => "$urlAlias") );
+	    echo $response;	    
+	}
+      }	
+    } 
+    /*end here*/   
+       
+    //return $json;
+}

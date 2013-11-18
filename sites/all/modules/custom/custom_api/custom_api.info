@@ -1,0 +1,5 @@
+name = Custom API
+description= Custom API to insert products in database.
+core = "7.x"
+project = "coupons"
+
