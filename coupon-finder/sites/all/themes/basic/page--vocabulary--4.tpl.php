@@ -38,13 +38,16 @@
       
       $uplImg = $node->field_product_images['und'][0]['uri'];
       $imgPath = $imgUri = image_style_url('200x200', $uplImg);
-      echo $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
+      $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
                         <div class='field-item even'>
                             <img width='200' height='200' src='{$imgPath}' typeof='foaf:Image'>
-                        </div>
-                    </div>
+                        </div>";
+      if($node->field_best_coupon_status[und][0]['value'] == 0){
+        $img .= "<div><a class='view_store' href='{$node->field_affiliateurl[und][0]['value']}'>View Store</a></div>";
+      }                        
+      echo  $img .=    "</div>
                 </div>";
       echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
                         <div class='field-label'>List Price:&nbsp;</div>
