@@ -60,7 +60,7 @@
             $listPrice .=          '-';
                                 }
                                 else{
-            $listPrice .=          $node->field_best_coupon_saving['und'][0]['value'];
+            $listPrice .=         'INR '.  $node->field_best_coupon_saving['und'][0]['value'];
                                 }    
       echo $listPrice .=         "</div>
                             </div>
