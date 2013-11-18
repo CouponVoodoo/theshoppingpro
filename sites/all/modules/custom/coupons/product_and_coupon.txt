@@ -1,0 +1,2070 @@
+$data = array(
+  'bundles' => array(
+    '_product_and_coupon' => (object) array(
+      'type' => '_product_and_coupon',
+      'name' => 'Product and Coupon',
+      'base' => 'node_content',
+      'module' => 'node',
+      'description' => 'It is used for save the product info and coupon code in a node.',
+      'help' => '',
+      'has_title' => '1',
+      'title_label' => 'Title',
+      'custom' => '1',
+      'modified' => '1',
+      'locked' => '0',
+      'disabled' => '0',
+      'orig_type' => '_product_and_coupon',
+      'disabled_changed' => FALSE,
+      'bc_entity_type' => 'node',
+    ),
+  ),
+  'fields' => array(
+    'body' => array(
+      'entity_types' => array(
+        0 => 'node',
+      ),
+      'translatable' => '0',
+      'settings' => array(),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_body' => array(
+                'value' => 'body_value',
+                'summary' => 'body_summary',
+                'format' => 'body_format',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_body' => array(
+                'value' => 'body_value',
+                'summary' => 'body_summary',
+                'format' => 'body_format',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'table' => 'filter_format',
+          'columns' => array(
+            'format' => 'format',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'field_name' => 'body',
+      'type' => 'text_with_summary',
+      'module' => 'text',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'text',
+          'size' => 'big',
+          'not null' => FALSE,
+        ),
+        'summary' => array(
+          'type' => 'text',
+          'size' => 'big',
+          'not null' => FALSE,
+        ),
+        'format' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => 'page',
+          1 => 'article',
+          2 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_affiliateurl' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_affiliateurl' => array(
+                'value' => 'field_affiliateurl_value',
+                'format' => 'field_affiliateurl_format',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_affiliateurl' => array(
+                'value' => 'field_affiliateurl_value',
+                'format' => 'field_affiliateurl_format',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'table' => 'filter_format',
+          'columns' => array(
+            'format' => 'format',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'field_name' => 'field_affiliateurl',
+      'type' => 'text_long',
+      'module' => 'text',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'text',
+          'size' => 'big',
+          'not null' => FALSE,
+        ),
+        'format' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_base_url' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_base_url' => array(
+                'value' => 'field_base_url_value',
+                'format' => 'field_base_url_format',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_base_url' => array(
+                'value' => 'field_base_url_value',
+                'format' => 'field_base_url_format',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'table' => 'filter_format',
+          'columns' => array(
+            'format' => 'format',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'field_name' => 'field_base_url',
+      'type' => 'text',
+      'module' => 'text',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'varchar',
+          'length' => '255',
+          'not null' => FALSE,
+        ),
+        'format' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_best_coupon_couponcode' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_best_coupon_couponcode' => array(
+                'value' => 'field_best_coupon_couponcode_value',
+                'format' => 'field_best_coupon_couponcode_format',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_best_coupon_couponcode' => array(
+                'value' => 'field_best_coupon_couponcode_value',
+                'format' => 'field_best_coupon_couponcode_format',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'table' => 'filter_format',
+          'columns' => array(
+            'format' => 'format',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'field_name' => 'field_best_coupon_couponcode',
+      'type' => 'text',
+      'module' => 'text',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'varchar',
+          'length' => '255',
+          'not null' => FALSE,
+        ),
+        'format' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_best_coupon_description' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_best_coupon_description' => array(
+                'value' => 'field_best_coupon_description_value',
+                'format' => 'field_best_coupon_description_format',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_best_coupon_description' => array(
+                'value' => 'field_best_coupon_description_value',
+                'format' => 'field_best_coupon_description_format',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'table' => 'filter_format',
+          'columns' => array(
+            'format' => 'format',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'field_name' => 'field_best_coupon_description',
+      'type' => 'text_long',
+      'module' => 'text',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'text',
+          'size' => 'big',
+          'not null' => FALSE,
+        ),
+        'format' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_best_coupon_info' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_best_coupon_info' => array(
+                'value' => 'field_best_coupon_info_value',
+                'summary' => 'field_best_coupon_info_summary',
+                'format' => 'field_best_coupon_info_format',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_best_coupon_info' => array(
+                'value' => 'field_best_coupon_info_value',
+                'summary' => 'field_best_coupon_info_summary',
+                'format' => 'field_best_coupon_info_format',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'table' => 'filter_format',
+          'columns' => array(
+            'format' => 'format',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'field_name' => 'field_best_coupon_info',
+      'type' => 'text_with_summary',
+      'module' => 'text',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'text',
+          'size' => 'big',
+          'not null' => FALSE,
+        ),
+        'summary' => array(
+          'type' => 'text',
+          'size' => 'big',
+          'not null' => FALSE,
+        ),
+        'format' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_best_coupon_netpriceafters' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'decimal_separator' => '.',
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_best_coupon_netpriceafters' => array(
+                'value' => 'field_best_coupon_netpriceafters_value',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_best_coupon_netpriceafters' => array(
+                'value' => 'field_best_coupon_netpriceafters_value',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'field_name' => 'field_best_coupon_netpriceafters',
+      'type' => 'number_float',
+      'module' => 'number',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'float',
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_best_coupon_saving' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'decimal_separator' => '.',
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_best_coupon_saving' => array(
+                'value' => 'field_best_coupon_saving_value',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_best_coupon_saving' => array(
+                'value' => 'field_best_coupon_saving_value',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'field_name' => 'field_best_coupon_saving',
+      'type' => 'number_float',
+      'module' => 'number',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'float',
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_best_coupon_status' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'precision' => '10',
+        'scale' => '2',
+        'decimal_separator' => '.',
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_best_coupon_status' => array(
+                'value' => 'field_best_coupon_status_value',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_best_coupon_status' => array(
+                'value' => 'field_best_coupon_status_value',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'field_name' => 'field_best_coupon_status',
+      'type' => 'number_decimal',
+      'module' => 'number',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'numeric',
+          'precision' => '10',
+          'scale' => '2',
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_best_coupon_url' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_best_coupon_url' => array(
+                'value' => 'field_best_coupon_url_value',
+                'format' => 'field_best_coupon_url_format',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_best_coupon_url' => array(
+                'value' => 'field_best_coupon_url_value',
+                'format' => 'field_best_coupon_url_format',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'table' => 'filter_format',
+          'columns' => array(
+            'format' => 'format',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'field_name' => 'field_best_coupon_url',
+      'type' => 'text_long',
+      'module' => 'text',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'text',
+          'size' => 'big',
+          'not null' => FALSE,
+        ),
+        'format' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_brand' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'brand',
+            'parent' => '0',
+          ),
+        ),
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_brand' => array(
+                'tid' => 'field_brand_tid',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_brand' => array(
+                'tid' => 'field_brand_tid',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'tid' => array(
+          'table' => 'taxonomy_term_data',
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'field_name' => 'field_brand',
+      'type' => 'taxonomy_term_reference',
+      'module' => 'taxonomy',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'tid' => array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_category' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'categories',
+            'parent' => '0',
+          ),
+        ),
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_category' => array(
+                'tid' => 'field_category_tid',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_category' => array(
+                'tid' => 'field_category_tid',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'tid' => array(
+          'table' => 'taxonomy_term_data',
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'field_name' => 'field_category',
+      'type' => 'taxonomy_term_reference',
+      'module' => 'taxonomy',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'tid' => array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_description' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_description' => array(
+                'value' => 'field_description_value',
+                'format' => 'field_description_format',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_description' => array(
+                'value' => 'field_description_value',
+                'format' => 'field_description_format',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'table' => 'filter_format',
+          'columns' => array(
+            'format' => 'format',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'field_name' => 'field_description',
+      'type' => 'text_long',
+      'module' => 'text',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'text',
+          'size' => 'big',
+          'not null' => FALSE,
+        ),
+        'format' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_lastcheckedtime' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'granularity' => array(
+          'month' => 'month',
+          'day' => 'day',
+          'hour' => 'hour',
+          'minute' => 'minute',
+          'second' => 'second',
+          'year' => 'year',
+        ),
+        'tz_handling' => 'site',
+        'timezone_db' => 'UTC',
+        'cache_enabled' => 0,
+        'cache_count' => '4',
+        'todate' => '',
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_lastcheckedtime' => array(
+                'value' => 'field_lastcheckedtime_value',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_lastcheckedtime' => array(
+                'value' => 'field_lastcheckedtime_value',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'field_name' => 'field_lastcheckedtime',
+      'type' => 'datestamp',
+      'module' => 'date',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'int',
+          'not null' => FALSE,
+          'sortable' => TRUE,
+          'views' => TRUE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_mrpproductprice' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_mrpproductprice' => array(
+                'value' => 'field_mrpproductprice_value',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_mrpproductprice' => array(
+                'value' => 'field_mrpproductprice_value',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'field_name' => 'field_mrpproductprice',
+      'type' => 'number_integer',
+      'module' => 'number',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'int',
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_product_image' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_product_image' => array(
+                'value' => 'field_product_image_value',
+                'format' => 'field_product_image_format',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_product_image' => array(
+                'value' => 'field_product_image_value',
+                'format' => 'field_product_image_format',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'table' => 'filter_format',
+          'columns' => array(
+            'format' => 'format',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'field_name' => 'field_product_image',
+      'type' => 'text',
+      'module' => 'text',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'varchar',
+          'length' => '255',
+          'not null' => FALSE,
+        ),
+        'format' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_product_popularity' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'decimal_separator' => '.',
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_product_popularity' => array(
+                'value' => 'field_product_popularity_value',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_product_popularity' => array(
+                'value' => 'field_product_popularity_value',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'field_name' => 'field_product_popularity',
+      'type' => 'number_float',
+      'module' => 'number',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'float',
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_product_price' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'decimal_separator' => '.',
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_product_price' => array(
+                'value' => 'field_product_price_value',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_product_price' => array(
+                'value' => 'field_product_price_value',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'field_name' => 'field_product_price',
+      'type' => 'number_float',
+      'module' => 'number',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'float',
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_retailer' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'retailer',
+            'parent' => '0',
+          ),
+        ),
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_retailer' => array(
+                'tid' => 'field_retailer_tid',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_retailer' => array(
+                'tid' => 'field_retailer_tid',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'tid' => array(
+          'table' => 'taxonomy_term_data',
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'field_name' => 'field_retailer',
+      'type' => 'taxonomy_term_reference',
+      'module' => 'taxonomy',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'tid' => array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+    'field_retailer_product_name' => array(
+      'translatable' => '0',
+      'entity_types' => array(),
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'storage' => array(
+        'type' => 'field_sql_storage',
+        'settings' => array(),
+        'module' => 'field_sql_storage',
+        'active' => '1',
+        'details' => array(
+          'sql' => array(
+            'FIELD_LOAD_CURRENT' => array(
+              'field_data_field_retailer_product_name' => array(
+                'value' => 'field_retailer_product_name_value',
+                'format' => 'field_retailer_product_name_format',
+              ),
+            ),
+            'FIELD_LOAD_REVISION' => array(
+              'field_revision_field_retailer_product_name' => array(
+                'value' => 'field_retailer_product_name_value',
+                'format' => 'field_retailer_product_name_format',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'table' => 'filter_format',
+          'columns' => array(
+            'format' => 'format',
+          ),
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'field_name' => 'field_retailer_product_name',
+      'type' => 'text',
+      'module' => 'text',
+      'active' => '1',
+      'locked' => '0',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'columns' => array(
+        'value' => array(
+          'type' => 'varchar',
+          'length' => '255',
+          'not null' => FALSE,
+        ),
+        'format' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+      ),
+      'bundles' => array(
+        'node' => array(
+          0 => '_product_and_coupon',
+        ),
+      ),
+    ),
+  ),
+  'instances' => array(
+    'body' => array(
+      0 => array(
+        'label' => 'Body',
+        'widget' => array(
+          'type' => 'text_textarea_with_summary',
+          'settings' => array(
+            'rows' => 20,
+            'summary_rows' => 5,
+          ),
+          'weight' => '3',
+          'module' => 'text',
+        ),
+        'settings' => array(
+          'display_summary' => TRUE,
+          'text_processing' => 1,
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'hidden',
+            'type' => 'hidden',
+            'weight' => '0',
+            'settings' => array(),
+          ),
+          'teaser' => array(
+            'label' => 'hidden',
+            'type' => 'text_summary_or_trimmed',
+            'settings' => array(
+              'trim_length' => 600,
+            ),
+            'module' => 'text',
+            'weight' => 0,
+          ),
+          'search_result' => array(
+            'label' => 'hidden',
+            'type' => 'hidden',
+            'weight' => '0',
+            'settings' => array(),
+          ),
+        ),
+        'required' => FALSE,
+        'description' => '',
+        'field_name' => 'body',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+        'default_value' => NULL,
+      ),
+    ),
+    'field_affiliateurl' => array(
+      0 => array(
+        'label' => 'AffiliateURL',
+        'widget' => array(
+          'weight' => '21',
+          'type' => 'text_textarea',
+          'module' => 'text',
+          'active' => 1,
+          'settings' => array(
+            'rows' => '5',
+          ),
+        ),
+        'settings' => array(
+          'text_processing' => '0',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '24',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '24',
+            'settings' => array(),
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_affiliateurl',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_base_url' => array(
+      0 => array(
+        'label' => 'Base Url',
+        'widget' => array(
+          'weight' => '8',
+          'type' => 'text_textfield',
+          'module' => 'text',
+          'active' => 1,
+          'settings' => array(
+            'size' => '60',
+          ),
+        ),
+        'settings' => array(
+          'text_processing' => '0',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '21',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '21',
+            'settings' => array(),
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_base_url',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_best_coupon_couponcode' => array(
+      0 => array(
+        'label' => 'Best Coupon CouponCode',
+        'widget' => array(
+          'weight' => '18',
+          'type' => 'text_textfield',
+          'module' => 'text',
+          'active' => 1,
+          'settings' => array(
+            'size' => '60',
+          ),
+        ),
+        'settings' => array(
+          'text_processing' => '0',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'inline',
+            'type' => 'hidden',
+            'weight' => '17',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'inline',
+            'type' => 'text_default',
+            'weight' => '17',
+            'settings' => array(),
+            'module' => 'text',
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_best_coupon_couponcode',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_best_coupon_description' => array(
+      0 => array(
+        'label' => 'Best Coupon Description',
+        'widget' => array(
+          'weight' => '19',
+          'type' => 'text_textarea',
+          'module' => 'text',
+          'active' => 1,
+          'settings' => array(
+            'rows' => '5',
+          ),
+        ),
+        'settings' => array(
+          'text_processing' => '0',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '25',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '25',
+            'settings' => array(),
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_best_coupon_description',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_best_coupon_info' => array(
+      0 => array(
+        'label' => 'All Coupon info',
+        'widget' => array(
+          'weight' => '22',
+          'type' => 'text_textarea_with_summary',
+          'module' => 'text',
+          'active' => 1,
+          'settings' => array(
+            'rows' => '20',
+            'summary_rows' => 5,
+          ),
+        ),
+        'settings' => array(
+          'text_processing' => '1',
+          'display_summary' => 0,
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '3',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '3',
+            'settings' => array(),
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_best_coupon_info',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_best_coupon_netpriceafters' => array(
+      0 => array(
+        'label' => 'Best Coupon NetPriceAfterSaving',
+        'widget' => array(
+          'weight' => '16',
+          'type' => 'number',
+          'module' => 'number',
+          'active' => 0,
+          'settings' => array(),
+        ),
+        'settings' => array(
+          'min' => '0',
+          'max' => '99999',
+          'prefix' => '',
+          'suffix' => '',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'inline',
+            'type' => 'hidden',
+            'weight' => '27',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'inline',
+            'type' => 'number_decimal',
+            'weight' => '27',
+            'settings' => array(
+              'thousand_separator' => ' ',
+              'decimal_separator' => '.',
+              'scale' => 2,
+              'prefix_suffix' => TRUE,
+            ),
+            'module' => 'number',
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_best_coupon_netpriceafters',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_best_coupon_saving' => array(
+      0 => array(
+        'label' => 'Best Coupon Saving',
+        'widget' => array(
+          'weight' => '17',
+          'type' => 'number',
+          'module' => 'number',
+          'active' => 0,
+          'settings' => array(),
+        ),
+        'settings' => array(
+          'min' => '0',
+          'max' => '999999',
+          'prefix' => '',
+          'suffix' => '',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'inline',
+            'type' => 'hidden',
+            'weight' => '28',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'inline',
+            'type' => 'number_decimal',
+            'weight' => '28',
+            'settings' => array(
+              'thousand_separator' => ' ',
+              'decimal_separator' => '.',
+              'scale' => 2,
+              'prefix_suffix' => TRUE,
+            ),
+            'module' => 'number',
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_best_coupon_saving',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_best_coupon_status' => array(
+      0 => array(
+        'label' => 'Best Coupon Status',
+        'widget' => array(
+          'weight' => '13',
+          'type' => 'number',
+          'module' => 'number',
+          'active' => 0,
+          'settings' => array(),
+        ),
+        'settings' => array(
+          'min' => '0',
+          'max' => '1',
+          'prefix' => '',
+          'suffix' => '',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '26',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '26',
+            'settings' => array(),
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_best_coupon_status',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_best_coupon_url' => array(
+      0 => array(
+        'label' => 'Best Coupon url',
+        'widget' => array(
+          'weight' => '20',
+          'type' => 'text_textarea',
+          'module' => 'text',
+          'active' => 1,
+          'settings' => array(
+            'rows' => '5',
+          ),
+        ),
+        'settings' => array(
+          'text_processing' => '0',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '20',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '20',
+            'settings' => array(),
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_best_coupon_url',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_brand' => array(
+      0 => array(
+        'label' => 'Brand',
+        'widget' => array(
+          'weight' => '10',
+          'type' => 'taxonomy_autocomplete',
+          'module' => 'taxonomy',
+          'active' => 0,
+          'settings' => array(
+            'size' => 60,
+            'autocomplete_path' => 'taxonomy/autocomplete',
+          ),
+        ),
+        'settings' => array(
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'inline',
+            'type' => 'hidden',
+            'weight' => '11',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'inline',
+            'type' => 'taxonomy_term_reference_link',
+            'weight' => '11',
+            'settings' => array(),
+            'module' => 'taxonomy',
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_brand',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_category' => array(
+      0 => array(
+        'label' => 'Category',
+        'widget' => array(
+          'weight' => '12',
+          'type' => 'taxonomy_autocomplete',
+          'module' => 'taxonomy',
+          'active' => 0,
+          'settings' => array(
+            'size' => 60,
+            'autocomplete_path' => 'taxonomy/autocomplete',
+          ),
+        ),
+        'settings' => array(
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'inline',
+            'type' => 'hidden',
+            'weight' => '13',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'inline',
+            'type' => 'taxonomy_term_reference_link',
+            'weight' => '13',
+            'settings' => array(),
+            'module' => 'taxonomy',
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_category',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_description' => array(
+      0 => array(
+        'label' => 'Product Description',
+        'widget' => array(
+          'weight' => '7',
+          'type' => 'text_textarea',
+          'module' => 'text',
+          'active' => 1,
+          'settings' => array(
+            'rows' => '5',
+          ),
+        ),
+        'settings' => array(
+          'text_processing' => '0',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '1',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '1',
+            'settings' => array(),
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_description',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_lastcheckedtime' => array(
+      0 => array(
+        'label' => 'LastCheckedTime',
+        'widget' => array(
+          'weight' => '4',
+          'type' => 'date_text',
+          'module' => 'date',
+          'active' => 1,
+          'settings' => array(
+            'input_format' => 'm/d/Y - H:i:s',
+            'input_format_custom' => '',
+            'year_range' => '-3:+3',
+            'increment' => 15,
+            'label_position' => 'above',
+            'text_parts' => array(),
+          ),
+        ),
+        'settings' => array(
+          'default_value' => 'now',
+          'default_value_code' => '',
+          'default_value2' => 'same',
+          'default_value_code2' => '',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'inline',
+            'type' => 'hidden',
+            'weight' => '23',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'inline',
+            'type' => 'date_default',
+            'weight' => '23',
+            'settings' => array(
+              'format_type' => 'long',
+              'multiple_number' => '',
+              'multiple_from' => '',
+              'multiple_to' => '',
+              'fromto' => 'both',
+            ),
+            'module' => 'date',
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'field_name' => 'field_lastcheckedtime',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_mrpproductprice' => array(
+      0 => array(
+        'label' => 'MRPProductPrice',
+        'widget' => array(
+          'weight' => '15',
+          'type' => 'number',
+          'module' => 'number',
+          'active' => 0,
+          'settings' => array(),
+        ),
+        'settings' => array(
+          'min' => '',
+          'max' => '',
+          'prefix' => '',
+          'suffix' => '',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'inline',
+            'type' => 'hidden',
+            'weight' => '14',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'inline',
+            'type' => 'number_integer',
+            'weight' => '14',
+            'settings' => array(
+              'thousand_separator' => ' ',
+              'decimal_separator' => '.',
+              'scale' => 0,
+              'prefix_suffix' => TRUE,
+            ),
+            'module' => 'number',
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_mrpproductprice',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_product_image' => array(
+      0 => array(
+        'label' => 'Product image',
+        'widget' => array(
+          'weight' => '6',
+          'type' => 'text_textfield',
+          'module' => 'text',
+          'active' => 1,
+          'settings' => array(
+            'size' => '60',
+          ),
+        ),
+        'settings' => array(
+          'text_processing' => '0',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'inline',
+            'type' => 'hidden',
+            'weight' => '10',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'inline',
+            'type' => 'text_default',
+            'weight' => '10',
+            'settings' => array(),
+            'module' => 'text',
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_product_image',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_product_popularity' => array(
+      0 => array(
+        'label' => 'Product Popularity',
+        'widget' => array(
+          'weight' => '23',
+          'type' => 'number',
+          'module' => 'number',
+          'active' => 0,
+          'settings' => array(),
+        ),
+        'settings' => array(
+          'min' => '0',
+          'max' => '999999',
+          'prefix' => '',
+          'suffix' => '',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'above',
+            'type' => 'hidden',
+            'weight' => '29',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'type' => 'hidden',
+            'label' => 'above',
+            'settings' => array(),
+            'weight' => 0,
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_product_popularity',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_product_price' => array(
+      0 => array(
+        'label' => 'Product Price',
+        'widget' => array(
+          'weight' => '14',
+          'type' => 'number',
+          'module' => 'number',
+          'active' => 0,
+          'settings' => array(),
+        ),
+        'settings' => array(
+          'min' => '0',
+          'max' => '99999',
+          'prefix' => '',
+          'suffix' => '',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'inline',
+            'type' => 'hidden',
+            'weight' => '22',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'inline',
+            'type' => 'number_decimal',
+            'weight' => '22',
+            'settings' => array(
+              'thousand_separator' => ' ',
+              'decimal_separator' => '.',
+              'scale' => 2,
+              'prefix_suffix' => TRUE,
+            ),
+            'module' => 'number',
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_product_price',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_retailer' => array(
+      0 => array(
+        'label' => 'Retailer',
+        'widget' => array(
+          'weight' => '11',
+          'type' => 'taxonomy_autocomplete',
+          'module' => 'taxonomy',
+          'active' => 0,
+          'settings' => array(
+            'size' => 60,
+            'autocomplete_path' => 'taxonomy/autocomplete',
+          ),
+        ),
+        'settings' => array(
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'inline',
+            'type' => 'hidden',
+            'weight' => '12',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'inline',
+            'type' => 'taxonomy_term_reference_link',
+            'weight' => '12',
+            'settings' => array(),
+            'module' => 'taxonomy',
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_retailer',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+    'field_retailer_product_name' => array(
+      0 => array(
+        'label' => 'Product Name',
+        'widget' => array(
+          'weight' => '5',
+          'type' => 'text_textfield',
+          'module' => 'text',
+          'active' => 1,
+          'settings' => array(
+            'size' => '60',
+          ),
+        ),
+        'settings' => array(
+          'text_processing' => '0',
+          'user_register_form' => FALSE,
+        ),
+        'display' => array(
+          'default' => array(
+            'label' => 'inline',
+            'type' => 'hidden',
+            'weight' => '9',
+            'settings' => array(),
+          ),
+          'search_result' => array(
+            'label' => 'inline',
+            'type' => 'text_default',
+            'weight' => '9',
+            'settings' => array(),
+            'module' => 'text',
+          ),
+        ),
+        'required' => 0,
+        'description' => '',
+        'default_value' => NULL,
+        'field_name' => 'field_retailer_product_name',
+        'entity_type' => 'node',
+        'bundle' => '_product_and_coupon',
+        'deleted' => '0',
+      ),
+    ),
+  ),
+);

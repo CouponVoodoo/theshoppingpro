@@ -1,0 +1,5 @@
+name = Coupon finder 
+description= Find the coupon for retailers.
+core = "7.x"
+project = "coupons"
+
