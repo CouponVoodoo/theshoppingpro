@@ -935,7 +935,8 @@ function coupons_copy_coupon($nid){
   
   /******************************************************************/
   
-  $jsonArray = base64_decode(($FRProUrl->field_best_coupon_info_value));
+  //$jsonArray = unserialize(($FRProUrl->field_best_coupon_info_value));
+  $jsonArray = unserialize(($FRProUrl->field_best_coupon_info_value));
   if (isset($jsonArray)) {
     global $base_root;
     $items = array();
