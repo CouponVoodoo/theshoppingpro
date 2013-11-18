@@ -34,8 +34,43 @@
       }else{
         echo "<div class='no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='no_coupons_text'>No Coupons Found</div></div>";
       }
-            
-      print render($content);
+      
+      $uplImg = $node->field_product_images['und'][0]['uri'];
+      $imgPath = $imgUri = image_style_url('200x200', $uplImg);
+      echo $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
+                    <div class='field-label'>Product images:&nbsp;</div>
+                    <div class='field-items'>
+                        <div class='field-item even'>
+                            <img width='200' height='200' src='{$imgPath}' typeof='foaf:Image'>
+                        </div>
+                    </div>
+                </div>";
+      echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
+                        <div class='field-label'>List Price:&nbsp;</div>
+                        <div class='field-items'>
+                            <div class='field-item even'>INR {$node->field_product_price['und'][0]['value']}</div>
+                        </div>
+                    </div>";
+      $listPrice = "<div class='field field-name-field-best-coupon-saving field-type-number-integer field-label-above'>
+                            <div class='field-label'>Savings:&nbsp;</div>
+                            <div class='field-items'>
+                                <div class='field-item even'>";
+                                if($node->field_best_coupon_saving['und'][0]['value']==0){
+            $listPrice .=          '-';
+                                }
+                                else{
+            $listPrice .=          $node->field_best_coupon_saving['und'][0]['value'];
+                                }    
+      echo $listPrice .=         "</div>
+                            </div>
+                        </div>";
+      echo $listPrice = "<div class='field field-name-field-best-coupon-netpriceafters field-type-number-integer field-label-above'>
+                            <div class='field-label'>Net Price:&nbsp;</div>
+                            <div class='field-items'>
+                                <div class='field-item even'>INR {$node->field_best_coupon_netpriceafters['und'][0]['value']}</div>
+                            </div>
+                        </div>";       
+      //print render($content);
       
       $BrandTid = $node->field_brand[und][0]['tid'];
       $RetailerTid = $node->field_retailer[und][0]['tid'];
