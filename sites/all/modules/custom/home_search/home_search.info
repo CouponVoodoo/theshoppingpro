@@ -1,0 +1,4 @@
+name = Home page search
+description= Home page search.
+core = "7.x"
+project = "coupons"
