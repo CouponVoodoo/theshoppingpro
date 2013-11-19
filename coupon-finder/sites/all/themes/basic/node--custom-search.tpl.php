@@ -52,9 +52,6 @@
                         <div class='field-item even'>
                             <a href='{$urlAlias}'><img width='200' height='200' src='{$imgPath}' typeof='foaf:Image'></a>
                         </div>";
-      if($node->field_best_coupon_status[und][0]['value'] == 0){
-        $img .= "<div><a class='view_store' href='{$node->field_affiliateurl[und][0]['value']}'>View Store</a></div>";
-      }                        
       echo  $img .=    "</div>
                 </div>";
       
@@ -98,6 +95,9 @@
         $copyCoupon =  coupons_copy_coupon_taxonomy($node->nid,4);
         print render($copyCoupon);
       }
+      if($node->field_best_coupon_status[und][0]['value'] == 0){
+        echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$node->field_affiliateurl[und][0]['value']}'>View Store</a></div>";
+      }      
       //$field_page_url = $node->field_page_url[und][0]['value'];
       //echo "<div class='page_url'><a href='$field_page_url'>See Other Coupons</a></div>";
      ?>
