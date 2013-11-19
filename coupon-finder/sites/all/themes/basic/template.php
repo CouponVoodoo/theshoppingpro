@@ -193,6 +193,10 @@ function basic_preprocess_node(&$vars) {
         $vars['theme_hook_suggestions'][] = 'custom__search' ;
     }*/
     
+    if (arg(0) == 'search' && arg(1) == 'site') {
+        $vars['theme_hook_suggestions'][] = 'node__custom_search' ;
+    }
+    
     // Add a striping class.
     $vars['classes_array'][] = 'node-' . $vars['zebra'];
 
