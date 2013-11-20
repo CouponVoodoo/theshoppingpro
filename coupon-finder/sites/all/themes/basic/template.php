@@ -319,7 +319,7 @@ function basic_menu_link(array $variables) {
     }
     
     //remove menu title
-    $element['#localized_options']['attributes']['title'] = '';
+    $element['#localized_options']['attributes']['title'] = ''; 
     
     $output = l($element['#title'], $element['#href'], $element['#localized_options']);
     // Adding a class depending on the TITLE of the link (not constant)
