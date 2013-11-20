@@ -109,12 +109,12 @@ function custom_api_addproduct($ProInfo){
 	
 	//$node->	field_page_url[und][0][value]		= $Pageurl;
 	
-	$ImgPath = $jsonArray->header->ProductImage;
+	/*$ImgPath = $jsonArray->header->ProductImage;
 	$ImgFile = pathinfo($ImgPath);         // $file is set to "index.php"
 	
 	$image = file_get_contents($ImgPath); // string
 	$file = file_save_data($image, 'public://'.$ImgFile['basename'] ,FILE_EXISTS_REPLACE);
-	$node->field_product_images[LANGUAGE_NONE]['0']['fid'] = $file->fid;
+	$node->field_product_images[LANGUAGE_NONE]['0']['fid'] = $file->fid;*/
 	
 	node_save($node);
 	global $base_url;
@@ -204,12 +204,12 @@ function custom_api_addproduct($ProInfo){
 	  $node->field_best_coupon_info[und][0][value]		= serialize( $jsonArray->data );
 	  
 	  //$node->field_page_url[und][0][value]		= $Pageurl;
-	  $ImgPath = $jsonArray->header->ProductImage;
+	  /*$ImgPath = $jsonArray->header->ProductImage;
 	  $ImgFile = pathinfo($ImgPath);         // $file is set to "index.php"
 	  
 	  $image = file_get_contents($ImgPath); // string
 	  $file = file_save_data($image, 'public://'.$ImgFile['basename'] ,FILE_EXISTS_REPLACE);
-	  $node->field_product_images[LANGUAGE_NONE]['0']['fid'] = $file->fid;
+	  $node->field_product_images[LANGUAGE_NONE]['0']['fid'] = $file->fid;*/
 	
 	  node_save($node);
 	  
