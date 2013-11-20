@@ -185,13 +185,6 @@ function basic_preprocess_node(&$vars) {
         $vid = db_query("SELECT vid FROM {taxonomy_term_data} WHERE tid = :tid", array(':tid' => $tid))->fetchField();
         $vars['theme_hook_suggestions'][] = 'page__vocabulary__' . $vid;
     }
-    /*if (arg(0) == 'search' && arg(1) == 'site') {
-        //echo '---->'.arg(0);
-        //$tid = arg(2);
-        //$vid = db_query("SELECT vid FROM {taxonomy_term_data} WHERE tid = :tid", array(':tid' => $tid))->fetchField();
-        //$vars['theme_hook_suggestions'][] = 'page__vocabulary__' . $vid;
-        $vars['theme_hook_suggestions'][] = 'custom__search' ;
-    }*/
     
     if (arg(0) == 'search' && arg(1) == 'site') {
         $vars['theme_hook_suggestions'][] = 'node__custom_search' ;
@@ -324,6 +317,10 @@ function basic_menu_link(array $variables) {
     if ($element['#below']) {
         $sub_menu = drupal_render($element['#below']);
     }
+    
+    //remove menu title
+    $element['#localized_options']['attributes']['title'] = '';
+    
     $output = l($element['#title'], $element['#href'], $element['#localized_options']);
     // Adding a class depending on the TITLE of the link (not constant)
     $element['#attributes']['class'][] = basic_id_safe($element['#title']);
