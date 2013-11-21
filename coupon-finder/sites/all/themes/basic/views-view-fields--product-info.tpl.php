@@ -27,24 +27,28 @@
 <?php
 $nid = arg(1);
 ?>
-<div class="product-detail"> 
+<div class="product-detail">
 
-<div class="product-inner"> 
+<div class="product-inner">
 <div class="product-left">
     <?php
-    print ($fields['field_product_image']->content);
     
+    print ($fields['field_product_image']->content);
+        
+    //print ($fields['field_product_images']->content);
     $status = strip_tags($fields['field_best_coupon_status']->content);
     if( $status == 0){
         echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$node->field_affiliateurl[und][0]['value']}'>View Store</a></div>";
     }
+    //field_base_url
+    //nid
     ?>
 </div>
 
 
 <div class="product-right-inner">
 <h2> <?php print ($fields['field_retailer_product_name']->content); ?></h2>
-<div class="custom_link">Last Checked :  <?php echo strip_tags($fields['field_lastcheckedtime']->content); ?> | <a href="#" class="active">Recheck Now</a></div>
+<div class="custom_link">Last Checked : <?php echo strip_tags($fields['field_lastcheckedtime']->content); ?> | <a href="<?php echo base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>" class="active">Recheck Now</a></div>
 <div class="product-right">
 <h4>Best Coupon</h4>
 <div class="coupon_code1">
