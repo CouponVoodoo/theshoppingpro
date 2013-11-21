@@ -24,10 +24,7 @@ function custom_api_addproduct($ProInfo){
     $baseUrl = $_REQUEST['url'];
     
     if($_REQUEST['recheck'] == 1){
-      mail('sanjay.kumar1@mail.vinove.com', 'recheck node_url', 'node_url'.print_r($node_url,1));
       $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
-      mail('sanjay.kumar1@mail.vinove.com', 'Pageurl', 'Pageurl'.print_r($Pageurl,1));
-      
       $url = "http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=" . urldecode( $baseUrl );
       //http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=http://www.firstcry.com/zeme-organics/maternity-top-orange/61968/product-detail
       $node_url = $base_url.drupal_get_path_alias('node/'.$_REQUEST['id']);
@@ -44,7 +41,6 @@ function custom_api_addproduct($ProInfo){
     $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
     $jsonArray = json_decode($jsonData);
     
-    //mail('sanjay.kumar1@mail.vinove.com', 'jsonArray', 'jsonArray-->'.print_r($jsonArray,1));
     
     /**added by sanjay*/
     //if($jsonArray->header->Use == 1 || $jsonArray->header->Use == 0){
@@ -166,7 +162,6 @@ function custom_api_addproduct($ProInfo){
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$record->entity_id);
 	
 	if( $expDate[0] != $lastUpdatedDate){
-	  mail('sanjay.kumar1@mail.vinove.com', 'rechecked and inside', 'rechecked and inside');
 	  $brand_name = $jsonArray->header->ProductBrand;
 	  //$brand_name = 'nike';
 	  $vocabulary_name = 'brand';
