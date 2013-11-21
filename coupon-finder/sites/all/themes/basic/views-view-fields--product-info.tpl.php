@@ -27,7 +27,7 @@
 <?php
 $nid = arg(1);
 ?>
-<div class="product-detail">
+<div class="product-detail"> 
 
 <div class="product-inner">
 <div class="product-left">
