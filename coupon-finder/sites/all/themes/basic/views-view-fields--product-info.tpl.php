@@ -33,8 +33,9 @@ $nid = arg(1);
 <div class="product-left">
     <?php
     print ($fields['field_product_image']->content);
-    //print ($fields['field_product_images']->content);  if($fields['field_best_coupon_status']->content == 0){
-    if($fields['field_best_coupon_status']->content == 0){
+    
+    $status = strip_tags($fields['field_best_coupon_status']->content);
+    if( $status == 0){
         echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$node->field_affiliateurl[und][0]['value']}'>View Store</a></div>";
     }
     ?>
