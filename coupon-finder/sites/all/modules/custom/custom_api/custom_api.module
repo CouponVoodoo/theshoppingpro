@@ -22,9 +22,19 @@ function custom_api_addproduct($ProInfo){
     //die;
     //$baseUrl = base64_decode( ($ProInfo) );
     $baseUrl = $_REQUEST['url'];
-    $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
     
-    $url = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" . urldecode( $baseUrl );
+    if($_REQUEST['recheck'] == 1){
+      mail('sanjay.kumar1@mail.vinove.com', 'recheck node_url', 'node_url'.print_r($node_url,1));
+      $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
+      mail('sanjay.kumar1@mail.vinove.com', 'Pageurl', 'Pageurl'.print_r($Pageurl,1));
+      
+      $url = "http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=" . urldecode( $baseUrl );
+      //http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=http://www.firstcry.com/zeme-organics/maternity-top-orange/61968/product-detail
+      $node_url = $base_url.drupal_get_path_alias('node/'.$_REQUEST['id']);
+    }else{
+      $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;    
+      $url = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" . urldecode( $baseUrl );
+    }
     
     $json = drupal_http_request($url, array('timeout' => 600.0));
     //print_r($url);
@@ -156,6 +166,7 @@ function custom_api_addproduct($ProInfo){
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$record->entity_id);
 	
 	if( $expDate[0] != $lastUpdatedDate){
+	  mail('sanjay.kumar1@mail.vinove.com', 'rechecked and inside', 'rechecked and inside');
 	  $brand_name = $jsonArray->header->ProductBrand;
 	  //$brand_name = 'nike';
 	  $vocabulary_name = 'brand';
@@ -235,5 +246,8 @@ function custom_api_addproduct($ProInfo){
     } 
     /*end here*/   
        
-    //return $json;
+    if($_REQUEST['recheck'] == 1){
+      //mail('sanjay.kumar1@mail.vinove.com', 'node_url', 'node_url'.print_r($node_url,1));
+      drupal_goto($node_url);
+    }  
 }
