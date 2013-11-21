@@ -33,14 +33,17 @@ $nid = arg(1);
 <div class="product-left">
     <?php
     print ($fields['field_product_image']->content);
-    //print ($fields['field_product_images']->content); ?>
-    <a class='view_store' href='<?php echo strip_tags($fields['field_affiliateurl']->content); ?>' >View Store</a>
+    //print ($fields['field_product_images']->content);  if($fields['field_best_coupon_status']->content == 0){
+    if($fields['field_best_coupon_status']->content == 0){
+        echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$node->field_affiliateurl[und][0]['value']}'>View Store</a></div>";
+    }
+    ?>
 </div>
 
 
 <div class="product-right-inner">
 <h2> <?php print ($fields['field_retailer_product_name']->content); ?></h2>
-<div class="custom_link">Last Checked :  <a href="#">last checked</a> | <a href="#" class="active">Recheck Now</a></div>
+<div class="custom_link">Last Checked :  <?php echo strip_tags($fields['field_lastcheckedtime']->content); ?> | <a href="#" class="active">Recheck Now</a></div>
 <div class="product-right">
 <h4>Best Coupon</h4>
 <div class="coupon_code1">
