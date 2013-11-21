@@ -3,7 +3,7 @@
     <div class="ribbon-wrapper-green">
         <div class="ribbon-green">Save <?php echo $node->field_best_coupon_saving['und'][0]['value']; ?></div>
   </div>
-  <?php }?>
+  <?php }?> 
   
   <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
     <header>
