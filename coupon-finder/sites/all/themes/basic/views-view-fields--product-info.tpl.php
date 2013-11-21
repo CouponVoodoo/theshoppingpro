@@ -31,7 +31,9 @@ $nid = arg(1);
 
 <div class="product-inner">
 <div class="product-left">
-    <?php print ($fields['field_product_images']->content); ?>
+    <?php
+    print ($fields['field_product_image']->content);
+    //print ($fields['field_product_images']->content); ?>
     <a class='view_store' href='<?php echo strip_tags($fields['field_affiliateurl']->content); ?>' >View Store</a>
 </div>
 
