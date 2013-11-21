@@ -47,8 +47,8 @@
       $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
-                        <div class='field-item even'>
-                            <a href='{$urlAlias}'><img width='200' height='200' src='{$imgPath}' typeof='foaf:Image'></a>
+                        <div class='field-item even product_img'>
+                            <a href='{$urlAlias}'><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
                         </div>";
       
       echo  $img .=    "</div>
