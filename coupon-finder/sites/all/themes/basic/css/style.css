@@ -962,3 +962,12 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 }
 
 /****************************************************************************/
+
+
+.product_img img{
+  display: block;
+  max-width:230px;
+  max-height:230px;
+  width: auto;
+  height: auto;
+}
