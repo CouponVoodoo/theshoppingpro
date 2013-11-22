@@ -258,7 +258,7 @@ body:before {
 }
 
 
-#header{background:#000000;width:100%;float:left}
+#header{background:#000000;width:100%;float:left;position:relative;z-index:9999}
 .front #header  {height:75px}
 #header #logo {padding-top:10px;}
 #header #logo img{height:55px;}
@@ -712,8 +712,8 @@ img.dollor { left: 425px; position: absolute; top: 330px; z-index: 0;}
 .product-detail{width:99.8%;float:left;border-radius:4px;border:1px solid #e1e1e1;margin-left:0px;padding:12px;margin-bottom:15px}
 .product-detail h2{color: #F7971C;font-family: Arial;font-size: 18px;font-style: normal;font-weight: bold;padding-right: 0px;text-decoration: none;}
 .product-detail h2 .field-content{float:left}
-.product-detail  .product-left{float: left;height: 237px;width: 220px;text-align:center;margin-top:10px}
-.product-detail  .product-left .field-content{height:230px}
+.product-detail .product-left{ float: left;margin-top: 10px;text-align: center;width: 200px;}
+.product-detail .product-left .field-content{ float: left; height: 200px;text-align: center;width: 200px;}
 .product-detail .product-right-inner{width:420px;float:left;margin-left:11px}
 .product-detail  .product-right{width:417px;float:left;border:1px solid #e6e6e6;background: #F2F2F2;padding:10px 5px 5px 10px;border-radius:6px;position:relative;}
 .node-type--product-and-coupon .item-list{width:100%;float:left;position:relative}
@@ -769,7 +769,7 @@ font-weight: normal;text-decoration: none;}
 .page-taxonomy-term #sidebar-first .block-facetapi .block-inner h2,.page-search-site #sidebar-first .block-facetapi .block-inner h2{font:bold 14px/15px arial; color: #F7971C;text-align:center}
 .page-taxonomy-term #sidebar-first .block-facetapi .block-inner .content ul li a,.page-search-site #sidebar-first .block-facetapi .block-inner .content ul li a {color:#666666;font:12px/14px arial;}
 .page-taxonomy-term #sidebar-first .block-facetapi .block-inner .content ul li,.page-search-site #sidebar-first .block-facetapi .block-inner .content ul li {list-style-image:none;list-style-type:none;background:url(../images/arrow.png) no-repeat 0 3px;padding-left:22px;margin:0px;padding-bottom:3px}
-.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon,.page-search-site #block-system-main .block-inner .node--product-and-coupon{border: 1px solid #D7D7D7;border-radius: 8px 8px 8px 8px;clear: none;float: left;height: 498px;margin-bottom: 13px;margin-right: 7px;padding: 18px;vertical-align: top;width: 232px;}
+.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon,.page-search-site #block-system-main .block-inner .node--product-and-coupon{border: 1px solid #D7D7D7;border-radius: 8px 8px 8px 8px;clear: none;float: left;height: 498px;margin-bottom: 13px;margin-right: 7px;padding: 18px;vertical-align: top;width: 232px;position:relative}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon h2,.page-search-site #block-system-main .block-inner .node--product-and-coupon h2{font:bold 12px/20px arial;}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .submitted,.page-search-site #block-system-main .block-inner .node--product-and-coupon .submitted{display:none;}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-label,.page-search-site #block-system-main .block-inner .node--product-and-coupon .field-label{font:bold 12px/20px arial;color:#f7971c;float:left;margin-right:2px;width:81px}
@@ -790,7 +790,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .page-taxonomy-term  h1.title,.page-search-site h1.title{float: left; font-size: 20px;font-weight: bold;line-height: 18px;margin: 8px 0 0 7px;padding: 0;}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon header, .page-search-site #block-system-main .block-inner .node--product-and-coupon header{display:none;}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .product_name,.page-search-site #block-system-main .block-inner .node--product-and-coupon .product_name a{font-weight:bold;}
-.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .product_name,.page-search-site #block-system-main .block-inner .node--product-and-coupon .product_name {padding-bottom:5px;/*height:42px;*/}
+.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .product_name,.page-search-site #block-system-main .block-inner .node--product-and-coupon .product_name {padding-bottom:5px;height:42px;float:left;padding-top:5px}
 
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .no_coupons_found img,.page-search-site #block-system-main .block-inner .node--product-and-coupon .no_coupons_found img,.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found img,.page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found img{float:left;margin-right:4px}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .no_coupons_found .no_coupons_text,.page-search-site #block-system-main .block-inner .node--product-and-coupon .no_coupons_found .no_coupons_text,.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found .coupons_text,.page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found .coupons_text{line-height:29px;font-weight:bold}
@@ -889,11 +889,14 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .retailer_product_right h2{font-size:15px;font-weight:bold;text-align:center;}
 #sidebar-second{margin-top:43px;}
 .not-logged-in #sidebar-second{margin-top:16px;}
-.retailer_product_right .views-row{background:#fff;padding:10px;border:1px solid #E6E6E6;border-radius:8px;margin-bottom:10px}
+.retailer_product_right .views-row{background:#fff;padding:10px;border:1px solid #E6E6E6;border-radius:8px;margin-bottom:10px;float:left}
 .retailer_product_right .views-row .views-field-sm-field-retailer-product-name,.retailer_product_right .views-row .views-field-sm-field-retailer-product-name span,.retailer_product_right .views-row .views-field-sm-field-retailer-product-name a{color:#F7971C;font-weight:bold;}
 .retailer_product_right .views-row .views-field-sm-vid-Retailer{color:#666666;font-weight:bold;}
 .retailer_product_right .views-row  .views-label{ color: #666666;float: left; font-family: Arial;font-size: 11px;font-style: normal;font-weight: bold;padding-right: 7px;width:100px;}
 .retailer_product_right .views-row .field-content{color: #666666;font-weight: bold;font-size: 11px;}
+.retailer_product_right .views-field-php{width:100%;float:left;text-align:center;}
+.retailer_product_right .views-field-php .unlock_coupon{right:-17px}
+.retailer_product_right .views-field-php .item-list ul li{background:none!important;border:0px!important}
 
 /************************************************/
 
@@ -912,7 +915,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 
 .ribbon-wrapper-green {
   width: 127px;
-  height: 150px;
+  height: 105px;
   overflow: hidden;
   position: absolute;
   top: -3px;
@@ -931,8 +934,8 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
   position: relative;
   padding: 7px 0;
   left: -5px;
-  top: 32px;
-  width: 170px;
+  top: 17px;
+  width: 168px;
   background-color: #BFDC7A;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45)); 
   background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45); 
@@ -955,22 +958,22 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 }
 
 .ribbon-green:before {
-  left: 0;
+  left: 22px;
 }
 .ribbon-green:after {
   right: 0;
 }
 
+
+.product_img img { max-height: 200px; max-width: 200px;width: auto;}
+.node--product-and-coupon .d_view_store{width:100%;float:left;text-align:center;margin-top:15px;background:none repeat scroll 0 0 #FF9900;border-radius:15px}
+.product_info .d_view_store{width:100%;float:left;text-align:center;margin-top:11px;}
+.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .d_view_store a,.page-search-site #block-system-main .block-inner .node--product-and-coupon .d_view_store a{color:#fff;font-size:13px!important;font-weight:bold;line-height:30px!important;text-decoration:none!important;}
+.product_info .d_view_store a{ background: none repeat scroll 0 0 #FF9900; color: #FFFFFF;font-size: 13px !important;font-weight: bold;line-height: 30px !important;padding: 8px 26px;text-decoration: none !important;border-radius:13px}
+.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images ,.page-search-site #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images {text-align:center;width:200px;height:200px;float:left}
+.product_info .coupon_code1 .d_view_store a{padding:8px 14px}
+
 /****************************************************************************/
-
-
-.product_img img{
-  display: block;
-  max-width:200px;
-  max-height:200px;
-  width: auto;
-  height: auto;
-}
 
 .not-front #coupons-finder-form input.form-autocomplete {
     /*http://localhost/coupon/misc/throbber.gif*/
