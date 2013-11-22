@@ -33,7 +33,7 @@ $nid = arg(1);
 <div class="product-left">
     <?php
     
-    print ($fields['field_product_image']->content);
+    echo "<a target='_blank' class='view_store' href='{$node->field_affiliateurl[und][0]['value']}'>".$fields['field_product_image']->content."</a>";
         
     //print ($fields['field_product_images']->content);
     $status = strip_tags($fields['field_best_coupon_status']->content);
