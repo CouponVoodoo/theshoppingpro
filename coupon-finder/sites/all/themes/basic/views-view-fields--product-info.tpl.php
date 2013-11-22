@@ -77,14 +77,14 @@ $nid = arg(1);
 
 <li><label>List Price:</label>INR <?php
     $ProductPrice = explode('.', str_replace('INR', '' ,strip_tags($fields['field_product_price']->content) ) );
-    print $ProductPrice[0];
+    print number_format($ProductPrice[0],2);
         
     ?>
 </li>
 <li><label>Saving:</label> <?php
     $CouponSaving = explode('.', str_replace('INR', '' ,strip_tags($fields['field_best_coupon_saving']->content) ) );
     if( $CouponStatus == 1 ){
-        print ' INR '. $CouponSaving[0];
+        print ' INR '. number_format($CouponSaving[0],2);
     }else{
         print '-';
     }
@@ -93,7 +93,7 @@ $nid = arg(1);
 <?php
 $netPrice = explode('.', str_replace('INR', '' ,strip_tags($fields['field_best_coupon_netpriceafters']->content) ) );
 ?>
-<li><label>Price After Coupon:</label> INR <?php print($netPrice[0]); ?></li>
+<li><label>Price After Coupon:</label> INR <?php print(number_format($netPrice[0],2)); ?></li>
 <?php if( $CouponStatus == 1 ){?>
 <li><label>Best Coupon:</label><?php print ($fields['field_best_coupon_description']->content); ?></li>
 <?php }?>

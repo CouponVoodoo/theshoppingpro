@@ -40,7 +40,8 @@
         echo "<div class='no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='no_coupons_text'>No Coupons Found</div></div>";
       }
       
-      $urlAlias =  base_path().drupal_get_path_alias('node/'.$node->nid);
+      //$urlAlias =  base_path().drupal_get_path_alias('node/'.$node->nid);
+      $urlAlias =  $node->field_affiliateurl['und'][0]['value'];
       
       $uplImg = $node->field_product_images['und'][0]['uri'];
       $imgPath = $imgUri = image_style_url('200x200', $uplImg);
@@ -48,18 +49,18 @@
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
                         <div class='field-item even product_img'>
-                            <a href='{$urlAlias}'><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
+                            <a target='_blank'  href='{$urlAlias}'><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
                         </div>";
                           
       echo  $img .=    "</div>
                 </div>";
       
-      echo "<div class='product_name'><a href='{$urlAlias}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 47)."</a></div>";
+      echo "<div class='product_name'><a target='_blank'  href='{$urlAlias}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 47)."</a></div>";
       
       echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
                         <div class='field-label'>List Price:&nbsp;</div>
                         <div class='field-items'>
-                            <div class='field-item even'>INR {$node->field_product_price['und'][0]['value']}</div>
+                            <div class='field-item even'>INR ".number_format($node->field_product_price['und'][0]['value'],2)."</div>
                         </div>
                     </div>";
       $listPrice = "<div class='field field-name-field-best-coupon-saving field-type-number-integer field-label-above'>
@@ -70,7 +71,7 @@
             $listPrice .=          '-';
                                 }
                                 else{
-            $listPrice .=         'INR '.  $node->field_best_coupon_saving['und'][0]['value'];
+            $listPrice .=         'INR '.  number_format($node->field_best_coupon_saving['und'][0]['value'],2);
                                 }    
       echo $listPrice .=         "</div>
                             </div>
@@ -78,7 +79,7 @@
       echo $listPrice = "<div class='field field-name-field-best-coupon-netpriceafters field-type-number-integer field-label-above'>
                             <div class='field-label'>Net Price:&nbsp;</div>
                             <div class='field-items'>
-                                <div class='field-item even'>INR {$node->field_best_coupon_netpriceafters['und'][0]['value']}</div>
+                                <div class='field-item even'>INR ".number_format($node->field_best_coupon_netpriceafters['und'][0]['value'],2)."</div>
                             </div>
                         </div>"; 
       //print render($content);
