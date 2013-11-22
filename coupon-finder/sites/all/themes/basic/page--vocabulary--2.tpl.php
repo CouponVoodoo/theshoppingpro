@@ -40,8 +40,8 @@
         echo "<div class='no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='no_coupons_text'>No Coupons Found</div></div>";
       }
       
-      //$urlAlias =  base_path().drupal_get_path_alias('node/'.$node->nid);
-      $urlAlias =  $node->field_affiliateurl['und'][0]['value'];
+      $urlAlias =  base_path().drupal_get_path_alias('node/'.$node->nid);
+      //$urlAlias =  $node->field_affiliateurl['und'][0]['value'];
       
       $uplImg = $node->field_product_images['und'][0]['uri'];
       $imgPath = $imgUri = image_style_url('200x200', $uplImg);
