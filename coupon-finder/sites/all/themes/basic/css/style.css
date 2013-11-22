@@ -258,7 +258,7 @@ body:before {
 }
 
 
-#header{background:#000000;width:100%;float:left;position:relative;z-index:9999}
+#header{background:#000000;width:100%;float:left;position:relative;}
 .front #header  {height:75px}
 #header #logo {padding-top:10px;}
 #header #logo img{height:55px;}
@@ -895,7 +895,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .retailer_product_right .views-row  .views-label{ color: #666666;float: left; font-family: Arial;font-size: 11px;font-style: normal;font-weight: bold;padding-right: 7px;width:100px;}
 .retailer_product_right .views-row .field-content{color: #666666;font-weight: bold;font-size: 11px;}
 .retailer_product_right .views-field-php{width:100%;float:left;text-align:center;}
-.retailer_product_right .views-field-php .unlock_coupon{right:-17px}
+.retailer_product_right .views-field-php .unlock_coupon{padding:5px !important;right:-17px}
 .retailer_product_right .views-field-php .item-list ul li{background:none!important;border:0px!important}
 
 /************************************************/
