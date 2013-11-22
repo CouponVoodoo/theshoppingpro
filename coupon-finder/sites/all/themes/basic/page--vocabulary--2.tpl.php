@@ -48,12 +48,12 @@
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
                         <div class='field-item even product_img'>
-                            <a target='_blank'  href='{$urlAlias}'><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
+                            <a  href='{$urlAlias}'><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
                         </div>";
       echo  $img .=    "</div>
                 </div>";
       
-      echo "<div class='product_name'><a target='_blank'  href='{$urlAlias}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 47)."</a></div>";
+      echo "<div class='product_name'><a  href='{$urlAlias}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 47)."</a></div>";
       
       echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
                         <div class='field-label'>List Price:&nbsp;</div>
