@@ -972,7 +972,22 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
   height: auto;
 }
 
-#coupons-finder-form input.form-autocomplete {
+.not-front #coupons-finder-form input.form-autocomplete {
+    /*http://localhost/coupon/misc/throbber.gif*/
+    
+    background-image: url("../images/throbber_2.gif");
+    background-position: 100% 5px;
+    background-repeat: no-repeat;
+    
+}
+
+.not-front #coupons-finder-form input.throbbing{
+    background-image: url("../images//throbber_1.gif");
+    background-position: 100% 5px;
+    background-repeat: no-repeat;
+}
+
+.front #coupons-finder-form input.form-autocomplete {
     /*http://localhost/coupon/misc/throbber.gif*/
     
     background-image: url("../images/throbber_2.gif");
@@ -981,7 +996,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
     
 }
 
-#coupons-finder-form input.throbbing{
+.front #coupons-finder-form input.throbbing{
     background-image: url("../images//throbber_1.gif");
     background-position: 100% 12px;
     background-repeat: no-repeat;
