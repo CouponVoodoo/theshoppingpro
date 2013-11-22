@@ -37,7 +37,7 @@ $nid = arg(1);
         
     //print ($fields['field_product_images']->content);
     $status = strip_tags($fields['field_best_coupon_status']->content);
-    if( $status == 0){
+    if( $status == 1){
         echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$node->field_affiliateurl[und][0]['value']}'>View Store</a></div>";
     }
     //field_base_url
@@ -57,6 +57,8 @@ $nid = arg(1);
     
     if( $CouponStatus == 1 ){
         print coupons_copy_best_coupon($nid);
+    }else{
+        echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$node->field_affiliateurl[und][0]['value']}'>View Store</a></div>";
     }
     ?>
 </div>
@@ -77,14 +79,14 @@ $nid = arg(1);
 
 <li><label>List Price:</label>INR <?php
     $ProductPrice = explode('.', str_replace('INR', '' ,strip_tags($fields['field_product_price']->content) ) );
-    print number_format($ProductPrice[0],2);
+    print number_format($ProductPrice[0],0, '.', ',');
         
     ?>
 </li>
 <li><label>Saving:</label> <?php
     $CouponSaving = explode('.', str_replace('INR', '' ,strip_tags($fields['field_best_coupon_saving']->content) ) );
     if( $CouponStatus == 1 ){
-        print ' INR '. number_format($CouponSaving[0],2);
+        print ' INR '. number_format($CouponSaving[0],0, '.', ',');
     }else{
         print '-';
     }
@@ -93,7 +95,7 @@ $nid = arg(1);
 <?php
 $netPrice = explode('.', str_replace('INR', '' ,strip_tags($fields['field_best_coupon_netpriceafters']->content) ) );
 ?>
-<li><label>Price After Coupon:</label> INR <?php print(number_format($netPrice[0],2)); ?></li>
+<li><label>Price After Coupon:</label> INR <?php print(number_format($netPrice[0],0, '.', ',')); ?></li>
 <?php if( $CouponStatus == 1 ){?>
 <li><label>Best Coupon:</label><?php print ($fields['field_best_coupon_description']->content); ?></li>
 <?php }?>
