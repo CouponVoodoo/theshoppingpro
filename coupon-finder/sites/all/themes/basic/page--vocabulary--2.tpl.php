@@ -60,7 +60,7 @@
       echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
                         <div class='field-label'>List Price:&nbsp;</div>
                         <div class='field-items'>
-                            <div class='field-item even'>INR ".number_format( $node->field_product_price['und'][0]['value'], 2)."</div>
+                            <div class='field-item even'>INR ".number_format( $node->field_product_price['und'][0]['value'],0, '.', ',')."</div>
                         </div>
                     </div>";
       $listPrice = "<div class='field field-name-field-best-coupon-saving field-type-number-integer field-label-above'>
@@ -71,7 +71,7 @@
             $listPrice .=          '-';
                                 }
                                 else{
-            $listPrice .=        'INR '. number_format($node->field_best_coupon_saving['und'][0]['value'],2);
+            $listPrice .=        'INR '. number_format($node->field_best_coupon_saving['und'][0]['value'],0, '.', ',');
                                 }    
       echo $listPrice .=         "</div>
                             </div>
@@ -79,7 +79,7 @@
       echo $listPrice = "<div class='field field-name-field-best-coupon-netpriceafters field-type-number-integer field-label-above'>
                             <div class='field-label'>Net Price:&nbsp;</div>
                             <div class='field-items'>
-                                <div class='field-item even'>INR ".number_format( $node->field_best_coupon_netpriceafters['und'][0]['value'] ,2)."</div>
+                                <div class='field-item even'>INR ".number_format( $node->field_best_coupon_netpriceafters['und'][0]['value'],0, '.', ',')."</div>
                             </div>
                         </div>";       
       //print render($content);
