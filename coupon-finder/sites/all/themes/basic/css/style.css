@@ -889,7 +889,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .retailer_product_right h2{font-size:15px;font-weight:bold;text-align:center;}
 #sidebar-second{margin-top:43px;}
 .not-logged-in #sidebar-second{margin-top:16px;}
-.retailer_product_right .views-row{background:#fff;padding:10px;border:1px solid #E6E6E6;border-radius:8px;margin-bottom:10px;float:left}
+.retailer_product_right .views-row{background:#fff;padding:10px;border:1px solid #E6E6E6;border-radius:8px;margin-bottom:10px;float:left; width:188px}
 .retailer_product_right .views-row .views-field-sm-field-retailer-product-name,.retailer_product_right .views-row .views-field-sm-field-retailer-product-name span,.retailer_product_right .views-row .views-field-sm-field-retailer-product-name a{color:#F7971C;font-weight:bold;}
 .retailer_product_right .views-row .views-field-sm-vid-Retailer{color:#666666;font-weight:bold;}
 .retailer_product_right .views-row  .views-label{ color: #666666;float: left; font-family: Arial;font-size: 11px;font-style: normal;font-weight: bold;padding-right: 7px;width:100px;}
