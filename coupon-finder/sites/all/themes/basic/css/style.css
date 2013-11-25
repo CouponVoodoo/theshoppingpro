@@ -804,7 +804,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .page-search-site #search-form label{font:bold 14px/20px arial;color:#f7971c;}
 .page-search-site #search-form  #edit-submit{background:#F7971C;border:1px solid #cc6600;color:#fff;padding:0 2px;font:13px/17px arial}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-label,.page-search-site #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-label{display:none}
-.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-items,.page-search-site #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-items{text-align:center}
+.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-items,.page-search-site #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-items{display: table; height: 200px; overflow: hidden; text-align: center;  width: 200px;}
 .page-taxonomy-term #block-system-main .block-inner .item-list, .page-search-site #block-system-main .block-inner .item-list{float:left}
 .page-taxonomy-term #block-system-main .block-inner .item-list ul li, .page-search-site #block-system-main .block-inner .item-list ul li{background:none;border:0px}
 /****Retailer product****/
@@ -970,7 +970,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .product_info .d_view_store{width:100%;float:left;text-align:center;margin-top:11px;}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .d_view_store a,.page-search-site #block-system-main .block-inner .node--product-and-coupon .d_view_store a{color:#fff;font-size:13px!important;font-weight:bold;line-height:30px!important;text-decoration:none!important;}
 .product_info .d_view_store a{ background: none repeat scroll 0 0 #FF9900; color: #FFFFFF;font-size: 13px !important;font-weight: bold;line-height: 30px !important;padding: 8px 26px;text-decoration: none !important;border-radius:13px}
-.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images ,.page-search-site #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images {text-align:center;width:200px;height:200px;float:left}
+.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images ,.page-search-site #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images {float: left;text-align: center; width: 100%;}
 .product_info .coupon_code1 .d_view_store a{padding:8px 14px}
 
 /****************************************************************************/
@@ -1004,3 +1004,10 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
     background-position: 100% 12px;
     background-repeat: no-repeat;
 }
+
+    .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-items .field-item, .page-search-site #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-items .field-item{display: table-cell;
+    vertical-align: middle;}
+    
+    .product-detail .product-left .view_store1{display: table;height: 200px;overflow: hidden;text-align: center;width: 200px;}
+.product-detail .product-left .view_store1 .product_img{display: table-cell;vertical-align: middle;float:none;}
+.product-detail .product-left .d_view_store a{height:auto;} 
