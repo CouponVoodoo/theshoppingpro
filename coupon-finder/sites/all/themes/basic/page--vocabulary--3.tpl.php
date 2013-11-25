@@ -92,10 +92,11 @@
       if($node->field_best_coupon_status[und][0]['value'] == 1){
         //$copyCoupon =  coupons_copy_coupon_taxonomy($node->nid,3);
         //print render($copyCoupon);
+        echo "<div class='d_view_store'><a class='view_store' href='{$node->field_page_url[und][0]['value']}'>View Details</a></div>";
       }
       if($node->field_best_coupon_status[und][0]['value'] == 0){
-        //echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$node->field_affiliateurl[und][0]['value']}'>View Store</a></div>";
-        echo "<div class='d_view_store'><a class='view_store' href='{$node->field_page_url[und][0]['value']}'>View Details</a></div>";
+        echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$node->field_affiliateurl[und][0]['value']}'>View Store</a></div>";
+        
       }      
       //$field_page_url = $node->field_page_url[und][0]['value'];
       //echo "<div class='page_url'><a href='$field_page_url'>See Other Coupons</a></div>";
