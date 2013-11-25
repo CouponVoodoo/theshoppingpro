@@ -84,18 +84,22 @@ $nid = arg(1);
     ?>
 </li>
 <li><label>Saving:</label> <?php
-    $CouponSaving = explode('.', str_replace('INR', '' ,strip_tags($fields['field_best_coupon_saving']->content) ) );
+     $CouponSaving = explode('.', strip_tags($fields['field_best_coupon_saving']->content)  );
     if( $CouponStatus == 1 ){
-        print ' INR '. number_format($CouponSaving[0],0, '.', ',');
+         //print ' INR '. number_format($CouponSaving[0],0, '.', ',');
+        print $CouponSaving[0];
     }else{
         print '-';
     }
     ?>
 </li>
 <?php
-$netPrice = explode('.', str_replace('INR', '' ,strip_tags($fields['field_best_coupon_netpriceafters']->content) ) );
+//$netPrice = explode('.', str_replace('INR', '' ,strip_tags($fields['field_best_coupon_netpriceafters']->content) ) );
+$netPrice = explode('.', strip_tags($fields['field_best_coupon_netpriceafters']->content));
+
 ?>
-<li><label>Price After Coupon:</label> INR <?php print(number_format($netPrice[0],0, '.', ',')); ?></li>
+<li>
+    <li><label>Price After Coupon:</label><?php print(($netPrice[0]));?></li>
 <?php if( $CouponStatus == 1 ){?>
 <li><label>Best Coupon:</label><?php print ($fields['field_best_coupon_description']->content); ?></li>
 <?php }?>
