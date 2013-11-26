@@ -1016,6 +1016,11 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
   text-align:center;
   margin-top:200px;
   display:none;
+  position:relative;
 }
 
-.locader img.dollor { left: 686px; position: absolute; top: 483px; z-index: 0;}
+.locader img.dollor { left: 438px;
+position: absolute;
+bottom: auto;
+z-index: 0;
+top: 259px;}
