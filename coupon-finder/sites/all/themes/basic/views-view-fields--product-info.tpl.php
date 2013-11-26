@@ -33,12 +33,12 @@ $nid = arg(1);
 <div class="product-left">
     <?php
     
-    echo "<a target='_blank' class='view_store1' href='{$fields['field_affiliateurl']->content}'>".$fields['field_product_image']->content."</a>";
+    echo "<a target='_blank' class='view_store1' href='{$fields['field_affiliateurl']->content}' >".$fields['field_product_image']->content."</a>";
         
     //print ($fields['field_product_images']->content);
     $status = strip_tags($fields['field_best_coupon_status']->content);
     if( $status == 1){
-        echo $fields['field_affiliateurl']->content;
+    
         echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}'>View Store</a></div>";
     }
     //field_base_url
