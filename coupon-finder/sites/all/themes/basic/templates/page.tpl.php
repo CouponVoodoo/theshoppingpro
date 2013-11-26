@@ -57,7 +57,12 @@
   <!-- ______________________ MAIN _______________________ -->
 
   <div id="main" class="clearfix">
-
+    <div class="locader">
+      <p style="text-align:center; position:relative;"></p>
+      <p class="frog_title"> Frugal Froggy Is Casting His Spell</p>
+      <img width="400px" alt="Loading..." src="/coupon/sites/all/themes/basic/images/Frugal_Froggy.jpg" class="frog">
+      <img src="/coupon/sites/all/themes/basic/images/Loader-Dollar.gif" class="dollor">
+    </div>
     <section id="content">
 
         <?php if ($breadcrumb || $title|| $messages || $tabs || $action_links): ?>
