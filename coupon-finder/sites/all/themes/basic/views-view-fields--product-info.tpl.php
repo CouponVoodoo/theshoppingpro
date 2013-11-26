@@ -49,8 +49,6 @@ $nid = arg(1);
 
 <div class="product-right-inner">
 <h2> <?php print ($fields['field_retailer_product_name']->content); ?></h2>
-
-<!-- <div class="custom_link">Last Checked : <?php echo strip_tags($fields['field_lastcheckedtime']->content); ?> | <a href="<?php echo base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>" class="active">Recheck Now</a></div> -->
 <div class="custom_link">Last Checked : <?php echo strip_tags($fields['field_lastcheckedtime']->content); ?> | <a onclick="locader('<?php echo $base_root.base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>')" class="active">Recheck Now</a></div>
 
 <div class="product-right">
