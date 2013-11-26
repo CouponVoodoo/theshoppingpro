@@ -712,7 +712,7 @@ img.dollor { left: 425px; position: absolute; top: 330px; z-index: 0;}
 .product-detail{width:99.8%;float:left;border-radius:4px;border:1px solid #e1e1e1;margin-left:0px;padding:12px;margin-bottom:15px}
 .product-detail h2{color: #F7971C;font-family: Arial;font-size: 18px;font-style: normal;font-weight: bold;padding-right: 0px;text-decoration: none;}
 .product-detail h2 .field-content{float:left}
-.product-detail .product-left{ float: left;margin-top: 10px;text-align: center;width: 200px;}
+.product-detail .product-left{ float: left;margin-top: 10px;text-align: center;width: 225px;}
 .product-detail .product-left .field-content{ float: left; height: 200px;text-align: center;width: 200px;}
 .product-detail .product-right-inner{width:420px;float:left;margin-left:11px}
 .product-detail  .product-right{width:417px;float:left;border:1px solid #e6e6e6;background: #F2F2F2;padding:10px 5px 5px 10px;border-radius:6px;position:relative;}
