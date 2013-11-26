@@ -761,7 +761,7 @@ img.dollor { left: 425px; position: absolute; top: 330px; z-index: 0;}
 .product-bottom .product-right-bottom .field-content{color: #666666;display: table;font-family: Arial;font-size: 13px;font-style: normal;
 font-weight: normal;text-decoration: none;}
 .custom_link{width:99%;float:left;text-align:right;font:11px/15px arial;color: #9da0a4; padding:9px 0 0}
-.custom_link a{font:11px/15px arial;color: #9da0a4; }
+.custom_link a{font:11px/15px arial;color: #9da0a4; cursor:pointer}
 .custom_link a.active{color: #F7971C;}
 
 /*****Page Search Theme******/
@@ -1010,4 +1010,9 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
     
     .product-detail .product-left .view_store1{display: table;height: 200px;overflow: hidden;text-align: center;width: 200px;}
 .product-detail .product-left .view_store1 .product_img{display: table-cell;vertical-align: middle;float:none;}
-.product-detail .product-left .d_view_store a{height:auto;} 
+.product-detail .product-left .d_view_store a{height:auto;}
+
+.locader{
+  text-align:center;
+  display:none;
+}
