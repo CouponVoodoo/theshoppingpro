@@ -1,9 +1,24 @@
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>">
-  <?php if($node->field_best_coupon_saving['und'][0]['value'] != 0){ ?>
+
+<?php 
+
+/** Start of modified by Ashish to Show offers in green ribbon when saving = 1 */
+
+  if($node->field_best_coupon_saving['und'][0]['value'] > 1){ ?>
     <div class="ribbon-wrapper-green">
-        <div class="ribbon-green">Save <?php echo $node->field_best_coupon_saving['und'][0]['value']; ?></div>
+        <div class="ribbon-green">SAVE <?php echo $node->field_best_coupon_saving['und'][0]['value']; ?></div>
   </div>
-  <?php }?> 
+  		<?php } else if($node->field_best_coupon_saving['und'][0]['value'] == 1){ ?> 
+    				<div class="ribbon-wrapper-green">
+        			<div class="ribbon-green">Offers</div>
+  			</div>
+  <?php }  
+
+/** End of modified by Ashish to Show offers in green ribbon when saving = 1 */
+
+?>
+
+
   
   <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
     <header>
@@ -56,8 +71,20 @@
       echo  $img .=    "</div>
                 </div>";
       
-      echo "<div class='product_name'><a  href='{$urlAlias}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 47)."</a></div>";
-      
+      echo "<div class='product_name'><a  href='{$urlAlias}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
+
+ /** Start of modified by Ashish to Show reatiler name below product name */
+
+      	$BrandTid = $node->field_brand[und][0]['tid'];
+      	$RetailerTid = $node->field_retailer[und][0]['tid'];
+      	$CategoryTid = $node->field_category[und][0]['tid'];
+
+
+      	echo '<span style="color:blue; font-size:11px; color: #F7971C; line-height: 30px;">(</span>'.coupons_get_taxonomy_url($RetailerTid).'<span style="color:blue; font-size:11px; color: #F7971C">)</span>';
+	echo "</br>";
+
+ /** end of modified by Ashish to to Show reatiler name below product name*/
+
       echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
                         <div class='field-label'>List Price:&nbsp;</div>
                         <div class='field-items'>
@@ -68,12 +95,28 @@
                             <div class='field-label'>Savings:&nbsp;</div>
                             <div class='field-items'>
                                 <div class='field-item even'>";
-                                if($node->field_best_coupon_saving['und'][0]['value']==0){
+
+ /** Start of modified by Ashish to Show coupon description instead of saving when saving = 1 */
+
+
+                               if($node->field_best_coupon_saving['und'][0]['value']==0){
             $listPrice .=          '-';
                                 }
-                                else{
-            $listPrice .=         'INR '. number_format($node->field_best_coupon_saving['und'][0]['value'],0, '.', ',');
-                                }    
+                                else{ if($node->field_best_coupon_saving['und'][0]['value']==1){
+            $listPrice .=          substr($node->field_best_coupon_description['und'][0]['value'], 0, 15).'...';
+                                }
+                                else{ 					
+					
+						$listPrice .=         'INR '. number_format($node->field_best_coupon_saving['und'][0]['value'],0, '.', ',');
+                                }   }
+ 
+
+ /** end of modified by Ashish to Show coupon description instead of saving when saving = 1 */
+
+
+
+
+
       echo $listPrice .=         "</div>
                             </div>
                         </div>";
@@ -85,11 +128,10 @@
                         </div>";                    
       //print render($content);
       
-      $BrandTid = $node->field_brand[und][0]['tid'];
-      $RetailerTid = $node->field_retailer[und][0]['tid'];
-      $CategoryTid = $node->field_category[und][0]['tid'];
-      
-      echo coupons_get_taxonomy_url($BrandTid) .". | " . coupons_get_taxonomy_url($RetailerTid) .". | ". coupons_get_taxonomy_url($CategoryTid) . "." ;
+     
+
+
+//	echo coupons_get_taxonomy_url($BrandTid) .". | " . coupons_get_taxonomy_url($RetailerTid) .". | ". coupons_get_taxonomy_url($CategoryTid) . "." ;
       
       //echo 'brand - status '. $node->field_best_coupon_status[und][0]['value'];
       if($node->field_best_coupon_status[und][0]['value'] == 1){
