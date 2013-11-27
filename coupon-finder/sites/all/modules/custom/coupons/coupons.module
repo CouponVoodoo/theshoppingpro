@@ -1209,7 +1209,7 @@ function coupons_get_taxonomy_url($tid, $block = '') {
   }else{
     $termPath = taxonomy_term_load($tid); // load term object
     $term_uri = taxonomy_term_uri($termPath); // get array with path
-    $term_title = substr( taxonomy_term_title($termPath) , 0, 8);
+    $term_title = substr( taxonomy_term_title($termPath) , 0, 30);
     $term_path = $term_uri['path'];
     $link = l($term_title,$term_path);
   }
