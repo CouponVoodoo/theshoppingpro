@@ -1,0 +1,16 @@
+<?php
+
+
+function custom_sort_apachesolr_query_prepare(&$query){
+    
+    $query->setAvailableSort('its_field_product_popularity', array('title' => t('Popularity'), 'default' => 'asc'));
+    $query->setAvailableSort('its_field_best_coupon_netpriceaf', array('title' => t('Net Price'), 'default' => 'asc'));
+    $query->setAvailableSort('its_field_product_price', array('title' => t('Listing Price'), 'default' => 'asc'));
+    $query->setAvailableSort('its_field_best_coupon_saving', array('title' => t('Savings'), 'default' => 'asc'));
+    
+    $query->removeAvailableSort('ds_created');
+    $query->removeAvailableSort('sort_label');
+    $query->removeAvailableSort('bundle');
+    $query->removeAvailableSort('sort_name');
+ 
+}

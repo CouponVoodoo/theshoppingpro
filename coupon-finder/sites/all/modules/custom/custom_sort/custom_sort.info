@@ -1,0 +1,5 @@
+name = Custom Sort
+description= Custom Sort
+core = "7.x"
+project = "coupons"
+
