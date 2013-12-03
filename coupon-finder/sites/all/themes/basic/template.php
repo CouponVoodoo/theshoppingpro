@@ -328,6 +328,11 @@ function basic_menu_link(array $variables) {
     if (isset($element['#original_link']['mlid']) && !empty($element['#original_link']['mlid'])) {
         $element['#attributes']['class'][] = 'mid-' . $element['#original_link']['mlid'];
     }
+    
+    if( $element['#original_link']['mlid'] == 790 ){    
+        $output  = '<span class="nolink" title="">'.$popMenu.'</span>';
+    }
+    
     return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 
