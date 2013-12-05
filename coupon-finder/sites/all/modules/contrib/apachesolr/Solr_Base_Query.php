@@ -319,12 +319,16 @@ class SolrBaseQuery extends SolrFilterSubQuery implements DrupalSolrQueryInterfa
   protected function defaultSorts() {
     return array(
       'score' => array('title' => t('Relevancy'), 'default' => 'desc'),
-      'sort_label' => array('title' => t('Title'), 'default' => 'asc'),
-      'bundle' => array('title' => t('Type'), 'default' => 'asc'),
-      'sort_name' => array('title' => t('Author'), 'default' => 'asc'),
-      'ds_created' => array('title' => t('Date'), 'default' => 'desc'),
-    
-      );
+      //'sort_label' => array('title' => t('Title'), 'default' => 'asc'),
+      //'bundle' => array('title' => t('Type'), 'default' => 'asc'),
+      //'sort_name' => array('title' => t('Author'), 'default' => 'asc'),
+      //'ds_created' => array('title' => t('Date'), 'default' => 'desc'),
+      
+      'its_field_product_popularity' => array('title' => t('Popularity'), 'default' => 'desc'),
+      'its_field_best_coupon_netpriceaf' => array('title' => t('Net Price'), 'default' => 'desc'),
+      'its_field_product_price' => array('title' => t('Listing Price'), 'default' => 'desc'),
+      'its_field_best_coupon_saving' => array('title' => t('Savings'), 'default' => 'desc'),
+    );
   }
 
   /**
