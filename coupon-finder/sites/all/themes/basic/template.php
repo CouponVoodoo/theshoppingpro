@@ -329,6 +329,8 @@ function basic_menu_link(array $variables) {
         $element['#attributes']['class'][] = 'mid-' . $element['#original_link']['mlid'];
     }
     
+    $popMenu = strip_tags($output);
+    
     if( $element['#original_link']['mlid'] == 790 ){    
         $output  = '<span class="nolink" title="">'.$popMenu.'</span>';
     }
