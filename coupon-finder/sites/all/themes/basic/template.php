@@ -330,7 +330,7 @@ function basic_menu_link(array $variables) {
     }
     
     $popMenu = strip_tags($output);
-    
+      
     if( $element['#original_link']['mlid'] == 790 ){    
         $output  = '<span class="nolink" title="">'.$popMenu.'</span>';
     }
