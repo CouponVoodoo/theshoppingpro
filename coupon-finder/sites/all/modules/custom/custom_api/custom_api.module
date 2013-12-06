@@ -246,7 +246,7 @@ function custom_api_addproduct($ProInfo){
       drupal_goto($node_url);
     }  
 } 
-function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
-  $query->addParam('bq', 'itm_field_best_coupon_status:1^20');
-}
+// function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
+//   $query->addParam('bq', 'itm_field_best_coupon_status:1^20');
+// }
 ?>
