@@ -866,12 +866,18 @@ function coupons_copy_best_coupon($nid){
 	/* Mixpanel end*/
       }
 
+  //drupal_add_js(drupal_get_path('theme', 'basic') . '/js/jquery.clipboard.js');
+  drupal_add_js(drupal_get_path('module', 'coupons') . '/coupons.js');
+  $path = $base_url . "/" . drupal_get_path('theme', 'basic') . "/js/jquery.clipboard.swf";
+  
+
     /* mixpanel */
 drupal_add_js(array('coupons' => $coupons, 'savings' => $savings, 'fullProdUrl' => $fullProdUrl, 'prodUrl' => $prodUrl, 'retailerDomain' => $retailerDomain, 'brand' => $brand), 'setting');
     /* mixpanel */
 drupal_add_js("jQuery(document).ready(function($){
-          $('.unlock_coupon').click(function(){
-	  
+          $('.unlock_best_coupon').click(function(){
+	      //alert('test test');
+	      
 	      var coupon_code = '';
               var c = jQuery(this).attr('rel');
 	      
@@ -901,19 +907,14 @@ drupal_add_js("jQuery(document).ready(function($){
         });", array('type' => 'inline', 'scope' => 'footer'));
 
 
-    drupal_add_js(drupal_get_path('theme', 'basic') . '/js/jquery.zclip.min.js');
-    drupal_add_js(drupal_get_path('module', 'coupons') . '/coupons.js');
-    $path = $base_url . "/" . drupal_get_path('theme', 'basic') . "/js/ZeroClipboard1.swf";
+    
     drupal_add_js("jQuery(window).load(function($){
-                     jQuery('.unlock_coupon').zclip({
+                      jQuery('.unlock_best_coupon').clipboard({
                             path:'" . $path . "',
                             copy: function() {
-                                  var c = jQuery(this).attr('rel');
-                                   // if (item == c){
-                                      return Drupal.settings.coupons.best_1;
-                                    //}
+                                return Drupal.settings.coupons.best_1;
                               }
-                       });
+                      });
                 });", array('type' => 'inline', 'scope' => 'footer'));
 
     if ($is_success) {
