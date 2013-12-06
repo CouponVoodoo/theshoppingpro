@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo base_path().path_to_theme(); ?>/js/jquery.clipboard.js"></script>
 <div id="page" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
   <!-- ______________________ HEADER _______________________ -->
