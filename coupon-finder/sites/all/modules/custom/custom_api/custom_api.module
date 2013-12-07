@@ -255,5 +255,8 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
 //   echo $current_time; echo $solr_query; die;
 
    $query->addParam('bq', $solr_time_coupon_boost);
+   $query->addParam('mm', '1');
+
+
 }
 ?>
