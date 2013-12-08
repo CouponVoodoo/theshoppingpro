@@ -250,7 +250,7 @@ function custom_api_addproduct($ProInfo){
 /** START OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND UPDATE */
 function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $query->addParam('defType','edismax');
-   $current_time= time()-(60*3600);
+   $current_time= time()-(30*3600);
    $solr_time=gmdate('Y-m-d\TH:i:s\Z', $current_time);
    $solr_time_coupon_boost= "'(itm_field_best_coupon_status:1 AND dm_field_lastcheckedtime:[".$solr_time." TO *])^5'";
 
