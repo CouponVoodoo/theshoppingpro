@@ -35,18 +35,18 @@ function custom_api_addproduct($ProInfo){
     }
     
     $json = drupal_http_request($url, array('timeout' => 600.0));
-    print_r($json);
+   // print_r($json);
     //die;
     $json = $json->data;
     $jsonArr = json_decode($json,true);
-     var_dump( $jsonArr);    
+   //  var_dump( $jsonArr);    
       foreach($jsonArr as $json){
         print_r('inside');
         
     
     $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
     $jsonArray = json_decode($jsonData);
-    
+      var_dump( $jsonArray);    
     
     /**added by sanjay*/
     //if($jsonArray->header->Use == 1 || $jsonArray->header->Use == 0){
