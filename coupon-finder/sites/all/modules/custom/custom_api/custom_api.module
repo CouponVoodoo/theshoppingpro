@@ -24,8 +24,8 @@ function custom_api_addproduct($ProInfo){
     $baseUrl = $_REQUEST['url'];
     
     if($_REQUEST['recheck'] == 1){
-      $Pageurl = "http://54.243.150.171/nodeCreation.php" ;
-      $url = "http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=" . urldecode( $baseUrl );
+      $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
+      $url = "http://54.243.150.171/nodeCreation.php" ;
       //http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=http://www.firstcry.com/zeme-organics/maternity-top-orange/61968/product-detail
       $node_url = $base_url.drupal_get_path_alias('node/'.$_REQUEST['id']);
     }else{
@@ -37,10 +37,13 @@ function custom_api_addproduct($ProInfo){
     //print_r($url);
     //die;
     $jsonArr = json_decode($json,true);
-     
-  foreach($jsonArr as $json){
+         
+      foreach($jsonArr as $json){
+        print_r('inside');
+        $json = $json->data;
     
-    $json = $json->data;
+    
+    
     
     $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
     $jsonArray = json_decode($jsonData);
@@ -248,7 +251,7 @@ function custom_api_addproduct($ProInfo){
     if($_REQUEST['recheck'] == 1){
       //mail('sanjay.kumar1@mail.vinove.com', 'node_url', 'node_url'.print_r($node_url,1));
       drupal_goto($node_url);
-    }  }
+    }}  
 } 
 
 /** START OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND LAST CHECKED, HIDE WHERE LAST CHECKED IS GREATER THAN THRESHHOLD*/
@@ -268,4 +271,3 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
 
 
 ?>
-c
