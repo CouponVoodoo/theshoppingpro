@@ -261,7 +261,6 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
 //   echo $solr_hide_time_coupon;
    $query->addParam('fq', $solr_hide_time_coupon);
    $query->addParam('bq', $solr_time_coupon_boost);
-   $query->addParam('defType', 'edismax');
 }
 /** END OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND UPDATE */
 
