@@ -36,6 +36,8 @@ function custom_api_addproduct($ProInfo){
     $json = drupal_http_request($url, array('timeout' => 600.0));
     //print_r($url);
     //die;
+    
+    
     $json = $json->data;
     
     $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
@@ -226,7 +228,7 @@ function custom_api_addproduct($ProInfo){
 	  node_save($node2);
 	  
 	  if( !empty($node->nid) ){
-	    $response = json_encode( array('ResponseCode' => '4', 'Response' => 'Node Updated.', "Page_URL" => "$urlAlias") );
+	    $response = json_encode( array('ResponseCode' => '2', 'Response' => 'Node Updated.', "Page_URL" => "$urlAlias") );
 	    echo $response;
 	  }else{
 	    $response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
