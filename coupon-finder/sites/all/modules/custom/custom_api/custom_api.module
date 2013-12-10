@@ -142,7 +142,7 @@ function custom_api_addproduct($ProInfo){
 	node_save($node2);
 	*/
 	if( !empty($node->nid) ){
-	  $response = json_encode( array('ResponseCode' => '1', 'Response' => 'Node added.', "NodeId" => $node->nid) );
+	  $response = json_encode( array('ResponseCode' => '1', 'Response' => 'Node added.', 'NodeId' => $node->nid) );
 	  echo $response;
 	}else{
 	  $response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
@@ -236,7 +236,7 @@ function custom_api_addproduct($ProInfo){
 	  node_save($node2);
 	  */
 	  if( !empty($node->nid) ){
-	    $r = json_encode( array('ResponseCode' => '2', 'Response' => 'Node Updated.', "NodeId" => $node->nid) );
+	    $r = json_encode( array('ResponseCode' => '2', 'Response' => 'Node Updated.', 'NodeId' => $node->nid) );
 	    echo $response;
 	  }else{
 	    $response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
@@ -244,7 +244,7 @@ function custom_api_addproduct($ProInfo){
 	  }
 	  
 	}else{
-	    $response = json_encode( array('ResponseCode' => '3', 'Response' => 'Node Ignored - Node Already Updated.', "Page_URL" => "$urlAlias") );
+	    $response = json_encode( array('ResponseCode' => '3', 'Response' => 'Node Ignored - Node Already Updated.', 'NodeId' => $node->nid) );
 	    echo $response;	    
 	}
       }	
