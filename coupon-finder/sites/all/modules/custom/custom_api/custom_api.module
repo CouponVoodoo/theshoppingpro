@@ -135,7 +135,7 @@ function custom_api_addproduct($ProInfo){
 	node_save($node);
 	global $base_url;
 	
-	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
+	/*$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
 	
 	$node2 = node_load( $node->nid );
 	$node2->field_page_url[und][0][value] = $urlAlias;
@@ -148,7 +148,7 @@ function custom_api_addproduct($ProInfo){
 	  $response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
 	 // echo $response;
 	}
-	
+	*/
       }elseif($record->expression == 1){
 	//echo 'update';
 	$expDate = explode('=' , $jsonArray->header->LastCheckedTime);
@@ -229,20 +229,20 @@ function custom_api_addproduct($ProInfo){
 	
 	  node_save($node);
 	  
-	  $urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$record->entity_id);
+	  /*$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$record->entity_id);
 	  
 	  $node2 = node_load( $record->entity_id );
 	  $node2->field_page_url[und][0][value] = $urlAlias;
 	  node_save($node2);
 	  
 	  if( !empty($node->nid) ){
-	    $response = json_encode( array('ResponseCode' => '2', 'Response' => 'Node Updated.', "Page_URL" => "$urlAlias") );
+	    $r = json_encode( array('ResponseCode' => '2', 'Response' => 'Node Updated.', "Page_URL" => "$urlAlias") );
 	   // echo $response;
 	  }else{
 	    $response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
 	   // echo $response;
 	  }
-	  
+	  */
 	}else{
 	    $response = json_encode( array('ResponseCode' => '3', 'Response' => 'Node Ignored - Node Already Updated.', "Page_URL" => "$urlAlias") );
 	   // echo $response;	    
