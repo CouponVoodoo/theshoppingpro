@@ -25,26 +25,33 @@ function custom_api_addproduct($ProInfo){
     
     if($_REQUEST['recheck'] == 1){
       $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
-      $url = "http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=" . urldecode( $baseUrl );
+      $url = "http://54.243.150.171/nodeCreation.php" ;
       //http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=http://www.firstcry.com/zeme-organics/maternity-top-orange/61968/product-detail
       $node_url = $base_url.drupal_get_path_alias('node/'.$_REQUEST['id']);
     }else{
-      $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;    
-      $url = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" . urldecode( $baseUrl );
+      $Pageurl = "http://54.243.150.171/nodeCreation.php";    
+      $url = "http://54.243.150.171/nodeCreation.php";
+      
     }
     
     $json = drupal_http_request($url, array('timeout' => 600.0));
-    //print_r($url);
+   // print_r($json);
     //die;
-    
-    var_dump($json);
+    var_dump($json);    
+    echo '-------';
     $json = $json->data;
-    echo '-------------------------------';
-    var_dump($json);
-
+    var_dump($json);    
+    exit;
+    $jsonArr = json_decode($json,true);
+   //  var_dump( $jsonArr);    
+      foreach($jsonArr as $json){
+        print_r('inside');
+        
+    $json = json_encode($json); 
     $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
-    $jsonArray = json_decode($jsonData);
-    
+    $jsonArray = json_decode($jsonData,true);
+    var_dump($jsonArray);
+      var_dump( $jsonArray->header->Use);    
     
     /**added by sanjay*/
     //if($jsonArray->header->Use == 1 || $jsonArray->header->Use == 0){
@@ -248,7 +255,7 @@ function custom_api_addproduct($ProInfo){
     if($_REQUEST['recheck'] == 1){
       //mail('sanjay.kumar1@mail.vinove.com', 'node_url', 'node_url'.print_r($node_url,1));
       drupal_goto($node_url);
-    }  
+    }}  
 } 
 
 /** START OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND LAST CHECKED, HIDE WHERE LAST CHECKED IS GREATER THAN THRESHHOLD*/
