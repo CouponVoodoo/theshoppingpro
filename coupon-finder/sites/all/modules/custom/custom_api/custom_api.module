@@ -37,21 +37,21 @@ function custom_api_addproduct($ProInfo){
     $json = drupal_http_request($url, array('timeout' => 600.0));
    // print_r($json);
     //die;
-    var_dump($json);    
+    //var_dump($json);    
     echo '-------';
     $json = $json->data;
     var_dump($json);    
-    exit;
+    //exit;
     $jsonArr = json_decode($json,true);
-   //  var_dump( $jsonArr);    
-      foreach($jsonArr as $json){
+     var_dump( $jsonArr);    
+    foreach($jsonArr as $json){
         print_r('inside');
         
     $json = json_encode($json); 
     $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
     $jsonArray = json_decode($jsonData,true);
     var_dump($jsonArray);
-      var_dump( $jsonArray->header->Use);    
+    var_dump( $jsonArray->header->Use);    
     
     /**added by sanjay*/
     //if($jsonArray->header->Use == 1 || $jsonArray->header->Use == 0){
