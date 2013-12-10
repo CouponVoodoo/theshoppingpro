@@ -38,7 +38,7 @@ function custom_api_addproduct($ProInfo){
    // print_r($json);
     //die;
     
-    echo '-------';
+    //echo '-------';
     $json = $json->data;
     
     $jsonArr = json_decode($json,true);
@@ -49,7 +49,7 @@ function custom_api_addproduct($ProInfo){
     $json = json_encode($json); 
     $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
     $jsonArray = json_decode($jsonData);
-    var_dump($jsonArray);
+    //var_dump($jsonArray);
     
     
     /**added by sanjay*/
