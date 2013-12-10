@@ -143,10 +143,10 @@ function custom_api_addproduct($ProInfo){
 	
 	if( !empty($node->nid) ){
 	  $response = json_encode( array('ResponseCode' => '1', 'Response' => 'Node added.', "Page_URL" => "$urlAlias") );
-	  echo $response;
+	 // echo $response;
 	}else{
 	  $response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
-	  echo $response;
+	 // echo $response;
 	}
 	
       }elseif($record->expression == 1){
@@ -237,15 +237,15 @@ function custom_api_addproduct($ProInfo){
 	  
 	  if( !empty($node->nid) ){
 	    $response = json_encode( array('ResponseCode' => '2', 'Response' => 'Node Updated.', "Page_URL" => "$urlAlias") );
-	    echo $response;
+	   // echo $response;
 	  }else{
 	    $response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
-	    echo $response;
+	   // echo $response;
 	  }
 	  
 	}else{
 	    $response = json_encode( array('ResponseCode' => '3', 'Response' => 'Node Ignored - Node Already Updated.', "Page_URL" => "$urlAlias") );
-	    echo $response;	    
+	   // echo $response;	    
 	}
       }	
     } 
