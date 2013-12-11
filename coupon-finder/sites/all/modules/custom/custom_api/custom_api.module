@@ -265,6 +265,7 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $solr_hide_time_coupon="dm_field_lastcheckedtime:[".$solr_hide_time." TO *]";
 //   echo $solr_hide_time_coupon;
    $query->addParam('fq', $solr_hide_time_coupon);
+   $query->addParam('fq', 'NOT im_field_category:7400');
    $query->addParam('bq', $solr_time_coupon_boost);
 }
 /** END OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND UPDATE */
