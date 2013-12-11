@@ -1,0 +1,52 @@
+<?php
+
+/**
+Array
+(
+    [REDIRECT_STATUS] => 200
+    [HTTP_HOST] => localhost
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:18.0) Gecko/20100101 Firefox/18.0
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,* / *;q=0.8
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_COOKIE] => Drupal.tableDrag.showWeight=0; __utma=111872281.327284655.1386047285.1386674483.1386747208.27; __utmz=111872281.1386047285.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __atuvc=34%7C49; SESSd37832c5a07bcb68105df84c861be941=O6A2nHEoC8U1cL-5w0OaICzRCO7Dkobf_fKjffgZhr0; hblid=54gwMbYOVd8C7p8GP77OEJ2KULUCNMU2; olfsk=olfsk018701619989215268; SESS47246ff19030331bdd89f3e1c3dbabf6=h0aXiuZFL9ByncTIyxNfcCHYEJS2G1hz75eqwBgkpGY; SESS5a480d13812eae04fe2f3fbb68939d2a=M1FeS98jrv_Xo8OSrMf85fI4S9rADJd9HCLhTp_EsBE; has_js=1; __utmb=111872281.138.9.1386752784984; __utmc=111872281; wcsid=hGNE4Km6YF8C7p8GP16OEJ20EUUCUUMK; _oklv=1386752785029%2ChGNE4Km6YF8C7p8GP16OEJ20EUUCUUMK; _okbk=cd4%3Dtrue%2Ccd5%3Davailable%2Cvi5%3D0%2Cvi4%3D1386747209198%2Cvi3%3Dactive%2Cvi2%3Dfalse%2Cvi1%3Dfalse%2Ccd8%3Dchat%2Ccd6%3D0%2Ccd3%3Dfalse%2Ccd2%3D0%2Ccd1%3D0%2C; _ok=2516-705-10-7748; _okac=bf22197fc90c959abd5c0fc38791f67f; _okla=1; mp_97010c00e90b718d9f28b363d349d51b_mixpanel=%7B%22distinct_id%22%3A%20%221%22%2C%22%24initial_referrer%22%3A%20%22%24direct%22%2C%22%24initial_referring_domain%22%3A%20%22%24direct%22%2C%22ip%22%3A%20%22127.0.0.1%22%2C%22%24browser%22%3A%20%22Firefox%22%2C%22%24os%22%3A%20%22Linux%22%2C%22%24device%22%3A%20%22%22%2C%22%24referrer%22%3A%20%22http%3A%2F%2Flocalhost%2Fcoupon%2Fsearch%2Fsite%2Fr%2Fjabongcom-5%22%2C%22%24referring_domain%22%3A%20%22localhost%22%2C%22uid%22%3A%20%221%22%2C%22user_created%22%3A%20%221379072185%22%2C%22cohort%22%3A%20%22Sep-2013%22%2C%22mp_name_tag%22%3A%20%22admin%22%2C%22%24people_distinct_id%22%3A%20%221%22%7D
+    [HTTP_CONNECTION] => keep-alive
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 11 Dec 2013 09:02:05 +0000
+    [HTTP_IF_NONE_MATCH] => "1386752525"
+    [PATH] => /usr/local/bin:/usr/bin:/bin
+    [SERVER_SIGNATURE] => <address>Apache/2.2.14 (Ubuntu) Server at localhost Port 80</address>
+
+    [SERVER_SOFTWARE] => Apache/2.2.14 (Ubuntu)
+    [SERVER_NAME] => localhost
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 80
+    [REMOTE_ADDR] => 127.0.0.1
+    [DOCUMENT_ROOT] => /var/www
+    [SERVER_ADMIN] => webmaster@localhost
+    [SCRIPT_FILENAME] => /var/www/coupon/index.php
+    [REMOTE_PORT] => 55874
+    [REDIRECT_URL] => /coupon/search/site/r/jabongcom-5
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [REQUEST_METHOD] => GET
+    [QUERY_STRING] => 
+    [REQUEST_URI] => /coupon/search/site/r/jabongcom-5
+    [SCRIPT_NAME] => /coupon/index.php
+    [PHP_SELF] => /coupon/index.php
+    [REQUEST_TIME] => 1386752788
+    [HTTP_REFERER] => 
+)
+*/
+
+function override_apache_init() {
+  global $base_root;
+  
+  
+  $CUrl = $_SERVER['REQUEST_URI'];
+  preg_match("/search\/site\//", $CUrl, $MUrl);
+  preg_match("/search\/site\/\//", $CUrl, $MUrl2);
+  if( count($MUrl) == 1 && count($MUrl2) == 0){
+    $CUrl = str_replace('search/site/', 'search/site//', $CUrl);
+    drupal_goto($base_root.$CUrl);
+  }
+}

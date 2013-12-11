@@ -1,0 +1,4 @@
+name = Override apache
+description= Override apache
+core = "7.x"
+project = "coupons"
