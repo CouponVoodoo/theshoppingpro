@@ -262,10 +262,9 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $solr_boost_time=gmdate('Y-m-d\TH:i:s\Z', $boost_time);
    $solr_hide_time=gmdate('Y-m-d\TH:i:s\Z', $hide_time);
    $solr_time_coupon_boost= "'(itm_field_best_coupon_status:1 AND dm_field_lastcheckedtime:[".$solr_boost_time." TO *])^5'";
-   $solr_hide_time_coupon="dm_field_lastcheckedtime:[".$solr_hide_time." TO *]";
+   $solr_hide_time_coupon="dm_field_lastcheckedtime:[".$solr_hide_time." TO *] AND NOT im_field_category:7400";
 //   echo $solr_hide_time_coupon;
    $query->addParam('fq', $solr_hide_time_coupon);
-   $query->addParam('fq', 'NOT im_field_category:7400');
    $query->addParam('bq', $solr_time_coupon_boost);
 }
 /** END OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND UPDATE */
