@@ -30,4 +30,156 @@ function override_apache_init() {
     $CUrl = str_replace('search/site/r', 'search/site//r', $CUrl);
     drupal_goto($base_root.$CUrl);
   }
+  
+  
+  /*Taxonomy url rewrite*/
+  $termId = arg(2);
+  preg_match("/taxonomy\/term\/$termId\/c/", $CUrl, $MUrl);
+  preg_match("/taxonomy\/term\/$termId\/\//", $CUrl, $MUrl2);
+  
+  if( count($MUrl) == 1 && count($MUrl2) == 0){
+    $CUrl = str_replace("taxonomy/term/$termId/c", "taxonomy/term/$termId//c", $CUrl);
+    drupal_goto($base_root.$CUrl);
+  }
+  
+  /**/
+  preg_match("/taxonomy\/term\/$termId\/b/", $CUrl, $MUrl);
+  preg_match("/taxonomy\/term\/$termId\/\//", $CUrl, $MUrl2);
+  
+  if( count($MUrl) == 1 && count($MUrl2) == 0){
+    $CUrl = str_replace("taxonomy/term/$termId/b", "taxonomy/term/$termId//b", $CUrl);
+    drupal_goto($base_root.$CUrl);
+  }
+  
+  /**/
+  preg_match("/taxonomy\/term\/$termId\/r/", $CUrl, $MUrl);
+  preg_match("/taxonomy\/term\/$termId\/\//", $CUrl, $MUrl2);
+  
+  if( count($MUrl) == 1 && count($MUrl2) == 0){
+    $CUrl = str_replace("taxonomy/term/$termId/r", "taxonomy/term/$termId//r", $CUrl);
+    drupal_goto($base_root.$CUrl);
+  }
+  
 }
+
+function override_apache_menu(){
+  $items = array();
+  
+  $items['add_custom_url'] = array(
+    'title' => t('override apache add custom url'),
+    'page callback' => 'override_apache_add_custom_url',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  
+  return $items;
+}  
+
+
+function override_apache_add_custom_url(){
+  
+  override_apache_add_retailer();
+  override_apache_add_brand();
+  //override_apache_add_category();
+  
+  return 'ok';
+}
+
+function override_apache_cron(){
+  override_apache_add_custom_url();  
+}
+
+/*create url for taxonomy retailer*/
+function override_apache_add_retailer(){
+  
+  $QGetRetailer = db_query("SELECT name, tid FROM {taxonomy_term_data} WHERE vid = 2 ");
+  //mail('sanjay.kumar1@mail.vinove.com', 'QGetRetailer', 'QGetRetailer-->'.print_r($QGetRetailer,1));
+  
+  while( $RGetRetailer = $QGetRetailer->fetchObject() ){
+      
+      $TermName = override_apache_modify_title(strtolower($RGetRetailer->name));
+      $TermId = $RGetRetailer->tid;
+      
+      $loc = "search/site//r/$TermName-$TermId";
+      
+      $QCount = db_query( "SELECT count(id) as total FROM xmlsitemap WHERE type = 'custom' and loc like '$loc' ");
+      $RCount = $QCount->fetchObject();
+      
+      if( $RCount->total == 0 ){
+        $link = array('type' => 'custom',
+                    'id' => db_query("SELECT MAX(id) FROM {xmlsitemap} WHERE type = 'custom'")->fetchField() + 1,
+                    'loc' => $loc,
+                    'priority' => 0.5,
+                    'changefreq' => 0,
+                    'language' => 'und'    
+        );
+        xmlsitemap_link_save($link);
+      }
+  }
+  
+}
+
+/*create url for taxonomy brand*/
+function override_apache_add_brand(){
+  
+  $QGetRetailer = db_query("SELECT name, tid FROM {taxonomy_term_data} WHERE vid = 4 group by name ");
+  while( $RGetRetailer = $QGetRetailer->fetchObject() ){
+      
+      $TermName = override_apache_modify_title(strtolower($RGetRetailer->name));
+      $TermId = $RGetRetailer->tid;
+      
+      $loc = "search/site//b/$TermName-$TermId";
+      
+      $QCount = db_query( "SELECT count(id) as total FROM xmlsitemap WHERE type = 'custom' and loc like '$loc' ");
+      $RCount = $QCount->fetchObject();
+      
+      if( $RCount->total == 0 ){
+        $link = array('type' => 'custom',
+                    'id' => db_query("SELECT MAX(id) FROM {xmlsitemap} WHERE type = 'custom'")->fetchField() + 1,
+                    'loc' => $loc,
+                    'priority' => 0.5,
+                    'changefreq' => 0,
+                    'language' => 'und'    
+        );
+        xmlsitemap_link_save($link);
+      }
+  }
+  
+}
+
+/*create url for taxonomy category*/
+function override_apache_add_category(){
+  
+  $QGetRetailer = db_query("SELECT name, tid FROM {taxonomy_term_data} WHERE vid = 3 group by name ");
+  while( $RGetRetailer = $QGetRetailer->fetchObject() ){
+      
+      $TermName = override_apache_modify_title(strtolower($RGetRetailer->name));
+      $TermId = $RGetRetailer->tid;
+      
+      $loc = "search/site//c/$TermName-$TermId";
+      
+      $QCount = db_query( "SELECT count(id) as total FROM xmlsitemap WHERE type = 'custom' and loc like '$loc' ");
+      $RCount = $QCount->fetchObject();
+      
+      if( $RCount->total == 0 ){
+        $link = array('type' => 'custom',
+                    'id' => db_query("SELECT MAX(id) FROM {xmlsitemap} WHERE type = 'custom'")->fetchField() + 1,
+                    'loc' => $loc,
+                    'priority' => 0.5,
+                    'changefreq' => 0,
+                    'language' => 'und'    
+        );
+        xmlsitemap_link_save($link);
+      }
+  }
+  
+}
+
+function override_apache_modify_title($title){
+  
+  $string = $title;
+  $string = str_replace('.', '', $string);
+  $str = preg_replace('/[^A-Za-z0-9\-]/', '-', $string);
+  return preg_replace('/-{1,}/','-',$str );  
+
+}  
