@@ -66,11 +66,16 @@ function custom_api_addproduct($ProInfo){
       
       
       $brand_name = $jsonArray->header->ProductBrand;
+	  $Query = db_query("SELECT tid FROM taxonomy_term_data WHERE vid = 4 and name = '$brand_name' ");
+	  $Ruery = $Query->fetch();
+	  $BrandId = $Ruery->tid;
+	  
       //$brand_name = 'nike';
-      $vocabulary_name = 'brand';
-      $BrandId = coupons_get_term_from_name($brand_name, $vocabulary_name);
-      //echo '===='.$brand_name;
-      if($BrandId == 0){
+      // $vocabulary_name = 'brand';
+      // $BrandId = coupons_get_term_from_name($brand_name, $vocabulary_name);
+      
+	  //echo '===='.$brand_name;
+      if($BrandId == ''){
 	$BrandId = coupons_create_taxonomy_term($brand_name, 4);
       }
       
