@@ -622,14 +622,14 @@ a.copied_coupon {
 }
 .coupon_window{
   background: none repeat scroll 0 0 #FFFFFF;
-  height: 220px;
-  left: 35%;
+  height: 250px;
+  left: 25%;
   margin: auto;
   padding: 15px;
   position: fixed;
   text-align: center;
   top: 32%;
-  width: 400px;
+  width: 600px;
 
 }
 
