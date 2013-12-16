@@ -779,18 +779,20 @@ function coupons_create_taxonomy_term($name, $vid) {
 * @return Term id of the found term or else FALSE
 */
 function coupons_get_term_from_name($term_name, $vocabulary_name) {
+  
   if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name)) {
-    $tree = taxonomy_get_tree($vocabulary->vid);
-    foreach ($tree as $term) {
-      if ($term->name == $term_name) {
-       return $term->tid;
-       //return 1;
-      }
+    
+    $vid = $vocabulary->vid;
+    $Query = db_query("SELECT tid FROM taxonomy_term_data WHERE vid = '{$vid}' and name like '$term_name' ");
+    $Ruery = $Query->fetch();
+    
+    if($Ruery->tid == ''){
+      return 0;
+    }else{
+      return $Ruery->tid;
     }
   }
-
-  //return FALSE;
-  return 0;
+  
 }
 
 function coupons_copy_best_coupon($nid){
