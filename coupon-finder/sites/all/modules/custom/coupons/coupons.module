@@ -192,7 +192,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
   if ($small) {
     $form['url']['#suffix'] = '<div class="whatisthis"><a href="http://www.couponvoodoo.com/Product_Page_Url" target="_blank">Whats this?</a></div>';
     $form['url']['#title'] = t('Never pay the listed price! Additional discounts via coupons are just a click away! ');
-    $form['url']['#description'] = t('Try It: <a href="' . $base_url . '/r/jabongcom-coupons" target="_blank">Jabong</a>, <a href="' . $base_url . 'r/myntracom-coupons" target="_blank">Myntra</a>, <a href="' . $base_url . '/r/snapdealcom-coupons" target="_blank">Snapdeal</a>, <a href="' . $base_url . '/c/women-clothing-coupons" target="_blank">Women Clothing</a>, <a href="' . $base_url . '/c/men-coupons" target="_blank">Men Clothing</a>, <a href="' . $base_url . '/c/baby-kids-diapers-coupons" target="_blank">Diapers</a>, <a href="' . $base_url . '/search/site/shoes" target="_blank">Shoes</a>');
+    $form['url']['#description'] = t('Try It: <a href="' . $base_url . '/r/jabongcom-coupons" target="_blank">Jabong</a>, <a href="' . $base_url . 'r/myntracom-coupons" target="_blank">Myntra</a>, <a href="' . $base_url . '/r/snapdealcom-coupons" target="_blank">Snapdeal</a>, <a href="' . $base_url . '/c/women-clothing-coupons" target="_blank">Women Clothing</a>, <a href="' . $base_url . '/c/men-coupons" target="_blank">Men Clothing</a>, <a href="' . $base_url . '/search/site/diapers" target="_blank">Diapers</a>, <a href="' . $base_url . '/search/site/shoes" target="_blank">Shoes</a>');
     $form['actions']['view_video'] = array(
         '#markup' => '<a href="' . $base_url . '/coupons_viewdemo/nojs" id="edit-view_video" class="ctools-use-modal form-view_video">View Video</a>',
         '#prefix' => '<div class="view_video">',
@@ -458,41 +458,41 @@ function coupons_result($raw_url) {
 	//$node->field_category['und'][0]['tid']			= 1;
 	
 	$node->title    				  	= $proTitle;
-	$node->field_description['und']['0'][value]	 	  	= trim( $jsonArray->header->ProductDescription );
-	$node->field_product_price['und']['0'][value]	  	= ( $jsonArray->header->ListingProductPrice )?$jsonArray->header->ListingProductPrice:0;
-	//$node->field_product_price['und']['0'][value]	  	= 10;
-	//$node->field_retailer['und']['0']['tid'] 		  	= ($jsonArray->header->Retailer > 0)?$jsonArray->header->Retailer:1;
-	$node->field_retailer['und']['0']['tid'] 		  	= $jsonArray->header->Retailer;
-	//$node->field_retailer['und']['0']['tid'] 		  	= 1;
-	$node->field_base_url['und']['0'][value] 		  	= trim( $jsonArray->header->BaseUrl);
-	$node->field_retailer_product_name['und']['0'][value] 	= trim( $jsonArray->header->ProductName );
-	$node->field_product_image['und']['0'][value] 	  	= trim( $jsonArray->header->ProductImage );
-	$node->field_brand['und']['0']['tid'] 		  	= trim($jsonArray->header->ProductBrand);
-	$node->field_brand['und']['0']['tid'] 		  	= $BrandId;
+	$node->field_description[und][0][value]	 	  	= trim( $jsonArray->header->ProductDescription );
+	$node->field_product_price[und][0][value]	  	= ( $jsonArray->header->ListingProductPrice )?$jsonArray->header->ListingProductPrice:0;
+	//$node->field_product_price[und][0][value]	  	= 10;
+	//$node->field_retailer[und][0]['tid'] 		  	= ($jsonArray->header->Retailer > 0)?$jsonArray->header->Retailer:1;
+	$node->field_retailer[und][0]['tid'] 		  	= $jsonArray->header->Retailer;
+	//$node->field_retailer[und][0]['tid'] 		  	= 1;
+	$node->field_base_url[und][0][value] 		  	= trim( $jsonArray->header->BaseUrl);
+	$node->field_retailer_product_name[und][0][value] 	= trim( $jsonArray->header->ProductName );
+	$node->field_product_image[und][0][value] 	  	= trim( $jsonArray->header->ProductImage );
+	$node->field_brand[und][0]['tid'] 		  	= trim($jsonArray->header->ProductBrand);
+	$node->field_brand[und][0]['tid'] 		  	= $BrandId;
 	
-	$node->field_mrpproductprice['und']['0'][value]	  	= ($jsonArray->header->MRPProductPrice!='')?$jsonArray->header->MRPProductPrice:0 ;
-	//$node->field_mrpproductprice['und']['0'][value]	  	= 0 ;
+	$node->field_mrpproductprice[und][0][value]	  	= ($jsonArray->header->MRPProductPrice!='')?$jsonArray->header->MRPProductPrice:0 ;
+	//$node->field_mrpproductprice[und][0][value]	  	= 0 ;
 	$expDate = explode('=' , $jsonArray->header->LastCheckedTime);	
-	$node->field_lastcheckedtime['und']['0'][value]	  	= $expDate[0];
-	$node->field_affiliateurl['und']['0'][value]	  	= trim( $jsonArray->header->AffiliateURL );
-	$node->body['und']['0'][value]			  	= trim( $jsonArray->header->MetaDescription );
-	///$node->metatag['und']['0']['data']			= trim( $jsonArray->header->MetaDescription );
-	$node->field_best_coupon_description['und']['0'][value]	= trim( $jsonArray->header->bestCouponResult->CouponDesc );
+	$node->field_lastcheckedtime[und][0][value]	  	= $expDate[0];
+	$node->field_affiliateurl[und][0][value]	  	= trim( $jsonArray->header->AffiliateURL );
+	$node->body[und][0][value]			  	= trim( $jsonArray->header->MetaDescription );
+	///$node->metatag[und][0]['data']			= trim( $jsonArray->header->MetaDescription );
+	$node->field_best_coupon_description[und][0][value]	= trim( $jsonArray->header->bestCouponResult->CouponDesc );
 	
-	$node->field_best_coupon_status['und']['0'][value]	  	= trim( $jsonArray->header->CouponResult );
-	//$node->field_product_popularity['und']['0'][value]	= ( $jsonArray->header->Popularity )?$jsonArray->header->Popularity:0;
-	$node->field_product_popularity['und']['0'][value]	  	= $jsonArray->header->Popularity;
+	$node->field_best_coupon_status[und][0][value]	  	= trim( $jsonArray->header->CouponResult );
+	//$node->field_product_popularity[und][0][value]	= ( $jsonArray->header->Popularity )?$jsonArray->header->Popularity:0;
+	$node->field_product_popularity[und][0][value]	  	= $jsonArray->header->Popularity;
 	
 	///if($jsonArray->header->CouponResult == 1){
-	  $node->field_best_coupon_couponcode['und']['0'][value] 	= trim( $jsonArray->header->bestCouponResult->CouponCode );
-	  $node->field_best_coupon_saving['und']['0'][value]	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
-	  $node->field_best_coupon_netpriceafters['und']['0'][value]= ( $jsonArray->header->bestCouponResult->NetPriceAfterSaving)?$jsonArray->header->bestCouponResult->NetPriceAfterSaving:0;
-	  $node->field_best_coupon_url['und']['0'][value]		= trim( $jsonArray->header->bestCouponResult->url );
+	  $node->field_best_coupon_couponcode[und][0][value] 	= trim( $jsonArray->header->bestCouponResult->CouponCode );
+	  $node->field_best_coupon_saving[und][0][value]	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
+	  $node->field_best_coupon_netpriceafters[und][0][value]= ( $jsonArray->header->bestCouponResult->NetPriceAfterSaving)?$jsonArray->header->bestCouponResult->NetPriceAfterSaving:0;
+	  $node->field_best_coupon_url[und][0][value]		= trim( $jsonArray->header->bestCouponResult->url );
 	//}
 	//mail('sanjay.kumar1@mail.vinove.com','jsonArray','jsonArray--->'.print_r($jsonArray->data,1));
-	$node->field_best_coupon_info['und']['0'][value]		= serialize( $jsonArray->data );
+	$node->field_best_coupon_info[und][0][value]		= serialize( $jsonArray->data );
 	
-	//$node->	field_page_url['und']['0'][value]		= $Pageurl;
+	//$node->	field_page_url[und][0][value]		= $Pageurl;
 	
 	/*$ImgPath = $jsonArray->header->ProductImage;
 	$ImgFile = pathinfo($ImgPath);         // $file is set to "index.php"
@@ -507,7 +507,7 @@ function coupons_result($raw_url) {
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
 	
 	$node2 = node_load( $node->nid );
-	$node2->field_page_url['und']['0'][value] = $urlAlias;
+	$node2->field_page_url[und][0][value] = $urlAlias;
 	node_save($node2);
 	
 	if( !empty($node->nid) ){
@@ -562,36 +562,36 @@ function coupons_result($raw_url) {
 	  $node->field_category['und'][0]['tid']			= 1;
 	  
 	  $node->title    				  	= $proTitle;
-	  $node->field_description['und']['0'][value]	 	  	= trim( $jsonArray->header->ProductDescription );
-	  $node->field_product_price['und']['0'][value]	  	= trim( $jsonArray->header->ListingProductPrice );
-	  //$node->field_product_price['und']['0'][value]	  	= 10;
-	  $node->field_retailer['und']['0']['tid'] 		  	= ($jsonArray->header->Retailer > 0)?$jsonArray->header->Retailer:1;
-	  //$node->field_retailer['und']['0']['tid'] 		  	= 1;
-	  $node->field_base_url['und']['0'][value] 		  	= trim( $jsonArray->header->BaseUrl);
-	  $node->field_retailer_product_name['und']['0'][value] 	= trim( $jsonArray->header->ProductName );
-	  $node->field_product_image['und']['0'][value] 	  	= trim( $jsonArray->header->ProductImage );
-	  $node->field_brand['und']['0']['tid'] 		  	= trim($jsonArray->header->ProductBrand);
-	  $node->field_brand['und']['0']['tid'] 		  	= $BrandId;
+	  $node->field_description[und][0][value]	 	  	= trim( $jsonArray->header->ProductDescription );
+	  $node->field_product_price[und][0][value]	  	= trim( $jsonArray->header->ListingProductPrice );
+	  //$node->field_product_price[und][0][value]	  	= 10;
+	  $node->field_retailer[und][0]['tid'] 		  	= ($jsonArray->header->Retailer > 0)?$jsonArray->header->Retailer:1;
+	  //$node->field_retailer[und][0]['tid'] 		  	= 1;
+	  $node->field_base_url[und][0][value] 		  	= trim( $jsonArray->header->BaseUrl);
+	  $node->field_retailer_product_name[und][0][value] 	= trim( $jsonArray->header->ProductName );
+	  $node->field_product_image[und][0][value] 	  	= trim( $jsonArray->header->ProductImage );
+	  $node->field_brand[und][0]['tid'] 		  	= trim($jsonArray->header->ProductBrand);
+	  $node->field_brand[und][0]['tid'] 		  	= $BrandId;
 	  
-	  $node->field_mrpproductprice['und']['0'][value]	  	= ($jsonArray->header->MRPProductPrice!='')?$jsonArray->header->MRPProductPrice:0 ;
-	  //$node->field_mrpproductprice['und']['0'][value]	  	= 0 ;
+	  $node->field_mrpproductprice[und][0][value]	  	= ($jsonArray->header->MRPProductPrice!='')?$jsonArray->header->MRPProductPrice:0 ;
+	  //$node->field_mrpproductprice[und][0][value]	  	= 0 ;
 	  
-	  $node->field_lastcheckedtime['und']['0'][value]	  	= $expDate[0];
-	  $node->field_affiliateurl['und']['0'][value]	  	= trim( $jsonArray->header->AffiliateURL );
-	  $node->body['und']['0'][value]			  	= trim( $jsonArray->header->MetaDescription );
-	  ///$node->metatag['und']['0']['data']			 = trim( $jsonArray->header->MetaDescription );
-	  $node->field_best_coupon_description['und']['0'][value]	  	= trim( $jsonArray->header->bestCouponResult->CouponDesc );
+	  $node->field_lastcheckedtime[und][0][value]	  	= $expDate[0];
+	  $node->field_affiliateurl[und][0][value]	  	= trim( $jsonArray->header->AffiliateURL );
+	  $node->body[und][0][value]			  	= trim( $jsonArray->header->MetaDescription );
+	  ///$node->metatag[und][0]['data']			 = trim( $jsonArray->header->MetaDescription );
+	  $node->field_best_coupon_description[und][0][value]	  	= trim( $jsonArray->header->bestCouponResult->CouponDesc );
 	  
-	  $node->field_best_coupon_status['und']['0'][value]	  	= trim( $jsonArray->header->CouponResult );
-	  $node->field_product_popularity['und']['0'][value]	  	= trim( $jsonArray->header->Popularity );
+	  $node->field_best_coupon_status[und][0][value]	  	= trim( $jsonArray->header->CouponResult );
+	  $node->field_product_popularity[und][0][value]	  	= trim( $jsonArray->header->Popularity );
 	  
 	  if($jsonArray->header->CouponResult == 1){
-	    $node->field_best_coupon_couponcode['und']['0'][value] 	= trim( $jsonArray->header->bestCouponResult->CouponCode );
-	    $node->field_best_coupon_saving['und']['0'][value]	  	= trim( $jsonArray->header->bestCouponResult->Saving);
-	    $node->field_best_coupon_netpriceafters['und']['0'][value]	= trim( $jsonArray->header->bestCouponResult->NetPriceAfterSaving);
-	    $node->field_best_coupon_url['und']['0'][value]		= trim( $jsonArray->header->bestCouponResult->url );
+	    $node->field_best_coupon_couponcode[und][0][value] 	= trim( $jsonArray->header->bestCouponResult->CouponCode );
+	    $node->field_best_coupon_saving[und][0][value]	  	= trim( $jsonArray->header->bestCouponResult->Saving);
+	    $node->field_best_coupon_netpriceafters[und][0][value]	= trim( $jsonArray->header->bestCouponResult->NetPriceAfterSaving);
+	    $node->field_best_coupon_url[und][0][value]		= trim( $jsonArray->header->bestCouponResult->url );
 	  }	
-	  $node->field_best_coupon_info['und']['0'][value]		= serialize( $jsonArray->data );
+	  $node->field_best_coupon_info[und][0][value]		= serialize( $jsonArray->data );
 	  //print_r($node);
 	  //die;
 	  node_save($node);
@@ -826,12 +826,12 @@ function coupons_copy_best_coupon($nid){
   $node = node_load($nid);
   
   $BestCouponCodeStatus = 1;
-  $bestSaving = $node->field_best_coupon_saving['und']['0']['value'];
-  $bestCouponCodeStatus = $node->field_best_coupon_status['und']['0']['value'];  //successful  
-  $bestCouponCode = $node->field_best_coupon_couponcode['und']['0']['value'];
-  $bestCouponDescription = $node->field_best_coupon_description['und']['0']['value'];
+  $bestSaving = $node->field_best_coupon_saving[und][0]['value'];
+  $bestCouponCodeStatus = $node->field_best_coupon_status[und][0]['value'];  //successful  
+  $bestCouponCode = $node->field_best_coupon_couponcode[und][0]['value'];
+  $bestCouponDescription = $node->field_best_coupon_description[und][0]['value'];
   $bestCouponDomain = $retailerDomain;
-  $bestCouponUrl = $node->field_best_coupon_url['und']['0']['value'];
+  $bestCouponUrl = $node->field_best_coupon_url[und][0]['value'];
   
   $bestCouponValue = (object) array('BestCoupon' => $BestCouponCodeStatus,
 			  'Saving' => $bestSaving,
@@ -1103,12 +1103,12 @@ function coupons_copy_coupon_taxonomy($nid, $taxoType){
   $node = node_load($nid);
   
   $BestCouponCodeStatus = 1;
-  $bestSaving = $node->field_best_coupon_saving['und']['0']['value'];
-  $bestCouponCodeStatus = $node->field_best_coupon_status['und']['0']['value'];  //successful  
-  $bestCouponCode = $node->field_best_coupon_couponcode['und']['0']['value'];
-  $bestCouponDescription = $node->field_best_coupon_description['und']['0']['value'];
+  $bestSaving = $node->field_best_coupon_saving[und][0]['value'];
+  $bestCouponCodeStatus = $node->field_best_coupon_status[und][0]['value'];  //successful  
+  $bestCouponCode = $node->field_best_coupon_couponcode[und][0]['value'];
+  $bestCouponDescription = $node->field_best_coupon_description[und][0]['value'];
   $bestCouponDomain = $retailerDomain;
-  $bestCouponUrl = $node->field_best_coupon_url['und']['0']['value'];
+  $bestCouponUrl = $node->field_best_coupon_url[und][0]['value'];
   
   $bestCouponValue = (object) array('BestCoupon' => $BestCouponCodeStatus,
 			  'Saving' => $bestSaving,
@@ -1218,14 +1218,14 @@ function coupons_views_pre_build(&$view) {
   /*if($view->current_display == 'block_3' &&  $view->name == 'apache_retailer_products' ) {
     $nid = arg(1);
     $node = node_load($nid);
-  //  echo '===>'.$node->field_brand['und']['0']['tid'];
-    $view->display_handler->handlers['filter']['im_field_brand']->value = $node->field_brand['und']['0']['tid'];
+  //  echo '===>'.$node->field_brand[und][0]['tid'];
+    $view->display_handler->handlers['filter']['im_field_brand']->value = $node->field_brand[und][0]['tid'];
   }*/
   
   if($view->current_display == 'block' &&  $view->name == 'apache_retailer_products' ) {
     $nid = arg(1);
     $node = node_load($nid);
-    $view->display_handler->handlers['filter']['im_field_retailer']->value = $node->field_retailer['und']['0']['tid'];
+    $view->display_handler->handlers['filter']['im_field_retailer']->value = $node->field_retailer[und][0]['tid'];
   }
 }
 
