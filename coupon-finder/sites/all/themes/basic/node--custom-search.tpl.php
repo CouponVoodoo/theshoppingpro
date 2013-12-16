@@ -57,23 +57,44 @@
         echo "<div class='no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='no_coupons_text'>No Coupons Found</div></div>";
       }
       
-      $urlAlias =  base_path().drupal_get_path_alias('node/'.$node->nid);
-      //$urlAlias =  $node->field_affiliateurl['und'][0]['value'];
-      
+	global $base_url;
+	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
+	$affiliate_url=$node->field_affiliateurl['und']['0']['value'];
+	$coupon_code=$node->field_best_coupon_couponcode['und']['0'][value];
+	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
+ 		
+	   
       $uplImg = $node->field_product_images['und'][0]['uri'];
       $imgPath = $imgUri = image_style_url('200x200', $uplImg);
-      $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
+	  
+	  if($node->field_best_coupon_status[und][0]['value'] == 0){
+	  $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
                         <div class='field-item even product_img'>
-                            <a href='{$urlAlias}'><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
+							<a href='{$urlAlias}'><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
                         </div>";
       echo  $img .=    "</div>
                 </div>";
       
       echo "<div class='product_name'><a  href='{$urlAlias}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
+	}
+	  if($node->field_best_coupon_status[und][0]['value'] == 1){
+	  $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
+                    <div class='field-label'>Product images:&nbsp;</div>
+                    <div class='field-items'>
+                        <div class='field-item even product_img'>
+							<a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
+                        </div>";
+      echo  $img .=    "</div>
+                </div>";
+      
+      echo "<div class='product_name'><a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
+	}
 
- /** Start of modified by Ashish to Show reatiler name below product name */
+
+
+	/** Start of modified by Ashish to Show reatiler name below product name */
 
       	$BrandTid = $node->field_brand[und][0]['tid'];
       	$RetailerTid = $node->field_retailer[und][0]['tid'];
