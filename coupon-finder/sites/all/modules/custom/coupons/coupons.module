@@ -547,14 +547,31 @@ function coupons_result($raw_url) {
 	
 	//die;
 	if( $expDate[0] != $lastUpdatedDate){
-	  $brand_name = $jsonArray->header->ProductBrand;
+	 
+      $brand_name = $jsonArray->header->ProductBrand;
+	 // $Query = db_query("SELECT tid FROM taxonomy_term_data WHERE vid = 4 and name = '$brand_name' ");
+	  $Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 4 and ttd.name = :brand_name', array(':brand_name' => $brand_name));
+	  $Ruery = $Query->fetch();
+	  $BrandId = $Ruery->tid;
+	  
+      //$brand_name = 'nike';
+      // $vocabulary_name = 'brand';
+      // $BrandId = coupons_get_term_from_name($brand_name, $vocabulary_name);
+      
+	  //echo '===='.$brand_name;
+      if($BrandId == ''){
+	$BrandId = coupons_create_taxonomy_term($brand_name, 4);
+      }
+	 
+	 
+/**	 $brand_name = $jsonArray->header->ProductBrand;
 	  //$brand_name = 'nike';
 	  $vocabulary_name = 'brand';
 	  $BrandId = coupons_get_term_from_name($brand_name, $vocabulary_name);
 	  if($BrandId == 0){
 	    $BrandId = coupons_create_taxonomy_term($brand_name, 4);
 	  }
-	  
+*/	  
 	  $node = node_load($record->entity_id);
 	  
 	  //$node->field_category['und'][0]['tid']			= trim( $jsonArray->header->Category );;
@@ -784,9 +801,7 @@ function coupons_create_taxonomy_term($name, $vid) {
 /** START OF NOTE BY ASHISH - FOLLOWING FUNCTION IS NOT REDUNTANT AND INCORRECT */
 function coupons_get_term_from_name($term_name, $vocabulary_name) {
   
-  //if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name)) {
-  
-  $vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name);
+  if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name)) {
     
     $vid = $vocabulary->vid;
     $Query = db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 4 and ttd.name = :brand_name', array(':brand_name' => $brand_name));
@@ -797,7 +812,7 @@ function coupons_get_term_from_name($term_name, $vocabulary_name) {
     }else{
       return $Ruery->tid;
     }
-  //}
+  }
   
 }
 /** END OF NOTE BY ASHISH - FOLLOWING FUNCTION IS NOT REDUNTANT AND INCORRECT */
