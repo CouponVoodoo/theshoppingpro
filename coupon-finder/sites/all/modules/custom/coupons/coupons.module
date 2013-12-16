@@ -789,7 +789,7 @@ function coupons_get_term_from_name($term_name, $vocabulary_name) {
   $vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name);
     
     $vid = $vocabulary->vid;
-    $Query = db_query("SELECT tid FROM taxonomy_term_data WHERE vid = '{$vid}' and name = '$term_name' ");
+    $Query = db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 4 and ttd.name = :brand_name', array(':brand_name' => $brand_name));
     $Ruery = $Query->fetch();
     
     if($Ruery->tid == ''){
