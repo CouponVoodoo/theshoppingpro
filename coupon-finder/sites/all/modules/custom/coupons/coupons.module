@@ -784,7 +784,9 @@ function coupons_create_taxonomy_term($name, $vid) {
 /** START OF NOTE BY ASHISH - FOLLOWING FUNCTION IS NOT REDUNTANT AND INCORRECT */
 function coupons_get_term_from_name($term_name, $vocabulary_name) {
   
-  if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name)) {
+  //if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name)) {
+  
+  $vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name);
     
     $vid = $vocabulary->vid;
     $Query = db_query("SELECT tid FROM taxonomy_term_data WHERE vid = '{$vid}' and name = '$term_name' ");
@@ -795,7 +797,7 @@ function coupons_get_term_from_name($term_name, $vocabulary_name) {
     }else{
       return $Ruery->tid;
     }
-  }
+  //}
   
 }
 /** END OF NOTE BY ASHISH - FOLLOWING FUNCTION IS NOT REDUNTANT AND INCORRECT */
