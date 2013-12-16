@@ -780,12 +780,14 @@ function coupons_create_taxonomy_term($name, $vid) {
 *
 * @return Term id of the found term or else FALSE
 */
+
+/** START OF NOTE BY ASHISH - FOLLOWING FUNCTION IS NOT REDUNTANT AND INCORRECT */
 function coupons_get_term_from_name($term_name, $vocabulary_name) {
   
   if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name)) {
     
     $vid = $vocabulary->vid;
-    $Query = db_query("SELECT tid FROM taxonomy_term_data WHERE vid = '{$vid}' and name like '$term_name' ");
+    $Query = db_query("SELECT tid FROM taxonomy_term_data WHERE vid = '{$vid}' and name = '$term_name' ");
     $Ruery = $Query->fetch();
     
     if($Ruery->tid == ''){
@@ -796,6 +798,7 @@ function coupons_get_term_from_name($term_name, $vocabulary_name) {
   }
   
 }
+/** END OF NOTE BY ASHISH - FOLLOWING FUNCTION IS NOT REDUNTANT AND INCORRECT */
 
 function coupons_copy_best_coupon($nid){
 
