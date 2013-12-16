@@ -124,13 +124,24 @@
       
       
  //     echo coupons_get_taxonomy_url($BrandTid) .". | " . coupons_get_taxonomy_url($RetailerTid) .". | ". coupons_get_taxonomy_url($CategoryTid) . "." ;
-      
-      //echo 'brand - status '. $node->field_best_coupon_status[und][0]['value'];
+
+	global $base_url;
+	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
+
+       //echo 'brand - status '. $node->field_best_coupon_status[und][0]['value'];
       if($node->field_best_coupon_status[und][0]['value'] == 1){
         //$copyCoupon =  coupons_copy_coupon_taxonomy($node->nid,4);
         //print render($copyCoupon);
-        echo "<div class='d_view_store'><a class='view_store' href='{$node->field_page_url[und][0]['value']}'>View Details</a></div>";
-      }
+	$affiliate_url=$node->field_affiliateurl['und']['0']['value'];
+	$coupon_code=$node->field_best_coupon_couponcode['und']['0'][value];
+	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
+ 		
+ //      echo "<div class='d_view_store'><a class='view_store' href='{$node->field_page_url[und][0]['value']}'>View Details</a></div>";
+
+ 	
+	echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>View Details</a></div>";
+	   
+	   }
       if($node->field_best_coupon_status[und][0]['value'] == 0){
         echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$node->field_affiliateurl[und][0]['value']}'>View Store</a></div>";
         
