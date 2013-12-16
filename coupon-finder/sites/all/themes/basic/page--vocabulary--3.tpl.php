@@ -5,7 +5,7 @@
 
   if($node->field_best_coupon_saving['und'][0]['value'] > 1){ ?>
     <div class="ribbon-wrapper-green">
-        <div class="ribbon-green">Save Rs. <?php echo $node->field_best_coupon_saving['und'][0]['value']; ?></div>
+        <div class="ribbon-green">Save Rs <?php echo $node->field_best_coupon_saving['und'][0]['value']; ?></div>
   </div>
   		<?php } else if($node->field_best_coupon_saving['und'][0]['value'] == 1){ ?> 
     				<div class="ribbon-wrapper-green">
