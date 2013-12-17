@@ -165,10 +165,10 @@
         //$copyCoupon =  coupons_copy_coupon_taxonomy($node->nid,4);
         //print render($copyCoupon);
  
-	$affiliate_url=$node->field_affiliateurl['und']['0']['value'];
+	$affiliate_url=urlencode($node->field_affiliateurl['und']['0']['value']);
 	$coupon_code=$node->field_best_coupon_couponcode['und']['0'][value];
 	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
- 		
+ 	
  //      echo "<div class='d_view_store'><a class='view_store' href='{$node->field_page_url[und][0]['value']}'>View Details</a></div>";
 
  	
