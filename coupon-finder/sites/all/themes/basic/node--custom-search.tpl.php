@@ -157,8 +157,8 @@
       //echo 'brand - status '. $node->field_best_coupon_status[und][0]['value'];
 
 	
-	global $base_url;
-	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
+//	global $base_url;
+//	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
 	  
 
       if($node->field_best_coupon_status[und][0]['value'] == 1){
