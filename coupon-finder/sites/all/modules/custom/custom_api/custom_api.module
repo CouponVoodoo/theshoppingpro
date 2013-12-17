@@ -237,6 +237,10 @@ function custom_api_addproduct($ProInfo){
 	  $node->field_brand['und']['0']['tid'] 		  	= trim($jsonArray->header->ProductBrand);
 	  $node->field_brand['und']['0']['tid'] 		  	= $BrandId;
 	  
+	  echo "BrandId: ".$BrandId;
+	  echo "BrandSaved: ".$node->field_brand['und']['0']['tid'];
+	  
+	  
 	  $node->field_mrpproductprice['und']['0'][value]	  	= ($jsonArray->header->MRPProductPrice!='')?$jsonArray->header->MRPProductPrice:0 ;
 	  //$node->field_mrpproductprice['und']['0'][value]	  	= 0 ;
 	  
