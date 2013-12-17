@@ -554,6 +554,10 @@ function coupons_result($raw_url) {
 	  $Ruery = $Query->fetch();
 	  $BrandId = $Ruery->tid;
 	  
+	  var_dump($Ruery);
+	  echo $brand_name;
+	  echo "--------".$BrandId;
+	  
       //$brand_name = 'nike';
       // $vocabulary_name = 'brand';
       // $BrandId = coupons_get_term_from_name($brand_name, $vocabulary_name);
@@ -561,6 +565,7 @@ function coupons_result($raw_url) {
 	  //echo '===='.$brand_name;
       if($BrandId == ''){
 	$BrandId = coupons_create_taxonomy_term($brand_name, 4);
+	echo "----loop entered----".$BrandId;
       }
 	 
 	 
