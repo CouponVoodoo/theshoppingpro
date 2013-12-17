@@ -52,15 +52,15 @@ function custom_api_addproduct($ProInfo){
 
 	/** Time Stamp */
 		$counter=1;
-	ech
+
 	
     
     foreach($jsonArr as $json){
     
 	/** Time Stamp */
 		echo "Loop #".$counter." Start: ".round(microtime(true)* 1000);
-	echo "</br>";
-	$counter=$counter+1;
+		echo "</br>";
+		$counter=$counter+1;
 
 	
         
