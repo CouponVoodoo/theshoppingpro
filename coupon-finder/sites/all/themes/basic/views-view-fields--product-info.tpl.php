@@ -48,7 +48,7 @@ $nid = arg(1);
 	?>
 	
 		<script type="text/javascript">
-			mixpanel.track_links(".d_view_store a", "View Store Product Page", {Type: "Left Hand Side"});
+			mixpanel.track_links(".d_view_store a", "Click View Store Product Page", {Type: "Left Hand Side"});
 		</script>
 	
 	<?php
@@ -85,7 +85,7 @@ $nid = arg(1);
 	?>
 	
 		<script type="text/javascript">
-			mixpanel.track_links(".d_view_store a", "View Store Product Page", {Type: "Right Hand Side"});
+			mixpanel.track_links(".d_view_store a", "Click View Store Product Page", {Type: "Right Hand Side"});
 		</script>
 	
 	<?php
