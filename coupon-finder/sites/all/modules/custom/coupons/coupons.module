@@ -254,7 +254,7 @@ function coupons_finder_form_validate($form, &$form_state) {
 		  
 	      mixpanel_track('Keyword Search', array(
 				'Keyword' => $form_state['values']['url']
-			) ;
+			)) ;
 	      /* End of Mixpanel Tracking Keyword Search*/	
 
       drupal_goto( $searchText );
@@ -266,7 +266,7 @@ function coupons_finder_form_validate($form, &$form_state) {
 		  
 	      mixpanel_track('Keyword Search', array(
 				'Keyword' => 'Empty'
-			) ;
+			));
 	      /* End of Mixpanel Tracking Empty Search*/	
 
 
