@@ -264,7 +264,7 @@ function coupons_finder_form_validate($form, &$form_state) {
 
 	      /* Start of Mixpanel Tracking Empty Search*/
 		  
-	      mixpanel_track('Keyword Search', array(
+	      mixpanel_track('Empty Search', array(
 				'Keyword' => 'Empty'
 			));
 	      /* End of Mixpanel Tracking Empty Search*/	
