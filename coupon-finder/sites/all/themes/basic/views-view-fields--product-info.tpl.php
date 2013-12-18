@@ -40,7 +40,23 @@ $nid = arg(1);
     if( $status == 1){
     
         echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' >View Store</a></div>";
-    }
+
+/** Start of By Ashish to track for view store click on product page */		
+		
+	?>
+	
+		<script type="text/javascript">
+			mixpanel.track_links(".d_view_store a", "View Store Product Page", {
+			referrer: document.referrer
+			});
+		</script>
+	
+	<?php
+	
+/** End of By Ashish to track for view store click on product page */	
+	
+	
+	}
     //field_base_url
     //nid
     ?>
