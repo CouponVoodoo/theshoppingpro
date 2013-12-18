@@ -22,10 +22,6 @@ function custom_api_addproduct($ProInfo){
     //die;
     //$baseUrl = base64_decode( ($ProInfo) );
     $baseUrl = $_REQUEST['url'];
-
-	/** Time Stamp */
-	echo "Start: ".round(microtime(true)* 1000);
-	echo "</br>";
     
     if($_REQUEST['recheck'] == 1){
       $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
@@ -39,30 +35,13 @@ function custom_api_addproduct($ProInfo){
     }
     
     $json = drupal_http_request($url, array('timeout' => 600.0));
-	
-	/** Time Stamp */
-	echo "API Response received: ".round(microtime(true)* 1000);
-	echo "</br>";
-
-	
-//    if ( $json == 'done') {echo "done"; exit;}
+    if ( $json == 'done') {echo "done"; exit;}
     $json = $json->data;
     
     $jsonArr = json_decode($json,true);
-
-	/** Time Stamp */
-		$counter=1;
-
-	
     
     foreach($jsonArr as $json){
     
-	/** Time Stamp */
-		echo "Loop #".$counter." Start: ".round(microtime(true)* 1000);
-		echo "</br>";
-		$counter=$counter+1;
-
-	
         
     $json = json_encode($json); 
     $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
@@ -86,24 +65,21 @@ function custom_api_addproduct($ProInfo){
       $record = $result->fetch();
       
       
-	  	/** Time Stamp */
-	echo "Node Record Fetched: ".round(microtime(true)* 1000);
-	echo "</br>";
-	  
-	  
       $brand_name = $jsonArray->header->ProductBrand;
 	 // $Query = db_query("SELECT tid FROM taxonomy_term_data WHERE vid = 4 and name = '$brand_name' ");
-	  $Query=db_query('SELECT tid FROM {taxonomy_term_data} WHERE vid = 4 and name = :brand_name', array(':brand_name' => $brand_name));
+	  $Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 4 and ttd.name = :brand_name', array(':brand_name' => $brand_name));
 	  $Ruery = $Query->fetch();
 	  $BrandId = $Ruery->tid;
-      if($BrandId == ''){
-			$BrandId = coupons_create_taxonomy_term($brand_name, 4);
-	  }
-      
-	  	/** Time Stamp */
-	echo "Brand checked and created: ".round(microtime(true)* 1000);
-	echo "</br>";
 	  
+      //$brand_name = 'nike';
+      // $vocabulary_name = 'brand';
+      // $BrandId = coupons_get_term_from_name($brand_name, $vocabulary_name);
+      
+	  //echo '===='.$brand_name;
+      if($BrandId == ''){
+	$BrandId = coupons_create_taxonomy_term($brand_name, 4);
+      }
+      
       if($record->expression == 0){
 	//echo 'add';
 	//die;
@@ -181,12 +157,12 @@ function custom_api_addproduct($ProInfo){
 	$expDate = explode('=' , $jsonArray->header->LastCheckedTime);
 
 	//check product exist or not
-/**	$query = db_select('field_data_field_base_url', 'n')
+	$query = db_select('field_data_field_base_url', 'n')
 		     ->fields('n', array('entity_id','field_base_url_value') )
 		     ->condition('n.field_base_url_value', $baseUrl, '=');		   
 	$result = $query->execute();
 	$record = $result->fetch();
-*/
+
 	$queryLastUpdate = db_select('field_data_field_lastcheckedtime', 'n')
 		     ->fields('n', array('field_lastcheckedtime_value') )
 		     ->condition('n.entity_id ', $record->entity_id , '=');		   
@@ -198,28 +174,16 @@ function custom_api_addproduct($ProInfo){
 	  
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$record->entity_id);
 	
-	
-	  	/** Time Stamp */
-	echo "Last Checked Time: ".round(microtime(true)* 1000);
-	echo "</br>";
-	
-	
 	if( $expDate[0] != $lastUpdatedDate){
-
-/**	  $brand_name = $jsonArray->header->ProductBrand;
+	  $brand_name = $jsonArray->header->ProductBrand;
 	  //$brand_name = 'nike';
 	  $vocabulary_name = 'brand';
 	  $BrandId = coupons_get_term_from_name($brand_name, $vocabulary_name);
 	  if($BrandId == 0){
 	    $BrandId = coupons_create_taxonomy_term($brand_name, 4);
 	  }
-*/	  
+	  
 	  $node = node_load($record->entity_id);
-	  
-	  	/** Time Stamp */
-	echo "Node Load: ".round(microtime(true)* 1000);
-	echo "</br>";
-	  
 	  //$node->field_category['und'][0]['tid']			= 1;
 	  $node->field_category['und'][0]['tid']			= trim( $jsonArray->header->Category );;
 	  
@@ -236,10 +200,6 @@ function custom_api_addproduct($ProInfo){
 	  $node->field_product_image['und']['0'][value] 	  	= trim( $jsonArray->header->ProductImage );
 	  $node->field_brand['und']['0']['tid'] 		  	= trim($jsonArray->header->ProductBrand);
 	  $node->field_brand['und']['0']['tid'] 		  	= $BrandId;
-	  
-	  echo "BrandId: ".$BrandId;
-	  echo "BrandSaved: ".$node->field_brand['und']['0']['tid'];
-	  
 	  
 	  $node->field_mrpproductprice['und']['0'][value]	  	= ($jsonArray->header->MRPProductPrice!='')?$jsonArray->header->MRPProductPrice:0 ;
 	  //$node->field_mrpproductprice['und']['0'][value]	  	= 0 ;
@@ -270,20 +230,9 @@ function custom_api_addproduct($ProInfo){
 	  $file = file_save_data($image, 'public://'.$ImgFile['basename'] ,FILE_EXISTS_REPLACE);
 	  $node->field_product_images[LANGUAGE_NONE]['0']['fid'] = $file->fid;*/
 	
-	
-	  	/** Time Stamp */
-	echo "Node Data Collected: ".round(microtime(true)* 1000);
-	echo "</br>";
-	
-	
 	  node_save($node);
 	  
-	  
-	  	/** Time Stamp */
-	echo "Node Updated: ".round(microtime(true)* 1000);
-	echo "</br>";
-	  
-	  /* $urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$record->entity_id);
+	  /*$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$record->entity_id);
 	  
 	  $node2 = node_load( $record->entity_id );
 	  $node2->field_page_url['und']['0'][value] = $urlAlias;
@@ -305,11 +254,6 @@ function custom_api_addproduct($ProInfo){
     } 
     /*end here*/   
        
-	   
-	  	/** Time Stamp */
-	echo "All done: ".round(microtime(true)* 1000);
-	echo "</br>";
-	   
     if($_REQUEST['recheck'] == 1){
       //mail('sanjay.kumar1@mail.vinove.com', 'node_url', 'node_url'.print_r($node_url,1));
       drupal_goto($node_url);
