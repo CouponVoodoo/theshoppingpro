@@ -11,11 +11,12 @@ if ($row->Successful=="1") {
 
 <div class="search_listing_left">
   <div class="row_1">
-    <div class='couponcode'>
+ <!--   <div class='couponcode'>
       <label>Coupon Code:</label>
       <div class="search_listing_row_<?php print $row->counter; ?>' search_listing_row"><?php print $row->couponCode;?></div>
-    </div>
-    <div class='description'>  
+   </div>
+--> 
+   <div class='description'>  
       <label>Description:</label>
       <div class="search_listing_row_<?php print $row->counter; ?>' search_listing_row"><?php print $row->description;?></div>
     </div>
@@ -38,7 +39,7 @@ if ($row->Successful=="1") {
 
 <div class="search_listing_right">
   <div class="search_listing_row__<?php print $row->counter; ?> copy_coupon_row">
-    <!-- <?php if ($row->url): ?>
+     <?php if ($row->url): ?>
     <a href="<?php print $base_url ?>/coupon-redirect?s=<?php print urlencode($row->url); ?>" target="_blank" class="unlock_coupon" rel="c_<?php print $row->counter; ?>">
       <span class="copy_coupon">Copy Coupon</span><span></span>
     </a>
@@ -46,7 +47,7 @@ if ($row->Successful=="1") {
     <a href="javascript:" class="unlock_coupon" rel="c_<?php print $row->counter; ?>">
       <span class="copy_coupon">Copy Coupon</span><span></span>
     </a>
-    <?php endif; ?> -->
+    <?php endif; ?> 
   </div>
 </div>
 
