@@ -42,13 +42,13 @@ $nid = arg(1);
         echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' >View Store</a></div>";
 
 /** Start of By Ashish to track for view store click on product page */		
+
+
 		
 	?>
 	
 		<script type="text/javascript">
-			mixpanel.track_links(".d_view_store a", "View Store Product Page", {
-			referrer: document.referrer
-			});
+			mixpanel.track_links(".d_view_store a", "View Store Product Page", {Type: "Left Hand Side"});
 		</script>
 	
 	<?php
@@ -77,6 +77,21 @@ $nid = arg(1);
         print coupons_copy_best_coupon($nid);
     }else{
         echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' >View Store</a></div>";
+		
+/** Start of By Ashish to track for view store click on product page */		
+
+
+		
+	?>
+	
+		<script type="text/javascript">
+			mixpanel.track_links(".d_view_store a", "View Store Product Page", {Type: "Right Hand Side"});
+		</script>
+	
+	<?php
+	
+/** End of By Ashish to track for view store click on product page */
+		
     }
     ?>
 </div>
