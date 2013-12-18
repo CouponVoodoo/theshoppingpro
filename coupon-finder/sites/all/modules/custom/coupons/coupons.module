@@ -247,12 +247,29 @@ function coupons_finder_form_validate($form, &$form_state) {
   $urlStatus = coupons_validate_url( $form_state['values']['url'] );
   
   if( !empty($form_state['values']['url']) ){
-    if($urlStatus == 0){
+      if($urlStatus == 0){
       $searchText = "search/site/".$form_state['values']['url'];
+	  
+	      /* Start of Mixpanel Tracking Keyword Search*/
+		  
+	      mixpanel_track('Keyword Search', array(
+				'Keyword' => $form_state['values']['url']
+			) 
+	      /* End of Mixpanel Tracking Keyword Search*/	
+
       drupal_goto( $searchText );
-    }
+  }
   }elseif( empty($form_state['values']['url']) ){
     $searchText = "search/site/";
+
+	      /* Start of Mixpanel Tracking Empty Search*/
+		  
+	      mixpanel_track('Keyword Search', array(
+				'Keyword' => 'Empty'
+			) 
+	      /* End of Mixpanel Tracking Empty Search*/	
+
+
     drupal_goto( $searchText );
   }
   
@@ -283,7 +300,7 @@ else $prodUrl = $fullProdUrl;
 $retailerDomain = get_domain($fullProdUrl);
 $brand = reset(explode(".",$retailerDomain));
 mixpanel_track('URL Search', array(
-'Brand' => $brand,
+'Retailer' => $brand,
 'RetailerDomain' => $retailerDomain,
 'FullUrl' => $fullProdUrl,
 'ProdUrl' => $prodUrl
