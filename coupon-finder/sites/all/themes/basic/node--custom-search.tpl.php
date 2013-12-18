@@ -72,25 +72,62 @@
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
                         <div class='field-item even product_img'>
-							<a href='{$urlAlias}'><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
-                        </div>";
+							<a href='{$urlAlias}' onclick=window.open('{$node->field_affiliateurl['und']['0']['value']}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
+	/** Start of By Ashish to track for  click on listing page */		
+	?>
+		<script type="text/javascript">
+			mixpanel.track_links(".field-item even product_img", "Click From Listing Page", {Coupon Status: "Coupon Not Found", Link: "Product Image"});
+		</script>
+	<?php
+	/** End of By Ashish to track for view store click on product page */
+
+
+							</div>";
       echo  $img .=    "</div>
                 </div>";
       
-      echo "<div class='product_name'><a  href='{$urlAlias}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
-	}
+      echo "<div class='product_name'><a  href='{$urlAlias}' onclick=window.open('{$node->field_affiliateurl['und']['0']['value']}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
+	/** Start of By Ashish to track for  click on listing page */		
+	?>
+		<script type="text/javascript">
+			mixpanel.track_links(".product_name", "Click From Listing Page", {Coupon Status: "Coupon Not Found", Link: "Product Name"});
+		</script>
+	<?php
+	/** End of By Ashish to track for view store click on product page */
+	  }
 	  if($node->field_best_coupon_status[und][0]['value'] == 1){
 	  $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
                         <div class='field-item even product_img'>
 							<a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
-                        </div>";
+
+	/** Start of By Ashish to track for  click on listing page */		
+	?>
+		<script type="text/javascript">
+			mixpanel.track_links(".field-item even product_img", "Click From Listing Page", {Coupon Status: "Coupon Found", Link: "Product Image"});
+		</script>
+	<?php
+	/** End of By Ashish to track for view store click on product page */
+
+
+
+							</div>";
       echo  $img .=    "</div>
                 </div>";
       
       echo "<div class='product_name'><a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
-	}
+
+	  /** Start of By Ashish to track for  click on listing page */		
+	?>
+		<script type="text/javascript">
+			mixpanel.track_links(".product_name", "Click From Listing Page", {Coupon Status: "Coupon Found", Link: "Product Name"});
+		</script>
+	<?php
+	/** End of By Ashish to track for view store click on product page */
+
+
+	  }
 
 
 
@@ -173,12 +210,39 @@
 
  	
 	echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>View Details</a></div>";
-	   
+
+/** Start of By Ashish to track for click on listing page */		
+
+		
+	?>
+	
+		<script type="text/javascript">
+			mixpanel.track_links(".d_view_store a", "Click From Listing Page", {Coupon Status: "Coupon Found", Link: "View Details"});
+		</script>
+	
+	<?php
+	
+/** End of By Ashish to track for click on listing page */
 	   
  }
 
       if($node->field_best_coupon_status[und][0]['value'] == 0){ 
         echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$node->field_affiliateurl[und][0]['value']}'>View Store</a></div>";
+
+		/** Start of By Ashish to track for click on listing page  */		
+
+		
+	?>
+	
+		<script type="text/javascript">
+			mixpanel.track_links(".d_view_store a", "Click From Listing Page", {Coupon Status: "Coupon Not Found", Link: "View Store"});
+		</script>
+	
+	<?php
+	
+/** End of By Ashish to track for click on listing page e */
+
+
         
       }      
       //$field_page_url = $node->field_page_url[und][0]['value'];
