@@ -134,6 +134,6 @@ $netPrice = explode('.', strip_tags($fields['field_best_coupon_netpriceafters']-
 
 </div>
 <?php
-// echo $coupon =  coupons_copy_coupon($nid);
+echo $coupon =  coupons_copy_coupon($nid);
 
 ?>
