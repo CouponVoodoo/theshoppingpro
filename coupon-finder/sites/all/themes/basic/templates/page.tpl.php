@@ -149,11 +149,14 @@
 Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
 --------------------------------------------------->
 <script type="text/javascript">
-var google_tag_params = {
+/** COMMENTED BY ASHISH TO DISABLE ECOMMERCE TRACKING
+
+ var google_tag_params = {
 ecomm_prodid: 'REPLACE_WITH_VALUE',
 ecomm_pagetype: 'REPLACE_WITH_VALUE',
 ecomm_totalvalue: 'REPLACE_WITH_VALUE',
 };
+*/
 </script>
 <script type="text/javascript">
 /* <![CDATA[ */
