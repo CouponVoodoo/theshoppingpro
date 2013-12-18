@@ -39,7 +39,7 @@ $nid = arg(1);
     $status = strip_tags($fields['field_best_coupon_status']->content);
     if( $status == 1){
     
-        echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}'>View Store</a></div>";
+        echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' onclick=mixpanel.track(‘View Store', {'URL': ‘NODE_URL’ });>View Store</a></div>";
     }
     //field_base_url
     //nid
@@ -60,7 +60,7 @@ $nid = arg(1);
     if( $CouponStatus == 1 ){
         print coupons_copy_best_coupon($nid);
     }else{
-        echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}'>View Store</a></div>";
+        echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' onclick=mixpanel.track(‘View Store', {'URL': ‘NODE_URL’ });>View Store</a></div>";
     }
     ?>
 </div>
