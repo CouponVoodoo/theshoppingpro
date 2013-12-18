@@ -175,6 +175,8 @@ function custom_api_addproduct($ProInfo){
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$record->entity_id);
 	
 	if( $expDate[0] != $lastUpdatedDate){
+	  
+/** BY ASHISH REMOVING DUPLICATE THIS IS ALREADY HAPPENING IN THE MAIN LOOP	  
 	  $brand_name = $jsonArray->header->ProductBrand;
 	  //$brand_name = 'nike';
 	  $vocabulary_name = 'brand';
@@ -182,6 +184,7 @@ function custom_api_addproduct($ProInfo){
 	  if($BrandId == 0){
 	    $BrandId = coupons_create_taxonomy_term($brand_name, 4);
 	  }
+*/	  
 	  
 	  $node = node_load($record->entity_id);
 	  //$node->field_category['und'][0]['tid']			= 1;
