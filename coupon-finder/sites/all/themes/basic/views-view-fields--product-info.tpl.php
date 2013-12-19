@@ -26,6 +26,19 @@
 ?>
 <?php
 $nid = arg(1);
+
+/** Start of By Ashish to get mixpanel variables */		
+global $base_url;
+$mixpanel_urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$nid);
+$mixpanel_retailer= strip_tags($fields['field_retailer']->content);
+$mixpanel_brand= strip_tags($fields['field_brand']->content);
+$mixpanel_category= strip_tags($fields['field_category']->content);
+$mixpanel_product_name= strip_tags($fields['field_retailer_product_name']->content);
+$mixpanel_base_url= strip_tags($fields['field_base_url']->content);
+$mixpanel_type='Product Page View Store';
+/** End of By Ashish to get mixpanel variables */			
+
+
 ?>
 <div class="product-detail">
 
@@ -37,30 +50,12 @@ $nid = arg(1);
         
     //print ($fields['field_product_images']->content);
     $status = strip_tags($fields['field_best_coupon_status']->content);
-    if( $status == 1){
-    
+  
         echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' >View Store</a></div>";
-
-/** Start of By Ashish to track for view store click on product page */		
-
-
-		
-	?>
 	
-		<script type="text/javascript">
-			mixpanel.track_links(".d_view_store a", "Click View Store Product Page", {Type: "Left Hand Side"});
-		</script>
-	
-	<?php
-	
-/** End of By Ashish to track for view store click on product page */	
-	
-	
-	}
-    //field_base_url
-    //nid
     ?>
-</div>
+
+	</div>
 
 
 <div class="product-right-inner">
@@ -77,20 +72,6 @@ $nid = arg(1);
         print coupons_copy_best_coupon($nid);
     }else{
         echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' >View Store</a></div>";
-		
-/** Start of By Ashish to track for view store click on product page */		
-
-
-		
-	?>
-	
-		<script type="text/javascript">
-			mixpanel.track_links(".d_view_store a", "Click View Store Product Page", {Type: "Right Hand Side"});
-		</script>
-	
-	<?php
-	
-/** End of By Ashish to track for view store click on product page */
 		
     }
     ?>
@@ -166,5 +147,11 @@ $netPrice = explode('.', strip_tags($fields['field_best_coupon_netpriceafters']-
 </div>
 <?php
 echo $coupon =  coupons_copy_coupon($nid);
+
+/** Start of By Ashish to track for view store click on product page */		
+
+		echo '<script type="text/javascript"> mixpanel.track_links(".d_view_store a", "Click View Store Product Page", {Page: "'.$mixpanel_urlAlias.'", Retailer: "'.$mixpanel_retailer.'", Brand: "'.$mixpanel_brand.'", Category: "'.$mixpanel_category.'", Product: "'.$mixpanel_product_name.'", BaseUrl: "'.$base_url.'"}); </script>';
+
+/** End of By Ashish to track for view store click on product page */	
 
 ?>
