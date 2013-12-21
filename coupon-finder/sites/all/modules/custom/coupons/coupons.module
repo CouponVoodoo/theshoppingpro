@@ -84,6 +84,18 @@ function coupons_redirect_interim_page() {
   $url = $_GET['s'];
   $coupon_code = $_GET['c'];
   $url = urldecode($url);
+
+/** START OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIECT PAGE */  
+  
+mixpanel_track('Coupon Click Redirect', array(
+    'Affiliate URL' => $url,
+    'Coupon Code' => $coupon_code
+    )
+);
+
+/** END OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIECT PAGE */  
+
+
   drupal_add_js("jQuery(window).load(function(){
                   setTimeout(function(){
                      window.location.replace(\"" . $url . "\");
@@ -757,8 +769,8 @@ drupal_add_js("jQuery(document).ready(function($){
               var url = $(this).attr('href')+'&c='+coupon_code;
               $(this).attr('href',url);
               window.open($(this).attr('href'));
-/* Mixpanel integration Start*/
-mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
+/* commented out by ashish Mixpanel integration Start*/
+// mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
 
 /* Mixpanel integration Close*/
 
@@ -966,8 +978,8 @@ drupal_add_js("jQuery(document).ready(function($){
               $(this).attr('href',url);
               window.open($(this).attr('href'));
 	    
-	      /* Mixpanel integration Start*/
-	      mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
+	      /* Commented out by Ashish Mixpanel integration Start*/
+//	      mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
 	      
 	      /* Mixpanel integration Close*/
 
@@ -1063,9 +1075,12 @@ function coupons_copy_coupon($nid){
 	/* Mixpanel end*/
       }
     }
+    /* mixpanel COMMENTED OUT BY ASHISH*/
+// drupal_add_js(array('coupons' => $coupons, 'savings' => $savings, 'fullProdUrl' => $fullProdUrl, 'prodUrl' => $prodUrl, 'retailerDomain' => $retailerDomain, 'brand' => $brand), 'setting');
     /* mixpanel */
-drupal_add_js(array('coupons' => $coupons, 'savings' => $savings, 'fullProdUrl' => $fullProdUrl, 'prodUrl' => $prodUrl, 'retailerDomain' => $retailerDomain, 'brand' => $brand), 'setting');
-    /* mixpanel */
+
+/* mixpanel COMMENTED OUT BY ASHISH*/
+/*	
 drupal_add_js("jQuery(document).ready(function($){
           $('.unlock_coupon').click(function(){
               var coupon_code = '';
@@ -1075,13 +1090,13 @@ drupal_add_js("jQuery(document).ready(function($){
               for (var item in Drupal.settings.coupons) {
                 if (item == c){
                   coupon_code = Drupal.settings.coupons[item];
-	      /*mixpanel*/
+	      //mixpanel
 	      saving = Drupal.settings.savings[item];
 	      brand =  Drupal.settings.brand;
 	      fullProdUrl =  Drupal.settings.fullProdUrl;
 	      prodUrl =  Drupal.settings.prodUrl;
 	      retailerDomain =  Drupal.settings.retailerDomain;
-	      /*mixpanel*/
+	      //mixpanel
 
                 }
               }
@@ -1092,14 +1107,14 @@ drupal_add_js("jQuery(document).ready(function($){
 	      
               $(this).attr('href',url);
               window.open($(this).attr('href'));
-	      /* Mixpanel integration Start*/
+	      // Mixpanel integration Start
 	      mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
 	      
-	      /* Mixpanel integration Close*/
+	      // Mixpanel integration Close
              return true;
           });
         });", array('type' => 'inline', 'scope' => 'footer'));
-
+*/
 
     drupal_add_js(drupal_get_path('theme', 'basic') . '/js/jquery.zclip.min.js');
     drupal_add_js(drupal_get_path('module', 'coupons') . '/coupons.js');
@@ -1119,14 +1134,7 @@ drupal_add_js("jQuery(document).ready(function($){
                 });", array('type' => 'inline', 'scope' => 'footer'));
 
 
-    if ($is_success) {
-      $error_msg = '<div class="messages error">
-                Sorry! We tried our best but no coupons work for your product. Here is a list of coupons we tried, please read the response field for each coupon, you maybe able to avail discounts by increasing your cart value or selecting anther product:
-          </div>';
-    }
     return theme_item_list(array('items' => $items, 'title' => $title.$error_msg, 'type' => $type, 'attributes' => $attributes));
-  } else {
-    return '<span class="error">Bummer! Something went wrong. Please try another product.</span>';
   }  
 }
 
@@ -1239,8 +1247,8 @@ drupal_add_js("jQuery(document).ready(function($){
               $(this).attr('href',url);
               window.open($(this).attr('href'));
 	    
-	      /* Mixpanel integration Start*/
-	      mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
+	      /* Commented out by Ashish Mixpanel integration Start*/
+	//      mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
 	      
 	      /* Mixpanel integration Close*/
 
