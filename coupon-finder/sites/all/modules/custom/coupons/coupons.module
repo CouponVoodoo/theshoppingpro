@@ -84,6 +84,17 @@ function coupons_redirect_interim_page() {
   $url = $_GET['s'];
   $coupon_code = $_GET['c'];
   $url = urldecode($url);
+
+/** START OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIECT PAGE */  
+  
+mixpanel_track('Coupon Click Redirect', array(
+    'Affiliate URL' => $url,
+    'Coupon Code' => $coupon_code
+    )
+);
+
+/** END OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIECT PAGE */ 
+
   drupal_add_js("jQuery(window).load(function(){
                   setTimeout(function(){
                      window.location.replace(\"" . $url . "\");
