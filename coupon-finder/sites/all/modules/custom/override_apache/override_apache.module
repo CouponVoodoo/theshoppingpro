@@ -78,6 +78,8 @@ function override_apache_menu(){
 
 function override_apache_add_custom_url(){
   
+  db_query("delete from xmlsitemap where type = 'custom'");
+  
   override_apache_add_retailer_band();
   override_apache_add_retailer_category();
   override_apache_add_band_category();
