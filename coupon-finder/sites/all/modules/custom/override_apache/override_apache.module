@@ -78,9 +78,9 @@ function override_apache_menu(){
 
 function override_apache_add_custom_url(){
   
-  override_apache_add_retailer();
-  override_apache_add_brand();
-  //override_apache_add_category();
+  override_apache_add_retailer_band();
+  override_apache_add_retailer_category();
+  override_apache_add_band_category();
   
   return 'ok';
 }
@@ -93,7 +93,6 @@ function override_apache_cron(){
 function override_apache_add_retailer(){
   
   $QGetRetailer = db_query("SELECT name, tid FROM {taxonomy_term_data} WHERE vid = 2 ");
-  //mail('sanjay.kumar1@mail.vinove.com', 'QGetRetailer', 'QGetRetailer-->'.print_r($QGetRetailer,1));
   
   while( $RGetRetailer = $QGetRetailer->fetchObject() ){
       
@@ -122,7 +121,11 @@ function override_apache_add_retailer(){
 /*create url for taxonomy brand*/
 function override_apache_add_brand(){
   
-  $QGetRetailer = db_query("SELECT name, tid FROM {taxonomy_term_data} WHERE vid = 4 group by name ");
+  //$QGetRetailer = db_query("SELECT name, tid FROM {taxonomy_term_data} WHERE vid = 4 group by name ");
+  $QGetRetailer = db_query("SELECT name, tid 
+                            FROM taxonomy_term_data d INNER JOIN field_data_field_create_combination c ON d.tid = c.entity_id
+                            WHERE d.vid = 4 and c.field_create_combination_value = 'Yes' ");
+
   while( $RGetRetailer = $QGetRetailer->fetchObject() ){
       
       $TermName = override_apache_modify_title(strtolower($RGetRetailer->name));
@@ -161,6 +164,8 @@ function override_apache_add_category(){
       $QCount = db_query( "SELECT count(id) as total FROM xmlsitemap WHERE type = 'custom' and loc like '$loc' ");
       $RCount = $QCount->fetchObject();
       
+      
+      
       if( $RCount->total == 0 ){
         $link = array('type' => 'custom',
                     'id' => db_query("SELECT MAX(id) FROM {xmlsitemap} WHERE type = 'custom'")->fetchField() + 1,
@@ -171,8 +176,389 @@ function override_apache_add_category(){
         );
         xmlsitemap_link_save($link);
       }
+  }  
+}
+
+function override_apache_add_retailer_band(){
+  global $base_root;
+  
+  $QGetRetailer = db_query("SELECT name, tid FROM {taxonomy_term_data} WHERE vid = 2 ");
+  
+  while( $RGetRetailer = $QGetRetailer->fetchObject() ){
+      //if($RGetRetailer->tid == 4){
+        //set of code written for brand url  
+        $TermName = override_apache_modify_title(strtolower($RGetRetailer->name));
+        $TermId = $RGetRetailer->tid;
+        $Rloc = "/r/$TermName-$TermId";
+        
+        $cnt = 1;
+        //set of code written for retailer url
+        //$QGetBrand = db_query("SELECT name, tid FROM {taxonomy_term_data} WHERE vid = 4 and name!='' group by name ORDER BY RAND() LIMIT 25");
+        //$QGetBrand = db_query("SELECT name, tid FROM {taxonomy_term_data} WHERE vid = 4 and name!='' group by name ");
+        
+        $QGetBrand = db_query("SELECT d.name, d.tid
+                              FROM taxonomy_term_data d INNER JOIN field_data_field_create_combination c ON d.tid = c.entity_id
+                              WHERE d.vid = 4 and c.field_create_combination_value = 'Yes' and d.name!='' group by d.name ");
+        
+                            
+        while( $RGetBrand = $QGetBrand->fetchObject() ){
+          $BTermId = $RGetBrand->tid;
+          $total_record = override_apache_get_total($TermId, $BTermId);
+     
+            if($total_record > 0){
+              $BrandName = override_apache_modify_title(strtolower($RGetBrand->name));
+              
+              $loc = $base_root . base_path() . "search/site//b/$BrandName-$BTermId".$Rloc;
+              
+              $QCount = db_query( "SELECT count(id) as total FROM xmlsitemap WHERE type = 'custom' and loc like '$loc' ");
+              $RCount = $QCount->fetchObject();
+              
+              if( $RCount->total == 0 ){
+                $link = array('type' => 'custom',
+                            'id' => db_query("SELECT MAX(id) FROM {xmlsitemap} WHERE type = 'custom'")->fetchField() + 1,
+                            'loc' => $loc,
+                            'priority' => 0.5,
+                            'changefreq' => 0,
+                            'language' => 'und'    
+                );
+                xmlsitemap_link_save($link);
+              }
+            }
+        }
+  }
+}
+
+function override_apache_add_band_category(){
+    global $base_root;
+  
+  //$QGetBrand = db_query("SELECT name, tid FROM {taxonomy_term_data} WHERE vid = 4 group by name ");
+  
+  $QGetBrand = db_query("SELECT d.name, d.tid
+                        FROM taxonomy_term_data d INNER JOIN field_data_field_create_combination c ON d.tid = c.entity_id
+                        WHERE d.vid = 4 and c.field_create_combination_value = 'Yes' group by d.name ");
+                            
+  while( $RGetBrand = $QGetBrand->fetchObject() ){
+      
+      $BrandName = override_apache_modify_title(strtolower($RGetBrand->name));
+      $TermId = $RGetBrand->tid;
+      
+      $totalBrand = override_apache_get_total( '', $TermId );
+      if( $totalBrand > 0 ){
+        $CombPath = $base_root . base_path() . "search/site//b/$BrandName-$TermId";
+        
+        $QGetCategory = db_query("SELECT d.name, d.tid
+                                  FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid
+                                  WHERE d.vid = 3 and  h.parent = 0");
+        while( $RGetCategory = $QGetCategory->fetchObject() ){
+          $totalParent = override_apache_get_Ptotal( $RGetCategory->tid, $TermId );
+          if( $totalParent > 0 ){
+            $CateParentName = '/c/'.override_apache_modify_title(strtolower($RGetCategory->name));
+            $CateParentId = $RGetCategory->tid;
+            
+            $CombPath2 = $CombPath . $CateParentName.'-'.$CateParentId;
+            //override_apache_add_url( $CombPath2 );   
+            /*************************************/
+            $QGetCCategory = db_query("SELECT d.name, d.tid
+                                  FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid
+                                  WHERE d.vid = 3 and  h.parent = '$CateParentId' ");
+            while( $RGetCCategory = $QGetCCategory->fetchObject() ){
+              
+              //passing category id and brand id
+              //echo $RGetCCategory->tid .'---'. $TermId.'==';
+              $totalChild = override_apache_get_Ptotal( $RGetCCategory->tid, $TermId );
+              
+              if( $totalChild > 0 ){
+                
+                $CateChildName = '/c/'.override_apache_modify_title(strtolower($RGetCCategory->name));
+                $CateChildId = $RGetCategory->tid;
+            
+                $CombPath3 = $CombPath2 . $CateChildName.'-'.$CateChildId;
+                override_apache_add_url( $CombPath3 );
+              }  
+            }  
+            /*************************************/            
+          }
+        }  
+      }
+  }
+}
+
+//combination of retailer and category
+function override_apache_add_retailer_category(){
+  global $base_root;
+  
+  //$QGetBrand = db_query("SELECT name, tid FROM {taxonomy_term_data} WHERE vid = 4 group by name limit 20 ");
+  
+  $QGetBrand = db_query("SELECT name, tid FROM {taxonomy_term_data} WHERE vid = 2 group by name");
+  
+  while( $RGetBrand = $QGetBrand->fetchObject() ){
+      
+      $BrandName = override_apache_modify_title(strtolower($RGetBrand->name));
+      $TermId = $RGetBrand->tid;
+      
+      $totalBrand = override_apache_get_total( $TermId, '' );
+      
+      if( $totalBrand > 0 ){
+        //$CombPath = $base_root . base_path() . "search/site//b/$BrandName-$TermId";
+        $CombPath = $base_root . base_path() . "search/site//r/$BrandName-$TermId";
+        
+        $QGetCategory = db_query("SELECT d.name, d.tid
+                                  FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid
+                                  WHERE d.vid = 3 and  h.parent = 0");
+       
+        while( $RGetCategory = $QGetCategory->fetchObject() ){
+          //passing category id and retailer id
+          $totalParent = override_apache_get_RCURL( $RGetCategory->tid, $TermId );
+          
+          if( $totalParent > 0 ){
+            $CateParentName = '/c/'.override_apache_modify_title(strtolower($RGetCategory->name));
+            $CateParentId = $RGetCategory->tid;
+            
+            $CombPath2 = $CombPath . $CateParentName.'-'.$CateParentId;
+            /*************************************/
+           
+            $QGetCCategory = db_query("SELECT d.name, d.tid
+                                  FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid
+                                  WHERE d.vid = 3 and  h.parent = '$CateParentId' ");
+           
+            while( $RGetCCategory = $QGetCCategory->fetchObject() ){
+              
+              //passing category id and brand id
+              //echo $RGetCCategory->tid .'---'. $TermId.'==';
+              $totalChild = override_apache_get_RCPtotal( $RGetCCategory->tid, $TermId );
+              
+              if( $totalChild > 0 ){
+                
+                $CateChildName = '/c/'.override_apache_modify_title(strtolower($RGetCCategory->name));
+                $CateChildId = $RGetCCategory->tid;
+            
+                $CombPath3 = $CombPath2 . $CateChildName.'-'.$CateChildId;
+                override_apache_add_url( $CombPath3 );
+                //$CombPath3 = $CombPath2 . $CateChildName.'-'.$CateChildId;
+              }  
+            }  
+            /*************************************/            
+          }
+        }  
+      }
+  }
+}
+
+function override_apache_add_url( $loc ){
+  
+  $QCount = db_query( "SELECT count(id) as total FROM xmlsitemap WHERE type = 'custom' and loc like '$loc' ");
+  $RCount = $QCount->fetchObject();
+  
+  if( $RCount->total == 0 ){
+    $link = array('type' => 'custom',
+                'id' => db_query("SELECT MAX(id) FROM {xmlsitemap} WHERE type = 'custom'")->fetchField() + 1,
+                'loc' => $loc,
+                'priority' => 0.5,
+                'changefreq' => 0,
+                'language' => 'und'    
+    );
+    xmlsitemap_link_save($link);
   }
   
+}
+
+function override_apache_get_total( $retailer = '', $brand = '' ){
+  
+  if( !empty($brand) && !empty($retailer) ){
+      
+    $query = db_query("SELECT count(node.nid) as total
+      FROM 
+      {node} node
+      LEFT JOIN {field_data_field_brand} field_data_field_brand ON node.nid = field_data_field_brand.entity_id AND (field_data_field_brand.entity_type = 'node' AND field_data_field_brand.deleted = '0')
+      LEFT JOIN {field_data_field_retailer} field_data_field_retailer ON node.nid = field_data_field_retailer.entity_id AND (field_data_field_retailer.entity_type = 'node' AND field_data_field_retailer.deleted = '0')
+      WHERE (( (field_data_field_brand.field_brand_tid = '$brand' ) AND (field_data_field_retailer.field_retailer_tid = '$retailer' ) )AND(( (node.status = '1') AND (node.type IN  ('_product_and_coupon')) )))"
+    );
+    $obj = $query->fetch();
+    return $obj->total;
+  
+  }elseif( !empty($brand) ){
+  
+      $query = db_query("SELECT count(node.nid) as total
+      FROM 
+      node node
+      LEFT JOIN field_data_field_brand field_data_field_brand ON node.nid = field_data_field_brand.entity_id AND (field_data_field_brand.entity_type = 'node' AND field_data_field_brand.deleted = '0')
+      LEFT JOIN field_data_field_retailer field_data_field_retailer ON node.nid = field_data_field_retailer.entity_id AND (field_data_field_retailer.entity_type = 'node' AND field_data_field_retailer.deleted = '0')
+      WHERE (( (field_data_field_brand.field_brand_tid = '$brand' ) )AND(( (node.status = '1') AND (node.type IN  ('_product_and_coupon')) )))"
+    );
+    
+    $obj = $query->fetch();
+    return $obj->total;
+      
+  }elseif( !empty($retailer) ){
+    
+    $query = db_query("SELECT count(node.nid) as total
+      FROM 
+      {node} node
+      LEFT JOIN {field_data_field_brand} field_data_field_brand ON node.nid = field_data_field_brand.entity_id AND (field_data_field_brand.entity_type = 'node' AND field_data_field_brand.deleted = '0')
+      LEFT JOIN {field_data_field_retailer} field_data_field_retailer ON node.nid = field_data_field_retailer.entity_id AND (field_data_field_retailer.entity_type = 'node' AND field_data_field_retailer.deleted = '0')
+      WHERE (( (field_data_field_retailer.field_retailer_tid = '$retailer' ) )AND(( (node.status = '1') AND (node.type IN  ('_product_and_coupon')) )))"
+    );
+    $obj = $query->fetch();
+    return $obj->total;
+  }
+}
+
+function override_apache_get_Ptotal( $Ptid, $brandId ){
+
+  $taxonomyID = array();
+  
+  $QGetCategoryP = db_query("SELECT d.name, d.tid FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid WHERE d.vid = 3 and d.tid = '$Ptid' ");
+  while( $RGetCategoryP = $QGetCategoryP->fetchObject() ){
+    $TermId = $RGetCategoryP->tid;
+    $taxonomyID[] = "'".$TermId."'";
+    
+    $QGetCategoryChild = db_query("SELECT d.name, d.tid
+    FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid
+    WHERE d.vid = 3 and  h.parent = $TermId ");
+    
+    while( $RGetCategoryChild = $QGetCategoryChild->fetchObject() ){
+      $CategoryChildID = $RGetCategoryChild->tid;
+      $taxonomyID[] = "'".$CategoryChildID."'";
+      
+      $QGetCategorySChild = db_query("SELECT d.name, d.tid
+      FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid
+      WHERE d.vid = 3 and  h.parent = $CategoryChildID ");
+      
+      while( $RGetCategorySChild = $QGetCategorySChild->fetchObject() ){
+        $taxonomyID[] = "'".$RGetCategorySChild->tid."'";
+      }  
+    }
+  }
+  
+  $termID = implode(',' , $taxonomyID);
+  
+  
+  $QTotal = db_query("SELECT count(node.nid) as total
+  FROM 
+  node node
+  LEFT JOIN field_data_field_brand field_data_field_brand ON node.nid = field_data_field_brand.entity_id AND (field_data_field_brand.entity_type = 'node' AND field_data_field_brand.deleted = '0')
+  LEFT JOIN field_data_field_category field_data_field_category ON node.nid = field_data_field_category.entity_id AND (field_data_field_category.entity_type = 'node' AND field_data_field_category.deleted = '0')
+  WHERE (( (field_data_field_category.field_category_tid IN ($termID) ) AND field_data_field_brand.field_brand_tid = '$brandId' )AND(( (node.status = '1') AND (node.type IN  ('_product_and_coupon')) )))");
+  
+  $RTotal  = $QTotal->fetchObject();
+  
+  return $RTotal->total;
+}
+
+
+function override_apache_get_Ctotal($pid, $tid){
+
+  $taxonomyID = array();
+  
+  $QGetCategoryP = db_query("SELECT d.name, d.tid FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid WHERE d.vid = 3 and d.tid = $tid and  h.parent = $pid ");
+  while( $RGetCategoryP = $QGetCategoryP->fetchObject() ){
+    $TermId = $RGetCategoryP->tid;
+    $taxonomyID[] = "'".$TermId."'";
+    
+    $QGetCategoryChild = db_query("SELECT d.name, d.tid
+    FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid
+    WHERE d.vid = 3 and  h.parent = $TermId ");
+    
+    while( $RGetCategoryChild = $QGetCategoryChild->fetchObject() ){
+      $CategoryChildID = $RGetCategoryChild->tid;
+      $taxonomyID[] = "'".$CategoryChildID."'";
+      
+      $QGetCategorySChild = db_query("SELECT d.name, d.tid
+      FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid
+      WHERE d.vid = 3 and  h.parent = $CategoryChildID ");
+      
+      while( $RGetCategorySChild = $QGetCategorySChild->fetchObject() ){
+        $taxonomyID[] = "'".$RGetCategorySChild->tid."'";
+      }  
+    }
+  }
+  
+  $termID = implode(',' , $taxonomyID);  
+  return $termID;
+}
+
+//get combination of url retailer and category
+function override_apache_get_RCURL($pid, $tid){
+  $taxonomyID = array();
+  
+  //echo "SELECT d.name, d.tid FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid WHERE d.vid = 2 and d.tid = $tid ";
+  $QGetCategoryP = db_query("SELECT d.name, d.tid FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid WHERE d.vid = 2 and d.tid = $tid ");
+  while( $RGetCategoryP = $QGetCategoryP->fetchObject() ){
+    $TermId = $RGetCategoryP->tid;
+    $taxonomyID[] = "'".$TermId."'";
+    
+    $QGetCategoryChild = db_query("SELECT d.name, d.tid
+    FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid
+    WHERE d.vid = 3 and  h.parent = 0 ");
+    
+    while( $RGetCategoryChild = $QGetCategoryChild->fetchObject() ){
+      $CategoryChildID = $RGetCategoryChild->tid;
+      $taxonomyID[] = "'".$CategoryChildID."'";
+      
+      $QGetCategorySChild = db_query("SELECT d.name, d.tid
+      FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid
+      WHERE d.vid = 3 and  h.parent = $CategoryChildID ");
+      
+      while( $RGetCategorySChild = $QGetCategorySChild->fetchObject() ){
+        $taxonomyID[] = "'".$RGetCategorySChild->tid."'";
+      }  
+    }
+  }
+  
+  $termID = implode(',' , $taxonomyID);
+  
+  $QTotal = db_query("SELECT count(node.nid) as total
+  FROM 
+  node node
+  LEFT JOIN field_data_field_retailer field_data_field_retailer ON node.nid = field_data_field_retailer.entity_id AND (field_data_field_retailer.entity_type = 'node' AND field_data_field_retailer.deleted = '0')
+  LEFT JOIN field_data_field_category field_data_field_category ON node.nid = field_data_field_category.entity_id AND (field_data_field_category.entity_type = 'node' AND field_data_field_category.deleted = '0')
+  WHERE (( (field_data_field_category.field_category_tid IN ($termID) ) AND field_data_field_retailer.field_retailer_tid = '$tid' )AND(( (node.status = '1') AND (node.type IN  ('_product_and_coupon')) )))");
+  
+  $RTotal  = $QTotal->fetchObject();
+  
+  return $RTotal->total;
+}
+
+
+function override_apache_get_RCPtotal( $Ptid, $brandId ){
+
+  $taxonomyID = array();
+  
+  $QGetCategoryP = db_query("SELECT d.name, d.tid FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid WHERE d.vid = 3 and d.tid = '$Ptid' ");
+  while( $RGetCategoryP = $QGetCategoryP->fetchObject() ){
+    $TermId = $RGetCategoryP->tid;
+    $taxonomyID[] = "'".$TermId."'";
+    
+    $QGetCategoryChild = db_query("SELECT d.name, d.tid
+    FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid
+    WHERE d.vid = 3 and  h.parent = $TermId ");
+    
+    while( $RGetCategoryChild = $QGetCategoryChild->fetchObject() ){
+      $CategoryChildID = $RGetCategoryChild->tid;
+      $taxonomyID[] = "'".$CategoryChildID."'";
+      
+      $QGetCategorySChild = db_query("SELECT d.name, d.tid
+      FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid
+      WHERE d.vid = 3 and  h.parent = $CategoryChildID ");
+      
+      while( $RGetCategorySChild = $QGetCategorySChild->fetchObject() ){
+        $taxonomyID[] = "'".$RGetCategorySChild->tid."'";
+      }  
+    }
+  }
+  
+  $termID = implode(',' , $taxonomyID);
+  
+  $QTotal = db_query("SELECT count(node.nid) as total
+  FROM 
+  node node
+  LEFT JOIN field_data_field_retailer field_data_field_retailer ON node.nid = field_data_field_retailer.entity_id AND (field_data_field_retailer.entity_type = 'node' AND field_data_field_retailer.deleted = '0')
+  LEFT JOIN field_data_field_category field_data_field_category ON node.nid = field_data_field_category.entity_id AND (field_data_field_category.entity_type = 'node' AND field_data_field_category.deleted = '0')
+  WHERE (( (field_data_field_category.field_category_tid IN ($termID) ) AND field_data_field_retailer.field_retailer_tid = '$brandId' )AND(( (node.status = '1') AND (node.type IN  ('_product_and_coupon')) )))");
+  
+  $RTotal  = $QTotal->fetchObject();
+  
+  return $RTotal->total;
 }
 
 function override_apache_modify_title($title){
@@ -180,6 +566,7 @@ function override_apache_modify_title($title){
   $string = $title;
   $string = str_replace('.', '', $string);
   $str = preg_replace('/[^A-Za-z0-9\-]/', '-', $string);
-  return preg_replace('/-{1,}/','-',$str );  
+  $str = trim( preg_replace('/-{1,}/','-',$str), '-' );
+  return $str;  
 
 }  
