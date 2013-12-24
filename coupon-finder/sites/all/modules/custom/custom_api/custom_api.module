@@ -306,7 +306,9 @@ function custom_api_addproduct($ProInfo){
 	  */
 	  if( !empty($node->nid) ){
 	    $response = json_encode( array('ResponseCode' => '2', 'Response' => 'Node Updated.', 'URL' => $url, 'BASEURL' => $jsonArray->header->BaseUrl) );
-	    echo $response;
+
+		/** NEED TO UNCOMMENT THE LINE BELOW */
+		//	    echo $response;
 	  }else{
 	    $response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
 	    echo $response;
