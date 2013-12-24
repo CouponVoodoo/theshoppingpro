@@ -619,45 +619,17 @@ function field_attach_update_custom_short($entity_type, $entity) {
   // Field storage backends save any remaining unsaved fields.
   foreach ($storages as $storage => $fields) {
     $storage_info = field_info_storage_types($storage);
-	// var_dump($entity);
-	// var_dump($entity->original);
-	 //$remove = array_flip($entity->original); 
-	//var_dump($remove);
-	
-		echo nl2br("\n");
-		echo nl2br("\n");
-		echo nl2br("\n");
-		echo nl2br("\n");
-		echo nl2br("\n");
-		echo nl2br("\n");
-echo '-----------------';	
-	// 'a' and 'b' are the keys to remove
-	 unset($entity->original);
-	 //$entity = array_diff_key($entity, $entity->original);
-	var_dump($entity);
-exit;	
-	echo nl2br("\n");
-		echo nl2br("\n");
-		echo nl2br("\n");
-		echo nl2br("\n");
-		echo nl2br("\n");
-		echo nl2br("\n");
-	$entity = array_diff($entity, $entity->original);
-	var_dump($entity);
-		echo nl2br("\n");
-		echo nl2br("\n");
-		echo nl2br("\n");
-		echo nl2br("\n");
-	
-	
-	die;	
+	 $entity = unset($entity->original);
+	 $entity = unset($entity->name);
+	 $entity = unset($entity->picture);
+	 $entity = unset($entity->data);
+	 $entity = unset($entity->is_new);
+	 $entity = unset($entity->rdf_mapping);
+	 var_dump($entity);	
     module_invoke($storage_info['module'], 'field_storage_write', $entity_type, $entity, FIELD_STORAGE_UPDATE, $fields);
   		/** ASHISH NODE CREATION TIMING*/
 		$time1 = round(microtime(true)* 1000);
-		var_dump($entity);
-		//var_dump($storage_info);
-		//var_dump($fields);
-				echo 'END OF LOOP FOR STORAGE '.$storage_info.' : '.$time1;
+		echo 'END OF LOOP FOR STORAGE '.$storage_info.' : '.$time1;
 		echo nl2br("\n");
 		/** -----------------------------------------   */	
   }
