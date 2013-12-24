@@ -36,10 +36,22 @@ function custom_api_addproduct($ProInfo){
     
     $json = drupal_http_request($url, array('timeout' => 600.0));
     if ( $json == 'done') {echo "done"; exit;}
-    $json = $json->data;
+    
+	/** ASHISH NODE CREATION TIMING  - DATA REVEIVED*/
+		$time1 = round(microtime(true)* 1000);
+	echo 'Data Received: '.$time1;
+	echo '<\br>';
+	echo '\n';
+	/** -----------------------------------------   */
+	
+	
+	
+	$json = $json->data;
     
     $jsonArr = json_decode($json,true);
     
+	
+	
     foreach($jsonArr as $json){
     
         
@@ -64,12 +76,28 @@ function custom_api_addproduct($ProInfo){
       $result = $query->execute();
       $record = $result->fetch();
       
+	  	/** ASHISH NODE CREATION TIMING  - NODE FETCHED*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'Node Fetched: '.$time1;
+		echo '<\br>';
+		echo '\n';
+		/** -----------------------------------------   */
+
+	  
+	  
       
       $brand_name = $jsonArray->header->ProductBrand;
 	 // $Query = db_query("SELECT tid FROM taxonomy_term_data WHERE vid = 4 and name = '$brand_name' ");
 	  $Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 4 and ttd.name = :brand_name', array(':brand_name' => $brand_name));
 	  $Ruery = $Query->fetch();
 	  $BrandId = $Ruery->tid;
+
+	  /** ASHISH NODE CREATION TIMING  - BRAND CHECKED*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'Brand CHecked: '.$time1;
+		echo '<\br>';
+		echo '\n';
+		/** -----------------------------------------   */
 	  
       //$brand_name = 'nike';
       // $vocabulary_name = 'brand';
@@ -79,7 +107,15 @@ function custom_api_addproduct($ProInfo){
       if($BrandId == ''){
 	$BrandId = coupons_create_taxonomy_term($brand_name, 4);
       }
+
+	  	/** ASHISH NODE CREATION TIMING  - Brand Created*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'Brand Created: '.$time1;
+		echo '<\br>';
+		echo '\n';
+		/** -----------------------------------------   */
       
+
       if($record->expression == 0){
 	//echo 'add';
 	//die;
@@ -154,6 +190,15 @@ function custom_api_addproduct($ProInfo){
 	
       }elseif($record->expression == 1){
 	//echo 'update';
+	
+		/** ASHISH NODE CREATION TIMING  - UPDATE LOOP ENTERED*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'Update Loop Entered: '.$time1;
+		echo '<\br>';
+		echo '\n';
+		/** -----------------------------------------   */
+
+	
 	$expDate = explode('=' , $jsonArray->header->LastCheckedTime);
 
 	//check product exist or not
@@ -175,6 +220,15 @@ function custom_api_addproduct($ProInfo){
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$record->entity_id);
 	
 	if( $expDate[0] != $lastUpdatedDate){
+	  
+  	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'Last Update Time Loop: '.$time1;
+		echo '<\br>';
+		echo '\n';
+		/** -----------------------------------------   */
+
+	  
 	  
 /** BY ASHISH REMOVING DUPLICATE THIS IS ALREADY HAPPENING IN THE MAIN LOOP	  
 	  $brand_name = $jsonArray->header->ProductBrand;
@@ -232,8 +286,24 @@ function custom_api_addproduct($ProInfo){
 	  $image = file_get_contents($ImgPath); // string
 	  $file = file_save_data($image, 'public://'.$ImgFile['basename'] ,FILE_EXISTS_REPLACE);
 	  $node->field_product_images[LANGUAGE_NONE]['0']['fid'] = $file->fid;*/
-	
+
+ 	  	/** ASHISH NODE CREATION TIMING  - Node Data*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'Node Data Received: '.$time1;
+		echo '<\br>';
+		echo '\n';
+		/** -----------------------------------------   */
+
+	  
 	  node_save($node);
+	  
+	   	  	/** ASHISH NODE CREATION TIMING  - Node Saved*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'Node Saved: '.$time1;
+		echo '<\br>';
+		echo '\n';
+		/** -----------------------------------------   */
+
 	  
 	  /*$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$record->entity_id);
 	  
@@ -248,6 +318,14 @@ function custom_api_addproduct($ProInfo){
 	    $response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
 	    echo $response;
 	  }
+
+ 	  	/** ASHISH NODE CREATION TIMING  - End Process*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'End Process: '.$time1;
+		echo '<\br>';
+		echo '\n';
+		/** -----------------------------------------   */
+
 	  
 	}else{
 	    $response = json_encode( array('ResponseCode' => '3', 'Response' => 'Node Ignored - Node Already Updated.', 'NodeId' => 'test nid') );
@@ -256,7 +334,12 @@ function custom_api_addproduct($ProInfo){
       }	
     } 
     /*end here*/   
-       
+     
+
+
+
+
+	 
     if($_REQUEST['recheck'] == 1){
       //mail('sanjay.kumar1@mail.vinove.com', 'node_url', 'node_url'.print_r($node_url,1));
       drupal_goto($node_url);
