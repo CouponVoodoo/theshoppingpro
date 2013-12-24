@@ -366,7 +366,12 @@ function node_save_custom_short($node) {
     if (!empty($node->nid) && !isset($node->original)) {
       $node->original = entity_load_unchanged('node', $node->nid);
     }
-
+	   	/** ASHISH NODE CREATION TIMING*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'NODE - STORED ENTITY: '.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
+		
     field_attach_presave('node', $node);
     global $user;
 
@@ -374,7 +379,7 @@ function node_save_custom_short($node) {
     if (!isset($node->is_new)) {
       $node->is_new = empty($node->nid);
     }
-
+	
     // Set the timestamp fields.
     if (empty($node->created)) {
       $node->created = REQUEST_TIME;
@@ -387,9 +392,28 @@ function node_save_custom_short($node) {
     $update_node = TRUE;
 
     // Let modules modify the node before it is saved to the database.
-    module_invoke_all('node_presave', $node);
-    module_invoke_all('entity_presave', $node, 'node');
+	   	/** ASHISH NODE CREATION TIMING*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'NODE - BEFORE INVOKE: '.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
 
+    module_invoke_all('node_presave', $node);
+	   	/** ASHISH NODE CREATION TIMING*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'NODE - MODULE_INVOKE 1: '.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
+
+    module_invoke_all('entity_presave', $node, 'node');
+	   	/** ASHISH NODE CREATION TIMING*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'NODE - MODULE _INVOKE 2: '.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
+
+	
+	
     if ($node->is_new || !empty($node->revision)) {
       // When inserting either a new node or a new node revision, $node->log
       // must be set because {node_revision}.log is a text column and therefore
@@ -445,6 +469,8 @@ function node_save_custom_short($node) {
       }
       $op = 'update';
     }
+
+
     if ($update_node) {
       db_update('node')
         ->fields(array('vid' => $node->vid))
@@ -452,17 +478,52 @@ function node_save_custom_short($node) {
         ->execute();
     }
 
+	   	/** ASHISH NODE CREATION TIMING*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'NODE - VERSION ID SAVED: '.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
+	
+	
+	
     // Call the node specific callback (if any). This can be
     // node_invoke($node, 'insert') or
     // node_invoke($node, 'update').
     node_invoke($node, $op);
 
+		/** ASHISH NODE CREATION TIMING*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'NODE - NODE INVOKE1: '.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
+
+	
     // Save fields.
     $function = "field_attach_$op";
     $function('node', $node);
 
+		/** ASHISH NODE CREATION TIMING*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'NODE - FIELD SAVED: '.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
+
+	
+	
     module_invoke_all('node_' . $op, $node);
+	
+	   	/** ASHISH NODE CREATION TIMING*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'NODE - MODULE INVOKE 3: '.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
+	
     module_invoke_all('entity_' . $op, $node, 'node');
+	   	/** ASHISH NODE CREATION TIMING*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'NODE - MODULE INVOKE 4: '.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
 
     // Update the node access table for this node. There's no need to delete
     // existing records if the node is new.
