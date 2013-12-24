@@ -619,12 +619,12 @@ function field_attach_update_custom_short($entity_type, $entity) {
   // Field storage backends save any remaining unsaved fields.
   foreach ($storages as $storage => $fields) {
     $storage_info = field_info_storage_types($storage);
-	 $entity = unset($entity->original);
-	 $entity = unset($entity->name);
-	 $entity = unset($entity->picture);
-	 $entity = unset($entity->data);
-	 $entity = unset($entity->is_new);
-	 $entity = unset($entity->rdf_mapping);
+	 unset($entity->original);
+	 unset($entity->name);
+	 unset($entity->picture);
+	 unset($entity->data);
+	 unset($entity->is_new);
+	 unset($entity->rdf_mapping);
 	 var_dump($entity);	
     module_invoke($storage_info['module'], 'field_storage_write', $entity_type, $entity, FIELD_STORAGE_UPDATE, $fields);
   		/** ASHISH NODE CREATION TIMING*/
