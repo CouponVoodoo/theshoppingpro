@@ -621,9 +621,9 @@ function field_attach_update_custom_short($entity_type, $entity) {
     $storage_info = field_info_storage_types($storage);
 	// var_dump($entity);
 	// var_dump($entity->original);
-	 $remove = array_flip($entity->original); 
-	var_dump($remove);
-	exit;
+	 //$remove = array_flip($entity->original); 
+	//var_dump($remove);
+	
 		echo nl2br("\n");
 		echo nl2br("\n");
 		echo nl2br("\n");
@@ -632,15 +632,16 @@ function field_attach_update_custom_short($entity_type, $entity) {
 		echo nl2br("\n");
 echo '-----------------';	
 	// 'a' and 'b' are the keys to remove
-	 $entity = array_diff_key($entity, $remove);
+	 $entity = array_diff_key($entity, $entity->original);
 	var_dump($entity);
+exit;	
+	echo nl2br("\n");
 		echo nl2br("\n");
 		echo nl2br("\n");
 		echo nl2br("\n");
 		echo nl2br("\n");
 		echo nl2br("\n");
-		echo nl2br("\n");
-	$entity = array_diff($entity, $remove);
+	$entity = array_diff($entity, $entity->original);
 	var_dump($entity);
 		echo nl2br("\n");
 		echo nl2br("\n");
