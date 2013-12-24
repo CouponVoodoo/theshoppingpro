@@ -289,7 +289,7 @@ function custom_api_addproduct($ProInfo){
 		/** -----------------------------------------   */
 
 	  
-	  node_save_custom_short($node);
+	  node_save($node);
 	  
 	   	  	/** ASHISH NODE CREATION TIMING  - Node Saved*/
 		$time1 = round(microtime(true)* 1000);
@@ -626,7 +626,7 @@ function field_attach_update_custom_short($entity_type, $entity) {
 	 unset($entity->is_new);
 	 unset($entity->rdf_mapping);
 		 
-	 var_dump($entity);	
+	// var_dump($entity);	
 
    //  module_invoke($storage_info['module'], 'field_storage_write', $entity_type, $entity, FIELD_STORAGE_UPDATE, $fields);
   		/** ASHISH NODE CREATION TIMING*/
