@@ -78,6 +78,10 @@ function override_apache_menu(){
 
 function override_apache_add_custom_url(){
   
+  //override_apache_add_retailer();
+  //override_apache_add_brand();  
+  //override_apache_add_category();
+  
   db_query("delete from xmlsitemap where type = 'custom'");
   
   override_apache_add_retailer_band();
@@ -195,12 +199,10 @@ function override_apache_add_retailer_band(){
         
         $cnt = 1;
         //set of code written for retailer url
-        //$QGetBrand = db_query("SELECT name, tid FROM {taxonomy_term_data} WHERE vid = 4 and name!='' group by name ORDER BY RAND() LIMIT 25");
-        //$QGetBrand = db_query("SELECT name, tid FROM {taxonomy_term_data} WHERE vid = 4 and name!='' group by name ");
         
         $QGetBrand = db_query("SELECT d.name, d.tid
                               FROM taxonomy_term_data d INNER JOIN field_data_field_create_combination c ON d.tid = c.entity_id
-                              WHERE d.vid = 4 and c.field_create_combination_value = 'Yes' and d.name!='' group by d.name ");
+                              WHERE d.vid = 4 and c.field_create_combination_value = 'Yes' and d.name!='' group by d.name  ");
         
                             
         while( $RGetBrand = $QGetBrand->fetchObject() ){
@@ -272,8 +274,9 @@ function override_apache_add_band_category(){
               if( $totalChild > 0 ){
                 
                 $CateChildName = '/c/'.override_apache_modify_title(strtolower($RGetCCategory->name));
-                $CateChildId = $RGetCategory->tid;
-            
+                $CateChildId = $RGetCCategory->tid;
+                
+                override_apache_add_url( $CombPath2 );
                 $CombPath3 = $CombPath2 . $CateChildName.'-'.$CateChildId;
                 override_apache_add_url( $CombPath3 );
               }  
@@ -333,7 +336,9 @@ function override_apache_add_retailer_category(){
                 
                 $CateChildName = '/c/'.override_apache_modify_title(strtolower($RGetCCategory->name));
                 $CateChildId = $RGetCCategory->tid;
-            
+                
+                override_apache_add_url( $CombPath2 );
+                
                 $CombPath3 = $CombPath2 . $CateChildName.'-'.$CateChildId;
                 override_apache_add_url( $CombPath3 );
                 //$CombPath3 = $CombPath2 . $CateChildName.'-'.$CateChildId;
