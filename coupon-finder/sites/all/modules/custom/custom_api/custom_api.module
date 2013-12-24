@@ -626,10 +626,9 @@ function field_attach_update_custom_short($entity_type, $entity) {
 	 unset($entity->is_new);
 	 unset($entity->rdf_mapping);
 	 $entity = $entity->body;
-	 
-	 
-	 var_dump($entity);	
-	 exit;
+		 
+	 //var_dump($entity);	
+
     module_invoke($storage_info['module'], 'field_storage_write', $entity_type, $entity, FIELD_STORAGE_UPDATE, $fields);
   		/** ASHISH NODE CREATION TIMING*/
 		$time1 = round(microtime(true)* 1000);
