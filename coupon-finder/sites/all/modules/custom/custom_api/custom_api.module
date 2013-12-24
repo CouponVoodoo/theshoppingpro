@@ -39,7 +39,8 @@ function custom_api_addproduct($ProInfo){
     
 	/** ASHISH NODE CREATION TIMING  - DATA REVEIVED*/
 		$time1 = round(microtime(true)* 1000);
-	echo 'Data Received: '.$time1;
+	echo nl2br("\n");
+		echo 'Data Received: '.$time1;
 	echo nl2br("\n");
 	/** -----------------------------------------   */
 	
@@ -57,7 +58,7 @@ function custom_api_addproduct($ProInfo){
     $json = json_encode($json); 
     $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
     $jsonArray = json_decode($jsonData);
-    echo $jsonArray->header->BaseUrl. "</br>";
+ //   echo $jsonArray->header->BaseUrl. "</br>";
     
     
     /**added by sanjay*/
