@@ -583,7 +583,7 @@ function field_attach_update_custom_short($entity_type, $entity) {
 		/** ASHISH NODE CREATION TIMING*/
 		$time1 = round(microtime(true)* 1000);
 		var_dump($module);
-		echo 'END OF LOOP FOR : '.$time1;
+		echo 'END OF LOOP FOR MODULE: '.$time1;
 		echo nl2br("\n");
 		/** -----------------------------------------   */
   
@@ -608,7 +608,7 @@ function field_attach_update_custom_short($entity_type, $entity) {
   		/** ASHISH NODE CREATION TIMING*/
 		$time1 = round(microtime(true)* 1000);
 		var_dump($field);
-		echo 'END OF LOOP FOR '.$field.' : '.$time1;
+		echo 'END OF LOOP FOR FIELD '.$field.' : '.$time1;
 		echo nl2br("\n");
 		/** -----------------------------------------   */
   
@@ -622,7 +622,7 @@ function field_attach_update_custom_short($entity_type, $entity) {
 		/** ASHISH NODE CREATION TIMING*/
 		$time1 = round(microtime(true)* 1000);
 		var_dump($storage_info);
-		echo 'END OF LOOP FOR '.$storage_info.' : '.$time1;
+		echo 'END OF LOOP FOR STORAGE '.$storage_info.' : '.$time1;
 		echo nl2br("\n");
 		/** -----------------------------------------   */
   }
