@@ -621,7 +621,7 @@ function field_attach_update_custom_short($entity_type, $entity) {
     $storage_info = field_info_storage_types($storage);
 	// var_dump($entity);
 	var_dump($entity->original);
-	 $remove = array_flip($entity->original']); 
+	 $remove = array_flip($entity->original); 
 	var_dump($remove);
 		echo nl2br("\n");
 		echo nl2br("\n");
