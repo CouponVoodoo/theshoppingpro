@@ -628,7 +628,7 @@ function field_attach_update_custom_short($entity_type, $entity) {
 		 
 	 var_dump($entity);	
 
-    module_invoke($storage_info['module'], 'field_storage_write', $entity_type, $entity, FIELD_STORAGE_UPDATE, $fields);
+   //  module_invoke($storage_info['module'], 'field_storage_write', $entity_type, $entity, FIELD_STORAGE_UPDATE, $fields);
   		/** ASHISH NODE CREATION TIMING*/
 		$time1 = round(microtime(true)* 1000);
 		echo 'END OF LOOP FOR STORAGE '.$storage_info.' : '.$time1;
