@@ -308,7 +308,7 @@ function custom_api_addproduct($ProInfo){
 	    $response = json_encode( array('ResponseCode' => '2', 'Response' => 'Node Updated.', 'URL' => $url, 'BASEURL' => $jsonArray->header->BaseUrl) );
 
 		/** NEED TO UNCOMMENT THE LINE BELOW */
-		//	    echo $response;
+			    echo $response;
 	  }else{
 	    $response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
 	    echo $response;
@@ -467,7 +467,7 @@ function node_save_custom_short($node) {
         _node_save_revision($node, $user->uid, 'vid');
         $update_node = FALSE;
       }
-      $op = 'update';
+      $op = 'update_custom_short';
     }
 
 
@@ -539,7 +539,15 @@ function node_save_custom_short($node) {
     // Ignore slave server temporarily to give time for the
     // saved node to be propagated to the slave.
     db_ignore_slave();
-  }
+
+	   	/** ASHISH NODE CREATION TIMING*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'END OF NODE_SAVE: '.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
+
+
+	}
   catch (Exception $e) {
     $transaction->rollback();
     watchdog_exception('node', $e);
@@ -548,6 +556,88 @@ function node_save_custom_short($node) {
 }
 /** END OF BY ASHISH TO EDIT NODESAVE FUNCTION TO SAVE TIME*/
 
+
+/** START OF BY ASHISH TO EDIT FIELD ATTACH UPDATE FUNCTION TO SAVE TIME*/
+
+function field_attach_update_custom_short($entity_type, $entity) {
+
+    module_invoke_all('entity_' . $op, $node, 'node');
+	   	/** ASHISH NODE CREATION TIMING*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'START OF FIELD_ATTACH: '.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
+
+
+  _field_invoke('update', $entity_type, $entity);
+
+  list($id, $vid, $bundle) = entity_extract_ids($entity_type, $entity);
+
+  // Let any module update field data before the storage engine, accumulating
+  // saved fields along the way.
+  $skip_fields = array();
+  foreach (module_implements('field_storage_pre_update') as $module) {
+    $function = $module . '_field_storage_pre_update';
+    $function($entity_type, $entity, $skip_fields);
+
+		/** ASHISH NODE CREATION TIMING*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'END OF LOOP FOR '.$module.' :'.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
+  
+  }
+
+  // Collect the storage backends used by the remaining fields in the entities.
+  $storages = array();
+  foreach (field_info_instances($entity_type, $bundle) as $instance) {
+    $field = field_info_field_by_id($instance['field_id']);
+    $field_id = $field['id'];
+    $field_name = $field['field_name'];
+    // Leave the field untouched if $entity comes with no $field_name property,
+    // but empty the field if it comes as a NULL value or an empty array.
+    // Function property_exists() is slower, so we catch the more frequent
+    // cases where it's an empty array with the faster isset().
+    if (isset($entity->$field_name) || property_exists($entity, $field_name)) {
+      // Collect the storage backend if the field has not been written yet.
+      if (!isset($skip_fields[$field_id])) {
+        $storages[$field['storage']['type']][$field_id] = $field_id;
+      }
+    }
+  		/** ASHISH NODE CREATION TIMING*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'END OF LOOP FOR '.$field.' :'.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
+  
+  }
+
+  // Field storage backends save any remaining unsaved fields.
+  foreach ($storages as $storage => $fields) {
+    $storage_info = field_info_storage_types($storage);
+    module_invoke($storage_info['module'], 'field_storage_write', $entity_type, $entity, FIELD_STORAGE_UPDATE, $fields);
+	
+		/** ASHISH NODE CREATION TIMING*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'END OF LOOP FOR '.$storage_info.' :'.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
+  }
+
+  // Let other modules act on updating the entity.
+  module_invoke_all('field_attach_update', $entity_type, $entity);
+
+  $entity_info = entity_get_info($entity_type);
+  if ($entity_info['field cache']) {
+    cache_clear_all("field:$entity_type:$id", 'cache_field');
+  }
+		/** ASHISH NODE CREATION TIMING*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'END OF field_attach'.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
+  }
+/** START OF BY ASHISH TO EDIT FIELD ATTACH UPDATE FUNCTION TO SAVE TIME*/
 
 
 ?>
