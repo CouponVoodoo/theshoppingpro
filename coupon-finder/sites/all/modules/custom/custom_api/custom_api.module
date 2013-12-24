@@ -40,8 +40,7 @@ function custom_api_addproduct($ProInfo){
 	/** ASHISH NODE CREATION TIMING  - DATA REVEIVED*/
 		$time1 = round(microtime(true)* 1000);
 	echo 'Data Received: '.$time1;
-	echo '<\br>';
-	echo '\n';
+	echo nl2br("________________________________.\n__________________________________.");
 	/** -----------------------------------------   */
 	
 	
@@ -79,8 +78,7 @@ function custom_api_addproduct($ProInfo){
 	  	/** ASHISH NODE CREATION TIMING  - NODE FETCHED*/
 		$time1 = round(microtime(true)* 1000);
 		echo 'Node Fetched: '.$time1;
-		echo '<\br>';
-		echo '\n';
+	echo nl2br("________________________________.\n__________________________________.");
 		/** -----------------------------------------   */
 
 	  
@@ -95,8 +93,7 @@ function custom_api_addproduct($ProInfo){
 	  /** ASHISH NODE CREATION TIMING  - BRAND CHECKED*/
 		$time1 = round(microtime(true)* 1000);
 		echo 'Brand CHecked: '.$time1;
-		echo '<\br>';
-		echo '\n';
+	echo nl2br("________________________________.\n__________________________________.");
 		/** -----------------------------------------   */
 	  
       //$brand_name = 'nike';
@@ -111,8 +108,7 @@ function custom_api_addproduct($ProInfo){
 	  	/** ASHISH NODE CREATION TIMING  - Brand Created*/
 		$time1 = round(microtime(true)* 1000);
 		echo 'Brand Created: '.$time1;
-		echo '<\br>';
-		echo '\n';
+	echo nl2br("________________________________.\n__________________________________.");
 		/** -----------------------------------------   */
       
 
@@ -194,8 +190,7 @@ function custom_api_addproduct($ProInfo){
 		/** ASHISH NODE CREATION TIMING  - UPDATE LOOP ENTERED*/
 		$time1 = round(microtime(true)* 1000);
 		echo 'Update Loop Entered: '.$time1;
-		echo '<\br>';
-		echo '\n';
+	echo nl2br("________________________________.\n__________________________________.");
 		/** -----------------------------------------   */
 
 	
@@ -224,8 +219,7 @@ function custom_api_addproduct($ProInfo){
   	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
 		$time1 = round(microtime(true)* 1000);
 		echo 'Last Update Time Loop: '.$time1;
-		echo '<\br>';
-		echo '\n';
+	echo nl2br("________________________________.\n__________________________________.");
 		/** -----------------------------------------   */
 
 	  
@@ -290,8 +284,7 @@ function custom_api_addproduct($ProInfo){
  	  	/** ASHISH NODE CREATION TIMING  - Node Data*/
 		$time1 = round(microtime(true)* 1000);
 		echo 'Node Data Received: '.$time1;
-		echo '<\br>';
-		echo '\n';
+	echo nl2br("________________________________.\n__________________________________.");
 		/** -----------------------------------------   */
 
 	  
@@ -300,8 +293,7 @@ function custom_api_addproduct($ProInfo){
 	   	  	/** ASHISH NODE CREATION TIMING  - Node Saved*/
 		$time1 = round(microtime(true)* 1000);
 		echo 'Node Saved: '.$time1;
-		echo '<\br>';
-		echo '\n';
+	echo nl2br("________________________________.\n__________________________________.");
 		/** -----------------------------------------   */
 
 	  
@@ -322,8 +314,7 @@ function custom_api_addproduct($ProInfo){
  	  	/** ASHISH NODE CREATION TIMING  - End Process*/
 		$time1 = round(microtime(true)* 1000);
 		echo 'End Process: '.$time1;
-		echo '<\br>';
-		echo '\n';
+	echo nl2br("________________________________.\n__________________________________.");
 		/** -----------------------------------------   */
 
 	  
