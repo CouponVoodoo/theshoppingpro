@@ -632,7 +632,8 @@ function field_attach_update_custom_short($entity_type, $entity) {
 		echo nl2br("\n");
 echo '-----------------';	
 	// 'a' and 'b' are the keys to remove
-	 $entity = array_diff_key($entity, $entity->original);
+	 unset($entity->original);
+	 //$entity = array_diff_key($entity, $entity->original);
 	var_dump($entity);
 exit;	
 	echo nl2br("\n");
