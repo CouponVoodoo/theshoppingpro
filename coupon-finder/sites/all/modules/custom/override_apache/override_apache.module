@@ -84,8 +84,8 @@ function override_apache_add_custom_url(){
   
   db_query("delete from xmlsitemap where type = 'custom'");
   
-  override_apache_add_retailer_band();
-  override_apache_add_retailer_category();
+  //override_apache_add_retailer_band();
+  //override_apache_add_retailer_category();
   override_apache_add_band_category();
   
   return 'ok';
@@ -182,7 +182,10 @@ function override_apache_add_category(){
         );
         xmlsitemap_link_save($link);
       }
-  }  
+  }
+  
+  
+   
 }
 
 function override_apache_add_retailer_band(){
@@ -269,6 +272,7 @@ function override_apache_add_band_category(){
               
               //passing category id and brand id
               //echo $RGetCCategory->tid .'---'. $TermId.'==';
+              $Ptid = $RGetCCategory->tid;
               $totalChild = override_apache_get_Ptotal( $RGetCCategory->tid, $TermId );
               
               if( $totalChild > 0 ){
@@ -279,6 +283,34 @@ function override_apache_add_band_category(){
                 override_apache_add_url( $CombPath2 );
                 $CombPath3 = $CombPath2 . $CateChildName.'-'.$CateChildId;
                 override_apache_add_url( $CombPath3 );
+                
+                /******************sub sub category links********************************/
+                $QGetSubCCategory = db_query("SELECT d.name, d.tid
+                                  FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid
+                                  WHERE d.vid = 3 and  h.parent = '$CateChildId' ");
+                while( $RGetSubCCategory = $QGetSubCCategory->fetchObject() ){
+                  
+                  //passing category id and brand id
+                  //echo $RGetCCategory->tid .'---'. $TermId.'==';
+                  $SubCateID = $RGetSubCCategory->tid;                  
+                  $totalSubChild = override_apache_get_sub_sub_cate_total( $SubCateID, $TermId );
+                  //mail( 'sanjay.kumar1@mail.vinove.com','totalSubChild','totalSubChild===>'.print_r($totalSubChild,1).'-'.$SubCateID.'--'.$Ptid );
+                  //die;
+                  if( $totalSubChild > 0 ){
+                    
+                    $CateSubChildName = '/c/'.override_apache_modify_title(strtolower($RGetSubCCategory->name));
+                    $CateSubChildId = $RGetSubCCategory->tid;
+                    
+                    //override_apache_add_url( $CombPath2 );
+                    $CombPath4 = $CombPath2 . $CateChildName.'-'.$CateChildId . $CateSubChildName.'-'.$CateSubChildId;
+                    
+                    //mail( 'sanjay.kumar1@mail.vinove.com','CombPath4','CombPath4===>'.print_r($CombPath4,1) );
+                    
+                    override_apache_add_url( $CombPath4 );
+                  }  
+                }
+                /***************************************************/
+                
               }  
             }  
             /*************************************/            
@@ -411,13 +443,15 @@ function override_apache_get_total( $retailer = '', $brand = '' ){
 }
 
 function override_apache_get_Ptotal( $Ptid, $brandId ){
-
+  
   $taxonomyID = array();
   
   $QGetCategoryP = db_query("SELECT d.name, d.tid FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid WHERE d.vid = 3 and d.tid = '$Ptid' ");
   while( $RGetCategoryP = $QGetCategoryP->fetchObject() ){
     $TermId = $RGetCategoryP->tid;
     $taxonomyID[] = "'".$TermId."'";
+    
+    
     
     $QGetCategoryChild = db_query("SELECT d.name, d.tid
     FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid
@@ -448,6 +482,37 @@ function override_apache_get_Ptotal( $Ptid, $brandId ){
   WHERE (( (field_data_field_category.field_category_tid IN ($termID) ) AND field_data_field_brand.field_brand_tid = '$brandId' )AND(( (node.status = '1') AND (node.type IN  ('_product_and_coupon')) )))");
   
   $RTotal  = $QTotal->fetchObject();
+  if( $RTotal->total > 0 )
+   // mail('sanjay.kumar1@mail.vinove.com', 'termID', 'termID222-->'.print_r($RTotal,1));
+  
+  return $RTotal->total;
+}
+
+function override_apache_get_sub_sub_cate_total( $Ptid, $brandId ){
+  
+  $taxonomyID = array();
+  
+  $QGetCategoryP = db_query("SELECT d.name, d.tid FROM taxonomy_term_data d INNER JOIN  taxonomy_term_hierarchy h ON d.tid = h.tid WHERE d.vid = 3 and d.tid = '$Ptid' ");
+  while( $RGetCategoryP = $QGetCategoryP->fetchObject() ){
+
+    $TermId = $RGetCategoryP->tid;
+    $taxonomyID[] = "'".$TermId."'";
+    
+  }
+  
+  $termID = implode(',' , $taxonomyID);
+  
+  
+  $QTotal = db_query("SELECT count(node.nid) as total
+  FROM 
+  node node
+  LEFT JOIN field_data_field_brand field_data_field_brand ON node.nid = field_data_field_brand.entity_id AND (field_data_field_brand.entity_type = 'node' AND field_data_field_brand.deleted = '0')
+  LEFT JOIN field_data_field_category field_data_field_category ON node.nid = field_data_field_category.entity_id AND (field_data_field_category.entity_type = 'node' AND field_data_field_category.deleted = '0')
+  WHERE (( (field_data_field_category.field_category_tid IN ($termID) ) AND field_data_field_brand.field_brand_tid = '$brandId' )AND(( (node.status = '1') AND (node.type IN  ('_product_and_coupon')) )))");
+  
+  $RTotal  = $QTotal->fetchObject();
+  if( $RTotal->total > 0 )
+    //mail('sanjay.kumar1@mail.vinove.com', 'termID', 'termID222-->'.print_r($RTotal,1));
   
   return $RTotal->total;
 }
