@@ -355,7 +355,7 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $query->addParam('fq', $solr_hide_time_coupon);
    $query->addParam('bq', $solr_time_coupon_boost);
    $seed = rand(1, 1000);
-   $query->addParam('sort', 'random_127789 asc');
+   $query->addParam('sort', 'random_'.$seed.' asc');
 }
 /** END OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND UPDATE */
 
