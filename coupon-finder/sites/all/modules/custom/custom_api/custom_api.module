@@ -112,7 +112,7 @@ function custom_api_addproduct($ProInfo){
 	echo nl2br("\n");
 		/** -----------------------------------------   */
       
-
+mail('lavesh@theshoppingpro.com', 'check', $record->expression);
       if($record->expression == 0){
 	//echo 'add';
 	//die;
@@ -337,8 +337,8 @@ function custom_api_addproduct($ProInfo){
 
 	 
     if($_REQUEST['recheck'] == 1){
-      //mail('sanjay.kumar1@mail.vinove.com', 'node_url', 'node_url'.print_r($node_url,1));
-      drupal_goto($node_url);
+      mail('lavesh@theshoppingpro.com', 'node_url', 'node_url'.print_r($node_url,1));
+     // drupal_goto($node_url);
     }}  
 } 
 
