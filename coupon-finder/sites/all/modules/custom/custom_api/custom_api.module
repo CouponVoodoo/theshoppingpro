@@ -354,8 +354,16 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
 //   echo $solr_hide_time_coupon;
    $query->addParam('fq', $solr_hide_time_coupon);
    $query->addParam('bq', $solr_time_coupon_boost);
-   $seed = rand(1, 1000);
-   $query->addParam('sort', 'random_'.$seed.' asc');
+	$termid = arg(2);
+	$term = taxonomy_term_load($termid);
+	$vid = $term->vid;
+
+/** START OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
+	if ($vid != 2){
+		$seed = rand(1, 1000);
+		$query->addParam('sort', 'random_'.$seed.' asc');
+	} 
+/** END OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
 }
 /** END OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND UPDATE */
 
