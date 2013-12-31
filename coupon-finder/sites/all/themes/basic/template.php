@@ -379,7 +379,7 @@ function basic_menu_local_tasks(&$variables) {
  */
 
 function basic_apachesolr_search_noresults(&$variables) {
-  return t('Whoops! No result found. Kindly: </br> </br><ul>
+  return t('</br> </br> </br> Whoops! No result found. Kindly: </br> </br><ul>
 <li>Check spellings or remove filters</li>
 <li>Remove special characters</li>
 <li>Visit the <a href="/search/site">All Products Page</a></li>
