@@ -47,21 +47,14 @@ function custom_api_addproduct($ProInfo){
 	
 	
 	$json = $json->data;
-    echo nl2br("\n");
-		var_dump($json);
-	echo nl2br("\n");
+   
     
     $jsonArr = json_decode($json,true);
-    echo '---------------------';
-	echo nl2br("\n");
-		var_dump($jsonArr);
-	echo nl2br("\n");
+   
 	
     foreach($jsonArr as $json){
     
-	echo nl2br("\n");
-		var_dump($json);
-	echo nl2br("\n");
+	
 	
 	$json = json_encode($json); 
     $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
@@ -120,7 +113,7 @@ function custom_api_addproduct($ProInfo){
 	echo nl2br("\n");
 		/** -----------------------------------------   */
       
-mail('lavesh@theshoppingpro.com', 'check', $record->expression);
+
       if($record->expression == 0){
 	//echo 'add';
 	//die;
@@ -345,8 +338,8 @@ mail('lavesh@theshoppingpro.com', 'check', $record->expression);
 
 	 
     if($_REQUEST['recheck'] == 1){
-      mail('lavesh@theshoppingpro.com', 'node_url', 'node_url'.print_r($node_url,1));
-     // drupal_goto($node_url);
+    //  mail('lavesh@theshoppingpro.com', 'node_url', 'node_url'.print_r($node_url,1));
+      drupal_goto($node_url);
     }}  
 } 
 
