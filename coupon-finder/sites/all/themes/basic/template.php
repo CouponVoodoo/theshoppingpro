@@ -373,3 +373,15 @@ function basic_menu_local_tasks(&$variables) {
     }
     return $output;
 }
+
+/**
+ * BY ASHISH to Change no result text.
+ */
+
+function basic_apachesolr_search_noresults(&$variables) {
+  return t('Whoops! No result found. Kindly: <ul>
+<li>Check spellings or remove filters</li>
+<li>Remove special characters</li>
+<li>Visit the <a href="/search/site">All Products Page</a></li>
+</ul>');
+}
