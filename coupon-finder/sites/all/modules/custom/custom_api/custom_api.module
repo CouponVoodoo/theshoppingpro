@@ -34,7 +34,7 @@ function custom_api_addproduct($ProInfo){
       
     }
 
-    $json = drupal_http_request($url, array('timeout' => 100.0));
+    $json = drupal_http_request($url, array('timeout' => 600.0));
 	var_dump($json);
 	die;
     if ( $json == 'done') {echo "done"; exit;}
