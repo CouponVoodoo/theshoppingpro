@@ -49,10 +49,17 @@ function custom_api_addproduct($ProInfo){
 	$json = $json->data;
     
     $jsonArr = json_decode($json,true);
-    
+    echo nl2br("\n");
+		echo 'Data Received: '.$sizeof($jsonArr);
+	echo nl2br("\n");
 	
     foreach($jsonArr as $json){
-    $json = json_encode($json); 
+    
+	echo nl2br("\n");
+		var_dump($json);
+	echo nl2br("\n");
+	
+	$json = json_encode($json); 
     $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
     $jsonArray = json_decode($jsonData);
  //   echo $jsonArray->header->BaseUrl. "</br>";
