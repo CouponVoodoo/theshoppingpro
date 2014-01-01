@@ -240,10 +240,7 @@ function custom_api_addproduct($ProInfo){
 	  //$node->field_category['und'][0]['tid']			= 1;
 	  if($_REQUEST['recheck'] != 1){
 		$node->field_category['und'][0]['tid']			= trim( $jsonArray->header->Category );
-		} else {
-		echo 'recheck loop';
-		}
-	  
+		} 	  
 	  $node->title    				  	= $proTitle;
 	  $node->field_description['und']['0'][value]	 	= trim( $jsonArray->header->ProductDescription );
 	  $node->field_product_price['und']['0'][value]	  	= ( $jsonArray->header->ListingProductPrice )?$jsonArray->header->ListingProductPrice:0;
@@ -346,6 +343,9 @@ function custom_api_addproduct($ProInfo){
 		//  $options = array('absolute' => TRUE);
 		//	$url = url('node/' . $nid, $options);
 	  $recheck_URL =  $base_root.base_path().drupal_get_path_alias('node/'.$nid);
+	  echo $nid;
+	  echo $recheck_URL;
+	  die;
 	  drupal_goto($recheck_URL);
     }}  
 } 
