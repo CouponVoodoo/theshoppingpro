@@ -33,9 +33,10 @@ function custom_api_addproduct($ProInfo){
       $url = "http://54.243.150.171/nodeCreation.php";
       
     }
-
+echo $url;
     $json = drupal_http_request($url, array('timeout' => 600.0));
-    var_dump($json);
+   // var_dump($json);
+   
     if ( $json == 'done') {echo "done"; exit;}
     
 	/** ASHISH NODE CREATION TIMING  - DATA REVEIVED*/
