@@ -35,8 +35,8 @@ function custom_api_addproduct($ProInfo){
     }
 echo $url;
     $json = drupal_http_request($url, array('timeout' => 600.0));
-   // var_dump($json);
-   
+    var_dump($json);
+   die;
     if ( $json == 'done') {echo "done"; exit;}
     
 	/** ASHISH NODE CREATION TIMING  - DATA REVEIVED*/
