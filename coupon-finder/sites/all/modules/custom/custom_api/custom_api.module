@@ -240,9 +240,9 @@ echo $url;
 	  
 	  $node = node_load($record->entity_id);
 	  //$node->field_category['und'][0]['tid']			= 1;
-	  if($_REQUEST['recheck'] != 1){
+	 // if($_REQUEST['recheck'] != 1){
 		$node->field_category['und'][0]['tid']			= trim( $jsonArray->header->Category );
-		} 
+	//	} 
 	  
 	  $node->title    				  	= $proTitle;
 	  $node->field_description['und']['0'][value]	 	= trim( $jsonArray->header->ProductDescription );
