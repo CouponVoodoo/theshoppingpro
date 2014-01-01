@@ -339,9 +339,16 @@ function custom_api_addproduct($ProInfo){
 
 	 
     if($_REQUEST['recheck'] == 1){
-		//  mail('lavesh@theshoppingpro.com', 'node_url', 'node_url'.print_r($node_url,1));
-		//  $options = array('absolute' => TRUE);
-		//	$url = url('node/' . $nid, $options);
+		echo nl2br("\n");
+		echo nl2br("\n");
+			//mail('lavesh@theshoppingpro.com', 'node_url', 'node_url'.print_r($node_url,1));
+			$options = array('absolute' => TRUE);
+			$url = url('node/' . $nid, $options);
+			echo $url;
+			echo $nid;
+	  echo nl2br("\n");
+	  echo nl2br("\n");
+	  
 	  $recheck_URL =  $base_root.base_path().drupal_get_path_alias('node/'.$nid);
 	  echo $nid;
 	  echo $recheck_URL;
