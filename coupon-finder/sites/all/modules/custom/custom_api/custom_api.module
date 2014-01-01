@@ -187,7 +187,7 @@ function custom_api_addproduct($ProInfo){
 	}
 	
       }elseif($record->expression == 1){
-	echo 'update';
+	// echo 'update';
 	
 		/** ASHISH NODE CREATION TIMING  - UPDATE LOOP ENTERED*/
 		$time1 = round(microtime(true)* 1000);
@@ -238,7 +238,11 @@ function custom_api_addproduct($ProInfo){
 	  
 	  $node = node_load($record->entity_id);
 	  //$node->field_category['und'][0]['tid']			= 1;
-	  $node->field_category['und'][0]['tid']			= trim( $jsonArray->header->Category );;
+	  if($_REQUEST['recheck'] != 1){
+		$node->field_category['und'][0]['tid']			= trim( $jsonArray->header->Category );
+		} else {
+		echo 'recheck loop';
+		}
 	  
 	  $node->title    				  	= $proTitle;
 	  $node->field_description['und']['0'][value]	 	= trim( $jsonArray->header->ProductDescription );
@@ -338,8 +342,11 @@ function custom_api_addproduct($ProInfo){
 
 	 
     if($_REQUEST['recheck'] == 1){
-    //  mail('lavesh@theshoppingpro.com', 'node_url', 'node_url'.print_r($node_url,1));
-      drupal_goto($node_url);
+		//  mail('lavesh@theshoppingpro.com', 'node_url', 'node_url'.print_r($node_url,1));
+		//  $options = array('absolute' => TRUE);
+		//	$url = url('node/' . $nid, $options);
+	  $recheck_URL =  $base_root.base_path().drupal_get_path_alias('node/'.$nid);
+	  drupal_goto($recheck_URL);
     }}  
 } 
 
