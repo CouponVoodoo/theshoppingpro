@@ -137,7 +137,7 @@ $netPrice = explode('.', strip_tags($fields['field_best_coupon_netpriceafters']-
 
 <?php 
 /* commented by ashish to hide description of product */
-// print ($fields['field_description']->content); 
+ print ($fields['description']->content); 
 
 ?>
 
