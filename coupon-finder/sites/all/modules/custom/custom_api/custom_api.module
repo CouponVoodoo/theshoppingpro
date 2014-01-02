@@ -240,7 +240,14 @@ echo $url;
 */	  
 	  
 	  $node = node_load($record->entity_id);
-	  //$node->field_category['und'][0]['tid']			= 1;
+
+  	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'Node Loaded: '.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
+
+
 	  if($_REQUEST['recheck'] != 1){
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_category['und'][0]['tid']			= trim( $jsonArray->header->Category );
@@ -253,30 +260,7 @@ echo $url;
 		
 		$changed = time();
 		
-		
-	   	  	/** ASHISH NODE CREATION TIMING  - Node Saved*/
-				$time1 = round(microtime(true)* 1000);
-				echo 'time: '.$changed;
-				echo nl2br("\n");
-		
-			/** -----------------------------------------   */
-		
-	   	  	/** ASHISH NODE CREATION TIMING  - Node Saved*/
-				$time1 = round(microtime(true)* 1000);
-				echo 'nid: '.$node->nid;
-				echo nl2br("\n");
-		
-			/** -----------------------------------------   */
-	   	  	/** ASHISH NODE CREATION TIMING  - Node Saved*/
-				$time1 = round(microtime(true)* 1000);
-				echo 'vid: '.$node->vid;
-				echo nl2br("\n");
-		
-			/** -----------------------------------------   */
-		
-		
-		
-		
+
 		db_query("UPDATE {node} SET title = :title, changed = :changed WHERE nid = :nid", array(':title' => $proTitle, ':changed' => $changed, ':nid' => $node->nid));
 		db_query("UPDATE {node_revision} SET title = :title, timestamp = :changed WHERE vid = :vid", array(':title' => $proTitle, ':changed' => $changed, ':vid' => $node->vid));
 	  
