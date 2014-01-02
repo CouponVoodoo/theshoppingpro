@@ -284,8 +284,8 @@ echo $url;
 	
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_status['und']['0'][value]	= trim( $jsonArray->header->CouponResult );
-		db_query("UPDATE {field_data_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status_value' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
-		db_query("UPDATE {field_revision_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status_value' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
+		db_query("UPDATE {field_data_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
+		db_query("UPDATE {field_revision_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_product_popularity['und']['0'][value]	= $jsonArray->header->Popularity;
 	    // BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_couponcode['und']['0'][value] 	= trim( $jsonArray->header->bestCouponResult->CouponCode );
