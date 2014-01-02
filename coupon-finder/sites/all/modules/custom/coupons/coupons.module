@@ -819,6 +819,9 @@ function coupons_block_info() {
   $blocks['coupons_block_form'] = array(
       'info' => t('Coupon finder block.'),
   );
+  $blocks['coupons_taxonomy_description'] = array(
+      'info' => t('Coupon taxonomy description block.'),
+  );
   return $blocks;
 }
 
@@ -833,6 +836,13 @@ function coupons_block_view($delta = '') {
     case 'coupons_block_form':
       $block['content'] = drupal_get_form('coupons_finder_form', false);
       break;
+	case 'coupons_taxonomy_description':
+	//print_r(menu_get_object('term', 2));exit;
+		$termid = arg(2);
+		$term = taxonomy_term_load($termid);
+		$block['content'] = $term->description;
+		//print '<pre>';print_r($term);exit;
+	  break;
   }
   return $block;
 }
