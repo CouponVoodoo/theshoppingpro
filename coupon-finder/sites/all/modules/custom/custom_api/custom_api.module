@@ -306,8 +306,8 @@ echo $url;
 	
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_info['und']['0'][value]		= serialize( $jsonArray->data );
-		db_query("UPDATE {field_data_field_best_coupon_info} SET field_data_field_best_coupon_info_value = :best_coupon_info WHERE revision_id = :vid", array(':best_coupon_info' => serialize( $jsonArray->data ), ':vid' => $node->vid));
-		db_query("UPDATE {field_revision_field_best_coupon_info} SET field_data_field_best_coupon_info_value = :best_coupon_info WHERE revision_id = :vid", array(':best_coupon_info' => serialize( $jsonArray->data ), ':vid' => $node->vid));
+		db_query("UPDATE {field_data_field_best_coupon_info} SET field_best_coupon_info_value = :best_coupon_info WHERE revision_id = :vid", array(':best_coupon_info' => serialize( $jsonArray->data ), ':vid' => $node->vid));
+		db_query("UPDATE {field_revision_field_best_coupon_info} SET field_best_coupon_info_value = :best_coupon_info WHERE revision_id = :vid", array(':best_coupon_info' => serialize( $jsonArray->data ), ':vid' => $node->vid));
 	
 	 
  	  	/** ASHISH NODE CREATION TIMING  - Node Data*/
