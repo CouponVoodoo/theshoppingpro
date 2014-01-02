@@ -252,6 +252,31 @@ echo $url;
 		// BY ASHISH - NOT USING NODESAVE  $node->title    				  	= $proTitle;
 		
 		$changed = time();
+		
+		
+	   	  	/** ASHISH NODE CREATION TIMING  - Node Saved*/
+				$time1 = round(microtime(true)* 1000);
+				echo 'time: '.$changed;
+				echo nl2br("\n");
+		
+			/** -----------------------------------------   */
+		
+	   	  	/** ASHISH NODE CREATION TIMING  - Node Saved*/
+				$time1 = round(microtime(true)* 1000);
+				echo 'nid: '.$node->nid;
+				echo nl2br("\n");
+		
+			/** -----------------------------------------   */
+	   	  	/** ASHISH NODE CREATION TIMING  - Node Saved*/
+				$time1 = round(microtime(true)* 1000);
+				echo 'vid: '.$node->vid;
+				echo nl2br("\n");
+		
+			/** -----------------------------------------   */
+		
+		die;
+		
+		
 		db_query("UPDATE {node} SET title = :title, changed = :changed WHERE nid = :nid", array(':title' => $proTitle, ':changed' => $changed, ':nid' => $node->nid));
 		db_query("UPDATE {node_revision} SET title = :title, timestamp = :changed WHERE vid = :vid", array(':title' => $proTitle, ':changed' => $changed, ':vid' => $node->vid));
 	  
