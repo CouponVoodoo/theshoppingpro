@@ -274,7 +274,7 @@ echo $url;
 		
 			/** -----------------------------------------   */
 		
-		die;
+		
 		
 		
 		db_query("UPDATE {node} SET title = :title, changed = :changed WHERE nid = :nid", array(':title' => $proTitle, ':changed' => $changed, ':nid' => $node->nid));
