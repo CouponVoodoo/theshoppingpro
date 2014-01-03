@@ -145,7 +145,9 @@ $netPrice = explode('.', strip_tags($fields['field_best_coupon_netpriceafters']-
 </div>
 
 </div>
+<h4> Results For All Coupons Of This Product</h4>
 <?php
+
 echo $coupon =  coupons_copy_coupon($nid);
 
 /** Start of By Ashish to track for view store click on product page */		
