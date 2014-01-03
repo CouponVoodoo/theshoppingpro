@@ -656,6 +656,14 @@ function coupons_result($raw_url) {
 	  $node->field_best_coupon_description[und][0][value]	  	= trim( $jsonArray->header->bestCouponResult->CouponDesc );
 	  
 	  $node->field_best_coupon_status[und][0][value]	  	= trim( $jsonArray->header->CouponResult );
+	  
+	  
+		if ($node->field_best_coupon_status['und']['0'][value] == 1) {
+		$node->field_best_coupon_status_display['und']['0'][value] = 'With Coupons';
+		} else {
+		$node->field_best_coupon_status_display['und']['0'][value] = 'Without Coupons';
+		}
+	  
 	  $node->field_product_popularity[und][0][value]	  	= trim( $jsonArray->header->Popularity );
 	  
 	  if($jsonArray->header->CouponResult == 1){
