@@ -369,20 +369,17 @@ echo $url;
 			echo nl2br("\n");
 			echo 'entered loop for best coupon not found : ';
 			echo nl2br("\n");
-			if (db_result(db_query("SELECT COUNT(*) FROM {field_data_field_best_coupon_status_display} WHERE id=:id", array(':id' => $node->nid))->fetchField())) {
-				// Run an update using WHERE id = $id
-				echo 'update';
-			}
-			else {
-			// Run an insert, inserting $id for id
-				echo 'insert';
-			}
+			db_merge('field_data_field_best_coupon_status_display')
+				->key(array('revision_id' => $node->vid))
+				->fields(array(
+				'field_best_coupon_status_display_value' => 'Without Coupons',
+			))
+			->execute();
 			die;
 			db_query("UPDATE {field_data_field_best_coupon_status_display} SET field_best_coupon_status_display_value = :field_best_coupon_status_display WHERE revision_id = :vid", array(':field_best_coupon_status_display' => 'Without Coupons', ':vid' => $node->vid));
 			db_query("UPDATE {field_revision_field_best_coupon_status_display} SET field_best_coupon_status_display_value = :field_best_coupon_status_display WHERE revision_id = :vid", array(':field_best_coupon_status_display' => 'Without Coupons', ':vid' => $node->vid));
 		}	
 
-		die;
 	
 			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
