@@ -39,12 +39,12 @@ echo $url;
   // die;
     if ( $json == 'done') {echo "done"; exit;}
     
-	/** ASHISH NODE CREATION TIMING  - DATA REVEIVED*/
+	/** ASHISH NODE CREATION TIMING  - DATA REVEIVED
 		$time1 = round(microtime(true)* 1000);
 	echo nl2br("\n");
 		echo 'Data Received: '.$time1;
 	echo nl2br("\n");
-	/** -----------------------------------------   */
+	 -----------------------------------------   */
 	
 	
 	
@@ -79,11 +79,11 @@ echo $url;
       $result = $query->execute();
       $record = $result->fetch();
       
-	  	/** ASHISH NODE CREATION TIMING  - NODE FETCHED*/
+	  	/** ASHISH NODE CREATION TIMING  - NODE FETCHED
 		$time1 = round(microtime(true)* 1000);
 		echo 'Node Fetched: '.$time1;
 	echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 
 	  
 	  
@@ -94,11 +94,11 @@ echo $url;
 	  $Ruery = $Query->fetch();
 	  $BrandId = $Ruery->tid;
 
-	  /** ASHISH NODE CREATION TIMING  - BRAND CHECKED*/
+	  /** ASHISH NODE CREATION TIMING  - BRAND CHECKED
 		$time1 = round(microtime(true)* 1000);
 		echo 'Brand CHecked: '.$time1;
 	echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 	  
       //$brand_name = 'nike';
       // $vocabulary_name = 'brand';
@@ -109,11 +109,11 @@ echo $url;
 	$BrandId = coupons_create_taxonomy_term($brand_name, 4);
       }
 
-	  	/** ASHISH NODE CREATION TIMING  - Brand Created*/
+	  	/** ASHISH NODE CREATION TIMING  - Brand Created
 		$time1 = round(microtime(true)* 1000);
 		echo 'Brand Created: '.$time1;
 	echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
       
 
       if($record->expression == 0){
@@ -192,11 +192,11 @@ echo $url;
       }elseif($record->expression == 1){
 	// echo 'update';
 	
-		/** ASHISH NODE CREATION TIMING  - UPDATE LOOP ENTERED*/
+		/** ASHISH NODE CREATION TIMING  - UPDATE LOOP ENTERED
 		$time1 = round(microtime(true)* 1000);
 		echo 'Update Loop Entered: '.$time1;
 	echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 
 	
 	$expDate = explode('=' , $jsonArray->header->LastCheckedTime);
@@ -221,11 +221,11 @@ echo $url;
 	
 	if( $expDate[0] != $lastUpdatedDate){
 	  echo 'date loop';
-  	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+  	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'Last Update Time Loop: '.$time1;
 	echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 
 	  
 	  
@@ -241,11 +241,11 @@ echo $url;
 	  
 	  $node = node_load($record->entity_id);
 
-  	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+  	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'Node Loaded: '.$time1;
 		echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 
 
 	  if($_REQUEST['recheck'] != 1){
@@ -263,18 +263,18 @@ echo $url;
 
 		db_query("UPDATE {node} SET title = :title, changed = :changed WHERE nid = :nid", array(':title' => $proTitle, ':changed' => $changed, ':nid' => $node->nid));
 
-  	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+  	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'Node Table Update: '.$time1;
 		echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 
 		db_query("UPDATE {node_revision} SET title = :title, timestamp = :changed WHERE vid = :vid", array(':title' => $proTitle, ':changed' => $changed, ':vid' => $node->vid));
-  	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+  	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'Revision Table Updated: '.$time1;
 		echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 	  
 	  
 		// BY ASHISH - NOT USING NODESAVE $node->field_description['und']['0'][value]	 	= trim( $jsonArray->header->ProductDescription );
@@ -282,11 +282,11 @@ echo $url;
 		db_query("UPDATE {field_data_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $node->field_product_price['und']['0'][value], ':vid' => $node->vid));
 		db_query("UPDATE {field_revision_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $node->field_product_price['und']['0'][value], ':vid' => $node->vid));
 		
-			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'PRICE: '.$time1;
 		echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_retailer['und']['0']['tid'] 		  	= $jsonArray->header->Retailer;
@@ -300,22 +300,22 @@ echo $url;
 		db_query("UPDATE {field_data_field_mrpproductprice} SET field_mrpproductprice_value = :mrpproductprice WHERE revision_id = :vid", array(':mrpproductprice' => $node->field_mrpproductprice['und']['0'][value], ':vid' => $node->vid));
 		db_query("UPDATE {field_revision_field_mrpproductprice} SET field_mrpproductprice_value = :mrpproductprice WHERE revision_id = :vid", array(':mrpproductprice' => $node->field_mrpproductprice['und']['0'][value], ':vid' => $node->vid));
 		
-			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'MRP: '.$time1;
 		echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_lastcheckedtime['und']['0'][value]	  	= $expDate[0];
 		db_query("UPDATE {field_data_field_lastcheckedtime} SET field_lastcheckedtime_value = :lastcheckedtime WHERE revision_id = :vid", array(':lastcheckedtime' => $expDate[0], ':vid' => $node->vid));
 		db_query("UPDATE {field_revision_field_lastcheckedtime} SET field_lastcheckedtime_value = :lastcheckedtime WHERE revision_id = :vid", array(':lastcheckedtime' => $expDate[0], ':vid' => $node->vid));
 		
-			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'LAST CHECKED TIME: '.$time1;
 		echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_affiliateurl['und']['0'][value]	  	= trim( $jsonArray->header->AffiliateURL );
@@ -325,22 +325,22 @@ echo $url;
 		db_query("UPDATE {field_revision_field_best_coupon_description} SET field_best_coupon_description_value = :best_coupon_description WHERE revision_id = :vid", array(':best_coupon_description' => trim( $jsonArray->header->bestCouponResult->CouponDesc ), ':vid' => $node->vid));
 	
 	
-		  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+		  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'COUPON DESCRIPTION: '.$time1;
 		echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_status['und']['0'][value]	= trim( $jsonArray->header->CouponResult );
 		db_query("UPDATE {field_data_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
 		db_query("UPDATE {field_revision_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
 		
-			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'COUPON STATUS: '.$time1;
 		echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_product_popularity['und']['0'][value]	= $jsonArray->header->Popularity;
@@ -348,11 +348,11 @@ echo $url;
 	    db_query("UPDATE {field_data_field_best_coupon_couponcode} SET field_best_coupon_couponcode_value = :field_best_coupon_couponcode WHERE revision_id = :vid", array(':field_best_coupon_couponcode' => trim( $jsonArray->header->bestCouponResult->CouponCode ), ':vid' => $node->vid));
 		db_query("UPDATE {field_revision_field_best_coupon_couponcode} SET field_best_coupon_couponcode_value = :field_best_coupon_couponcode WHERE revision_id = :vid", array(':field_best_coupon_couponcode' => trim( $jsonArray->header->bestCouponResult->CouponCode ), ':vid' => $node->vid));
 	
-		  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+		  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'COUPON CODE: '.$time1;
 		echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 
 	
 	
@@ -360,51 +360,51 @@ echo $url;
 	    db_query("UPDATE {field_data_field_best_coupon_saving} SET field_best_coupon_saving_value = :field_best_coupon_saving WHERE revision_id = :vid", array(':field_best_coupon_saving' => $node->field_best_coupon_saving['und']['0'][value], ':vid' => $node->vid));
 		db_query("UPDATE {field_revision_field_best_coupon_saving} SET field_best_coupon_saving_value = :field_best_coupon_saving WHERE revision_id = :vid", array(':field_best_coupon_saving' => $node->field_best_coupon_saving['und']['0'][value], ':vid' => $node->vid));
 
-		/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+		/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'COUPON SAVING: '.$time1;
 		echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 
 		$node->field_best_coupon_netpriceafters['und']['0'][value]= ( $jsonArray->header->bestCouponResult->NetPriceAfterSaving)?$jsonArray->header->bestCouponResult->NetPriceAfterSaving:0;
 	    db_query("UPDATE {field_data_field_best_coupon_netpriceafters} SET field_best_coupon_netpriceafters_value = :field_best_coupon_netpriceafters WHERE revision_id = :vid", array(':field_best_coupon_netpriceafters' => $node->field_best_coupon_netpriceafters['und']['0'][value], ':vid' => $node->vid));
 		db_query("UPDATE {field_revision_field_best_coupon_netpriceafters} SET field_best_coupon_netpriceafters_value = :field_best_coupon_netpriceafters WHERE revision_id = :vid", array(':field_best_coupon_netpriceafters' => $node->field_best_coupon_netpriceafters['und']['0'][value], ':vid' => $node->vid));
 
-	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'NETRICE: '.$time1;
 		echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 	
 		// BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_url['und']['0'][value]		= trim( $jsonArray->header->bestCouponResult->url );
 		db_query("UPDATE {field_data_field_best_coupon_url} SET field_best_coupon_url_value = :best_coupon_url WHERE revision_id = :vid", array(':best_coupon_url' => trim( $jsonArray->header->bestCouponResult->url ), ':vid' => $node->vid));
 		db_query("UPDATE {field_revision_field_best_coupon_url} SET field_best_coupon_url_value = :best_coupon_url WHERE revision_id = :vid", array(':best_coupon_url' => trim( $jsonArray->header->bestCouponResult->url ), ':vid' => $node->vid));
 	
-	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'BEST COUPON URL : '.$time1;
 		echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 	
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_info['und']['0'][value]		= serialize( $jsonArray->data );
 		db_query("UPDATE {field_data_field_best_coupon_info} SET field_best_coupon_info_value = :best_coupon_info WHERE revision_id = :vid", array(':best_coupon_info' => serialize( $jsonArray->data ), ':vid' => $node->vid));
 		db_query("UPDATE {field_revision_field_best_coupon_info} SET field_best_coupon_info_value = :best_coupon_info WHERE revision_id = :vid", array(':best_coupon_info' => serialize( $jsonArray->data ), ':vid' => $node->vid));
 	
-	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'All Coupon Info Update: '.$time1;
 		echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 	
 		apachesolr_mark_entity ('node', $node->nid);
 	 
 	 
- 	  	/** ASHISH NODE CREATION TIMING  - Node Data*/
+ 	  	/** ASHISH NODE CREATION TIMING  - Node Data
 		$time1 = round(microtime(true)* 1000);
 		echo 'Mareked for SOLR: '.$time1;
 		echo nl2br("\n");
-		/** -----------------------------------------   */
+		 -----------------------------------------   */
 
 	  
 		// BY ASHISH - NOT USING NODESAVE node_save($node);
