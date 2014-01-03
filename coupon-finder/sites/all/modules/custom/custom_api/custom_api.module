@@ -341,7 +341,19 @@ echo $url;
 		// BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_status['und']['0'][value]	= trim( $jsonArray->header->CouponResult );
 		db_query("UPDATE {field_data_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
 		db_query("UPDATE {field_revision_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
-		
+		$coupon_display = trim( $jsonArray->header->CouponResult );
+	if ($coupon_display == 1) {
+		db_query("UPDATE {field_data_field_best_coupon_status_display} SET field_best_coupon_status_display_value = :field_best_coupon_status_display WHERE revision_id = :vid", array(':field_best_coupon_status_display' => 'With Coupons', ':vid' => $node->vid));
+		db_query("UPDATE {field_revision_field_best_coupon_status_display} SET field_best_coupon_status_display_value = :field_best_coupon_status_display WHERE revision_id = :vid", array(':field_best_coupon_status_display' => 'With Coupons', ':vid' => $node->vid));
+
+	} else {
+		db_query("UPDATE {field_data_field_best_coupon_status_display} SET field_best_coupon_status_display_value = :field_best_coupon_status_display WHERE revision_id = :vid", array(':field_best_coupon_status_display' => 'Without Coupons', ':vid' => $node->vid));
+		db_query("UPDATE {field_revision_field_best_coupon_status_display} SET field_best_coupon_status_display_value = :field_best_coupon_status_display WHERE revision_id = :vid", array(':field_best_coupon_status_display' => 'Without Coupons', ':vid' => $node->vid));
+	}	
+
+
+
+	
 			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'COUPON STATUS: '.$time1;
