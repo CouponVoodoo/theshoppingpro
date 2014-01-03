@@ -342,8 +342,11 @@ echo $url;
 		db_query("UPDATE {field_data_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
 		db_query("UPDATE {field_revision_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
 		$coupon_display = trim( $jsonArray->header->CouponResult );
-	
+		echo $coupon_display;
 		if ($coupon_display == 1) {
+			
+			echo 'entered coupon = 1 loop';
+			die;
 			db_query("UPDATE {field_data_field_best_coupon_status_display} SET field_best_coupon_status_display_value = :field_best_coupon_status_display WHERE revision_id = :vid", array(':field_best_coupon_status_display' => 'With Coupons', ':vid' => $node->vid));
 			db_query("UPDATE {field_revision_field_best_coupon_status_display} SET field_best_coupon_status_display_value = :field_best_coupon_status_display WHERE revision_id = :vid", array(':field_best_coupon_status_display' => 'With Coupons', ':vid' => $node->vid));
 		} else {
