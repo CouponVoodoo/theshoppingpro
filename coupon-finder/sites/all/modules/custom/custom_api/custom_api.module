@@ -381,6 +381,9 @@ echo $url;
 				'field_best_coupon_status_display_value' => 'Without Coupons',
 				'entity_id'=> $record->entity_id,
 				'delta'=> 0,
+				'entity_type'=> 'node',
+				'bundle'=> '_product_and_coupon',
+				'language'=>'und',
 			))
 			->execute();
 			die;
