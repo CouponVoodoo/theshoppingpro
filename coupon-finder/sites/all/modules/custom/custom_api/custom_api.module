@@ -369,15 +369,17 @@ echo $url;
 			echo nl2br("\n");
 			echo 'entered loop for best coupon not found : ';
 			echo nl2br("\n");
+			
+			echo nl2br("\n");echo nl2br("\n");
+				echo $record->entity_id;
+				echo nl2br("\n");echo nl2br("\n");
+
+			
 			db_merge('field_data_field_best_coupon_status_display')
 				->key(array('revision_id' => $node->vid))
 				->fields(array(
 				'field_best_coupon_status_display_value' => 'Without Coupons',
-				echo nl2br("\n");echo nl2br("\n");
-				echo $record->entity_id;
-				echo nl2br("\n");echo nl2br("\n");
-
-			'entity_id'=> $record->entity_id,
+				'entity_id'=> $record->entity_id,
 			))
 			->execute();
 			die;
