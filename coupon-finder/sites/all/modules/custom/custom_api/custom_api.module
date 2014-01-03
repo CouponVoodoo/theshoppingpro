@@ -285,9 +285,11 @@ echo $url;
 	  
 		// BY ASHISH - NOT USING NODESAVE $node->field_description['und']['0'][value]	 	= trim( $jsonArray->header->ProductDescription );
 		$node->field_product_price['und']['0'][value]	  	= ( $jsonArray->header->ListingProductPrice )?$jsonArray->header->ListingProductPrice:0;
+		echo $node->field_product_price['und']['0'][value];
 		db_query("UPDATE {field_data_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $node->field_product_price['und']['0'][value], ':vid' => $node->vid));
 		db_query("UPDATE {field_revision_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $node->field_product_price['und']['0'][value], ':vid' => $node->vid));
 		
+		die;
 			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'PRICE: '.$time1;
