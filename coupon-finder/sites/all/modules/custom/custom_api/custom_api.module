@@ -325,29 +325,35 @@ echo $url;
 		db_query("UPDATE {field_data_field_best_coupon_url} SET field_best_coupon_url_value = :best_coupon_url WHERE revision_id = :vid", array(':best_coupon_url' => trim( $jsonArray->header->bestCouponResult->url ), ':vid' => $node->vid));
 		db_query("UPDATE {field_revision_field_best_coupon_url} SET field_best_coupon_url_value = :best_coupon_url WHERE revision_id = :vid", array(':best_coupon_url' => trim( $jsonArray->header->bestCouponResult->url ), ':vid' => $node->vid));
 	
+	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'All Other Fields Updated: '.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
+	
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_info['und']['0'][value]		= serialize( $jsonArray->data );
 		db_query("UPDATE {field_data_field_best_coupon_info} SET field_best_coupon_info_value = :best_coupon_info WHERE revision_id = :vid", array(':best_coupon_info' => serialize( $jsonArray->data ), ':vid' => $node->vid));
 		db_query("UPDATE {field_revision_field_best_coupon_info} SET field_best_coupon_info_value = :best_coupon_info WHERE revision_id = :vid", array(':best_coupon_info' => serialize( $jsonArray->data ), ':vid' => $node->vid));
+	
+	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL*/
+		$time1 = round(microtime(true)* 1000);
+		echo 'All Coupon Info Update: '.$time1;
+		echo nl2br("\n");
+		/** -----------------------------------------   */
 	
 		apachesolr_mark_entity ('node', $node->nid);
 	 
 	 
  	  	/** ASHISH NODE CREATION TIMING  - Node Data*/
 		$time1 = round(microtime(true)* 1000);
-		echo 'Node Data Received: '.$time1;
-	echo nl2br("\n");
+		echo 'Mareked for SOLR: '.$time1;
+		echo nl2br("\n");
 		/** -----------------------------------------   */
 
 	  
 		// BY ASHISH - NOT USING NODESAVE node_save($node);
 	  
-	   	  	/** ASHISH NODE CREATION TIMING  - Node Saved*/
-		$time1 = round(microtime(true)* 1000);
-		echo 'Node Saved: '.$time1;
-	echo nl2br("\n");
-		/** -----------------------------------------   */
-
 	  
 	  if( !empty($node->nid) ){
 	    $response = json_encode( array('ResponseCode' => '2', 'Response' => 'Node Updated.', 'URL' => $url, 'BASEURL' => $jsonArray->header->BaseUrl) );
