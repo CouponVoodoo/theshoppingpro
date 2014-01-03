@@ -380,6 +380,7 @@ echo $url;
 				->fields(array(
 				'field_best_coupon_status_display_value' => 'Without Coupons',
 				'entity_id'=> $record->entity_id,
+				'delta'=> 0,
 			))
 			->execute();
 			die;
