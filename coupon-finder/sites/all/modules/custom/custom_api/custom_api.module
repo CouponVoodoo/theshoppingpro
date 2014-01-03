@@ -349,7 +349,7 @@ echo $url;
 		if ($coupon_display == 1) {
 			
 			echo nl2br("\n");
-			echo 'entered loop for best coupon found : '
+			echo 'entered loop for best coupon found : ';
 			echo nl2br("\n");
 			if (db_result(db_query("SELECT COUNT(*) FROM {field_data_field_best_coupon_status_display} WHERE id=:id", array(':id' => $node->nid))->fetchField())) {
 				// Run an update using WHERE id = $id
