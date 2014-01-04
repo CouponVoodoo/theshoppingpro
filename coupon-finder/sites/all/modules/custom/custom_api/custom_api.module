@@ -196,7 +196,7 @@ echo $url;
 	}
 	
       }elseif($record->expression == 1){
-	// echo 'update';
+	 echo 'update';
 	
 		/** ASHISH NODE CREATION TIMING  - UPDATE LOOP ENTERED
 		$time1 = round(microtime(true)* 1000);
@@ -489,13 +489,13 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $query->addParam('bq', $solr_time_coupon_boost);
 
 /** START OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
-//	$termid = arg(2);
-//	$term = taxonomy_term_load($termid);
-//	$vid = $term->vid;
-//	if ($vid != 2){
-//		$seed = rand(1, 1000);
-//		$query->addParam('sort', 'random_'.$seed.' asc');
-//	} 
+	$termid = arg(2);
+	$term = taxonomy_term_load($termid);
+	$vid = $term->vid;
+	if ($vid != 2){
+		$seed = rand(1, 1000);
+		$query->addParam('sort', 'random_'.$seed.' asc');
+	} 
 /** END OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
 }
 /** END OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND UPDATE */
