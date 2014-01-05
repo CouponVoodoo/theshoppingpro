@@ -101,8 +101,7 @@ mixpanel_track('Coupon Click Redirect', array(
                   }, 5000);
         });", array('type' => 'inline', 'scope' => 'footer'));
 
-print $coupon_code;
-
+		
 if ($coupon_code == 'Flipkart Offer'){
   return '<div class="coupon_window">
             <h1>Yay ... Offer Found!</h1>
@@ -135,6 +134,7 @@ if ($coupon_code == 'Flipkart Offer'){
             </h2>
             <div class="clear"> </div>
 </div>';
+}
 }
 
 /**
