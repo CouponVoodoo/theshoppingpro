@@ -479,14 +479,14 @@ echo $url;
 function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $current_time= time()+(5.5*3600);
    $boost_time=$current_time-(20*3600);
-   $hide_time=$current_time-(38*3600);
+   $hide_time=$current_time-(1038*3600);
    $solr_boost_time=gmdate('Y-m-d\TH:i:s\Z', $boost_time);
    $solr_hide_time=gmdate('Y-m-d\TH:i:s\Z', $hide_time);
    $solr_time_coupon_boost= "'(itm_field_best_coupon_status:1 AND dm_field_lastcheckedtime:[".$solr_boost_time." TO *])^5'";
    $solr_hide_time_coupon="dm_field_lastcheckedtime:[".$solr_hide_time." TO *]";
 //   echo $solr_hide_time_coupon;
    $query->addParam('fq', $solr_hide_time_coupon);
-   $query->addParam('fq', '-(sm_vid_Retailer:Flipkart.com)');
+//   $query->addParam('fq', '-(sm_vid_Retailer:Flipkart.com)');
    $query->addParam('bq', $solr_time_coupon_boost);
 
 /** START OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
