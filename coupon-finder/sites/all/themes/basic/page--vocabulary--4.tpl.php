@@ -156,8 +156,6 @@
 //	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
  		
  //      echo "<div class='d_view_store'><a class='view_store' href='{$node->field_page_url[und][0]['value']}'>View Details</a></div>";
-
- 	echo $coupon_display_url;
 	echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>View Details</a></div>";
 	   
 	   }
