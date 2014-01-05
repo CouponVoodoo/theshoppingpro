@@ -161,7 +161,7 @@
 //	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
 	  
 
-      if($node->field_best_coupon_status[und][0]['value'] == 1){
+      if($node->field_best_coupon_status[und][0]['value'] == '1'){
         //$copyCoupon =  coupons_copy_coupon_taxonomy($node->nid,4);
         //print render($copyCoupon);
  
