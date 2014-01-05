@@ -67,7 +67,8 @@ $mixpanel_type='Product Page View Store';
 <div class="coupon_code1">
     <?php       
     $CouponStatus = trim(strip_tags($fields['field_best_coupon_status']->content));
-    
+	$Couponsavingcheck = trim(strip_tags($fields['field_best_coupon_saving']->content));
+	    
     if( $CouponStatus == 1 ){
         print coupons_copy_best_coupon($nid);
     }else{
@@ -97,14 +98,18 @@ $mixpanel_type='Product Page View Store';
         
     ?>
 </li>
-<li><label>Saving:</label> <?php
-     $CouponSaving = explode('.', strip_tags($fields['field_best_coupon_saving']->content)  );
-    if( $CouponStatus == 1 ){
-         //print ' INR '. number_format($CouponSaving[0],0, '.', ',');
-        print $CouponSaving[0];
-    }else{
-        print '-';
-    }
+<?php
+    if( $Couponsavingcheck != 'INR 1.00') {
+?>
+	<li><label>Saving:</label> <?php
+			$CouponSaving = explode('.', strip_tags($fields['field_best_coupon_saving']->content)  );
+			if( $CouponStatus == 1 ){
+			//print ' INR '. number_format($CouponSaving[0],0, '.', ',');
+				print $CouponSaving[0];
+			}else{
+			print '-';
+			}
+	}
     ?>
 </li>
 <?php
