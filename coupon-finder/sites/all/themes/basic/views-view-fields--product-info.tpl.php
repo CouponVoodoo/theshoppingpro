@@ -130,19 +130,33 @@ $netPrice = explode('.', strip_tags($fields['field_best_coupon_netpriceafters']-
 </div>
 </div>
 <div class="product-bottom">
-<div class="product-left">
+<?php /* ?> <div class="product-left">
 <ul>
 <li><label>Retailer:</label><?php print ($fields['field_retailer']->content); ?></li>
 <li><label>Brand:</label><?php print ($fields['field_brand']->content); ?></li>
 <li><label>Category:</label><?php print ($fields['field_category']->content); ?></li>
 </ul>
 </div>
+*/ ?>
+
 <div class="product-right-bottom">
 
 
 <?php 
 /* commented by ashish to hide description of product */
- print ($fields['description']->content); 
+// print ($fields['description']->content); 
+// print $fields['field_retailer']->content;
+$product_description = 'Buy '.strip_tags($fields['field_retailer_product_name']->content).' at the lowest price with the latest discounts, coupons and offers brought to you by CouponVoodoo. View the list of discounts codes below and click "Copy Coupon" to get the code.';
+print $product_description;
+echo nl2br("\n");
+echo nl2br("\n");
+$product_description_links = 'You may also want to view discount codes and offers for all products from:';
+print $product_description_links;
+print $fields['field_retailer']->content;
+$category = strip_tags($fields['field_category']->content);
+$retailer = strip_tags($fields['field_brand']->content);
+if ($category != 'Other') {Print $fields['field_category']->content;}
+if ($retailer != 'Other') {Print $fields['field_brand']->content;}
 
 ?>
 
