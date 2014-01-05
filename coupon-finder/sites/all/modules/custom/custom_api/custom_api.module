@@ -493,11 +493,9 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
 	$termid = arg(2);
 	$term = taxonomy_term_load($termid);
 	$vid = $term->vid;
-	if ($vid == 3){
-		if ($vid == 4){
-			$seed = rand(1, 1000);
-			$query->addParam('sort', 'random_'.$seed.' asc');
-		}
+	$seed = rand(1, 1000);
+	if ($vid == 3 OR $vid == 4){
+		$query->addParam('sort', 'random_'.$seed.' asc');
 	} 
 /** END OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
 }
