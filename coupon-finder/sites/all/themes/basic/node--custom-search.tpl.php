@@ -60,7 +60,7 @@
 	global $base_url;
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
 	$affiliate_url=urlencode($node->field_affiliateurl['und']['0']['value']);
-	$coupon_code=$node->field_best_coupon_couponcode['und']['0'][value];
+	$coupon_code= urlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
 	$lightbox_url = $base_url."/node/".$node->nid." .product_info";
  		
@@ -85,7 +85,7 @@
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
                         <div class='field-item even product_img'>
-							<a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
+						<a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
                         </div>";
       echo  $img .=    "</div>
                 </div>";
