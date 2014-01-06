@@ -82,7 +82,7 @@
                 </div>";
       
       // echo "<div class='product_name'><a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
-	  echo "<div class='product_name'><a href='{$urlAlias}' class='colorbox-node'  onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";	
+	  echo "<div class='product_name'><a class='colorbox-node' href='{$urlAlias}'   data-inner-width="600" data-inner-height="600" onclick=window.open('{$coupon_display_url}') >".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";	
 	  }
 
  /** Start of modified by Ashish to Show reatiler name below product name */
