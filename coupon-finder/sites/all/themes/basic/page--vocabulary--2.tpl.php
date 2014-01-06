@@ -77,7 +77,7 @@
       
       echo "<div class='product_name'><a  href='{$urlAlias}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
 	}
-	  if($node->field_best_coupon_status[und][0]['value'] == 1){
+	  if($node->field_best_coupon_status[und][0]['value'] == '1' or $node->field_best_coupon_status[und][0]['value'] == 1){
 	  $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
