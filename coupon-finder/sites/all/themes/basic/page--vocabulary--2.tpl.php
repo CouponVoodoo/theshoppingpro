@@ -52,7 +52,7 @@
       }
       
  	global $base_url;
-	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
+	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid).'?width=600&height=600';
 	$affiliate_url=urlencode($node->field_affiliateurl['und']['0']['value']);
 	$coupon_code=$node->field_best_coupon_couponcode['und']['0'][value];
 	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
@@ -82,7 +82,7 @@
                 </div>";
       
       // echo "<div class='product_name'><a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
-	  echo "<div class='product_name'><a class='colorbox-node' href='{$urlAlias}'   data-inner-width="600" data-inner-height="600" onclick=window.open('{$coupon_display_url}') >".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";	
+	  echo "<div class='product_name'><a class='colorbox-node' href='{$urlAlias}'  onclick=window.open('{$coupon_display_url}') >".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";	
 	  }
 
  /** Start of modified by Ashish to Show reatiler name below product name */
