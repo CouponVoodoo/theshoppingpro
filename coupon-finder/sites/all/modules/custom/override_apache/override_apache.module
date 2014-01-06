@@ -5,11 +5,11 @@ function override_apache_init() {
   
   
   $CUrl = $_SERVER['REQUEST_URI'];
-  preg_match("/search\/site\/c/", $CUrl, $MUrl);
-  preg_match("/search\/site\/\//", $CUrl, $MUrl2);
+  preg_match("/search\/site\/c\//", $CUrl, $MUrl);
+  preg_match("/search\/site\/\/c\//", $CUrl, $MUrl2);
   
   if( count($MUrl) == 1 && count($MUrl2) == 0){
-    $CUrl = str_replace('search/site/c', 'search/site//c', $CUrl);
+    $CUrl = str_replace('search/site/c/', 'search/site//c/', $CUrl);
     drupal_goto($base_root.$CUrl);
   }
   
@@ -31,11 +31,11 @@ function override_apache_init() {
   }
   
   /**/
-  preg_match("/search\/site\/r/", $CUrl, $MUrl);
-  preg_match("/search\/site\/\//", $CUrl, $MUrl2);
+  preg_match("/search\/site\/r\//", $CUrl, $MUrl);
+  preg_match("/search\/site\/\/r\//", $CUrl, $MUrl2);
   
   if( count($MUrl) == 1 && count($MUrl2) == 0){
-    $CUrl = str_replace('search/site/r', 'search/site//r', $CUrl);
+    $CUrl = str_replace('search/site/r/', 'search/site//r/', $CUrl);
     drupal_goto($base_root.$CUrl);
   }
   
