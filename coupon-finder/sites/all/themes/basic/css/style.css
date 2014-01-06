@@ -1022,5 +1022,17 @@ top: 259px;}
 
 #block-coupons-coupons_taxonomy_description .content {padding-bottom: 20px;}
 
-#imageDataContainer {height:20px !important};
+#imageDataContainer {height:30px !important;}
 
+.lightbox2-alt-layout-data #bottomNavClose,
+.lightbox2-alt-layout #bottomNavClose {
+  margin-top: 0px !important;
+}
+.lightbox2-alt-layout-data #bottomNavZoom,
+.lightbox2-alt-layout-data #bottomNavZoomOut,
+.lightbox2-alt-layout #bottomNavZoom,
+.lightbox2-alt-layout #bottomNavZoomOut {
+  margin-top: 0px !important;
+}
+
+#lightbox{ top: 20px !important;}
