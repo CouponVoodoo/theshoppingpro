@@ -153,7 +153,7 @@
 
  	
 	// echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>View Details</a></div>";
-	$test_url = $base_url."/coupon-redirect?s=".$node->field_affiliateurl[und][0]['value']."&c=".$coupon_code;
+	$test_url = "/coupon-redirect?s=".$node->field_affiliateurl[und][0]['value']."&c=".$coupon_code;
 	 echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('{$test_url}')//;return true;>View Details</a></div>";
 	
 	        }
