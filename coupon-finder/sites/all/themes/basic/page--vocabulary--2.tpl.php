@@ -59,7 +59,7 @@
  	
 	// mail('ashish@theshoppingpro.com', 'Flipkart Test', print_r($affiliate_url.' | '.$coupon_code.'  |   '. 	$coupon_display_url,1));
 	
-	echo  $node->field_best_coupon_status;
+	echo  $node->field_best_coupon_status[und][0]['value'];
 	 // mail('ashish@theshoppingpro.com', 'Flipkart Test', print_r($node->field_best_coupon_status,1));
      
 	 $uplImg = $node->field_product_images['und'][0]['uri'];
