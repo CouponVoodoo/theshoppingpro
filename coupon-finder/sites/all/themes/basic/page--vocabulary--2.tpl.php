@@ -56,14 +56,8 @@
 	$affiliate_url=urlencode($node->field_affiliateurl['und']['0']['value']);
 	$coupon_code=$node->field_best_coupon_couponcode['und']['0'][value];
 	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
- 	
-	// mail('ashish@theshoppingpro.com', 'Flipkart Test', print_r($affiliate_url.' | '.$coupon_code.'  |   '. 	$coupon_display_url,1));
-	
-	echo  $node->field_best_coupon_status[und][0]['value'];
-	 // mail('ashish@theshoppingpro.com', 'Flipkart Test', print_r($node->field_best_coupon_status,1));
-     
-	 $uplImg = $node->field_product_images['und'][0]['uri'];
-      $imgPath = $imgUri = image_style_url('200x200', $uplImg);
+ 	$uplImg = $node->field_product_images['und'][0]['uri'];
+    $imgPath = $imgUri = image_style_url('200x200', $uplImg);
 	  
 	  if($node->field_best_coupon_status[und][0]['value'] == 0){
 	  $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
@@ -77,7 +71,7 @@
       
       echo "<div class='product_name'><a  href='{$urlAlias}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
 	}
-	  if($node->field_best_coupon_status[und][0]['value'] == '1' or $node->field_best_coupon_status[und][0]['value'] == 1){
+	  if($node->field_best_coupon_status[und][0]['value'] == 1){
 	  $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
