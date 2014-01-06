@@ -22,6 +22,14 @@ function override_apache_init() {
     drupal_goto($base_root.$CUrl);
   }
   
+  preg_match("/search\/site\/bcsd\//", $CUrl, $MUrl);
+  preg_match("/search\/site\/\/bcsd\//", $CUrl, $MUrl2);
+  
+  if( count($MUrl) == 1 && count($MUrl2) == 0){
+    $CUrl = str_replace('search/site/bcsd/', 'search/site//bcsd/', $CUrl);
+    drupal_goto($base_root.$CUrl);
+  }
+  
   /**/
   preg_match("/search\/site\/r/", $CUrl, $MUrl);
   preg_match("/search\/site\/\//", $CUrl, $MUrl2);
