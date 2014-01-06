@@ -153,8 +153,7 @@
 
  	
 	// echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>View Details</a></div>";
-//	 echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>View Details</a></div>";
-	 echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('www.couponvoodoo.com/?s=abc&c=code')//;return true;>View Details</a></div>";
+	 echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>View Details</a></div>";
 	
 	        }
       if($node->field_best_coupon_status[und][0]['value'] == 0){
