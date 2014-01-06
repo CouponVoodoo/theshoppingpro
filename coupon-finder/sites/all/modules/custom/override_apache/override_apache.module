@@ -15,7 +15,7 @@ function override_apache_init() {
   
   /**/
   preg_match("/search\/site\/b/", $CUrl, $MUrl);
-  preg_match("/search\/site\/\//b/", $CUrl, $MUrl2);
+  preg_match("/search\/site\/\/b/", $CUrl, $MUrl2);
   
   if( count($MUrl) == 1 && count($MUrl2) == 0){
     $CUrl = str_replace('search/site/b/', 'search/site//b/', $CUrl);
