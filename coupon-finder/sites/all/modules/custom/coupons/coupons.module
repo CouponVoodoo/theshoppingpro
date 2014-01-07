@@ -106,7 +106,7 @@ if ($coupon_code == 'Flipkart Offer'){
   return '<div class="coupon_window">
             <h1>Yay ... Offer Found!</h1>
             <h2 class="coupon_window_redirect">
-              To avail the offer simply add product to cart(no coupon required):
+              To avail the offer simply add product to cart (no coupon required):
             </h2>
 			<div class="clear"> </div>
             <div class="coupon_window_title">
