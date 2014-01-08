@@ -3,6 +3,8 @@
 
   <!-- ______________________ HEADER _______________________ -->
 
+  <?php if (empty($_GET['pop'])) { ?>
+  
   <header id="header">
    <div class="wrap">
     <?php if ($logo): ?>
@@ -39,14 +41,16 @@
       </div>
     <?php endif; ?>
 
-    <?php if ($page['header']): ?>
+	 <?php if ($page['header']): ?>
       <div id="header-region">
         <?php print render($page['header']); ?>
       </div>
     <?php endif; ?>
 </div>
-  </header> <!-- /header -->
-
+  </header> 
+    <!-- /header -->
+<?php } ?>
+	
   <?php if ($main_menu || $secondary_menu): ?>
     <nav id="navigation" class="menu <?php if (!empty($main_menu)) {print "with-primary";}
       if (!empty($secondary_menu)) {print " with-secondary";} ?>">
@@ -120,6 +124,9 @@
 
     </section> <!-- /content-inner /content -->
 
+	<?php if (empty($_GET['pop'])) { ?>
+  
+	
     <?php if ($page['sidebar_first']): ?>
       <aside id="sidebar-first" class="column sidebar first">
         <?php print render($page['sidebar_first']); ?>
@@ -132,16 +139,22 @@
       </aside>
     <?php endif; ?> <!-- /sidebar-second -->
 
+	<?php } ?>
+	
   </div> <!-- /main -->
 
   <!-- ______________________ FOOTER _______________________ -->
 
+  <?php if (empty($_GET['pop'])) { ?>
+  
   <?php if ($page['footer']): ?>
     <footer id="footer">
       <?php print render($page['footer']); ?>
     </footer> <!-- /footer -->
   <?php endif; ?>
 
+  <?php } ?>
+  
 </div> <!-- /page -->
 
 <!-- Google Code for Remarketing Tag -->
