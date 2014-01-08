@@ -59,7 +59,8 @@
 	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
  	$uplImg = $node->field_product_images['und'][0]['uri'];
     $imgPath = $imgUri = image_style_url('200x200', $uplImg);
-	$lightbox_url = $base_url."/node/".$node->nid." .product_info";
+	// $lightbox_url = $base_url."/node/".$node->nid." .product_info";
+	$lightbox_url = $base_url."/node/".$node->nid;
 		  
 	  if($node->field_best_coupon_status[und][0]['value'] == 0){
 	  $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
@@ -87,7 +88,7 @@
      //    echo "<div class='product_name'><a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
 			
 	//	echo "<div class='product_name'><a class='colorbox-node' href='{$urlAlias}' data-inner-width='600' data-inner-height='600'>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
-		  echo "<div class='product_name'><a href='{$lightbox_url}' rel='lightmodal[|width:750px; height: 650px; scrolling: auto;]' onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
+		  echo "<div class='product_name'><a href='{$lightbox_url}' rel='lightframe[|width:750px; height: 650px; scrolling: auto;]' onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
 	   }
 
  /** Start of modified by Ashish to Show reatiler name below product name */
