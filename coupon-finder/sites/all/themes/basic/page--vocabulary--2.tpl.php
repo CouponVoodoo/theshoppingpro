@@ -59,8 +59,8 @@
 	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
  	$uplImg = $node->field_product_images['und'][0]['uri'];
     $imgPath = $imgUri = image_style_url('200x200', $uplImg);
-	// $lightbox_url = $base_url."/node/".$node->nid." .product_info";
-	$lightbox_url = $base_url."/node/".$node->nid;
+	$lightbox_url = $base_url."/node/".$node->nid." .product_info";
+	// $lightbox_url = $base_url."/node/".$node->nid;
 		  
 	  if($node->field_best_coupon_status[und][0]['value'] == 0){
 	  $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
