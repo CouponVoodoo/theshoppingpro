@@ -234,7 +234,7 @@ function metatag_config_load_with_defaults($instance, $include_global = TRUE) {
   if(arg(0) == 'node'){     
     $query = db_query("SELECT * FROM `metatag_config` WHERE  instance = 'node' ");
     $result = $query->fetchall();
-    mail('sanjay.kumar1@mail.vinove.com', 'node-metatag_config', '===>'.print_r( $result ));
+    mail('sanjay.kumar1@mail.vinove.com', 'node-metatag_config', '===>'.print_r( $result,1 ));
     
     $termInfo = unserialize($result[0]->config);
   
@@ -251,7 +251,7 @@ function metatag_config_load_with_defaults($instance, $include_global = TRUE) {
   }elseif(arg(1) == 'taxonomy'){
     $query = db_query("SELECT * FROM `metatag_config` WHERE instance = 'taxonomy_term' ");
     $result = $query->fetchall();
-    mail('sanjay.kumar1@mail.vinove.com', 'taxonomy-metatag_config', '===>'.print_r( $result ));
+    mail('sanjay.kumar1@mail.vinove.com', 'taxonomy-metatag_config', '===>'.print_r( $result, 1 ));
     
     $termInfo = unserialize($result[0]->config);   
     
