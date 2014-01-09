@@ -19,9 +19,9 @@ function custom_api_menu() {
 function custom_api_addproduct($ProInfo){
 	
 
-    // print_r($_REQUEST['url']);
+     print_r($_REQUEST['url']);
     
-    // die;
+     die;
     //$baseUrl = base64_decode( ($ProInfo) );
     $baseUrl = $_REQUEST['url'];
     if($_REQUEST['recheck'] == 1){
@@ -463,12 +463,12 @@ function custom_api_addproduct($ProInfo){
 
 
 	 
-    if($_REQUEST['recheck'] == 1){
-		  mail('lavesh@theshoppingpro.com', 'node_url', 'node_url');
+   /* if($_REQUEST['recheck'] == 1){
+		  mail('ashishgupta97065@gmail.com', 'node_url', 'node_url');
 		  $options = array('absolute' => TRUE);
 			$url = url('node/' . $nid, $options);
 	  	   drupal_goto($node_url);
-    }}  
+    }*/}   
 } 
 
 /** START OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND LAST CHECKED, HIDE WHERE LAST CHECKED IS GREATER THAN THRESHHOLD*/
