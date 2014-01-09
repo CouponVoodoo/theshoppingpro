@@ -440,9 +440,10 @@ function custom_api_addproduct($ProInfo){
 	if($_REQUEST['recheck'] == 1){
 		  mail('ashishgupta97065@gmail.com', 'node_url', 'node_url');
 		  // $options = array('absolute' => TRUE);
-			$cache_url = url('node/'. $nid);
-			cache_clear_all($cache_url, 'cache_page');
-	  	   drupal_goto($node_url);
+			// $cache_url = url('node/'. $nid);
+			// cache_clear_all($cache_url, 'cache_page');
+	  	    drupal_flush_all_caches();
+		   drupal_goto($node_url);
     }
 				
 				
