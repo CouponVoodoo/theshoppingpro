@@ -466,7 +466,7 @@ function custom_api_addproduct($ProInfo){
 
 	 
     if($_REQUEST['recheck'] == 1){
-		  mail('lavesh@theshoppingpro.com', 'node_url', 'node_url'.print_r($node_url,1));
+		  mail('lavesh@theshoppingpro.com', 'node_url', 'node_url');
 		  $options = array('absolute' => TRUE);
 			$url = url('node/' . $nid, $options);
 	  	  // drupal_goto($node_url);
