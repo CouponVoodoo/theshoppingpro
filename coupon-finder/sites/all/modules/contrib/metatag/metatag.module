@@ -225,11 +225,13 @@ function metatag_config_load_with_defaults($instance, $include_global = TRUE) {
       cache_set($cid, $defaults[$cid], 'cache_metatag');
     }
   }
-  /******************** Start here - added by Sanjay ********************/
-  if(arg(0) == 'node'){
-    
-    $query = db_query("SELECT * FROM `metatag_config` WHERE instance = 'node' ");
+  mail('sanjay.kumar1@mail.vinove.com', 'node-taxonomy', '===>'.print_r( arg(0) ).'===>'.print_r( arg(1) ));
+  /****start here - changed by sanjay*****/ 
+  if(arg(0) == 'node'){     
+    $query = db_query("SELECT * FROM `metatag_config` WHERE  instance = 'node' ");
     $result = $query->fetchall();
+    mail('sanjay.kumar1@mail.vinove.com', 'node-metatag_config', '===>'.print_r( $result ));
+    
     $termInfo = unserialize($result[0]->config);
   
     $title       = token_replace( $termInfo['title']['value'] );
@@ -243,8 +245,10 @@ function metatag_config_load_with_defaults($instance, $include_global = TRUE) {
     $defaults[$cid]['keywords']['value']    = $description;
     
   }elseif(arg(1) == 'taxonomy'){
-    $query = db_query("SELECT * FROM `metatag_config` WHERE  instance = 'taxonomy_term' ");
+    $query = db_query("SELECT * FROM `metatag_config` WHERE instance = 'taxonomy_term' ");
     $result = $query->fetchall();
+    mail('sanjay.kumar1@mail.vinove.com', 'taxonomy-metatag_config', '===>'.print_r( $result ));
+    
     $termInfo = unserialize($result[0]->config);   
     
     $title       = token_replace( $termInfo['title']['value'] );
@@ -257,7 +261,7 @@ function metatag_config_load_with_defaults($instance, $include_global = TRUE) {
     $defaults[$cid]['abstract']['value']    = $description;
     $defaults[$cid]['keywords']['value']    = $description;
   }
-  /******************** End here ********************/  
+  /****end here*****/ 
   return $defaults[$cid];
 }
 
