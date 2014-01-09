@@ -246,8 +246,8 @@ function metatag_config_load_with_defaults($instance, $include_global = TRUE) {
     
     $defaults[$cid]['title']['value']       = $title;
     $defaults[$cid]['description']['value'] = $description;    
-    $defaults[$cid]['abstract']['value']    = $description;
-    $defaults[$cid]['keywords']['value']    = $description;
+    $defaults[$cid]['abstract']['value']    = $abstract;
+    $defaults[$cid]['keywords']['value']    = $keywords;
     
   }elseif(arg(0) == 'taxonomy'){
     $query = db_query("SELECT * FROM `metatag_config` WHERE instance = 'taxonomy_term' ");
@@ -263,8 +263,8 @@ function metatag_config_load_with_defaults($instance, $include_global = TRUE) {
     
     $defaults[$cid]['title']['value']       = $title;
     $defaults[$cid]['description']['value'] = $description;    
-    $defaults[$cid]['abstract']['value']    = $description;
-    $defaults[$cid]['keywords']['value']    = $description;
+    $defaults[$cid]['abstract']['value']    = $abstract;
+    $defaults[$cid]['keywords']['value']    = $keywords;
   }
   /****end here*****/
   
