@@ -19,15 +19,13 @@ function custom_api_menu() {
 function custom_api_addproduct($ProInfo){
 	
 
-    print_r($_REQUEST['url']);
+    // print_r($_REQUEST['url']);
     
-    die;
+    // die;
     //$baseUrl = base64_decode( ($ProInfo) );
     $baseUrl = $_REQUEST['url'];
     if($_REQUEST['recheck'] == 1){
-	echo 'inside';
-	die;
-      $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
+	  $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
       $url = "http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=" . urldecode( $baseUrl );
       //http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=http://www.firstcry.com/zeme-organics/maternity-top-orange/61968/product-detail
       $node_url = $base_url.drupal_get_path_alias('node/'.$_REQUEST['id']);
@@ -469,7 +467,7 @@ function custom_api_addproduct($ProInfo){
 		  mail('lavesh@theshoppingpro.com', 'node_url', 'node_url');
 		  $options = array('absolute' => TRUE);
 			$url = url('node/' . $nid, $options);
-	  	  // drupal_goto($node_url);
+	  	   drupal_goto($node_url);
     }}  
 } 
 
