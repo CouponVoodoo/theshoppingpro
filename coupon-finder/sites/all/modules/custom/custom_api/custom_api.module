@@ -438,7 +438,7 @@ function custom_api_addproduct($ProInfo){
 			    echo $response;
 				
 	if($_REQUEST['recheck'] == 1){
-		  mail('ashishgupta97065@gmail.com', 'node_url', 'node_url');
+		  // mail('ashishgupta97065@gmail.com', 'node_url', 'node_url');
 		  // $options = array('absolute' => TRUE);
 			// $cache_url = url('node/'. $nid);
 			// cache_clear_all($cache_url, 'cache_page');
