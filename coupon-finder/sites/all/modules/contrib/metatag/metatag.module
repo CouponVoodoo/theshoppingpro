@@ -226,7 +226,7 @@ function metatag_config_load_with_defaults($instance, $include_global = TRUE) {
     }
   }
   
-   /******************** Start here - added by Sanjay ********************/"
+   /******************** Start here - added by Sanjay ********************/
   $arg  = arg(0);
   $arg1 = arg(1);
   $termId = arg(2);
