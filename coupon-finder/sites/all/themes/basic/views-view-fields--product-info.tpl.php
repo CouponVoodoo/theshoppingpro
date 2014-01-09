@@ -152,11 +152,35 @@ echo nl2br("\n");
 echo nl2br("\n");
 $product_description_links = 'You may also want to view discount codes and offers for all products from:';
 print $product_description_links;
-print $fields['field_retailer']->content;
-$category = strip_tags($fields['field_category']->content);
-$retailer = strip_tags($fields['field_brand']->content);
-if ($category != 'Other') {Print $fields['field_category']->content;}
-if ($brand != 'Other') {Print $fields['field_brand']->content;}
+$retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
+if ($retailer['#type'] == 'link') {
+    print '<div class="field-content">' . l(t($retailer['#title']), $retailer['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
+}
+else {
+    print $fields['field_retailer']->content;
+}
+
+$category_check = strip_tags($fields['field_category']->content);
+$brand_check = strip_tags($fields['field_brand']->content);
+if ($category_check != 'Other') {
+	$category = $fields['field_category']->handler->view->result[0]->field_field_category[0]['rendered'];
+	if ($category['#type'] == 'link') {
+		print '<div class="field-content">' . l(t($category['#title']), $category['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
+	}
+	else {
+		print $fields['field_category']->content;
+	}
+}
+
+if ($brand_check != 'Other') {
+	$brand = $fields['field_brand']->handler->view->result[0]->field_field_brand[0]['rendered'];
+	if ($brand['#type'] == 'link') {
+		print '<div class="field-content">' . l(t($brand['#title']), $brand['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
+	}
+	else {
+		print $fields['field_brand']->content;
+	}
+}
 
 ?>
 
