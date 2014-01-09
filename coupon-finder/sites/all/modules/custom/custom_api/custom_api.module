@@ -17,14 +17,16 @@ function custom_api_menu() {
 
 
 function custom_api_addproduct($ProInfo){
-    //print_r($_REQUEST['url']);
+	
+
+    print_r($_REQUEST['url']);
     
-    //die;
+    die;
     //$baseUrl = base64_decode( ($ProInfo) );
     $baseUrl = $_REQUEST['url'];
-    
     if($_REQUEST['recheck'] == 1){
 	echo 'inside';
+	die;
       $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
       $url = "http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=" . urldecode( $baseUrl );
       //http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=http://www.firstcry.com/zeme-organics/maternity-top-orange/61968/product-detail
@@ -34,11 +36,7 @@ function custom_api_addproduct($ProInfo){
       $url = "http://54.243.150.171/nodeCreation.php";
       
     }
-echo $url;
-die;
     $json = drupal_http_request($url, array('timeout' => 600.0));
-    var_dump($json);
-   die;
     if ( $json == 'done') {echo "done"; exit;}
     
 	/** ASHISH NODE CREATION TIMING  - DATA REVEIVED
@@ -54,10 +52,7 @@ die;
    
     
     $jsonArr = json_decode($json,true);
-     echo '==============>';
-	 var_dump($jsonArr);
-	die;
-    foreach($jsonArr as $json){
+     foreach($jsonArr as $json){
     
 	
 	
@@ -471,10 +466,10 @@ die;
 
 	 
     if($_REQUEST['recheck'] == 1){
-		//  mail('lavesh@theshoppingpro.com', 'node_url', 'node_url'.print_r($node_url,1));
+		  mail('lavesh@theshoppingpro.com', 'node_url', 'node_url'.print_r($node_url,1));
 		  $options = array('absolute' => TRUE);
 			$url = url('node/' . $nid, $options);
-	  	  drupal_goto($node_url);
+	  	  // drupal_goto($node_url);
     }}  
 } 
 
