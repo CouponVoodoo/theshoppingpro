@@ -64,8 +64,9 @@ $mixpanel_type='Product Page View Store';
 <?php 
 
 $lastcheckedtime_check = strtotime(strip_tags($fields['field_lastcheckedtime']->content));
-$time_gap = round(microtime(true))-$lastcheckedtime_check;
-if ( $time_gap > 1 * 24 * 3600) {
+$current_time = round(microtime(true))+ 5.5*3600;
+$time_gap = $current_time-$lastcheckedtime_check;
+if ( $time_gap > (1 * 24 * 3600)) {
 ?>
 
 <div class="d_view_store .red">Data is more than 24hrs old: <a onclick="locader('<?php echo $base_root.base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>')" class="active">Recheck Now</a></div>
