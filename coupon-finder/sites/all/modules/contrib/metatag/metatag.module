@@ -225,7 +225,11 @@ function metatag_config_load_with_defaults($instance, $include_global = TRUE) {
       cache_set($cid, $defaults[$cid], 'cache_metatag');
     }
   }
-  mail('sanjay.kumar1@mail.vinove.com', 'node-taxonomy', '===>'.print_r( arg(0) ).'===>'.print_r( arg(1) ));
+  
+  $arg  = arg(0);
+  $arg1 = arg(1);
+  
+  mail('sanjay.kumar1@mail.vinove.com', 'node-taxonomy', '===>'.print_r( $arg, 1 ).'===>'.print_r( $arg1, 1 ));
   /****start here - changed by sanjay*****/ 
   if(arg(0) == 'node'){     
     $query = db_query("SELECT * FROM `metatag_config` WHERE  instance = 'node' ");
