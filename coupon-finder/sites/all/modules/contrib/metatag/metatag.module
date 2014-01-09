@@ -225,7 +225,39 @@ function metatag_config_load_with_defaults($instance, $include_global = TRUE) {
       cache_set($cid, $defaults[$cid], 'cache_metatag');
     }
   }
-
+  /******************** Start here - added by Sanjay ********************/
+  if(arg(0) == 'node'){
+    
+    $query = db_query("SELECT * FROM `metatag_config` WHERE instance = 'node' ");
+    $result = $query->fetchall();
+    $termInfo = unserialize($result[0]->config);
+  
+    $title       = token_replace( $termInfo['title']['value'] );
+    $description = token_replace( $termInfo['description']['value'] );
+    $abstract    = token_replace( $termInfo['abstract']['value'] );
+    $keywords    = token_replace( $termInfo['keywords']['value'] );
+    
+    $defaults[$cid]['title']['value']       = $title;
+    $defaults[$cid]['description']['value'] = $description;    
+    $defaults[$cid]['abstract']['value']    = $description;
+    $defaults[$cid]['keywords']['value']    = $description;
+    
+  }elseif(arg(1) == 'taxonomy'){
+    $query = db_query("SELECT * FROM `metatag_config` WHERE  instance = 'taxonomy_term' ");
+    $result = $query->fetchall();
+    $termInfo = unserialize($result[0]->config);   
+    
+    $title       = token_replace( $termInfo['title']['value'] );
+    $description = token_replace( $termInfo['description']['value'] );
+    $abstract    = token_replace( $termInfo['abstract']['value'] );
+    $keywords    = token_replace( $termInfo['keywords']['value'] );
+    
+    $defaults[$cid]['title']['value']       = $title;
+    $defaults[$cid]['description']['value'] = $description;    
+    $defaults[$cid]['abstract']['value']    = $description;
+    $defaults[$cid]['keywords']['value']    = $description;
+  }
+  /******************** End here ********************/  
   return $defaults[$cid];
 }
 
