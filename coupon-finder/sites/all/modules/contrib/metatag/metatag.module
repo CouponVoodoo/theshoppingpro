@@ -229,7 +229,7 @@ function metatag_config_load_with_defaults($instance, $include_global = TRUE) {
   $arg  = arg(0);
   $arg1 = arg(1); 
   echo "<div style='display:none'>$arg.'-----'.$arg1</div>";
-  mail('sanjay.kumar1@mail.vinove.com', 'node-taxonomy', '===>'.print_r( $arg, 1 ).'===>'.print_r( $arg1, 1 ));
+  //mail('sanjay.kumar1@mail.vinove.com', 'node-taxonomy', '===>'.print_r( $arg, 1 ).'===>'.print_r( $arg1, 1 ));
   /****start here - changed by sanjay*****/ 
   if(arg(0) == 'node'){     
     $query = db_query("SELECT * FROM `metatag_config` WHERE  instance = 'node' ");
@@ -248,7 +248,7 @@ function metatag_config_load_with_defaults($instance, $include_global = TRUE) {
     $defaults[$cid]['abstract']['value']    = $description;
     $defaults[$cid]['keywords']['value']    = $description;
     
-  }elseif(arg(1) == 'taxonomy'){
+  }elseif(arg(0) == 'taxonomy'){
     $query = db_query("SELECT * FROM `metatag_config` WHERE instance = 'taxonomy_term' ");
     $result = $query->fetchall();
     mail('sanjay.kumar1@mail.vinove.com', 'taxonomy-metatag_config', '===>'.print_r( $result, 1 ));
