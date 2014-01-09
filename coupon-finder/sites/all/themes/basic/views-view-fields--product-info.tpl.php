@@ -156,7 +156,7 @@ print $fields['field_retailer']->content;
 $category = strip_tags($fields['field_category']->content);
 $retailer = strip_tags($fields['field_brand']->content);
 if ($category != 'Other') {Print $fields['field_category']->content;}
-if ($retailer != 'Other') {Print $fields['field_brand']->content;}
+if ($brand != 'Other') {Print $fields['field_brand']->content;}
 
 ?>
 
