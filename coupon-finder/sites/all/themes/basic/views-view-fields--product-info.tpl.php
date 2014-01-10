@@ -64,7 +64,7 @@ $mixpanel_type='Product Page View Store';
 <?php 
 
 $lastcheckedtime_check = strtotime(strip_tags($fields['field_lastcheckedtime']->content));
-$current_time = round(microtime(true)) + (5.5 * 3600);
+$current_time = round(microtime(true));
 $time_gap = $current_time-$lastcheckedtime_check;
 
 echo 'last check: '.$lastcheckedtime_check.' current: '.$current_time.' gap: '.$time_gap;
