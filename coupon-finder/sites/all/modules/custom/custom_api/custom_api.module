@@ -26,6 +26,7 @@ function custom_api_addproduct($ProInfo){
     $baseUrl = $_REQUEST['url'];
     if($_REQUEST['recheck'] == 1){
 	  echo "loop entered: ".$baseUrl;
+	  die;
 		  
 	  $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
       $url = "http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=" . urldecode( $baseUrl );
