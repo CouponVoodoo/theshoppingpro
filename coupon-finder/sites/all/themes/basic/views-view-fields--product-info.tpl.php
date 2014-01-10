@@ -163,6 +163,8 @@ $netPrice = explode('.', strip_tags($fields['field_best_coupon_netpriceafters']-
 /* commented by ashish to hide description of product */
 // print ($fields['description']->content); 
 // print $fields['field_retailer']->content;
+
+if (empty($_GET['pop'])) {
 $product_description = 'Buy '.strip_tags($fields['field_retailer_product_name']->content).' at the lowest price with the latest discounts, coupons and offers brought to you by CouponVoodoo. View the list of discount codes below and click "Copy Coupon" to get the code.';
 print $product_description;
 echo nl2br("\n");
@@ -198,7 +200,7 @@ if ($brand_check != 'Other') {
 		print $fields['field_brand']->content;
 	}
 }
-
+}
 ?>
 
 </div>
