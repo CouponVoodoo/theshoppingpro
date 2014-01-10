@@ -440,7 +440,7 @@ function custom_api_addproduct($ProInfo){
 			    echo $response;
 				
 	if($_REQUEST['recheck'] == 1){
-		   mail('ashishgupta97065@gmail.com', 'recheck loop: ', echo $node->nid.'url :'.$node_url);
+		   mail('ashishgupta97065@gmail.com', 'recheck loop: ', print_r( $node->nid.'url :'.$node_url));
 		  // $options = array('absolute' => TRUE);
 			// $cache_url = url('node/'. $nid);
 			 drupal_flush_all_caches();
