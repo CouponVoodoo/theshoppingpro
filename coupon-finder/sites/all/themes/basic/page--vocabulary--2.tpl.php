@@ -122,7 +122,7 @@
             $listPrice .=          '-';
                                 }
                                 else{ if($node->field_best_coupon_saving['und'][0]['value']==1){
-            $listPrice .=          substr($node->field_best_coupon_description['und'][0]['value'], 0, 60).'...';
+            $listPrice .=          substr($node->field_best_coupon_description['und'][0]['value'], 0, 45).'...';
                                 }
                                 else{ 					
 					
