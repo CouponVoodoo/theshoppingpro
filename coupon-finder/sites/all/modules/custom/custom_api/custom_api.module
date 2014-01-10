@@ -444,7 +444,7 @@ function custom_api_addproduct($ProInfo){
 		  // $options = array('absolute' => TRUE);
 			// $cache_url = url('node/'. $nid);
 			// drupal_flush_all_caches();
-			 entity_get_controller('node')->resetCache(array($node->nid));
+			// entity_get_controller('node')->resetCache(array($node->nid));
 		   drupal_goto($node_url);
     }
 				
