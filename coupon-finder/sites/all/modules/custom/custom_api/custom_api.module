@@ -24,8 +24,6 @@ function custom_api_addproduct($ProInfo){
      // die;
     //$baseUrl = base64_decode( ($ProInfo) );
     $baseUrl = $_REQUEST['url'];
-    echo 'pre recheck loop: '.$baseurl;
-	 die;
 	
 	if($_REQUEST['recheck'] == 1){
 	 echo 'recheck loop: '.$baseurl;
@@ -445,14 +443,14 @@ function custom_api_addproduct($ProInfo){
 			    echo $response;
 				
 	if($_REQUEST['recheck'] == 1){
-//		   mail('ashishgupta97065@gmail.com', 'recheck loop: ', print_r($node_url));
-//		  $cache_url = url('node/'.$node->nid);
-		  // $options = array('absolute' => TRUE);
-// entity_get_controller('node')->resetCache(array($node->nid));
+			//		   mail('ashishgupta97065@gmail.com', 'recheck loop: ', print_r($node_url));
+			//		  $cache_url = url('node/'.$node->nid);
+			// $options = array('absolute' => TRUE);
+			// entity_get_controller('node')->resetCache(array($node->nid));
 		   			
 
-			//drupal_flush_all_caches();
-			// drupal_goto($node_url);
+			drupal_flush_all_caches();
+			drupal_goto($node_url);
     }
 				
 				
