@@ -24,10 +24,7 @@ function custom_api_addproduct($ProInfo){
      // die;
     //$baseUrl = base64_decode( ($ProInfo) );
     $baseUrl = $_REQUEST['url'];
-    if($_REQUEST['recheck'] == 1){
-	  echo "loop entered: ".$baseUrl;
-	  die;
-		  
+    if($_REQUEST['recheck'] == 1){	  
 	  $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
       $url = "http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=" . urldecode( $baseUrl );
       //http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=http://www.firstcry.com/zeme-organics/maternity-top-orange/61968/product-detail
