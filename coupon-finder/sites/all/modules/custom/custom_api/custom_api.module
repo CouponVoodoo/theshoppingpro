@@ -443,8 +443,8 @@ function custom_api_addproduct($ProInfo){
 		   mail('ashishgupta97065@gmail.com', 'recheck loop: ', print_r($node->nid),'url :'.print_r($node_url));
 		  // $options = array('absolute' => TRUE);
 			// $cache_url = url('node/'. $nid);
-			// drupal_flush_all_caches();
-			entity_get_controller('node')->resetCache(array($node->nid));
+			 drupal_flush_all_caches();
+			// entity_get_controller('node')->resetCache(array($node->nid));
 		   drupal_goto($node_url);
     }
 				
