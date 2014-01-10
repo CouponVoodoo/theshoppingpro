@@ -122,7 +122,7 @@
             $listPrice .=          '-';
                                 }
                                 else{ if($node->field_best_coupon_saving['und'][0]['value']==1){
-            $listPrice .=          substr($node->field_best_coupon_description['und'][0]['value'], 0, 15).'...';
+            $listPrice .=          substr($node->field_best_coupon_description['und'][0]['value'], 0, 50).'...';
                                 }
                                 else{ 					
 					
@@ -135,13 +135,15 @@
       echo $listPrice .=         "</div>
                             </div>
                         </div>";
-      echo $listPrice = "<div class='field field-name-field-best-coupon-netpriceafters field-type-number-integer field-label-above'>
+						
+	  if($node->field_best_coupon_saving['und'][0]['value'] != 1){
+	  echo $listPrice = "<div class='field field-name-field-best-coupon-netpriceafters field-type-number-integer field-label-above'>
                             <div class='field-label'>Net Price:&nbsp;</div>
                             <div class='field-items'>
                                 <div class='field-item even'>INR ".number_format($node->field_best_coupon_netpriceafters['und'][0]['value'],0, '.', ',')."</div>
                             </div>
                         </div>";       
-
+	}
 	
       if($node->field_best_coupon_status[und][0]['value'] == 1){
  
