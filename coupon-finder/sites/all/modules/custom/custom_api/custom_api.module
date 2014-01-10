@@ -446,8 +446,8 @@ function custom_api_addproduct($ProInfo){
 		   // mail('ashishgupta97065@gmail.com', 'node_url', print_r($node_url));
 		  // $options = array('absolute' => TRUE);
 			// $cache_url = url('node/'. $nid);
-			// cache_clear_all($cache_url, 'cache_page');
-	  	    drupal_flush_all_caches();
+			// drupal_flush_all_caches();
+			 entity_get_controller('node')->resetCache(array($node->nid));
 		   drupal_goto($node_url);
     }
 				
