@@ -67,7 +67,7 @@ $lastcheckedtime_check = strtotime(strip_tags($fields['field_lastcheckedtime']->
 $current_time = round(microtime(true));
 $time_gap = $current_time-$lastcheckedtime_check;
 
-echo 'last check: '.$lastcheckedtime_check.' current: '.$current_time.' gap: '.$time_gap;
+// echo 'last check: '.$lastcheckedtime_check.' current: '.$current_time.' gap: '.$time_gap;
 
 if ( $time_gap > (1 * 27 * 3600)) {
 ?>
