@@ -36,7 +36,7 @@ function custom_api_addproduct($ProInfo){
       $url = "http://54.243.150.171/nodeCreation.php";
       
     }
-	mail('ashishgupta97065@gmail.com', 'URL', print_r($url);
+	mail('ashishgupta97065@gmail.com', 'URL', print_r($url));
     $json = drupal_http_request($url, array('timeout' => 600.0));
     if ( $json == 'done') {echo "done"; exit;}
     
