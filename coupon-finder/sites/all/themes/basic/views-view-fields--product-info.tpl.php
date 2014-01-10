@@ -67,6 +67,8 @@ $lastcheckedtime_check = strtotime(strip_tags($fields['field_lastcheckedtime']->
 $current_time = round(microtime(true)) + (5.5 * 3600);
 $time_gap = $current_time-$lastcheckedtime_check;
 
+echo 'last check: '.$lastcheckedtime_check.' current: '.$current_time.' gap: '.$time_gap;
+
 if ( $time_gap > (1 * 24 * 3600)) {
 ?>
 
