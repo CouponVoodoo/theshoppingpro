@@ -26,8 +26,6 @@ function custom_api_addproduct($ProInfo){
     $baseUrl = $_REQUEST['url'];
 	
 	if($_REQUEST['recheck'] == 1){
-	 echo 'recheck loop: '.$baseurl;
-	 die;
 	  $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
       $url = "http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=" . urldecode( $baseUrl );
       //http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=http://www.firstcry.com/zeme-organics/maternity-top-orange/61968/product-detail
@@ -449,7 +447,8 @@ function custom_api_addproduct($ProInfo){
 			// entity_get_controller('node')->resetCache(array($node->nid));
 		   			
 
-			drupal_flush_all_caches();
+			// drupal_flush_all_caches();
+			cache_clear_all('field:node:' . $node->nid, 'cache_field');
 			drupal_goto($node_url);
     }
 				
