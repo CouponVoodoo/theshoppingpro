@@ -25,6 +25,8 @@ function custom_api_addproduct($ProInfo){
     //$baseUrl = base64_decode( ($ProInfo) );
     $baseUrl = $_REQUEST['url'];
     if($_REQUEST['recheck'] == 1){
+	  mail('ashishgupta97065@gmail.com', 'RECHECK LOOP ENTERED', print_r($baseUrl));
+		  
 	  $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
       $url = "http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=" . urldecode( $baseUrl );
       //http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=http://www.firstcry.com/zeme-organics/maternity-top-orange/61968/product-detail
@@ -34,6 +36,7 @@ function custom_api_addproduct($ProInfo){
       $url = "http://54.243.150.171/nodeCreation.php";
       
     }
+	mail('ashishgupta97065@gmail.com', 'URL', print_r($url);
     $json = drupal_http_request($url, array('timeout' => 600.0));
     if ( $json == 'done') {echo "done"; exit;}
     
@@ -438,7 +441,7 @@ function custom_api_addproduct($ProInfo){
 			    echo $response;
 				
 	if($_REQUEST['recheck'] == 1){
-		  // mail('ashishgupta97065@gmail.com', 'node_url', 'node_url');
+		   mail('ashishgupta97065@gmail.com', 'node_url', print_r($node_url);
 		  // $options = array('absolute' => TRUE);
 			// $cache_url = url('node/'. $nid);
 			// cache_clear_all($cache_url, 'cache_page');
