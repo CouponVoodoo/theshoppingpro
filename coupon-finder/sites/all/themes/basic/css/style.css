@@ -684,10 +684,12 @@ a.copied_coupon {
 
 .shareaholic-canvas {
   clear: both;
-  left: 0;
+  right: 0;
   position: fixed;
   top: 20%;
 }
+
+.shareaholic-share-buttons-container .shareaholic-share-buttons-wrapper {text-align: right !important}
 
 /* By Ashish to make images overlap */
 
