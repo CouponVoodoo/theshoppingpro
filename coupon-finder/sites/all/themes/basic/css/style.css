@@ -263,9 +263,11 @@ body:before {
 #header #logo {padding-top:10px;}
 #header #logo img{height:55px;}
 .headcolor{color:#ff9900}
-#navigation ,
-#primary,#secondary,#main,#footer
-{width:920px;margin:0px auto;display:block}
+#navigation, 
+#primary, 
+#secondary, 
+#main, 
+#footer{max-width: 920px;margin:0px auto;display:block}
 #main{min-height:450px;}
 .front h1.title{display:none;}
 
@@ -319,12 +321,11 @@ body:before {
                                       text-align: left;
                                       text-decoration: none;
                                       top: 323px;
-                                      width: 590px;
+                                      width: 100%;
                                       padding: 10px;
                                       margin: 10px 0px;
 }
 .whatisthis{
-  float: right;
   position: relative;
   top: 50px;
   left: 10px;
@@ -434,7 +435,7 @@ body:before {
   margin-top:50px;
 }
 
-#footer .region-footer{margin:0px auto;width:920px;}
+#footer .region-footer{margin:0px auto; max-width:920px;}
 #footer .footer_logos .title{ color: #666666;
                               font-family: Arial;
                               font-size: 13px;
@@ -599,7 +600,7 @@ a.copied_coupon {
 .page-coupon-result .block h3 span{font-weight:bold;color:#F7971C;font-size:15px;}
 
 #header #header-region{background:#f2f2f2;text-align:center}
-#header #header-region .region-header{width:920px;margin:0px auto;}
+#header #header-region .region-header{max-width:920px;margin:0px auto;}
 #header #coupons-finder-form .form-item-url,
 #header #coupons-finder-form #edit-url,
 #header #coupons-finder-form .submit,
@@ -836,8 +837,8 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 }
 /*******Menu*********/
 #header #logo{float:left}
-.wrap{margin:0 auto;width:940px;}
-.main_menu{float:left;width:656px;margin-left:15px}
+.wrap{margin:0 auto; max-width:940px;}
+.main_menu{float:left; margin-left:15px; width: 63%;}
 .nice_menu1{width:100%;float:left;margin-top:30px}
 .nice_menu1 h2{display:none}
 .nice_menu1 .content ul{float:left;margin:0px;padding:0px}
@@ -866,13 +867,13 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .find_coupon .view_video{display: inline-block;float: right;width: 38%;}
 .find_coupon .view_video a#edit-view_video{float:left;}
 .find_coupon  label{ color: #666666;font-size: 13px;font-style: normal;font-weight: normal;text-decoration: none;margin-bottom:5px}
-.find_coupon .form-type-textfield{width:588px;margin-top:0px}
-.find_coupon .form-type-textfield input{width:585px;padding:3px 0 3px 5px;}
+.find_coupon .form-type-textfield{width:88%;margin-top:0px; float: left; position: relative; z-index: 1;}
+.find_coupon .form-type-textfield input{width:99%;padding:3px 0 3px 5px;}
 /* .find_coupon .whatisthis a{  float: right;
     position: absolute;
     right: 29px;
     top: 100px;} */
-.find_coupon .whatisthis{top:-63px;left:0px}
+.find_coupon .whatisthis{top:28px;left:0px}
 .find_coupon .form-type-textfield .description{margin-top:5px}
 #content-header{margin-top:15px}
 #content-header h1.title{margin-bottom:0px;}
@@ -1022,7 +1023,7 @@ bottom: auto;
 z-index: 0;
 top: 259px;}
 
-#block-coupons-coupons_taxonomy_description .content {padding-bottom: 20px;}
+#block-coupons-coupons_taxonomy_description .content {padding-bottom: 20px; display: inline-block;}
 
 #imageDataContainer {height:30px !important;}
 
@@ -1035,4 +1036,63 @@ top: 259px;}
 .lightbox2-alt-layout #bottomNavZoom,
 .lightbox2-alt-layout #bottomNavZoomOut {
   margin-top: 0px !important;
+}
+/* CSS added by Avanish */
+img{max-width: 100%;}
+#main{padding: 10px;}
+#navigation, #primary, #secondary, #main, #footer{max-width: 980px;}
+.sidebar-first #sidebar-first{float: left; width: 240px; margin: 0 20px 0 0;}
+.one-sidebar.sidebar-first #content{float: none; display: inline-block; max-width: 696px; margin: 0;}
+.page-taxonomy.page-taxonomy-term #block-system-main .content > ul{padding-left: 15px;}
+.page-content-about-couponvoodoo #main, 
+.page-content-retailers-covered #main, 
+.page-contact #main{padding: 10px;}
+#header{padding-bottom: 5px;}
+#header #block-nice_menus-1 #nice-menu-1 > li > a{padding-top: 3px; padding-bottom:  3px;}
+
+@media all and (max-width: 980px) and (min-width: 700px){
+    .find_coupon .form-type-textfield{width: 80%;}
+    .find_coupon .whatisthis{top: 48px;}
+    .one-sidebar.sidebar-first #content{max-width: 65%;}
+}
+@media all and (max-width: 900px){
+    .main_menu{margin-left: 5px;}
+    #header #logo{padding-left: 10px;}
+    .front #coupons-finder-form{width: 100%;}
+    .front #coupons-finder-form .form-item-url{width: 80%;}
+}
+@media all and (max-width: 745px){
+    .whatisthis{top: 72px;}
+    .main_menu{width: 100%; margin-left: 0;}
+    #header #block-nice_menus-1{margin-top: 0;}
+}
+@media all and (max-width: 700px){
+    #habla_beta_container_do_not_rely_on_div_classes_or_names{display: none;}
+    .find_coupon .form-type-textfield{width: 85%;}
+    .find_coupon .whatisthis{top: 28px;}
+    .one-sidebar.sidebar-first #content{width: 100%;}
+    .sidebar-first #sidebar-first{width: 100%; margin: 0;}
+}
+@media all and (max-width: 652px){
+    .find_coupon .whatisthis{top: 48px;}
+}
+@media all and (max-width: 556px){
+    .find_coupon .form-type-textfield{width: 80%;}
+}
+@media all and (max-width: 500px){
+    .page-coupon-finder #content{padding: 20px;}
+    .whatisthis{top: 72px;}
+}
+@media all and (max-width: 430px){
+    .whatisthis{top: 62px;}
+    .front #coupons-finder-form .submit, 
+    .front #coupons-finder-form .view_video{float: left; width: auto;}
+    .front #coupons-finder-form #edit-submit, 
+    #modal-content .submit input[type="submit"], 
+    #header #coupons-finder-form [type="submit"], 
+    .front #coupons-finder-form #edit-view_video{padding: 10px;}
+}
+@media all and (max-width: 398px){
+    .whatisthis{top: 82px;}
+    .find_coupon .whatisthis{top: 56px;}
 }
