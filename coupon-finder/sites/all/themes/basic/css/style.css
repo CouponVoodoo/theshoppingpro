@@ -845,8 +845,8 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .nice_menu1 .content ul li{float:left;background:none!important;border:0px;padding:0px}
 .nice_menu1 .content ul li a,.nice_menu1 .content ul li span{color:#fff;font-size:17px;line-height:20px;font-weight:normal;padding:0 14px;text-decoration:none; font-family: cursive}
 .nice_menu1 .content ul li a:hover,.nice_menu1 .content ul li span:hover{color:#f7971c}
-.nice_menu1 .content ul li ul{background:#000;border:0px!important;padding:10px;width:210px;}
-.nice_menu1 .content ul li ul li a{line-height:30px;font-size:12px; width:180px;}
+.nice_menu1 .content ul li ul{background:#000;border:0px!important;padding:10px;width:240px;}
+.nice_menu1 .content ul li ul li a{line-height:30px;font-size:12px; width:210px;}
 .nice_menu2{float:left;}
 
 /******Find coupon*********/
