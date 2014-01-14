@@ -1050,6 +1050,7 @@ img{max-width: 100%;}
 #header{padding-bottom: 5px;}
 #header #block-nice_menus-1 #nice-menu-1 > li > a{padding-top: 3px; padding-bottom:  3px;}
 
+
 @media all and (max-width: 980px) and (min-width: 700px){
     .find_coupon .form-type-textfield{width: 80%;}
     .find_coupon .whatisthis{top: 48px;}
@@ -1057,10 +1058,14 @@ img{max-width: 100%;}
     .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon{width: 220px;}
 }
 @media all and (max-width: 900px){
+    .footer_logos table{width: 100%;}
     .main_menu{margin-left: 5px;}
     #header #logo{padding-left: 10px;}
     .front #coupons-finder-form{width: 100%;}
     .front #coupons-finder-form .form-item-url{width: 80%;}
+    .shareaholic-canvas{position: static;}
+    .shareaholic-canvas > div.shareaholic-share-buttons-container{text-align: center;}
+    .shareaholic-share-buttons-container.vertical ul.shareaholic-share-buttons li.shareaholic-share-button{display: inline-block; vertical-align: top;}
 }
 @media all and (max-width: 745px){
     .whatisthis{top: 72px;}
@@ -1075,9 +1080,6 @@ img{max-width: 100%;}
     .find_coupon .whatisthis{top: 28px;}
     .one-sidebar.sidebar-first #content{width: 100%;}
     .sidebar-first #sidebar-first{width: 100%; margin: 0;}
-    .shareaholic-canvas{position: static; text-align: center;}
-    .shareaholic-canvas > div.shareaholic-share-buttons-container{display: inline-block;}
-    .shareaholic-share-buttons-container.vertical ul.shareaholic-share-buttons li.shareaholic-share-button{float: left;}
 }
 @media all and (max-width: 652px){
     .find_coupon .whatisthis{top: 48px;}
