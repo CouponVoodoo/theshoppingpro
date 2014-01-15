@@ -255,7 +255,7 @@ function custom_api_addproduct($ProInfo){
 
 	  if($_REQUEST['recheck'] != 1){
 		
-		NODESAVE $node->field_category['und'][0]['tid']			= trim( $jsonArray->header->Category );
+		$node->field_category['und'][0]['tid']			= trim( $jsonArray->header->Category );
 		db_query("UPDATE {field_data_field_category} SET field_category_tid = :categoryid WHERE revision_id = :vid", array(':categoryid' => trim( $jsonArray->header->Category ), ':vid' => $node->vid));
 		db_query("UPDATE {field_revision_field_category} SET field_category_tid = :categoryid WHERE revision_id = :vid", array(':categoryid' => trim( $jsonArray->header->Category ), ':vid' => $node->vid));
 	
