@@ -297,8 +297,8 @@ function custom_api_addproduct($ProInfo){
 		// BY ASHISH - NOT USING NODESAVE $node->field_retailer['und']['0']['tid'] 		  	= $jsonArray->header->Retailer;
 		// BY ASHISH - NOT USING NODESAVE $node->field_base_url['und']['0'][value] 		  	= trim( $jsonArray->header->BaseUrl);
 		$node->field_retailer_product_name['und']['0'][value] 	= trim( $jsonArray->header->ProductName );
-		db_query("UPDATE {field_data_field_retailer_product_name} SET field_retailer_product_name = :product_name WHERE revision_id = :vid", array(':product_name' => $node->field_retailer_product_name['und']['0'][value], ':vid' => $node->vid));
-		db_query("UPDATE {field_revision_field_retailer_product_name} SET field_retailer_product_name = :product_name WHERE revision_id = :vid", array(':product_name' => $node->field_retailer_product_name['und']['0'][value], ':vid' => $node->vid));
+		db_query("UPDATE {field_data_field_retailer_product_name} SET field_retailer_product_name_value = :product_name WHERE revision_id = :vid", array(':product_name' => $node->field_retailer_product_name['und']['0'][value], ':vid' => $node->vid));
+		db_query("UPDATE {field_revision_field_retailer_product_name} SET field_retailer_product_name_value = :product_name WHERE revision_id = :vid", array(':product_name' => $node->field_retailer_product_name['und']['0'][value], ':vid' => $node->vid));
 		
 		
 		
