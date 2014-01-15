@@ -307,7 +307,7 @@ function custom_api_addproduct($ProInfo){
 		// BY ASHISH - NOT USING NODESAVE $node->field_brand['und']['0']['tid'] 		  	= trim($jsonArray->header->ProductBrand);
 		$node->field_brand['und']['0']['tid'] 		  	= $BrandId;
 		db_query("UPDATE {field_data_field_brand} SET field_brand_tid = :brandid WHERE revision_id = :vid", array(':brandid' => $node->field_brand['und']['0']['tid'], ':vid' => $node->vid));
-		db_query("UPDATE {field_revision_field_brand} SET field_field_brand_tid = :brandid WHERE revision_id = :vid", array(':brandid' => $node->field_brand['und']['0']['tid'], ':vid' => $node->vid));
+		db_query("UPDATE {field_revision_field_brand} SET field_brand_tid = :brandid WHERE revision_id = :vid", array(':brandid' => $node->field_brand['und']['0']['tid'], ':vid' => $node->vid));
 		
 		
 	  
