@@ -47,19 +47,19 @@
       
       if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
         echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>Coupons Found</div></div>";
-      }else{
+	$affiliate_url=urlencode($node->field_best_coupon_url['und']['0']['value']);
+	$affiliate_url_uncoded=$node->field_best_coupon_url['und']['0']['value'];
+	}else{
         echo "<div class='no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='no_coupons_text'>No Coupons Found</div></div>";
-      }
+ 	$affiliate_url=urlencode($node->field_affiliateurl['und']['0']['value']);
+	$affiliate_url_uncoded=$node->field_affiliateurl['und']['0']['value'];
+     }
       
 	global $base_url;
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
-	$affiliate_url=urlencode($node->field_affiliateurl['und']['0']['value']);
 	$coupon_code= urlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
 	$lightbox_url = $base_url."/node/".$node->nid."?pop=1";
-	$affiliate_url_uncoded=$node->field_affiliateurl['und']['0']['value'];
-	 		
-	   
       $uplImg = $node->field_product_images['und'][0]['uri'];
       $imgPath = $imgUri = image_style_url('200x200', $uplImg);
 	  
