@@ -334,6 +334,9 @@ function custom_api_addproduct($ProInfo){
 
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_affiliateurl['und']['0'][value]	  	= trim( $jsonArray->header->AffiliateURL );
+		db_query("UPDATE {field_data_field_affiliateurl} SET field_affiliateurl_value = :affiliate_url WHERE revision_id = :vid", array(':affiliate_url' => trim( $jsonArray->header->AffiliateURL ), ':vid' => $node->vid));
+		db_query("UPDATE {field_revision_field_affiliateurl} SET field_affiliateurl_value = :affiliate_url WHERE revision_id = :vid", array(':affiliate_url' => trim( $jsonArray->header->AffiliateURL ), ':vid' => $node->vid));
+
 		// BY ASHISH - NOT USING NODESAVE $node->body['und']['0'][value]			  	= trim( $jsonArray->header->MetaDescription );
 		// BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_description['und']['0'][value]	= trim( $jsonArray->header->bestCouponResult->CouponDesc );
 	  	db_query("UPDATE {field_data_field_best_coupon_description} SET field_best_coupon_description_value = :best_coupon_description WHERE revision_id = :vid", array(':best_coupon_description' => trim( $jsonArray->header->bestCouponResult->CouponDesc ), ':vid' => $node->vid));
