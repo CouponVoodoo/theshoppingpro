@@ -70,7 +70,7 @@ function coupons_viewdemo($ajax) {
 
     $form_state = array(
         'ajax' => TRUE,
-        'title' => t('Coupon Voodoo Demo'),
+        'title' => t('CouponVoodoo Demo'),
     );
 
     // Use ctools to generate ajax instructions for the browser to create
