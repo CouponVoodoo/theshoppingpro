@@ -56,20 +56,6 @@ function coupons_menu() {
 	drupal_set_time_limit(600);
 	// Set cookie for referer.
 	//  setcookie('cv_ref', $_SERVER['HTTP_REFERER']);
-	$referer = $_SERVER['SERVER_NAME'];
-	if ( $parts = parse_url( "$referer" ) ) {
-    $host = $parts[ "scheme" ] . "://" . $parts[ "host" ];
-	}
-	
-	if ($host == 'http://www.google.co.in') {
-	$parts = parse_url($referer);
-    parse_str($parts['query'], $query);
-    $traffic_source = urlencode($host).'---'.urlencode ($query['q']).'---'.urlencode($query['adurl']);
-	} else {
-	$traffic_source = urlencode($host);
-	}
-	
-	setcookie('traffic_source', $traffic_source,0);
 }
 
 function coupons_viewdemo($ajax) {
@@ -895,8 +881,25 @@ function coupons_block_view($delta = '') {
 	//	if ( $parts = parse_url( $_SERVER['HTTP_REFERER'] ) ) {
 	//		echo $parts[ "scheme" ] . "://" . $parts[ "host" ];
 	//	}
-		echo $_SERVER['HTTP_REFERER'];
-		$source = '====='.$_COOKIE['traffic_source'];
+		echo $_SERVER['HTTP_REFERER'].'=========';
+//		$source = '====='.$_COOKIE['traffic_source2'];
+	$referer = $_SERVER['HTTP_REFERER'];
+	if ( $parts = parse_url( "$referer" ) ) {
+    $host = $parts[ "scheme" ] . "://" . $parts[ "host" ];
+	}
+	
+	if ($host == 'http://www.google.co.in') {
+	$parts = parse_url($referer);
+    parse_str($parts['query'], $query);
+    $traffic_source = urlencode($host).'---'.urlencode ($query['q']).'---'.urlencode($query['adurl']);
+	} else {
+	$traffic_source = urlencode($host);
+	}
+	
+	setcookie('traffic_source2', $traffic_source,0);
+
+
+
 		echo $source;
 
 		//print '<pre>';print_r($term);exit;
