@@ -173,6 +173,9 @@ echo nl2br("\n");
 echo nl2br("\n");
 $product_description_links = 'You may also want to view discount codes and offers for all products from:';
 print $product_description_links;
+$source = $_COOKIE['traffic_source'];
+echo $source;
+
 $retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
 if ($retailer['#type'] == 'link') {
     print '<div class="field-content">' . l(t($retailer['#title']), $retailer['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
