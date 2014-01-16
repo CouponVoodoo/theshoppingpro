@@ -354,13 +354,9 @@ mixpanel_track('URL Search', array(
 /* End By Lavesh to track event on mixpanel */
  
   $json = drupal_http_request($url, array('timeout' => 600.0));
-  
   $json = $json->data;
-
   $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
-
-
-  $jsonArray = json_decode($jsonData);
+ $jsonArray = json_decode($jsonData);
   
 /* Start By Lavesh to track event on mixpanel */
 //var_dump($jsonArray);
@@ -471,6 +467,8 @@ function coupons_result($raw_url) {
   
   if ($data = cache_get(base64_decode($cid))) {
     $jsonArray = $data->data;
+
+  
   }
   else {
     $json = drupal_http_request($url, array('timeout' => 600.0));
@@ -482,8 +480,8 @@ function coupons_result($raw_url) {
     $jsonArray = json_decode($jsonData);
     
     //print_r($jsonArray);
-    //die;
-    
+    // die;
+    }
     /**added by sanjay*/
     if($jsonArray->header->Use == 1 || $jsonArray->header->Use == 0){
       //$proTitle = $jsonArray->header->ProductName;
@@ -709,7 +707,7 @@ function coupons_result($raw_url) {
 	  node_save($node);
 	}
       }	
-    }  
+    // }  
     /*end here*/   
     
   }
@@ -736,9 +734,11 @@ function coupons_result($raw_url) {
     global $base_root;
     $title = t('<span>Results for: </span>  ' . urldecode($raw_url));
     $items = array();
-    
+    echo $baseUrl;
     //display product info in case 'use = 1'
     if( $jsonArray->header->Use == 1 ){
+	echo $baseUrl;
+	
       $ProUrl = db_select('field_data_field_base_url', 'n')
 		     ->fields('n', array('entity_id') )
 		     ->condition('n.field_base_url_value', $baseUrl, '=');		   
@@ -746,7 +746,8 @@ function coupons_result($raw_url) {
       $FRProUrl = $RProUrl->fetch();
       $nid = $FRProUrl->entity_id;
       $productURL =  $base_root.base_path().drupal_get_path_alias('node/'.$nid);
-      //die;
+      echo $productURL;
+	  //die;
       //$FrameId = views_embed_view('product_info', 'page', 68);
       //print_r($FrameId);
       //$items[] = $FrameId;
