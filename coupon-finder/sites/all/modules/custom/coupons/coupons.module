@@ -43,26 +43,21 @@ function coupons_menu() {
       'access callback' => TRUE,
       'type' => MENU_CALLBACK,
   );
-  
-  $items['modal/node/%nid'] = array(
-      'page callback' => 'node_modal',
-      'page arguments' => array(2),
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
-  );
-  
+    
   return $items;
 }
 
-function node_modal($nid) {
-    return views_embed_view('product_info', 'block', $nid);
+/**
+ * Implements hook_init
+ */
+ function coupons_init() {
+  // this funciton required. please don't remove it until u are not aware fully.
+  // set it to 600 second
+  drupal_set_time_limit(600);
+  // Set cookie for referer.
+  setcookie('cv_ref', $_SERVER['HTTP_REFERER']);
 }
 
- function coupons_init(){
-	// this funciton required. please don't remove it until u are not aware fully.
-	// set it to 600 second
-	drupal_set_time_limit(600);
- }
 function coupons_viewdemo($ajax) {
   if ($ajax) {
     ctools_include('ajax');
