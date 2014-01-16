@@ -171,8 +171,6 @@ $product_description = 'Buy '.strip_tags($fields['field_retailer_product_name']-
 print $product_description;
 echo nl2br("\n");
 echo nl2br("\n");
-$cookie = $_COOKIE['cv_ref2'];
-echo $_SERVER['HTTP_REFERER'];
 $product_description_links = 'You may also want to view discount codes and offers for all products from:';
 print $product_description_links;
 $retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
