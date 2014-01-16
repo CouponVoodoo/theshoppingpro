@@ -44,22 +44,23 @@
       hide($content['links']);
       
       //echo "<div class='product_name'><a href='{$node->field_page_url[und][0]['value']}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 47)."</a></div>";
-     
 	
-	  if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
+	$original_source = $_COOKIE['traffic_source4'];
+		 
+	if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
         echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>Coupons Found</div></div>";
 	// $affiliate_url=urlencode($node->field_best_coupon_url['und']['0']['value']);
 	// $affiliate_url_uncoded=$node->field_best_coupon_url['und']['0']['value'];
-	$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value']."&subid4=".str_replace(" ", "_", $node->field_retailer_product_name[und][0]['value'])."&subid5=".date('YmdHis');
+	$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value']."&subid4=".str_replace(" ", "_", $node->field_retailer_product_name[und][0]['value'])."-".date('YmdHis')."&subid5=".$original_source;
 	$affiliate_url=urlencode($affiliate_url_uncoded);
 	}else{
         echo "<div class='no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='no_coupons_text'>No Coupons Found</div></div>";
 	// $affiliate_url=urlencode($node->field_affiliateurl['und']['0']['value']);
 	// $affiliate_url_uncoded=$node->field_affiliateurl['und']['0']['value'];
-	$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value']."&subid4=".str_replace(" ", "_", $node->field_retailer_product_name[und][0]['value'])."&subid5=".date('YmdHis');
+	$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value']."&subid4=".str_replace(" ", "_", $node->field_retailer_product_name[und][0]['value'])."-".date('YmdHis')."&subid5=".$original_source;
 	$affiliate_url=urlencode($affiliate_url_uncoded);
 	}
-      
+    echo $affiliate_url_uncoded;  
  	global $base_url;
 	// $urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid).'?width=600&height=600';
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
