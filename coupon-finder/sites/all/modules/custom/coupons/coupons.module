@@ -51,11 +51,13 @@ function coupons_menu() {
  * Implements hook_init
  */
  function coupons_init() {
-  // this funciton required. please don't remove it until u are not aware fully.
-  // set it to 600 second
-  drupal_set_time_limit(600);
-  // Set cookie for referer.
-  setcookie('cv_ref', $_SERVER['HTTP_REFERER']);
+	// this funciton required. please don't remove it until u are not aware fully.
+	// set it to 600 second
+	drupal_set_time_limit(600);
+	// Set cookie for referer.
+	//  setcookie('cv_ref', $_SERVER['HTTP_REFERER']);
+	$traffic_source = $_SERVER['HTTP_REFERER'];
+	setcookie('cv_ref', $traffic_source,0);
 }
 
 function coupons_viewdemo($ajax) {
