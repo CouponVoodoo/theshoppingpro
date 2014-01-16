@@ -56,6 +56,18 @@ function coupons_menu() {
 	drupal_set_time_limit(600);
 	// Set cookie for referer.
 	//  setcookie('cv_ref', $_SERVER['HTTP_REFERER']);
+	$referer = $_SERVER['HTTP_REFERER'];
+	if ( $parts = parse_url( "$referer" ) ) {
+    $host = $parts[ "scheme" ] . "://" . $parts[ "host" ];
+	}
+		if ($host == 'http://www.google.co.in') {
+	$parts = parse_url($referer);
+    parse_str($parts['query'], $query);
+    $traffic_source = urlencode($host).'---'.urlencode ($query['q']).'---'.urlencode($query['adurl']);
+	} else {
+	$traffic_source = urlencode($host);
+	}
+	setcookie('traffic_source3', $traffic_source,0);
 }
 
 function coupons_viewdemo($ajax) {
@@ -878,29 +890,10 @@ function coupons_block_view($delta = '') {
 
 
 		$block['content'] = 'Browse a wide range of '.$term->name.' products with updated discounts, coupons and offers brought to you by CouponVoodoo. Simply click on a '.$term->name.' product of your choice to get the latest discount information for it.';
-	//	if ( $parts = parse_url( $_SERVER['HTTP_REFERER'] ) ) {
-	//		echo $parts[ "scheme" ] . "://" . $parts[ "host" ];
-	//	}
-		echo $_SERVER['HTTP_REFERER'].'=========';
-//		$source = '====='.$_COOKIE['traffic_source2'];
-	$referer = $_SERVER['HTTP_REFERER'];
-	if ( $parts = parse_url( "$referer" ) ) {
-    $host = $parts[ "scheme" ] . "://" . $parts[ "host" ];
-	}
+	$source = $_COOKIE['traffic_source3'];
 	
-	if ($host == 'http://www.google.co.in') {
-	$parts = parse_url($referer);
-    parse_str($parts['query'], $query);
-    $traffic_source = urlencode($host).'---'.urlencode ($query['q']).'---'.urlencode($query['adurl']);
-	} else {
-	$traffic_source = urlencode($host);
-	}
-	
-	setcookie('traffic_source2', $traffic_source,0);
-
-
-
-		echo $traffic_source;
+	echo $_SERVER['HTTP_REFERER']."========";
+	echo $source;
 
 		//print '<pre>';print_r($term);exit;
 	  break;
