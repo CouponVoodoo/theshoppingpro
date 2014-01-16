@@ -900,7 +900,7 @@ function coupons_block_view($delta = '') {
 
 
 
-		echo $source;
+		echo $traffic_source;
 
 		//print '<pre>';print_r($term);exit;
 	  break;
