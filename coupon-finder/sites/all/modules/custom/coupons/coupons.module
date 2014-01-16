@@ -877,6 +877,9 @@ function coupons_block_view($delta = '') {
 	//print_r(menu_get_object('term', 2));exit;
 		$termid = arg(2);
 		$term = taxonomy_term_load($termid);
+		if ( $parts = parse_url( $_SERVER['HTTP_REFERER'] ) ) {
+			echo $parts[ "scheme" ] . "://" . $parts[ "host" ];
+		}
 		$block['content'] = 'Browse a wide range of '.$term->name.' products with updated discounts, coupons and offers brought to you by CouponVoodoo. Simply click on a '.$term->name.' product of your choice to get the latest discount information for it.'.$_SERVER['HTTP_REFERER'];
 		//print '<pre>';print_r($term);exit;
 	  break;
