@@ -56,8 +56,20 @@ function coupons_menu() {
 	drupal_set_time_limit(600);
 	// Set cookie for referer.
 	//  setcookie('cv_ref', $_SERVER['HTTP_REFERER']);
-	$traffic_source = $_SERVER['SERVER_NAME'];
-	setcookie('cv_ref2', $traffic_source,0);
+	$referer = $_SERVER['SERVER_NAME'];
+	if ( $parts = parse_url( "$referer" ) ) {
+    $host = $parts[ "scheme" ] . "://" . $parts[ "host" ];
+	}
+	
+	if ($host == 'http://www.google.co.in') {
+	$parts = parse_url($referer);
+    parse_str($parts['query'], $query);
+    $traffic_source = urlencode($host).'---'.urlencode ($query['q']).'---'.urlencode($query['adurl']);
+	} else {
+	$traffic_source = urlencode($host);
+	}
+	
+	setcookie('traffic_source', $traffic_source,0);
 }
 
 function coupons_viewdemo($ajax) {
