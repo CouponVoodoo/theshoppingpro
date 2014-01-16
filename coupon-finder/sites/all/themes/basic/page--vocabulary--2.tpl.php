@@ -59,8 +59,7 @@
 	// $affiliate_url_uncoded=$node->field_affiliateurl['und']['0']['value'];
 	$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value']."&subid4=".str_replace(" ", "_", $node->field_retailer_product_name[und][0]['value'])."-".date('YmdHis')."&subid5=".$original_source;
 	$affiliate_url=urlencode($affiliate_url_uncoded);
-	}
-    echo $affiliate_url_uncoded;  
+	}  
  	global $base_url;
 	// $urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid).'?width=600&height=600';
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
