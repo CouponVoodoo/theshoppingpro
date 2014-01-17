@@ -68,7 +68,7 @@ function coupons_menu() {
 	$traffic_source = urlencode($host);
 	}
 	if (!isset($_COOKIE['traffic_source8'])) { 
-	setcookie('traffic_source8', $traffic_source,0,'/');
+	setcookie('traffic_source8', $traffic_source, (time()+60*60*24*30),'/', 'couponvoodoo.com');
 	}
 }
 
