@@ -55,18 +55,18 @@
         echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>Coupons Found</div></div>";
 	// $affiliate_url=urlencode($node->field_best_coupon_url['und']['0']['value']);
 	// $affiliate_url_uncoded=$node->field_best_coupon_url['und']['0']['value'];
-	$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value']."&subid4=".str_replace(" ", "_", $node->field_retailer_product_name[und][0]['value'])."-".date('YmdHis')."&subid5=".$original_source;
+	$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value']."&subid4=".str_replace(" ", "_", $node->field_retailer_product_name[und][0]['value'])."-".date('YmdHis');
 	$affiliate_url=urlencode($affiliate_url_uncoded);
 	}else{
         echo "<div class='no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='no_coupons_text'>No Coupons Found</div></div>";
 	// $affiliate_url=urlencode($node->field_affiliateurl['und']['0']['value']);
 	// $affiliate_url_uncoded=$node->field_affiliateurl['und']['0']['value'];
-	$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value']."&subid4=".str_replace(" ", "_", $node->field_retailer_product_name[und][0]['value'])."-".date('YmdHis')."&subid5=".$original_source;
+	$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value']."&subid4=".str_replace(" ", "_", $node->field_retailer_product_name[und][0]['value'])."-".date('YmdHis');
 	$affiliate_url=urlencode($affiliate_url_uncoded);
 	}  
  	global $base_url;
 	// $urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid).'?width=600&height=600';
-	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
+	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid).'?pop=1';
 	$popup_url =  $base_url.'/'.current_path().'?popdisplay=1&popurl='.urlencode($urlAlias);
 	$coupon_code=urlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
@@ -95,7 +95,7 @@
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
                         <div class='field-item even product_img'>
-							<a href='{$coupon_display_url}' onclick=window.open('{$popup_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
+							<a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
                         
 						</div>";
       echo  $img .=    "</div>
