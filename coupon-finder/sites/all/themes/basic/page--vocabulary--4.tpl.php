@@ -47,7 +47,11 @@
       
       //echo "<div class='product_name'><a href='{$node->field_page_url[und][0]['value']}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 47)."</a></div>";
       //echo "<div class='product_name'><a href='{$node->field_page_url[und][0]['value']}' >".$node->field_retailer[und][0]['value']."</a><div>";
-      
+    if (!isset($_COOKIE['traffic_source8'])) {
+	$original_source = 'Direct_Traffic';
+	} else {
+	$original_source = $_COOKIE['traffic_source8'];
+	}
       
       if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
         echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>Coupons Found</div></div>";
