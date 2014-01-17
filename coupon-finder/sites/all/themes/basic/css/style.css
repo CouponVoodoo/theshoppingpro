@@ -838,7 +838,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 /*******Menu*********/
 #header #logo{float:left}
 .wrap{margin:0 auto; max-width:940px;}
-.main_menu{float:left; margin-left:15px; width: 100%;}
+.main_menu{float:left; margin-left:15px; width: auto; margin-top: 35px}
 .nice_menu1{width:100%;float:left;}
 .nice_menu1 h2{display:none}
 .nice_menu1 .content ul{float:left;margin:0px;padding:0px}
@@ -1059,7 +1059,7 @@ img{max-width: 100%;}
 }
 @media all and (max-width: 900px){
     .footer_logos table{width: 100%;}
-    .main_menu{margin-left: 5px;}
+    .main_menu{margin-left: 5px; margin-top: 0;}
     #header #logo{padding-left: 10px;}
     .front #coupons-finder-form{width: 100%;}
     .front #coupons-finder-form .form-item-url{width: 80%;}
@@ -1073,6 +1073,7 @@ img{max-width: 100%;}
     #header #block-nice_menus-1{margin-top: 0;}
 }
 @media all and (max-width: 700px){
+    .shareaholic-canvas{display: none;}
     .page-taxonomy-term #block-system-main .block-inner .content{text-align: center;}
     .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon{text-align: left; float: none; display: inline-block;}
     #habla_beta_container_do_not_rely_on_div_classes_or_names{display: none;}
