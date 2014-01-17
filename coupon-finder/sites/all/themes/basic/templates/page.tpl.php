@@ -71,7 +71,24 @@
     <section id="content">
 
         <?php if ($breadcrumb || $title|| $messages || $tabs || $action_links): ?>
-          <div id="content-header">
+		
+		<!-- BY ASHISH TO SHOW POP IN NEW TAB FROM LANDING PAGES-->
+		<div id="product_popup"><a href='{urldecode($_GET['popurl'])}' rel='lightframe[|width:980px; height:1200px; scrolling: auto;]' ></a></div>
+		
+		<?php
+		if (!empty($_GET['popdisplay'])) {
+		// window.location.replace(\"" . $_GET['popurl']. "\");
+       
+		drupal_add_js ("jQuery(document).ready(function() { jQuery('#product_popup').trigger('click'); })");
+		//  drupal_add_js("jQuery(window).load(function(){
+        //          setTimeout(function(){
+        //             window.location.replace(\"" . $_GET['popurl']. "\");
+        //          }, 5000);
+        // });", array('type' => 'inline', 'scope' => 'footer'));
+		
+		}
+		?>
+		<div id="content-header">
 
             <?php print $breadcrumb; ?>
 
