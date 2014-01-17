@@ -53,13 +53,14 @@
         echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>Coupons Found</div></div>";
 	// $affiliate_url=urlencode($node->field_best_coupon_url['und']['0']['value']);
 	// $affiliate_url_uncoded=$node->field_best_coupon_url['und']['0']['value'];
-	$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value']."&subid4=".str_replace(" ", "_", $node->field_retailer_product_name[und][0]['value'])."-".date('YmdHis');
+	$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value'];
 	$affiliate_url=urlencode($affiliate_url_uncoded);
 	}else{
         echo "<div class='no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='no_coupons_text'>No Coupons Found</div></div>";
 	// $affiliate_url=urlencode($node->field_affiliateurl['und']['0']['value']);
 	// $affiliate_url_uncoded=$node->field_affiliateurl['und']['0']['value'];
-	$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value']."&subid4=".str_replace(" ", "_", $node->field_retailer_product_name[und][0]['value'])."-".date('YmdHis');
+//	$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value']."&subid4=".str_replace(" ", "_", $node->field_retailer_product_name[und][0]['value'])."-".date('YmdHis');
+	$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
 	$affiliate_url=urlencode($affiliate_url_uncoded);
      }
       
