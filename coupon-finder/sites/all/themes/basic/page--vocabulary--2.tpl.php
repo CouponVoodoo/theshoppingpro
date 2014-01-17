@@ -66,7 +66,7 @@
 	}  
  	global $base_url;
 	// $urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid).'?width=600&height=600';
-	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid).'?pop=1';
+	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
 	$popup_url =  $base_url.'/'.current_path().'?popdisplay=1&popurl='.urlencode($urlAlias);
 	$coupon_code=urlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
