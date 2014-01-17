@@ -45,8 +45,8 @@
       
       //echo "<div class='product_name'><a href='{$node->field_page_url[und][0]['value']}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 47)."</a></div>";
 	
-	$original_source = $_COOKIE['traffic_source5'];
-	mail('ashishgupta97065@gmail.com','cookies','========'.print_r($original_source));
+	$original_source = $_COOKIE['traffic_source6'];
+	// mail('ashishgupta97065@gmail.com','cookies','========'.print_r($original_source));
 		 
 	if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
         echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>Coupons Found</div></div>";
