@@ -67,7 +67,7 @@ function coupons_menu() {
 	} else {
 	$traffic_source = urlencode($host);
 	}
-	if (!isset($_COOKIE['traffic_source5'])) { 
+	if (!isset($_COOKIE['traffic_source6'])) { 
 	setcookie('traffic_source5', $traffic_source,0);
 	}
 }
