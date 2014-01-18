@@ -70,7 +70,8 @@
      }
       
 	global $base_url;
-	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
+	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid)."?pop=1";
+	$popup_url =  $base_url.'/'.current_path().'?popdisplay=1&popurl='.urlencode($urlAlias);
 	$coupon_code= urlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
 	$lightbox_url = $base_url."/node/".$node->nid."?pop=1";
@@ -82,14 +83,14 @@
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
                         <div class='field-item even product_img'>
-							<a href='{$urlAlias}' onclick=window.open('{$affiliate_url_uncoded}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
+							<a href='{$affiliate_url_uncoded}' onclick=window.open('{$popup_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
                         </div>";
       echo  $img .=    "</div>
                 </div>";
 
 //	<a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$affiliate_url_uncoded}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
 
-      echo "<div class='product_name'><a  href='{$urlAlias}' onclick=window.open('{$affiliate_url_uncoded}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
+      echo "<div class='product_name'><a  href='{$affiliate_url_uncoded}' onclick=window.open('{$popup_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
 //	  echo "<div class='product_name'><a  href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$affiliate_url_uncoded}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
 	}
 	  if($node->field_best_coupon_status[und][0]['value'] == 1){
@@ -97,13 +98,13 @@
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
                         <div class='field-item even product_img'>
-							<a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
+							<a href='{$coupon_display_url}' onclick=window.open('{$popup_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
                         
 						</div>";
       echo  $img .=    "</div>
                 </div>";
  //	<a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$coupon_display_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
-  		  echo "<div class='product_name'><a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
+  		  echo "<div class='product_name'><a href='{$coupon_display_url}' onclick=window.open('{$popup_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
 	    
 //		  echo "<div class='product_name'><a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
 	   }
@@ -183,13 +184,13 @@
  
  	
 //	 echo "<div class='d_view_store'> <a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$coupon_display_url}')//;return true;>View Details</a></div>";
-	 echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>View Details</a></div>";
+	 echo "<div class='d_view_store'> <a href='{$coupon_display_url}' onclick=window.open('{$popup_url}')//;return true;>View Details</a></div>";
 	
 	        }
       if($node->field_best_coupon_status[und][0]['value'] == 0){
         
 //		echo "<div class='d_view_store'><a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$affiliate_url_uncoded}')//;return true;}'>View Store</a></div>";
-        echo "<div class='d_view_store'><a href='{$urlAlias}' onclick=window.open('{$affiliate_url_uncoded}')//;return true;>View Details</a></div>";
+        echo "<div class='d_view_store'><a href='{$affiliate_url_uncoded}' onclick=window.open('{$popup_url}')//;return true;>View Details</a></div>";
         
 		
 		
