@@ -79,7 +79,7 @@
 		if (!empty($_GET['popdisplay'])) {
 		// window.location.replace(\"" . $_GET['popurl']. "\");
        
-		drupal_add_js ("jQuery(document).ready(function() { alert('here'); jQuery('#product_popup').trigger('click'); });", array('type' => 'inline', 'scope' => 'footer'));
+		drupal_add_js ("jQuery(document).ready(function() { jQuery('#product_popup a').trigger('click'); });", array('type' => 'inline', 'scope' => 'footer'));
 		//  drupal_add_js("jQuery(window).load(function(){
         //          setTimeout(function(){
         //             window.location.replace(\"" . $_GET['popurl']. "\");
