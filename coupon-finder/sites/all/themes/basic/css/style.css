@@ -1105,3 +1105,9 @@ img{max-width: 100%;}
     .whatisthis{top: 82px;}
     .find_coupon .whatisthis{top: 56px;}
 }
+
+#imageData #bottomNav {
+    height: 66px;
+    margin-top: -1250px;
+    padding-top: 5px;
+}
