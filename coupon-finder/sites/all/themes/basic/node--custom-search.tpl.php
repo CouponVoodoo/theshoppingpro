@@ -71,8 +71,10 @@
       
 	global $base_url;
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid)."?pop=1";
-	$popup_url =  $base_url.'/'.current_path().'?popdisplay=1&popurl='.urlencode($urlAlias);
-	$coupon_code= urlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
+	//$popup_url =  $base_url.'/'.current_path().'?popdisplay=1&popurl='.urlencode($urlAlias);
+	$current_full_url = 'http://' .$_SERVER['HTTP_HOST'] .$_SERVER['REQUEST_URI'];
+	$popup_url = $current_full_url.'?popdisplay=1&popurl='.urlencode($urlAlias);
+		$coupon_code= urlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
 	$lightbox_url = $base_url."/node/".$node->nid."?pop=1";
      $uplImg = $node->field_product_images['und'][0]['uri'];
