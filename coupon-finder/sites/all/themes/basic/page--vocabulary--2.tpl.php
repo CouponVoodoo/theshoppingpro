@@ -70,7 +70,6 @@
 	$current_full_url = 'http://' .$_SERVER['HTTP_HOST'] .strtok($_SERVER["REQUEST_URI"],'?');
 	
 	/* BY ASHISH TO ENSURE POP UP ONLY COMES WHERE REQUIRED */
-	
 	if (!empty($_GET['popdisplay'])) {
 	$popdisplay_value = $_GET['popdisplay']+1;
 	$popup_url = $current_full_url.'?popdisplay='.$popdisplay_value.'&popurl='.urlencode($urlAlias);
