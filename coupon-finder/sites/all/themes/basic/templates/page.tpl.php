@@ -74,7 +74,6 @@
 		
 		<!-- BY ASHISH TO SHOW POP IN NEW TAB FROM LANDING PAGES-->
 		<div id="product_popup"><a href="<?php print urldecode($_GET['popurl']); ?>" rel='lightframe[|width:980px; height:1200px; scrolling: auto;]' ></a></div>
-		
 		<?php
 		if (!empty($_GET['popdisplay'])) {
 			$refer_url = $_SERVER['HTTP_REFERER'];
@@ -89,11 +88,6 @@
 			} else {
 				drupal_add_js ("jQuery(document).ready(function() { jQuery('#product_popup a').trigger('click'); });", array('type' => 'inline', 'scope' => 'footer'));
 			}
-			
-			
-			
-
-		
 			}
 		?>
 		<div id="content-header">
