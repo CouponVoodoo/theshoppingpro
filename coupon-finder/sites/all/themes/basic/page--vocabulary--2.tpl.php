@@ -68,8 +68,17 @@
 	// $urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid).'?width=600&height=600';
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid)."?pop=1";
 	$current_full_url = 'http://' .$_SERVER['HTTP_HOST'] .strtok($_SERVER["REQUEST_URI"],'?');
-	$popup_url = $current_full_url.'?popdisplay=1&popurl='.urlencode($urlAlias);
 	
+	/* BY ASHISH TO ENSURE POP UP ONLY COMES WHERE REQUIRED */
+	
+	if (!empty($_GET['popdisplay'])) {
+	$popdisplay_value = $_GET['popdisplay']+1;
+	$popup_url = $current_full_url.'?popdisplay='.$popdisplay_value.'&popurl='.urlencode($urlAlias);
+	} else {
+	$popup_url = $current_full_url.'?popdisplay=1&popurl='.urlencode($urlAlias);
+	}
+	
+	echo $popdisplay_value;
 	
 	$coupon_code=urlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
