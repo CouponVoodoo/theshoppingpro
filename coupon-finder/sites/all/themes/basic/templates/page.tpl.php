@@ -78,15 +78,11 @@
 		<?php
 		if (!empty($_GET['popdisplay'])) {
 			$refer_url = $_SERVER['HTTP_REFERER'];
-			echo nl2br('refer_url: '.$refer_url);
 			$pos = strpos($refer_url, 'popdisplay');
-			echo nl2br('pos: '.$pos);
 			if ($pos !== false) {
 				$parts = parse_url($refer_url);
 				parse_str($parts['query'], $query);
 				$popdisplay_refer = $query['popdisplay'];
-				echo nl2br('popdisplay_refer: '.$popdisplay_refer);
-				echo nl2br('current_popdisplay: '.$_GET['popdisplay']);
 					if ( $popdisplay_refer !== $_GET['popdisplay']) {
 						drupal_add_js ("jQuery(document).ready(function() { jQuery('#product_popup a').trigger('click'); });", array('type' => 'inline', 'scope' => 'footer'));
 					}
