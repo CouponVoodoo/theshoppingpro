@@ -133,7 +133,7 @@ if ($coupon_code == 'Flipkart Offer'){
             </h2>
 			<div class="clear"> </div>
             <div class="coupon_window_title">
-              <div class="bridgecode">' . urldecode ($coupon_code) . '</div>
+              <div class="bridgecode">' . $coupon_code . '</div>
             </div>
             <div class="clear"> </div>
             <h2 class="coupon_window_redirect">
@@ -149,7 +149,7 @@ if ($coupon_code == 'Flipkart Offer'){
             </h2>
 			<div class="clear"> </div>
             <div class="coupon_window_title">
-              <div class="bridgecode">' . urldecode ($coupon_code) . '</div>
+              <div class="bridgecode">' . $coupon_code . '</div>
             </div>
             <div class="clear"> </div>
             <h2 class="coupon_window_redirect">
