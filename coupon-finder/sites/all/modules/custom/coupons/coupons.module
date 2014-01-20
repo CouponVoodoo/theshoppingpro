@@ -1168,9 +1168,12 @@ drupal_add_js("jQuery(document).ready(function($){
 			  $(this).attr('href',url);
 			
 			 var count = url.match(/&c/g).length;
-			  alert ('count: '+count+'URL: '+url);
-			  if (count == 1) {
-			    window.open($(this).attr('href'));
+			   alert ('count: '+count+'URL: '+url);
+			  if (count == '1') {
+				alert ('inside: '+count);
+			window.open($(this).attr('href'));
+			
+			
 			}
 			  /* Mixpanel integration Start*/
 //	      mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
