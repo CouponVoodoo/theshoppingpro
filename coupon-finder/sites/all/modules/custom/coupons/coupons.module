@@ -1137,7 +1137,7 @@ function coupons_copy_coupon($nid){
         $savings['c_' . $i] = $value->Saving;
 	/* Mixpanel end*/
       }
-    // BY ASHISH }
+}
     /* mixpanel */
 drupal_add_js(array('coupons' => $coupons, 'savings' => $savings, 'fullProdUrl' => $fullProdUrl, 'prodUrl' => $prodUrl, 'retailerDomain' => $retailerDomain, 'brand' => $brand), 'setting');
     /* mixpanel */
@@ -1204,7 +1204,7 @@ drupal_add_js("jQuery(document).ready(function($){
                        });
                 });", array('type' => 'inline', 'scope' => 'footer'));
 
-}
+
     if ($is_success) {
       $error_msg = '<div class="messages error">
                 Sorry! We tried our best but no coupons work for your product. Here is a list of coupons we tried, please read the response field for each coupon, you maybe able to avail discounts by increasing your cart value or selecting anther product:
