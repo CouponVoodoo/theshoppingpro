@@ -1137,7 +1137,7 @@ function coupons_copy_coupon($nid){
         $savings['c_' . $i] = $value->Saving;
 	/* Mixpanel end*/
       }
-    }
+    // BY ASHISH }
     /* mixpanel */
 drupal_add_js(array('coupons' => $coupons, 'savings' => $savings, 'fullProdUrl' => $fullProdUrl, 'prodUrl' => $prodUrl, 'retailerDomain' => $retailerDomain, 'brand' => $brand), 'setting');
     /* mixpanel */
@@ -1167,13 +1167,17 @@ drupal_add_js("jQuery(document).ready(function($){
 			
 			  $(this).attr('href',url);
 			
-			 var count = url.match(/&c/g).length;
-			 console.log('count: '+count+'URL: '+url);
-			  if (count == '1') {
-				console.log('inside: '+count);
+			// BY ASHISH: COMMENTED OUT TO PREVENT MULTI CLICK - THIS IS A HACK NEED TO TAKE A RELOOK TO SEE WHERE THE URL IS OPENING FROM
+			
+			// var count = url.match(/&c/g).length;
+			// console.log('count: '+count+'URL: '+url);
+			//  if (count == '1') {
+			//	console.log('inside: '+count);
 			// window.open($(this).attr('href'));
-			}
-			else {console.log('else');return ;}
+			//}
+			//else {console.log('else');return ;}
+			
+			
 			  /* Mixpanel integration Start*/
 //	      mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
 	      
@@ -1200,7 +1204,7 @@ drupal_add_js("jQuery(document).ready(function($){
                        });
                 });", array('type' => 'inline', 'scope' => 'footer'));
 
-
+}
     if ($is_success) {
       $error_msg = '<div class="messages error">
                 Sorry! We tried our best but no coupons work for your product. Here is a list of coupons we tried, please read the response field for each coupon, you maybe able to avail discounts by increasing your cart value or selecting anther product:
