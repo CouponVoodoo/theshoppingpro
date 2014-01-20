@@ -1164,10 +1164,15 @@ drupal_add_js("jQuery(document).ready(function($){
               $(this).html(coupon_code);
               $(this).addClass('copied_coupon')
               var url = $(this).attr('href')+'&c='+coupon_code;
-	      
-              $(this).attr('href',url);
-              window.open($(this).attr('href'));
-	      /* Mixpanel integration Start*/
+			
+			  $(this).attr('href',url);
+			
+			 var count = url.match(/&c/g).length;
+			  
+			  if (count == 1) {
+			    window.open($(this).attr('href'));
+			}
+			  /* Mixpanel integration Start*/
 //	      mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
 	      
 	      /* Mixpanel integration Close*/
