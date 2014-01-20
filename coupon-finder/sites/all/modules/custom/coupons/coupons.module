@@ -104,9 +104,11 @@ function coupons_redirect_interim_page() {
   global $base_url;
   $url = $_GET['s'];
   $coupon_code = $_GET['c'];
-  $url = urldecode($url);
 
-/** START OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIECT PAGE */  
+  /* Removed by Ashish to prevent double decoding on the redirect page*/
+  //  $url = urldecode($url); 
+
+/** START OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIrECT PAGE */  
   
 mixpanel_track('Coupon Click Redirect', array(
     'Affiliate URL' => $url,
