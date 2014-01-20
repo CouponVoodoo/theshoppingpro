@@ -505,7 +505,7 @@ function custom_api_addproduct($ProInfo){
 /** START OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND LAST CHECKED, HIDE WHERE LAST CHECKED IS GREATER THAN THRESHHOLD*/
 function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $current_time= time();
-   $boost_time=$current_time-(10*3600);
+   $boost_time=$current_time-(18*3600);
    $hide_time=$current_time-(36*3600);
    $solr_boost_time=gmdate('Y-m-d\TH:i:s\Z', $boost_time);
    $solr_hide_time=gmdate('Y-m-d\TH:i:s\Z', $hide_time);
@@ -528,15 +528,13 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    
    
 /** START OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
-/*	$termid = arg(2);
+	$termid = arg(2);
 	$term = taxonomy_term_load($termid);
 	$vid = $term->vid;
 	$seed = rand(1, 1000);
 	if ($vid == 3 OR $vid == 4){
 		$query->addParam('sort', 'random_'.$seed.' asc');
 	} 
-*/
-
 /** END OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
 }
 /** END OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND UPDATE */
