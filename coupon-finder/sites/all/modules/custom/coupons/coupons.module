@@ -1171,9 +1171,7 @@ drupal_add_js("jQuery(document).ready(function($){
 			 console.log('count: '+count+'URL: '+url);
 			  if (count == '1') {
 				console.log('inside: '+count);
-			window.open($(this).attr('href'));
-			
-			
+			// window.open($(this).attr('href'));
 			}
 			else {console.log('else');return ;}
 			  /* Mixpanel integration Start*/
