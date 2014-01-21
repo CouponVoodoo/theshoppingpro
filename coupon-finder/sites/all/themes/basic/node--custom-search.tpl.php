@@ -66,15 +66,16 @@
 	// $affiliate_url_uncoded=$node->field_affiliateurl['und']['0']['value'];
 	$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
 	}  
-
-		if (strpos($affiliate_url_uncoded,'affiliates.tyroodr.com') > 1){
+	/* BY ASHISH: REMOVED DUE TO LINK BREAKAGE */ 
+	/*	if (strpos($affiliate_url_uncoded,'affiliates.tyroodr.com') > 1){
 			// echo 'tyroo';
 			if (strpos($affiliate_url_uncoded,'subid2') == false){
 				// echo 'no subid2';
 				$affiliate_url_uncoded = $affiliate_url_uncoded."&subid2=".$add_tracking;
 			}
 		}
-		if (strpos($affiliate_url_uncoded,'track.in.omgpm.com') > 1){
+	*/
+	if (strpos($affiliate_url_uncoded,'track.in.omgpm.com') > 1){
 				// echo 'omg';
 				$affiliate_url_uncoded = $affiliate_url_uncoded."&uid2=".$add_tracking;
 		}
