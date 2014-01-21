@@ -63,9 +63,10 @@ function coupons_menu() {
 		if ($host == 'http://www.google.co.in') {
 	$parts = parse_url($referer);
     parse_str($parts['query'], $query);
-    $traffic_source = urlencode($host).'---'.urlencode ($query['q']).'---'.urlencode($query['adurl']);
+    // $traffic_source = urlencode($host).'---'.urlencode ($query['q']).'---'.urlencode($query['adurl']);
+	$traffic_source = urlencode($host).'---'.urlencode ($query['q']);
 	} else {
-	$traffic_source = urlencode($_SERVER['HTTP_REFERER']);
+	$traffic_source = urlencode($host);
 	}
 	if (!isset($_COOKIE['traffic_source8'])) { 
 	setcookie('traffic_source8', $traffic_source, (time()+60*60*24*1),'/', 'couponvoodoo.com');
