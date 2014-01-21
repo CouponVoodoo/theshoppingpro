@@ -51,7 +51,7 @@
 	$original_source = $_COOKIE['traffic_source8'];
 	}
 	
-	$add_tracking = urlencode($original_source).'---'.urlencode(date('YmdHis')).'---'.urlencode($_SERVER['HTTP_USER_AGENT']);
+	$add_tracking = $original_source.'---'.urlencode(date('YmdHis')).'---'.urlencode($_SERVER['HTTP_USER_AGENT']);
 	
 	if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
         echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>Coupons Found</div></div>";
@@ -69,7 +69,7 @@
 			// echo 'tyroo';
 			if (strpos($affiliate_url_uncoded,'subid2') == false){
 				// echo 'no subid2';
-				$affiliate_url_uncoded = $affiliate_url_uncoded."&subid2=".$add_tracking;
+				$affiliate_url_uncoded = $affiliate_url_uncoded."&subid2=".$original_source."&subid3=".urlencode(date('YmdHis')).'---'.urlencode($_SERVER['HTTP_USER_AGENT']);
 			}
 		}
 		if (strpos($affiliate_url_uncoded,'track.in.omgpm.com') > 1){
