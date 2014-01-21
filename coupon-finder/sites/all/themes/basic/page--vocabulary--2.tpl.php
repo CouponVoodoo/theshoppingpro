@@ -66,17 +66,16 @@
 	}  
 
 		if (strpos($affiliate_url_uncoded,'affiliates.tyroodr.com') > 1){
-			echo 'tyroo';
+			// echo 'tyroo';
 			if (strpos($affiliate_url_uncoded,'subid2') == false){
-				echo 'no subid';
+				// echo 'no subid2';
 				$affiliate_url_uncoded = $affiliate_url_uncoded."&subid2=".$add_tracking;
 			}
 		}
 		if (strpos($affiliate_url_uncoded,'track.in.omgpm.com') > 1){
-				echo 'omg';
+				// echo 'omg';
 				$affiliate_url_uncoded = $affiliate_url_uncoded."&uid2=".$add_tracking;
 		}
-	echo $affiliate_url_uncoded;
 	$affiliate_url=urlencode($affiliate_url_uncoded);
 	
  	global $base_url;
