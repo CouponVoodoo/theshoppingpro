@@ -51,19 +51,34 @@
 	$original_source = $_COOKIE['traffic_source8'];
 	}
 	
+	$add_tracking = urlencode($original_source).'---'.urlencode(date('YmdHis')).'---'.urlencode($_SERVER['HTTP_USER_AGENT']);
+	
 	if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
         echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>Coupons Found</div></div>";
 	// $affiliate_url=urlencode($node->field_best_coupon_url['und']['0']['value']);
 	// $affiliate_url_uncoded=$node->field_best_coupon_url['und']['0']['value'];
-	$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value'];
-	$affiliate_url=urlencode($affiliate_url_uncoded);
+	$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value'];	
 	}else{
         echo "<div class='no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='no_coupons_text'>No Coupons Found</div></div>";
 	// $affiliate_url=urlencode($node->field_affiliateurl['und']['0']['value']);
 	// $affiliate_url_uncoded=$node->field_affiliateurl['und']['0']['value'];
 	$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
-	$affiliate_url=urlencode($affiliate_url_uncoded);
 	}  
+
+		if (strpos($affiliate_url_uncoded,'affiliates.tyroodr.com') > 1){
+			echo 'tyroo';
+			if (strpos($affiliate_url_uncoded,'subid2') == false){
+				echo 'no subid';
+				$affiliate_url_uncoded = $affiliate_url_uncoded."&subid2=".$add_tracking;
+			}
+		}
+		if (strpos($affiliate_url_uncoded,'track.in.omgpm.com') > 1){
+				echo 'omg';
+				$affiliate_url_uncoded = $affiliate_url_uncoded."&uid2=".$add_tracking;
+		}
+	echo $affiliate_url_uncoded;
+	$affiliate_url=urlencode($affiliate_url_uncoded);
+	
  	global $base_url;
 	// $urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid).'?width=600&height=600';
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid)."?pop=1";
