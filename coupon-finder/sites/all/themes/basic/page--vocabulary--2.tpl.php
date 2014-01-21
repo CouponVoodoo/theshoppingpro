@@ -72,11 +72,12 @@
 				$affiliate_url_uncoded = $affiliate_url_uncoded."&subid2=".$original_source."&subid3=".urlencode(date('YmdHis')).'---'.urlencode($_SERVER['HTTP_USER_AGENT']);
 			}
 		}
-	*/
+	
 	if (strpos($affiliate_url_uncoded,'track.in.omgpm.com') > 1){
 				// echo 'omg';
 				$affiliate_url_uncoded = $affiliate_url_uncoded."&uid2=".$add_tracking;
 		}
+	*/
 	$affiliate_url=urlencode($affiliate_url_uncoded);
 	
  	global $base_url;

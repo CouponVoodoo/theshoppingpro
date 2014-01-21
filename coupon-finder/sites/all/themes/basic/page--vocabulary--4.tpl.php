@@ -72,13 +72,15 @@
 				$affiliate_url_uncoded = $affiliate_url_uncoded."&subid2=".$add_tracking;
 			}
 		}
-	*/
+	
 	if (strpos($affiliate_url_uncoded,'track.in.omgpm.com') > 1){
 				// echo 'omg';
 				$affiliate_url_uncoded = $affiliate_url_uncoded."&uid2=".$add_tracking;
 		}
+	*/
 	$affiliate_url=urlencode($affiliate_url_uncoded);      
- 	global $base_url;
+ 	
+	global $base_url;
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid)."?pop=1";
 	//$popup_url =  $base_url.'/'.current_path().'?popdisplay=1&popurl='.urlencode($urlAlias);
 	$current_full_url = 'http://' .$_SERVER['HTTP_HOST'] .strtok($_SERVER["REQUEST_URI"],'?');
