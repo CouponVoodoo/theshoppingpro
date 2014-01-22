@@ -520,21 +520,23 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
 	$vid = $term->vid;
 
 
-/*	if ($vid ==2 OR $vid == 3 OR $vid == 4){
+if ($vid ==2 OR $vid == 3 OR $vid == 4){
 		$query->addParam('sort', 'its_field_best_coupon_saving desc');
 		$query->addParam('sort', 'itm_field_best_coupon_status desc');
 	}
- */	  
+	  
    
    
 /** START OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
+/*
 	$termid = arg(2);
 	$term = taxonomy_term_load($termid);
 	$vid = $term->vid;
 	$seed = rand(1, 1000);
 	if ($vid == 3 OR $vid == 4){
 		$query->addParam('sort', 'random_'.$seed.' asc');
-	} 
+	}
+*/	
 /** END OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
 }
 /** END OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND UPDATE */
