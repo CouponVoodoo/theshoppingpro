@@ -521,7 +521,7 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
 
 
 if ($vid ==2 OR $vid == 3 OR $vid == 4){
-		$query->addParam('sort', 'its_field_best_coupon_saving desc');
+//		$query->addParam('sort', 'its_field_best_coupon_saving desc');
 		$query->addParam('sort', 'itm_field_best_coupon_status desc');
 	}
 	  
