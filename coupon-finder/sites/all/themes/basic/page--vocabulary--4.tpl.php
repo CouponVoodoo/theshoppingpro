@@ -63,15 +63,32 @@
 	global $base_url;
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid)."?pop=1";
 	//$popup_url =  $base_url.'/'.current_path().'?popdisplay=1&popurl='.urlencode($urlAlias);
-	$current_full_url = 'http://' .$_SERVER['HTTP_HOST'] .strtok($_SERVER["REQUEST_URI"],'?');
+	$current_full_url = 'http://' .$_SERVER['HTTP_HOST'] .$_SERVER["REQUEST_URI"];
+	
+	if (strpos($current_full_url,'popdisplay') != false) {
+		$pop_loc = strpos($current_full_url,'popdisplay');
+		$x_loc = strpos($current_full_url,'x=x');
+		$current_url_part1 = substr($current_full_url,0,($pop_loc));
+		if (strlen($current_full_url) != ($x_loc+3)){
+			$current_url_part2 = substr($current_full_url,($x_loc+3),1000);
+		}
+		$current_full_url = $current_url_part1.$current_url_part2;
+	}
 	
 	/* BY ASHISH TO ENSURE POP UP ONLY COMES WHERE REQUIRED */
-	
 	if (!empty($_GET['popdisplay'])) {
 	$popdisplay_value = $_GET['popdisplay']+1;
-	$popup_url = $current_full_url.'?popdisplay='.$popdisplay_value.'&popurl='.urlencode($urlAlias);
+		if (strpos($current_full_url,'?') == false) {
+			$popup_url = $current_full_url.'?&popdisplay='.$popdisplay_value.'&popurl='.urlencode($urlAlias).'&x=x';
+		} else {
+			$popup_url = $current_full_url.'&popdisplay='.$popdisplay_value.'&popurl='.urlencode($urlAlias).'&x=x';
+		}
 	} else {
-	$popup_url = $current_full_url.'?popdisplay=1&popurl='.urlencode($urlAlias);
+		if (strpos($current_full_url,'?') == false) {
+			$popup_url = $current_full_url.'?&popdisplay=1&popurl='.urlencode($urlAlias).'&x=x';
+		} else {
+			$popup_url = $current_full_url.'&popdisplay=1&popurl='.urlencode($urlAlias).'&x=x';
+		}
 	}
 	if($node->field_best_coupon_couponcode['und']['0'][value] == '') {
 	$coupon_code = urlencode('no-coupons');

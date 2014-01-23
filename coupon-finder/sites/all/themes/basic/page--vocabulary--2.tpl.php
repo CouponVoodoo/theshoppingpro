@@ -69,23 +69,12 @@
 	
 	if (strpos($current_full_url,'popdisplay') != false) {
 		$pop_loc = strpos($current_full_url,'popdisplay');
-		// echo "pop = ".$pop_loc;
 		$x_loc = strpos($current_full_url,'x=x');
-		// echo "pop = ".$x_loc."----";
-		// echo 'lenghth = '.strlen($current_full_url);
-		//$current_full_url = substr($current_full_url,0,($pop_loc-1))+ substr($current_full_url,($x_loc+3),1000);
 		$current_url_part1 = substr($current_full_url,0,($pop_loc));
 		if (strlen($current_full_url) != ($x_loc+3)){
 			$current_url_part2 = substr($current_full_url,($x_loc+3),1000);
-		//	echo 'no further ppart';
 		}
-		
-		//echo 'p1 - '.$current_url_part1;
-		//echo 'p2 -'.$current_url_part2."-";
-		
 		$current_full_url = $current_url_part1.$current_url_part2;
-
-		
 	}
 	
 	/* BY ASHISH TO ENSURE POP UP ONLY COMES WHERE REQUIRED */
