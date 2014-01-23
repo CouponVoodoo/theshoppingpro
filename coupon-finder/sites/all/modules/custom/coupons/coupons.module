@@ -61,11 +61,14 @@ function coupons_menu() {
 		if (isset($_SERVER['HTTP_REFERER'])) {
 			$referer = $_SERVER['HTTP_REFERER'];
 			$uri = parse_url($_SERVER['HTTP_REFERER']);
-			$domain = substr($uri['host'], strpos($uri['host'], ".")+1, strlen($uri['host']));
+			// $domain = substr($uri['host'], strpos($uri['host'], ".")+1, strlen($uri['host']));
+			$domain = $uri['host'];
+			
+			
 			if ( $parts = parse_url( "$referer" ) ) {
 			   $host = $parts[ "scheme" ] . "://" . $parts[ "host" ];
 			}
-			if (strpos($domain,'google') > 1) {
+			if (strpos($domain,'google') != false) {
 				$parts = parse_url($referer);
 				parse_str($parts['query'], $query);
 				// $traffic_source = urlencode($host).'---'.urlencode ($query['q']).'---'.urlencode($query['adurl']);
