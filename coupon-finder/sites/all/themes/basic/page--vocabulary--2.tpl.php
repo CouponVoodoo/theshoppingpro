@@ -45,13 +45,7 @@
       
       //echo "<div class='product_name'><a href='{$node->field_page_url[und][0]['value']}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 47)."</a></div>";
 	
-	if (!isset($_COOKIE['traffic_source8'])) {
-	$original_source = 'Direct_Traffic';
-	} else {
-	$original_source = $_COOKIE['traffic_source8'];
-	}
-	
-	$add_tracking = $original_source.'---'.urlencode(date('YmdHis')).'---'.urlencode($_SERVER['HTTP_USER_AGENT']);
+
 	
 	if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
         echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>Coupons Found</div></div>";
@@ -64,20 +58,7 @@
 	// $affiliate_url_uncoded=$node->field_affiliateurl['und']['0']['value'];
 	$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
 	}  
-	/* BY ASHISH: REMOVED DUE TO LINK BREAKAGE */ 
-	/*	if (strpos($affiliate_url_uncoded,'affiliates.tyroodr.com') > 1){
-			// echo 'tyroo';
-			if (strpos($affiliate_url_uncoded,'subid2') == false){
-				// echo 'no subid2';
-				$affiliate_url_uncoded = $affiliate_url_uncoded."&subid2=".$original_source."&subid3=".urlencode(date('YmdHis')).'---'.urlencode($_SERVER['HTTP_USER_AGENT']);
-			}
-		}
-	
-	if (strpos($affiliate_url_uncoded,'track.in.omgpm.com') > 1){
-				// echo 'omg';
-				$affiliate_url_uncoded = $affiliate_url_uncoded."&uid2=".$add_tracking;
-		}
-	*/
+
 	$affiliate_url=urlencode($affiliate_url_uncoded);
 	
  	global $base_url;
@@ -93,8 +74,12 @@
 	$popup_url = $current_full_url.'?popdisplay=1&popurl='.urlencode($urlAlias);
 	}
 	
-	
+	if($node->field_best_coupon_couponcode['und']['0'][value] = '') {
 	$coupon_code=urlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
+	} else {
+	$coupon_code = urlencode('no-coupons');
+	}
+	
 	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
  	$uplImg = $node->field_product_images['und'][0]['uri'];
     $imgPath = $imgUri = image_style_url('200x200', $uplImg);
@@ -106,14 +91,14 @@
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
                         <div class='field-item even product_img'>
-							<a href='{$affiliate_url_uncoded}' onclick=window.open('{$popup_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
+							<a href='{$coupon_display_url}' onclick=window.open('{$popup_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
                         </div>";
       echo  $img .=    "</div>
                 </div>";
 
 //	<a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$affiliate_url_uncoded}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
 
-      echo "<div class='product_name'><a  href='{$affiliate_url_uncoded}' onclick=window.open('{$popup_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
+      echo "<div class='product_name'><a  href='{$coupon_display_url}' onclick=window.open('{$popup_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
 //	  echo "<div class='product_name'><a  href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$affiliate_url_uncoded}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
 	}
 	  if($node->field_best_coupon_status[und][0]['value'] == 1){
@@ -194,7 +179,7 @@
       if($node->field_best_coupon_status[und][0]['value'] == 0){
         
 //		echo "<div class='d_view_store'><a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$affiliate_url_uncoded}')//;return true;}'>View Store</a></div>";
-        echo "<div class='d_view_store'><a href='{$affiliate_url_uncoded}' onclick=window.open('{$popup_url}')//;return true;>View Details</a></div>";
+        echo "<div class='d_view_store'><a href='{$coupon_display_url}' onclick=window.open('{$popup_url}')//;return true;>View Details</a></div>";
         
 		
 		
