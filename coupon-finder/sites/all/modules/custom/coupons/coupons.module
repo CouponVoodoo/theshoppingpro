@@ -56,20 +56,25 @@ function coupons_menu() {
 	drupal_set_time_limit(600);
 	// Set cookie for referer.
 	//  setcookie('cv_ref', $_SERVER['HTTP_REFERER']);
-	$referer = $_SERVER['HTTP_REFERER'];
-	if ( $parts = parse_url( "$referer" ) ) {
-    $host = $parts[ "scheme" ] . "://" . $parts[ "host" ];
-	}
-		if ($host == 'http://www.google.co.in') {
-	$parts = parse_url($referer);
-    parse_str($parts['query'], $query);
-    // $traffic_source = urlencode($host).'---'.urlencode ($query['q']).'---'.urlencode($query['adurl']);
-	$traffic_source = urlencode($host).'---'.urlencode ($query['q']);
-	} else {
-	$traffic_source = urlencode($host);
-	}
-	if (!isset($_COOKIE['traffic_source8'])) { 
-	setcookie('traffic_source8', $traffic_source, (time()+60*60*24*1),'/', 'couponvoodoo.com');
+	if (!isset($_COOKIE['traffic_source9'])) { 
+
+		if (isset($_SERVER['HTTP_REFERER'])) {
+			$referer = $_SERVER['HTTP_REFERER'];
+			$uri = parse_url($_SERVER['HTTP_REFERER']);
+			$domain = substr($uri['host'], strpos($uri['host'], ".")+1, strlen($uri['host']));
+			if ( $parts = parse_url( "$referer" ) ) {
+			   $host = $parts[ "scheme" ] . "://" . $parts[ "host" ];
+			}
+			if ($domain == 'google.co.in') {
+				$parts = parse_url($referer);
+				parse_str($parts['query'], $query);
+				// $traffic_source = urlencode($host).'---'.urlencode ($query['q']).'---'.urlencode($query['adurl']);
+				$traffic_source = 'Ggl-'.urlencode ($query['q']);
+			} else {
+				$traffic_source = urlencode($domain);
+			}
+		}
+	setcookie('traffic_source9', $traffic_source, (time()+60*60*24*1),'/', 'couponvoodoo.com');
 	}
 }
 
