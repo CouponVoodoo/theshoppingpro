@@ -74,10 +74,10 @@
 	$popup_url = $current_full_url.'?popdisplay=1&popurl='.urlencode($urlAlias);
 	}
 	
-	if($node->field_best_coupon_couponcode['und']['0'][value] = '') {
-	$coupon_code=urlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
-	} else {
+	if($node->field_best_coupon_couponcode['und']['0'][value] == '') {
 	$coupon_code = urlencode('no-coupons');
+	} else {
+	$coupon_code=urlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	}
 	
 	$coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
