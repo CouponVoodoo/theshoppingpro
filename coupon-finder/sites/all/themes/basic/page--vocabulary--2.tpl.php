@@ -77,11 +77,11 @@
 		$current_url_part1 = substr($current_full_url,0,($pop_loc));
 		if (strlen($current_full_url) != ($x_loc+3)){
 			$current_url_part2 = substr($current_full_url,($x_loc+3),1000);
-			echo 'no further ppart';
+		//	echo 'no further ppart';
 		}
 		
-		echo 'p1 - '.$current_url_part1;
-		echo 'p2 -'.$current_url_part2."-";
+		//echo 'p1 - '.$current_url_part1;
+		//echo 'p2 -'.$current_url_part2."-";
 		
 		$current_full_url = $current_url_part1.$current_url_part2;
 
