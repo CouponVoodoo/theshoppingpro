@@ -110,6 +110,8 @@ function coupons_redirect_interim_page() {
 	global $base_url;
 	$url = $_GET['s'];
 	$coupon_code = $_GET['c'];
+	
+	
   /* Removed by Ashish to prevent double decoding on the redirect page*/
   //  $url = urldecode($url); 
 	
@@ -150,7 +152,7 @@ function coupons_redirect_interim_page() {
 	$add_tracking = $os.'-'.$original_source;	
 	
 	
-	/* ADDINF OS AND SOURCE TO URL BASED ON WHETHER URL IS OMG OR TYROO*/
+	/* ADDING OS AND SOURCE TO URL BASED ON WHETHER URL IS OMG OR TYROO*/
 	if (strpos($url,'affiliates.tyroodr.com') > 1){
 		// echo 'tyroo';
 		if (strpos($url,'subid2') == false){
@@ -200,23 +202,39 @@ if ($coupon_code == 'Flipkart Offer'){
               You are being redirected to retailer page.
             </h2>
             <div class="clear"> </div>
-</div>';
+			</div>';
 } else {
-  return '<div class="coupon_window">
-            <h1>Yay ... Coupon Found!</h1>
-            <h2 class="coupon_window_redirect">
-              Redirecting to retailer page, use the following coupon there:
-            </h2>
-			<div class="clear"> </div>
-            <div class="coupon_window_title">
-              <div class="bridgecode">' . $coupon_code . '</div>
-            </div>
-            <div class="clear"> </div>
-            <h2 class="coupon_window_redirect">
-              Visit previous tab for more details
-            </h2>
-            <div class="clear"> </div>
-</div>';
+
+	if ($coupon_code == 'no-coupons'){
+		  return '<div class="coupon_window">
+					<h1>Oops... No Offer Found!</h1>
+					<h2 class="coupon_window_redirect">
+						You are being redirected to retailer page
+					</h2>
+					<div class="clear"> </div>
+					<h2 class="coupon_window_redirect">
+					  Visit the previous tab for more details.
+					</h2>
+					<div class="clear"> </div>
+					</div>';	
+	} Else {
+			
+		  return '<div class="coupon_window">
+					<h1>Yay ... Coupon Found!</h1>
+					<h2 class="coupon_window_redirect">
+					  Redirecting to retailer page, use the following coupon there:
+					</h2>
+					<div class="clear"> </div>
+					<div class="coupon_window_title">
+					  <div class="bridgecode">' . $coupon_code . '</div>
+					</div>
+					<div class="clear"> </div>
+					<h2 class="coupon_window_redirect">
+					  Visit previous tab for more details
+					</h2>
+					<div class="clear"> </div>
+					</div>';
+}
 }
 }
 
