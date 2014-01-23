@@ -107,20 +107,73 @@ function coupons_viewdemo($ajax) {
 }
 
 function coupons_redirect_interim_page() {
-  global $base_url;
-  $url = $_GET['s'];
-  $coupon_code = $_GET['c'];
-
-  /* Removed by Ashish to prevent double decoding on the redirect page*/
+	global $base_url;
+	$url = $_GET['s'];
+	$coupon_code = $_GET['c'];
   /* Removed by Ashish to prevent double decoding on the redirect page*/
   //  $url = urldecode($url); 
+	
+	/* GETTING USERS OS*/
+	$user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+	if (strpos($user_agent,'android') > 1) {
+		$os = 'android';
+	} else {
+		if (strpos($user_agent,'iphone') > 1) {
+			$os = 'iphone';
+		}else{
+			if (strpos($user_agent,'ipad') > 1) {
+				$os = 'ipad';
+			}else{
+				if (strpos($user_agent,'windows') > 1) {
+					$os = 'windows';
+				} else {
+					if (strpos($user_agent,'blackberry') > 1) {
+						$os = 'blackberry';
+					} else {
+						if (strpos($user_agent,'linux') > 1) {
+							$os = 'linux';
+						} else {
+							$os = 'others';
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/* GETTING USERS SOURCE*/
+	if (!isset($_COOKIE['traffic_source9'])) {
+		$original_source = 'Direct_Traffic';
+	} else {
+		$original_source = $_COOKIE['traffic_source9'];
+	}
+	$add_tracking = $os.'-'.$original_source;	
+	
+	
+	/* ADDINF OS AND SOURCE TO URL BASED ON WHETHER URL IS OMG OR TYROO*/
+	if (strpos($url,'affiliates.tyroodr.com') > 1){
+		// echo 'tyroo';
+		if (strpos($url,'subid2') == false){
+			// echo 'no subid2';
+			$url = $url."&subid2=".$os."&subid3=".$original_source;
+		}
+	}
+	if (strpos($url,'track.in.omgpm.com') > 1){
+			// echo 'omg';
+			$url = $url."&uid2=".$add_tracking;
+	}
+
+
 
 /** START OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIrECT PAGE */  
   
 mixpanel_track('Coupon Click Redirect', array(
-    'Affiliate URL' => $url,
-    'Coupon Code' => $coupon_code
-    )
+    'Affiliate URL' => $_GET['s'],
+    'Coupon Code' => $coupon_code,
+    'OS' => $os,
+	'Source' => $original_source,
+	'Final URL' =>  $url
+	)
 );
 
 /** END OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIECT PAGE */ 
