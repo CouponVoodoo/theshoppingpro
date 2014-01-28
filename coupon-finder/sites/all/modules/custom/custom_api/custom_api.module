@@ -527,7 +527,7 @@ if ($vid ==2 OR $vid == 3 OR $vid == 4){
 */   
    
 /** START OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
-/*
+
 	$termid = arg(2);
 	$term = taxonomy_term_load($termid);
 	$vid = $term->vid;
@@ -535,7 +535,7 @@ if ($vid ==2 OR $vid == 3 OR $vid == 4){
 	if ($vid == 3 OR $vid == 4){
 		$query->addParam('sort', 'random_'.$seed.' asc');
 	}
-*/	
+	
 /** END OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
 }
 /** END OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND UPDATE */
