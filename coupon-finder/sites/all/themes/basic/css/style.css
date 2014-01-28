@@ -779,6 +779,8 @@ img.dollor { left: 452px; position: absolute; top: 324px; z-index: 0;}
 .page-taxonomy-term .region-content #block-apachesolr_search-sort .content ul li,.page-search-site .region-content #block-apachesolr_search-sort .content ul li{float:left;list-style-type:none;margin-left:10px;}
 .page-taxonomy-term .region-content #block-apachesolr_search-sort .content ul li a,.page-search-site .region-content #block-apachesolr_search-sort .content ul li a{color:#666666;font-size:11px}
 .page-taxonomy-term .region-content #block-apachesolr_search-sort .content ul li a.active,.page-search-site .region-content #block-apachesolr_search-sort .content ul li a.active{font-weight:bold;}
+.facetapi-slider-min {color:#666666;font:11px/12px arial;}
+.facetapi-slider-max {color:#666666;font:11px/12px arial;}
 /* .page-taxonomy-term .region-content #block-apachesolr_search-sort .content ul li a:hover,.page-search-site .region-content #block-apachesolr_search-sort .content ul li a:hover{font-weight:bold;text-decoration:none!important} */
 
 .page-taxonomy-term .region-content #block-apachesolr_search-sort,.page-search-site .region-content #block-apachesolr_search-sort {padding-bottom:0px}
