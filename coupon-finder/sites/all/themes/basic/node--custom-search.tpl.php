@@ -98,8 +98,8 @@
 	$coupon_code=urlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	}
 	/* START OF TO REMOVE REDIRECTION VIA INTERIM PAGE COMPLETELY  - TEMP TEST */
-	 $coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
-	// $coupon_display_url=$affiliate_url_uncoded;
+	// $coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
+	 $coupon_display_url=$affiliate_url_uncoded;
 	/* END OF TO REMOVE REDIRECTION VIA INTERIM PAGE COMPLETELY  - TEMP TEST */
 	$lightbox_url = $base_url."/node/".$node->nid."?pop=1";
      $uplImg = $node->field_product_images['und'][0]['uri'];
