@@ -195,14 +195,14 @@
       if($node->field_best_coupon_status[und][0]['value'] == 1){
  
  	
-//	 echo "<div class='d_view_store'> <a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$coupon_display_url}')//;return true;>View Details</a></div>";
-	 echo "<div class='d_view_store'> <a href='{$coupon_display_url}' onclick=window.open('{$popup_url}')//;return true;>View Details</a></div>";
+//	 echo "<div class='d_view_store'> <a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$coupon_display_url}')//;return true;>View Coupons</a></div>";
+	 echo "<div class='d_view_store'> <a href='{$coupon_display_url}' onclick=window.open('{$popup_url}')//;return true;>View Coupons</a></div>";
 	
 	        }
       if($node->field_best_coupon_status[und][0]['value'] == 0){
         
 //		echo "<div class='d_view_store'><a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$affiliate_url_uncoded}')//;return true;}'>View Store</a></div>";
-        echo "<div class='d_view_store'><a href='{$coupon_display_url}' onclick=window.open('{$popup_url}')//;return true;>View Details</a></div>";
+        echo "<div class='d_view_store'><a href='{$coupon_display_url}' onclick=window.open('{$popup_url}')//;return true;>View Coupons</a></div>";
         
 		
 		
