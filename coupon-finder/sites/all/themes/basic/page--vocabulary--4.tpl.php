@@ -47,9 +47,7 @@
       
 
       
-/* START OF COMMENTED OUT TO REMOVE POP UP */	
 
-/*
 	
 	if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
         echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>Coupons Found</div></div>";
@@ -62,7 +60,9 @@
 	// $affiliate_url_uncoded=$node->field_affiliateurl['und']['0']['value'];
 	$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
 	}  
-	
+/* START OF COMMENTED OUT TO REMOVE POP UP */	
+
+/*	
 	$affiliate_url=urlencode($affiliate_url_uncoded);
 	
  	global $base_url;
