@@ -4,7 +4,10 @@
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
-  <?php print $scripts; ?>
+  <?php 
+  // MOVE SCRIPTS TO BOTTOM OF PAGE
+  // print $scripts; 
+  ?>
   <meta name="viewport" content="width=device-width">
  
  <script>
@@ -26,6 +29,10 @@
   </div>
   <?php print $page_top; ?>
   <?php print $page; ?>
+  <?php 
+  // MOVE SCRIPTS TO BOTTOM OF PAGE
+  print $scripts; 
+  ?>
   <?php print $page_bottom; ?>
 </body>
 </html>
