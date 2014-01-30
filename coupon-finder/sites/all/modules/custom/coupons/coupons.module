@@ -1127,7 +1127,7 @@ drupal_add_js("jQuery(document).ready(function($){
               $(this).attr('href',url);
 
 			  // BY ASHISH: COMMENTED OUT TO PREVENT MULTI CLICK - THIS IS A HACK NEED TO TAKE A RELOOK TO SEE WHERE THE URL IS OPENING FROM	            
-				  window.open($(this).attr('href'));
+			//	  window.open($(this).attr('href'));
 	    
 	      /* Mixpanel integration Start*/
 // 	      mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
