@@ -511,7 +511,7 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $solr_hide_time=gmdate('Y-m-d\TH:i:s\Z', $hide_time);
    $solr_time_coupon_boost= "'(itm_field_best_coupon_status:1 AND dm_field_lastcheckedtime:[".$solr_boost_time." TO *])^5'";
    $solr_hide_time_coupon="dm_field_lastcheckedtime:[".$solr_hide_time." TO *]";
-//   $query->addParam('fq', $solr_hide_time_coupon);
+   $query->addParam('fq', $solr_hide_time_coupon);
    $query->addParam('fq', '-(sm_vid_Retailer:Snapdeal.com)');
    $query->addParam('bq', $solr_time_coupon_boost);
    
@@ -534,7 +534,7 @@ if ($vid ==2 OR $vid == 3 OR $vid == 4){
 	$seed = rand(1, 1000);
 	if ($vid == 3 OR $vid == 4){
 		$query->addParam('sort', 'random_'.$seed.' asc');
-		$query->addParam('fq', $solr_hide_time_coupon);
+//		$query->addParam('fq', $solr_hide_time_coupon);
   }
 	
 /** END OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
