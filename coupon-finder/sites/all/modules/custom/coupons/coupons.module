@@ -157,7 +157,9 @@ function coupons_redirect_interim_page() {
 	} else {
 		$original_source = $_COOKIE['traffic_source12'];
 	}
-	$add_tracking = rawurlencode($os.'-'.$original_source);	
+	// $add_tracking = rawurlencode($os.'-'.$original_source);	
+	$add_tracking = rawurlencode($os);	
+
 
 	
 	/* ADDING OS AND SOURCE TO URL BASED ON WHETHER URL IS OMG OR TYROO*/
