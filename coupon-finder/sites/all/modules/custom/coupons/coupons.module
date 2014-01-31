@@ -967,7 +967,7 @@ function coupons_block_info() {
  * Implements hook_block_view().
  *
  * Prepares the contents of the block.
- */
+ */	
 function coupons_block_view($delta = '') {
   $block = array();
   switch ($delta) {
@@ -979,8 +979,12 @@ function coupons_block_view($delta = '') {
 		$termid = arg(2);
 		$term = taxonomy_term_load($termid);
 
-
+	if ( $term->description != ''){
+		$block['content'] = $term->description;
+	} else {
 		$block['content'] = 'Browse a wide range of '.$term->name.' products with updated discounts, coupons and offers brought to you by CouponVoodoo. Simply click on a '.$term->name.' product of your choice to get the latest discount information for it.';
+	}
+
 		//print '<pre>';print_r($term);exit;
 	  break;
   }
