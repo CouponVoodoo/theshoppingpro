@@ -1077,9 +1077,8 @@ img{max-width: 100%;}
 }
 @media all and (max-width: 700px){
     .shareaholic-canvas{display: none;}
-	#block-coupons-coupons_taxonomy_description .content {display: none;}
-	
-    .page-taxonomy-term #block-system-main .block-inner .content{text-align: center;}
+	#block-coupons-coupons_taxonomy_description {display: none;}
+	.page-taxonomy-term #block-system-main .block-inner .content{text-align: center;}
     .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon{text-align: left; float: none; display: inline-block;}
     #habla_beta_container_do_not_rely_on_div_classes_or_names{display: none;}
     .find_coupon .form-type-textfield{width: 85%;}
