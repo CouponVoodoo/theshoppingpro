@@ -163,7 +163,7 @@ function coupons_redirect_interim_page() {
 
 	
 	/* ADDING OS AND SOURCE TO URL BASED ON WHETHER URL IS OMG OR TYROO*/
-
+/*
  if ($os == 'windows') {
 	if (strpos($url,'affiliates.tyroodr.com') > 1){
 		// echo 'tyroo';
@@ -177,7 +177,7 @@ function coupons_redirect_interim_page() {
 			$url = $url."&uid2=".$add_tracking;
 	}
 }
-
+*/
 /** START OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIrECT PAGE */  
   
 mixpanel_track('Coupon Click Redirect', array(
