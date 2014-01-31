@@ -800,7 +800,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .no_coupons_found ,.page-search-site #block-system-main .block-inner .node--product-and-coupon .no_coupons_found ,.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field ,.page-search-site #block-system-main .block-inner .node--product-and-coupon .field,.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found,.page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found{float:left;width:100%;padding-bottom:10px}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon  a,.page-search-site #block-system-main .block-inner .node--product-and-coupon a{font-size:11px;line-height:12px;text-decoration:underline!important}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon  .product_name a,.page-search-site #block-system-main .block-inner .node--product-and-coupon .product_name a{font-size:13px;text-decoration:none!important}
-#block-apachesolr_search-sort{border-bottom: 1px solid #CCCCCC;margin-bottom: 20px;padding: 0;margin-top:10px}
+#block-apachesolr_search-sort{border-top: 1px solid #CCCCCC;margin-bottom: 20px;padding: 0;margin-top:10px}
 #block-apachesolr_search-sort .block-inner{float: right;margin-top: 5px !important;text-align: right; width: 53%;}
 .page-search-site #search-form label{font:bold 14px/20px arial;color:#f7971c;}
 .page-search-site #search-form  #edit-submit{background:#F7971C;border:1px solid #cc6600;color:#fff;padding:0 2px;font:13px/17px arial}
