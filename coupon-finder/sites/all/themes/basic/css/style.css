@@ -806,7 +806,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .page-search-site #search-form  #edit-submit{background:#F7971C;border:1px solid #cc6600;color:#fff;padding:0 2px;font:13px/17px arial}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-label,.page-search-site #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-label{display:none}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-items,.page-search-site #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-items{display: table; height: 200px; overflow: hidden; text-align: center;  width: 200px;}
-// .page-taxonomy-term #block-system-main .block-inner .item-list, .page-search-site #block-system-main .block-inner .item-list{float:left}
+.page-taxonomy-term #block-system-main .block-inner .item-list, .page-search-site #block-system-main .block-inner .item-list{// float:left}
 .page-taxonomy-term #block-system-main .block-inner .item-list ul li, .page-search-site #block-system-main .block-inner .item-list ul li{background:none;border:0px}
 /****Retailer product****/
 .retalier_product{width:919px;float:left;background:#f2f2f2;border:1px solid #d7d7d7;padding:10px;margin-left:19px;border-radius:8px}
