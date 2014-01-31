@@ -36,20 +36,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 16 px;
+  font-size: 2.2em;
   font-weight: 300;
   padding: 0 0 0.5em;
   margin: 0;
 }
 
 h2 {
-  font-size: 14 px;
+  font-size: 1.8em;
   font-weight: 300;
   margin-bottom: 0.75em;
 }
 
 h3 {
-  font-size: 12 px;
+  font-size: 1.4em;
   margin-bottom: 1em;
 }
 
@@ -788,7 +788,7 @@ img.dollor { left: 452px; position: absolute; top: 324px; z-index: 0;}
 .page-taxonomy-term .region-content #block-apachesolr_search-sort h2,.page-search-site .region-content #block-apachesolr_search-sort h2{ color: #666666;float: left;font-size: 11px;font-weight: bold;line-height: 24px;margin: 0;padding: 0;}
 .page-taxonomy-term .region-content #block-apachesolr_search-sort .item-list ul ,.page-search-site .region-content #block-apachesolr_search-sort .item-list ul{margin:0px}
 h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
-.page-taxonomy-term  h1.title,.page-search-site h1.title{float: left; font-size: 16px;font-weight: bold;line-height: 18px;margin: 8px 0 0 7px;padding: 0;}
+.page-taxonomy-term  h1.title,.page-search-site h1.title{float: left; font-size: 20px;font-weight: bold;line-height: 18px;margin: 8px 0 0 7px;padding: 0;}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon header, .page-search-site #block-system-main .block-inner .node--product-and-coupon header{display:none;}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .product_name,.page-search-site #block-system-main .block-inner .node--product-and-coupon .product_name a{font-weight:bold;}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .product_name,.page-search-site #block-system-main .block-inner .node--product-and-coupon .product_name {padding-bottom:5px;height:42px;float:left;padding-top:5px; width:100%}
@@ -806,8 +806,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .page-search-site #search-form  #edit-submit{background:#F7971C;border:1px solid #cc6600;color:#fff;padding:0 2px;font:13px/17px arial}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-label,.page-search-site #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-label{display:none}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-items,.page-search-site #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-items{display: table; height: 200px; overflow: hidden; text-align: center;  width: 200px;}
-.page-taxonomy-term #block-system-main .block-inner .item-list, .page-search-site #block-system-main .block-inner .item-list{ float:left}
-.page-taxonomy-term h1.title, .page-search-site h1.title {float: none !important;}
+// .page-taxonomy-term #block-system-main .block-inner .item-list, .page-search-site #block-system-main .block-inner .item-list{float:left}
 .page-taxonomy-term #block-system-main .block-inner .item-list ul li, .page-search-site #block-system-main .block-inner .item-list ul li{background:none;border:0px}
 /****Retailer product****/
 .retalier_product{width:919px;float:left;background:#f2f2f2;border:1px solid #d7d7d7;padding:10px;margin-left:19px;border-radius:8px}
