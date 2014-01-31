@@ -71,10 +71,10 @@ function coupons_menu() {
 			if (strpos($domain,'google') != false) {
 				$parts = parse_url($referer);
 				parse_str($parts['query'], $query);
-				// $traffic_source = urlencode($host).'---'.urlencode ($query['q']).'---'.urlencode($query['adurl']);
-				$traffic_source = 'Ggl+'.urlencode($query['q']);
+				// $traffic_source = rawurlencode($host).'---'.rawurlencode ($query['q']).'---'.rawurlencode($query['adurl']);
+				$traffic_source = 'Ggl-'.rawurlencode($query['q']);
 			} else {
-				$traffic_source = urlencode($domain);
+				$traffic_source = rawurlencode($domain);
 			}
 		}
 	setcookie('traffic_source12', $traffic_source, (time()+60*60*24*1),'/', 'couponvoodoo.com');
@@ -157,7 +157,7 @@ function coupons_redirect_interim_page() {
 	} else {
 		$original_source = $_COOKIE['traffic_source12'];
 	}
-	$add_tracking = urlencode($os.'+'.$original_source);	
+	$add_tracking = rawurlencode($os.'-'.$original_source);	
 
 	
 	/* ADDING OS AND SOURCE TO URL BASED ON WHETHER URL IS OMG OR TYROO*/
@@ -535,7 +535,7 @@ function get_domain($url)
 
 
 function coupons_finder_form_submit($form, &$form_state) {
-  $redirect = 'coupon-result/' . urlencode($form_state['values']['url']);
+  $redirect = 'coupon-result/' . rawurlencode($form_state['values']['url']);
   $form_state['redirect'] = $redirect;
   if ($form_state['ajax']) {
     $form_state['ajax_commands'][] = ctools_ajax_command_redirect($redirect);
