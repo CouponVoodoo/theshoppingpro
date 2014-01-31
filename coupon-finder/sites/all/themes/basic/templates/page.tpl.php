@@ -124,7 +124,7 @@
 
         <div id="content-area">
 		     <?php if ($title): ?>
-              <h1 class="title"><?php print $title.' Coupons, Deals & Offers in India'; ?></h1>
+              <h1 class="title"><?php print str_replace('.com','',$title).' Coupons, Deals & Offers in India'?></h1>
             <?php endif; ?>
           <?php if ($is_front):
           global $base_url;
