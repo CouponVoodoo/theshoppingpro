@@ -49,17 +49,17 @@
 	
 	if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
         echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>Coupons Found</div></div>";
-	// $affiliate_url=urlencode($node->field_best_coupon_url['und']['0']['value']);
+	// $affiliate_url=rawurlencode($node->field_best_coupon_url['und']['0']['value']);
 	// $affiliate_url_uncoded=$node->field_best_coupon_url['und']['0']['value'];
 	$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value'];	
 	}else{
         echo "<div class='no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='no_coupons_text'>No Working Coupons</div></div>";
-	// $affiliate_url=urlencode($node->field_affiliateurl['und']['0']['value']);
+	// $affiliate_url=rawurlencode($node->field_affiliateurl['und']['0']['value']);
 	// $affiliate_url_uncoded=$node->field_affiliateurl['und']['0']['value'];
 	$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
 	}  
 
-	$affiliate_url=urlencode($affiliate_url_uncoded);
+	$affiliate_url=rawurlencode($affiliate_url_uncoded);
 	
  	global $base_url;
 	// $urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid).'?width=600&height=600';
@@ -81,22 +81,22 @@
 	if (!empty($_GET['popdisplay'])) {
 	$popdisplay_value = $_GET['popdisplay']+1;
 		if (strpos($current_full_url,'?') == false) {
-			$popup_url = $current_full_url.'?&popdisplay='.$popdisplay_value.'&popurl='.urlencode($urlAlias).'&x=x';
+			$popup_url = $current_full_url.'?&popdisplay='.$popdisplay_value.'&popurl='.rawurlencode($urlAlias).'&x=x';
 		} else {
-			$popup_url = $current_full_url.'&popdisplay='.$popdisplay_value.'&popurl='.urlencode($urlAlias).'&x=x';
+			$popup_url = $current_full_url.'&popdisplay='.$popdisplay_value.'&popurl='.rawurlencode($urlAlias).'&x=x';
 		}
 	} else {
 		if (strpos($current_full_url,'?') == false) {
-			$popup_url = $current_full_url.'?&popdisplay=1&popurl='.urlencode($urlAlias).'&x=x';
+			$popup_url = $current_full_url.'?&popdisplay=1&popurl='.rawurlencode($urlAlias).'&x=x';
 		} else {
-			$popup_url = $current_full_url.'&popdisplay=1&popurl='.urlencode($urlAlias).'&x=x';
+			$popup_url = $current_full_url.'&popdisplay=1&popurl='.rawurlencode($urlAlias).'&x=x';
 		}
 	}
 	
 	if($node->field_best_coupon_couponcode['und']['0'][value] == '') {
-	$coupon_code = urlencode('no-coupons');
+	$coupon_code = rawurlencode('no-coupons');
 	} else {
-	$coupon_code=urlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
+	$coupon_code=rawurlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	}
 	
 	
