@@ -56,7 +56,7 @@ function coupons_menu() {
 	drupal_set_time_limit(600);
 	// Set cookie for referer.
 	//  setcookie('cv_ref', $_SERVER['HTTP_REFERER']);
-	if (!isset($_COOKIE['traffic_source11'])) { 
+	if (!isset($_COOKIE['traffic_source12'])) { 
 
 		if (isset($_SERVER['HTTP_REFERER'])) {
 			$referer = $_SERVER['HTTP_REFERER'];
@@ -72,12 +72,12 @@ function coupons_menu() {
 				$parts = parse_url($referer);
 				parse_str($parts['query'], $query);
 				// $traffic_source = urlencode($host).'---'.urlencode ($query['q']).'---'.urlencode($query['adurl']);
-				$traffic_source = 'Ggl-'.urlencode ($query['q']);
+				$traffic_source = 'Ggl+'.urlencode($query['q']);
 			} else {
 				$traffic_source = urlencode($domain);
 			}
 		}
-	setcookie('traffic_source11', $traffic_source, (time()+60*60*24*1),'/', 'couponvoodoo.com');
+	setcookie('traffic_source12', $traffic_source, (time()+60*60*24*1),'/', 'couponvoodoo.com');
 	}
 }
 
@@ -152,12 +152,12 @@ function coupons_redirect_interim_page() {
 	/* GETTING USERS SOURCE*/
 
 
-	if (!isset($_COOKIE['traffic_source11'])) {
+	if (!isset($_COOKIE['traffic_source12'])) {
 		$original_source = 'Direct_Traffic';
 	} else {
-		$original_source = $_COOKIE['traffic_source11'];
+		$original_source = $_COOKIE['traffic_source12'];
 	}
-	$add_tracking = $os.'-'.$original_source;	
+	$add_tracking = urlencode($os.'+'.$original_source);	
 
 	
 	/* ADDING OS AND SOURCE TO URL BASED ON WHETHER URL IS OMG OR TYROO*/
