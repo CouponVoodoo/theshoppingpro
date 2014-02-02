@@ -1087,8 +1087,18 @@ img{max-width: 100%;}
     .one-sidebar.sidebar-first #content{width: 100%;}
     .sidebar-first #sidebar-first{width: 100%; margin: 0;}
 	.coupon_window{ left: 3.75%; top: 13%; width: 93.5%;}
-
-	
+	.product-detail .product-right-inner {width: 100%; margin-left: 0;}
+	.product-detail .product-left {width: 100%; margin-left: 0;}
+	.product-detail .product-left .view_store1 {width:100%;}
+	.d_view_store {display: none;}
+	.product-right .coupon_code, .product-right .coupon_code1 {float: left; padding: 0; position: static; text-align: center;}
+	#coupon_search_listing > li {margin-bottom:0;}
+	.search_listing_right {margin-top: 0 !important}
+	.product-detail h2 .field-content {text-align: center; float: none;}
+	.best_coupon {display: none;}
+	.search_listing_left {width: 90%; padding: 15px 5%}
+	.search_listing_right {margin-top: 0px!important; }
+	.unlock_coupon {right: -10px; margin-bottom: 10px;}
 }
 @media all and (max-width: 652px){
     .find_coupon .whatisthis{top: 48px;}
