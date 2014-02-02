@@ -73,7 +73,7 @@
         <?php if ($breadcrumb || $title|| $messages || $tabs || $action_links): ?>
 		
 		<!-- BY ASHISH TO SHOW POP IN NEW TAB FROM LANDING PAGES-->
-		<div id="product_popup"><a href="<?php print $_GET['popurl']; ?>" rel='lightframe[|width:980px; height:1200px; scrolling: auto;]' ></a></div>
+		<div id="product_popup"><a href="<?php print $_GET['popurl']; ?>" rel='lightframe[|width:90%; height:auto; scrolling: auto;]' ></a></div>
 		<?php
 		if (!empty($_GET['popdisplay'])) {
 			$refer_url = $_SERVER['HTTP_REFERER'];
