@@ -1075,6 +1075,7 @@ img{max-width: 100%;}
     .main_menu{width: 100%; margin-left: 0;}
     #header #block-nice_menus-1{margin-top: 0;}
 }
+
 @media all and (max-width: 700px){
     .shareaholic-canvas{display: none;}
 	#block-coupons-coupons_taxonomy_description {display: none;}
@@ -1085,6 +1086,7 @@ img{max-width: 100%;}
     .find_coupon .form-type-textfield{width: 85%;}
     .find_coupon .whatisthis{top: 28px;}
     .one-sidebar.sidebar-first #content{width: 100%;}
+/*****BY ASHISH TO MODIFY PRODUCT PAGE FOR MOBILE******/
     .sidebar-first #sidebar-first{width: 100%; margin: 0;}
 	.coupon_window{ left: 3.75%; top: 13%; width: 93.5%;}
 	.product-detail .product-right-inner {width: 100%; margin-left: 0;}
@@ -1099,6 +1101,7 @@ img{max-width: 100%;}
 	.search_listing_left {width: 90%; padding: 15px 5%}
 	.search_listing_right {margin-top: 0px!important; }
 	.unlock_coupon {right: -10px; margin-bottom: 10px;}
+/*****BY ASHISH TO MODIFY LISTING PAGE FOR MOBILE******/
 	.page-taxonomy-term .find_coupon label{display:none}
 	.page-taxonomy-term .find_coupon .form-type-textfield .description {display: none;}
 	.page-taxonomy-term .find_coupon .form-type-textfield {width: 100%}
