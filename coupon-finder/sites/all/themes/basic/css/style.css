@@ -623,7 +623,7 @@ a.copied_coupon {
 }
 .coupon_window{
   background: none repeat scroll 0 0 #FFFFFF;
-  height: 250px;
+  height: auto;
   left: 25%;
   margin: auto;
   padding: 15px;
@@ -1078,6 +1078,7 @@ img{max-width: 100%;}
 @media all and (max-width: 700px){
     .shareaholic-canvas{display: none;}
 	#block-coupons-coupons_taxonomy_description {display: none;}
+	#sidebar-second {display: none;}
 	.page-taxonomy-term #block-system-main .block-inner .content{text-align: center;}
     .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon{text-align: left; float: none; display: inline-block;}
     #habla_beta_container_do_not_rely_on_div_classes_or_names{display: none;}
@@ -1085,6 +1086,9 @@ img{max-width: 100%;}
     .find_coupon .whatisthis{top: 28px;}
     .one-sidebar.sidebar-first #content{width: 100%;}
     .sidebar-first #sidebar-first{width: 100%; margin: 0;}
+	.coupon_window{ left: 3.75%; top: 13%; width: 93.5%;}
+
+	
 }
 @media all and (max-width: 652px){
     .find_coupon .whatisthis{top: 48px;}
