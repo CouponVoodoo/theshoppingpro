@@ -1106,6 +1106,10 @@ img{max-width: 100%;}
 	.page-taxonomy-term .find_coupon .form-type-textfield .description {display: none;}
 	.page-taxonomy-term .find_coupon .form-type-textfield {width: 100%}
 	.page-taxonomy-term .find_coupon .view_video {width: 50%}
+	.page-search-site .find_coupon label{display:none} 
+	.page-search-site .find_coupon .form-type-textfield .description {display: none;}
+	.page-search-site .find_coupon .form-type-textfield {width: 100%}
+	.page-search-site .find_coupon .view_video {width: 50%}
 }
 
 /*	.page-taxonomy-term .find_coupon label{display:none} */
@@ -1113,6 +1117,10 @@ img{max-width: 100%;}
 	.page-taxonomy-term .find_coupon .form-type-textfield {width: 100%}
 	.page-taxonomy-term .find_coupon .view_video {display: none; width: 50%}
 	.page-taxonomy-term .find_coupon .submit {width: 100%;}
+	.page-search-site .find_coupon .form-type-textfield .description {display: none;}
+	.page-search-site .find_coupon .form-type-textfield {width: 100%}
+	.page-search-site .find_coupon .view_video {display: none; width: 50%}
+	.page-search-site .find_coupon .submit {width: 100%;}
 
 
 
