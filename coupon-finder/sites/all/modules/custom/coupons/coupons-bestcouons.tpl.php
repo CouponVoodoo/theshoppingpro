@@ -11,7 +11,7 @@ global $base_url;
 <div class="search_listing_right">
   <div class="search_listing_row__<?php print $row->counter; ?> copy_coupon_row">
     <?php if ($row->url): ?>
-    <a href="<?php print $base_url ?>/coupon-redirect?s=<?php print urlencode($row->url); ?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>">
+    <a href="<?php print $base_url ?>/coupon-redirect?os=windows&s=<?php print urlencode($row->url); ?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>">
       <span class="copy_coupon">Show Coupon</span><span></span>
     </a>
     <?php else : ?>
