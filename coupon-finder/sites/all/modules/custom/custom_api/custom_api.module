@@ -13,16 +13,13 @@ function custom_api_menu() {
   return $items;
 }
 
-/*
+
 function custom_api_apachesolr_index_document_build(ApacheSolrDocument $document, $entity, $entity_type, $env_id) {
   $best_coupon_url = $entity->field_best_coupon_url;
   $document->addField('ss_best_coupon_url', $best_coupon_url);
 }
 
-function custom_api_form_apachesolr_query_alter($query) {
-  $query->addParam('fl', 'ss_best_coupon_url');
-}
-*/
+
 
 function custom_api_addproduct($ProInfo){
 	
@@ -513,8 +510,8 @@ function custom_api_addproduct($ProInfo){
 /** START OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND LAST CHECKED, HIDE WHERE LAST CHECKED IS GREATER THAN THRESHHOLD*/
 function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $current_time= time();
-   $boost_time=$current_time-(48*3600);
-   $hide_time=$current_time-(72*3600);
+   $boost_time=$current_time-(28*3600);
+   $hide_time=$current_time-(36*3600);
    $solr_boost_time=gmdate('Y-m-d\TH:i:s\Z', $boost_time);
    $solr_hide_time=gmdate('Y-m-d\TH:i:s\Z', $hide_time);
    $solr_time_coupon_boost= "'(itm_field_best_coupon_status:1 AND dm_field_lastcheckedtime:[".$solr_boost_time." TO *])^5'";
@@ -527,23 +524,23 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
 	$term = taxonomy_term_load($termid);
 	$vid = $term->vid;
 
+/** BY ASHISH TO SORT BRAND AND CATEGORIES BY SAVINGS*/
 
 if ($vid ==2 OR $vid == 3 OR $vid == 4){
 		$query->addParam('sort', 'its_field_best_coupon_saving desc');
 	}
 	  
    
-/** START OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
-/*
+/**  BY ASHISH TO RANDOMIZE FOR RETAILER*/
+
 	$termid = arg(2);
 	$term = taxonomy_term_load($termid);
 	$vid = $term->vid;
 	$seed = rand(1, 1000);
-	if ($vid == 3 OR $vid == 4){
+	if ($vid == 2){
 		$query->addParam('sort', 'random_'.$seed.' asc');
-//		$query->addParam('fq', $solr_hide_time_coupon);
   }
-*/	
+	
 /** END OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
 }
 /** END OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND UPDATE */
