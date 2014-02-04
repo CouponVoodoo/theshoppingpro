@@ -11,6 +11,7 @@ if ($row->Successful=="1") {
 <div class="search_listing_right2">
   <div class="search_listing_row__<?php print $row->counter; ?> copy_coupon_row">
     <?php if ($row->url): ?>
+
     <a href="<?php print $base_url ?>/coupon-redirect?os=windows&s=<?php print urlencode($row->url); ?>" target="_blank" class="unlock_coupon" rel="c_<?php print $row->counter; ?>">
       <span class="copy_coupon">Show Coupon</span><span></span>
     </a>

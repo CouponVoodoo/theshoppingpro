@@ -24,6 +24,7 @@ if ($row->Successful=="1") {
   <div class="row_2">
     <label>Savings:</label>
     <?php if ($row->Successful=="1") : ?>
+
     <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving">INR <?php print $row->Saving;?></div><?php print $best_coupon; ?></div>
     <?php else: ?>
     <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"></div><?php print $best_coupon; ?></div>
@@ -40,7 +41,52 @@ if ($row->Successful=="1") {
 <div class="search_listing_right">
   <div class="search_listing_row__<?php print $row->counter; ?> copy_coupon_row">
      <?php if ($row->url): ?>
-    <a href="<?php print $base_url ?>/coupon-redirect?os=windows&s=<?php print urlencode($row->url); ?>" target="_blank" class="unlock_coupon" rel="c_<?php print $row->counter; ?>">
+	 
+	 	<?php
+		
+	/* GETTING USERS OS*/
+
+	$os = 'unknown';
+	$user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+	if (strpos($user_agent,'android') > 1) {
+		$os = 'android';
+	} else {
+		if (strpos($user_agent,'iphone') > 1) {
+			$os = 'iphone';
+		}else{
+			if (strpos($user_agent,'ipad') > 1) {
+				$os = 'ipad';
+			}else{
+				if (strpos($user_agent,'windows') > 1) {
+					$os = 'windows';
+				} else {
+					if (strpos($user_agent,'blackberry') > 1) {
+						$os = 'blackberry';
+					} else {
+						if (strpos($user_agent,'linux') > 1) {
+							$os = 'linux';
+						} else {
+							$os = 'others';
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/* GETTING USERS SOURCE*/
+
+	$original_source = 'Direct_Traffic';
+	if (!isset($_COOKIE['traffic_source12'])) {
+		$original_source = 'Direct_Traffic';
+	} else {
+		$original_source = $_COOKIE['traffic_source12'];
+	}
+	$add_tracking = rawurlencode($os.'-'.$original_source);	
+	?>
+	 
+	 
+    <a href="<?php print $base_url ?>/coupon-redirect?os=<?php print $add_tracking;?>&s=<?php print urlencode($row->url); ?>" target="_blank" class="unlock_coupon" rel="c_<?php print $row->counter; ?>">
       <span class="copy_coupon">Show Coupon</span><span></span>
     </a>
     <?php else : ?>
