@@ -51,7 +51,7 @@ $mixpanel_type='Product Page View Store';
     //print ($fields['field_product_images']->content);
     $status = strip_tags($fields['field_best_coupon_status']->content);
   
-        echo "<div class='d_view_store'><a rel="nofollow" target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' >View Store</a></div>";
+        echo "<div class='d_view_store'><a rel='nofollow' target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' >View Store</a></div>";
 	
     ?>
 
