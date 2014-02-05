@@ -1,0 +1,5 @@
+name = Retailer Coupon
+description= Retailer Coupon Page
+core = "7.x"
+project = "coupons"
+
