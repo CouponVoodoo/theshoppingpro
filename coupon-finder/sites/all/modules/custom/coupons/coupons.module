@@ -164,8 +164,7 @@ function coupons_redirect_interim_page() {
 			$url = $url."&AffExtParam1=".$original_source.'&AffExtParam2='.$os;
 	}
 	
-	echo $url;
-
+	
 	
 	
 	
