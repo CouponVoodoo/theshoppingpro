@@ -19,7 +19,7 @@ function retiler_coupon_menu() {
 
 function retiler_coupon_addcoupon($ProInfo){
 	
-$url = ""
+$url = "http://54.243.150.171/test/test3.php";
 	
     $json = drupal_http_request($url, array('timeout' => 600.0));
    	
@@ -36,17 +36,17 @@ $url = ""
     	$jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
     	$jsonArray = json_decode($jsonData);
     	$couponInfo = $jsonArray->couponInfo;
-    	$couponInfo->Retailer;
-    	$couponInfo->RetailerId;
-    	$couponInfo->AfiliateUrl;
-    	$couponInfo->LastCheckedTime;
-    	$couponInfo->CouponCode;
-    	$couponInfo->CouponTitle;
-    	$couponInfo->CouponCodeDesc;
-    	$couponInfo->OfferType;
-    	$couponInfo->Status;
-    	$couponInfo->weight;
-    	//db Query to check if the node exists
+    	$retailer = $couponInfo->Retailer;
+    	$retailerId = $couponInfo->RetailerId;
+    	$afiliateUrl = $couponInfo->AfiliateUrl;
+    	$lastCheckedTime = $couponInfo->LastCheckedTime;
+    	$couponCode = $couponInfo->CouponCode;
+    	$couponTitle = $couponInfo->CouponTitle;
+    	$couponCodeDesc = $couponInfo->CouponCodeDesc;
+    	$offerType = $couponInfo->OfferType;
+    	$status = $couponInfo->Status;
+    	$weight = $couponInfo->weight;
+    	//To Chnge db Query to check if the node exists
     	$query = db_select('field_data_field_base_url', 'n')
 			   ->fields('n', array('ntity_id') )
 			   ->condition('n.field_base_url_value', $baseUrl, '=')
@@ -59,11 +59,11 @@ $url = ""
 	        $node = new stdClass();
     		$categoryLinks = $jsonArray->CategoryLinks;
     		if ($categoryLinks != null){
-    			categoryLinksArr = json_decode($categoryLinks,true);
+    			$categoryLinksArr = json_decode($categoryLinks,true);
     			foreach($categoryLinksArr as $categoryLinks){
-    				$categoryLinks->CategoryId;
-    				$categoryLinks->AffiliateUrl;
-    				}
+    				$categoryId = $categoryLinks->CategoryId;
+    				$affiliateUrl = $categoryLinks->AffiliateUrl;
+     				}
     		} 
     	}else {
     	//echo 'update';
