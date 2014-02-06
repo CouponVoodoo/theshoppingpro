@@ -67,7 +67,7 @@ $url = "http://54.243.150.171/test/test3.php";
 		$node->field_status['und']['0']['value']			= $status;
 		$node->field_affiliate_url['und']['0']['value']			= $afiliateUrl;
 		
-		 
+		  
 		 
     		$categoryLinks = $jsonArray->CategoryLinks;
     		if ($categoryLinks != null){
