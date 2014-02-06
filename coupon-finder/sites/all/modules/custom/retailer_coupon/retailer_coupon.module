@@ -1,2 +1,77 @@
 <?php
-?>
+
+function retiler_coupon_menu() {
+  $items = array();
+
+  $items['add-coupon/%'] = array(//this creates a URL that will call this form at "examples/form-example"
+      'title' => 'Add Coupons in database', //page title
+      'page callback' => 'retiler_coupon_addcoupon', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
+      'page arguments' => array(1),
+      'access callback' => TRUE
+  );
+
+  return $items;
+}
+
+
+
+
+
+function retiler_coupon_addcoupon($ProInfo){
+	
+$url = ""
+	
+    $json = drupal_http_request($url, array('timeout' => 600.0));
+   	
+	
+	
+    $json = $json->data;
+   
+    
+    $jsonArr = json_decode($json,true);
+    foreach($jsonArr as $json){
+     
+     
+     	$json = json_encode($json); 
+    	$jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
+    	$jsonArray = json_decode($jsonData);
+    	$couponInfo = $jsonArray->couponInfo;
+    	$couponInfo->Retailer;
+    	$couponInfo->RetailerId;
+    	$couponInfo->AfiliateUrl;
+    	$couponInfo->LastCheckedTime;
+    	$couponInfo->CouponCode;
+    	$couponInfo->CouponTitle;
+    	$couponInfo->CouponCodeDesc;
+    	$couponInfo->OfferType;
+    	$couponInfo->Status;
+    	$couponInfo->weight;
+    	//db Query to check if the node exists
+    	$query = db_select('field_data_field_base_url', 'n')
+			   ->fields('n', array('ntity_id') )
+			   ->condition('n.field_base_url_value', $baseUrl, '=')
+			   ->countQuery();
+	      $result = $query->execute();
+	      $record = $result->fetch();
+      
+    	if($record->expression == 0){
+	//echo 'add';
+	        $node = new stdClass();
+    		$categoryLinks = $jsonArray->CategoryLinks;
+    		if ($categoryLinks != null){
+    			categoryLinksArr = json_decode($categoryLinks,true);
+    			foreach($categoryLinksArr as $categoryLinks){
+    				$categoryLinks->CategoryId;
+    				$categoryLinks->AffiliateUrl;
+    				}
+    		} 
+    	}else {
+    	//echo 'update';
+    	$node = node_load($record->entity_id);
+    	
+    	
+    	}
+    }
+    
+    }
+?> 
