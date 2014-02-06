@@ -65,7 +65,7 @@ $url = "http://54.243.150.171/test/test3.php";
     				$affiliateUrl = $categoryLinks->AffiliateUrl;
      				}
     		} 
-    	}else {
+    	}else { 
     	//echo 'update';
     	$node = node_load($record->entity_id);
     	
