@@ -95,18 +95,53 @@
 			$popup_url = $current_full_url.'&popdisplay=1&popurl='.rawurlencode($urlAlias).'&x=x';
 		}
 	}
-	
-	if($node->field_best_coupon_couponcode['und']['0'][value] == '') {
-	$coupon_code = rawurlencode('no-coupons');
-	} else {
-	$coupon_code=rawurlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
-	}
 	*/
+	/* GET COUPON CODE*/
+	if($node->field_best_coupon_couponcode['und']['0'][value] == '') {
+		$coupon_code = rawurlencode('no-coupons');
+	} else {
+		$coupon_code=rawurlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
+	}
+	/* GETTING USERS OS*/
+	$os = 'unknown';
+	$user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+	if (strpos($user_agent,'android') > 1) {
+		$os = 'android';
+	} else {
+		if (strpos($user_agent,'iphone') > 1) {
+			$os = 'iphone';
+		}else{
+			if (strpos($user_agent,'ipad') > 1) {
+				$os = 'ipad';
+			}else{
+				if (strpos($user_agent,'windows') > 1) {
+					$os = 'windows';
+				} else {
+					if (strpos($user_agent,'blackberry') > 1) {
+						$os = 'blackberry';
+					} else {
+						if (strpos($user_agent,'linux') > 1) {
+							$os = 'linux';
+						} else {
+							$os = 'others';
+						}
+					}
+				}
+			}
+		}
+	}
+	/* GETTING USERS SOURCE*/
+	$original_source = 'Direct_Traffic';
+	if (!isset($_COOKIE['traffic_source12'])) {
+		$original_source = 'Direct_Traffic';
+	} else {
+		$original_source = $_COOKIE['traffic_source12'];
+	}
+	$add_tracking = rawurlencode($os.'-'.$original_source);
 	
-	/* START OF TO REMOVE REDIRECTION VIA INTERIM PAGE COMPLETELY  - TEMP TEST */
-	// $coupon_display_url=$base_url."/coupon-redirect?s=".$affiliate_url."&c=".$coupon_code;
-	$coupon_display_url=$affiliate_url_uncoded;
-	/* END OF TO REMOVE REDIRECTION VIA INTERIM PAGE COMPLETELY  - TEMP TEST */
+	
+	$coupon_display_url=$base_url."/coupon-redirect?os=".$add_tracking."&s=".$affiliate_url."&c=".$coupon_code;
+	// $coupon_display_url=$affiliate_url_uncoded;
 		
  	$uplImg = $node->field_product_images['und'][0]['uri'];
     $imgPath = $imgUri = image_style_url('200x200', $uplImg);
@@ -132,20 +167,18 @@
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
                         <div class='field-item even product_img'>
-							<a href='{$urlAlias}' ><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
+							<a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
                         
 						</div>";
       echo  $img .=    "</div>
                 </div>";
  //	<a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$coupon_display_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
-  		  echo "<div class='product_name'><a href='{$urlAlias}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
+  		  echo "<div class='product_name'><a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
 	    
 //		  echo "<div class='product_name'><a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
 	   }
 
-
-
-	/** Start of modified by Ashish to Show reatiler name below product name */
+ /** Start of modified by Ashish to Show reatiler name below product name */
 
       	$BrandTid = $node->field_brand[und][0]['tid'];
       	$RetailerTid = $node->field_retailer[und][0]['tid'];
@@ -156,7 +189,7 @@
 	echo "</br>";
 
  /** end of modified by Ashish to to Show reatiler name below product name*/
-
+ 
       echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
                         <div class='field-label'>List Price:&nbsp;</div>
                         <div class='field-items'>
@@ -167,8 +200,7 @@
                             <div class='field-label'>Savings:&nbsp;</div>
                             <div class='field-items'>
                                 <div class='field-item even'>";
-
- /** Start of modified by Ashish to Show coupon description instead of saving when saving = 1 */
+/** Start of modified by Ashish to Show coupon description instead of saving when saving = 1 */
 
 
                                if($node->field_best_coupon_saving['und'][0]['value']==0){
@@ -185,48 +217,31 @@
 
  /** end of modified by Ashish to Show coupon description instead of saving when saving = 1 */
 
-
-
-
-
       echo $listPrice .=         "</div>
                             </div>
                         </div>";
-	if($node->field_best_coupon_saving['und'][0]['value'] != 1){
-      echo $listPrice = "<div class='field field-name-field-best-coupon-netpriceafters field-type-number-integer field-label-above'>
+						
+	  if($node->field_best_coupon_saving['und'][0]['value'] != 1){
+	  echo $listPrice = "<div class='field field-name-field-best-coupon-netpriceafters field-type-number-integer field-label-above'>
                             <div class='field-label'>Net Price:&nbsp;</div>
                             <div class='field-items'>
                                 <div class='field-item even'>INR ".number_format($node->field_best_coupon_netpriceafters['und'][0]['value'],0, '.', ',')."</div>
                             </div>
-                        </div>";                    
-		}
-      //print render($content);
-      
-     
-
-
-//	echo coupons_get_taxonomy_url($BrandTid) .". | " . coupons_get_taxonomy_url($RetailerTid) .". | ". coupons_get_taxonomy_url($CategoryTid) . "." ;
-      
-      //echo 'brand - status '. $node->field_best_coupon_status[und][0]['value'];
-
+                        </div>";       
+	}
 	
-//	global $base_url;
-//	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
-	  
-
       if($node->field_best_coupon_status[und][0]['value'] == 1){
  
  	
 //	 echo "<div class='d_view_store'> <a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$coupon_display_url}')//;return true;>View Coupons</a></div>";
-	 echo "<div class='d_view_store'> <a href='{$urlAlias}' >View Coupons</a></div>";
+	 echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>View Coupons</a></div>";
 	
 	        }
       if($node->field_best_coupon_status[und][0]['value'] == 0){
         
 //		echo "<div class='d_view_store'><a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$affiliate_url_uncoded}')//;return true;}'>View Store</a></div>";
-	 echo "<div class='d_view_store'> <a href='{$urlAlias}' >View Coupons</a></div>";
+        echo "<div class='d_view_store'><a href='{$urlAlias}'>View Coupons</a></div>";
         
-		
 		
       } 
 
