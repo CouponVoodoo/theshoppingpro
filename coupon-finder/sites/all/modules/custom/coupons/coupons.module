@@ -120,7 +120,7 @@ function coupons_redirect_interim_page() {
 	
 	
 	/* GETTING USERS OS*/
-/*
+
 	$os = 'unknown';
 	$user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
 	if (strpos($user_agent,'android') > 1) {
@@ -148,19 +148,24 @@ function coupons_redirect_interim_page() {
 			}
 		}
 	}
-*/
+
 	/* GETTING USERS SOURCE*/
-/*
+
 	$original_source = 'Direct_Traffic';
 	if (!isset($_COOKIE['traffic_source12'])) {
 		$original_source = 'Direct_Traffic';
 	} else {
-		$original_source = $_COOKIE['traffic_source12'];
+		$original_source = rawurlencode($_COOKIE['traffic_source12']);
 	}
 	// $add_tracking = rawurlencode($os.'-'.$original_source);	
-	$add_tracking = rawurlencode($os);	
-*/
+	
+	if (strpos($url,'flipkart') > 1){
+			// echo 'flipkart';
+			$url = $url."&AffExtParam1=".$original_source.'&AffExtParam2='.$os;
+	}
 
+	
+	
 	
 	/* ADDING OS AND SOURCE TO URL BASED ON WHETHER URL IS OMG OR TYROO*/
 /*
