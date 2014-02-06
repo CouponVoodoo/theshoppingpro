@@ -13,10 +13,6 @@ function retiler_coupon_menu() {
   return $items;
 }
 
-
-
-
-
 function retiler_coupon_addcoupon($ProInfo){
 	
 $url = "http://54.243.150.171/test/test3.php";
@@ -36,27 +32,43 @@ $url = "http://54.243.150.171/test/test3.php";
     	$jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
     	$jsonArray = json_decode($jsonData);
     	$couponInfo = $jsonArray->couponInfo;
-    	$retailer = $couponInfo->Retailer;
-    	$retailerId = $couponInfo->RetailerId;
-    	$afiliateUrl = $couponInfo->AfiliateUrl;
-    	$lastCheckedTime = $couponInfo->LastCheckedTime;
-    	$couponCode = $couponInfo->CouponCode;
-    	$couponTitle = $couponInfo->CouponTitle;
-    	$couponCodeDesc = $couponInfo->CouponCodeDesc;
-    	$offerType = $couponInfo->OfferType;
-    	$status = $couponInfo->Status;
-    	$weight = $couponInfo->weight;
+    	$retailer = trim($couponInfo->Retailer);
+    	$retailerId = trim($couponInfo->RetailerId);
+    	$afiliateUrl = trim($couponInfo->AfiliateUrl);
+    	$lastCheckedTime = trim($couponInfo->LastCheckedTime);
+    	$couponCode = trim($couponInfo->CouponCode);
+    	$couponTitle = trim($couponInfo->CouponTitle);
+    	$couponCodeDesc = trim($couponInfo->CouponCodeDesc);
+    	$offerType = trim($couponInfo->OfferType);
+    	$status = trim($couponInfo->Status);
+    	$weight = trim($couponInfo->weight);
     	//To Chnge db Query to check if the node exists
-    	$query = db_select('field_data_field_base_url', 'n')
-			   ->fields('n', array('ntity_id') )
-			   ->condition('n.field_base_url_value', $baseUrl, '=')
-			   ->countQuery();
-	      $result = $query->execute();
-	      $record = $result->fetch();
-      
-    	if($record->expression == 0){
-	//echo 'add';
+    	$query = new EntityFieldQuery();
+	$query->entityCondition('entity_type', 'node')
+	  ->entityCondition('bundle', 'retailer_coupon')
+	  ->fieldCondition('field_retailer', 'value', $retailer, '=')
+	  ->fieldCondition('field_coupon_code', 'value', $couponCode, '=')
+	  ->fieldCondition('field_coupon_title', 'value', $couponTitle, '=');
+	  $result = $query->execute();
+    	if (empty($result['node'])) {
+	echo 'add';
+	die;
 	        $node = new stdClass();
+	        $node->language = LANGUAGE_NONE;
+		$node->type     = '_product_and_coupon';	// change
+		$node->uid      = 1; // change
+		$node->field_coupon_code['und']['0']['value']			= $retailer;
+		$node->field_offer_type['und'][0][tid]			= $offerType;
+		$node->field_coupon_title['und']['0']['value']			= $couponTitle;
+		$node->field_coupon_expiry['und']['0']['value']			= $lastCheckedTime;
+		$node->field_coupon_description['und']['0']['value']			= $couponCodeDesc;
+		$node->field_affiliate_url['und']['0']['value']			= $afiliateUrl;
+		$node->field_weight['und']['0']['value']			= $weight;
+		$node->field_status['und']['0']['value']			= $status;
+		$node->field_affiliate_url['und']['0']['value']			= $afiliateUrl;
+		
+		 
+		 
     		$categoryLinks = $jsonArray->CategoryLinks;
     		if ($categoryLinks != null){
     			$categoryLinksArr = json_decode($categoryLinks,true);
