@@ -46,19 +46,84 @@ function coupons_menu() {
     
   return $items;
 }
+/**
+* TO GERNERATE GUID
+*/
+ 
+ function getGUID(){
+    if (function_exists('com_create_guid')){
+        return com_create_guid();
+    }else{
+        mt_srand((double)microtime()*10000);//optional for php 4.2.0 and up.
+        $charid = strtoupper(md5(uniqid(rand(), true)));
+        $hyphen = chr(45);// "-"
+        $uuid = chr(123)// "{"
+            .substr($charid, 0, 8).$hyphen
+            .substr($charid, 8, 4).$hyphen
+            .substr($charid,12, 4).$hyphen
+            .substr($charid,16, 4).$hyphen
+            .substr($charid,20,12)
+            .chr(125);// "}"
+        return $uuid;
+    }
+}
 
 /**
  * Implements hook_init
  */
+ 
  function coupons_init() {
-	// this funciton required. please don't remove it until u are not aware fully.
+	// this function required. please don't remove it until u are not aware fully.
 	// set it to 600 second
 	drupal_set_time_limit(600);
-	// Set cookie for referer.
-	//  setcookie('cv_ref', $_SERVER['HTTP_REFERER']);
-	if (!isset($_COOKIE['traffic_source12'])) { 
 
+	/* GETTING USERS GUID*/
+	if (!isset($_COOKIE['CV_User_GUID'])) {
+		$CV_User_GUID = getGUID();
+		setcookie('CV_User_GUID', $CV_User_GUID, (time()+60*60*24*365*10),'/', 'couponvoodoo.com');
+		$new_user = 1;
+	} Else {
+		$CV_User_GUID = $_COOKIE['User_GUID'];		
+		$new_user = 0;
+	}
+	
+	/* GETTING USERS OS*/
+	if (!isset($_COOKIE['CV_OS'])) {
+		$os = 'unknown';
+		$user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+		if (strpos($user_agent,'android') > 1) {
+			$os = 'android';
+		} else {
+			if (strpos($user_agent,'iphone') > 1) {
+				$os = 'iphone';
+			}else{
+				if (strpos($user_agent,'ipad') > 1) {
+					$os = 'ipad';
+				}else{
+					if (strpos($user_agent,'windows') > 1) {
+						$os = 'windows';
+					} else {
+						if (strpos($user_agent,'blackberry') > 1) {
+							$os = 'blackberry';
+						} else {
+							if (strpos($user_agent,'linux') > 1) {
+								$os = 'linux';
+							} else {
+								$os = 'others';
+							}
+						}
+					}
+				}
+			}
+		}
+		setcookie('CV_OS', $os, (time()+60*60*24*1),'/', 'couponvoodoo.com');
+	} else {
+	$os = $_COOKIE['CV_OS'];
+	}
+	/* GETTING USERS REFERER*/
+	if (!isset($_COOKIE['CV_Traffic_Source'])) { 
 		if (isset($_SERVER['HTTP_REFERER'])) {
+			$new_visit = 1;
 			$referer = $_SERVER['HTTP_REFERER'];
 			$uri = parse_url($_SERVER['HTTP_REFERER']);
 			// $domain = substr($uri['host'], strpos($uri['host'], ".")+1, strlen($uri['host']));
@@ -76,8 +141,36 @@ function coupons_menu() {
 			} else {
 				$traffic_source = rawurlencode($domain);
 			}
+		} ELSE {
+			$new_visit = 1;
+			$referer = 'Direct';
+			$traffic_source = 'Direct';
 		}
-	setcookie('traffic_source12', $traffic_source, (time()+60*60*24*1),'/', 'couponvoodoo.com');
+		setcookie('CV_Traffic_Source', $traffic_source, (time()+60*60*24*1),'/', 'couponvoodoo.com');
+		setcookie('CV_Referrer', $referer, (time()+60*60*24*1),'/', 'couponvoodoo.com');
+		
+	} Else {
+		$new_visit = 0;
+	}
+	
+	if ($new_user == 1) {
+		mixpanel_track('NEW USER', array(
+			'GUID' => $CV_User_GUID,
+			'OS' => $os,
+			'REFERER' => $referer,
+			'TRAFFIC SOURCE' =>  $traffic_source
+			)
+		);
+	} Else {
+		if ($new_visit ==1) {
+		mixpanel_track('NEW VISIT', array(
+			'GUID' => $CV_User_GUID,
+			'OS' => $os,
+			'REFERRER' => $referer,
+			'TRAFFIC SOURCE' =>  $traffic_source
+			)
+		);		
+		}
 	}
 }
 
@@ -113,87 +206,71 @@ function coupons_redirect_interim_page() {
 	global $base_url;
 	$url = $_GET['s'];
 	$coupon_code = $_GET['c'];
-	
-	
+
   /* Removed by Ashish to prevent double decoding on the redirect page*/
   //  $url = urldecode($url); 
-	
-	
-	/* GETTING USERS OS*/
 
-	$os = 'unknown';
-	$user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
-	if (strpos($user_agent,'android') > 1) {
-		$os = 'android';
-	} else {
-		if (strpos($user_agent,'iphone') > 1) {
-			$os = 'iphone';
-		}else{
-			if (strpos($user_agent,'ipad') > 1) {
-				$os = 'ipad';
-			}else{
-				if (strpos($user_agent,'windows') > 1) {
-					$os = 'windows';
-				} else {
-					if (strpos($user_agent,'blackberry') > 1) {
-						$os = 'blackberry';
-					} else {
-						if (strpos($user_agent,'linux') > 1) {
-							$os = 'linux';
-						} else {
-							$os = 'others';
-						}
-					}
-				}
-			}
+  
+	/* ADDING GUID TO TRACKING  URL IS OMG OR TYROO OR FLIPKART*/
+
+	if (strpos($url,'flipkart') > 1){
+		$affiliate = 'Flipkart';
+		if (strpos($url,'AffExtParam1') == false){
+			// no AffExtParam1
+			$url = $url."&AffExtParam1=".$CV_User_GUID;
+			
 		}
 	}
-
-	/* GETTING USERS SOURCE*/
-
-	$original_source = 'Direct_Traffic';
-	if (!isset($_COOKIE['traffic_source12'])) {
-		$original_source = 'Direct_Traffic';
-	} else {
-		$original_source = rawurlencode($_COOKIE['traffic_source12']);
-	}
-	// $add_tracking = rawurlencode($os.'-'.$original_source);	
-	
-	if (strpos($url,'flipkart') > 1){
-			// echo 'flipkart';
-			$url = $url."&AffExtParam1=".$original_source.'&AffExtParam2='.$os;
-	}
-	
-	
-	
-	
-	
-	/* ADDING OS AND SOURCE TO URL BASED ON WHETHER URL IS OMG OR TYROO*/
-/*
- if ($os == 'windows') {
 	if (strpos($url,'affiliates.tyroodr.com') > 1){
-		// echo 'tyroo';
+		$affiliate = 'Tyroo';
 		if (strpos($url,'subid2') == false){
 			// echo 'no subid2';
-			$url = $url."&subid2=".$os."&subid3=".rawurlencode($original_source);
+			$url = $url."&subid2=".$CV_User_GUID;
 		}
 	}
 	if (strpos($url,'track.in.omgpm.com') > 1){
-			// echo 'omg';
-			$url = $url."&uid2=".$add_tracking;
+		$affiliate = 'OMG';
+		if (strpos($url,'uid2') == false){
+			// echo 'no uid2';
+			$url = $url."&uid2=".$CV_User_GUID;
+		}
 	}
-}
-*/
-/** START OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIrECT PAGE */  
-  
-mixpanel_track('Coupon Click Redirect', array(
-    'Affiliate URL' => $_GET['s'],
-    'Coupon Code' => $coupon_code,
-    'OS' => $os,
-	'Source' => $original_source,
-	'Final URL' =>  $url
-	)
-);
+
+/** START OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIRECT PAGE */  
+	/* GETTING USER GUID */
+	if (!isset($_COOKIE['CV_User_GUID'])) {
+		$CV_User_GUID = 'NOT_SET';
+	} Else {
+		$CV_User_GUID = $_COOKIE['User_GUID'];		
+	}
+	/* GETTING USER OS */
+	if (!isset($_COOKIE['CV_OS'])) {
+		$CV_OS = 'NOT_SET';
+	} Else {
+		$CV_OS = $_COOKIE['CV_OS'];		
+	}
+	/* GETTING USER REFERRER */
+	if (!isset($_COOKIE['CV_Referrer'])) {
+		$cv_referrer = 'NOT_SET';
+	} Else {
+		$cv_referrer = $_COOKIE['CV_Referrer'];		
+	}
+	/* GETTING USER TRAFFIC SOURCE */
+	if (!isset($_COOKIE['CV_Traffic_Source'])) {
+		$traffic_source = 'NOT_SET';
+	} Else {
+		$traffic_source = $_COOKIE['CV_Traffic_Source'];		
+	}	
+ 
+	mixpanel_track('Coupon Click Redirect', array(
+		'USER GUID' => $CV_User_GUID,
+		'Affiliate URL' => $url,
+		'Coupon Code' => $coupon_code,
+		'OS' => $os,
+		'Traffic Source' => $traffic_source,
+		'Referrer' =>  $cv_referrer
+		)
+	);
 
 /** END OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIECT PAGE */ 
 
