@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 function custom_api_menu() {
   $items = array();
 
@@ -13,11 +16,6 @@ function custom_api_menu() {
   return $items;
 }
 
-
-function custom_api_apachesolr_index_document_build(ApacheSolrDocument $document, $entity, $entity_type, $env_id) {
-  $best_coupon_url = $entity->field_best_coupon_url;
-  $document->addField('ss_best_coupon_url', $best_coupon_url);
-}
 
 
 
@@ -230,7 +228,7 @@ function custom_api_addproduct($ProInfo){
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$record->entity_id);
 	
 	if( $expDate[0] != $lastUpdatedDate){
-	  echo 'date loop';
+	  echo 'update loop';
   	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'Last Update Time Loop: '.$time1;
@@ -366,7 +364,13 @@ function custom_api_addproduct($ProInfo){
 		$node->field_best_coupon_status['und']['0'][value]	= trim( $jsonArray->header->CouponResult );
 		//NOW USING NODE_SAVE db_query("UPDATE {field_data_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
 		//NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
-		$coupon_display = trim( $jsonArray->header->CouponResult );
+		if ($node->field_best_coupon_status['und']['0'][value] == 1) {
+			$node->field_best_coupon_status_display['und']['0'][value] = 'With Coupons';
+		} else {
+			$node->field_best_coupon_status_display['und']['0'][value] = 'Without Coupons';
+		}
+		
+/*		$coupon_display = trim( $jsonArray->header->CouponResult );
 		if ($coupon_display == 1) {
 			$coupon_status_display = 'With Coupons';
 		} else {
@@ -384,7 +388,7 @@ function custom_api_addproduct($ProInfo){
 				'language'=>'und',
 			))
 			->execute();
-		
+*/		
 	
 			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
