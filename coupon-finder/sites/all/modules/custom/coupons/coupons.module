@@ -257,7 +257,6 @@ function coupons_redirect_interim_page() {
 		if (strpos($url,'AffExtParam1') == false){
 			// no AffExtParam1
 			$url = $url."&AffExtParam1=".$CV_User_GUID;
-			
 		}
 	}
 	if (strpos($url,'affiliates.tyroodr.com') > 1){
