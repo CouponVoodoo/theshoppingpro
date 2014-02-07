@@ -83,7 +83,7 @@ function coupons_menu() {
 		setcookie('CV_User_GUID', $CV_User_GUID, (time()+60*60*24*365*10),'/', 'couponvoodoo.com');
 		$new_user = 1;
 	} Else {
-		$CV_User_GUID = $_COOKIE['User_GUID'];		
+		$CV_User_GUID = $_COOKIE['CV_User_GUID'];		
 		$new_user = 0;
 	}
 	
@@ -216,7 +216,7 @@ function coupons_redirect_interim_page() {
 	if (!isset($_COOKIE['CV_User_GUID'])) {
 		$CV_User_GUID = 'NOT_SET';
 	} Else {
-		$CV_User_GUID = $_COOKIE['User_GUID'];		
+		$CV_User_GUID = $_COOKIE['CV_User_GUID'];		
 	}
 	/* GETTING USER OS */
 	if (!isset($_COOKIE['CV_OS'])) {
