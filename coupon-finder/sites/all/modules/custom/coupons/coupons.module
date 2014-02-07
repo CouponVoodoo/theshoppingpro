@@ -211,31 +211,6 @@ function coupons_redirect_interim_page() {
   //  $url = urldecode($url); 
 
   
-	/* ADDING GUID TO TRACKING  URL IS OMG OR TYROO OR FLIPKART*/
-
-	if (strpos($url,'flipkart') > 1){
-		$affiliate = 'Flipkart';
-		if (strpos($url,'AffExtParam1') == false){
-			// no AffExtParam1
-			$url = $url."&AffExtParam1=".$CV_User_GUID;
-			
-		}
-	}
-	if (strpos($url,'affiliates.tyroodr.com') > 1){
-		$affiliate = 'Tyroo';
-		if (strpos($url,'subid2') == false){
-			// echo 'no subid2';
-			$url = $url."&subid2=".$CV_User_GUID;
-		}
-	}
-	if (strpos($url,'track.in.omgpm.com') > 1){
-		$affiliate = 'OMG';
-		if (strpos($url,'uid2') == false){
-			// echo 'no uid2';
-			$url = $url."&uid2=".$CV_User_GUID;
-		}
-	}
-
 /** START OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIRECT PAGE */  
 	/* GETTING USER GUID */
 	if (!isset($_COOKIE['CV_User_GUID'])) {
@@ -273,7 +248,31 @@ function coupons_redirect_interim_page() {
 	);
 
 /** END OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIECT PAGE */ 
+	/* ADDING GUID TO TRACKING  URL IS OMG OR TYROO OR FLIPKART*/
 
+	if (strpos($url,'flipkart') > 1){
+		$affiliate = 'Flipkart';
+		if (strpos($url,'AffExtParam1') == false){
+			// no AffExtParam1
+			$url = $url."&AffExtParam1=".$CV_User_GUID;
+			
+		}
+	}
+	if (strpos($url,'affiliates.tyroodr.com') > 1){
+		$affiliate = 'Tyroo';
+		if (strpos($url,'subid2') == false){
+			// echo 'no subid2';
+			$url = $url."&subid2=".$CV_User_GUID;
+		}
+	}
+	if (strpos($url,'track.in.omgpm.com') > 1){
+		$affiliate = 'OMG';
+		if (strpos($url,'uid2') == false){
+			// echo 'no uid2';
+			$url = $url."&uid2=".$CV_User_GUID;
+		}
+	}
+	
   drupal_add_js("jQuery(window).load(function(){
                   setTimeout(function(){
                      window.location.replace(\"" . $url . "\");
