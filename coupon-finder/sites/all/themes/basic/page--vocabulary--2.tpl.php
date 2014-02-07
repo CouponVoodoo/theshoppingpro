@@ -100,45 +100,12 @@
 	} else {
 		$coupon_code=rawurlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	}
-	/* GETTING USERS OS*/
-	$os = 'unknown';
-	$user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
-	if (strpos($user_agent,'android') > 1) {
-		$os = 'android';
-	} else {
-		if (strpos($user_agent,'iphone') > 1) {
-			$os = 'iphone';
-		}else{
-			if (strpos($user_agent,'ipad') > 1) {
-				$os = 'ipad';
-			}else{
-				if (strpos($user_agent,'windows') > 1) {
-					$os = 'windows';
-				} else {
-					if (strpos($user_agent,'blackberry') > 1) {
-						$os = 'blackberry';
-					} else {
-						if (strpos($user_agent,'linux') > 1) {
-							$os = 'linux';
-						} else {
-							$os = 'others';
-						}
-					}
-				}
-			}
-		}
+	if (!isset($_COOKIE['CV_User_GUID'])) {
+		$CV_User_GUID = 'NOT_SET';
+	} Else {
+		$CV_User_GUID = $_COOKIE['CV_User_GUID'];		
 	}
-	/* GETTING USERS SOURCE*/
-	$original_source = 'Direct_Traffic';
-	if (!isset($_COOKIE['traffic_source12'])) {
-		$original_source = 'Direct_Traffic';
-	} else {
-		$original_source = $_COOKIE['traffic_source12'];
-	}
-	$add_tracking = rawurlencode($os.'-'.$original_source);
-	
-	
-	$coupon_display_url=$base_url."/coupon-redirect?os=".$add_tracking."&s=".$affiliate_url."&c=".$coupon_code;
+	$coupon_display_url=$base_url."/coupon-redirect?guid=".$CV_User_GUID."&s=".$affiliate_url."&c=".$coupon_code;
 	// $coupon_display_url=$affiliate_url_uncoded;
 		
  	$uplImg = $node->field_product_images['und'][0]['uri'];
