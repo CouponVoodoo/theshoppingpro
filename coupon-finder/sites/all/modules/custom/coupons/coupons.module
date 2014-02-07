@@ -222,7 +222,7 @@ function coupons_redirect_interim_page() {
 	}
 	/* GETTING USER OS */
 	if (!isset($_COOKIE['CV_OS'])) {
-		$CV_OS = 'NOT_SET';
+		$CV_OS = 'others';
 	} Else {
 		$CV_OS = $_COOKIE['CV_OS'];		
 	}
