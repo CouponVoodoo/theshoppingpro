@@ -152,23 +152,26 @@ function coupons_menu() {
 		$new_visit = 0;
 	}
 	
-	if ($new_user == 1) {
-		mixpanel_track('NEW USER', array(
-			'GUID' => $CV_User_GUID,
-			'OS' => $os,
-			'REFERER' => $referer,
-			'TRAFFIC SOURCE' =>  $traffic_source
-			)
-		);
-	} Else {
-		if ($new_visit ==1) {
-		mixpanel_track('NEW VISIT', array(
-			'GUID' => $CV_User_GUID,
-			'OS' => $os,
-			'REFERRER' => $referer,
-			'TRAFFIC SOURCE' =>  $traffic_source
-			)
-		);		
+	
+	if ($os != 'others') {
+		if ($new_user == 1) {
+			mixpanel_track('NEW USER', array(
+				'GUID' => $CV_User_GUID,
+				'OS' => $os,
+				'REFERER' => $referer,
+				'TRAFFIC SOURCE' =>  $traffic_source
+				)
+			);
+		} Else {
+			if ($new_visit ==1) {
+			mixpanel_track('NEW VISIT', array(
+				'GUID' => $CV_User_GUID,
+				'OS' => $os,
+				'REFERRER' => $referer,
+				'TRAFFIC SOURCE' =>  $traffic_source
+				)
+			);		
+			}
 		}
 	}
 }
@@ -235,17 +238,17 @@ function coupons_redirect_interim_page() {
 	} Else {
 		$traffic_source = $_COOKIE['CV_Traffic_Source'];		
 	}	
- 
-	mixpanel_track('Coupon Click Redirect', array(
-		'USER GUID' => $CV_User_GUID,
-		'Affiliate URL' => $url,
-		'Coupon Code' => $coupon_code,
-		'OS' => $os,
-		'Traffic Source' => $traffic_source,
-		'Referrer' =>  $cv_referrer
-		)
-	);
-
+	if ($CV_OS != 'others') {
+		mixpanel_track('Coupon Click Redirect', array(
+			'USER GUID' => $CV_User_GUID,
+			'Affiliate URL' => $url,
+			'Coupon Code' => $coupon_code,
+			'OS' => $os,
+			'Traffic Source' => $traffic_source,
+			'Referrer' =>  $cv_referrer
+			)
+		);
+	}
 /** END OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIECT PAGE */ 
 	/* ADDING GUID TO TRACKING  URL IS OMG OR TYROO OR FLIPKART*/
 
