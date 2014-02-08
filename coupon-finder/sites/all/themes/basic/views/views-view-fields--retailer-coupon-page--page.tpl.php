@@ -78,7 +78,7 @@
 			$node = node_load($nid);
 			$field_collection = $node->field_category_links_multi;
 			if(!empty($field_collection)){
-		?> <div class="search_listing_row">This coupon has been checked for the following categories @<?php print $retailer; ?>. so what will you buy today? :</div> 
+		?> <div class="search_listing_row">This coupon has been checked for the following categories @ <?php print $retailer; ?>. so what will you buy today? :</div> 
 			
 		<?php
 			foreach ($node->field_category_links_multi['und'] as $oneRow) {
