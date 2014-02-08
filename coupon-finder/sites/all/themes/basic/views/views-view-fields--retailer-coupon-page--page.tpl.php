@@ -35,8 +35,8 @@
 			$offer_type = strip_tags($fields['field_offer_type']->content);
 			$coupon_title = $fields['field_coupon_title']->content;
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
-			//$affiliate_url = strip_tags($fields['field_affiliate_url']->content); // UNCOMMENT ONCE CORRECTED
-			$affiliate_url = 'http://track.in.omgpm.com/?AID=387355&MID=304697&PID=9170&CID=3697672&WID=43135&uid=homePage&r=http%3A%2F%2Fwww.jabong.com';
+			$affiliate_url = strip_tags($fields['field_affiliate_url']->content);
+			// $affiliate_url = 'http://track.in.omgpm.com/?AID=387355&MID=304697&PID=9170&CID=3697672&WID=43135&uid=homePage&r=http%3A%2F%2Fwww.jabong.com';
 			$status = strip_tags($fields['field_status']->content);
 			$weight = $fields['field_weight']->content;
 			if ($offer_type == 'Coupons') {
