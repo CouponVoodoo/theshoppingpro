@@ -14,7 +14,7 @@ function retailer_coupon_menu() {
 
 /* FUNCTION THAT THE RETAILER API CALLS TO CREATE / UPDATE  REATILER COUPON*/
 function retailer_coupon_addcoupon($CouponInfo){
-$retailer = explode('_',$_REQUEST['retailer'])[0];
+$retailer = explode('_',$_REQUEST('retailer'))[0];
 	$url = "http://54.243.150.171/cpnVodo/nodecreation/cpnPageNodeCreation.php?retailer=".$retailer; //The API TO GET ALL RETAILER COUPON DATA 
 	$json = drupal_http_request($url, array('timeout' => 600.0));
    	$json = $json->data;
@@ -40,7 +40,7 @@ $retailer = explode('_',$_REQUEST['retailer'])[0];
     	$weight = trim($couponInfo->weight);
 		//CHECK IF NODE EXISTS (INCASE OF COUPONS CHECK VIA COUPON CODE AND RETAILER ID ELSE VIA COUPON TITLE AND RETAILER ID
 		//echo "offer type: ".$offerType;
-		if ($offerType == 6199){
+		if ($offerType == 14702){
 		$query = new EntityFieldQuery();
 		$query->entityCondition('entity_type', 'node')
 		->entityCondition('bundle', 'retailer_coupon_page')
