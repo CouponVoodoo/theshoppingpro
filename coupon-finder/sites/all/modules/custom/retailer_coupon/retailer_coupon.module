@@ -14,8 +14,8 @@ function retailer_coupon_menu() {
 
 /* FUNCTION THAT THE RETAILER API CALLS TO CREATE / UPDATE  REATILER COUPON*/
 function retailer_coupon_addcoupon($CouponInfo){
-// $retailer = explode('_',$_REQUEST['retailer'])[0];
-$retailer = reset(explode('_',$urlParam));
+$retailer = reset(explode('_',$_REQUEST['retailer']));
+//$retailer = reset(explode('_',$urlParam));
 	$url = "http://54.243.150.171/cpnVodo/nodecreation/cpnPageNodeCreation.php?retailer=".$retailer; //The API TO GET ALL RETAILER COUPON DATA 
 	$json = drupal_http_request($url, array('timeout' => 600.0));
    	$json = $json->data;
