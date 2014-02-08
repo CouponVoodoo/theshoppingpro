@@ -155,7 +155,7 @@ abbr {
   font-size: 13px;
   font-style: normal;
   font-weight: normal;
-  text-decoration: none;F
+  text-decoration: none;
 }
 
 #edit-delete {
@@ -1169,3 +1169,28 @@ img{max-width: 100%;}
 	margin-top: 10px; 
 	display: inline-block;
 }
+
+.retailer_coupon_page_row {
+list-style: none;
+background-color: #f2f2f2;
+border: 1px solid #d7d7d7;
+margin-bottom: 15px;
+display: table;
+width: 100%;
+padding: 20px;
+}
+.coupon-page-description{
+	text-align: justify;
+	color: #666666;
+}
+
+.page-rcp h1{display: none}
+.page-rcp .field-label{display: none}
+.page-rcp .field-items{text-align: justify, color: #999999}
+.page-rcp .item-list ul li {margin: 0px !important; list-style-image: none; list-style-type: none;}
+
+
+
+
+
+
