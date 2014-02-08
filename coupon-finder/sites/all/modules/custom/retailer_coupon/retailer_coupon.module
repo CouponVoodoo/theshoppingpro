@@ -15,7 +15,7 @@ function retailer_coupon_menu() {
 /* FUNCTION THAT THE RETAILER API CALLS TO CREATE / UPDATE  REATILER COUPON*/
 function retailer_coupon_addcoupon($CouponInfo){
 $retailer = explode('_',$_REQUEST['retailer'])[0];
-	$url = "http://54.243.150.171/cpnVodo/nodecreation/cpnPageNodeCreation.php?retailer=".; //The API TO GET ALL RETAILER COUPON DATA 
+	$url = "http://54.243.150.171/cpnVodo/nodecreation/cpnPageNodeCreation.php?retailer=".$retailer; //The API TO GET ALL RETAILER COUPON DATA 
 	$json = drupal_http_request($url, array('timeout' => 600.0));
    	$json = $json->data;
     $jsonArr = json_decode($json,true);
@@ -79,7 +79,7 @@ $retailer = explode('_',$_REQUEST['retailer'])[0];
 		}
 		// COMMON PROCESS FOR UPDATE AND NEW NODE SINCE NODE IS NOW IDENTIFIED / CREATED
 		// PUSHING IN MAIN DATA (I.E. ALL EXCEPT CATEGORY LINKS) 
-		$node->title = $couponTitle.' @ '.$retailer;
+		$node->title = $couponTitle.' @ '.ucfirst($retailer);
 		$node->body = $couponTitle.' @ '.$retailer;
 		$node->field_retailer['und'][0][tid]			= $retailerId;
 		$node->field_coupon_code['und']['0']['value']			= $couponCode;
