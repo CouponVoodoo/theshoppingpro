@@ -78,7 +78,7 @@
 			$node = node_load($nid);
 			$field_collection = $node->field_category_links_multi;
 			if(!empty($field_collection)){
-		?> <div class="search_listing_row">This coupon has been checked for the following categories @ <?php print $retailer; ?>. so what will you buy today? :</div> 
+		?> <div class="search_listing_row">This coupon has been checked for the following categories @ <?php print $retailer; ?>. so what will you buy today?</div> 
 			
 		<?php
 			foreach ($node->field_category_links_multi['und'] as $oneRow) {
@@ -102,11 +102,12 @@
 						  
 				/*CREATING REDIRECT PAGE PATH FOR EACH CATEGORY */
 				$fc_coupon_display_url = $base_url."/coupon-redirect?guid=".$CV_User_GUID."&s=".rawurlencode($fc_affiliate_url)."&c=".rawurlencode($coupon_code);		
-
+				if($full_category_name != ""){
 		?>
-				<div><a rel='no follow' target='_blank'href='<?php print $fc_coupon_display_url ?>' ><?php print $full_category_name ;?></a></div>
+				<div class="category_link_button"><a rel='no follow' target='_blank'href='<?php print $fc_coupon_display_url ?>' ><?php print $full_category_name ;?></a></div>
 				
 		<?php		
+				}
 			  } 
 			 
 			}
