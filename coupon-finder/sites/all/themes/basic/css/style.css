@@ -1201,6 +1201,10 @@ padding: 20px;
   margin: 5px;
 }
 
+.category_link_button a {
+  color: #ffffff;
+  text-decoration: none;
+}
 
 
 
