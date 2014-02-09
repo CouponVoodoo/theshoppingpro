@@ -66,53 +66,8 @@
 			} ?></div>
 			<div >Last Checked: <?php print $last_checked_time; ?></div>
 			<div >Offer Type: <?php print $offer_type; ?></div>
-			</br>
-			
-
-
-			
-		<?php
-				
-			// echo "<div class='view_store_coupon_page'><a target='_blank' class='view_store_coupon_page' href='{$coupon_display_url}' >View Store</a></div>";
-			
-			$node = node_load($nid);
-			$field_collection = $node->field_category_links_multi;
-			if(!empty($field_collection)){
-		?> <div class="search_listing_row">This coupon has been checked for the following categories @ <?php print $retailer; ?>. so what will you buy today?</div> 
-			
-		<?php
-			foreach ($node->field_category_links_multi['und'] as $oneRow) {
-				$row = field_collection_item_load($oneRow['value']);
-				$fc_affiliate_url = strip_tags(trim($row->field_link_affiliate_url_multi['und']['0']['value']));
-				$fc_category_id = $row->field_link_category_id_multi['und'][0][tid];
-				/*CONVERTING ID TO NAME */
-				$term = taxonomy_term_load($fc_category_id);
-						$full_category_name = '';
-						$parent_terms = taxonomy_get_parents_all($fc_category_id);
-						foreach($parent_terms as $parent) {
-						  $parent_parents = taxonomy_get_parents_all($parent->tid);
-						  
-						  $full_category_name = $parent->name.' > '.$full_category_name;
-						  
-						  /*if ($parent_parents != false) {
-							//this is top parent term
-							$top_parent_term = $parent;
-						  }*/
-						}
-						  
-				/*CREATING REDIRECT PAGE PATH FOR EACH CATEGORY */
-				$fc_coupon_display_url = $base_url."/coupon-redirect?guid=".$CV_User_GUID."&s=".rawurlencode($fc_affiliate_url)."&c=".rawurlencode($coupon_code);		
-				if($full_category_name != ""){
-		?>
-				<div class="category_link_button"><a rel='no follow' target='_blank'href='<?php print $fc_coupon_display_url ?>' ><?php print $full_category_name ;?></a></div>
-				
-		<?php		
-				}
-			  } 
-			 
-			}
-		?>
 	</div>
+
 	<div class="search_listing_right">
 	
 		  <div class="search_listing_row__1 copy_coupon_row">
@@ -145,5 +100,49 @@
 				});", array('type' => 'inline', 'scope' => 'footer'));
 		?>	
 	</div>
-	
+	<div class="retailer_coupon_category_list">
+	<?php
+					
+				// echo "<div class='view_store_coupon_page'><a target='_blank' class='view_store_coupon_page' href='{$coupon_display_url}' >View Store</a></div>";
+				
+				$node = node_load($nid);
+				$field_collection = $node->field_category_links_multi;
+				if(!empty($field_collection)){ 
+			?> <div class="category_list_message">This coupon has been checked for the following categories @ <?php print $retailer; ?>. So what will you buy today?</div> 
+				
+			<?php
+				foreach ($node->field_category_links_multi['und'] as $oneRow) {
+					$row = field_collection_item_load($oneRow['value']);
+					$fc_affiliate_url = strip_tags(trim($row->field_link_affiliate_url_multi['und']['0']['value']));
+					$fc_category_id = $row->field_link_category_id_multi['und'][0][tid];
+					/*CONVERTING ID TO NAME */
+					$term = taxonomy_term_load($fc_category_id);
+							$full_category_name = '';
+							$parent_terms = taxonomy_get_parents_all($fc_category_id);
+							foreach($parent_terms as $parent) {
+							  $parent_parents = taxonomy_get_parents_all($parent->tid);
+							  
+							  $full_category_name = $parent->name.' > '.$full_category_name;
+							  
+							  /*if ($parent_parents != false) {
+								//this is top parent term
+								$top_parent_term = $parent;
+							  }*/
+							}
+							  
+					/*CREATING REDIRECT PAGE PATH FOR EACH CATEGORY */
+					$fc_coupon_display_url = $base_url."/coupon-redirect?guid=".$CV_User_GUID."&s=".rawurlencode($fc_affiliate_url)."&c=".rawurlencode($coupon_code);		
+					if($full_category_name != ""){
+
+					?>
+					<div class="category_link_button"><a rel='no follow' target='_blank'href='<?php print $fc_coupon_display_url ?>' ><?php print $full_category_name ;?></a></div>
+					
+			<?php		
+					}
+				  } 
+				 
+				}
+			?>
+
+	</div>
 </div>
