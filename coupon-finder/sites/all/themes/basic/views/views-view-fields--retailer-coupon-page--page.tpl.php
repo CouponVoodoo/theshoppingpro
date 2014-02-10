@@ -75,7 +75,12 @@
 		  <div class="search_listing_row__1 copy_coupon_row">
 			
 			<a href="<?php print $coupon_display_url?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_1">
-				  <span class="copy_coupon">Show Coupon</span><span></span>
+				  
+				 <?php if($offer_type == 'Coupons') {?>
+					<span class="copy_coupon">Show Coupon</span><span></span>
+				<?php } else { ?>
+					<span class="copy_coupon">Activate Deal</span><span></span>
+				<?php }?>
 			</a>
 			
 		  </div>
