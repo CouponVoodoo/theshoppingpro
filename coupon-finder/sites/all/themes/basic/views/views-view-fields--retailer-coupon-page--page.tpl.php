@@ -33,14 +33,14 @@
 			$nid = strip_tags($fields['nid']->content);
 			$retailer = strip_tags($fields['field_retailer']->content);
 			$offer_type = strip_tags($fields['field_offer_type']->content);
-			$coupon_title = $fields['field_coupon_title']->content;
+			$coupon_title = strip_tags($fields['field_coupon_title']->content);
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
 			$affiliate_url = strip_tags($fields['field_affiliate_url']->content);
 			// $affiliate_url = 'http://track.in.omgpm.com/?AID=387355&MID=304697&PID=9170&CID=3697672&WID=43135&uid=homePage&r=http%3A%2F%2Fwww.jabong.com';
 			$status = strip_tags($fields['field_status']->content);
 			$weight = $fields['field_weight']->content;
 			if ($offer_type == 'Coupons') {
-				$coupon_code = $fields['field_coupon_code']->content;
+				$coupon_code = strip_tags($fields['field_coupon_code']->content);
 			} else {
 				$coupon_code = 'Deal';
 			}
@@ -54,14 +54,15 @@
 			$coupon_display_url=$base_url."/coupon-redirect?guid=".$CV_User_GUID."&s=".rawurlencode($affiliate_url)."&c=".rawurlencode($coupon_code);
 		?>
 			<h2><a rel='no follow' target='_blank'href='<?php print $coupon_display_url ?>' ><?php print $title; ?></a></h2>
-			<div >Status: 
+			<div > 
 			<?php if ($status == '2'){
-				print 'Guaranteed to Work!';
+			echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_theme()."/images/u67_normal.png' />Guaranteed To Work</div>";
+			
 			}else {
 				if ($status == '1') {
-					print 'Likely to Work';
+					echo "<div class='coupon_status_likely'>Likely to Work</a></div>";
 				} else {
-					print 'Unlikely to Work';
+					echo "<div class='coupon_status_unlikely'><img src='".base_path().path_to_theme()."/images/u6_normal.png' />Unlikely to Work</div>";
 				}
 			} ?></div>
 			<div >Last Checked: <?php print $last_checked_time; ?></div>
@@ -86,6 +87,10 @@
 				  $('.unlock_best_coupon').click(function(){
 				  //alert('test test');
 			  coupon_code = Drupal.settings.coupon_code;
+				  
+					var url = $(this).attr('href');
+					coupon_code = url.split('&c=')[1].split('&')[0];
+				  
 				  
 					  $(this).html(coupon_code);
 					  $(this).addClass('copied_coupon')
