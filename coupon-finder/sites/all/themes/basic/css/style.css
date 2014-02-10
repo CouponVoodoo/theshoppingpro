@@ -1114,7 +1114,6 @@ img{max-width: 100%;}
 	.page-search-site .find_coupon .form-type-textfield .description {display: none;}
 	.page-search-site .find_coupon .form-type-textfield {width: 100%}
 	.page-search-site .find_coupon .view_video {width: 50%}
-	.views-exposed-form .views-exposed-widget .form-submit {margin-top: 352px !important;}
 	.category_link_button {width:100%}
 }
 
@@ -1225,10 +1224,10 @@ color: #999999;
 }
 
 /* TAKING FILTER ON COUPON PAGE TO THE RIGHT SIDE. */
-.view-retailer-coupon-page #edit-field-offer-type-tid-wrapper label, .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper .views-widget { float:left; }
+/* .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper label, .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper .views-widget { float:left; }
 .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper label {padding-right: 10px;}
 .view-retailer-coupon-page .views-exposed-widgets { position:relative;}
 .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper {float:right;padding-right:100px;}
 .view-retailer-coupon-page .views-submit-button {position: absolute; height: 100%; top: 0px; right: 0px; width: 50px; padding-top: 239px;}
 .views-exposed-form .views-exposed-widget .form-submit {margin-left: -30px; margin-top: 30px;}
-
+*/
