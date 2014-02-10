@@ -1114,7 +1114,6 @@ img{max-width: 100%;}
 	.page-search-site .find_coupon .form-type-textfield .description {display: none;}
 	.page-search-site .find_coupon .form-type-textfield {width: 100%}
 	.page-search-site .find_coupon .view_video {width: 50%}
-	.category_link_button {width:100%}
 }
 
 /*	.page-taxonomy-term .find_coupon label{display:none} */
@@ -1193,6 +1192,7 @@ padding: 20px;
 .page-rcp .field-label{display: none}
 .page-rcp .field-items{text-align: justify, color: #999999}
 .page-rcp .item-list ul li {margin: 0px !important; list-style-image: none; list-style-type: none;}
+.page-rcp .search_listing_left {padding: 0px;}
 .category_link_button{
   border:0px;
   background: #25ADE3;
@@ -1218,10 +1218,19 @@ width: 100%;
 .category_list_message{
 float: left;
 width: 100%;
-padding: 10px;
-font-weight: bold;
+padding: 0px;
+font-weight: normal;
 color: #999999;
 }
+.category_list_header{
+float: left;
+width: 100%;
+padding: 0px;
+font-weight: bold;
+color: #F7971C;
+}
+
+
 
 /* TAKING FILTER ON COUPON PAGE TO THE RIGHT SIDE. */
 /* .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper label, .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper .views-widget { float:left; }
