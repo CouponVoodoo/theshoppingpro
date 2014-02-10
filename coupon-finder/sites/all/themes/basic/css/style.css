@@ -36,10 +36,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 16 px;
+  font-size: 14 px;
   font-weight: 300;
-  padding: 0 0 0.5em;
-  margin: 0;
+  margin-bottom: 0.75em;
 }
 
 h2 {
@@ -712,7 +711,9 @@ img.dollor { left: 452px; position: absolute; top: 324px; z-index: 0;}
 .product_info .content ol li{color: #666666; font-weight: bold; list-style-type: none; text-align: left;line-height: 150%;}
 .product-detail{width:99.8%;float:left;border-radius:4px;border:1px solid #e1e1e1;margin-left:0px;padding:12px;margin-bottom:15px}
 .product-detail h2{color: #F7971C;font-family: Arial;font-size: 18px;font-style: normal;font-weight: bold;padding-right: 0px;text-decoration: none;}
+.product-detail h1{color: #F7971C;font-family: Arial;font-size: 18px;font-style: normal;font-weight: bold;padding-right: 0px;text-decoration: none;}
 .product-detail h2 .field-content{float:left}
+.product-detail h1 .field-content{float:left}
 .product-detail .product-left{ float: left;margin-top: 10px;text-align: center;width: 225px;}
 .product-detail .product-left .field-content{ float: left; height: 200px;text-align: center;width: 200px;}
 .product-detail .product-right-inner{width:64%;float:left;margin-left:11px}
@@ -1219,6 +1220,10 @@ color: #999999;
 }
 
 
-
-
+.view-retailer-coupon-page #edit-field-offer-type-tid-wrapper label, .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper .views-widget { float:left; }
+.view-retailer-coupon-page #edit-field-offer-type-tid-wrapper label {padding-right: 10px;}
+.view-retailer-coupon-page .views-exposed-widgets, .view-retailer-coupon-page  .views-submit-button {float:right;}
+.view-retailer-coupon-page .views-exposed-widgets { position:relative;}
+.view-retailer-coupon-page #edit-field-offer-type-tid-wrapper {float:right;padding-right:100px;}
+ .view-retailer-coupon-page #views-submit-button {float: right; position: absolute; height: 100%; top: 0px; right: 0px; width: 50px; padding-top: 239px;}
 
