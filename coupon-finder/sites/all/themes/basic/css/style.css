@@ -1222,8 +1222,8 @@ color: #999999;
 
 .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper label, .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper .views-widget { float:left; }
 .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper label {padding-right: 10px;}
-.view-retailer-coupon-page .views-exposed-widgets, .view-retailer-coupon-page  .views-submit-button {float:right;}
+.view-retailer-coupon-page .views-exposed-widgets {float:right;}
 .view-retailer-coupon-page .views-exposed-widgets { position:relative;}
 .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper {float:right;padding-right:100px;}
- .view-retailer-coupon-page #views-submit-button {float: right; position: absolute; height: 100%; top: 0px; right: 0px; width: 50px; padding-top: 239px;}
+.view-retailer-coupon-page .views-submit-button {position: absolute; height: 100%; top: 0px; right: 0px; width: 50px; padding-top: 239px;}
 
