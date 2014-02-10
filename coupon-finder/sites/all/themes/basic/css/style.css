@@ -1242,7 +1242,7 @@ display: inline;
 }
 .coupon_status_guaranteed img{
 display:inline-block; 
-vertical-align:middle
+vertical-align:middle;
 padding-right: 10px;
 }
 
@@ -1258,7 +1258,7 @@ display: inline
 }
 .coupon_status_likely img{
 display:inline-block; 
-vertical-align:middle
+vertical-align:middle;
 padding-right: 10px;
 }
 
@@ -1275,7 +1275,7 @@ display: inline;
 }
 .coupon_status_unlikely img{
 display:inline-block; 
-vertical-align:middle
+vertical-align:middle;
 padding-right: 10px;
 }
 
