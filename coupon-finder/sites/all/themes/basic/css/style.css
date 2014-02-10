@@ -1219,11 +1219,11 @@ font-weight: bold;
 color: #999999;
 }
 
-
+/* TAKING FILTER ON COUPON PAGE TO THE RIGHT SIDE. */
 .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper label, .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper .views-widget { float:left; }
 .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper label {padding-right: 10px;}
 .view-retailer-coupon-page .views-exposed-widgets { position:relative;}
 .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper {float:right;padding-right:100px;}
 .view-retailer-coupon-page .views-submit-button {position: absolute; height: 100%; top: 0px; right: 0px; width: 50px; padding-top: 239px;}
-.views-exposed-form .views-exposed-widget .form-submit {margin-left: -40px; margin-top: 43px;}
+.views-exposed-form .views-exposed-widget .form-submit {margin-left: -30px; margin-top: 43px;}
 
