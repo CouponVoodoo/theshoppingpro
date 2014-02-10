@@ -44,7 +44,7 @@
 			if ($offer_type == 'Coupons') {
 				$coupon_code = strip_tags($fields['field_coupon_code']->content);
 			} else {
-				$coupon_code = 'Deal';
+				$coupon_code = 'Deal-Activated';
 			}
 			/* CREATING REDIRECT PAGE PATH*/
 			global $base_url;
