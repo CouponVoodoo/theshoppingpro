@@ -58,13 +58,12 @@
 			<h2><a rel='no follow' target='_blank'href='<?php print $coupon_display_url ?>' ><?php print $title; ?></a></h2>
 			<div > 
 			<?php if ($status == '2'){
-			echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_theme()."/images/u67_normal.png' />Guaranteed To Work</div>";
-			
+			echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><span>Guaranteed To Work</span></div>";
 			}else {
 				if ($status == '1') {
-					echo "<div class='coupon_status_likely'>Likely to Work</a></div>";
+					echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><span>Likely to Work</span></a></div>";
 				} else {
-					echo "<div class='coupon_status_unlikely'><img src='".base_path().path_to_theme()."/images/u6_normal.png' />Unlikely to Work</div>";
+					echo "<div class='coupon_status_unlikely'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><span>Unlikely to Work</span></div>";
 				}
 			} ?></div>
 			<div >Last Checked: <?php print $last_checked_time; ?></div>
