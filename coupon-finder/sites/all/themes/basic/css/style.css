@@ -1231,18 +1231,23 @@ color: #F7971C;
 }
 
 .coupon_status_guaranteed{
-padding: 3px;
+padding: 3px 3px 3px 10px;
 font-size: 13px !important;
 border-radius: 15px;
 color: #438503 !important;
 font-weight: bold;
 text-align: center;
 position:relative;
+display: inline; 
+}
+.coupon_status_guaranteed img{
+display:inline-block; 
+vertical-align:middle
+padding-right: 10px;
 }
 
-
 .coupon_status_likely{
-padding: 3px;
+padding: 3px 3px 3px 10px;
 font-size: 13px !important;
 border-radius: 15px;
 color: #8b3d00 !important;
@@ -1251,16 +1256,27 @@ text-align: center;
 position:relative;
 display: inline
 }
+.coupon_status_likely img{
+display:inline-block; 
+vertical-align:middle
+padding-right: 10px;
+}
 
 
 .coupon_status_unlikely{
-padding: 3px;
+padding: 3px 3px 3px 10px;
 font-size: 13px !important;
 border-radius: 15px;
 color: #ac0706 !important;
 font-weight: bold;
 text-align: center;
 position:relative;
+display: inline;  
+}
+.coupon_status_unlikely img{
+display:inline-block; 
+vertical-align:middle
+padding-right: 10px;
 }
 
 
