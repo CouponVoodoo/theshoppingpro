@@ -73,43 +73,17 @@
 	<div class="search_listing_right">
 	
 		  <div class="search_listing_row__1 copy_coupon_row">
-			
-			<a href="<?php print $coupon_display_url?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_1">
+			<?php $div_id='rcp_'.$nid ;?>
+			<a href="<?php print $coupon_display_url?>" target="_blank"  class="unlock_best_coupon unlock_coupon" id = <?php echo'rcp_'.$nid;?> rel="best_1" data-clipboard-text="<?php echo $coupon_code?>" >
 				  
 				 <?php if($offer_type == 'Coupons') {?>
 					<span class="copy_coupon">Show Coupon</span><span></span>
 				<?php } else { ?>
 					<span class="copy_coupon">Activate Deal</span><span></span>
-				<?php }?>
+				<?php }
+				?>
 			</a>
-			
 		  </div>
-
-
-		<?php
-		drupal_add_js(array('coupon_code' => $coupon_code), 'setting');
-			/* mixpanel */
-		drupal_add_js("jQuery(document).ready(function($){
-				  $('.unlock_best_coupon').click(function(){
-				  //alert('test test');
-			  coupon_code = Drupal.settings.coupon_code;
-				  
-					var url = $(this).attr('href');
-					coupon_code = url.split('&c=')[1].split('&')[0];
-				  
-				  
-					  $(this).html(coupon_code);
-					  $(this).addClass('copied_coupon')
-					 // var url = $(this).attr('href')+'&c='+coupon_code;
-				  
-					  // $(this).attr('href',url);
-
-					// BY ASHISH: COMMENTED OUT TO PREVENT MULTI CLICK - THIS IS A HACK NEED TO TAKE A RELOOK TO SEE WHERE THE URL IS OPENING FROM	            
-						  window.open($(this).attr('href'));
-					return true;
-				  });
-				});", array('type' => 'inline', 'scope' => 'footer'));
-		?>	
 	</div>
 	<div class="retailer_coupon_category_list">
 	<?php
