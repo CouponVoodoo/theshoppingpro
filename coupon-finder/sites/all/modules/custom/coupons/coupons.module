@@ -251,7 +251,7 @@ function coupons_redirect_interim_page() {
 	}
 /** END OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIECT PAGE */ 
 	/* ADDING GUID TO TRACKING  URL IS OMG OR TYROO OR FLIPKART*/
-
+/*
 	if (strpos($url,'flipkart') > 1){
 		$affiliate = 'Flipkart';
 		if (strpos($url,'AffExtParam1') == false){
@@ -273,6 +273,7 @@ function coupons_redirect_interim_page() {
 			$url = $url."&uid2=".$CV_User_GUID;
 		}
 	}
+*/
 	
   drupal_add_js("jQuery(window).load(function(){
                   setTimeout(function(){
