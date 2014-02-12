@@ -73,7 +73,7 @@
 				} 
 				?>
 			</div>
-			<div >Last Checked: <?php print $last_checked_time; ?></div>
+			<div >Update: <?php print $last_checked_time; ?></div>
 			<div >Offer Type: <?php print $offer_type; ?></div>
 	</div>
 
