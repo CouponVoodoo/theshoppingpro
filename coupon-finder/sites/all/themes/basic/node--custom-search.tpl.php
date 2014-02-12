@@ -62,7 +62,7 @@ $non_coupon_saving = $mrp - $list_price;
 		$coupon_code=rawurlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	}else{
 		if ($non_coupon_saving > 0){
-			echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><div class='savings_text'>Savings Found</div></div>";
+			echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><div class='savings_text'>Discounts Found</div></div>";
 			$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
 			$coupon_code='Savings_Found';
 		} Else {
@@ -122,22 +122,7 @@ $non_coupon_saving = $mrp - $list_price;
 	// $lightbox_url = $base_url."/node/".$node->nid."?pop=1";
 	// $lightbox_url = $base_url."/node/".$node->nid;
 		  
-/*	  if($node->field_best_coupon_status[und][0]['value'] == 0){
-	  $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
-                    <div class='field-label'>Product images:&nbsp;</div>
-                    <div class='field-items'>
-                        <div class='field-item even product_img'>
-							<a href='{$urlAlias}' ><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
-                        </div>";
-      echo  $img .=    "</div>
-                </div>";
-*/
-				//      echo "<div class='product_name'><a  href='{$coupon_display_url}' onclick=window.open('{$popup_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
 
-//      echo "<div class='product_name'><a  href='{$urlAlias}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
-
-//	  }
-//	  if($node->field_best_coupon_status[und][0]['value'] == 1){
 	  $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
@@ -147,12 +132,8 @@ $non_coupon_saving = $mrp - $list_price;
 						</div>";
       echo  $img .=    "</div>
                 </div>";
- //	<a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$coupon_display_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image'></a>
   		  echo "<div class='product_name'><a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
 	    
-//		  echo "<div class='product_name'><a href='{$lightbox_url}' rel='lightframe[|width:980px; height: 1200px; scrolling: auto;]' onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
-//	   }
-
  /** Start of modified by Ashish to Show reatiler name below product name */
 
       	$BrandTid = $node->field_brand[und][0]['tid'];
@@ -165,6 +146,17 @@ $non_coupon_saving = $mrp - $list_price;
 
  /** end of modified by Ashish to to Show reatiler name below product name*/
 
+		
+	if( $node->field_best_coupon_saving[und][0]['value'] == 1 ){
+			echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
+			<div class='field-label'>Offer:&nbsp;</div>
+				<div class='field-items'>
+					<div class='field-item even'>".substr($node->field_best_coupon_description['und'][0]['value'], 0, 45).'...'."</div>
+				</div>
+			</div>";	
+		
+  	} else {
+		
 		if ($node->field_best_coupon_saving['und'][0]['value'] > 1 ){
 				echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
 				<div class='field-label'>List Price:&nbsp;</div>
@@ -227,6 +219,7 @@ $non_coupon_saving = $mrp - $list_price;
 	
 			}
 		}
+	}
 	 echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>View Details</a></div>";
 	
      ?>

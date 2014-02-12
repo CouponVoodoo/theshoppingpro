@@ -26,6 +26,12 @@
 ?>
 <?php
 $nid = arg(1);
+$node = node_load($nid);
+$mrp = $node->field_mrpproductprice['und'][0]['value'];
+$list_price = $node->field_product_price['und'][0]['value'];
+$non_coupon_saving = $mrp - $list_price;
+
+
 
 /** Start of By Ashish to get mixpanel variables */		
 global $base_url;
@@ -82,7 +88,7 @@ if ( $time_gap > (1 * 27 * 3600)) {
 
 
 <div class="product-right">
-<h4>Best Coupon</h4>
+<h4>Best Coupon Or Discounts</h4>
 <div class="coupon_code1">
     <?php       
     $CouponStatus = trim(strip_tags($fields['field_best_coupon_status']->content));
@@ -99,45 +105,60 @@ if ( $time_gap > (1 * 27 * 3600)) {
 <ul>
 
 <li>
-    <label>Coupon Status:</label>
+    <label>Status:</label>
     <?php
-    $CouponStatus = trim(strip_tags($fields['field_best_coupon_status']->content));
-    if( $CouponStatus == 1 ){
+
+		if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
         echo "<div class='pro_coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='pro_coupons_text'>Coupons Found</div></div>";
-    }else{
-        echo "<div class='pro_no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='pro_no_coupons_text'>No Coupons Found</div></div>";
-    }
-    ?>
-</li>
-
-
-<li><label>List Price:</label>INR <?php
-    $ProductPrice = explode('.', str_replace('INR', '' ,strip_tags($fields['field_product_price']->content) ) );
-    print number_format($ProductPrice[0],0, '.', ',');
-        
-    ?>
-</li>
-<?php
-    if( $Couponsavingcheck != 'INR 1.00') {
-?>
-	<li><label>Saving:</label> <?php
-			$CouponSaving = explode('.', strip_tags($fields['field_best_coupon_saving']->content)  );
-			if( $CouponStatus == 1 ){
-			//print ' INR '. number_format($CouponSaving[0],0, '.', ',');
-				print $CouponSaving[0];
-			}else{
-			print '-';
+		$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value'];	
+		$coupon_code=rawurlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
+	}else{
+		if ($non_coupon_saving > 0){
+			echo "<div class='pro_coupons_found'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><div class='pro_savings_text'>Discounts Found</div></div>";
+			$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
+			$coupon_code='Savings_Found';
+		} Else {
+		
+				echo "<div class='pro_no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='pro_no_coupons_text'>No Discounts</div></div>";
+				$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
+				$coupon_code='No_Discounts';
 			}
-	}
+	}  
+
     ?>
 </li>
-<?php
-//$netPrice = explode('.', str_replace('INR', '' ,strip_tags($fields['field_best_coupon_netpriceafters']->content) ) );
-$netPrice = explode('.', strip_tags($fields['field_best_coupon_netpriceafters']->content));
 
+
+
+
+<?php
+	if ($node->field_best_coupon_saving['und'][0]['value'] = 1 ){
+		echo "<li> <label>List Price:&nbsp;</label>INR ".number_format($list_price,0, '.', ',')."</li>";
+		echo "<li> <label>Savings:&nbsp;</label>See Best Coupon</li>";
+		echo "<li> <label>Offer Details:&nbsp;</label>See Best Coupon"</li>";
+	
+	
+	} else {
+		if ($node->field_best_coupon_saving['und'][0]['value'] > 1 ){
+				echo "<li> <label>List Price:&nbsp;</label>INR ".number_format($list_price,0, '.', ',')."</li>";
+				echo "<li> <label>Savings:&nbsp;</label>INR ".number_format($node->field_best_coupon_saving['und'][0]['value'],0, '.', ',')."</li>";
+				echo "<li> <label>Net Price:&nbsp;</label>INR ".number_format($node->field_best_coupon_netpriceafters['und'][0]['value'],0, '.', ',')."</li>";
+
+		} else {
+			if ($non_coupon_saving > 0){
+				echo "<li> <label>MRP:&nbsp;</label>INR ".number_format($mrp,0, '.', ',')."</li>";
+				echo "<li> <label>Savings:&nbsp;</label>INR ".number_format($non_coupon_saving,0, '.', ',')."</li>";
+				echo "<li> <label>Net Price:&nbsp;</label>INR ".number_format($list_price,0, '.', ',')."</li>";
+					
+			} else {
+				echo "<li> <label>MRP:&nbsp;</label>INR ".number_format($list_price,0, '.', ',')."</li>";
+				echo "<li> <label>Savings:&nbsp;</label>-</li>";
+				echo "<li> <label>Net Price:&nbsp;</label>INR ".number_format($list_price,0, '.', ',')."</li>";	
+			}
+		}
+	}
 ?>
-<li>
-    <li><label>Price After Coupon:</label><?php print(($netPrice[0]));?></li>
+
 <?php if( $CouponStatus == 1 ){?>
 <li><label>Best Coupon:</label><?php print ($fields['field_best_coupon_description']->content); ?></li>
 <?php }?>
