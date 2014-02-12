@@ -1,3 +1,4 @@
+<?php ?>
 <!DOCTYPE html>
 <html<?php print $html_attributes . $rdf_namespaces; ?>>
 <head>
