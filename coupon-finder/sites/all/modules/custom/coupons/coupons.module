@@ -1347,9 +1347,10 @@ function coupons_copy_coupon($nid){
 	/* Mixpanel end*/
       }
 }
-    /* mixpanel */
+/*
+
 drupal_add_js(array('coupons' => $coupons, 'savings' => $savings, 'fullProdUrl' => $fullProdUrl, 'prodUrl' => $prodUrl, 'retailerDomain' => $retailerDomain, 'brand' => $brand), 'setting');
-    /* mixpanel */
+
 drupal_add_js("jQuery(document).ready(function($){
           $('.unlock_coupon').click(function(){
               var coupon_code = '';
@@ -1359,13 +1360,13 @@ drupal_add_js("jQuery(document).ready(function($){
               for (var item in Drupal.settings.coupons) {
                 if (item == c){
                   coupon_code = Drupal.settings.coupons[item];
-	      /*mixpanel*/
+
 	      saving = Drupal.settings.savings[item];
 	      brand =  Drupal.settings.brand;
 	      fullProdUrl =  Drupal.settings.fullProdUrl;
 	      prodUrl =  Drupal.settings.prodUrl;
 	      retailerDomain =  Drupal.settings.retailerDomain;
-	      /*mixpanel*/
+
 
                 }
               }
@@ -1387,10 +1388,10 @@ drupal_add_js("jQuery(document).ready(function($){
 			//else {console.log('else');return ;}
 			
 			
-			  /* Mixpanel integration Start*/
+
 //	      mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
 	      
-	      /* Mixpanel integration Close*/
+
              return true;
           });
         });", array('type' => 'inline', 'scope' => 'footer'));
@@ -1413,7 +1414,7 @@ drupal_add_js("jQuery(document).ready(function($){
                        });
                 });", array('type' => 'inline', 'scope' => 'footer'));
 
-
+*/
     if ($is_success) {
       $error_msg = '<div class="messages error">
                 Sorry! We tried our best but no coupons work for your product. Here is a list of coupons we tried, please read the response field for each coupon, you maybe able to avail discounts by increasing your cart value or selecting anther product:
