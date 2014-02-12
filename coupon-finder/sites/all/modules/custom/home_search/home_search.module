@@ -14,5 +14,3 @@ function custom_api_block_view($delta = '') {
   $data['content'] = drupal_get_form('coupons_finder_form');
   return $data;
 }
-
-?>
