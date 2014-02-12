@@ -730,6 +730,7 @@ img.dollor { left: 452px; position: absolute; top: 324px; z-index: 0;}
 .product-right ul li .pro_coupons_found,.product-right ul li .pro_no_coupons_found{float:left;width:229px;}
 .product-right ul li .pro_coupons_found img,.product-right ul li .pro_no_coupons_found img{float:left;margin-right:3px;width:20px;height:20px}
 .product-right ul li .pro_coupons_text{color:#438503;line-height:23px;font-weight:bold;}
+.product-right ul li .pro_savings_text{color:#8b3d00;line-height:23px;font-weight:bold;}
 .product-right ul li .pro_no_coupons_found .pro_no_coupons_text{color:#AC0706;line-height:23px;font-weight:bold;}
 .product-right ul li label,.product-bottom .product-left ul li label{float:left;color: #F7971C;font-family: Arial;font-size: 13px;font-style: normal;font-weight: bold;width:139px;padding-right:7px}
 .product-bottom .product-left ul li label{ text-align: left;
@@ -798,9 +799,10 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .product_name,.page-search-site #block-system-main .block-inner .node--product-and-coupon .product_name {padding-bottom:5px;height:42px;float:left;padding-top:5px; width:100%}
 
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .no_coupons_found img,.page-search-site #block-system-main .block-inner .node--product-and-coupon .no_coupons_found img,.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found img,.page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found img{float:left;margin-right:4px}
-.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .no_coupons_found .no_coupons_text,.page-search-site #block-system-main .block-inner .node--product-and-coupon .no_coupons_found .no_coupons_text,.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found .coupons_text,.page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found .coupons_text{line-height:29px;font-weight:bold}
+.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .no_coupons_found .no_coupons_text,.page-search-site #block-system-main .block-inner .node--product-and-coupon .no_coupons_found .no_coupons_text,.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found .coupons_text,.page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found .coupons_text, .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found .savings_text,.page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found .savings_text{line-height:29px;font-weight:bold}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .no_coupons_found .no_coupons_text,.page-search-site #block-system-main .block-inner .node--product-and-coupon .no_coupons_found .no_coupons_text{color:#ac0706}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found .coupons_text,.page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found .coupons_text{color:#438503}
+.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found .savings_text,.page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found .savings_text{color:#8b3d00}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .no_coupons_found ,.page-search-site #block-system-main .block-inner .node--product-and-coupon .no_coupons_found ,.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field ,.page-search-site #block-system-main .block-inner .node--product-and-coupon .field,.page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found,.page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found{float:left;width:100%;padding-bottom:10px}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon  a,.page-search-site #block-system-main .block-inner .node--product-and-coupon a{font-size:11px;line-height:12px;text-decoration:underline!important}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon  .product_name a,.page-search-site #block-system-main .block-inner .node--product-and-coupon .product_name a{font-size:13px;text-decoration:none!important}
@@ -969,6 +971,33 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .ribbon-green:after {
   right: 0;
 }
+
+.ribbon-yellow {
+  font: bold 12px Sans-Serif;
+  color: #333;
+  text-align: center;
+  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform:    rotate(45deg);
+  -ms-transform:     rotate(45deg);
+  -o-transform:      rotate(45deg);
+  position: relative;
+  padding: 7px 0px 7px 20px;
+  left: -5px;
+  top: 17px;
+  width: 168px;
+  background-color: yellow;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FCF62D), to(#E3CB32)); 
+  background-image: -webkit-linear-gradient(top, #FCF62D, #E3CB32); 
+  background-image:    -moz-linear-gradient(top, #FCF62D, #E3CB32); 
+  background-image:     -ms-linear-gradient(top, #FCF62D, #E3CB32); 
+  background-image:      -o-linear-gradient(top, #FCF62D, #E3CB32); 
+  color: #6a6340;
+  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+}
+
 
 
 .product_img img { max-height: 200px; max-width: 200px;width: auto;}
