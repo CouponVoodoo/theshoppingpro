@@ -84,7 +84,7 @@
 			<a href="<?php print $coupon_display_url?>" target="_blank"  class="unlock_best_coupon unlock_coupon" id = <?php echo'rcp_'.$nid;?> rel="best_1" data-clipboard-text="<?php echo $coupon_code?>" >
 				  
 				 <?php if($offer_type == 'Coupons') {?>
-					<span class="copy_coupon">Show Coupon</span><span></span>
+					<span class="copy_coupon">Copy Coupon</span><span></span>
 				<?php } else { ?>
 					<span class="copy_coupon">Activate Deal</span><span></span>
 				<?php }
