@@ -122,4 +122,3 @@ $retailer = reset(explode('_',$_REQUEST['retailer']));
     }
 echo 'No node to process';
 }
-?> 
