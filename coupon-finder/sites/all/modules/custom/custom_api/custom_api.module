@@ -143,7 +143,7 @@ function custom_api_addproduct($ProInfo){
 	$node->field_brand['und']['0']['tid'] 		  	= trim($jsonArray->header->ProductBrand);
 	$node->field_brand['und']['0']['tid'] 		  	= $BrandId;
 	
-	$node->field_mrpproductprice['und']['0'][value]	  	= ($jsonArray->header->MRPProductPrice!='')?$jsonArray->header->MRPProductPrice:0 ;
+	$node->field_mrpproductprice['und']['0'][value]	  	= trim($jsonArray->header->MRPProductPrice) ;
 	//$node->field_mrpproductprice['und']['0'][value]	  	= 0 ;
 	$expDate = explode('=' , $jsonArray->header->LastCheckedTime);	
 	$node->field_lastcheckedtime['und']['0'][value]	  	= $expDate[0];
