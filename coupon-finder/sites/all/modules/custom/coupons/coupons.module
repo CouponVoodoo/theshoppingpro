@@ -1593,5 +1593,3 @@ function coupons_get_taxonomy_url($tid, $block = '') {
   return $link;
 }
 
-
-?>
