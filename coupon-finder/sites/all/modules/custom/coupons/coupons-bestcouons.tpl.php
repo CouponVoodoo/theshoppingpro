@@ -11,9 +11,9 @@ global $base_url;
 <div class="search_listing_right">
   <div class="search_listing_row__<?php print $row->counter; ?> copy_coupon_row">
     <?php if ($row->url): ?>
-		 
+
 	 	<?php
-		
+
 	/* GETTING USERS OS*/
 
 	$os = 'unknown';
@@ -52,9 +52,9 @@ global $base_url;
 	} else {
 		$original_source = $_COOKIE['traffic_source12'];
 	}
-	$add_tracking = rawurlencode($os.'-'.$original_source);	
+	$add_tracking = rawurlencode($os.'-'.$original_source);
 	?>
-    <a href="<?php print $base_url ?>/coupon-redirect?os=<?php print $add_tracking;?>&s=<?php print urlencode($row->url); ?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>">
+    <a href="<?php print $base_url ?>/coupon-redirect?os=<?php print $add_tracking;?>&s=<?php print urlencode($row->url); ?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $row->couponCode?>" >
       <span class="copy_coupon">Show Coupon</span><span></span>
     </a>
     <?php else : ?>
