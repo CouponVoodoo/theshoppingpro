@@ -1221,15 +1221,15 @@ function coupons_copy_best_coupon($nid){
         $savings['best_' . $i] = $bestCouponValue->Saving;
 	/* Mixpanel end*/
       }
-
+/*
   //drupal_add_js(drupal_get_path('theme', 'basic') . '/js/jquery.clipboard.js');
   drupal_add_js(drupal_get_path('module', 'coupons') . '/coupons.js');
   $path = $base_url . "/" . drupal_get_path('theme', 'basic') . "/js/jquery.clipboard.swf";
   
 
-    /* mixpanel */
+
 drupal_add_js(array('coupons' => $coupons, 'savings' => $savings, 'fullProdUrl' => $fullProdUrl, 'prodUrl' => $prodUrl, 'retailerDomain' => $retailerDomain, 'brand' => $brand), 'setting');
-    /* mixpanel */
+
 drupal_add_js("jQuery(document).ready(function($){
           $('.unlock_best_coupon').click(function(){
 	      //alert('test test');
@@ -1238,13 +1238,13 @@ drupal_add_js("jQuery(document).ready(function($){
               var c = jQuery(this).attr('rel');
 	      
 	      coupon_code = Drupal.settings.coupons.best_1;
-	      /*mixpanel*/
+
 	      saving = Drupal.settings.savings;
 	      brand =  Drupal.settings.brand;
 	      fullProdUrl =  Drupal.settings.fullProdUrl;
 	      prodUrl =  Drupal.settings.prodUrl;
 	      retailerDomain =  Drupal.settings.retailerDomain;
-	      /*mixpanel*/
+
 
               $(this).html(coupon_code);
               $(this).addClass('copied_coupon')
@@ -1269,7 +1269,7 @@ drupal_add_js("jQuery(document).ready(function($){
                               }
                       });
                 });", array('type' => 'inline', 'scope' => 'footer'));
-
+*/
     if ($is_success) {
       $error_msg = '<div class="messages error">
                 Sorry! We tried our best but no coupons work for your product. Here is a list of coupons we tried, please read the response field for each coupon, you maybe able to avail discounts by increasing your cart value or selecting anther product:
