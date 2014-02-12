@@ -317,7 +317,7 @@ function custom_api_addproduct($ProInfo){
 		
 		
 	  
-		$node->field_mrpproductprice['und']['0'][value]	  	= ($jsonArray->header->MRPProductPrice)?$jsonArray->header->MRPProductPrice:0 ;
+		$node->field_mrpproductprice['und']['0'][value]	  	= trim($jsonArray->header->MRPProductPrice) ;
 		// NOW USING NODE_SAVE db_query("UPDATE {field_data_field_mrpproductprice} SET field_mrpproductprice_value = :mrpproductprice WHERE revision_id = :vid", array(':mrpproductprice' => $node->field_mrpproductprice['und']['0'][value], ':vid' => $node->vid));
 		// NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_mrpproductprice} SET field_mrpproductprice_value = :mrpproductprice WHERE revision_id = :vid", array(':mrpproductprice' => $node->field_mrpproductprice['und']['0'][value], ':vid' => $node->vid));
 		
