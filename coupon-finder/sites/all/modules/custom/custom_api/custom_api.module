@@ -306,7 +306,7 @@ function custom_api_addproduct($ProInfo){
 		// NOW USING NODE_SAVE db_query("UPDATE {field_data_field_retailer_product_name} SET field_retailer_product_name_value = :product_name WHERE revision_id = :vid", array(':product_name' => $node->field_retailer_product_name['und']['0'][value], ':vid' => $node->vid));
 		// NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_retailer_product_name} SET field_retailer_product_name_value = :product_name WHERE revision_id = :vid", array(':product_name' => $node->field_retailer_product_name['und']['0'][value], ':vid' => $node->vid));
 			
-		
+		 
 		// BY ASHISH - NOT USING NODESAVE $node->field_product_image['und']['0'][value] 	  	= trim( $jsonArray->header->ProductImage );
 		$node->field_product_image['und']['0'][value] 	  	= trim( $jsonArray->header->ProductImage );
 		// BY ASHISH - NOT USING NODESAVE $node->field_brand['und']['0']['tid'] 		  	= trim($jsonArray->header->ProductBrand);
@@ -317,7 +317,7 @@ function custom_api_addproduct($ProInfo){
 		
 		
 	  
-		$node->field_mrpproductprice['und']['0'][value]	  	= ($jsonArray->header->MRPProductPrice!='')?$jsonArray->header->MRPProductPrice:0 ;
+		$node->field_mrpproductprice['und']['0'][value]	  	= ($jsonArray->header->MRPProductPrice)?$jsonArray->header->MRPProductPrice:0 ;
 		// NOW USING NODE_SAVE db_query("UPDATE {field_data_field_mrpproductprice} SET field_mrpproductprice_value = :mrpproductprice WHERE revision_id = :vid", array(':mrpproductprice' => $node->field_mrpproductprice['und']['0'][value], ':vid' => $node->vid));
 		// NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_mrpproductprice} SET field_mrpproductprice_value = :mrpproductprice WHERE revision_id = :vid", array(':mrpproductprice' => $node->field_mrpproductprice['und']['0'][value], ':vid' => $node->vid));
 		
