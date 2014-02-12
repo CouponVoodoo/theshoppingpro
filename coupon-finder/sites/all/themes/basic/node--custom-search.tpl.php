@@ -1,5 +1,5 @@
+<?php ?>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>">
-
 <?php 
 
 /** Start of modified by Ashish to Show offers in green ribbon when saving = 1 */
