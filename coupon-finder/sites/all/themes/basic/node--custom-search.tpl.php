@@ -148,13 +148,19 @@ $non_coupon_saving = $mrp - $list_price;
 
 		
 	if( $node->field_best_coupon_saving[und][0]['value'] == 1 ){
-			echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
-			<div class='field-label'>Offer:&nbsp;</div>
-				<div class='field-items'>
-					<div class='field-item even'>".substr($node->field_best_coupon_description['und'][0]['value'], 0, 45).'...'."</div>
-				</div>
-			</div>";	
-		
+				echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
+				<div class='field-label'>List Price:&nbsp;</div>
+					<div class='field-items'>
+						<div class='field-item even'>INR ".number_format($list_price,0, '.', ',')."</div>
+					</div>
+				</div>";
+				echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
+				<div class='field-label'>Offer:&nbsp;</div>
+					<div class='field-items'>
+						<div class='field-item even'>".substr($node->field_best_coupon_description['und'][0]['value'], 0, 100).'...'."</div>
+					</div>
+				</div>";	
+			
   	} else {
 		
 		if ($node->field_best_coupon_saving['und'][0]['value'] > 1 ){
