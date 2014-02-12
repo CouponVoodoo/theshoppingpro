@@ -132,10 +132,10 @@ if ( $time_gap > (1 * 27 * 3600)) {
 
 
 <?php
-	if ($node->field_best_coupon_saving['und'][0]['value'] = 1 ){
+	if ($node->field_best_coupon_saving['und'][0]['value'] == 1 ){
 		echo "<li> <label>List Price:&nbsp;</label>INR ".number_format($list_price,0, '.', ',')."</li>";
 		echo "<li> <label>Savings:&nbsp;</label>See Best Coupon</li>";
-		echo "<li> <label>Offer Details:&nbsp;</label>See Best Coupon</li>";
+		echo "<li> <label>Offer Details:&nbsp;</label>See Best Coupon"</li>";
 	
 	
 	} else {
