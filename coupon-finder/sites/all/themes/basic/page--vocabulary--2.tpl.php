@@ -157,7 +157,7 @@ $non_coupon_saving = $mrp - $list_price;
 				echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
 				<div class='field-label'>Offer:&nbsp;</div>
 					<div class='field-items'>
-						<div class='field-item even'>".substr($node->field_best_coupon_description['und'][0]['value'], 0, 100).'...'."</div>
+						<div class='field-item even'>".substr($node->field_best_coupon_description['und'][0]['value'], 0, 130).'...'."</div>
 					</div>
 				</div>";	
 			
