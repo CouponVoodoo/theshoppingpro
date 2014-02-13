@@ -7,11 +7,15 @@ $non_coupon_saving = $mrp - $list_price;
 
 /** Start of modified by Ashish to Show offers in green ribbon when saving = 1 */
 
-  if($node->field_best_coupon_saving['und'][0]['value'] > 1){ ?>
+ // if($node->field_best_coupon_saving['und'][0]['value'] > 1){ 
+ 
+ if($node->field_best_coupon_status['und']['0'][value] == 1 && $node->field_best_coupon_saving['und'][0]['value'] > 1){ 
+ 
+ ?>
     <div class="ribbon-wrapper-green">
         <div class="ribbon-green">Save Rs <?php echo number_format($node->field_best_coupon_saving['und'][0]['value'],0, '.', ','); ?></div>
 	</div>
-  	<?php } else if($node->field_best_coupon_saving['und'][0]['value'] == 1){ ?> 
+  	<?php } else if( $node->field_best_coupon_status['und']['0'][value] == 1 && $node->field_best_coupon_saving['und'][0]['value'] == 1){ ?> 
     			<div class="ribbon-wrapper-green">
 					<div class="ribbon-green">Offers</div>
 				</div>
@@ -62,7 +66,7 @@ $non_coupon_saving = $mrp - $list_price;
 		$coupon_code=rawurlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	}else{
 		if ($non_coupon_saving > 0){
-			echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><div class='savings_text'>Discounts Found</div></div>";
+			echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><div class='savings_text'>Discount Found</div></div>";
 			$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
 			$coupon_code='Savings_Found';
 		} Else {
@@ -147,7 +151,7 @@ $non_coupon_saving = $mrp - $list_price;
  /** end of modified by Ashish to to Show reatiler name below product name*/
 
 		
-	if( $node->field_best_coupon_saving[und][0]['value'] == 1 ){
+	if( $node->field_best_coupon_status['und']['0'][value] == 1 && $node->field_best_coupon_saving[und][0]['value'] == 1 ){
 				echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
 				<div class='field-label'>List Price:&nbsp;</div>
 					<div class='field-items'>
@@ -163,7 +167,7 @@ $non_coupon_saving = $mrp - $list_price;
 			
   	} else {
 		
-		if ($node->field_best_coupon_saving['und'][0]['value'] > 1 ){
+		if ($node->field_best_coupon_status['und']['0'][value] == 1 && $node->field_best_coupon_saving['und'][0]['value'] > 1 ){
 				echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
 				<div class='field-label'>List Price:&nbsp;</div>
 					<div class='field-items'>
