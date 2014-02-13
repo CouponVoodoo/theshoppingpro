@@ -562,7 +562,8 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $hide_time=$current_time-(36*3600);
    $solr_boost_time=gmdate('Y-m-d\TH:i:s\Z', $boost_time);
    $solr_hide_time=gmdate('Y-m-d\TH:i:s\Z', $hide_time);
-   $solr_time_coupon_boost= "'(itm_field_best_coupon_status:1 AND dm_field_lastcheckedtime:[".$solr_boost_time." TO *])^2'";
+//   $solr_time_coupon_boost= "'(itm_field_best_coupon_status:1 AND dm_field_lastcheckedtime:[".$solr_boost_time." TO *])^2'";
+   $solr_time_coupon_boost= "'(itm_field_best_coupon_status:1)^2'";
    $solr_hide_time_coupon="dm_field_lastcheckedtime:[".$solr_hide_time." TO *]";
    $query->addParam('fq', $solr_hide_time_coupon);
    $query->addParam('fq', '-(sm_vid_Retailer:Snapdeal.com)');
