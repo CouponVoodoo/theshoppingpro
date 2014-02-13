@@ -59,7 +59,6 @@ $mixpanel_type='Product Page View Store';
   
 //        echo "<div class='d_view_store'><a rel='nofollow' target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' >View Store</a></div>";
 	$product_link = '/search/site/'.str_replace('+at+'.$retailer,'',str_replace(' ','+',strip_tags($fields['field_retailer_product_name']->content)));
-	echo $product_link;
 	 ?>
 	
   <div class='blue_button'><a href="<?php echo $product_link;?>" class='d_view_store'>View More From <?php echo substr($brand, 0, 40);?></a></div>
