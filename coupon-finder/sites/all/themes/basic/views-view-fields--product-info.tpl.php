@@ -127,7 +127,9 @@ if ( $time_gap > (1 * 27 * 3600)) {
 
     ?>
 </li>
-
+<?php if ( $time_gap > (1 * 27 * 3600)) {?>
+	<div class="custom_link_inner"><span style= "color: red; font-weight: bold"> Data is more than 24hrs old: </span><a onclick="locader('<?php echo $base_root.base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>')" class="active">Recheck Now</a></div>
+<?php } ?>
 
 
 
