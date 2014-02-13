@@ -50,13 +50,13 @@ function custom_api_addproduct($ProInfo){
 	
 	
 	$json = $json->data;
-   if($_REQUEST['recheck'] == 1){
-   var_dump($json);
-   die;
+   /*if($_REQUEST['recheck'] == 1){
+   
+   
    if (isset($json->ErrorCode) ) {
       // form_set_error('url', 'Please Click on View Store and check if the product is still in stock.');
      }
-}
+}*/
      
     $jsonArr = json_decode($json,true);
     if (isset($jsonArray->data[0]->ErrorCode) && ($jsonArray->data[0]->ErrorCode == "2")) {
@@ -514,7 +514,7 @@ function custom_api_addproduct($ProInfo){
 
 			// drupal_flush_all_caches();
 			// cache_clear_all('field:node:' . $node->nid, 'cache_field');
-			//drupal_goto($node_url);
+			drupal_goto($node_url);
     }
 				
 				
