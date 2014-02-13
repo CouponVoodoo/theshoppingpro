@@ -30,6 +30,7 @@ $node = node_load($nid);
 $mrp = $node->field_mrpproductprice['und'][0]['value'];
 $list_price = $node->field_product_price['und'][0]['value'];
 $retailer = strip_tags($fields['field_retailer']->content);
+$brand = strip_tags($fields['field_brand']->content);
 $non_coupon_saving = $mrp - $list_price;
 
 
@@ -58,10 +59,13 @@ $mixpanel_type='Product Page View Store';
     //print ($fields['field_product_images']->content);
     $status = strip_tags($fields['field_best_coupon_status']->content);
   
-        echo "<div class='d_view_store'><a rel='nofollow' target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' >View Store</a></div>";
+//        echo "<div class='d_view_store'><a rel='nofollow' target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' >View Store</a></div>";
+	$product_link = '/search/site/'.str_replace(' ','+',strip_tags($fields['field_retailer_product_name']->content));
+	 ?>
 	
-    ?>
-
+  <div class='blue_button'><a href="<?php echo $product_link;?>" class='d_view_store'>View More From <?php echo substr($brand, 0, 40);?></a></div>
+ 
+ 	
 	</div>
 
 
