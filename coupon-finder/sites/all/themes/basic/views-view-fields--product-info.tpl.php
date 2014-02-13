@@ -29,6 +29,7 @@ $nid = arg(1);
 $node = node_load($nid);
 $mrp = $node->field_mrpproductprice['und'][0]['value'];
 $list_price = $node->field_product_price['und'][0]['value'];
+$retailer = strip_tags($fields['field_retailer']->content);
 $non_coupon_saving = $mrp - $list_price;
 
 
@@ -163,8 +164,11 @@ if ( $time_gap > (1 * 27 * 3600)) {
 
 <?php if( $CouponStatus == 1 ){?>
 <li><label>Best Coupon:</label><?php print ($fields['field_best_coupon_description']->content); ?></li>
-<div class='blue_button'><a href="#All_Coupons" class='d_view_store'>View All Guaranteed Coupons For Product</a></div>
+<div class='blue_button'><a href="#All_Coupons" class='d_view_store'>View All Tested Coupons For Product</a></div>
+<?php } else { ?>
+<div class='blue_button'><a href="<?php echo '/rcp/'.str_replace(" ", "-", $retailer).'/coupons-offers';?>" class='d_view_store'>View All Tested Coupons For <?php echo $retailer;?></a></div>
 <?php }?>
+
 </ul>
 
 
