@@ -90,11 +90,11 @@ if ($row->Successful=="1") {
 
 
     <a href="<?php print $base_url ?>/coupon-redirect?os=<?php print $add_tracking;?>&s=<?php print urlencode($row->url);?>&c=<?php print $row->couponCode; ?>" target="_blank" class="unlock_coupon" rel="c_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $row->couponCode?>">
-      <span class="copy_coupon">Buy Now</span><span></span>
+      <span class="copy_coupon">Copy Coupon</span><span></span>
     </a>
     <?php else : ?>
     <a href="javascript:" class="unlock_coupon" rel="c_<?php print $row->counter; ?>">
-      <span class="copy_coupon">Buy Now</span><span></span>
+      <span class="copy_coupon">Copy Coupon</span><span></span>
     </a>
     <?php endif; ?>
   </div>
