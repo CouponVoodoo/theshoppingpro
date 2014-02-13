@@ -98,7 +98,7 @@ if ( $time_gap > (1 * 27 * 3600)) {
     if( $CouponStatus == 1 ){
         print coupons_copy_best_coupon($nid);
     }else{
-        echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' >View Store</a></div>";
+        echo "<div class='d_view_store'><a target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' >Buy Now</a></div>";
 		
     }
     ?>
