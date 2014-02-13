@@ -163,6 +163,7 @@ if ( $time_gap > (1 * 27 * 3600)) {
 
 <?php if( $CouponStatus == 1 ){?>
 <li><label>Best Coupon:</label><?php print ($fields['field_best_coupon_description']->content); ?></li>
+<div class='blue_button'><a href="#All_Coupons" class='d_view_store'>View All Guaranteed Coupons For Product</a></div>
 <?php }?>
 </ul>
 
@@ -190,14 +191,13 @@ if ( $time_gap > (1 * 27 * 3600)) {
 // print $fields['field_retailer']->content;
 
 if (empty($_GET['pop'])) {
-$product_description = 'Buy '.strip_tags($fields['field_retailer_product_name']->content).' at the lowest price with the latest discounts, coupons and offers brought to you by CouponVoodoo. View the list of discount codes below and click "Copy Coupon" to get the code.';
+$product_description = 'Buy '.strip_tags($fields['field_retailer_product_name']->content).' at the lowest price with the latest discounts, coupons and offers brought to you by CouponVoodoo. View the list of discount codes below and click "Copy Coupon" to get the code. Also see:';
 print $product_description;
+// $product_description_links = 'You may also want to view discount codes and offers for all products from:';
 echo nl2br("\n");
-echo nl2br("\n");
-$product_description_links = 'You may also want to view discount codes and offers for all products from:';
 print $product_description_links;
 $source = $_COOKIE['traffic_source'];
-echo $source;
+
 
 $retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
 if ($retailer['#type'] == 'link') {
@@ -212,19 +212,23 @@ $brand_check = strip_tags($fields['field_brand']->content);
 if ($category_check != 'Other') {
 	$category = $fields['field_category']->handler->view->result[0]->field_field_category[0]['rendered'];
 	if ($category['#type'] == 'link') {
-		print '<div class="field-content">' . l(t($category['#title']), $category['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
+	echo " | ";
+	print '<div class="field-content">' . l(t($category['#title']), $category['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
 	}
 	else {
-		print $fields['field_category']->content;
+	echo " | ";
+	print $fields['field_category']->content;
 	}
 }
 
 if ($brand_check != 'Other') {
 	$brand = $fields['field_brand']->handler->view->result[0]->field_field_brand[0]['rendered'];
 	if ($brand['#type'] == 'link') {
+		echo " | ";
 		print '<div class="field-content">' . l(t($brand['#title']), $brand['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
 	}
 	else {
+		echo " | ";
 		print $fields['field_brand']->content;
 	}
 }
@@ -235,7 +239,7 @@ if ($brand_check != 'Other') {
 </div>
 
 </div>
-<h4> Results For All Coupons Of This Product</h4>
+<h4> <a id="All_Coupons">Results For All Coupons Of This Product</a></h4>
 <?php
 
 echo $coupon =  coupons_copy_coupon($nid);
