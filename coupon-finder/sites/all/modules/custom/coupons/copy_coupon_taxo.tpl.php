@@ -13,11 +13,11 @@ if ($row->Successful=="1") {
     <?php if ($row->url): ?>
 
     <a href="<?php print $base_url ?>/coupon-redirect?os=windows&s=<?php print urlencode($row->url); ?>" target="_blank" class="unlock_coupon" rel="c_<?php print $row->counter; ?>">
-      <span class="copy_coupon">Show Coupon</span><span></span>
+      <span class="copy_coupon">Copy Coupon</span><span></span>
     </a>
     <?php else : ?>
     <a href="javascript:" class="unlock_coupon" rel="c_<?php print $row->counter; ?>">
-      <span class="copy_coupon">Show Coupon</span><span></span>
+      <span class="copy_coupon">Copy Coupon</span><span></span>
     </a>
     <?php endif; ?>
   </div>
