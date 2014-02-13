@@ -52,6 +52,7 @@ function custom_api_addproduct($ProInfo){
 	$json = $json->data;
    if($_REQUEST['recheck'] == 1){
    var_dump($json);
+   die;
    if (isset($json->ErrorCode) ) {
       // form_set_error('url', 'Please Click on View Store and check if the product is still in stock.');
      }
