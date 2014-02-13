@@ -766,6 +766,10 @@ img.dollor { left: 452px; position: absolute; top: 324px; z-index: 0;}
 .custom_link{width:99%;float:left;text-align:right;font:11px/15px arial;color: #9da0a4; padding:9px 0 0}
 .custom_link a{font:11px/15px arial;color: #9da0a4; cursor:pointer}
 .custom_link a.active{color: #F7971C;}
+.custom_link_inner{width:99%;float:left;text-align:left;font:11px/15px arial;color: #9da0a4; padding:0 0 10px 0}
+.custom_link_inner a{font:11px/15px arial;color: #9da0a4; cursor:pointer}
+.custom_link_inner a.active{color: #F7971C;}
+
 
 /*****Page Search Theme******/
 .page-taxonomy-term #sidebar-first .block-facetapi,.page-search-site #sidebar-first .block-facetapi{background:#f2f2f2;border:1px solid #d7d7d7;padding:11px;margin-top:15px;border-radius:8px}
