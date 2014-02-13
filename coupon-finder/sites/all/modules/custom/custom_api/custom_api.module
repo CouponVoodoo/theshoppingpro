@@ -151,13 +151,14 @@ function custom_api_addproduct($ProInfo){
 	
 	$node->field_best_coupon_status['und']['0'][value]	  	= trim( $jsonArray->header->CouponResult );
 	/* FOR SAVING IF COUPON THEN SAVING VIA COUPON ELSE MRP - LISTING PRICE */
+	$node->field_best_coupon_saving['und']['0'][value]	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
 	if ($node->field_best_coupon_status['und']['0'][value] == 1) {
-		$node->field_best_coupon_status_display['und']['0'][value] = 'With Coupons';
+		$node->field_best_coupon_status_display['und']['0'][value] = 'Guaranteed Coupons';
 		$node->field_best_coupon_saving['und']['0'][value]	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
 	} else {
 		$node->field_best_coupon_status_display['und']['0'][value] = 'Without Coupons';
 		if ( $node->field_mrpproductprice['und']['0'][value] > $node->field_product_price['und']['0'][value]){
-			$node->field_best_coupon_saving['und']['0'][value] = $node->field_mrpproductprice['und']['0'][value] = $node->field_product_price['und']['0'][value];
+			$node->field_best_coupon_saving['und']['0'][value] = $node->field_mrpproductprice['und']['0'][value] - $node->field_product_price['und']['0'][value];
 		}
 	}
 	//$node->field_product_popularity['und']['0'][value]	= ( $jsonArray->header->Popularity )?$jsonArray->header->Popularity:0;
@@ -378,19 +379,20 @@ function custom_api_addproduct($ProInfo){
 		//NOW USING NODE_SAVE db_query("UPDATE {field_data_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
 		//NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
 	/* FOR SAVING IF COUPON THEN SAVING VIA COUPON ELSE MRP - LISTING PRICE */
+	$node->field_best_coupon_saving['und']['0'][value]	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
 	if ($node->field_best_coupon_status['und']['0'][value] == 1) {
-		$node->field_best_coupon_status_display['und']['0'][value] = 'With Coupons';
+		$node->field_best_coupon_status_display['und']['0'][value] = 'Guaranteed Coupons';
 		$node->field_best_coupon_saving['und']['0'][value]	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
 	} else {
 		$node->field_best_coupon_status_display['und']['0'][value] = 'Without Coupons';
 		if ( $node->field_mrpproductprice['und']['0'][value] > $node->field_product_price['und']['0'][value]){
-			$node->field_best_coupon_saving['und']['0'][value] = $node->field_mrpproductprice['und']['0'][value] = $node->field_product_price['und']['0'][value];
+			$node->field_best_coupon_saving['und']['0'][value] = $node->field_mrpproductprice['und']['0'][value] - $node->field_product_price['und']['0'][value];
 		}
 	}
 		
 /*		$coupon_display = trim( $jsonArray->header->CouponResult );
 		if ($coupon_display == 1) {
-			$coupon_status_display = 'With Coupons';
+			$coupon_status_display = 'Guaranteed Coupons';
 		} else {
 			$coupon_status_display = 'Without Coupons';
 		}	
@@ -430,7 +432,7 @@ function custom_api_addproduct($ProInfo){
 
 	
 	
-		$node->field_best_coupon_saving['und']['0'][value]	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
+		// $node->field_best_coupon_saving['und']['0'][value]	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
 	    //NOW USING NODE_SAVE db_query("UPDATE {field_data_field_best_coupon_saving} SET field_best_coupon_saving_value = :field_best_coupon_saving WHERE revision_id = :vid", array(':field_best_coupon_saving' => $node->field_best_coupon_saving['und']['0'][value], ':vid' => $node->vid));
 		//NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_best_coupon_saving} SET field_best_coupon_saving_value = :field_best_coupon_saving WHERE revision_id = :vid", array(':field_best_coupon_saving' => $node->field_best_coupon_saving['und']['0'][value], ':vid' => $node->vid));
 
