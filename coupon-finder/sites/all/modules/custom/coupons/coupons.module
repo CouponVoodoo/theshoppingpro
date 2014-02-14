@@ -281,7 +281,7 @@ function coupons_redirect_interim_page() {
                   }, 5000);
         });", array('type' => 'inline', 'scope' => 'footer'));
 
-		
+$loader = $base_path . drupal_get_path('theme', 'basic') . '/images/loader.gif';		
 if ($coupon_code == 'Flipkart Offer'){
   return '<div class="coupon_window">
             <h1>Offer Found! ... Please Wait</h1>
@@ -302,6 +302,7 @@ if ($coupon_code == 'Flipkart Offer'){
 
 	if ($coupon_code == 'no-coupons' || $coupon_code == 'No_Discounts'){
 		  return '<div class="coupon_window">
+					<img src="'.$loader.'" width="160px" alt="Loading..."/>
 					<h1>Sorry, No Offer Found! ... Please Wait</h1>
 					<h2 class="coupon_window_redirect">
 						You are being redirected to retailer page
@@ -316,6 +317,7 @@ if ($coupon_code == 'Flipkart Offer'){
 			
 		if ($coupon_code == 'Deal-Activated'){
 			  return '<div class="coupon_window">
+						<img src="'.$loader.'" width="160px" alt="Loading..."/>
 						<h1>Yipeee! Deal Activated ... Please Wait</h1>
 						<h2 class="coupon_window_redirect">
 						  You are being redirected to retailer page.
@@ -335,6 +337,7 @@ if ($coupon_code == 'Flipkart Offer'){
 
 			if ($coupon_code == 'Savings_Found'){
 				return '<div class="coupon_window">
+					<img src="'.$loader.'" width="160px" alt="Loading..."/>
 					<h1>Awesome! Savings Found ... Please Wait</h1>
 					<h2 class="coupon_window_redirect">
 						You are being redirected to retailer page (no coupon required)
@@ -348,7 +351,10 @@ if ($coupon_code == 'Flipkart Offer'){
 
 			} else {
 					return '<div class="coupon_window">
+							<img src="'.$loader.'" width="160px" alt="Loading..."/>
 							<h1>Bazinga! Coupon Copied .. Please Wait</h1>
+							
+							
 							<h2 class="coupon_window_redirect">
 							  Simply paste (ctrl + v) this on the retailer cart / payment page to avail the discount:
 							</h2>
