@@ -1583,12 +1583,13 @@ function coupons_views_pre_build(&$view) {
     $view->display_handler->handlers['filter']['im_field_brand']->value = $node->field_brand[und][0]['tid'];
   }*/
   
-  if($view->current_display == 'block' &&  $view->name == 'apache_retailer_products' ) {
+/*  if($view->current_display == 'block' &&  $view->name == 'apache_retailer_products' ) {
     $nid = arg(1);
     $node = node_load($nid);
     $view->display_handler->handlers['filter']['im_field_retailer']->value = $node->field_retailer[und][0]['tid'];
   }
-}
+*/
+ }
 
 
 function coupons_get_taxonomy_url($tid, $block = '') {
