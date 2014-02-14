@@ -284,6 +284,7 @@ function coupons_redirect_interim_page() {
 $loader = $base_path . drupal_get_path('theme', 'basic') . '/images/loader.GIF';		
 if ($coupon_code == 'Flipkart Offer'){
   return '<div class="coupon_window">
+			<img src="'.$loader.'" width="160px" alt="Loading..."/>
             <h1>Offer Found! ... Please Wait</h1>
             <h2 class="coupon_window_redirect">
               You are being redirected to retailer page.
