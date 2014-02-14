@@ -1600,7 +1600,7 @@ function coupons_views_pre_build(&$view) {
 //	echo $view->display_handler->handlers['filter']['label']->value;
 //	$view->display_handler->handlers['filter']['label']->value = 'swan';
 
-  }
+//  }
 
 
 
