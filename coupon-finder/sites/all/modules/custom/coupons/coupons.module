@@ -281,7 +281,7 @@ function coupons_redirect_interim_page() {
                   }, 5000);
         });", array('type' => 'inline', 'scope' => 'footer'));
 
-$loader = $base_path . drupal_get_path('theme', 'basic') . '/images/loader.gif';		
+$loader = $base_path . drupal_get_path('theme', 'basic') . '/images/loader.GIF';		
 if ($coupon_code == 'Flipkart Offer'){
   return '<div class="coupon_window">
             <h1>Offer Found! ... Please Wait</h1>
