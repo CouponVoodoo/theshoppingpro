@@ -1585,23 +1585,23 @@ function coupons_views_pre_build(&$view) {
   //  echo '===>'.$node->field_brand[und][0]['tid'];
     $view->display_handler->handlers['filter']['im_field_brand']->value = $node->field_brand[und][0]['tid'];
   }*/
-/* THIS POWERS MORE FROM RETAILER WIDGET 
+/* THIS POWERS MORE FROM RETAILER WIDGET  */
   if($view->current_display == 'block' &&  $view->name == 'apache_retailer_products' ) {
     $nid = arg(1);
     $node = node_load($nid);
     $view->display_handler->handlers['filter']['im_field_retailer']->value = $node->field_retailer[und][0]['tid'];
   }
-*/
-/* THIS POWERS SIMILAR PRODUCTS */
-  if($view->current_display == 'block_4' &&  $view->name == 'apache_retailer_products' ) {
+
+/* THIS POWERS SIMILAR PRODUCTS - DOESNT WORK*/
+/*  if($view->current_display == 'block_4' &&  $view->name == 'apache_retailer_products' ) {
 	$nid = arg(1);
 	$node = node_load($nid);
-//	$view->display_handler->handlers['filter']['label']->value = strip_tags($node->field_retailer_product_name['und']['0'][value]);
+	$view->display_handler->handlers['filter']['label']->value = strip_tags($node->field_retailer_product_name['und']['0'][value]);
 	
-//	$view->display_handler->handlers['filter']['label']->value = 'American Swan Striped Navy Blue Polo T Shirt';
-//	echo $view->display_handler->handlers['filter']['label']->value;
+	//$view->display_handler->handlers['filter']['label']->value = 'American Swan Striped Navy Blue Polo T Shirt';
+	//echo $view->display_handler->handlers['filter']['label']->value;
   }
-
+*/
 
 
  }
