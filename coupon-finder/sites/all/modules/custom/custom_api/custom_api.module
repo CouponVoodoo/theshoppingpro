@@ -579,7 +579,7 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
 if ($vid == 3 OR $vid == 4){
 		$query->addParam('sort', 'its_field_best_coupon_saving desc');
 	}
-	  
+
    
 /**  BY ASHISH TO RANDOMIZE FOR RETAILER*/
 
@@ -591,6 +591,119 @@ if ($vid == 3 OR $vid == 4){
 		$query->addParam('sort', 'random_'.$seed.' asc');
   }
 	
-/** END OF BY ASHISH TO RANDOMIZE RESULTS FOR ALL EXCEPT RETAILER*/
 }
-/** END OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND UPDATE */
+
+ function custom_api_entity_should_index($entity, $type) {
+//  $info = entity_get_info($type);
+// list($id, $vid, $bundle) = entity_extract_ids($type, $entity);
+
+//  if ($bundle && isset($info['bundles'][$bundle]['apachesolr']['index']) && $info['bundles'][$bundle]['apachesolr']['index']) {
+//    return TRUE;
+//  }
+  return FALSE;
+}
+
+
+/********** START OF SOLR FUNCTIONS THAT WE MAY NEED TO MODIFY TO CONTROL INDEXING *******************************
+* NEED TO CHANGE THE TAXONOMY FUNCTION AS IT MAKES ALL NODES INDEXABLE ONCE YOU CHANGE A TERM
+* HOW TO PREVENT INDEXING (1): IN THE TABLE apachesolr_environment_variable CHANGE apachesolr_index_last & apachesolr_index_updated
+* HOW TO PREVENT INDEXING (2): IN THE TABLE apachesolr_environment_variable CHANGE apachesolr_index_last & apachesolr_index_updated
+*/
+/**
+ * BY ASHISH Implementation of hook_apachesolr_node_exclude() to ensure that nodes prior to a date do not get indexed
+ */
+/*
+ function custom_api_apachesolr_node_exclude($node, $namespace) {
+	$current_time= time();
+	$hide_time=$current_time-(2*24*3600);
+	if ($node->field_lastcheckedtime['und']['0'][value] < $hide_time) {
+		apachesolr_delete_node_from_index($node);
+		return TRUE;
+	}
+}
+*/
+/* BY ASHISH
+function custom_api_apachesolr_exclude($entity_id, $entity_type, $row, $env_id) {
+ Never index media entities to core_1
+  if ($entity_type == 'node' && $env_id == 'core_1') {
+    return TRUE;
+  }
+   return FALSE;
+}
+*/
+
+/**
+ * Mark one entity as needing re-indexing.
+ */
+/*
+function apachesolr_mark_entity($entity_type, $entity_id) {
+  module_load_include('inc', 'apachesolr', 'apachesolr.index');
+  $table = apachesolr_get_indexer_table($entity_type);
+  if (!empty($table)) {
+    db_update($table)
+      ->condition('entity_id', $entity_id)
+      ->fields(array('changed' => REQUEST_TIME))
+      ->execute();
+  }
+}
+*/
+
+/**
+ * Implements hook_term_update().
+ *
+ * Mark nodes as needing re-indexing if a term name changes.
+ *
+ * @see http://drupal.org/node/592522
+ *   Performance issue with Mysql
+ * @see http://api.drupal.org/api/drupal/includes--database--database.inc/function/db_update/7#comment-15459
+ *   To know why PDO in drupal does not support UPDATE and JOIN at once.
+ * @todo the rest, such as term deletion.
+ */
+/*
+function apachesolr_taxonomy_term_update($term) {
+  $table = apachesolr_get_indexer_table('node');
+  switch (db_driver()) {
+    case 'mysql' :
+      $table = db_escape_table($table);
+      $query = "UPDATE {{$table}} asn
+        INNER JOIN {taxonomy_index} ti ON asn.entity_id = ti.nid SET asn.changed = :changed
+        WHERE ti.tid = :tid";
+      $result = db_query($query, array(':changed' => REQUEST_TIME,
+        ':tid' => $term->tid,
+      ));
+      break;
+    default :
+      $nids = db_select('taxonomy_index')
+        ->fields('taxonomy_index', array('nid'))
+        ->where("tid = :tid", array(':tid' => $term->tid));
+      $update = db_update($table)
+        ->condition('entity_id', $nids, 'IN')
+        ->fields(array('changed' => REQUEST_TIME))
+        ->execute();
+  }
+}
+*/
+
+
+/**
+ * Set the timestamp of the last index update
+ * @param $timestamp
+ *   A timestamp or zero. If zero, the variable is deleted.
+ */
+/*
+ function apachesolr_set_last_index_updated($env_id, $timestamp = 0) {
+  apachesolr_environment_variable_set($env_id, 'apachesolr_index_updated', $timestamp);
+}
+*/
+/**
+ * Get the timestamp of the last index update.
+ * @return integer (timestamp)
+ */
+/*
+ function apachesolr_get_last_index_updated($env_id) {
+  return apachesolr_environment_variable_get($env_id, 'apachesolr_index_updated', 0);
+}
+*/
+
+
+/********** START OF SOLR FUNCTIONS THAT WE MAY NEED TO MODIFY TO CONTROL INDEXING *******************************/
