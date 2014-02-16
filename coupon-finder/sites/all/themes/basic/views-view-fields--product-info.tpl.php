@@ -76,18 +76,16 @@ $lastcheckedtime_check = strtotime(strip_tags($fields['field_lastcheckedtime']->
 $current_time = round(microtime(true));
 $time_gap = $current_time-$lastcheckedtime_check;
 
-// echo 'last check: '.$lastcheckedtime_check.' current: '.$current_time.' gap: '.$time_gap;
-
-if ( $time_gap > (1 * 27 * 3600)) {
+/* Commented out since recheck alert there below status too */
+// if ( $time_gap > (1 * 27 * 3600)) {
 ?>
 
 <div class="custom_link"><span style= "color: red; font-weight: bold"> Data is more than 24hrs old: </span><a onclick="locader('<?php echo $base_root.base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>')" class="active">Recheck Now</a></div>
 
 <?php
-} else {
-?>
-<div class="custom_link">Last Checked : <?php echo strip_tags($fields['field_lastcheckedtime']->content); ?> | <a onclick="locader('<?php echo $base_root.base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>')" class="active">Recheck Now</a></div>
-<?php } ?>
+// } else {
+// add the else div to show data old alert from below status
+// } ?>
 
 
 <div class="product-right">
