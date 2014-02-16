@@ -287,7 +287,7 @@ if ($coupon_code == 'Flipkart Offer'){
 			<img src="'.$loader.'" width="160px" alt="Loading..."/>
             <h1>Offer Found! ... Please Wait</h1>
             <h2 class="coupon_window_redirect">
-              You are being redirected to retailer page.
+              You are being redirected to retailer page. To avail the offer simply add product to cart (no coupon required).
             </h2>
 			<div class="clear"> </div>
             <div class="coupon_window_title">
@@ -295,7 +295,7 @@ if ($coupon_code == 'Flipkart Offer'){
             </div>
             <div class="clear"> </div>
             <h2 class="coupon_window_redirect">
-              To avail the offer simply add product to cart (no coupon required)
+              Click the browser back button for returning to CouponVoodoo and chatting with our team.
             </h2>
             <div class="clear"> </div>
 			</div>';
@@ -310,7 +310,7 @@ if ($coupon_code == 'Flipkart Offer'){
 					</h2>
 					<div class="clear"> </div>
 					<h2 class="coupon_window_redirect">
-					  Visit the previous tab for more details.
+					  Click the browser back button for returning to CouponVoodoo and chatting with our team.
 					</h2>
 					<div class="clear"> </div>
 					</div>';	
@@ -321,7 +321,7 @@ if ($coupon_code == 'Flipkart Offer'){
 						<img src="'.$loader.'" width="160px" alt="Loading..."/>
 						<h1>Yipeee! Deal Activated ... Please Wait</h1>
 						<h2 class="coupon_window_redirect">
-						  You are being redirected to retailer page.
+						  You are being redirected to retailer page. To avail the offer simply add product to cart (no coupon required).
 						</h2>
 						<div class="clear"> </div>
 						<div class="coupon_window_title">
@@ -329,7 +329,7 @@ if ($coupon_code == 'Flipkart Offer'){
 						</div>
 						<div class="clear"> </div>
 						<h2 class="coupon_window_redirect">
-						  To avail the offer simply add product to cart (no coupon required)
+						  Click the browser back button for returning to CouponVoodoo and chatting with our team.
 						</h2>
 						<div class="clear"> </div>
 						</div>';			
@@ -345,7 +345,7 @@ if ($coupon_code == 'Flipkart Offer'){
 					</h2>
 					<div class="clear"> </div>
 					<h2 class="coupon_window_redirect">
-					  Visit the previous tab for more details.
+					  Click the browser back button for returning to CouponVoodoo and chatting with our team
 					</h2>
 					<div class="clear"> </div>
 					</div>';			
@@ -354,10 +354,8 @@ if ($coupon_code == 'Flipkart Offer'){
 					return '<div class="coupon_window">
 							<img src="'.$loader.'" width="160px" alt="Loading..."/>
 							<h1>Bazinga! Coupon Copied .. Please Wait</h1>
-							
-							
 							<h2 class="coupon_window_redirect">
-							  Simply paste (ctrl + v) this on the retailer cart / payment page to avail the discount:
+							  You are being redirected to retailer page. Simply paste (ctrl + v) this on the retailer cart / payment page to avail the discount:
 							</h2>
 							<div class="clear"> </div>
 							<div class="coupon_window_title">
@@ -365,7 +363,7 @@ if ($coupon_code == 'Flipkart Offer'){
 							</div>
 							<div class="clear"> </div>
 							<h2 class="coupon_window_redirect">
-							  Visit previous tab for more details and to chat with our team.
+							   Click the browser back button for returning to CouponVoodoo and chatting with our team.
 							</h2>
 							<div class="clear"> </div>
 							</div>';
