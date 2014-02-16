@@ -277,7 +277,8 @@ function coupons_redirect_interim_page() {
 	
   drupal_add_js("jQuery(window).load(function(){
                   setTimeout(function(){
-                     window.location.replace(\"" . $url . "\");
+                     ga('send', 'event', 'Redirection', 'Retailer-Page-Redirect', 'Auto-Redirect', 1, {'dimension1': 'coupon-code'}, {'dimension2': $url});
+					 window.location.replace(\"" . $url . "\");
                   }, 5000);
         });", array('type' => 'inline', 'scope' => 'footer'));
 
