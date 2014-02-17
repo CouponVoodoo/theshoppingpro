@@ -257,7 +257,7 @@ function coupons_redirect_interim_page() {
 					$url = $part1_redirect.'&uid='.$uid1;
 				break;
 				case "tyroo":
-					$url = $part1_redirect.'?&subid1='.$uid1;
+					$url = $part1_redirect.'/&subid1='.$uid1;
 				break;
 				case "flipkart":
 					$url = "http://www.flipkart.com".$part2_redirect.'&AffExtParam1='.$uid1;
