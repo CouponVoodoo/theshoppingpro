@@ -7,6 +7,7 @@ global $base_url;
   $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u71_normal.png";
   $best_coupon = !empty($row->BestCoupon) ? '<span class="best_coupon">Best Coupon</span>' : '<span class="best_coupon_image red">This coupon does not work for your product</span>';
 }*/
+$nid = arg(1);
 ?>
 <div class="search_listing_right">
   <div class="search_listing_row__<?php print $row->counter; ?> copy_coupon_row">
@@ -54,7 +55,7 @@ global $base_url;
 	}
 	$add_tracking = rawurlencode($os.'-'.$original_source);
 	?>
-    <a href="<?php print $base_url ?>/coupon-redirect?os=<?php print $add_tracking;?>&s=<?php print urlencode($row->url);?>&c=<?php print $row->couponCode; ?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $row->couponCode?>" >
+    <a href="<?php print $base_url ?>/coupon-redirect?os=<?php print $add_tracking;?>&nid=<?php print $nid;?>&s=<?php print urlencode($row->url);?>&c=<?php print $row->couponCode; ?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $row->couponCode?>" >
       <span class="copy_coupon">Buy Now</span><span></span>
     </a>
     <?php else : ?>
