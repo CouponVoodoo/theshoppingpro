@@ -29,6 +29,7 @@ $retailer = reset(explode('_',$_REQUEST['retailer']));
 		// var_dump($json);
     	// ASSIGN ALL COUPON DATA TO VARIABLES
 		$couponInfo = $jsonArray->couponInfo;
+		$baseUrl= trim($couponInfo->BaseUrl);
     	$retailer = trim($couponInfo->Retailer);
     	$retailerId = trim($couponInfo->RetailerId);
     	$afiliateUrl = trim($couponInfo->AfiliateUrl);
@@ -82,6 +83,7 @@ $retailer = reset(explode('_',$_REQUEST['retailer']));
 		// PUSHING IN MAIN DATA (I.E. ALL EXCEPT CATEGORY LINKS) 
 		$node->title = $couponTitle.' @ '.ucfirst($retailer);
 		$node->body = $couponTitle.' @ '.$retailer;
+		$node->baseurl_coupon['und']['0']['value']			= $baseUrl;
 		$node->field_retailer['und'][0][tid]			= $retailerId;
 		$node->field_coupon_code['und']['0']['value']			= $couponCode;
 		$node->field_offer_type['und'][0][tid]			= $offerType;
