@@ -230,8 +230,10 @@ function coupons_redirect_interim_page() {
 		$question_mark = strpos($baseurl_redirect, "?");
 		if (strpos($baseurl_redirect, "?") > -1){
 			$part2_redirect = "&".$part2_redirect;
+			echo "n";
 		} else {
 			$part2_redirect = "?".$part2_redirect;
+			echo "y";
 		}
 		switch ($network_name_redirect) {
 			case "omgpm":
