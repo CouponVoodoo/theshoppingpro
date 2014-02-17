@@ -206,20 +206,53 @@ function coupons_viewdemo($ajax) {
 
 function coupons_redirect_interim_page() {
 	global $base_url;
-	$url = $_GET['s'];
+	$url = $_GET['s']; // kept just to be safe in case nid is not found
 	$coupon_code = $_GET['c'];
-
+	/* MOVING REDIRECTION TO REDIRECT PAGE TO ENSURE THAT ALL PRODUCTS REDIRECT AS PER LATEST DATA AND NOT BASED ON STORED AFFILIATE URL VALUES */
+	If (!empty($_GET['nid'])){
+		$nid_redirect = $_GET['nid'];
+		$node_redirect = node_load($nid_redirect);
+		$baseurl_redirect = strip_tags($node_redirect->field_base_url['und']['0']['value']);
+		$retailer_id_redirect = strip_tags($node_redirect->field_retailer['und']['0'][tid]);
+		$retailer_redirect = taxonomy_term_load($retailer_id_redirect);
+		$part1_redirect = strip_tags($retailer_redirect->field_affiliate_url_part1['und']['0']['value']);
+		$part2_redirect = strip_tags($retailer_redirect->field_affiliate_url_part2['und']['0']['value']);
+		$network_id_redirect = strip_tags($retailer_redirect->field_network['und']['0'][tid]);
+		$network_redirect = taxonomy_term_load($network_id_redirect);
+		$network_name_redirect = strtolower(strip_tags($network_redirect->name));
+		$uid1 = $nid_redirect.'-'.uniqid(); // nid + event id
+		if (!isset($_COOKIE['CV_User_GUID'])) {
+			$uid2 = 'NOT_SET';
+		} Else {
+			$uid2 = $_COOKIE['CV_User_GUID'];		
+		}		
+		/* CHECK IF ? EXISTS IN BASEURL AND ACCORDING ADD PART 2 WITH & OR ?*/
+		$question_mark = strpos($baseurl_redirect, "?");
+		if ($question_mark == false){
+			$part2_redirect = "?".$part2_redirect;
+		} else {
+			$part2_redirect = "&".$part2_redirect;
+		}
+		switch ($network_name_redirect) {
+			case "omgpm":
+				$url = $part1_redirect.'&uid='.$uid1.'&uid2='.$uid1.'&r='.rawurlencode($baseurl_redirect);
+			break;
+			case "tyroo":
+				$url = $part1_redirect.'/&lnkurl='.rawurlencode(rawurlencode($baseurl_redirect)).rawurlencode(rawurlencode($part2_redirect)).'&subid1='.$uid1.'&subid2='.$uid2;
+			break;
+			case "flipkart":
+				$url = $baseurl_redirect.$part_redirect.'&AffExtParam1='.$uid1.'&AffExtParam2';
+			break;
+		}
+	}
+	
+	/* 
+	$nid = 
   /* Removed by Ashish to prevent double decoding on the redirect page*/
   //  $url = urldecode($url); 
 
   
 /** START OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIRECT PAGE */  
-	/* GETTING USER GUID */
-	if (!isset($_COOKIE['CV_User_GUID'])) {
-		$CV_User_GUID = 'NOT_SET';
-	} Else {
-		$CV_User_GUID = $_COOKIE['CV_User_GUID'];		
-	}
 	/* GETTING USER OS */
 	if (!isset($_COOKIE['CV_OS'])) {
 		$CV_OS = 'others';
@@ -240,7 +273,8 @@ function coupons_redirect_interim_page() {
 	}	
 	if ($CV_OS != 'others') {
 		mixpanel_track('Coupon Click Redirect', array(
-			'USER GUID' => $CV_User_GUID,
+			'USER GUID' => $uid2,
+			'Event Id' => $uid1,
 			'Affiliate URL' => $url,
 			'Coupon Code' => $coupon_code,
 			'OS' => $os,
@@ -249,31 +283,7 @@ function coupons_redirect_interim_page() {
 			)
 		);
 	}
-/** END OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIECT PAGE */ 
-	/* ADDING GUID TO TRACKING  URL IS OMG OR TYROO OR FLIPKART*/
-/*
-	if (strpos($url,'flipkart') > 1){
-		$affiliate = 'Flipkart';
-		if (strpos($url,'AffExtParam1') == false){
-			// no AffExtParam1
-			$url = $url."&AffExtParam1=".$CV_User_GUID;
-		}
-	}
-	if (strpos($url,'affiliates.tyroodr.com') > 1){
-		$affiliate = 'Tyroo';
-		if (strpos($url,'subid2') == false){
-			// echo 'no subid2';
-			$url = $url."&subid2=".$CV_User_GUID;
-		}
-	}
-	if (strpos($url,'track.in.omgpm.com') > 1){
-		$affiliate = 'OMG';
-		if (strpos($url,'uid2') == false){
-			// echo 'no uid2';
-			$url = $url."&uid2=".$CV_User_GUID;
-		}
-	}
-*/
+
 	
   drupal_add_js("jQuery(window).load(function(){
                   setTimeout(function(){
@@ -351,22 +361,39 @@ if ($coupon_code == 'Flipkart Offer'){
 					</div>';			
 
 			} else {
-					return '<div class="coupon_window">
-							<img src="'.$loader.'" width="160px" alt="Loading..."/>
-							<h1>Bazinga! Coupon Copied .. Please Wait</h1>
-							<h2 class="coupon_window_redirect">
-							  You are being redirected to retailer page. Simply paste (ctrl + v) this on the retailer cart / payment page to avail the discount:
-							</h2>
-							<div class="clear"> </div>
-							<div class="coupon_window_title">
-							  <div class="bridgecode">' . $coupon_code . '</div>
-							</div>
-							<div class="clear"> </div>
-							<h2 class="coupon_window_redirect">
-							   Click the browser back button for returning to CouponVoodoo and chatting with our team.
-							</h2>
-							<div class="clear"> </div>
-							</div>';
+				if ($coupon_code == 'Link_Click'){
+				return '<div class="coupon_window">
+					<img src="'.$loader.'" width="160px" alt="Loading..."/>
+					<h1>Please Wait ... </h1>
+					<h2 class="coupon_window_redirect">
+						You are being redirected to retailer page
+					</h2>
+					<div class="clear"> </div>
+					<h2 class="coupon_window_redirect">
+					  Click the browser back button for returning to CouponVoodoo and chatting with our team
+					</h2>
+					<div class="clear"> </div>
+					</div>';				
+				
+				} else {
+			
+						return '<div class="coupon_window">
+								<img src="'.$loader.'" width="160px" alt="Loading..."/>
+								<h1>Bazinga! Coupon Copied .. Please Wait</h1>
+								<h2 class="coupon_window_redirect">
+								  You are being redirected to retailer page. Simply paste (ctrl + v) this on the retailer cart / payment page to avail the discount:
+								</h2>
+								<div class="clear"> </div>
+								<div class="coupon_window_title">
+								  <div class="bridgecode">' . $coupon_code . '</div>
+								</div>
+								<div class="clear"> </div>
+								<h2 class="coupon_window_redirect">
+								   Click the browser back button for returning to CouponVoodoo and chatting with our team.
+								</h2>
+								<div class="clear"> </div>
+								</div>';
+				}
 			}
 		}
 }
@@ -1591,25 +1618,25 @@ function coupons_views_pre_build(&$view) {
     $view->display_handler->handlers['filter']['im_field_brand']->value = $node->field_brand[und][0]['tid'];
   }*/
 /* THIS POWERS MORE FROM RETAILER WIDGET  */
-  if($view->current_display == 'block' &&  $view->name == 'apache_retailer_products' ) {
+ 
+ if($view->current_display == 'block' &&  $view->name == 'apache_retailer_products' ) {
     $nid = arg(1);
     $node = node_load($nid);
     $view->display_handler->handlers['filter']['im_field_retailer']->value = $node->field_retailer[und][0]['tid'];
   }
 
-/* THIS POWERS SIMILAR PRODUCTS - DOESNT WORK*/
-/*  if($view->current_display == 'block_4' &&  $view->name == 'apache_retailer_products' ) {
+/* THIS POWERS SIMILAR PRODUCTS - LOWER CASE IS IMPORTANT*/
+/*
+  if($view->current_display == 'block_4' &&  $view->name == 'apache_retailer_products' ) {
 	$nid = arg(1);
 	$node = node_load($nid);
-	$view->display_handler->handlers['filter']['label']->value = strip_tags($node->field_retailer_product_name['und']['0'][value]);
-	
-	//$view->display_handler->handlers['filter']['label']->value = 'American Swan Striped Navy Blue Polo T Shirt';
+	$view->display_handler->handlers['filter']['label']->value = strtolower(strip_tags($node->field_retailer_product_name['und']['0'][value]));
+	$view->display_handler->handlers['filter']['label']->value = 'american swan striped navy blue polo t shirt';
+	echo $view->display_handler->handlers['filter']['label']->value;
 	//echo $view->display_handler->handlers['filter']['label']->value;
   }
 */
-
-
- }
+}
 
 
 function coupons_get_taxonomy_url($tid, $block = '') {
