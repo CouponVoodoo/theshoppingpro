@@ -228,7 +228,7 @@ function coupons_redirect_interim_page() {
 		}		
 		/* CHECK IF ? EXISTS IN BASEURL AND ACCORDING ADD PART 2 WITH & OR ?*/
 		$question_mark = strpos($baseurl_redirect, "?");
-		if ($question_mark == false){
+		if (strpos($baseurl_redirect, "?") > -1){
 			$part2_redirect = "?".$part2_redirect;
 		} else {
 			$part2_redirect = "&".$part2_redirect;
