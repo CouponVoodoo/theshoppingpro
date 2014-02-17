@@ -212,8 +212,13 @@ function coupons_redirect_interim_page() {
 	If (!empty($_GET['nid'])){
 		$nid_redirect = $_GET['nid'];
 		$node_redirect = node_load($nid_redirect);
-		$baseurl_redirect = strip_tags($node_redirect->field_base_url['und']['0']['value']);
 		$retailer_id_redirect = strip_tags($node_redirect->field_retailer['und']['0'][tid]);
+		if(empty($_GET['t'])){
+			$baseurl_redirect = strip_tags($node_redirect->field_base_url['und']['0']['value']);
+		} else {
+			$baseurl_redirect = strip_tags($node_redirect->field_baseurl_coupon['und']['0']['value']);
+		}
+		echo $baseurl;
 		$retailer_redirect = taxonomy_term_load($retailer_id_redirect);
 		$part1_redirect = strip_tags($retailer_redirect->field_affiliate_url_part1['und']['0']['value']);
 		$part2_redirect = strip_tags($retailer_redirect->field_affiliate_url_part2['und']['0']['value']);
@@ -246,8 +251,11 @@ function coupons_redirect_interim_page() {
 				$url = $baseurl_redirect.$part2_redirect.'&AffExtParam1='.$uid1;
 			break;
 		}
-	echo $url;
+	 echo $url;
 	}
+	
+	
+	
 	
 	/* 
 	$nid = 
