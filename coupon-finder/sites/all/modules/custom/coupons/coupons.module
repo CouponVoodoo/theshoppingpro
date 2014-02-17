@@ -1631,7 +1631,6 @@ function coupons_views_pre_build(&$view) {
 	$nid = arg(1);
 	$node = node_load($nid);
 	$view->display_handler->handlers['filter']['label']->value = strtolower(strip_tags($node->field_retailer_product_name['und']['0'][value]));
-	$view->display_handler->handlers['filter']['label']->value = 'american swan striped navy blue polo t shirt';
   }
 
 }
