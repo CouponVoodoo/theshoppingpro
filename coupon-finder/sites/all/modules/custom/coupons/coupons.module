@@ -235,7 +235,7 @@ function coupons_redirect_interim_page() {
 		}
 		switch ($network_name_redirect) {
 			case "omgpm":
-				$url = $part1_redirect.'&uid='.$uid1.'&uid2='.$uid1.'&r='.rawurlencode($baseurl_redirect);
+				$url = $part1_redirect.'&uid='.$uid1.'&uid2='.$uid2.'&r='.rawurlencode($baseurl_redirect);
 			break;
 			case "tyroo":
 				$url = $part1_redirect.'/&lnkurl='.rawurlencode(rawurlencode($baseurl_redirect)).rawurlencode(rawurlencode($part2_redirect)).'&subid1='.$uid1.'&subid2='.$uid2;
