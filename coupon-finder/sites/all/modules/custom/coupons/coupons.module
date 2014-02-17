@@ -246,7 +246,7 @@ function coupons_redirect_interim_page() {
 				$url = $baseurl_redirect.$part2_redirect.'&AffExtParam1='.$uid1.'&AffExtParam2='.$uid2;
 			break;
 		}
-	// echo $url;
+	echo $url;
 	}
 	
 	/* 
