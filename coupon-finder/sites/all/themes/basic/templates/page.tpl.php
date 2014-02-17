@@ -65,7 +65,7 @@
   <div id="main" class="clearfix">
     <div class="locader">
       <p style="text-align:center; position:relative;"></p>
-      <p class="frog_title"> Frugal Froggy At Work (may take upto 5 min)</p>
+      <p class="frog_title"> Frugal Froggy At Work (may take a minute or two!)</p>
       <img width="400px" alt="Loading..." src="<?php echo base_path() ?>sites/all/themes/basic/images/Frugal_Froggy.jpg" class="frog">
       <img src="<?php echo base_path() ?>sites/all/themes/basic/images/Loader-Dollar.gif" class="dollor">
     </div>
