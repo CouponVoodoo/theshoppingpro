@@ -218,7 +218,6 @@ function coupons_redirect_interim_page() {
 		} else {
 			$baseurl_redirect = strip_tags($node_redirect->field_baseurl_coupon['und']['0']['value']);
 		}
-		echo $baseurl;
 		$retailer_redirect = taxonomy_term_load($retailer_id_redirect);
 		$part1_redirect = strip_tags($retailer_redirect->field_affiliate_url_part1['und']['0']['value']);
 		$part2_redirect = strip_tags($retailer_redirect->field_affiliate_url_part2['und']['0']['value']);
@@ -240,16 +239,30 @@ function coupons_redirect_interim_page() {
 			$part2_redirect = "?".$part2_redirect;
 			// echo "y";
 		}
-		switch ($network_name_redirect) {
-			case "omgpm":
-				$url = $part1_redirect.'&uid='.$uid1.'&redirect='.rawurlencode($baseurl_redirect.$part2_redirect);
-			break;
-			case "tyroo":
-				$url = $part1_redirect.'/&lnkurl='.rawurlencode(rawurlencode($baseurl_redirect.$part2_redirect)).'&subid1='.$uid1;
-			break;
-			case "flipkart":
-				$url = $baseurl_redirect.$part2_redirect.'&AffExtParam1='.$uid1;
-			break;
+		if(!empty($baseurl_redirect)){
+			switch ($network_name_redirect) {
+				case "omgpm":
+					$url = $part1_redirect.'&uid='.$uid1.'&redirect='.rawurlencode($baseurl_redirect.$part2_redirect);
+				break;
+				case "tyroo":
+					$url = $part1_redirect.'/&lnkurl='.rawurlencode(rawurlencode($baseurl_redirect.$part2_redirect)).'&subid1='.$uid1;
+				break;
+				case "flipkart":
+					$url = $baseurl_redirect.$part2_redirect.'&AffExtParam1='.$uid1;
+				break;
+			}
+		} else {
+			switch ($network_name_redirect) {
+				case "omgpm":
+					$url = $part1_redirect.'&uid='.$uid1;
+				break;
+				case "tyroo":
+					$url = $part1_redirect.'&subid1='.$uid1;
+				break;
+				case "flipkart":
+					$url = "http://www.flipkart.com".$part2_redirect.'&AffExtParam1='.$uid1;
+				break;
+			}
 		}
 	 echo $url;
 	}
