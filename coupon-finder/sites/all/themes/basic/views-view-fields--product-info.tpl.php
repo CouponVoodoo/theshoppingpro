@@ -32,9 +32,8 @@ $list_price = $node->field_product_price['und'][0]['value'];
 $retailer = strip_tags($fields['field_retailer']->content);
 $brand = strip_tags($fields['field_brand']->content);
 $non_coupon_saving = $mrp - $list_price;
-
-
-
+global $base_url;
+$redirect_url = $base_url.'/coupon-redirect/?nid='.$nid.'&c=Link_Click';
 /** Start of By Ashish to get mixpanel variables */		
 global $base_url;
 $mixpanel_urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$nid);
@@ -52,7 +51,7 @@ $mixpanel_type='Product Page View Store';
 <div class="product-left">
     <?php
     
-    echo "<a rel='nofollow' target='_blank' class='view_store1' href='{$fields['field_affiliateurl']->content}' >".$fields['field_product_image']->content."</a>";
+    echo "<a rel='nofollow' class='view_store1' href='{$redirect_url}' >".$fields['field_product_image']->content."</a>";
         
     //print ($fields['field_product_images']->content);
     $status = strip_tags($fields['field_best_coupon_status']->content);
@@ -68,7 +67,7 @@ $mixpanel_type='Product Page View Store';
 
 
 <div class="product-right-inner">
-<h2> <?php print ($fields['field_retailer_product_name']->content); ?></h2>
+<h2> <?php print strip_tags(($fields['field_retailer_product_name']->content)); ?></h2>
 
 <?php 
 
@@ -93,7 +92,7 @@ $time_gap = $current_time-$lastcheckedtime_check;
     if( $CouponStatus == 1 ){
         print coupons_copy_best_coupon($nid);
     }else{
-        echo "<div class='d_view_store'><a class='view_store' target='_blank' href='{$fields['field_affiliateurl']->content}' >Buy Now</a></div>";
+        echo "<div class='d_view_store'><a class='view_store' href='{$redirect_url}' >Buy Now</a></div>";
 		
     }
     ?>
