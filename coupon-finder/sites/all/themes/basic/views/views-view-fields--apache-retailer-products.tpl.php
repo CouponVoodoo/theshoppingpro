@@ -37,7 +37,7 @@ $retailer = strip_tags($fields['field_retailer']->content);
 $brand = strip_tags($fields['field_brand']->content);
 $coupon_status = $node->field_best_coupon_status[und][0]['value'];
 $image = $node->field_product_image['und']['0']['value'];
-$node_url = $base_url.drupal_lookup_path('alias',"node/".$nid);
+$node_url = $base_url.'/'.drupal_lookup_path('alias',"node/".$nid);
 $product_name = $node->field_retailer_product_name['und']['0']['value'];
 ?>
 <div class = "similar_name"><h3> <a href='<?php print $node_url;?>'><?php print $product_name;?></a></h3></div>
