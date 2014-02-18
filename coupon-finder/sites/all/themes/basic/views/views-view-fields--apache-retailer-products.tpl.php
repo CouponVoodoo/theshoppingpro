@@ -80,8 +80,8 @@ if ($coupon_status ==1){
 	echo "<div class='similar_no_coupons'>No Savings</div>";
 	echo "<span class ='field-content'>INR {$list_price}</span>";
 }
+//echo "<div class='d_view_store'><a  href='{$node_url}'>View</a></div>";
 echo "<div class='d_view_store'><a  href='{$node_url}'>View</a></div>";
-
 ?>
 
 </div>
