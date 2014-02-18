@@ -1357,6 +1357,7 @@ text-align: center;
 .similar_coupons{color:#438503;font-weight:bold;}
 .similar_savings{color:#8b3d00;font-weight:bold;}
 .similar_no_coupons{color:#AC0706;font-weight:bold;}
+.similar_name {color: #ff9900 !important; font-weight: bold;};
 
 /* TAKING FILTER ON COUPON PAGE TO THE RIGHT SIDE. */
 /* .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper label, .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper .views-widget { float:left; }
