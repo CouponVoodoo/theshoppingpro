@@ -53,7 +53,7 @@
 			} Else {
 				$CV_User_GUID = $_COOKIE['CV_User_GUID'];		
 			}
-			$coupon_display_url=$base_url."/coupon-redirect?nid=".$nid."&t=c&guid=".$CV_User_GUID."&s=".rawurlencode($affiliate_url)."&c=".rawurlencode($coupon_code);
+			$coupon_display_url=$base_url."/coupon-redirect?l=cp&nid=".$nid."&t=c&guid=".$CV_User_GUID."&c=".rawurlencode($coupon_code)."&s=".rawurlencode($affiliate_url);
 		?>
 			<h2><a rel='no follow' target='_blank'href='<?php print $coupon_display_url ?>' ><?php print $title; ?></a></h2>
 			<div > 
