@@ -47,7 +47,7 @@ $product_name = $node->field_retailer_product_name['und']['0']['value'];
 $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
 			<div class='field-items'>
 				<div class='field-item even product_img'>
-					<a href='{$node_url}'><img src='{$image}' typeof='foaf:Image'></a>
+					<a href='{$node_url}'><img src='{$image}' typeof='foaf:Image' alt='{$product_name}'></a>
 				
 				</div>";
 echo  $img .=    "</div>
