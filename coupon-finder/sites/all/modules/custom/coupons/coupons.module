@@ -317,7 +317,7 @@ function coupons_redirect_interim_page() {
 			}
 	}
 	
-	if ($CV_OS != 'others') {
+	//if ($CV_OS != 'others') {
 		mixpanel_track('Coupon Click Redirect', array(
 			'USER GUID' => $uid2,
 			'Event Id' => $uid1,
@@ -331,7 +331,7 @@ function coupons_redirect_interim_page() {
 			'Event Location' => $loc
 			)
 		);
-	}
+	//}
 
 	
   drupal_add_js("jQuery(window).load(function(){
