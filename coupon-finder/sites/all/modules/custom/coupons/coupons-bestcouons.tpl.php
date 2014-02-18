@@ -1,4 +1,5 @@
 <?php
+$url_path = rawurlencode(drupal_get_path_alias());
 global $base_url;
 /*if ($row->Successful=="1") {
   $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u67_normal.png";
@@ -55,7 +56,7 @@ $nid = arg(1);
 	}
 	$add_tracking = rawurlencode($os.'-'.$original_source);
 	?>
-    <a href="<?php print $base_url ?>/coupon-redirect?l=bc&os=<?php print $add_tracking;?>&nid=<?php print $nid;?>&c=<?php print $row->couponCode; ?>&s=<?php print urlencode($row->url);?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $row->couponCode?>" >
+    <a href="<?php print $base_url ?>/coupon-redirect?l=bc&os=<?php print $add_tracking;?>&nid=<?php print $nid;?>&c=<?php print $row->couponCode; ?>&p=<?php print $url_path; ?>&s=<?php print urlencode($row->url);?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $row->couponCode?>" >
       <span class="copy_coupon">Buy Now</span><span></span>
     </a>
     <?php else : ?>

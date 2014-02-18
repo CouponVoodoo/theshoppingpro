@@ -295,6 +295,34 @@ function coupons_redirect_interim_page() {
 	} Else {
 		$traffic_source = $_COOKIE['CV_Traffic_Source'];		
 	}	
+	/* EVENT LOCATION */
+	if(!empty($_GET['l'])){
+	$loc_id = $_GET['l'];
+	switch ($loc_id) {
+				case "bc":
+					$loc = 'Product_Page_Best_Coupon';
+				break;
+				case "oc":
+					$loc = 'Product_Page_Other_Coupon';
+				break;
+				case "olp":
+					$loc = 'Product_Page_Other_Links';
+				break;
+				case "tp":
+					$loc = 'Taxonomy_Search_Page';
+				break;
+				case "cp":
+					$loc = 'Coupon_Page';
+				break;
+			}
+	}
+	echo 'location_id - '.$loc_id;
+	echo nl2br("\n");
+	echo 'location - '.$loc;
+	echo nl2br("\n");
+	echo 'event page - '.$_GET['p'];
+	echo nl2br("\n");
+	
 	if ($CV_OS != 'others') {
 		mixpanel_track('Coupon Click Redirect', array(
 			'USER GUID' => $uid2,
@@ -303,7 +331,10 @@ function coupons_redirect_interim_page() {
 			'Coupon Code' => $coupon_code,
 			'OS' => $os,
 			'Traffic Source' => $traffic_source,
-			'Referrer' =>  $cv_referrer
+			'Referrer' =>  $cv_referrer,
+			'Event Page' => $_GET['p'],
+			'Event Location Id' => $loc_id,
+			'Event Location' => $loc
 			)
 		);
 	}
