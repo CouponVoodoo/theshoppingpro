@@ -33,7 +33,7 @@ $retailer = strip_tags($fields['field_retailer']->content);
 $brand = strip_tags($fields['field_brand']->content);
 $non_coupon_saving = $mrp - $list_price;
 global $base_url;
-$redirect_url = $base_url.'/coupon-redirect/?nid='.$nid.'&c=Link_Click';
+$redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click';
 /** Start of By Ashish to get mixpanel variables */		
 global $base_url;
 $mixpanel_urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$nid);
