@@ -224,7 +224,7 @@ function coupons_redirect_interim_page() {
 		$network_id_redirect = strip_tags($retailer_redirect->field_network['und']['0'][tid]);
 		$network_redirect = taxonomy_term_load($network_id_redirect);
 		$network_name_redirect = strtolower(strip_tags($network_redirect->name));
-		$uid1 = $nid_redirect.'-'.uniqid(); // nid + event id
+		$uid1 = $nid_redirect.'iii'.uniqid(); // nid + event id
 		if (!isset($_COOKIE['CV_User_GUID'])) {
 			$uid2 = 'NOT_SET';
 		} Else {
