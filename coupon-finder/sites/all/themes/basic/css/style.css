@@ -11,6 +11,7 @@ body {
 
 /* Links */
 a:link, a:visited {
+  color: #ff9900;
   text-decoration: none;
 }
 
