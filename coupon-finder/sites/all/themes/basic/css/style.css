@@ -1017,7 +1017,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .retailer_product_right .product_img img { max-height: 200px; max-width: 110px;width: auto; text-align: center; padding: 0px !important;}
 .retailer_product_right h2 {width=100%;}
 .d_view_store{width:100%;float:left;text-align:center;margin-top:15px;background:none repeat scroll 0 0 #FF9900;border-radius:10px;padding: 5px;}
-.d_view_store a, a:hover, a:active{color: #ffffff; font-weight: bold;};
+.d_view_store a, a:hover, a:active{color: #ff9900; font-weight: bold;};
 .node--product-and-coupon .d_view_store{width:100%;float:left;text-align:center;margin-top:15px;background:none repeat scroll 0 0 #FF9900;border-radius:15px}
 .product_info .d_view_store{width:100%;float:left;text-align:center;margin-top:11px; padding: 10px; line-height: 15px !important;}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .d_view_store a,.page-search-site #block-system-main .block-inner .node--product-and-coupon .d_view_store a{color:#fff;font-size:13px!important;font-weight:bold;line-height:30px!important;text-decoration:none!important;}
