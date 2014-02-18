@@ -910,7 +910,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .retailer_product_right h2{font-size:15px;font-weight:bold;text-align:center;}
 #sidebar-second{margin-top:43px;}
 .not-logged-in #sidebar-second{margin-top:16px;}
-.retailer_product_right .views-row{background:#fff;padding:10px;border:1px solid #E6E6E6;border-radius:8px;margin-bottom:10px;float:left; width:188px}
+.retailer_product_right .views-row{background:#fff;padding:5px 2px;border:1px solid #E6E6E6;border-radius:8px;margin-bottom:10px;float:left; width:188px}
 .retailer_product_right .views-row .views-field-sm-field-retailer-product-name,.retailer_product_right .views-row .views-field-sm-field-retailer-product-name span,.retailer_product_right .views-row .views-field-sm-field-retailer-product-name a{color:#F7971C;font-weight:bold;}
 .retailer_product_right .views-row .views-field-sm-vid-Retailer{color:#666666;font-weight:bold;}
 .retailer_product_right .views-row  .views-label{ color: #666666;float: left; font-family: Arial;font-size: 11px;font-style: normal;font-weight: bold;padding-right: 7px;width:100px;}
@@ -1014,6 +1014,10 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 
 
 .product_img img { max-height: 200px; max-width: 200px;width: auto;}
+.retailer_product_right .product_img img { max-height: 200px; max-width: 110px;width: auto; text-align: center; padding: 0px !important;}
+.retailer_product_right h2 {width=100%;}
+.d_view_store{width:100%;float:left;text-align:center;margin-top:15px;background:none repeat scroll 0 0 #FF9900;border-radius:10px;padding: 5px;}
+.d_view_store a, a:hover, a:active{color: #ffffff; font-weight: bold;};
 .node--product-and-coupon .d_view_store{width:100%;float:left;text-align:center;margin-top:15px;background:none repeat scroll 0 0 #FF9900;border-radius:15px}
 .product_info .d_view_store{width:100%;float:left;text-align:center;margin-top:11px; padding: 10px; line-height: 15px !important;}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .d_view_store a,.page-search-site #block-system-main .block-inner .node--product-and-coupon .d_view_store a{color:#fff;font-size:13px!important;font-weight:bold;line-height:30px!important;text-decoration:none!important;}
@@ -1328,7 +1332,32 @@ vertical-align:middle;
 padding-right: 10px;
 }
 
+.similar_left{
+    float: left;
+    margin-top: 10px;
+    text-align: center;
+    width: 100px;
+}
 
+.similar_right{
+	display: inline-block;
+    float: left;
+    margin-left: 11px;
+    position: relative;
+    top: 15%;
+    width: 60px;
+}
+.similar_name {
+width: 100%;
+float: left;
+padding: 0px 5px;
+font-size: 10px !important;
+text-align: center;
+}
+
+.similar_coupons{color:#438503;font-weight:bold;}
+.similar_savings{color:#8b3d00;font-weight:bold;}
+.similar_no_coupons{color:#AC0706;font-weight:bold;}
 
 /* TAKING FILTER ON COUPON PAGE TO THE RIGHT SIDE. */
 /* .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper label, .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper .views-widget { float:left; }
