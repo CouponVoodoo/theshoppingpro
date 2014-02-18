@@ -316,12 +316,6 @@ function coupons_redirect_interim_page() {
 				break;
 			}
 	}
-	echo 'location_id - '.$loc_id;
-	echo nl2br("\n");
-	echo 'location - '.$loc;
-	echo nl2br("\n");
-	echo 'event page - '.$_GET['p'];
-	echo nl2br("\n");
 	
 	if ($CV_OS != 'others') {
 		mixpanel_track('Coupon Click Redirect', array(
