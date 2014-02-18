@@ -25,6 +25,7 @@
  */
 ?>
 <?php
+$url_path = rawurlencode(drupal_get_path_alias());
 $nid = arg(1);
 $node = node_load($nid);
 $mrp = $node->field_mrpproductprice['und'][0]['value'];
@@ -33,7 +34,7 @@ $retailer = strip_tags($fields['field_retailer']->content);
 $brand = strip_tags($fields['field_brand']->content);
 $non_coupon_saving = $mrp - $list_price;
 global $base_url;
-$redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click';
+$redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&p='.$url_path;
 /** Start of By Ashish to get mixpanel variables */		
 global $base_url;
 $mixpanel_urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$nid);

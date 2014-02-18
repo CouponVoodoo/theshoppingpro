@@ -1,6 +1,7 @@
 <?php ?>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>">
 <?php 
+$url_path = rawurlencode(drupal_get_path_alias());
 $nid = $node->nid;
 $mrp = $node->field_mrpproductprice['und'][0]['value'];
 $list_price = $node->field_product_price['und'][0]['value'];
@@ -120,7 +121,7 @@ $non_coupon_saving = $mrp - $list_price;
 	} Else {
 		$CV_User_GUID = $_COOKIE['CV_User_GUID'];		
 	}
-	$coupon_display_url=$base_url."/coupon-redirect?nid=".$nid."&guid=".$CV_User_GUID."&s=".$affiliate_url."&c=".$coupon_code;
+	$coupon_display_url=$base_url."/coupon-redirect?l=tp&nid=".$nid."&c=".$coupon_code."&p=".$url_path."&s=".$affiliate_url;
 	// $coupon_display_url=$affiliate_url_uncoded;
 		
  	$uplImg = $node->field_product_images['und'][0]['uri'];
