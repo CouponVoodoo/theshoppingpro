@@ -348,8 +348,11 @@ function coupons_redirect_interim_page() {
                   setTimeout(function(){
                       window.location.replace(\"" . $url . "\");
                   }, 5000);
+				  ga('send', 'event', 'coupon-redirection', 'redirect-page', 'test');
         });", array('type' => 'inline', 'scope' => 'footer'));
 
+
+		
 $loader = $base_path . drupal_get_path('theme', 'basic') . '/images/loader.GIF';		
 if ($coupon_code == 'Flipkart Offer'){
   return '<div class="coupon_window">
