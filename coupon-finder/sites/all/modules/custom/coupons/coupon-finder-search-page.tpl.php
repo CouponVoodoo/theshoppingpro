@@ -4,7 +4,7 @@ $nid = arg(1);
 global $base_url;
 if ($row->Successful=="1") {
   $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u67_normal.png";
-  
+
   $best_coupon = !empty($row->BestCoupon) ? '<span class="best_coupon">Best Coupon (Guaranteed To Work)</span>' : '<div class="coupon_status_guaranteed"><img src="'.$image_right.'"><span>Guaranteed To Work</span></div>';
 }else {
   $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u71_normal.png";
@@ -29,7 +29,7 @@ if ($row->Successful=="1") {
     <?php if ($row->Successful=="1") : ?>
 
     <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving">INR <?php print $row->Saving;?>
-	
+
 	</div><?php print $best_coupon; ?></div>
     <?php else: ?>
     <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"></div><?php print $best_coupon; ?></div>
@@ -91,7 +91,7 @@ if ($row->Successful=="1") {
 	?>
 
 
-    <a href="<?php print $base_url ?>/coupon-redirect?l=oc&os=<?php print $add_tracking;?>&nid=<?php print $nid;?>&c=<?php print $row->couponCode; ?>&p=<?php print $url_path; ?>&s=<?php print urlencode($row->url);?>" target="_blank" class="unlock_coupon" rel="c_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $row->couponCode?>">
+    <a href="<?php print $base_url ?>/coupon-redirect?l=oc&os=<?php print $add_tracking;?>&nid=<?php print $nid;?>&c=<?php print $row->couponCode; ?>&p=<?php print $url_path; ?>&s=<?php print urlencode($row->url);?>" target="_blank" class="unlock_coupon" id="<?php echo 'r_'.$row->counter.'_'.$row->couponCode;?>" rel="c_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $row->couponCode?>">
       <span class="copy_coupon">Copy Coupon</span><span></span>
     </a>
     <?php else : ?>
