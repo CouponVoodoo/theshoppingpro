@@ -1690,7 +1690,7 @@ function coupons_views_pre_build(&$view) {
 	
 	}
 */
-  if($view->name == 'right_hand_similar' ) {
+  if($view->current_display == 'block' $view->name == 'right_hand_similar' ) {
 	$nid = arg(1);
 	$node = node_load($nid);
 	$current_time= time();
