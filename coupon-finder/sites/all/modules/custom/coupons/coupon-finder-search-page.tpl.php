@@ -91,7 +91,7 @@ if ($row->Successful=="1") {
 	?>
 
 
-    <a href="<?php print $base_url ?>/coupon-redirect?l=oc&os=<?php print $add_tracking;?>&nid=<?php print $nid;?>&c=<?php print $row->couponCode; ?>&p=<?php print $url_path; ?>&s=<?php print urlencode($row->url);?>" target="_blank" class="unlock_coupon" id="<?php echo 'r_'.$row->counter.'_'.$row->couponCode;?>" rel="c_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $row->couponCode?>">
+    <a href="<?php print $base_url ?>/coupon-redirect?l=oc&os=<?php print $add_tracking;?>&nid=<?php print $nid;?>&c=<?php print $row->couponCode; ?>&p=<?php print $url_path; ?>&s=<?php print urlencode($row->url);?>" target="_blank" class="unlock_coupon" rel="c_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $row->couponCode?>">
       <span class="copy_coupon">Copy Coupon</span><span></span>
     </a>
     <?php else : ?>
