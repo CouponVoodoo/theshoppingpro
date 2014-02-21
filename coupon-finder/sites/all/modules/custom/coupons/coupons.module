@@ -268,7 +268,7 @@ function coupons_redirect_interim_page() {
 					// $url = "http://www.flipkart.com".$part2_redirect.'&AffExtParam1='.$uid1;
 					$url = "http://www.flipkart.com".$part2_redirect;
 				break;
-				case "flipkart":
+				case "amazon":
 					// $url = "http://www.flipkart.com".$part2_redirect.'&AffExtParam1='.$uid1;
 					$url = "http://www.amazon.in/".$part2_redirect;
 				break;
@@ -362,7 +362,19 @@ function coupons_redirect_interim_page() {
                   setTimeout(function(){
                       window.location.replace(\"" . $url . "\");
                   }, 5000);
-				 ga('send', 'event', 'coupon-redirection', 'redirect-page', Drupal.settings.coupons.Event_Id,{'dimension1': Drupal.settings.coupons.User_Guid}, {'dimension3': Drupal.settings.coupons.Affiliate_URL}, {'dimension4': Drupal.settings.coupons.Coupon_Code}, {'dimension5': Drupal.settings.coupons.Event_Location}, {'dimension6': Drupal.settings.coupons.Event_Page}, {'dimension7': Drupal.settings.coupons.Click_Time}, {'dimension8': Drupal.settings.coupons.Last_Checked}, {'dimension9': Drupal.settings.coupons.Retailer}, {'dimension10': Drupal.settings.coupons.Brand}, {'dimension11': Drupal.settings.coupons.Category}, {'dimension12': Drupal.settings.coupons.Network});
+				 ga('send', 'event', 'coupon-redirection', 'redirect-page', Drupal.settings.coupons.Event_Id,{
+					'dimension1': Drupal.settings.coupons.User_Guid, 
+					'dimension3': Drupal.settings.coupons.Affiliate_URL, 
+					'dimension4': Drupal.settings.coupons.Coupon_Code, 
+					'dimension5': Drupal.settings.coupons.Event_Location, 
+					'dimension6': Drupal.settings.coupons.Event_Page, 
+					'dimension7': Drupal.settings.coupons.Click_Time, 
+					'dimension8': Drupal.settings.coupons.Last_Checked, 
+					'dimension9': Drupal.settings.coupons.Retailer, 
+					'dimension10': Drupal.settings.coupons.Brand, 
+					'dimension11': Drupal.settings.coupons.Category, 
+					'dimension12': Drupal.settings.coupons.Network
+					});
 	        });", array('type' => 'inline', 'scope' => 'footer'));
 
 
