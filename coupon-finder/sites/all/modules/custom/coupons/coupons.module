@@ -342,25 +342,27 @@ function coupons_redirect_interim_page() {
 			)
 		);
 	//}
-
+	$brand_track = taxonomy_get_term($node_redirect->field_brand['und']['0'][tid]);
+	$category_track = taxonomy_get_term($node_redirect->field_category['und']['0'][tid]);
 	drupal_add_js(array('coupons' => array(			
 			'User_Guid' => $uid2,
 			'Event_Id' => $uid1,
 			'Affiliate_URL' => $url,
 			'Coupon_Code' => $coupon_code,
-			'OS' => $os,
-			'Traffic_Source' => $traffic_source,
-			'Referrer' =>  $cv_referrer,
+			'Event_Location' => $loc,
 			'Event_Page' => $_GET['p'],
-			'Event_Location_Id' => $loc_id,
-			'Event_Location' => $loc
+			'Click_Time' => gmdate('Y-m-d\TH:i:s\Z', time()),
+			'Last_Checked' => gmdate('Y-m-d\TH:i:s\Z', strip_tags($node_redirect->field_lastcheckedtime['und']['0']['value']),
+			'Retailer' =>  $retailer_redirect->name.'('.$node_redirect->field_retailer['und']['0'][tid]).')',,
+			'Brand' => $brand_track->name.'('.$node_redirect->field_brand['und']['0'][tid]).')',
+			'Category' => $category_track->name.'('.$node_redirect->field_category['und']['0'][tid]).')',,
+			'Network' => $network_name_redirect
 			)), array('type' => 'setting'));
 	drupal_add_js("jQuery(window).load(function(){
                   setTimeout(function(){
                       window.location.replace(\"" . $url . "\");
                   }, 5000);
-				 ga('send', 'event', 'coupon-redirection', 'redirect-page', 'auto-redirect2',{'dimension1': Drupal.settings.coupons.User_Guid});
-				 ga('send', 'event', 'coupon-redirection', 'redirect-page', 'auto-redirect2',{'dimension1': 'test_user'});
+				 ga('send', 'event', 'coupon-redirection', 'redirect-page', Drupal.settings.coupons.Event_Id,{'dimension1': Drupal.settings.coupons.User_Guid}, {'dimension3': Drupal.settings.coupons.Affiliate_URL}, {'dimension4': Drupal.settings.coupons.Coupon_Code}, {'dimension5': Drupal.settings.coupons.Event_Location}, {'dimension6': Drupal.settings.coupons.Event_Page}, {'dimension7': Drupal.settings.coupons.Click_Time}, {'dimension8': Drupal.settings.coupons.Last_Checked}, {'dimension9': Drupal.settings.coupons.Retailer}, {'dimension10': Drupal.settings.coupons.Brand}, {'dimension11': Drupal.settings.coupons.Category}, {'dimension12': Drupal.settings.coupons.Network});
 	        });", array('type' => 'inline', 'scope' => 'footer'));
 
 
