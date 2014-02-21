@@ -352,10 +352,10 @@ function coupons_redirect_interim_page() {
 			'Event_Location' => $loc,
 			'Event_Page' => $_GET['p'],
 			'Click_Time' => gmdate('Y-m-d\TH:i:s\Z', time()),
-			'Last_Checked' => gmdate('Y-m-d\TH:i:s\Z', strip_tags($node_redirect->field_lastcheckedtime['und']['0']['value']),
-			'Retailer' =>  $retailer_redirect->name.'('.$node_redirect->field_retailer['und']['0'][tid]).')',
-			'Brand' => $brand_track->name.'('.$node_redirect->field_brand['und']['0'][tid]).')',
-			'Category' => $category_track->name.'('.$node_redirect->field_category['und']['0'][tid]).')',,
+			'Last_Checked' => gmdate('Y-m-d\TH:i:s\Z', strip_tags($node_redirect->field_lastcheckedtime['und']['0']['value'])),
+			'Retailer' =>  $retailer_redirect->name.'('.$node_redirect->field_retailer['und']['0'][tid].')',
+			'Brand' => $brand_track->name.'('.$node_redirect->field_brand['und']['0'][tid].')',
+			'Category' => $category_track->name.'('.$node_redirect->field_category['und']['0'][tid].')',
 			'Network' => $network_name_redirect
 			)), array('type' => 'setting'));
 	drupal_add_js("jQuery(window).load(function(){
