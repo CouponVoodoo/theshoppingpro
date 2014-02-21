@@ -367,7 +367,12 @@ function coupons_redirect_interim_page() {
 				  ga('set', 'dimension6', Event_Location_Id);
 				  ga('set', 'dimension7', Event_Location);
 				  ga('set', 'dimension7', Redirection_URL);
-				  ga('send', 'event', 'coupon-redirection', 'redirect-page', 'auto-redirect',{'dimension1': User_Guid},{'dimension2': Event_Id},{'dimension3': Affiliate_URL},{'dimension4': Coupon_Code},{'dimension5': Event_Page},{'dimension6': Event_Location_Id},{'dimension7': Event_Location});
+				 //  ga('send', 'event', 'coupon-redirection', 'redirect-page', 'auto-redirect',{'dimension1': User_Guid},{'dimension2': Event_Id},{'dimension3': Affiliate_URL},{'dimension4': Coupon_Code},{'dimension5': Event_Page},{'dimension6': Event_Location_Id},{'dimension7': Event_Location});
+				 ga('send', 'event', 'coupon-redirection', 'redirect-page', 'auto-redirect',{'dimension1': User_Guid});
+				 ga('send', 'event', 'coupon-redirection', 'redirect-page', 'auto-redirect',{'dimension1': 'User_Guid'});
+				 ga('send', 'event', 'coupon-redirection', 'redirect-page', 'auto-redirect',{'User_Guid': User_Guid});
+				 
+				 
         });", array('type' => 'inline', 'scope' => 'footer'));
 
 
