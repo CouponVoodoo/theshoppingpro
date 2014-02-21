@@ -359,9 +359,8 @@ function coupons_redirect_interim_page() {
                   setTimeout(function(){
                       window.location.replace(\"" . $url . "\");
                   }, 5000);
-				 ga('send', 'event', 'coupon-redirection', 'redirect-page', 'auto-redirect1');
-				 ga('send', 'event', 'coupon-redirection', 'redirect-page', 'auto-redirect2',{'dimension1': 'User_Guid'});
-				 ga('send', 'event', 'coupon-redirection', 'redirect-page', 'auto-redirect3',{'User_Guid': 'User_Guid'});
+				 ga('send', 'event', 'coupon-redirection', 'redirect-page', 'auto-redirect2',{'dimension1': Drupal.settings.coupons.User_Guid});
+				 ga('send', 'event', 'coupon-redirection', 'redirect-page', 'auto-redirect2',{'dimension1': 'test_user'});
 	        });", array('type' => 'inline', 'scope' => 'footer'));
 
 
