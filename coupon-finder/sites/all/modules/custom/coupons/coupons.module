@@ -342,8 +342,8 @@ function coupons_redirect_interim_page() {
 			)
 		);
 	//}
-	$brand_track = taxonomy_get_term($node_redirect->field_brand['und']['0'][tid]);
-	$category_track = taxonomy_get_term($node_redirect->field_category['und']['0'][tid]);
+	$brand_track = taxonomy_term_load($node_redirect->field_brand['und']['0'][tid]);
+	$category_track = taxonomy_term_load($node_redirect->field_category['und']['0'][tid]);
 	drupal_add_js(array('coupons' => array(			
 			'User_Guid' => $uid2,
 			'Event_Id' => $uid1,
