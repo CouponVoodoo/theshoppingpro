@@ -248,8 +248,8 @@ function coupons_redirect_interim_page() {
 					$url = $part1_redirect.'/&lnkurl='.rawurlencode(rawurlencode($baseurl_redirect.$part2_redirect)).'&subid1='.$uid1;
 				break;
 				case "flipkart":
-					//$url = $baseurl_redirect.$part2_redirect.'&AffExtParam1='.$uid1;
-					$url = $baseurl_redirect.$part2_redirect;
+					$url = $baseurl_redirect.$part2_redirect.'&AffExtParam1='.$uid1;
+					// $url = $baseurl_redirect.$part2_redirect;
 				break;
 				case "amazon":
 					//$url = $baseurl_redirect.$part2_redirect.'&AffExtParam1='.$uid1;
@@ -265,8 +265,8 @@ function coupons_redirect_interim_page() {
 					$url = $part1_redirect.'/&subid1='.$uid1;
 				break;
 				case "flipkart":
-					// $url = "http://www.flipkart.com".$part2_redirect.'&AffExtParam1='.$uid1;
-					$url = "http://www.flipkart.com".$part2_redirect;
+					 $url = "http://www.flipkart.com".$part2_redirect.'&AffExtParam1='.$uid1;
+					// $url = "http://www.flipkart.com".$part2_redirect;
 				break;
 				case "amazon":
 					// $url = "http://www.flipkart.com".$part2_redirect.'&AffExtParam1='.$uid1;
@@ -356,7 +356,8 @@ function coupons_redirect_interim_page() {
 			'Retailer' =>  $retailer_redirect->name.'('.$node_redirect->field_retailer['und']['0'][tid].')',
 			'Brand' => $brand_track->name.'('.$node_redirect->field_brand['und']['0'][tid].')',
 			'Category' => $category_track->name.'('.$node_redirect->field_category['und']['0'][tid].')',
-			'Network' => $network_name_redirect
+			'Network' => $network_name_redirect,
+			'Coupon_Status' => strip_tags($node_redirect->field_best_coupon_status['und']['0']['value'])
 			)), array('type' => 'setting'));
 	drupal_add_js("jQuery(window).load(function(){
                   setTimeout(function(){
@@ -373,7 +374,8 @@ function coupons_redirect_interim_page() {
 					'dimension9': Drupal.settings.coupons.Retailer, 
 					'dimension10': Drupal.settings.coupons.Brand, 
 					'dimension11': Drupal.settings.coupons.Category, 
-					'dimension12': Drupal.settings.coupons.Network
+					'dimension12': Drupal.settings.coupons.Network,
+					'dimension2': Drupal.settings.coupons.Coupon_Status
 					});
 	        });", array('type' => 'inline', 'scope' => 'footer'));
 
