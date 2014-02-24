@@ -1,4 +1,6 @@
-<?php ?>
+<?php 
+$current_domain = get_current_domain();
+?>
 <script type="text/javascript" src="<?php echo base_path().path_to_theme(); ?>/js/jquery.clipboard.js"></script>
 <div id="page" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
@@ -127,12 +129,16 @@
 		     <?php if ($title): ?>
               <h1 class="title"><?php print str_replace('.com','',$title).' Coupons, Deals & Offers in India'?></h1>
             <?php endif; ?>
-          <?php if ($is_front):
-          global $base_url;
-          ?>
+          <?php if ($is_front):?>
             <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
-              <img src="<?php print base_path() . drupal_get_path('theme', 'basic') . "/images/CouponVoodoo_main_logo.png" ?>" alt="<?php print t('Home'); ?>"/>
-            </a>
+              <img src="<?php 
+							if ($current_domain == 'cuponation') {
+								print base_path() . drupal_get_path('theme', 'basic') . '/images/logo-cuponation.png';
+							} else { 
+								print base_path() . drupal_get_path('theme', 'basic') . '/images/CouponVoodoo_main_logo.png';
+							} 
+						?>" alt="<?php print t('Home'); ?>"/>
+			</a>
           <?php endif; ?>
           <?php if ($is_front): ?>
                 <?php print $messages; ?>
