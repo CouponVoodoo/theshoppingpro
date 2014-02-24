@@ -274,8 +274,8 @@ function coupons_redirect_interim_page() {
 				break;
 			}
 		}
-	  echo $url;
-	  die;
+//	  echo $url;
+//	  die;
 	}
 	
 	
