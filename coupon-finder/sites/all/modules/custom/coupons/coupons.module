@@ -1751,3 +1751,49 @@ function coupons_get_taxonomy_url($tid, $block = '') {
   return $link;
 }
 
+/* BY ASHISH TO GET DOMAIN TO SIMPLIFY THE CONDITIONS*/
+function get_current_domain(){
+	global $base_url;
+	if (stripos($base_url,'cuponation') != false){
+		return 'cuponation';
+	} else {
+		return 'couponvoodoo';
+	}
+}
+
+/* BY ASHISH TO CHANGE STATIC CONTENT BASIS THE DOMAIN  - NEED TO FINISH*/
+function get_label($label) {
+	$current_domain = get_current_domain ();
+	if ($current_domain = 'cuponation'){
+		switch (strtolower($label)) {
+			case "list_price":
+					return 'List Price:';
+			break;
+			case "savings":
+					return 'Saving:';
+			break;
+			case "net_price":
+					return 'Net Price:';
+			break;
+			case "best_coupon":
+					return 'Best Coupon';
+			break;
+		}
+	} else {
+		switch ($label) {
+			case "list_price":
+					return 'List Price:';
+			break;
+			case "savings":
+					return 'Saving:';
+			break;
+			case "net_price":
+					return 'Net Price:';
+			break;
+			case "best_coupon":
+					return 'Best Coupon';
+			break;
+		}
+	}
+}
+
