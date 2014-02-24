@@ -351,7 +351,7 @@ function coupons_redirect_interim_page() {
 			'Coupon_Code' => $coupon_code,
 			'Event_Location' => $loc,
 			'Event_Page' => $_GET['p'],
-			'Click_Time' => gmdate('Y-m-d\TH:i:s\Z', time()),
+			'Click_Time' => gmdate('Y-m-d\TH:i:s\Z', (time()-(5.5*3600))),
 			'Last_Checked' => gmdate('Y-m-d\TH:i:s\Z', strip_tags($node_redirect->field_lastcheckedtime['und']['0']['value'])),
 			'Retailer' =>  $retailer_redirect->name.'('.$node_redirect->field_retailer['und']['0'][tid].')',
 			'Brand' => $brand_track->name.'('.$node_redirect->field_brand['und']['0'][tid].')',
