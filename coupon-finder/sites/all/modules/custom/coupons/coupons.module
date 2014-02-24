@@ -1761,26 +1761,32 @@ function get_current_domain(){
 	}
 }
 
-/* BY ASHISH TO CHANGE STATIC CONTENT BASIS THE DOMAIN  - NEED TO FINISH*/
+/* BY ASHISH TO CHANGE STATIC CONTENT BASIS THE DOMAIN*/
 function get_label($label) {
 	$current_domain = get_current_domain ();
-	if ($current_domain = 'cuponation'){
+	if ($current_domain == 'cuponation'){
 		switch (strtolower($label)) {
+			case "status":
+					return 'Coupon Status:';
+			break;
 			case "list_price":
-					return 'List Price:';
+					return 'Sale Price:';
 			break;
 			case "savings":
-					return 'Saving:';
+					return 'You Save:';
 			break;
 			case "net_price":
-					return 'Net Price:';
+					return 'Final Cost:';
 			break;
 			case "best_coupon":
-					return 'Best Coupon';
+					return 'Coupon Details';
 			break;
 		}
 	} else {
-		switch ($label) {
+		switch (strtolower($label)) {
+			case "status":
+					return 'Status:';
+			break;
 			case "list_price":
 					return 'List Price:';
 			break;
