@@ -127,7 +127,14 @@ $current_domain = get_current_domain();
 
         <div id="content-area">
 		     <?php if ($title): ?>
-              <h1 class="title"><?php print str_replace('.com','',$title).' Coupons, Deals & Offers in India'?></h1>
+              <h1 class="title"><?php 
+									if ($current_domain == 'couponvoodoo') {
+										print str_replace('.com','',$title).' Products Coupons, Deals & Offers in India';
+									} else { 
+										print 'Coupons For '.str_replace('.com','',$title).' Products';
+									} 
+								?>
+								</h1>
             <?php endif; ?>
           <?php if ($is_front):?>
             <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
