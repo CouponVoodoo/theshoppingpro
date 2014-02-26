@@ -12,9 +12,12 @@
     ?>
       <h2 class="block-title"<?php print $title_attributes; ?> >More From <?php echo coupons_get_taxonomy_url($RetailerTid, 'block') ?></h2>
     <?php }else{?>
-      <h2 class="block-title"<?php print $title_attributes; ?>><?php print $block->subject ?></h2>      
+      <h2 class="block-title"<?php print $title_attributes; ?>><?php print get_block_subject($block->subject); ?></h2>      
     <?php } 
     endif;?>
+
+	
+	
     <?php print render($title_suffix); ?>
 
 
