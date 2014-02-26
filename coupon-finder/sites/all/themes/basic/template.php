@@ -131,7 +131,54 @@ function basic_preprocess_html(&$vars) {
             drupal_add_css(path_to_theme() . '/css/ie10.css', array('group' => CSS_THEME, 'browsers' => array('IE' => 'IE 10', '!IE' => FALSE), 'preprocess' => FALSE));
         }
     }
+	  
+/* BY ASHISH TO CHANGE THE PAGE TITLE OF WHITE LABEL DOMAIN*/
+	$current_domain = get_current_domain();
+	if ($current_domain == 'cuponation') {
+		$content_type = arg(0);
+		switch ($content_type) {
+			case "taxonomy":
+				$tid = arg(2);
+				$taxonomy = taxonomy_term_load($tid);
+				$taxonomy_name = $taxonomy->name;
+				$vars['head_title'] = 'Coupons for '.$taxonomy_name;
+				// die;
+			break;
+			case "node":
+				$nid = arg(1);
+				$node = node_load($nid);
+				$node_title = $node->field_retailer_product_name['und']['0']['value'];
+				$vars['head_title'] = "Coupons for ".$node_title;
+				// die;
+			break;
+		}
+	}
 }
+
+/* BY ASHISH TO CHANGE THE META TAGS OF WHITE LABEL DOMAIN*/
+function basic_html_head_alter(&$head_elements) {
+	$current_domain = get_current_domain();
+	if ($current_domain == 'cuponation') {
+		$content_type = arg(0);
+		switch ($content_type) {
+			case "taxonomy":
+				$tid = arg(2);
+				$taxonomy = taxonomy_term_load($tid);
+				$taxonomy_name = $taxonomy->name;
+				$head_elements['metatag_description']['#value'] = 'Get tried and tested coupons for '.$taxonomy_name;
+				$head_elements['rdf_node_title']['#attributes']['content'] = 'Get tried and tested coupons for '.$taxonomy_name;
+			break;
+			case "node":
+				$nid = arg(1);
+				$node = node_load($nid);
+				$node_title = $node->field_retailer_product_name['und']['0']['value'];
+				$head_elements['metatag_description']['#value'] = 'Get tried and tested coupons for '.$node_title;
+				$head_elements['rdf_node_title']['#attributes']['content'] = 'Get tried and tested coupons for '.$node_title;
+			break;
+		}
+	}
+}
+
 
 function basic_preprocess_page(&$vars, $hook) {
     
@@ -385,3 +432,4 @@ function basic_apachesolr_search_noresults(&$variables) {
 <li>Visit the <a href="/search/site">All Products Page</a></li>
 </ul>');
 }
+
