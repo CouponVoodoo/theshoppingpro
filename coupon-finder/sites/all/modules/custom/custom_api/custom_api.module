@@ -584,7 +584,7 @@ if ($vid == 3 OR $vid == 4){
 /**  BY ASHISH TO RANDOMIZE FOR RETAILER*/
 
 	$seed = rand(1, 1000);
-	if (($vid == 2 || $vid == 3 || $vid == 4){
+	if ($vid == 2 || $vid == 3 || $vid == 4){
 		$query->addParam('sort', 'random_'.$seed.' asc');
   }
 	
