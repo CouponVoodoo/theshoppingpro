@@ -16,7 +16,7 @@ $non_coupon_saving = $mrp - $list_price;
  
  ?>
     <div class="ribbon-wrapper-green">
-        <div class="ribbon-green">Save Rs <?php echo number_format($node->field_best_coupon_saving['und'][0]['value'],0, '.', ','); ?></div>
+        <div class="ribbon-green"><?php echo get_label('Save INR ').number_format($node->field_best_coupon_saving['und'][0]['value'],0, '.', ','); ?></div>
 	</div>
   	<?php } else if( $node->field_best_coupon_status['und']['0'][value] == 1 && $node->field_best_coupon_saving['und'][0]['value'] == 1){ ?> 
     			<div class="ribbon-wrapper-green">
@@ -28,7 +28,7 @@ $non_coupon_saving = $mrp - $list_price;
 			} else if ($non_coupon_saving > 0) { ?>
 			
 				<div class="ribbon-wrapper-green">
-					<div class="ribbon-yellow"><?php echo 'Save INR '.number_format($non_coupon_saving,0, '.', ',')?></div>
+					<div class="ribbon-yellow"><?php echo get_label('Save INR ').number_format($non_coupon_saving,0, '.', ',')?></div>
 				</div>
 		<?php } ?>
 
@@ -64,18 +64,18 @@ $non_coupon_saving = $mrp - $list_price;
 
 	
 	if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
-        echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>Coupons Found</div></div>";
+        echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>".get_label('Coupons Found')."</div></div>";
 		$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value'];	
 		$coupon_code=rawurlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	}else{
 		if ($non_coupon_saving > 0){
-			echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><div class='savings_text'>Discount Found</div></div>";
+			echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><div class='savings_text'>".get_label('Discount Found')."</div></div>";
 			$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
 			$coupon_code='Savings_Found';
 		} Else {
 		
 				// echo "<div class='no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='no_coupons_text'>No Discounts</div></div>";
-				echo "<div class='no_coupons_found'><div class='no_coupons_text'>No Discounts</div></div>";
+				echo "<div class='no_coupons_found'><div class='no_coupons_text'>".get_label('No Discounts')."</div></div>";
 				$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
 				$coupon_code='No_Discounts';
 			}
@@ -157,13 +157,13 @@ $non_coupon_saving = $mrp - $list_price;
 		
 	if( $node->field_best_coupon_status['und']['0'][value] == 1 && $node->field_best_coupon_saving[und][0]['value'] == 1 ){
 				echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
-				<div class='field-label'>List Price:&nbsp;</div>
+				<div class='field-label'>".get_label('List Price:')."</div>
 					<div class='field-items'>
-						<div class='field-item even'>INR ".number_format($list_price,0, '.', ',')."</div>
+						<div class='field-item even'>".get_label('INR ').number_format($list_price,0, '.', ',')."</div>
 					</div>
 				</div>";
 				echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
-				<div class='field-label'>Offer:&nbsp;</div>
+				<div class='field-label'>".get_label('Offer:')."</div>
 					<div class='field-items'>
 						<div class='field-item even'>".substr($node->field_best_coupon_description['und'][0]['value'], 0, 130).'...'."</div>
 					</div>
@@ -173,68 +173,68 @@ $non_coupon_saving = $mrp - $list_price;
 		
 		if ($node->field_best_coupon_status['und']['0'][value] == 1 && $node->field_best_coupon_saving['und'][0]['value'] > 1 ){
 				echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
-				<div class='field-label'>List Price:&nbsp;</div>
+				<div class='field-label'>".get_label('List Price:')."</div>
 					<div class='field-items'>
-						<div class='field-item even'>INR ".number_format($list_price,0, '.', ',')."</div>
+						<div class='field-item even'>".get_label('INR ').number_format($list_price,0, '.', ',')."</div>
 					</div>
 				</div>";
 				echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
-				<div class='field-label'>Savings:&nbsp;</div>
+				<div class='field-label'>".get_label('Savings:')."</div>
 					<div class='field-items'>
 						<div class='field-item even'>INR ".number_format($node->field_best_coupon_saving['und'][0]['value'],0, '.', ',')."</div>
 					</div>
 				</div>";
 				echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
-				<div class='field-label'>Net Price:&nbsp;</div>
+				<div class='field-label'>".get_label('Net Price:')."</div>
 					<div class='field-items'>
-						<div class='field-item even'>INR ".number_format($node->field_best_coupon_netpriceafters['und'][0]['value'],0, '.', ',')."</div>
+						<div class='field-item even'>".get_label('INR ').number_format($node->field_best_coupon_netpriceafters['und'][0]['value'],0, '.', ',')."</div>
 					</div>
 				</div>";
 		} else {
 			if ($non_coupon_saving > 0){
 				echo "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
-				<div class='field-label'>MRP:&nbsp;</div>
+				<div class='field-label'>".get_label('MRP:')."</div>
 					<div class='field-items'>
-						<div class='field-item even'>INR ".number_format($mrp,0, '.', ',')."</div>
+						<div class='field-item even'>".get_label('INR ').number_format($mrp,0, '.', ',')."</div>
 					</div>
 				</div>";
 				echo "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
-				<div class='field-label'>Savings:&nbsp;</div>
+				<div class='field-label'>".get_label('Savings:')."</div>
 					<div class='field-items'>
-						<div class='field-item even'>INR ".number_format($non_coupon_saving,0, '.', ',')."</div>
+						<div class='field-item even'>".get_label('INR ').number_format($non_coupon_saving,0, '.', ',')."</div>
 					</div>
 				</div>";	
 				echo "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
-				<div class='field-label'>Net Price:&nbsp;</div>
+				<div class='field-label'>".get_label('Net Price:')."</div>
 					<div class='field-items'>
-						<div class='field-item even'>INR ".number_format($list_price,0, '.', ',')."</div>
+						<div class='field-item even'>".get_label('INR ').number_format($list_price,0, '.', ',')."</div>
 					</div>
 				</div>";
 					
 			} else {
 				echo "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
-				<div class='field-label'>MRP:&nbsp;</div>
+				<div class='field-label'>".get_label('MRP:')."</div>
 					<div class='field-items'>
-						<div class='field-item even'>INR ".number_format($list_price,0, '.', ',')."</div>
+						<div class='field-item even'>".get_label('INR ').number_format($list_price,0, '.', ',')."</div>
 					</div>
 				</div>";
 				echo "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
-				<div class='field-label'>Savings:&nbsp;</div>
+				<div class='field-label'>".get_label('Savings:')."</div>
 					<div class='field-items'>
 						<div class='field-item even'>-</div>
 					</div>
 				</div>";
 				echo "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
-				<div class='field-label'>Net Price:&nbsp;</div>
+				<div class='field-label'>".get_label('Net Price:')."</div>
 					<div class='field-items'>
-						<div class='field-item even'>INR ".number_format($list_price,0, '.', ',')."</div>
+						<div class='field-item even'>".get_label('INR ').number_format($list_price,0, '.', ',')."</div>
 					</div>
 				</div>";
 	
 			}
 		}
 	}
-	 echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>View Details</a></div>";
+	 echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>".get_label('View Details')."</a></div>";
 	
      ?>
   </div> <!-- /content -->

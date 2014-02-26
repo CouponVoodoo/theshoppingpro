@@ -25,6 +25,7 @@
  */
 ?>
 <?php
+$current_domain = get_current_domain();
 $url_path = rawurlencode(drupal_get_path_alias());
 $nid = arg(1);
 $node = node_load($nid);
@@ -61,14 +62,14 @@ $mixpanel_type='Product Page View Store';
 	$product_link = '/search/site/'.str_replace('+at+'.$retailer,'',str_replace(' ','+',strip_tags($fields['field_retailer_product_name']->content)));
 	 ?>
 	
-  <div class='blue_button'><a href="<?php echo $product_link;?>" class='d_view_store'>View More From <?php echo substr($brand, 0, 40);?></a></div>
+  <div class='blue_button'><a href="<?php echo $product_link;?>" class='d_view_store'><?php echo get_label('View More From ').substr($brand, 0, 40);?></a></div>
  
  	
 	</div>
 
 
 <div class="product-right-inner">
-<h2> <?php print strip_tags(($fields['field_retailer_product_name']->content)); ?></h2>
+<h2> <?php if ($current_domain =='cuponation'){echo $retailer.' - '.$node->field_retailer_product_name['und']['0']['value']; } else {print strip_tags(($fields['field_retailer_product_name']->content)); }?></h2>
 
 <?php 
 
@@ -78,13 +79,15 @@ $time_gap = $current_time-$lastcheckedtime_check;
 
 /* Commented out since recheck alert there below status too */
 // if ( $time_gap > (1 * 27 * 3600)) {
+
+if ($current_domain != 'cuponation'){
 ?>
 
 <div class="custom_link">Last Checked : <?php echo strip_tags($fields['field_lastcheckedtime']->content); ?> | <a onclick="locader('<?php echo $base_root.base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>')" class="active">Recheck Now</a></div>
-
+<?php } ?>
 
 <div class="product-right">
-<h4>Best Coupon Or Discounts</h4>
+<h4><?php echo get_label('Best Coupon Or Discounts');?></h4>
 <div class="coupon_code1">
     <?php       
     $CouponStatus = trim(strip_tags($fields['field_best_coupon_status']->content));
@@ -93,7 +96,7 @@ $time_gap = $current_time-$lastcheckedtime_check;
     if( $CouponStatus == 1 ){
         print coupons_copy_best_coupon($nid);
     }else{
-        echo "<div class='d_view_store'><a class='view_store' href='{$redirect_url}' >Buy Now</a></div>";
+        echo "<div class='d_view_store'><a class='view_store' href='{$redirect_url}' >".get_label('Buy Now')."</a></div>";
 		
     }
     ?>
@@ -105,18 +108,18 @@ $time_gap = $current_time-$lastcheckedtime_check;
     <?php
 
 		if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
-        echo "<div class='pro_coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='pro_coupons_text'>Coupons Found</div></div>";
+        echo "<div class='pro_coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='pro_coupons_text'>".get_label('Coupons Found')."</div></div>";
 		$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value'];	
 		$coupon_code=rawurlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	}else{
 		if ($non_coupon_saving > 0){
-			echo "<div class='pro_coupons_found'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><div class='pro_savings_text'>Discounts Found</div></div>";
+			echo "<div class='pro_coupons_found'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><div class='pro_savings_text'>".get_label('Discount Found')."</div></div>";
 			$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
 			$coupon_code='Savings_Found';
 		} Else {
 		
 				// echo "<div class='pro_no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='pro_no_coupons_text'>No Discounts</div></div>";
-				echo "<div class='pro_no_coupons_found'><div class='pro_no_coupons_text'>No Discounts</div></div>";
+				echo "<div class='pro_no_coupons_found'><div class='pro_no_coupons_text'>".get_label('No Discounts')."</div></div>";
 				$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
 				$coupon_code='No_Discounts';
 			}
@@ -125,34 +128,34 @@ $time_gap = $current_time-$lastcheckedtime_check;
     ?>
 </li>
 <?php if ( $time_gap > (1 * 27 * 3600)) {?>
-	<div class="custom_link_inner"><span style= "color: red; font-weight: bold"> Data is more than 24hrs old: </span><a onclick="locader('<?php echo $base_root.base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>')" class="active">Recheck Now</a></div>
+	<div class="custom_link_inner"><span style= "color: red; font-weight: bold"><?php echo get_label('Data is more than 24hrs old: ');?></span><a onclick="locader('<?php echo $base_root.base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>')" class="active">Recheck Now</a></div>
 <?php } ?>
 
 
 
 <?php
 	if ($node->field_best_coupon_saving['und'][0]['value'] == 1 && $node->field_best_coupon_status[und][0]['value'] == 1){
-		echo "<li> <label>".get_label(list_price)."</label>INR ".number_format($list_price,0, '.', ',')."</li>";
-		echo "<li> <label>Savings:&nbsp;</label>See Best Coupon</li>";
-		echo "<li> <label>Offer Details:&nbsp;</label>See Best Coupon</li>";
+		echo "<li> <label>".get_label('List Price:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
+		echo "<li> <label>".get_label('Savings:')."</label>See Best Coupon</li>";
+		echo "<li> <label>".get_label('Offer:')."</label>See Best Coupon</li>";
 	
 	
 	} else {
 		if ($node->field_best_coupon_saving['und'][0]['value'] > 1 && $node->field_best_coupon_status[und][0]['value'] == 1){
-				echo "<li> <label>".get_label(list_price)."</label>INR ".number_format($list_price,0, '.', ',')."</li>";
-				echo "<li> <label>Savings:&nbsp;</label>INR ".number_format($node->field_best_coupon_saving['und'][0]['value'],0, '.', ',')."</li>";
-				echo "<li> <label>Net Price:&nbsp;</label>INR ".number_format($node->field_best_coupon_netpriceafters['und'][0]['value'],0, '.', ',')."</li>";
+				echo "<li> <label>".get_label('List Price:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
+				echo "<li> <label>".get_label('Savings:')."</label>".get_label('INR ').number_format($node->field_best_coupon_saving['und'][0]['value'],0, '.', ',')."</li>";
+				echo "<li> <label>".get_label('Net Price:')."</label>".get_label('INR ').number_format($node->field_best_coupon_netpriceafters['und'][0]['value'],0, '.', ',')."</li>";
 
 		} else {
 			if ($non_coupon_saving > 0){
-				echo "<li> <label>MRP:&nbsp;</label>INR ".number_format($mrp,0, '.', ',')."</li>";
-				echo "<li> <label>Savings:&nbsp;</label>INR ".number_format($non_coupon_saving,0, '.', ',')."</li>";
-				echo "<li> <label>Net Price:&nbsp;</label>INR ".number_format($list_price,0, '.', ',')."</li>";
+				echo "<li> <label>".get_label('MRP:')."</label>".get_label('INR ').number_format($mrp,0, '.', ',')."</li>";
+				echo "<li> <label>".get_label('Savings:')."</label>".get_label('INR ').number_format($non_coupon_saving,0, '.', ',')."</li>";
+				echo "<li> <label>".get_label('Net Price:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
 					
 			} else {
-				echo "<li> <label>MRP:&nbsp;</label>INR ".number_format($list_price,0, '.', ',')."</li>";
-				echo "<li> <label>Savings:&nbsp;</label>-</li>";
-				echo "<li> <label>Net Price:&nbsp;</label>INR ".number_format($list_price,0, '.', ',')."</li>";	
+				echo "<li> <label>".get_label('MRP:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
+				echo "<li> <label>".get_label('Savings:')."</label>-</li>";
+				echo "<li> <label>".get_label('Net Price:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";	
 			}
 		}
 	}
@@ -160,9 +163,9 @@ $time_gap = $current_time-$lastcheckedtime_check;
 
 <?php if( $CouponStatus == 1 ){?>
 <li><label>Best Coupon:</label><?php print ($fields['field_best_coupon_description']->content); ?></li>
-<div class='blue_button'><a href="#All_Coupons" class='d_view_store'>View All Tested Coupons For Product</a></div>
+<div class='blue_button'><a href="#All_Coupons" class='d_view_store'><?php echo get_label('View All Tested Coupons For Product '); ?></a></div>
 <?php } else { ?>
-<div class='blue_button'><a href="<?php echo '/rcp/'.str_replace(" ", "-", $retailer).'/coupons-offers';?>" class='d_view_store'>View All Tested Coupons For <?php echo $retailer;?></a></div>
+<div class='blue_button'><a href="<?php echo '/rcp/'.str_replace(" ", "-", $retailer).'/coupons-offers';?>" class='d_view_store'><?php echo get_label('View All Tested Coupons For ').$retailer;?></a></div>
 <?php }?>
 
 </ul>
@@ -191,7 +194,11 @@ $time_gap = $current_time-$lastcheckedtime_check;
 // print $fields['field_retailer']->content;
 
 if (empty($_GET['pop'])) {
-$product_description = 'Buy '.strip_tags($fields['field_retailer_product_name']->content).' at the lowest price with the latest discounts, coupons and offers brought to you by CouponVoodoo. View the list of discount codes below and click "Copy Coupon" to get the code. Also see:';
+	if ($current_domain == 'couponvoodoo'){
+		$product_description = 'Buy '.strip_tags($fields['field_retailer_product_name']->content).' at the lowest price with the latest discounts, coupons and offers brought to you by CouponVoodoo. View the list of discount codes below and click "Copy Coupon" to get the code. Also see:';
+	} else {
+		$product_description = 'Now you can ensure that you never miss out on any deal for '.strip_tags($fields['field_retailer_product_name']->content).'. Cuponation ensures that you get all the latest and tested coupon codes for the product right here in one place. Go ahead and save big with Cupoantion. You may also be interested in:';	
+	}
 print $product_description;
 // $product_description_links = 'You may also want to view discount codes and offers for all products from:';
 echo nl2br("\n");
@@ -239,7 +246,7 @@ if ($brand_check != 'Other') {
 </div>
 
 </div>
-<h4> <a id="All_Coupons">Results For All Coupons Of This Product</a></h4>
+<h4> <a id="All_Coupons"><?php echo get_label('Results For All Coupons Of This Product');?></a></h4>
 <?php
 
 echo $coupon =  coupons_copy_coupon($nid);
