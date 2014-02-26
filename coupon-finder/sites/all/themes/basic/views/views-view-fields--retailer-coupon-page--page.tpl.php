@@ -118,8 +118,7 @@
 							/*CONVERTING ID TO NAME */
 							$term = taxonomy_term_load($fc_category_id);
 							$term_name = $term->name;
-							$fc_coupon_display_url = $base_url."/coupon-redirect?t=c&l=cpc&guid=".$CV_User_GUID."&s=".rawurlencode($fc_affiliate_url)."&c=".rawurlencode($coupon_code);
-
+							$fc_coupon_display_url = $base_url."/coupon-redirect?t=c&l=cpc&nid=".$nid."&s=".rawurlencode($fc_affiliate_url)."&c=".rawurlencode($coupon_code);
 		//					$full_category_name = '';
 									$parent_terms = taxonomy_get_parents_all($fc_category_id);
 									foreach($parent_terms as $parent) {
