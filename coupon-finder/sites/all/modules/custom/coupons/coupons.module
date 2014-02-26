@@ -1232,14 +1232,19 @@ function coupons_block_view($delta = '') {
 	//print_r(menu_get_object('term', 2));exit;
 		$termid = arg(2);
 		$term = taxonomy_term_load($termid);
-
-	if ( $term->description != ''){
-	// echo "<div class='taxonomy_description'>$term->description</div>";
-	  $block['content'] = $term->description;
+	
+	$current_domain = get_current_domain();
+	
+	If ($current_domain == 'couponvoodoo'){
+		if ( $term->description != ''){
+		// echo "<div class='taxonomy_description'>$term->description</div>";
+		  $block['content'] = $term->description;
+		} else {
+			$block['content'] = 'Browse a wide range of '.$term->name.' products with updated discounts, coupons and offers brought to you by CouponVoodoo. Simply click on a '.$term->name.' product of your choice to get the latest discount information for it.';
+		}
 	} else {
-		$block['content'] = 'Browse a wide range of '.$term->name.' products with updated discounts, coupons and offers brought to you by CouponVoodoo. Simply click on a '.$term->name.' product of your choice to get the latest discount information for it.';
+		$block['content'] = 'Now get get all the coupons & offers for '.$term->name.' product in one place. See our huge range of '.$term->name.' products with prices net of any coupons and offers. Go ahead and save with Cuponation';
 	}
-
 		//print '<pre>';print_r($term);exit;
 	  break;
   }
@@ -1776,22 +1781,89 @@ function get_label($label) {
 	$current_domain = get_current_domain ();
 	if ($current_domain == 'cuponation'){
 		switch ($label) {
-			case "status":
+			case "Status:":
 				return 'Coupon Status:';
 			break;
 			case "List Price:":
 				return 'Sale Price:';
 			break;
-			case "savings":
+			case "Savings:":
 				return 'You Save:';
 			break;
-			case "net_price":
+			case "Net Price:":
 				return 'Final Cost:';
 			break;
-			case "best_coupon":
+			case "Best Coupon:":
 				return 'Coupon Details';
 			break;
-		}
+			case "Offer:":
+				return 'Deal:';
+			break;			
+			case "MRP:":
+				return 'Price:';
+			break;			
+			case "INR ":
+				return 'Rs. ';
+			break;		
+			case "View Details":
+				return 'See All Coupons';
+			break;		
+			case "Save INR ":
+				return 'Get Rs. ';
+			break;		
+			
+			
+			case "Discount Found":
+				return 'Savings';
+			break;		
+			case "Coupons Found":
+				return 'Coupons';
+			break;		
+			case "No Discounts":
+				return 'No Savings';
+			break;		
+			case "Data is more than 24hrs old: ":
+				return 'Old Data: ';
+			break;
+			case "View More From ":
+				return 'All Products By ';
+			break;
+			case "View All Tested Coupons For Product ":
+				return 'See All Coupons';
+			break;
+			case "View All Tested Coupons For ":
+				return 'See All Coupons For ';
+			break;
+			case "Results For All Coupons Of This Product":
+				return 'All Coupons';
+			break;
+			case "Buy Now":
+				return 'View';
+			break;
+			case "Best Coupon Or Discounts":
+				return 'Best Deal';
+			break;
+			case "Description:":
+				return 'Coupon:';
+			break;
+			case "Go":
+				return 'View';
+			break;
+			
+			
+			case "Buy Now":
+				return 'View Store';
+			break;
+			case "Buy Now":
+				return 'View Store';
+			break;
+
+
+
+			
+			default:
+				return $label;
+			}
 	} else {
 		switch (strtolower($label)) {
 			default:
@@ -1807,6 +1879,24 @@ function get_block_subject($block_subject) {
 			case "Similar Products":
 					return 'Cuponation Recommends';
 			break;
+			case "Only Show Products:":
+					return 'Filter by Coupon Status';
+			break;
+			case "Net Price (Post Coupons)":
+					return 'Filter by Final Price';
+			break;
+			case "Savings":
+					return 'Filter by Money Saved';
+			break;
+			case "Category":
+					return 'Filter by Categories';
+			break;
+			case "Retailer":
+					return 'Filter by Retailers';
+			break;
+			case "Brand":
+					return 'Filter by Brands';
+			break;			
 			default:
 				return $block_subject;
 		}

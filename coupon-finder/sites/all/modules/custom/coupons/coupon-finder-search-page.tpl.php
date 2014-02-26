@@ -1,4 +1,5 @@
 <?php
+$current_domain = get_current_domain();
 $url_path = rawurlencode(drupal_get_path_alias());
 $nid = arg(1);
 global $base_url;
@@ -20,12 +21,12 @@ if ($row->Successful=="1") {
    </div>
 -->
    <div class='description'>
-      <label>Description:</label>
+      <label><?php echo get_label('Description:');?></label>
       <div class="search_listing_row_<?php print $row->counter; ?>' search_listing_row"><?php print $row->description;?></div>
     </div>
   </div>
   <div class="row_2">
-    <label>Savings:</label>
+    <label><?php echo get_label('Savings:');?></label>
     <?php if ($row->Successful=="1") : ?>
 
     <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving">INR <?php print $row->Saving;?>
@@ -35,9 +36,9 @@ if ($row->Successful=="1") {
     <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"></div><?php print $best_coupon; ?></div>
     <?php endif; ?>
   </div>
-  <?php if ($row->Successful != "1") : ?>
+  <?php if ($row->Successful != "1" && $current_domain =='couponvoodoo') : ?>
   <div class="row_3">
-    <label>Response:</label>
+    <label><?php echo get_label('Response:');?></label>
     <div class="search_listing_row_<?php print $row->counter; ?>' search_listing_row"><?php print $row->Saving;?></div>
   </div>
   <?php endif; ?>
