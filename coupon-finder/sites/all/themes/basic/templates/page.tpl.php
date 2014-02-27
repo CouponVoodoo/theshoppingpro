@@ -134,6 +134,8 @@ $current_domain = get_current_domain();
 										} else { 
 											print 'Coupons For '.str_replace('.com','',$title).' Products';
 										} 
+									} else {
+										print $title;
 									}
 								?>
 								</h1>
