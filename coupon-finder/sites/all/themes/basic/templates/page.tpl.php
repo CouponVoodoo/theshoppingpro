@@ -128,11 +128,13 @@ $current_domain = get_current_domain();
         <div id="content-area">
 		     <?php if ($title): ?>
               <h1 class="title"><?php 
-									if ($current_domain == 'couponvoodoo') {
-										print str_replace('.com','',$title).' Products Coupons, Deals & Offers in India';
-									} else { 
-										print 'Coupons For '.str_replace('.com','',$title).' Products';
-									} 
+									if(arg(0) == 'taxonomy') {
+										if ($current_domain == 'couponvoodoo') {
+											print str_replace('.com','',$title).' Products Coupons, Deals & Offers in India';
+										} else { 
+											print 'Coupons For '.str_replace('.com','',$title).' Products';
+										} 
+									}
 								?>
 								</h1>
             <?php endif; ?>
