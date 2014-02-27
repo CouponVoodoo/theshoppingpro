@@ -1889,6 +1889,13 @@ function get_block_subject($block_subject) {
 			case "Brand":
 					return 'Filter by Brands';
 			break;			
+			case "Quick Links - Top Categories":
+					return 'Also See - Top Categories';
+			break;
+			case "Quick Links - Top Brands":
+					return 'Also See - Top Brands';
+			break;
+			
 			default:
 				return $block_subject;
 		}
