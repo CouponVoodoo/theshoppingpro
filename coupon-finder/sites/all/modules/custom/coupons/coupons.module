@@ -1469,7 +1469,6 @@ function coupons_copy_coupon($nid){
     );
     $i = 0;
     $coupons = array();  
-	print_r ($value);
     foreach ($jsonArray as $key => $value) {	//url replaced by sanjay
       if (is_object($value)) {
         if ($value->Successful =="1") {
