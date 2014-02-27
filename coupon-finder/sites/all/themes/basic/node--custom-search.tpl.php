@@ -135,12 +135,13 @@ $non_coupon_saving = $mrp - $list_price;
                     <div class='field-label'>Product images:&nbsp;</div>
                     <div class='field-items'>
                         <div class='field-item even product_img'>
-							<a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image' alt='{$node->field_retailer_product_name['und']['0']['value']}'></a>
+							<a href='{$urlAlias}' ><img src='{$node->field_product_image['und'][0]['value']}' typeof='foaf:Image' alt='{$node->field_retailer_product_name['und']['0']['value']}'></a>
                         
 						</div>";
       echo  $img .=    "</div>
                 </div>";
-  		  echo "<div class='product_name'><a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
+  //		  echo "<div class='product_name'><a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
+			  echo "<div class='product_name'><a href='{$urlAlias}' >".substr($node->field_retailer_product_name[und][0]['value'], 0, 42)."</a></div>";
 	    
  /** Start of modified by Ashish to Show reatiler name below product name */
 
@@ -234,8 +235,9 @@ $non_coupon_saving = $mrp - $list_price;
 			}
 		}
 	}
-	 echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>".get_label('View Details')."</a></div>";
-	
+//	 echo "<div class='d_view_store'> <a href='{$urlAlias}' onclick=window.open('{$coupon_display_url}')//;return true;>".get_label('View Details')."</a></div>";
+	 echo "<div class='d_view_store'> <a href='{$urlAlias}' >".get_label('View Details')."</a></div>";
+		
      ?>
   </div> <!-- /content -->
 
