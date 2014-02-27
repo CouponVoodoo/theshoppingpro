@@ -5,8 +5,9 @@ $current_nid = arg(1);
 // echo $nid;
 global $base_url;
 $current_node = node_load($current_nid);
+var_dump $current_node;
 $net_price = 100;
-echo $current_node->field_product_price['und']['0'][value]);
+//echo $current_node->field_product_price['und']['0'][value]);
 // echo '----'.intval($row->Saving);
 // $net_price = intval($node->field_product_price['und']['0']['value']) - intval($row->Saving);
 if ($row->Successful=="1") {
