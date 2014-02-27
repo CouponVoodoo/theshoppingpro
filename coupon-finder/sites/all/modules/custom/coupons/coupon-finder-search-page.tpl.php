@@ -1,10 +1,10 @@
 <?php
 $url_path = rawurlencode(drupal_get_path_alias());
 echo '-----'.arg(1);
-$nid = arg(1);
+$current_nid = arg(1);
 // echo $nid;
 global $base_url;
-$current_node = node_load($nid);
+$current_node = node_load($current_nid);
 $net_price = 100;
 echo $current_node->field_product_price['und']['0'][value]);
 // echo '----'.intval($row->Saving);
