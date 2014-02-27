@@ -1848,7 +1848,7 @@ function get_label($label) {
 				return 'View';
 			break;
 			case "Buy Now":
-				return 'View Store';
+				return 'View';
 			break;
 			case "Never pay the listed price! Additional discounts via coupons are just a click away!":
 				return 'Check for coupons with a single click! Could not be simpler now, could it!';
