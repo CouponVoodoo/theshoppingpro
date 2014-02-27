@@ -1426,7 +1426,7 @@ drupal_add_js("jQuery(document).ready(function($){
 function coupons_copy_coupon($nid){
 $ProPrice = db_select('field_data_field_product_price', 'l')
 		->fields('l', array('field_product_price_value') )
-		->condition('n.entity_id', $nid, '=');	
+		->condition('l.entity_id', $nid, '=');	
 $RProPrice = $ProPrice->execute();
 $FProPrice = $RProPrice->fetch();
 $productPrice = $FProPrice->field_product_price_value;
