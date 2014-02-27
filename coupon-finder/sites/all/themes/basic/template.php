@@ -160,12 +160,15 @@ function basic_html_head_alter(&$head_elements) {
 	$current_domain = get_current_domain();
 	if ($current_domain == 'cuponation') {
 		$content_type = arg(0);
+		echo json_encode($head_elements); 
+		exit;
 		switch ($content_type) {
 			case "taxonomy":
 				$tid = arg(2);
 				$taxonomy = taxonomy_term_load($tid);
 				$taxonomy_name = $taxonomy->name;
 				$head_elements['metatag_description']['#value'] = 'Get tried and tested coupons for '.$taxonomy_name;
+				$head_elements['metatag_abstract']['#value'] = 'Get tried and tested coupons for '.$taxonomy_name;
 				$head_elements['rdf_node_title']['#attributes']['content'] = 'Get tried and tested coupons for '.$taxonomy_name;
 			break;
 			case "node":
@@ -173,6 +176,7 @@ function basic_html_head_alter(&$head_elements) {
 				$node = node_load($nid);
 				$node_title = $node->field_retailer_product_name['und']['0']['value'];
 				$head_elements['metatag_description']['#value'] = 'Get tried and tested coupons for '.$node_title;
+				$head_elements['metatag_abstract']['#value'] = 'Get tried and tested coupons for '.$node_title;
 				$head_elements['rdf_node_title']['#attributes']['content'] = 'Get tried and tested coupons for '.$node_title;
 			break;
 		}
