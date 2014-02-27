@@ -1,21 +1,7 @@
 <?php
 $url_path = rawurlencode(drupal_get_path_alias());
-// echo '-----'.arg(1);
-// $current_nid = arg(1);
-// echo $nid;
-
-
-
 global $base_url;
-// $current_node = node_load($current_nid);
-// var_dump ($current_node);
-var_dump($row);
-$net_price = $row->productPrice;
-
-echo $net_price;
-//echo $current_node->field_product_price['und']['0'][value]);
-// echo '----'.intval($row->Saving);
-// $net_price = intval($node->field_product_price['und']['0']['value']) - intval($row->Saving);
+$net_price = $row->productPrice - $row->Saving;
 if ($row->Successful=="1") {
   $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u67_normal.png";
 
