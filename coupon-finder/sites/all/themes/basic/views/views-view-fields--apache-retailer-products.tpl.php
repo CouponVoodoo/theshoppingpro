@@ -62,26 +62,26 @@ echo  $img .=    "</div>
 if ($coupon_status ==1){
 	if ($saving > 1){
 		//echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>Coupons</div></div>";
-		echo "<div class='similar_coupons'>Coupons Found</div>";
-		echo "<span class ='field-content'><strike>INR ".number_format($list_price,0, '.', ',')."</strike></span></br>";
+		echo "<div class='similar_coupons'>".get_label('Coupons Found')."</div>";
+		echo "<span class ='field-content'><strike>".get_label('INR ').number_format($list_price,0, '.', ',')."</strike></span></br>";
 		// echo "<span class ='field-content'>INR ".number_format($saving,0, '.', ',')."</span></br>";
-		echo "<span class ='field-content'>INR ".number_format($net_price,0, '.', ',')."</span></br>";
+		echo "<span class ='field-content'>".get_label('INR ').number_format($net_price,0, '.', ',')."</span></br>";
 	} else {
-		echo "<div class='similar_coupons'>Offers Found</div>";
-		echo "<span class ='field-content'>INR ".number_format($list_price,0, '.', ',')."</span></br>";	
+		echo "<div class='similar_coupons'>".get_label('Coupons Found')."</div>";
+		echo "<span class ='field-content'>".get_label('INR ').number_format($list_price,0, '.', ',')."</span></br>";	
 	}
 } elseif ($mrp > $list_price) {
 //	echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><div class='savings_text'>Discounts</div></div>";
-	echo "<div class='similar_savings'>Savings Found</div>";
-	echo "<span class ='field-content'><strike>INR ".number_format($mrp,0, '.', ',')."</strike></span></br>";
-	echo "<span class ='field-content'>INR ".number_format($list_price,0, '.', ',')."</span></br>";
+	echo "<div class='similar_savings'>".get_label('Discount Found')."</div>";
+	echo "<span class ='field-content'><strike>".get_label('INR ').number_format($mrp,0, '.', ',')."</strike></span></br>";
+	echo "<span class ='field-content'>".get_label('INR ').number_format($list_price,0, '.', ',')."</span></br>";
 } else {
 	//echo "<div class='no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='no_coupons_text'>No Discounts</div></div>";
-	echo "<div class='similar_no_coupons'>No Savings</div>";
-	echo "<span class ='field-content'>INR {$list_price}</span>";
+	echo "<div class='similar_no_coupons'>".get_label('No Discounts')."</div>";
+	echo "<span class ='field-content'>".get_label('INR ').$list_price."</span>";
 }
 //echo "<div class='d_view_store'><a  href='{$node_url}'>View</a></div>";
-echo "<div class='d_view_store'><a  href='{$node_url}'>View</a></div>";
+echo "<div class='d_view_store'><a  href='{$node_url}'>".get_label('Go')."</a></div>";
 ?>
 
 </div>
