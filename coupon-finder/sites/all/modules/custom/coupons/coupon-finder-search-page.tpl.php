@@ -2,7 +2,8 @@
 $url_path = rawurlencode(drupal_get_path_alias());
 $nid = arg(1);
 global $base_url;
-var_dump($row);
+$node = node_load($nid);
+$list_price = $node->field_product_price;
 if ($row->Successful=="1") {
   $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u67_normal.png";
 
@@ -26,17 +27,19 @@ if ($row->Successful=="1") {
     </div>
   </div>
   <div class="row_2">
-    <label><?php echo get_label('Savings:');?></label>
     <?php if ($row->Successful=="1") : ?>
-
+    <label><?php echo get_label('Savings:');?></label>
     <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"><?php print get_label('INR ').$row->Saving;?>
-
 	</div><?php print $best_coupon; ?></div>
+    <label><?php echo get_label('Net Price:');?></label>
+    <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"><?php print get_label('INR ').($list_price-$row->Saving);?>
+	
     <?php else: ?>
     <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"></div><?php print $best_coupon; ?></div>
     <?php endif; ?>
   </div>
   <?php if ($row->Successful != "1") : ?>
+    <label><?php echo get_label('Savings:');?></label>
   <div class="row_3">
     <label><?php echo get_label('Response:');?></label>
     <div class="search_listing_row_<?php print $row->counter; ?>' search_listing_row"><?php print $row->Saving;?></div>
