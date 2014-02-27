@@ -1,5 +1,6 @@
 <?php
 $url_path = rawurlencode(drupal_get_path_alias());
+echo '-----'.arg(1);
 $nid = arg(1);
 // echo $nid;
 global $base_url;
