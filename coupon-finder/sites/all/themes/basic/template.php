@@ -160,8 +160,6 @@ function basic_html_head_alter(&$head_elements) {
 	$current_domain = get_current_domain();
 	if ($current_domain == 'cuponation') {
 		$content_type = arg(0);
-		echo json_encode($head_elements); 
-		exit;
 		switch ($content_type) {
 			case "taxonomy":
 				$tid = arg(2);
@@ -180,6 +178,8 @@ function basic_html_head_alter(&$head_elements) {
 				$head_elements['rdf_node_title']['#attributes']['content'] = 'Get tried and tested coupons for '.$node_title;
 			break;
 		}
+		$head_elements['metatag_author']['#value'] = '';
+
 	}
 }
 
