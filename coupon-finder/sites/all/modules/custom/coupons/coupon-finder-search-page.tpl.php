@@ -3,11 +3,7 @@ $url_path = rawurlencode(drupal_get_path_alias());
 $nid = arg(1);
 global $base_url;
 $node = node_load($nid);
-echo $node->field_product_price;
-echo '----'.$row->Saving;
-
-//$net_price = inval($node->field_product_price) - intval($row->Saving);
-// echo $net_price;
+$net_price = inval($node->field_product_price['und']['0']['value']) - intval($row->Saving);
 if ($row->Successful=="1") {
   $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u67_normal.png";
 
