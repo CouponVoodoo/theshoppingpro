@@ -1424,6 +1424,14 @@ drupal_add_js("jQuery(document).ready(function($){
 
 
 function coupons_copy_coupon($nid){
+$ProPrice = db_select('field_data_field_product_price', 'l')
+		->fields('l', array('field_product_price_value') )
+		->condition('n.entity_id', $nid, '=');	
+$RProPrice = $ProPrice->execute();
+$FProPrice = $RProPrice->fetch();
+$productPrice = $FProPrice->field_product_price_value;
+  
+  
   
   $ProUrl = db_select('field_revision_field_best_coupon_info', 'n')
 		     ->fields('n', array('field_best_coupon_info_value') )
@@ -1476,7 +1484,7 @@ function coupons_copy_coupon($nid){
         }
         $i++;
         $value->counter = $i;
-	
+		$value->productPrice = $productPrice;
         $items[] = array(
             'data' => theme('coupons_result_page', array('row' => $value)),
             'id' => 'search_listing_li_row_' . $i,
