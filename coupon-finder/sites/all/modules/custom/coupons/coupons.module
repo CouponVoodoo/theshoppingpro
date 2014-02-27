@@ -1838,9 +1838,6 @@ function get_label($label) {
 			case "Results For All Coupons Of This Product":
 				return 'All Coupons';
 			break;
-			case "Buy Now":
-				return 'View';
-			break;
 			case "Best Coupon Or Discounts":
 				return 'Best Deal';
 			break;
@@ -1849,9 +1846,6 @@ function get_label($label) {
 			break;
 			case "Go":
 				return 'View';
-			break;
-			case "Buy Now":
-				return 'View Store';
 			break;
 			case "Buy Now":
 				return 'View Store';
