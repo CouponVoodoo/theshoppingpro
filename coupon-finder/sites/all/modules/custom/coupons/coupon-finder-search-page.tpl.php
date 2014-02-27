@@ -20,12 +20,12 @@ if ($row->Successful=="1") {
    </div>
 -->
    <div class='description'>
-      <label><? echo get_label('Description:');?></label>
+      <label><?php echo get_label('Description:');?></label>
       <div class="search_listing_row_<?php print $row->counter; ?>' search_listing_row"><?php print $row->description;?></div>
     </div>
   </div>
   <div class="row_2">
-    <label><? echo get_label('Savings:');?></label>
+    <label><?php echo get_label('Savings:');?></label>
     <?php if ($row->Successful=="1") : ?>
 
     <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"><?php print get_label('INR ').$row->Saving;?>
@@ -37,7 +37,7 @@ if ($row->Successful=="1") {
   </div>
   <?php if ($row->Successful != "1") : ?>
   <div class="row_3">
-    <label><? echo get_label('Response:');?></label>
+    <label><?php echo get_label('Response:');?></label>
     <div class="search_listing_row_<?php print $row->counter; ?>' search_listing_row"><?php print $row->Saving;?></div>
   </div>
   <?php endif; ?>
