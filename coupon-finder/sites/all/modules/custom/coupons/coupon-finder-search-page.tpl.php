@@ -2,7 +2,7 @@
 $url_path = rawurlencode(drupal_get_path_alias());
 $nid = arg(1);
 global $base_url;
-print_r ($row);
+var_dump($row);
 if ($row->Successful=="1") {
   $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u67_normal.png";
 
