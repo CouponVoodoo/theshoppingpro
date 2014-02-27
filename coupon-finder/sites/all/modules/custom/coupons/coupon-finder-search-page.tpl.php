@@ -9,7 +9,8 @@ $url_path = rawurlencode(drupal_get_path_alias());
 global $base_url;
 // $current_node = node_load($current_nid);
 // var_dump ($current_node);
-$net_price = row->productPrice;
+var_dump($row);
+$net_price = $row->productPrice;
 
 echo $net_price;
 //echo $current_node->field_product_price['und']['0'][value]);
