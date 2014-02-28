@@ -575,11 +575,11 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
 	$vid = $term->vid;
 
 /** BY ASHISH TO SORT BRAND AND CATEGORIES BY SAVINGS*/
-/*
+
 if ($vid == 3 OR $vid == 4){
 		$query->addParam('sort', 'its_field_best_coupon_saving desc');
 	}
-*/
+
    
 /**  BY ASHISH TO RANDOMIZE FOR RETAILER*/
 /*
