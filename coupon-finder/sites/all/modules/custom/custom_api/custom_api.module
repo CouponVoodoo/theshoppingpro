@@ -575,19 +575,17 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
 	$vid = $term->vid;
 
 /** BY ASHISH TO SORT BRAND AND CATEGORIES BY SAVINGS*/
-
+/*
 if ($vid == 3 OR $vid == 4){
 		$query->addParam('sort', 'its_field_best_coupon_saving desc');
 	}
-
-   
+*/ 
 /**  BY ASHISH TO RANDOMIZE FOR RETAILER*/
-/*
+
 	$seed = rand(1, 1000);
 	if ($vid == 2 || $vid == 3 || $vid == 4){
 		$query->addParam('sort', 'random_'.$seed.' asc');
   }
- */
 }
 
  function custom_api_entity_should_index($entity, $type) {
