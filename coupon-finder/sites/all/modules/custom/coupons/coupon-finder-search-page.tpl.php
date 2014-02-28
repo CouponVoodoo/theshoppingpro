@@ -30,7 +30,7 @@ if ($row->Successful=="1") {
     <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"><?php print get_label('INR ').$row->Saving;?>
 	</div><?php print $best_coupon; ?></div>
     <label><?php echo get_label('Net Price:');?></label>
-    <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"><?php print get_label('INR ').$net_price;?>
+    <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"><?php print get_label('INR ').$net_price;?></div></div>
 	
     <?php else: ?>
         <label><?php echo get_label('Savings:');?></label>
