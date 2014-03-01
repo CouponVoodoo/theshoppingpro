@@ -1430,9 +1430,8 @@ $ProPrice = db_select('field_data_field_product_price', 'l')
 $RProPrice = $ProPrice->execute();
 $FProPrice = $RProPrice->fetch();
 $productPrice = $FProPrice->field_product_price_value;
-  
-  
-  
+$product_node = node_load($nid);
+
   $ProUrl = db_select('field_revision_field_best_coupon_info', 'n')
 		     ->fields('n', array('field_best_coupon_info_value') )
 		     ->condition('n.entity_id', $nid, '=');		   
@@ -1485,6 +1484,22 @@ $productPrice = $FProPrice->field_product_price_value;
         $i++;
         $value->counter = $i;
 		$value->productPrice = $productPrice;
+ /* PRINTING TITLE BASED ON WHETHER THE DOMAIN IS CUPONATION OR NOT*/
+		$current_domain = get_current_domain();
+		if ($current_domain == 'cuponation'){
+			$query = new EntityFieldQuery();
+			$query->entityCondition('entity_type', 'node')
+				->entityCondition('bundle', 'retailer_coupon_page')
+				->fieldCondition('field_retailer', 'tid', $product_node->field_retailer['und']['0']['tid'], '=')
+				->fieldCondition('field_coupon_code', 'value', $value->couponCode, '=');
+			$result = $query->execute();		
+			$nids = array_keys($result['node']);
+			$retailer_coupon = node_load($nids[0]);
+			$cuponation_title = $retailer_coupon->field_cuponation_title['und']['0']['value'];
+			if (!empty($result['node']) && !empty($cuponation_title)) {
+				$value->description = $cuponation_title;
+			}
+		}
         $items[] = array(
             'data' => theme('coupons_result_page', array('row' => $value)),
             'id' => 'search_listing_li_row_' . $i,
@@ -1494,7 +1509,7 @@ $productPrice = $FProPrice->field_product_price_value;
 	/* Mixpanel start*/
         $savings['c_' . $i] = $value->Saving;
 	/* Mixpanel end*/
-      }
+	}
 }
 /*
 
