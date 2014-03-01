@@ -162,7 +162,30 @@ if ($current_domain != 'cuponation'){
 ?>
 
 <?php if( $CouponStatus == 1 ){?>
-<li><label>Best Coupon:</label><?php print ($fields['field_best_coupon_description']->content); ?></li>
+<li><label>Best Coupon:</label><?php 
+/* PRINTING TITLE BASED ON WHETHER THE DOMAIN IS CUPONATION OR NOT*/
+	if ($current_domain == 'cuponation'){
+		$query = new EntityFieldQuery();
+		$query->entityCondition('entity_type', 'node')
+			->entityCondition('bundle', 'retailer_coupon_page')
+			->fieldCondition('field_retailer', 'tid', $node->field_retailer['und']['0']['tid'], '=')
+			->fieldCondition('field_coupon_code', 'value', $node->field_best_coupon_couponcode['und']['0']['value'], '=');
+		$result = $query->execute();		
+		$nids = array_keys($result['node']);
+		$retailer_coupon = node_load($nids[0]);
+		$cuponation_title = $retailer_coupon->field_cuponation_title['und']['0']['value'];
+		if (!empty($result['node']) && !empty($cuponation_title)) {
+			echo $cuponation_title;
+		} else {
+			print ($fields['field_best_coupon_description']->content); 
+		}	
+	} else {
+		print ($fields['field_best_coupon_description']->content); 
+	}
+	?></li>
+
+
+
 <div class='blue_button'><a href="#All_Coupons" class='d_view_store'><?php echo get_label('View All Tested Coupons For Product '); ?></a></div>
 <?php } else { ?>
 <div class='blue_button'><a href="<?php echo '/rcp/'.str_replace(" ", "-", $retailer).'/coupons-offers';?>" class='d_view_store'><?php echo get_label('View All Tested Coupons For ').$retailer;?></a></div>
