@@ -1,7 +1,7 @@
 <?php
 
 $results = db_select('node', 'n')->fields('n', array('nid'))
-        ->condition('nid', 13828)
+        ->condition('nid', 13836)
         ->execute()->fetchAll();
 $nodesProcessed = 0;
 foreach ($results as $result) {
@@ -44,5 +44,5 @@ foreach ($results as $result) {
     
     $nodesProcessed++;
 }
-print  "\r\n\r\nTotal Nodes Processsed = $nodesProcessed";
+print  "\r\n\r\nTotal Nodes Processsed = $nodesProcessed \r\n\r\n";
 ?>
