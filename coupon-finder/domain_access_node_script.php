@@ -1,11 +1,13 @@
 <?php
 
 $results = db_select('node', 'n')->fields('n', array('nid'))
-        ->condition('nid', 13836)
+        ->condition('nid', 13837)
         ->execute()->fetchAll();
 $nodesProcessed = 0;
+$file = fopen('domain.txt', 'a+');
 foreach ($results as $result) {
     print "\r\n\r\nNode being processed = $result->nid";
+    fwrite($file, "\r\n\r\nNode being processed = $result->nid");
     
     // Check if entry exists in domain_access.
     $ifDomainExists = db_select('domain_access', 'da')->condition('gid', 0)->condition('realm', 'domain_site')
@@ -21,6 +23,7 @@ foreach ($results as $result) {
                 ))
                 ->execute();
         print "\r\nData added for domain_access table for NID = $result->nid";
+        fwrite($file, "\r\nData added for domain_access table for NID = $result->nid");
     }
     
     // Check if entry exists in node_access.
@@ -40,9 +43,13 @@ foreach ($results as $result) {
                 ))
                 ->execute();
         print "\r\nData added for node_access table for NID = $result->nid";
+        fwrite($file, "\r\nData added for node_access table for NID = $result->nid");
     }
     
     $nodesProcessed++;
 }
-print  "\r\n\r\nTotal Nodes Processsed = $nodesProcessed \r\n\r\n";
+print "\r\n\r\nTotal Nodes Processsed = $nodesProcessed";
+print "\r\n\r\n";
+fwrite($file, "\r\n\r\nTotal Nodes Processsed = $nodesProcessed");
+fclose($file);
 ?>
