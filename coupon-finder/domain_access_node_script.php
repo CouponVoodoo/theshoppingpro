@@ -1,7 +1,7 @@
 <?php
 
 $results = db_select('node', 'n')->fields('n', array('nid'))
-        ->condition('nid', 13837)
+        ->condition('nid', 13822)
         ->execute()->fetchAll();
 $nodesProcessed = 0;
 $file = fopen('domain.txt', 'a+');
