@@ -46,11 +46,13 @@ foreach ($results as $result) {
         print "\r\nData added for node_access table for NID = $result->nid";
         fwrite($file, "\r\nData added for node_access table for NID = $result->nid");
     }
+	print "\r\n\r\nCurrent Nodes Processed = $nodesProcessed";
+	print "\r\n\r\n";
     
     $nodesProcessed++;
 }
-print "\r\n\r\nTotal Nodes Processsed = $nodesProcessed";
+print "\r\n\r\nTotal Nodes Processed = $nodesProcessed";
 print "\r\n\r\n";
-fwrite($file, "\r\n\r\nTotal Nodes Processsed = $nodesProcessed");
+fwrite($file, "\r\n\r\nTotal Nodes Processed = $nodesProcessed");
 fclose($file);
 ?>
