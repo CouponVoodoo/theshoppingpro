@@ -404,7 +404,7 @@ function custom_api_addproduct($ProInfo){
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_status['und']['0'][value]	= trim( $jsonArray->header->CouponResult );
 			$field_best_coupon_status = trim( $jsonArray->header->CouponResult);
-			if ($node->field_best_coupon_status['und']['0'][value]	= $field_best_coupon_status )) {
+			if ($node->field_best_coupon_status['und']['0'][value]	= $field_best_coupon_status ) {
 		//NOW USING NODE_SAVE
 			db_query("UPDATE {field_data_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' =>$field_best_coupon_status , ':vid' => $node->vid));
 		//NOW USING NODE_SAVE
