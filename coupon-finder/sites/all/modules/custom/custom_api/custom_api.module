@@ -316,15 +316,15 @@ function custom_api_addproduct($ProInfo){
 	//	var_dump($jsonArray->header);
 	//	echo 'mrp'.$jsonArray->header->MRPProductPrice;
 		$field_product_price = $jsonArray->header->ListingProductPrice ?$jsonArray->header->ListingProductPrice:0;
-		/*if ($node->field_product_price['und']['0'][value]	!= $field_product_price) {
+		//if ($node->field_product_price['und']['0'][value]	!= $field_product_price) {
 //NOW USING NODE_SAVE		
 			db_query("UPDATE {field_data_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $field_product_price, ':vid' => $node->vid));
 //NOW USING NODE_SAVE		
 			db_query("UPDATE {field_revision_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $field_product_price, ':vid' => $node->vid));
 		
 			  	
-	}
-		  */
+		//}
+		  
 		$field_retailer_product_name = trim( $jsonArray->header->ProductName );
 		// BY ASHISH - NOT USING NODESAVE $node->field_retailer['und']['0']['tid'] 		  	= $jsonArray->header->Retailer;
 		$node->field_retailer['und']['0']['tid'] 		  	= $jsonArray->header->Retailer;
@@ -413,7 +413,7 @@ function custom_api_addproduct($ProInfo){
 	/* FOR SAVING IF COUPON THEN SAVING VIA COUPON ELSE MRP - LISTING PRICE */
 			
   $field_best_coupon_saving	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
-	if ($field_best_coupon_saving == 1) {
+	if ($field_best_coupon_saving >0) {
 		$field_best_coupon_status_display = 'Guaranteed Coupons';
 		$field_best_coupon_saving	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
 	} else {
