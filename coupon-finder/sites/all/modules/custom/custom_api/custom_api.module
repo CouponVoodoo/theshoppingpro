@@ -491,8 +491,8 @@ function custom_api_addproduct($ProInfo){
 		echo 'COUPON SAVING: '.$time1;
 		echo nl2br("\n");
 		 -----------------------------------------   */
-$field_best_coupon_netpriceafters = ( $jsonArray->header->bestCouponResult->NetPriceAfterSaving)?$jsonArray->header->bestCouponResult->NetPriceAfterSaving:0)
-			if ($node->field_best_coupon_netpriceafters['und']['0'][value]!= $field_best_coupon_netpriceafters {
+$field_best_coupon_netpriceafters = ( $jsonArray->header->bestCouponResult->NetPriceAfterSaving)?$jsonArray->header->bestCouponResult->NetPriceAfterSaving:0 ;
+			if ($node->field_best_coupon_netpriceafters['und']['0'][value]!= $field_best_coupon_netpriceafters) {
 	    //NOW USING NODE_SAVE 
 				db_query("UPDATE {field_data_field_best_coupon_netpriceafters} SET field_best_coupon_netpriceafters_value = :field_best_coupon_netpriceafters WHERE revision_id = :vid", array(':field_best_coupon_netpriceafters' => $field_best_coupon_netpriceafters, ':vid' => $node->vid));
 		//NOW USING NODE_SAVE 
