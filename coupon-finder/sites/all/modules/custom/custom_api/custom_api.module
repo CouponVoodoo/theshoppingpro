@@ -315,8 +315,8 @@ function custom_api_addproduct($ProInfo){
 	//	echo '-----';
 	//	var_dump($jsonArray->header);
 	//	echo 'mrp'.$jsonArray->header->MRPProductPrice;
-		$field_product_price = $jsonArray->header->ListingProductPrice ;
-		if ($node->field_product_price['und']['0'][value]	!= $field_product_price {
+		$field_product_price = $jsonArray->header->ListingProductPrice ?$jsonArray->header->ListingProductPrice:0;
+		/*if ($node->field_product_price['und']['0'][value]	!= $field_product_price {
 //NOW USING NODE_SAVE		
 			db_query("UPDATE {field_data_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $field_product_price, ':vid' => $node->vid));
 //NOW USING NODE_SAVE		
@@ -327,7 +327,7 @@ function custom_api_addproduct($ProInfo){
 		echo 'PRICE: '.$time1;
 		echo nl2br("\n");
 		 -----------------------------------------   */
-		}
+	}*/
 		$field_retailer_product_name = trim( $jsonArray->header->ProductName );
 		// BY ASHISH - NOT USING NODESAVE $node->field_retailer['und']['0']['tid'] 		  	= $jsonArray->header->Retailer;
 		$node->field_retailer['und']['0']['tid'] 		  	= $jsonArray->header->Retailer;
