@@ -315,12 +315,12 @@ function custom_api_addproduct($ProInfo){
 	//	echo '-----';
 	//	var_dump($jsonArray->header);
 	//	echo 'mrp'.$jsonArray->header->MRPProductPrice;
-		$field_product_price =( $jsonArray->header->ListingProductPrice )?$jsonArray->header->ListingProductPrice:0;
+		$field_product_price = $jsonArray->header->ListingProductPrice ;
 		if ($node->field_product_price['und']['0'][value]	!= $field_product_price {
 //NOW USING NODE_SAVE		
-			db_query("UPDATE {field_data_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $node->field_product_price['und']['0'][value], ':vid' => $node->vid));
+			db_query("UPDATE {field_data_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $field_product_price, ':vid' => $node->vid));
 //NOW USING NODE_SAVE		
-			db_query("UPDATE {field_revision_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $node->field_product_price['und']['0'][value], ':vid' => $node->vid));
+			db_query("UPDATE {field_revision_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $field_product_price, ':vid' => $node->vid));
 		
 			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
