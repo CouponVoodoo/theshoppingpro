@@ -322,12 +322,9 @@ function custom_api_addproduct($ProInfo){
 //NOW USING NODE_SAVE		
 			db_query("UPDATE {field_revision_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $field_product_price, ':vid' => $node->vid));
 		
-			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
-		$time1 = round(microtime(true)* 1000);
-		echo 'PRICE: '.$time1;
-		echo nl2br("\n");
-		 -----------------------------------------   */
-	}*/
+			  	
+	}
+		  */
 		$field_retailer_product_name = trim( $jsonArray->header->ProductName );
 		// BY ASHISH - NOT USING NODESAVE $node->field_retailer['und']['0']['tid'] 		  	= $jsonArray->header->Retailer;
 		$node->field_retailer['und']['0']['tid'] 		  	= $jsonArray->header->Retailer;
