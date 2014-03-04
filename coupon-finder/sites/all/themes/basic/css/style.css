@@ -1371,8 +1371,11 @@ text-align: center;
 .similar_coupons{color:#438503;font-weight:bold;}
 .similar_savings{color:#8b3d00;font-weight:bold;}
 .similar_no_coupons{color:#AC0706;font-weight:bold;}
-.similar_name {color: #ff9900 !important; font-weight: bold;};
-
+.similar_name {color: #ff9900 !important; font-weight: bold;}
+/*
+#block-sitemap-block-sitemap-block { overflow:hidden; background: red;}
+#block-sitemap-block-sitemap-block ul { display:block; float:left; width:100px; min-height:180px; background: red;}
+*/
 /* TAKING FILTER ON COUPON PAGE TO THE RIGHT SIDE. */
 /* .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper label, .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper .views-widget { float:left; }
 .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper label {padding-right: 10px;}
@@ -1380,4 +1383,30 @@ text-align: center;
 .view-retailer-coupon-page #edit-field-offer-type-tid-wrapper {float:right;padding-right:100px;}
 .view-retailer-coupon-page .views-submit-button {position: absolute; height: 100%; top: 0px; right: 0px; width: 50px; padding-top: 239px;}
 .views-exposed-form .views-exposed-widget .form-submit {margin-left: -30px; margin-top: 30px;}
+*/
+
+
+#block-sitemap_block-sitemap_block{
+        -moz-column-count: 5;
+        -moz-column-gap: 0px;
+        -webkit-column-count: 5;
+        -webkit-column-gap: 0px;
+        column-count: 5;
+        column-gap: 0px;
+        width: 1000px;
+    }
+	
+
+#block-sitemap_block-sitemap_block ul{
+display:block ; float:left ; width:100px ; min-height:180px ;
+    }
+
+
+#block-sitemap-block-sitemap-block {
+        width: 1000px;
+    }
+
+/*
+#block-sitemap_block-sitemap_block { overflow:hidden; }
+#block-sitemap_block-sitemap_block ul { display:block ; float:left ; width:100px ; min-height:180px ;}
 */
