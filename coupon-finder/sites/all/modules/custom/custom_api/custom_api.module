@@ -316,7 +316,7 @@ function custom_api_addproduct($ProInfo){
 	//	var_dump($jsonArray->header);
 	//	echo 'mrp'.$jsonArray->header->MRPProductPrice;
 		$field_product_price = $jsonArray->header->ListingProductPrice ?$jsonArray->header->ListingProductPrice:0;
-		/*if ($node->field_product_price['und']['0'][value]	!= $field_product_price {
+		if ($node->field_product_price['und']['0'][value]	!= $field_product_price) {
 //NOW USING NODE_SAVE		
 			db_query("UPDATE {field_data_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $field_product_price, ':vid' => $node->vid));
 //NOW USING NODE_SAVE		
@@ -324,7 +324,7 @@ function custom_api_addproduct($ProInfo){
 		
 			  	
 	}
-		  */
+		  
 		$field_retailer_product_name = trim( $jsonArray->header->ProductName );
 		// BY ASHISH - NOT USING NODESAVE $node->field_retailer['und']['0']['tid'] 		  	= $jsonArray->header->Retailer;
 		$node->field_retailer['und']['0']['tid'] 		  	= $jsonArray->header->Retailer;
@@ -404,7 +404,7 @@ function custom_api_addproduct($ProInfo){
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_status['und']['0'][value]	= trim( $jsonArray->header->CouponResult );
 			$field_best_coupon_status = trim( $jsonArray->header->CouponResult);
-			if ($node->field_best_coupon_status['und']['0'][value]	= $field_best_coupon_status ) {
+			if ($node->field_best_coupon_status['und']['0'][value]	= $field_best_coupon_status )) {
 		//NOW USING NODE_SAVE
 			db_query("UPDATE {field_data_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' =>$field_best_coupon_status , ':vid' => $node->vid));
 		//NOW USING NODE_SAVE
@@ -491,8 +491,8 @@ function custom_api_addproduct($ProInfo){
 		echo 'COUPON SAVING: '.$time1;
 		echo nl2br("\n");
 		 -----------------------------------------   */
-$field_best_coupon_netpriceafters = ( $jsonArray->header->bestCouponResult->NetPriceAfterSaving)?$jsonArray->header->bestCouponResult->NetPriceAfterSaving:0 ;
-			if ($node->field_best_coupon_netpriceafters['und']['0'][value]!= $field_best_coupon_netpriceafters) {
+$field_best_coupon_netpriceafters = ( $jsonArray->header->bestCouponResult->NetPriceAfterSaving)?$jsonArray->header->bestCouponResult->NetPriceAfterSaving:0)
+			if ($node->field_best_coupon_netpriceafters['und']['0'][value]!= $field_best_coupon_netpriceafters {
 	    //NOW USING NODE_SAVE 
 				db_query("UPDATE {field_data_field_best_coupon_netpriceafters} SET field_best_coupon_netpriceafters_value = :field_best_coupon_netpriceafters WHERE revision_id = :vid", array(':field_best_coupon_netpriceafters' => $field_best_coupon_netpriceafters, ':vid' => $node->vid));
 		//NOW USING NODE_SAVE 
