@@ -404,12 +404,12 @@ function custom_api_addproduct($ProInfo){
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_status['und']['0'][value]	= trim( $jsonArray->header->CouponResult );
 			$field_best_coupon_status = trim( $jsonArray->header->CouponResult);
-			if ($node->field_best_coupon_status['und']['0'][value]	= $field_best_coupon_status ) {
+		//if ($node->field_best_coupon_status['und']['0'][value]	!= $field_best_coupon_status ) {
 		//NOW USING NODE_SAVE
 			db_query("UPDATE {field_data_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' =>$field_best_coupon_status , ':vid' => $node->vid));
 		//NOW USING NODE_SAVE
 			db_query("UPDATE {field_revision_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => $field_best_coupon_status, ':vid' => $node->vid));
-			}
+		//	}
 	/* FOR SAVING IF COUPON THEN SAVING VIA COUPON ELSE MRP - LISTING PRICE */
 			
   $field_best_coupon_saving	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
@@ -480,12 +480,12 @@ function custom_api_addproduct($ProInfo){
 
 	
 	
-			if ($node->field_best_coupon_saving['und']['0'][value]	!= $field_best_coupon_saving){
+		//if ($node->field_best_coupon_saving['und']['0'][value]	!= $field_best_coupon_saving){
 	    //NOW USING NODE_SAVE 
 			db_query("UPDATE {field_data_field_best_coupon_saving} SET field_best_coupon_saving_value = :field_best_coupon_saving WHERE revision_id = :vid", array(':field_best_coupon_saving' => $field_best_coupon_saving, ':vid' => $node->vid));
 		//NOW USING NODE_SAVE 
 			db_query("UPDATE {field_revision_field_best_coupon_saving} SET field_best_coupon_saving_value = :field_best_coupon_saving WHERE revision_id = :vid", array(':field_best_coupon_saving' => $field_best_coupon_saving, ':vid' => $node->vid));
-			}
+		//	}
 		/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'COUPON SAVING: '.$time1;
