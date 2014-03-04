@@ -279,17 +279,20 @@ function custom_api_addproduct($ProInfo){
 	  if($_REQUEST['recheck'] != 1){
 		
 		$node->field_category['und'][0]['tid']			= trim( $jsonArray->header->Category );
-// NOW USING NODE_SAVE		db_query("UPDATE {field_data_field_category} SET field_category_tid = :categoryid WHERE revision_id = :vid", array(':categoryid' => trim( $jsonArray->header->Category ), ':vid' => $node->vid));
-//	NOW USING NODE_SAVE	db_query("UPDATE {field_revision_field_category} SET field_category_tid = :categoryid WHERE revision_id = :vid", array(':categoryid' => trim( $jsonArray->header->Category ), ':vid' => $node->vid));
+// NOW USING NODE_SAVE		
+		  db_query("UPDATE {field_data_field_category} SET field_category_tid = :categoryid WHERE revision_id = :vid", array(':categoryid' => trim( $jsonArray->header->Category ), ':vid' => $node->vid));
+//	NOW USING NODE_SAVE
+		  db_query("UPDATE {field_revision_field_category} SET field_category_tid = :categoryid WHERE revision_id = :vid", array(':categoryid' => trim( $jsonArray->header->Category ), ':vid' => $node->vid));
 	
 	} 
 
 		// BY ASHISH - NOT USING NODESAVE  $node->title    				  	= $proTitle;
-		$node->title    				  	= $proTitle;
+		
 		$changed = time();
 		
 
-//NOW USING NODE_SAVE		db_query("UPDATE {node} SET title = :title, changed = :changed WHERE nid = :nid", array(':title' => $proTitle, ':changed' => $changed, ':nid' => $node->nid));
+//NOW USING NODE_SAVE	
+			db_query("UPDATE {node} SET title = :title, changed = :changed WHERE nid = :nid", array(':title' => $proTitle, ':changed' => $changed, ':nid' => $node->nid));
 
   	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
@@ -297,54 +300,64 @@ function custom_api_addproduct($ProInfo){
 		echo nl2br("\n");
 		 -----------------------------------------   */
 
-//NOW USING NODE_SAVE		db_query("UPDATE {node_revision} SET title = :title, timestamp = :changed WHERE vid = :vid", array(':title' => $proTitle, ':changed' => $changed, ':vid' => $node->vid));
+//NOW USING NODE_SAVE	
+			db_query("UPDATE {node_revision} SET title = :title, timestamp = :changed WHERE vid = :vid", array(':title' => $proTitle, ':changed' => $changed, ':vid' => $node->vid));
   	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'Revision Table Updated: '.$time1;
 		echo nl2br("\n");
 		 -----------------------------------------   */
 	  
-	  
+		
 		// BY ASHISH - NOT USING NODESAVE $node->field_description['und']['0'][value]	 	= trim( $jsonArray->header->ProductDescription );
-		$node->field_description['und']['0'][value]	 	= trim( $jsonArray->header->ProductDescription );
-		echo 'hh'.$jsonArray->header->Retailer;
+		//--$node->field_description['und']['0'][value]	 	= trim( $jsonArray->header->ProductDescription );
+		//--echo 'hh'.$jsonArray->header->Retailer;
 	//	echo '-----';
 	//	var_dump($jsonArray->header);
 	//	echo 'mrp'.$jsonArray->header->MRPProductPrice;
-		$node->field_product_price['und']['0'][value]	  	= ( $jsonArray->header->ListingProductPrice )?$jsonArray->header->ListingProductPrice:0;
-//NOW USING NODE_SAVE		db_query("UPDATE {field_data_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $node->field_product_price['und']['0'][value], ':vid' => $node->vid));
-//NOW USING NODE_SAVE		db_query("UPDATE {field_revision_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $node->field_product_price['und']['0'][value], ':vid' => $node->vid));
+		$field_product_price =( $jsonArray->header->ListingProductPrice )?$jsonArray->header->ListingProductPrice:0)
+		if ($node->field_product_price['und']['0'][value]	!= $field_product_price {
+//NOW USING NODE_SAVE		
+			db_query("UPDATE {field_data_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $node->field_product_price['und']['0'][value], ':vid' => $node->vid));
+//NOW USING NODE_SAVE		
+			db_query("UPDATE {field_revision_field_product_price} SET field_product_price_value = :product_price WHERE revision_id = :vid", array(':product_price' => $node->field_product_price['und']['0'][value], ':vid' => $node->vid));
 		
 			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'PRICE: '.$time1;
 		echo nl2br("\n");
 		 -----------------------------------------   */
-
-		
+		}
+		$field_retailer_product_name = trim( $jsonArray->header->ProductName );
 		// BY ASHISH - NOT USING NODESAVE $node->field_retailer['und']['0']['tid'] 		  	= $jsonArray->header->Retailer;
 		$node->field_retailer['und']['0']['tid'] 		  	= $jsonArray->header->Retailer;
 		// BY ASHISH - NOT USING NODESAVE $node->field_base_url['und']['0'][value] 		  	= trim( $jsonArray->header->BaseUrl);
 		$node->field_base_url['und']['0'][value] 		  	= trim( $jsonArray->header->BaseUrl);
-		$node->field_retailer_product_name['und']['0'][value] 	= trim( $jsonArray->header->ProductName );
-		// NOW USING NODE_SAVE db_query("UPDATE {field_data_field_retailer_product_name} SET field_retailer_product_name_value = :product_name WHERE revision_id = :vid", array(':product_name' => $node->field_retailer_product_name['und']['0'][value], ':vid' => $node->vid));
-		// NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_retailer_product_name} SET field_retailer_product_name_value = :product_name WHERE revision_id = :vid", array(':product_name' => $node->field_retailer_product_name['und']['0'][value], ':vid' => $node->vid));
-			
+			if ($node->field_retailer_product_name['und']['0'][value] 	!= $field_retailer_product_name ){
+		// NOW USING NODE_SAVE
+			db_query("UPDATE {field_data_field_retailer_product_name} SET field_retailer_product_name_value = :product_name WHERE revision_id = :vid", array(':product_name' => $field_retailer_product_name, ':vid' => $node->vid));
+		// NOW USING NODE_SAVE 
+			db_query("UPDATE {field_revision_field_retailer_product_name} SET field_retailer_product_name_value = :product_name WHERE revision_id = :vid", array(':product_name' => $field_retailer_product_name, ':vid' => $node->vid));
+			}
 		 
 		// BY ASHISH - NOT USING NODESAVE $node->field_product_image['und']['0'][value] 	  	= trim( $jsonArray->header->ProductImage );
 		$node->field_product_image['und']['0'][value] 	  	= trim( $jsonArray->header->ProductImage );
 		// BY ASHISH - NOT USING NODESAVE $node->field_brand['und']['0']['tid'] 		  	= trim($jsonArray->header->ProductBrand);
-		$node->field_brand['und']['0']['tid'] 		  	= trim($jsonArray->header->ProductBrand);
-		$node->field_brand['und']['0']['tid'] 		  	= $BrandId;
-		// NOW USING NODE_SAVE db_query("UPDATE {field_data_field_brand} SET field_brand_tid = :brandid WHERE revision_id = :vid", array(':brandid' => $node->field_brand['und']['0']['tid'], ':vid' => $node->vid));
-		// NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_brand} SET field_brand_tid = :brandid WHERE revision_id = :vid", array(':brandid' => $node->field_brand['und']['0']['tid'], ':vid' => $node->vid));
+			//$node->field_brand['und']['0']['tid'] 		  	= trim($jsonArray->header->ProductBrand);
+			if ($node->field_brand['und']['0']['tid'] 		  	!= $BrandId){
+		// NOW USING NODE_SAVE
+			db_query("UPDATE {field_data_field_brand} SET field_brand_tid = :brandid WHERE revision_id = :vid", array(':brandid' => $BrandId, ':vid' => $node->vid));
+		// NOW USING NODE_SAVE 
+			db_query("UPDATE {field_revision_field_brand} SET field_brand_tid = :brandid WHERE revision_id = :vid", array(':brandid' => $BrandId, ':vid' => $node->vid));
 		
-		
-	  
-		$node->field_mrpproductprice['und']['0'][value]	  	= trim($jsonArray->header->MRPProductPrice) ;
-		// NOW USING NODE_SAVE db_query("UPDATE {field_data_field_mrpproductprice} SET field_mrpproductprice_value = :mrpproductprice WHERE revision_id = :vid", array(':mrpproductprice' => $node->field_mrpproductprice['und']['0'][value], ':vid' => $node->vid));
-		// NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_mrpproductprice} SET field_mrpproductprice_value = :mrpproductprice WHERE revision_id = :vid", array(':mrpproductprice' => $node->field_mrpproductprice['und']['0'][value], ':vid' => $node->vid));
-		
+			}
+	  $field_mrpproductprice = trim($jsonArray->header->MRPProductPrice);
+			if ($node->field_mrpproductprice['und']['0'][value]	!=$field_mrpproductprice   	 ){
+		// NOW USING NODE_SAVE 
+			db_query("UPDATE {field_data_field_mrpproductprice} SET field_mrpproductprice_value = :mrpproductprice WHERE revision_id = :vid", array(':mrpproductprice' => $field_mrpproductprice, ':vid' => $node->vid));
+		// NOW USING NODE_SAVE 
+			db_query("UPDATE {field_revision_field_mrpproductprice} SET field_mrpproductprice_value = :mrpproductprice WHERE revision_id = :vid", array(':mrpproductprice' => $field_mrpproductprice, ':vid' => $node->vid));
+			}	
 			  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'MRP: '.$time1;
@@ -353,10 +366,12 @@ function custom_api_addproduct($ProInfo){
 
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_lastcheckedtime['und']['0'][value]	  	= $expDate[0];
-		$node->field_lastcheckedtime['und']['0'][value]	  	= $expDate[0];
-		// NOW USING NODE_SAVE db_query("UPDATE {field_data_field_lastcheckedtime} SET field_lastcheckedtime_value = :lastcheckedtime WHERE revision_id = :vid", array(':lastcheckedtime' => $expDate[0], ':vid' => $node->vid));
-		// NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_lastcheckedtime} SET field_lastcheckedtime_value = :lastcheckedtime WHERE revision_id = :vid", array(':lastcheckedtime' => $expDate[0], ':vid' => $node->vid));
-		
+			if($node->field_lastcheckedtime['und']['0'][value]	  	!= $expDate[0]){
+		// NOW USING NODE_SAVE 
+			db_query("UPDATE {field_data_field_lastcheckedtime} SET field_lastcheckedtime_value = :lastcheckedtime WHERE revision_id = :vid", array(':lastcheckedtime' => $expDate[0], ':vid' => $node->vid));
+		// NOW USING NODE_SAVE 
+			db_query("UPDATE {field_revision_field_lastcheckedtime} SET field_lastcheckedtime_value = :lastcheckedtime WHERE revision_id = :vid", array(':lastcheckedtime' => $expDate[0], ':vid' => $node->vid));
+			}
 		/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'LAST CHECKED TIME: '.$time1;
@@ -365,18 +380,24 @@ function custom_api_addproduct($ProInfo){
 
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_affiliateurl['und']['0'][value]	  	= trim( $jsonArray->header->AffiliateURL );
-		$node->field_affiliateurl['und']['0'][value]	  	= trim( $jsonArray->header->AffiliateURL );
-		// NOW USING NODE_SAVE db_query("UPDATE {field_data_field_affiliateurl} SET field_affiliateurl_value = :affiliate_url WHERE revision_id = :vid", array(':affiliate_url' => trim( $jsonArray->header->AffiliateURL ), ':vid' => $node->vid));
-		//  NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_affiliateurl} SET field_affiliateurl_value = :affiliate_url WHERE revision_id = :vid", array(':affiliate_url' => trim( $jsonArray->header->AffiliateURL ), ':vid' => $node->vid));
-
+			$field_affiliateurl = trim( $jsonArray->header->AffiliateURL);
+			if ($node->field_affiliateurl['und']['0'][value]	  	!= $field_affiliateurl ){
+		// NOW USING NODE_SAVE 
+			db_query("UPDATE {field_data_field_affiliateurl} SET field_affiliateurl_value = :affiliate_url WHERE revision_id = :vid", array(':affiliate_url' =>$field_affiliateurl, ':vid' => $node->vid));
+		//  NOW USING NODE_SAVE 
+			db_query("UPDATE {field_revision_field_affiliateurl} SET field_affiliateurl_value = :affiliate_url WHERE revision_id = :vid", array(':affiliate_url' => $field_affiliateurl, ':vid' => $node->vid));
+			}
 		// BY ASHISH - NOT USING NODESAVE $node->body['und']['0'][value]			  	= trim( $jsonArray->header->MetaDescription );
 		$node->body['und']['0'][value]			  	= trim( $jsonArray->header->MetaDescription );
 		// BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_description['und']['0'][value]	= trim( $jsonArray->header->bestCouponResult->CouponDesc );
-		$node->field_best_coupon_description['und']['0'][value]	= trim( $jsonArray->header->bestCouponResult->CouponDesc );
-	  	//NOW USING NODE_SAVE db_query("UPDATE {field_data_field_best_coupon_description} SET field_best_coupon_description_value = :best_coupon_description WHERE revision_id = :vid", array(':best_coupon_description' => trim( $jsonArray->header->bestCouponResult->CouponDesc ), ':vid' => $node->vid));
-		//NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_best_coupon_description} SET field_best_coupon_description_value = :best_coupon_description WHERE revision_id = :vid", array(':best_coupon_description' => trim( $jsonArray->header->bestCouponResult->CouponDesc ), ':vid' => $node->vid));
+			$field_best_coupon_description =trim( $jsonArray->header->bestCouponResult->CouponDesc);
+			if ($node->field_best_coupon_description['und']['0'][value]	!= $field_best_coupon_description ){
+	  	//NOW USING NODE_SAVE 
+			db_query("UPDATE {field_data_field_best_coupon_description} SET field_best_coupon_description_value = :best_coupon_description WHERE revision_id = :vid", array(':best_coupon_description' => trim( $jsonArray->header->bestCouponResult->CouponDesc ), ':vid' => $node->vid));
+		//NOW USING NODE_SAVE 
+			db_query("UPDATE {field_revision_field_best_coupon_description} SET field_best_coupon_description_value = :best_coupon_description WHERE revision_id = :vid", array(':best_coupon_description' => trim( $jsonArray->header->bestCouponResult->CouponDesc ), ':vid' => $node->vid));
 	
-	
+			}	
 		  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'COUPON DESCRIPTION: '.$time1;
@@ -385,20 +406,37 @@ function custom_api_addproduct($ProInfo){
 
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_status['und']['0'][value]	= trim( $jsonArray->header->CouponResult );
-		$node->field_best_coupon_status['und']['0'][value]	= trim( $jsonArray->header->CouponResult );
-		//NOW USING NODE_SAVE db_query("UPDATE {field_data_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
-		//NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => trim( $jsonArray->header->CouponResult ), ':vid' => $node->vid));
+			$field_best_coupon_status = trim( $jsonArray->header->CouponResult);
+			if ($node->field_best_coupon_status['und']['0'][value]	= $field_best_coupon_status )) {
+		//NOW USING NODE_SAVE
+			db_query("UPDATE {field_data_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' =>$field_best_coupon_status , ':vid' => $node->vid));
+		//NOW USING NODE_SAVE
+			db_query("UPDATE {field_revision_field_best_coupon_status} SET field_best_coupon_status_value = :field_best_coupon_status WHERE revision_id = :vid", array(':field_best_coupon_status' => $field_best_coupon_status, ':vid' => $node->vid));
+			}
 	/* FOR SAVING IF COUPON THEN SAVING VIA COUPON ELSE MRP - LISTING PRICE */
-	$node->field_best_coupon_saving['und']['0'][value]	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
-	if ($node->field_best_coupon_status['und']['0'][value] == 1) {
-		$node->field_best_coupon_status_display['und']['0'][value] = 'Guaranteed Coupons';
-		$node->field_best_coupon_saving['und']['0'][value]	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
+			
+  $field_best_coupon_saving	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
+	if ($field_best_coupon_saving == 1) {
+		$field_best_coupon_status_display = 'Guaranteed Coupons';
+		$field_best_coupon_saving	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
 	} else {
-		$node->field_best_coupon_status_display['und']['0'][value] = 'Without Coupons';
-		if ( $node->field_mrpproductprice['und']['0'][value] > $node->field_product_price['und']['0'][value]){
-			$node->field_best_coupon_saving['und']['0'][value] = $node->field_mrpproductprice['und']['0'][value] - $node->field_product_price['und']['0'][value];
+		$field_best_coupon_status_display = 'Without Coupons';
+		if ( $field_mrpproductprice > $field_product_price){
+			$field_best_coupon_saving = $field_mrpproductprice - $field_product_price;
 		}
 	}
+			
+			db_merge('field_data_field_best_coupon_status_display')
+				->key(array('revision_id' => $node->vid))
+				->fields(array(
+				'field_best_coupon_status_display_value' => $field_best_coupon_status_display,
+				'entity_id'=> $record->entity_id,
+				'delta'=> 0,
+				'entity_type'=> 'node',
+				'bundle'=> '_product_and_coupon',
+				'language'=>'und',
+			))
+			->execute();
 		
 /*		$coupon_display = trim( $jsonArray->header->CouponResult );
 		if ($coupon_display == 1) {
@@ -430,10 +468,13 @@ function custom_api_addproduct($ProInfo){
 		// BY ASHISH - NOT USING NODESAVE $node->field_product_popularity['und']['0'][value]	= $jsonArray->header->Popularity;
 		$node->field_product_popularity['und']['0'][value]	= $jsonArray->header->Popularity;
 	    // BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_couponcode['und']['0'][value] 	= trim( $jsonArray->header->bestCouponResult->CouponCode );
-		$node->field_best_coupon_couponcode['und']['0'][value] 	= trim( $jsonArray->header->bestCouponResult->CouponCode );
-	    //NOW USING NODE_SAVE db_query("UPDATE {field_data_field_best_coupon_couponcode} SET field_best_coupon_couponcode_value = :field_best_coupon_couponcode WHERE revision_id = :vid", array(':field_best_coupon_couponcode' => trim( $jsonArray->header->bestCouponResult->CouponCode ), ':vid' => $node->vid));
-		//NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_best_coupon_couponcode} SET field_best_coupon_couponcode_value = :field_best_coupon_couponcode WHERE revision_id = :vid", array(':field_best_coupon_couponcode' => trim( $jsonArray->header->bestCouponResult->CouponCode ), ':vid' => $node->vid));
-	
+			$field_best_coupon_couponcode = trim( $jsonArray->header->bestCouponResult->CouponCode );
+			if ($node->field_best_coupon_couponcode['und']['0'][value] 	!=$field_best_coupon_couponcode){
+	    //NOW USING NODE_SAVE 
+			db_query("UPDATE {field_data_field_best_coupon_couponcode} SET field_best_coupon_couponcode_value = :field_best_coupon_couponcode WHERE revision_id = :vid", array(':field_best_coupon_couponcode' => $field_best_coupon_couponcode, ':vid' => $node->vid));
+		//NOW USING NODE_SAVE 
+			db_query("UPDATE {field_revision_field_best_coupon_couponcode} SET field_best_coupon_couponcode_value = :field_best_coupon_couponcode WHERE revision_id = :vid", array(':field_best_coupon_couponcode' => $field_best_coupon_couponcode, ':vid' => $node->vid));
+			}
 		  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'COUPON CODE: '.$time1;
@@ -442,20 +483,25 @@ function custom_api_addproduct($ProInfo){
 
 	
 	
-		// $node->field_best_coupon_saving['und']['0'][value]	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
-	    //NOW USING NODE_SAVE db_query("UPDATE {field_data_field_best_coupon_saving} SET field_best_coupon_saving_value = :field_best_coupon_saving WHERE revision_id = :vid", array(':field_best_coupon_saving' => $node->field_best_coupon_saving['und']['0'][value], ':vid' => $node->vid));
-		//NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_best_coupon_saving} SET field_best_coupon_saving_value = :field_best_coupon_saving WHERE revision_id = :vid", array(':field_best_coupon_saving' => $node->field_best_coupon_saving['und']['0'][value], ':vid' => $node->vid));
-
+			if ($node->field_best_coupon_saving['und']['0'][value]	!= $field_best_coupon_saving){
+	    //NOW USING NODE_SAVE 
+			db_query("UPDATE {field_data_field_best_coupon_saving} SET field_best_coupon_saving_value = :field_best_coupon_saving WHERE revision_id = :vid", array(':field_best_coupon_saving' => $field_best_coupon_saving, ':vid' => $node->vid));
+		//NOW USING NODE_SAVE 
+			db_query("UPDATE {field_revision_field_best_coupon_saving} SET field_best_coupon_saving_value = :field_best_coupon_saving WHERE revision_id = :vid", array(':field_best_coupon_saving' => $field_best_coupon_saving, ':vid' => $node->vid));
+			}
 		/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'COUPON SAVING: '.$time1;
 		echo nl2br("\n");
 		 -----------------------------------------   */
+$field_best_coupon_netpriceafters = ( $jsonArray->header->bestCouponResult->NetPriceAfterSaving)?$jsonArray->header->bestCouponResult->NetPriceAfterSaving:0)
+			if ($node->field_best_coupon_netpriceafters['und']['0'][value]!= $field_best_coupon_netpriceafters {
+	    //NOW USING NODE_SAVE 
+				db_query("UPDATE {field_data_field_best_coupon_netpriceafters} SET field_best_coupon_netpriceafters_value = :field_best_coupon_netpriceafters WHERE revision_id = :vid", array(':field_best_coupon_netpriceafters' => $field_best_coupon_netpriceafters, ':vid' => $node->vid));
+		//NOW USING NODE_SAVE 
+				db_query("UPDATE {field_revision_field_best_coupon_netpriceafters} SET field_best_coupon_netpriceafters_value = :field_best_coupon_netpriceafters WHERE revision_id = :vid", array(':field_best_coupon_netpriceafters' => $field_best_coupon_netpriceafters, ':vid' => $node->vid));
 
-		$node->field_best_coupon_netpriceafters['und']['0'][value]= ( $jsonArray->header->bestCouponResult->NetPriceAfterSaving)?$jsonArray->header->bestCouponResult->NetPriceAfterSaving:0;
-	    //NOW USING NODE_SAVE db_query("UPDATE {field_data_field_best_coupon_netpriceafters} SET field_best_coupon_netpriceafters_value = :field_best_coupon_netpriceafters WHERE revision_id = :vid", array(':field_best_coupon_netpriceafters' => $node->field_best_coupon_netpriceafters['und']['0'][value], ':vid' => $node->vid));
-		//NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_best_coupon_netpriceafters} SET field_best_coupon_netpriceafters_value = :field_best_coupon_netpriceafters WHERE revision_id = :vid", array(':field_best_coupon_netpriceafters' => $node->field_best_coupon_netpriceafters['und']['0'][value], ':vid' => $node->vid));
-
+			}
 	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'NETRICE: '.$time1;
@@ -463,10 +509,13 @@ function custom_api_addproduct($ProInfo){
 		 -----------------------------------------   */
 	
 		// BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_url['und']['0'][value]		= trim( $jsonArray->header->bestCouponResult->url );
-		$node->field_best_coupon_url['und']['0'][value]		= trim( $jsonArray->header->bestCouponResult->url );
-		//NOW USING NODE_SAVE db_query("UPDATE {field_data_field_best_coupon_url} SET field_best_coupon_url_value = :best_coupon_url WHERE revision_id = :vid", array(':best_coupon_url' => trim( $jsonArray->header->bestCouponResult->url ), ':vid' => $node->vid));
-		//NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_best_coupon_url} SET field_best_coupon_url_value = :best_coupon_url WHERE revision_id = :vid", array(':best_coupon_url' => trim( $jsonArray->header->bestCouponResult->url ), ':vid' => $node->vid));
-	
+				$field_best_coupon_url = trim( $jsonArray->header->bestCouponResult->url );
+				if ($node->field_best_coupon_url['und']['0'][value]		!= $field_best_coupon_url ) {
+		//NOW USING NODE_SAVE 
+				db_query("UPDATE {field_data_field_best_coupon_url} SET field_best_coupon_url_value = :best_coupon_url WHERE revision_id = :vid", array(':best_coupon_url' => $field_best_coupon_url, ':vid' => $node->vid));
+		//NOW USING NODE_SAVE 
+				db_query("UPDATE {field_revision_field_best_coupon_url} SET field_best_coupon_url_value = :best_coupon_url WHERE revision_id = :vid", array(':best_coupon_url' => $field_best_coupon_url, ':vid' => $node->vid));
+				}
 	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'BEST COUPON URL : '.$time1;
@@ -475,17 +524,21 @@ function custom_api_addproduct($ProInfo){
 	
 		
 		// BY ASHISH - NOT USING NODESAVE $node->field_best_coupon_info['und']['0'][value]		= serialize( $jsonArray->data );
-		$node->field_best_coupon_info['und']['0'][value]		= serialize( $jsonArray->data );
-		// NOW USING NODE_SAVE db_query("UPDATE {field_data_field_best_coupon_info} SET field_best_coupon_info_value = :best_coupon_info WHERE revision_id = :vid", array(':best_coupon_info' => serialize( $jsonArray->data ), ':vid' => $node->vid));
-		// NOW USING NODE_SAVE db_query("UPDATE {field_revision_field_best_coupon_info} SET field_best_coupon_info_value = :best_coupon_info WHERE revision_id = :vid", array(':best_coupon_info' => serialize( $jsonArray->data ), ':vid' => $node->vid));
-	
+				$data = serialize( $jsonArray->data );
+				if ($node->field_best_coupon_info['und']['0'][value]		!= $data){
+		// NOW USING NODE_SAVE
+				db_query("UPDATE {field_data_field_best_coupon_info} SET field_best_coupon_info_value = :best_coupon_info WHERE revision_id = :vid", array(':best_coupon_info' => $data, ':vid' => $node->vid));
+		// NOW USING NODE_SAVE
+				db_query("UPDATE {field_revision_field_best_coupon_info} SET field_best_coupon_info_value = :best_coupon_info WHERE revision_id = :vid", array(':best_coupon_info' => $data, ':vid' => $node->vid));
+				}
 	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'All Coupon Info Update: '.$time1;
 		echo nl2br("\n");
 		 -----------------------------------------   */
 	
-		//NOW USING NODE_SAVE apachesolr_mark_entity ('node', $node->nid);
+		//NOW USING NODE_SAVE 
+				apachesolr_mark_entity ('node', $node->nid);
 	 
 	 
  	  	/** ASHISH NODE CREATION TIMING  - Node Data
@@ -496,7 +549,7 @@ function custom_api_addproduct($ProInfo){
 
 	  
 		// BY ASHISH - NOT USING NODESAVE node_save($node);
-		node_save($node);
+				//node_save($node);
 	  
 	  
 	  if( !empty($node->nid) ){
