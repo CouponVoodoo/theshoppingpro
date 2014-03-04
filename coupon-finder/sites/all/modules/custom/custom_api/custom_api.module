@@ -563,7 +563,7 @@ $field_best_coupon_netpriceafters = ( $jsonArray->header->bestCouponResult->NetP
 		   			
 
 			// drupal_flush_all_caches();
-			// cache_clear_all('field:node:' . $node->nid, 'cache_field');
+			 cache_clear_all('field:node:' . $node->nid, 'cache_field');
 			drupal_goto($node_url);
     }
 				
