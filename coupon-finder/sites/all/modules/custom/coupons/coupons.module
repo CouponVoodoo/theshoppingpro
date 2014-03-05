@@ -1765,7 +1765,12 @@ function coupons_views_pre_build(&$view) {
 	$current_time= time();
 	$show_time=$current_time-(1.5*24*3600);
 	$show_time=gmdate('Y-m-d\TH:i:s\Z', $show_time);
-	$view->display_handler->handlers['filter']['label']->value = strtolower(strip_tags($node->field_retailer_product_name['und']['0']['value']));
+	$string = strtolower(strip_tags($node->field_retailer_product_name['und']['0']['value']));
+	$string = str_replace(' ', '-', $string);
+	$string = preg_replace('/[^A-Za-z0-9\-]/', '', $string);
+	$string = str_replace('-', ' ', $string);
+	//$view->display_handler->handlers['filter']['label']->value = strtolower(strip_tags($node->field_retailer_product_name['und']['0']['value']));
+	$view->display_handler->handlers['filter']['label']->value = $string;
 	$view->display_handler->handlers['filter']['im_field_category']->value = strip_tags($node->field_category['und']['0'][tid]);
 	$view->display_handler->handlers['filter']['dm_field_lastcheckedtime']->value = $show_time;
 	
