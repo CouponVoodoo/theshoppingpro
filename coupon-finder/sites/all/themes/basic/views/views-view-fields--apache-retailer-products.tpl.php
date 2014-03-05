@@ -33,13 +33,13 @@ $mrp = $node->field_mrpproductprice['und']['0']['value'];
 $list_price = $node->field_product_price['und']['0']['value'];
 $net_price = $node->field_best_coupon_netpriceafters['und']['0']['value'];
 $saving = $node->field_best_coupon_saving['und']['0']['value'];
-$retailer = strip_tags($fields['field_retailer']->content);
+$retailer = strip_tags($fields['sm_vid_Retailer']->content);
 $brand = strip_tags($fields['field_brand']->content);
 $coupon_status = $node->field_best_coupon_status[und][0]['value'];
 $image = $node->field_product_image['und']['0']['value'];
 $node_url = $base_url.'/'.drupal_lookup_path('alias',"node/".$nid);
 $product_name = $node->field_retailer_product_name['und']['0']['value'];
-$image_tag = $product_name.' '.$retailer.' '.$brand.' coupons';
+$image_tag = $product_name.' '.$retailer.' coupons';
 ?>
 <div class = "similar_name"><h3> <a href='<?php print $node_url;?>'><?php print $product_name;?></a></h3></div>
 
