@@ -1237,7 +1237,6 @@ function coupons_block_view($delta = '') {
 		$term = taxonomy_term_load($termid);
 	
 	$current_domain = get_current_domain();
-	
 	If ($current_domain == 'couponvoodoo'){
 		if ( $term->description != ''){
 		// echo "<div class='taxonomy_description'>$term->description</div>";
@@ -1246,7 +1245,7 @@ function coupons_block_view($delta = '') {
 			$block['content'] = 'Browse a wide range of '.$term->name.' products with updated discounts, coupons and offers brought to you by CouponVoodoo. Simply click on a '.$term->name.' product of your choice to get the latest discount information for it.';
 		}
 	} else {
-		$block['content'] = 'Now get get all the coupons & offers for '.$term->name.' product in one place. See our huge range of '.$term->name.' products with prices net of any coupons and offers. Go ahead and save with Cuponation';
+		$block['content'] = 'Find the best price for '.$term->name.' products with the latest discounts, coupons & offers';
 	}
 		//print '<pre>';print_r($term);exit;
 	  break;
