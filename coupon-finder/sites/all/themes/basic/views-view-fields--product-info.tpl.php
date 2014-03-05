@@ -25,8 +25,6 @@
  */
 ?>
 <?php
-echo 'ashish';
-var_dump($fields);die;
 $current_domain = get_current_domain();
 $url_path = rawurlencode(drupal_get_path_alias());
 $nid = arg(1);
