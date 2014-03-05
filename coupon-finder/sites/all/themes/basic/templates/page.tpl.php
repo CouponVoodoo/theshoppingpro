@@ -1,4 +1,5 @@
 <?php 
+// print_r(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)); die;
 $current_domain = get_current_domain();
 ?>
 <script type="text/javascript" src="<?php echo base_path().path_to_theme(); ?>/js/jquery.clipboard.js"></script>
@@ -132,7 +133,7 @@ $current_domain = get_current_domain();
 										if ($current_domain == 'couponvoodoo') {
 											print str_replace('.com','',$title).' Products Coupons, Deals & Offers in India';
 										} else { 
-											print 'Coupons For '.str_replace('.com','',$title).' Products';
+											print 'Coupons and Discount Offers '.str_replace('.com','',$title).' Products';
 										} 
 									} else {
 										print $title;
