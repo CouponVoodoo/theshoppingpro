@@ -1411,7 +1411,4 @@ display:block ; float:left ; width:100px ; min-height:180px ;
 #block-sitemap_block-sitemap_block ul { display:block ; float:left ; width:100px ; min-height:180px ;}
 */
 
-.feed-icon {position: absolute !important; top:10px !important;}
-.feed-icon  a{position: absolute !important; top:10px !important;}
-div.feed-icon {position: absolute !important; top:10px !important;}
-div.feed-icon  a{position: absolute !important; top:10px !important;}
+.view-cuponation-title-editor .feed-icon {position:absolute; top:10px;}
