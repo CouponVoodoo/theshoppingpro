@@ -135,7 +135,7 @@ if ($current_domain != 'cuponation'){
 
 <?php
 	if ($node->field_best_coupon_saving['und'][0]['value'] == 1 && $node->field_best_coupon_status[und][0]['value'] == 1){
-		echo "<li> <label>".get_label('List Price:')."</label> <meta itemprop='currency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
+		echo "<li> <label>".get_label('List Price:')."</label><meta itemprop='currency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
 		echo "<li> <label>".get_label('Savings:')."</label>See Best Coupon</li>";
 		echo "<li> <label>".get_label('Offer:')."</label>See Best Coupon</li>";
 	
@@ -175,12 +175,15 @@ if ($current_domain != 'cuponation'){
 		$retailer_coupon = node_load($nids[0]);
 		$cuponation_title = $retailer_coupon->field_cuponation_title['und']['0']['value'];
 		if (!empty($result['node']) && !empty($cuponation_title)) {
-			echo $cuponation_title;
+			//echo $cuponation_title;
+			echo"<span itemprop='offerDetails'>".$cuponation_title."</span>";
 		} else {
-			print ($fields['field_best_coupon_description']->content); 
+			// print ($fields['field_best_coupon_description']->content); 
+			echo"<span itemprop='offerDetails'>".strip_tags($fields['field_best_coupon_description']->content)."</span>";
 		}	
 	} else {
-		print ($fields['field_best_coupon_description']->content); 
+		// print ($fields['field_best_coupon_description']->content); 
+		echo"<span itemprop='offerDetails'>".strip_tags($fields['field_best_coupon_description']->content)."</span>";
 	}
 	?></li>
 
@@ -254,7 +257,7 @@ if ($category_check != 'Other') {
 if ($brand_check != 'Other') {
 	$brand = $fields['field_brand']->handler->view->result[0]->field_field_brand[0]['rendered'];
 	if ($brand['#type'] == 'link') {
-		echo " | ";
+		echo " | <meta itemprop='brand' content='".$brand_check."' />";
 		print '<div class="field-content">' . l(t($brand['#title']), $brand['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
 	}
 	else {
