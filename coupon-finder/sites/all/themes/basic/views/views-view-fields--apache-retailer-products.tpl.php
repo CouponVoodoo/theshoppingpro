@@ -39,6 +39,7 @@ $coupon_status = $node->field_best_coupon_status[und][0]['value'];
 $image = $node->field_product_image['und']['0']['value'];
 $node_url = $base_url.'/'.drupal_lookup_path('alias',"node/".$nid);
 $product_name = $node->field_retailer_product_name['und']['0']['value'];
+$image_tag = $product_name.' '.$retailer.' '.$brand.' coupons';
 ?>
 <div class = "similar_name"><h3> <a href='<?php print $node_url;?>'><?php print $product_name;?></a></h3></div>
 
@@ -47,7 +48,7 @@ $product_name = $node->field_retailer_product_name['und']['0']['value'];
 $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
 			<div class='field-items'>
 				<div class='field-item even product_img'>
-					<a href='{$node_url}'><img src='{$image}' typeof='foaf:Image' alt='{$product_name}'></a>
+					<a href='{$node_url}'><img src='{$image}' alt='{$image_tag}' typeof='foaf:Image' alt='{$product_name}'></a>
 				
 				</div>";
 echo  $img .=    "</div>
