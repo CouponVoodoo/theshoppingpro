@@ -136,20 +136,19 @@ function basic_preprocess_html(&$vars) {
 	$current_domain = get_current_domain();
 	if ($current_domain == 'cuponation') {
 		$content_type = arg(0);
+		
 		switch ($content_type) {
 			case "taxonomy":
 				$tid = arg(2);
 				$taxonomy = taxonomy_term_load($tid);
 				$taxonomy_name = $taxonomy->name;
-				$vars['head_title'] = 'Coupons for '.$taxonomy_name;
-				// die;
+				$vars['head_title'] = $taxonomy_name.' Coupons, Deals & Discounts | Cuponation';
 			break;
 			case "node":
 				$nid = arg(1);
 				$node = node_load($nid);
-				$node_title = $node->field_retailer_product_name['und']['0']['value'];
+				$node_title = $node->field_retailer_product_name['und']['0']['value'].' @ Rs. '.$node->field_best_coupon_netpriceafters['und']['0']['value'].' | CupoNation';
 				$vars['head_title'] = "Coupons for ".$node_title;
-				// die;
 			break;
 		}
 	}
@@ -165,17 +164,20 @@ function basic_html_head_alter(&$head_elements) {
 				$tid = arg(2);
 				$taxonomy = taxonomy_term_load($tid);
 				$taxonomy_name = $taxonomy->name;
-				$head_elements['metatag_description']['#value'] = 'Get tried and tested coupons for '.$taxonomy_name;
-				$head_elements['metatag_abstract']['#value'] = 'Get tried and tested coupons for '.$taxonomy_name;
-				$head_elements['rdf_node_title']['#attributes']['content'] = 'Get tried and tested coupons for '.$taxonomy_name;
+				$head_elements['metatag_description']['#value'] = 'Get '.$taxonomy_name.' products in India across retailers like Jabong, Myntra, Flipkart and others  using Discount Coupons and Promo Codes from CupoNation';
+				$head_elements['metatag_abstract']['#value'] = 'Get '.$taxonomy_name.' products in India across retailers like Jabong, Myntra, Flipkart and others  using Discount Coupons and Promo Codes from CupoNation';
+				$head_elements['rdf_node_title']['#attributes']['content'] = 'Get '.$taxonomy_name.' products in India across retailers like Jabong, Myntra, Flipkart and others  using Discount Coupons and Promo Codes from CupoNation';
 			break;
 			case "node":
 				$nid = arg(1);
 				$node = node_load($nid);
-				$node_title = $node->field_retailer_product_name['und']['0']['value'];
-				$head_elements['metatag_description']['#value'] = 'Get tried and tested coupons for '.$node_title;
-				$head_elements['metatag_abstract']['#value'] = 'Get tried and tested coupons for '.$node_title;
-				$head_elements['rdf_node_title']['#attributes']['content'] = 'Get tried and tested coupons for '.$node_title;
+				$node_product_name = $node->field_retailer_product_name['und']['0']['value'];
+				$node_net_price = $node->field_best_coupon_netpriceafters['und']['0']['value'];
+				$retailer = taxonomy_term_load($node->field_retailer['und']['0'][tid]);
+				$retailer_name = $retailer->name;
+				$head_elements['metatag_description']['#value'] = $node_product_name.' is available for the best price of Rs. '.$node_net_price.' @ '.$retailer_name.' using Discount Coupons and Promo Codes from CupoNation';
+				$head_elements['metatag_abstract']['#value'] = $node_product_name.' is available for the best price of Rs. '.$node_net_price.' @ '.$retailer_name.' using Discount Coupons and Promo Codes from CupoNation';
+				$head_elements['rdf_node_title']['#attributes']['content'] = $node_product_name.' is available for the best price of Rs. '.$node_net_price.' @ '.$retailer_name.' using Discount Coupons and Promo Codes from CupoNation';
 			break;
 		}
 		$head_elements['metatag_author']['#value'] = '';

@@ -25,6 +25,8 @@
  */
 ?>
 <?php
+echo 'ashish';
+var_dump($fields);die;
 $current_domain = get_current_domain();
 $url_path = rawurlencode(drupal_get_path_alias());
 $nid = arg(1);
@@ -69,7 +71,7 @@ $mixpanel_type='Product Page View Store';
 
 
 <div class="product-right-inner">
-<h2> <?php if ($current_domain =='cuponation'){echo $retailer.' - '.$node->field_retailer_product_name['und']['0']['value']; } else {print strip_tags(($fields['field_retailer_product_name']->content)); }?></h2>
+<h1> <?php if ($current_domain =='cuponation'){echo $node->field_retailer_product_name['und']['0']['value'].' @ '.$retailer.' For Rs. '.$node->field_best_coupon_netpriceafters['und']['0']['value'].' Using Coupons & Discount Offers'; } else {print strip_tags(($fields['field_retailer_product_name']->content)); }?></h1>
 
 <?php 
 
@@ -220,7 +222,7 @@ if (empty($_GET['pop'])) {
 	if ($current_domain == 'couponvoodoo'){
 		$product_description = 'Buy '.strip_tags($fields['field_retailer_product_name']->content).' at the lowest price with the latest discounts, coupons and offers brought to you by CouponVoodoo. View the list of discount codes below and click "Copy Coupon" to get the code. Also see:';
 	} else {
-		$product_description = 'Now you can ensure that you never miss out on any deal for '.strip_tags($fields['field_retailer_product_name']->content).'. Cuponation ensures that you get all the latest and tested coupon codes for the product right here in one place. Go ahead and save big with Cupoantion. You may also be interested in:';	
+		$product_description = 'Find the best price for '.strip_tags($fields['field_retailer_product_name']->content).' with the latest discounts, coupons & offers @ '.$retailer;	
 	}
 print $product_description;
 // $product_description_links = 'You may also want to view discount codes and offers for all products from:';
