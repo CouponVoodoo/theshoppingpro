@@ -135,7 +135,7 @@ if ($current_domain != 'cuponation'){
 
 <?php
 	if ($node->field_best_coupon_saving['und'][0]['value'] == 1 && $node->field_best_coupon_status[und][0]['value'] == 1){
-		echo "<li> <label>".get_label('List Price:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
+		echo "<li> <label>".get_label('List Price:')."</label> <meta itemprop='currency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
 		echo "<li> <label>".get_label('Savings:')."</label>See Best Coupon</li>";
 		echo "<li> <label>".get_label('Offer:')."</label>See Best Coupon</li>";
 	
@@ -144,18 +144,18 @@ if ($current_domain != 'cuponation'){
 		if ($node->field_best_coupon_saving['und'][0]['value'] > 1 && $node->field_best_coupon_status[und][0]['value'] == 1){
 				echo "<li> <label>".get_label('List Price:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
 				echo "<li> <label>".get_label('Savings:')."</label>".get_label('INR ').number_format($node->field_best_coupon_saving['und'][0]['value'],0, '.', ',')."</li>";
-				echo "<li> <label>".get_label('Net Price:')."</label>".get_label('INR ').number_format($node->field_best_coupon_netpriceafters['und'][0]['value'],0, '.', ',')."</li>";
+				echo "<li> <label>".get_label('Net Price:')."</label><meta itemprop='currency' content='INR' /><meta itemprop='price' content='".number_format($node->field_best_coupon_netpriceafters['und'][0]['value'],0, '.', ',')."'/>".get_label('INR ').number_format($node->field_best_coupon_netpriceafters['und'][0]['value'],0, '.', ',')."</li>";
 
 		} else {
 			if ($non_coupon_saving > 0){
 				echo "<li> <label>".get_label('MRP:')."</label>".get_label('INR ').number_format($mrp,0, '.', ',')."</li>";
 				echo "<li> <label>".get_label('Savings:')."</label>".get_label('INR ').number_format($non_coupon_saving,0, '.', ',')."</li>";
-				echo "<li> <label>".get_label('Net Price:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
+				echo "<li> <label>".get_label('Net Price:')."</label><meta itemprop='currency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
 					
 			} else {
 				echo "<li> <label>".get_label('MRP:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
 				echo "<li> <label>".get_label('Savings:')."</label>-</li>";
-				echo "<li> <label>".get_label('Net Price:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";	
+				echo "<li> <label>".get_label('Net Price:')."</label><meta itemprop='currency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";	
 			}
 		}
 	}
