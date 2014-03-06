@@ -355,6 +355,10 @@ body.domain-products-cuponation-in #header{background: #51a7da;}
   display: inline-block;
   float: left;
 }
+
+body.domain-cuponation .front #coupons-finder-form .submit {width: 30%;}
+
+
 .front #coupons-finder-form .view_video{
   display: inline-block;
   float: right;
