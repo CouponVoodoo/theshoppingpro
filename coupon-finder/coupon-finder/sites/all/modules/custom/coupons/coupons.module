@@ -1,9 +1,14 @@
 <?php
-
+//http://plugin.theshoppingpro.com/CouponAutoWebPhase2.php?q=http://shopping.indiatimes.com/fashion/dresses/styletoss-black-plain-women-dress-1538/10846/p_B1863455
+//java -jar start.jar
+//http://54.243.150.171/CouponAutoWebPhase2.php?q=http://www.jabong.com/Puma-917-Mid-20-Ind-Blue-Sneakers-362539.html
+//http://54.243.150.171/CouponAutoWebPhase2.php?q=http://www.jabong.com/z-collection-Blue-Belly-Shoes-368804.html
+//http://54.243.150.171/CouponAutoWebPhase2.php?q=www.jabong.com/people-Grey-Melange-Graphic-T-Shirt-362304.html
+//http://54.243.150.171/CouponAutoWebPhase2.php?q=http://www.jabong.com/people-Ruffle-Sleeve-Off-White-Printed-Top-362324.html
 function coupons_menu() {
   $items = array();
 
-  $items['coupon-finder'] = array( //this creates a URL that will call this form at "examples/form-example"
+  $items['coupon-finder'] = array(//this creates a URL that will call this form at "examples/form-example"
       'title' => 'Coupon Finder', //page title
       'page callback' => 'drupal_get_form', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
       'page arguments' => array('coupons_finder_form'), //put the name of the form here
@@ -32,9 +37,20 @@ function coupons_menu() {
       'type' => MENU_CALLBACK,
   );
 
+  $items['copycoupon'] = array(
+      'page callback' => 'coupons_copy_coupon',
+      'page arguments' => array(1),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+  );
   return $items;
 }
 
+ function coupons_init(){
+	// this funciton required. please don't remove it until u are not aware fully.
+	// set it to 600 second
+	drupal_set_time_limit(600);
+ }
 function coupons_viewdemo($ajax) {
   if ($ajax) {
     ctools_include('ajax');
@@ -58,12 +74,10 @@ function coupons_viewdemo($ajax) {
     // Return the ajax instructions to the browser via ajax_render().
     print ajax_render($output);
     drupal_exit();
-  }
-  else {
-    return drupal_get_form('coupons_finder_form',true, true);
+  } else {
+    return drupal_get_form('coupons_finder_form', true, true);
   }
 }
-
 
 function coupons_redirect_interim_page() {
   global $base_url;
@@ -72,7 +86,7 @@ function coupons_redirect_interim_page() {
   $url = urldecode($url);
   drupal_add_js("jQuery(window).load(function(){
                   setTimeout(function(){
-                     window.location.replace(\"".$url."\");
+                     window.location.replace(\"" . $url . "\");
                   }, 3000);
         });", array('type' => 'inline', 'scope' => 'footer'));
 
@@ -80,7 +94,7 @@ function coupons_redirect_interim_page() {
             <h1>Yippee! Coupon Code Copied.</h1>
             <div class="clear"> </div>
             <div class="coupon_window_title">
-              <div class="bridgecode">'.$coupon_code.'</div>
+              <div class="bridgecode">' . $coupon_code . '</div>
             </div>
             <div class="clear"> </div>
             <h2 class="coupon_window_redirect">
@@ -91,58 +105,66 @@ function coupons_redirect_interim_page() {
 </div>';
 }
 
-
 /**
  * Implementation of hook_menu
  */
 function coupons_theme() {
-
-
   $themes = array(
       'coupons_result_page' => array(
           'template' => 'coupon-finder-search-page',
           'variables' => array('data' => null),
       ),
+      'coupons_bestcouons' => array(
+          'template' => 'coupons-bestcouons',
+          'variables' => array('data' => null),
+      ),
+      'coupons_taxonomy' => array(
+          'template' => 'coupons-taxonomy',
+          'variables' => array('data' => null),
+      ),    
+      
   );
 
-  return
-      $themes;
+  return $themes;
 }
 
 
-function coupons_finder_form(
-    $form, &$form_state, $small = true) {
-  global
-  $base_url;
+
+
+
+function coupons_finder_form($form, &$form_state, $small = true) {
+  global $base_url, $logo, $base_path;
+
   // Load the modal library and add the modal javascript.
   ctools_include('modal');
   ctools_include('ajax');
   ctools_modal_add_js();
 
-
-
   if ($form_state['ajax']) {
 
 
     $form['video'] = array(
-        '#markup' => '<iframe style="margin:0px auto;
-        text-align:center;
-        " frameborder="0" name="cbox1376655443154" width="450" height="400" src="http://www.youtube.com/embed/-dRM0wbydec?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=1&amp;amp;end=93&amp;width=400&amp;height=500&amp;iframe=true" scrolling="no" class="cboxIframe"></iframe>',
-    );
+ //       '#markup' => '<iframe style= "margin:0px auto;
+ //       text-align:center;
+ //       "frameborder="0" name="cbox1376655443154" width="420"  src="//www.youtube.com/embed/M55fFakqGZo?wmode=transparent&amp;amp;rel=0&amp;amp;autoplay=1&amp;amp;&amp;width=420&amp;iframe=true; iframe=true" scrolling="no" class="cboxIframe"></iframe>',
+ 
+	'#markup' => '<iframe width="480" height="305" src="//www.youtube.com/embed/M55fFakqGZo" frameborder="0" allowfullscreen></iframe>'
+
+   );
     //Customize modal window
 
     $form['url'] = array(
-        '#title'=>t('Got it? Try it Out'),
+        '#title' => t('Got it? Try it Out'),
         '#type' => 'textfield',
         '#size' => 70,
-        '#default'=>t('Enter URL of the Product Page'),
+        '#attributes' => array('class' => array('apachesolr-autocomplete', 'unprocessed'), 'placeholder' => t('Enter a search term or a product url')),
         '#maxlength' => 255,
     );
 
     $form['actions']['submit'] = array(
         '#type' => 'submit',
-        '#prefix'=>'<div class="submit">',
-        '#suffix'=>'</div>',
+        '#prefix' => '<div class="submit">',
+        '#suffix' => '</div>',
         '#value' => t('Find My Coupons'),
     );
 
@@ -151,103 +173,518 @@ function coupons_finder_form(
   }
 
   $form['url'] = array(
-      '#title'=>t('Try Another Product'),
+      '#title' => t('Try Another Product'),
       '#type' => 'textfield',
       '#size' => 100,
-      '#default'=>t('Enter URL of the Product Page'),
+      '#attributes' => array('class' => array('apachesolr-autocomplete','unprocessed'), 'placeholder' => t('Enter a search term or a product url')),
       '#maxlength' => 255,
   );
 
-
-
-
   $form['actions']['submit'] = array(
       '#type' => 'submit',
-      '#prefix'=>'<div class="submit">',
-      '#suffix'=>'</div>',
+      '#prefix' => '<div class="submit">',
+      '#suffix' => '</div>',
       '#value' => t('Find My Coupons'),
   );
 
   if ($small) {
-    $site_name = variable_get('site_name', 'Drupal');
-    $site_name  = explode(" ", $site_name);
-    foreach ($site_name as $key => $value) {
-      $site_name[$key] = "<span class='site_name_$key'>".$value.'</span>';
-    }
-    $site_name = implode(" ", $site_name);
-
-    $site_info = '<div class="name-and-slogan">
-                        <div id="site-name">
-                          <a href="/" title="Home" rel="home">'. $site_name.'</a>
-                        </div>
-                     <div id="site-slogan">'.variable_get('site_slogan', 'Drupal').'</div>
-                  </div>';
-    $form['url']['#title'] = $site_info. t('Know what you want to buy? Just enter the url of the product page and let coupons find you:');
-    $form['url']['#description'] = t('e.g. http://www.jabong.com/giordano-P6868-Black-Analog-Watch-183702.html');
-    //return '<div id="magical-modal-link">' . l($link_text, 'coupons_viewdemo/nojs', array('attributes' => array('class' => 'ctools-use-modal'))) . '</div>';
+    $form['url']['#suffix'] = '<div class="whatisthis"><a href="http://www.couponvoodoo.com/Product_Page_Url" target="_blank">Whats this?</a></div>';
+    $form['url']['#title'] = t('Never pay the listed price! Additional discounts via coupons are just a click away! ');
+    $form['url']['#description'] = t('Try It: <a href="' . $base_url . '/r/jabongcom-coupons" target="_blank">Jabong</a>, <a href="' . $base_url . 'r/myntracom-coupons" target="_blank">Myntra</a>, <a href="' . $base_url . '/r/snapdealcom-coupons" target="_blank">Snapdeal</a>, <a href="' . $base_url . '/c/women-clothing-coupons" target="_blank">Women Clothing</a>, <a href="' . $base_url . '/c/men-coupons" target="_blank">Men Clothing</a>, <a href="' . $base_url . '/search/site/diapers" target="_blank">Diapers</a>, <a href="' . $base_url . '/search/site/shoes" target="_blank">Shoes</a>');
     $form['actions']['view_video'] = array(
-        '#markup' => '<a href="'.$base_url.'/coupons_viewdemo/nojs" id="edit-view_video" class="ctools-use-modal form-view_video">View Video</a>',
-        '#prefix'=>'<div class="view_video">',
-        '#suffix'=>'</div>',
+        '#markup' => '<a href="' . $base_url . '/coupons_viewdemo/nojs" id="edit-view_video" class="ctools-use-modal form-view_video">View Video</a>',
+        '#prefix' => '<div class="view_video">',
+        '#suffix' => '</div>',
     );
   }
+
+
+  $loading_image = $base_path . drupal_get_path('theme', 'basic') . '/images/Frugal_Froggy.jpg';
+  $dollor_image = $base_path . drupal_get_path('theme', 'basic') . '/images/Loader-Dollar.gif';
+//   $loading_image_content = '';
+//   $loading_image_content = "<p text-align='center' position='relative'>";
+  $loading_image_content .= "<div><p style='text-align:center; position:relative;'><p class='frog_title'> Frugal Froggy Is Casting His Spell</p>";
+  $loading_image_content .= "<img class='frog' src='$loading_image' width='400px' alt='Loading...'/>";
+  $loading_image_content .= "<img class='dollor' src='$dollor_image' /></p></div>";
+//   $loading_image_content .= "</p>";
+  $form['loading_image'] = array(
+      '#markup' => $loading_image_content,
+      '#prefix' => '<div id="loading_image_div" style="display:none">',
+      '#suffix' => '</div>',
+
+  );
+  drupal_add_js(drupal_get_path('module', 'coupons') . '/coupons_loading.js');
+
   return $form;
 }
 
-function coupons_finder_form_validate($form, &$form_state) {
-  if (($form_state['values']['url'] == "")) {
-    form_set_error('URL', t('URL shouldn\'t be empty.'));
+function coupons_validate_url($url) {
+  //http://jabong.com/swayam-Eyelet-Turquoise-Curtain-200226.html
+  $status = strpos($url, 'http://');
+  if( is_numeric($status) ){
+       return '1';
   }
+  $status = strpos($url, 'https://');
+  if( is_numeric($status) ){
+       return '1';
+  }
+  $status = strpos($url, 'www.');
+  if( is_numeric($status) ){
+       return '1';
+  }
+  $status = strpos($url, 'http://www.');
+  if( is_numeric($status) ){
+       return '1';
+  }else{
+       return '0';
+  }
+  
 }
 
-function coupons_finder_form_submit($form, &$form_state) {
-  $redirect = 'coupon-result/'.urlencode($form_state['values']['url']);
-  $form_state['redirect'] = $redirect;
-  if ($form_state['ajax']) {
-    $form_state['ajax_commands'][]  = ctools_ajax_command_redirect($redirect);
+function coupons_finder_form_validate($form, &$form_state) {
+  $urlStatus = coupons_validate_url( $form_state['values']['url'] );
+  
+  if( !empty($form_state['values']['url']) ){
+    if($urlStatus == 0){
+      $searchText = "search/site/".$form_state['values']['url'];
+      drupal_goto( $searchText );
+    }
+  }elseif( empty($form_state['values']['url']) ){
+    $searchText = "search/site/";
+    drupal_goto( $searchText );
+  }
+  
+  //   if (($form_state['values']['url'] == "")) {
+  //    form_set_error('url', t('URL shouldn\'t be empty.'));
+  // }
+  // if ((filter_var(($form_state['values']['url']), FILTER_VALIDATE_URL) === false)) {
+  //      form_set_error('url', t('Please enter a valid URL.'));
+  // } else {
+  global $base_url;
+  $cid = urldecode($form_state['values']['url']);
+  if (cache_get($cid)) {
+    return;
+  }
+  
+  /*Url changed by Sanjay*/
+  //$url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=" . urldecode($form_state['values']['url']);
+  $url = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" . urldecode($form_state['values']['url']);
+ 
+/* start By Lavesh to track event on mixpanel */
+$fullProdUrl = urldecode($form_state['values']['url']);
+
+if(strpos($fullProdUrl,'?') > 1) {
+$prodUrl = reset(explode("?",$fullProdUrl));
+}
+else $prodUrl = $fullProdUrl;
+
+$retailerDomain = get_domain($fullProdUrl);
+$brand = reset(explode(".",$retailerDomain));
+mixpanel_track('URL Search', array(
+'Brand' => $brand,
+'RetailerDomain' => $retailerDomain,
+'FullUrl' => $fullProdUrl,
+'ProdUrl' => $prodUrl
+)
+ );
+
+
+//exit;
+/* End By Lavesh to track event on mixpanel */
+ 
+  $json = drupal_http_request($url, array('timeout' => 600.0));
+  
+  $json = $json->data;
+
+  $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
+
+
+  $jsonArray = json_decode($jsonData);
+  
+/* Start By Lavesh to track event on mixpanel */
+//var_dump($jsonArray);
+
+  $bestCouponVal = $jsonArray->data[0]->BestCoupon ;
+  
+  if ($bestCouponVal == 1) {
+    $isSuccessful = 'yes';
+    $couponCode = $jsonArray->data[0]->couponCode ;
+    $saving = $jsonArray->data[0]->Saving ;
+  }
+  else {
+    $isSuccessful = 'no';
+    $couponCode = 'N/A' ;
+    $saving = 0;
+  }
+  
+  $cpnResultJson = '';
+  
+  foreach ($jsonArray->data as $couponResult){
+    if ( $couponResult->Successful == 1 ){
+      $cpnSaving = $couponResult->Saving;
+    }
+    else {
+      $cpnSaving = 0;
+    }
+    
+    $cpnResultJson = $cpnResultJson . $couponResult->couponCode.'~'.$cpnSaving.'|';
+  }
+mixpanel_track('Coupon Result', array(
+    'Brand' => $brand,
+    'RetailerDomain' => $retailerDomain,
+    'FullUrl' => $fullProdUrl,
+    'ProdUrl' => $prodUrl,
+    'isSuccessful' => $isSuccessful,
+    'CouponCode' => $couponCode ,
+    'Saving' => $saving,
+    'FullResultArray' => $cpnResultJson
+    )
+);
+
+
+/* End By Lavesh to track event on mixpanel */   
+
+
+  $output = '';
+  if (isset($jsonArray->data[0]->ErrorCode) && ($jsonArray->data[0]->ErrorCode == "1")) {
+    form_set_error('url','Sorry! This retailer is not covered yet. Please view <a href="http://www.couponvoodoo.com/Retailers-Covered" target="_blank">list</a> of retailers that we cover.');
+  }
+  if (isset($jsonArray->data[0]->ErrorCode) && ($jsonArray->data[0]->ErrorCode == "2")) {
+    form_set_error('url', 'CouponVoodoo only works with the product page url e.g. http://www.jabong.com/giordano-Victory-Black-P9275-Black-Black-Analog-Watch-168021.html for products that are still in stock. Please recheck if the url you entered is that of a product and if so that the product is still in stock.');
   }
 
+  if (isset($jsonArray->data[0]->ErrorCode) && ($jsonArray->data[0]->ErrorCode == "3")) {
+    form_set_error('url',$jsonArray->data[0]->Description);
+  }
+  //http://www.lenskart.com/kagawa-y2307-black-white-design-c01-eyeglasses.html
+
+  if (empty($jsonArray)) {
+    form_set_error('url','Bummer! Something went wrong. Please try another product.');
+  }
+
+  if (strpos($json,'ErrorCode') === false) {
+    cache_set(base64_decode($cid), $jsonArray, 'cache', time() + 60*60);   
+  }
+}
+/* Function added by Lavesh to get domain from url */
+
+function get_domain($url)
+{
+  $pieces = parse_url($url);
+  $domain = isset($pieces['host']) ? $pieces['host'] : '';
+  if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) {
+    return $regs['domain'];
+  }
+  return 'N/A.';
+}
+
+
+function coupons_finder_form_submit($form, &$form_state) {
+  $redirect = 'coupon-result/' . urlencode($form_state['values']['url']);
+  $form_state['redirect'] = $redirect;
+  if ($form_state['ajax']) {
+    $form_state['ajax_commands'][] = ctools_ajax_command_redirect($redirect);
+  }
 }
 
 function coupons_result($raw_url) {
   global $base_url;
-  $url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=".urldecode($raw_url);
-  $json = file_get_contents($url);
-  $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
-  $jsonArray = json_decode($jsonData);
+  
+  /*url replaced by sanjay*/
+  //$url = "http://plugin.theshoppingpro.com/CouponAutoWeb.php?q=" . urldecode($raw_url);
+  $url = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" . urldecode($raw_url);
+  
+  $cid = urldecode($raw_url);
+  
+/* Mixpanel start*/
+  $fullProdUrl = $cid;
+
+  if(strpos($fullProdUrl,'?') > 1) {
+    $prodUrl = reset(explode("?",$fullProdUrl));}
+  else
+    $prodUrl = $fullProdUrl;
+
+  $retailerDomain = get_domain($fullProdUrl);
+  $brand = reset(explode(".",$retailerDomain));
+/*Mixpanel End */
+  
+  if ($data = cache_get(base64_decode($cid))) {
+    $jsonArray = $data->data;
+  }
+  else {
+    $json = drupal_http_request($url, array('timeout' => 600.0));
+    
+    
+    
+    $json = $json->data;
+    $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
+    $jsonArray = json_decode($jsonData);
+    
+    //print_r($jsonArray);
+    //die;
+    
+    /**added by sanjay*/
+    if($jsonArray->header->Use == 1 || $jsonArray->header->Use == 0){
+      //$proTitle = $jsonArray->header->ProductName;
+      $proTitle = $jsonArray->header->PageTitle;
+      
+      $baseUrl = $jsonArray->header->BaseUrl;
+      
+      $query = db_select('field_data_field_base_url', 'n')
+		   ->fields('n', array('ntity_id') )
+		   ->condition('n.field_base_url_value', $baseUrl, '=')
+		   ->countQuery();
+      $result = $query->execute();
+      $record = $result->fetch();
+      
+      $brand_name = $jsonArray->header->ProductBrand;
+      //$brand_name = 'nike';
+      $vocabulary_name = 'brand';
+      $BrandId = coupons_get_term_from_name($brand_name, $vocabulary_name);
+      if($BrandId == 0){
+	$BrandId = coupons_create_taxonomy_term($brand_name, 4);
+      }
+       if($record->expression == 0){
+	//echo 'add';
+	//die;
+	$node = new stdClass();
+	$node->language = LANGUAGE_NONE;
+	$node->type     = '_product_and_coupon';	
+	$node->uid      = 1;
+    
+	$node->field_category['und'][0]['tid']			= trim( $jsonArray->header->Category );;
+	//$node->field_category['und'][0]['tid']			= 1;
+	
+	$node->title    				  	= $proTitle;
+	$node->field_description[und][0][value]	 	  	= trim( $jsonArray->header->ProductDescription );
+	$node->field_product_price[und][0][value]	  	= ( $jsonArray->header->ListingProductPrice )?$jsonArray->header->ListingProductPrice:0;
+	//$node->field_product_price[und][0][value]	  	= 10;
+	//$node->field_retailer[und][0]['tid'] 		  	= ($jsonArray->header->Retailer > 0)?$jsonArray->header->Retailer:1;
+	$node->field_retailer[und][0]['tid'] 		  	= $jsonArray->header->Retailer;
+	//$node->field_retailer[und][0]['tid'] 		  	= 1;
+	$node->field_base_url[und][0][value] 		  	= trim( $jsonArray->header->BaseUrl);
+	$node->field_retailer_product_name[und][0][value] 	= trim( $jsonArray->header->ProductName );
+	$node->field_product_image[und][0][value] 	  	= trim( $jsonArray->header->ProductImage );
+	$node->field_brand[und][0]['tid'] 		  	= trim($jsonArray->header->ProductBrand);
+	$node->field_brand[und][0]['tid'] 		  	= $BrandId;
+	
+	$node->field_mrpproductprice[und][0][value]	  	= ($jsonArray->header->MRPProductPrice!='')?$jsonArray->header->MRPProductPrice:0 ;
+	//$node->field_mrpproductprice[und][0][value]	  	= 0 ;
+	$expDate = explode('=' , $jsonArray->header->LastCheckedTime);	
+	$node->field_lastcheckedtime[und][0][value]	  	= $expDate[0];
+	$node->field_affiliateurl[und][0][value]	  	= trim( $jsonArray->header->AffiliateURL );
+	$node->body[und][0][value]			  	= trim( $jsonArray->header->MetaDescription );
+	///$node->metatag[und][0]['data']			= trim( $jsonArray->header->MetaDescription );
+	$node->field_best_coupon_description[und][0][value]	= trim( $jsonArray->header->bestCouponResult->CouponDesc );
+	
+	$node->field_best_coupon_status[und][0][value]	  	= trim( $jsonArray->header->CouponResult );
+	//$node->field_product_popularity[und][0][value]	= ( $jsonArray->header->Popularity )?$jsonArray->header->Popularity:0;
+	$node->field_product_popularity[und][0][value]	  	= $jsonArray->header->Popularity;
+	
+	///if($jsonArray->header->CouponResult == 1){
+	  $node->field_best_coupon_couponcode[und][0][value] 	= trim( $jsonArray->header->bestCouponResult->CouponCode );
+	  $node->field_best_coupon_saving[und][0][value]	= ( $jsonArray->header->bestCouponResult->Saving)?$jsonArray->header->bestCouponResult->Saving:0;
+	  $node->field_best_coupon_netpriceafters[und][0][value]= ( $jsonArray->header->bestCouponResult->NetPriceAfterSaving)?$jsonArray->header->bestCouponResult->NetPriceAfterSaving:0;
+	  $node->field_best_coupon_url[und][0][value]		= trim( $jsonArray->header->bestCouponResult->url );
+	//}
+	//mail('sanjay.kumar1@mail.vinove.com','jsonArray','jsonArray--->'.print_r($jsonArray->data,1));
+	$node->field_best_coupon_info[und][0][value]		= serialize( $jsonArray->data );
+	
+	//$node->	field_page_url[und][0][value]		= $Pageurl;
+	
+	/*$ImgPath = $jsonArray->header->ProductImage;
+	$ImgFile = pathinfo($ImgPath);         // $file is set to "index.php"
+	
+	$image = file_get_contents($ImgPath); // string
+	$file = file_save_data($image, 'public://'.$ImgFile['basename'] ,FILE_EXISTS_REPLACE);
+	$node->field_product_images[LANGUAGE_NONE]['0']['fid'] = $file->fid;*/
+	
+	node_save($node);
+	global $base_url;
+	
+	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
+	
+	$node2 = node_load( $node->nid );
+	$node2->field_page_url[und][0][value] = $urlAlias;
+	node_save($node2);
+	
+	if( !empty($node->nid) ){
+	  $response = json_encode( array('ResponseCode' => '1', 'Response' => 'Node added.', "Page_URL" => "$urlAlias") );
+	  echo $response;
+	}else{
+	  $response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
+	  echo $response;
+	}
+	
+      }elseif($record->expression == 1){
+	//echo 'update';
+	
+	$expDate = explode('=' , $jsonArray->header->LastCheckedTime);
+	///print_r($expDate );
+	
+	//check product exist or not
+	$query = db_select('field_data_field_base_url', 'n')
+		     ->fields('n', array('entity_id','field_base_url_value') )
+		     ->condition('n.field_base_url_value', $baseUrl, '=');		   
+	$result = $query->execute();
+	$record = $result->fetch();
+	//print_r($record);
+	$queryLastUpdate = db_select('field_data_field_lastcheckedtime', 'n')
+		     ->fields('n', array('field_lastcheckedtime_value') )
+		     ->condition('n.entity_id ', $record->entity_id , '=');		   
+	$resultLastUpdate = $queryLastUpdate->execute();
+	$recordLastUpdate = $resultLastUpdate->fetch();
+	
+	$lastUpdatedDate = $recordLastUpdate->field_lastcheckedtime_value;
+	
+	//last update ($expDate) shoud be different ($lastUpdatedDate)
+	
+	//print_r( date('d-m-Y', '1383111423'));
+	//echo '===============<br>';
+	//print_r( date('d-m-Y', $lastUpdatedDate));
+	
+	//die;
+	if( $expDate[0] != $lastUpdatedDate){
+	  $brand_name = $jsonArray->header->ProductBrand;
+	  //$brand_name = 'nike';
+	  $vocabulary_name = 'brand';
+	  $BrandId = coupons_get_term_from_name($brand_name, $vocabulary_name);
+	  if($BrandId == 0){
+	    $BrandId = coupons_create_taxonomy_term($brand_name, 4);
+	  }
+	  
+	  $node = node_load($record->entity_id);
+	  
+	  //$node->field_category['und'][0]['tid']			= trim( $jsonArray->header->Category );;
+	  
+	  $node->field_category['und'][0]['tid']			= 1;
+	  
+	  $node->title    				  	= $proTitle;
+	  $node->field_description[und][0][value]	 	  	= trim( $jsonArray->header->ProductDescription );
+	  $node->field_product_price[und][0][value]	  	= trim( $jsonArray->header->ListingProductPrice );
+	  //$node->field_product_price[und][0][value]	  	= 10;
+	  $node->field_retailer[und][0]['tid'] 		  	= ($jsonArray->header->Retailer > 0)?$jsonArray->header->Retailer:1;
+	  //$node->field_retailer[und][0]['tid'] 		  	= 1;
+	  $node->field_base_url[und][0][value] 		  	= trim( $jsonArray->header->BaseUrl);
+	  $node->field_retailer_product_name[und][0][value] 	= trim( $jsonArray->header->ProductName );
+	  $node->field_product_image[und][0][value] 	  	= trim( $jsonArray->header->ProductImage );
+	  $node->field_brand[und][0]['tid'] 		  	= trim($jsonArray->header->ProductBrand);
+	  $node->field_brand[und][0]['tid'] 		  	= $BrandId;
+	  
+	  $node->field_mrpproductprice[und][0][value]	  	= ($jsonArray->header->MRPProductPrice!='')?$jsonArray->header->MRPProductPrice:0 ;
+	  //$node->field_mrpproductprice[und][0][value]	  	= 0 ;
+	  
+	  $node->field_lastcheckedtime[und][0][value]	  	= $expDate[0];
+	  $node->field_affiliateurl[und][0][value]	  	= trim( $jsonArray->header->AffiliateURL );
+	  $node->body[und][0][value]			  	= trim( $jsonArray->header->MetaDescription );
+	  ///$node->metatag[und][0]['data']			 = trim( $jsonArray->header->MetaDescription );
+	  $node->field_best_coupon_description[und][0][value]	  	= trim( $jsonArray->header->bestCouponResult->CouponDesc );
+	  
+	  $node->field_best_coupon_status[und][0][value]	  	= trim( $jsonArray->header->CouponResult );
+	  $node->field_product_popularity[und][0][value]	  	= trim( $jsonArray->header->Popularity );
+	  
+	  if($jsonArray->header->CouponResult == 1){
+	    $node->field_best_coupon_couponcode[und][0][value] 	= trim( $jsonArray->header->bestCouponResult->CouponCode );
+	    $node->field_best_coupon_saving[und][0][value]	  	= trim( $jsonArray->header->bestCouponResult->Saving);
+	    $node->field_best_coupon_netpriceafters[und][0][value]	= trim( $jsonArray->header->bestCouponResult->NetPriceAfterSaving);
+	    $node->field_best_coupon_url[und][0][value]		= trim( $jsonArray->header->bestCouponResult->url );
+	  }	
+	  $node->field_best_coupon_info[und][0][value]		= serialize( $jsonArray->data );
+	  //print_r($node);
+	  //die;
+	  node_save($node);
+	}
+      }	
+    }  
+    /*end here*/   
+    
+  }
+
   $output = '';
-#  print_r($jsonArray);exit;
-  if(isset($jsonArray)) {
-    $title = t('<span>Results for: </span>  '.urldecode($raw_url));
+  
+  /*url replaced by sanjay*/
+  if (isset($jsonArray->data[0]->ErrorCode) && ($jsonArray->data[0]->ErrorCode == "1")) {
+    return '<span class="error">Sorry! This retailer is not covered yet. Please view <a href="http://www.couponvoodoo.com/Retailers-Covered" target="_blank">list</a> of retailers that we cover.</span>';
+  }
+  if (isset($jsonArray->data[0]->ErrorCode) && ($jsonArray->data[0]->ErrorCode == "2")) {
+    return '<span class="error">CouponVoodoo only works with the product page url e.g. http://www.jabong.com/giordano-Victory-Black-P9275-Black-Black-Analog-Watch-168021.html.</span>';
+  }
+
+  if (isset($jsonArray->data[0]->ErrorCode) && ($jsonArray->data[0]->ErrorCode == "3")) {
+    return '<span class="error">' . $jsonArray->data[0]->Description . '</span>';
+  }
+  /*end url replaced by sanjay*/
+
+  $is_success = true;
+  
+ # print_r($jsonArray);exit;
+  if (isset($jsonArray)) {
+    global $base_root;
+    $title = t('<span>Results for: </span>  ' . urldecode($raw_url));
     $items = array();
+    
+    //display product info in case 'use = 1'
+    if( $jsonArray->header->Use == 1 ){
+      $ProUrl = db_select('field_data_field_base_url', 'n')
+		     ->fields('n', array('entity_id') )
+		     ->condition('n.field_base_url_value', $baseUrl, '=');		   
+      $RProUrl = $ProUrl->execute();
+      $FRProUrl = $RProUrl->fetch();
+      $nid = $FRProUrl->entity_id;
+      $productURL =  $base_root.base_path().drupal_get_path_alias('node/'.$nid);
+      //die;
+      //$FrameId = views_embed_view('product_info', 'page', 68);
+      //print_r($FrameId);
+      //$items[] = $FrameId;
+      drupal_goto($productURL);
+    }
+    
     $type = 'ul';
     $attributes = array(
         'id' => 'coupon_search_listing',
         'class' => 'custom-coupon_search_listing',
     );
     $i = 0;
-    $coupons = array();
-    foreach ($jsonArray as $key => $value) {
+    $coupons = array();  
+    
+    foreach ($jsonArray->data as $key => $value) {	//url replaced by sanjay
       if (is_object($value)) {
+        if ($value->Successful =="1") {
+          $is_success = false;
+        }
         $i++;
-        $value->counter=$i;
+        $value->counter = $i;
         $items[] = array(
-            'data' => theme('coupons_result_page',array('row'=>$value)),
-            'id' => 'search_listing_li_row_'.$i,
+            'data' => theme('coupons_result_page', array('row' => $value)),
+            'id' => 'search_listing_li_row_' . $i,
             'class' => array('search_listing_row_li'),
         );
-        $coupons['c_'.$i] = $value->couponCode;
+        $coupons['c_' . $i] = $value->couponCode;
+/* Mixpanel start*/
+        $savings['c_' . $i] = $value->Saving;
+/* Mixpanel end*/
       }
     }
     # print_r($jsonArray);exit;
-    drupal_add_js(array('coupons' => $coupons), 'setting');
-    drupal_add_js("jQuery(document).ready(function($){
+//    drupal_add_js(array('coupons' => $coupons), 'setting');
+    /* mixpanel */
+drupal_add_js(array('coupons' => $coupons, 'savings' => $savings, 'fullProdUrl' => $fullProdUrl, 'prodUrl' => $prodUrl, 'retailerDomain' => $retailerDomain, 'brand' => $brand), 'setting');
+    /* mixpanel */
+drupal_add_js("jQuery(document).ready(function($){
           $('.unlock_coupon').click(function(){
               var coupon_code = '';
+              
               var c = jQuery(this).attr('rel');
               for (var item in Drupal.settings.coupons) {
                 if (item == c){
                   coupon_code = Drupal.settings.coupons[item];
+		  /*mixpanel*/
+		  saving = Drupal.settings.savings[item];
+		  brand =  Drupal.settings.brand;
+		  fullProdUrl =  Drupal.settings.fullProdUrl;
+		  prodUrl =  Drupal.settings.prodUrl;
+		  retailerDomain =  Drupal.settings.retailerDomain;
+		  /*mixpanel*/
                 }
               }
 
@@ -256,16 +693,23 @@ function coupons_result($raw_url) {
               var url = $(this).attr('href')+'&c='+coupon_code;
               $(this).attr('href',url);
               window.open($(this).attr('href'));
-              return true;
+/* Mixpanel integration Start*/
+mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
+
+/* Mixpanel integration Close*/
+
+
+             return true;
           });
         });", array('type' => 'inline', 'scope' => 'footer'));
 
 
-    drupal_add_js(drupal_get_path('theme', 'basic') .'/js/jquery.zclip.min.js');
-    $path = $base_url. "/". drupal_get_path('theme', 'basic')."/js/ZeroClipboard1.swf";
+    drupal_add_js(drupal_get_path('theme', 'basic') . '/js/jquery.zclip.min.js');
+    drupal_add_js(drupal_get_path('module', 'coupons') . '/coupons.js');
+    $path = $base_url . "/" . drupal_get_path('theme', 'basic') . "/js/ZeroClipboard1.swf";
     drupal_add_js("jQuery(window).load(function($){
                      jQuery('.unlock_coupon').zclip({
-                            path:'".$path."',
+                            path:'" . $path . "',
                             copy: function() {
                                   var c = jQuery(this).attr('rel');
                                   for (var item in Drupal.settings.coupons) {
@@ -278,18 +722,21 @@ function coupons_result($raw_url) {
                 });", array('type' => 'inline', 'scope' => 'footer'));
 
 
-    return theme_item_list(array('items' => $items, 'title' => $title, 'type' => $type, 'attributes' => $attributes));
-  }
-  else {
+    if ($is_success) {
+      $error_msg = '<div class="messages error">
+                Sorry! We tried our best but no coupons work for your product. Here is a list of coupons we tried, please read the response field for each coupon, you maybe able to avail discounts by increasing your cart value or selecting anther product:
+          </div>';
+    }
+    return theme_item_list(array('items' => $items, 'title' => $title.$error_msg, 'type' => $type, 'attributes' => $attributes));
+  } else {
     return '<span class="error">Bummer! Something went wrong. Please try another product.</span>';
   }
 }
 
-
-
 /**
  * Implementation of hook_theme
  */
+
 /**
  * Implements hook_block_info().
  */
@@ -307,11 +754,494 @@ function coupons_block_info() {
  */
 function coupons_block_view($delta = '') {
   $block = array();
-  switch($delta) {
+  switch ($delta) {
     case 'coupons_block_form':
-      $block['content'] = drupal_get_form('coupons_finder_form',false);
+      $block['content'] = drupal_get_form('coupons_finder_form', false);
       break;
-
   }
   return $block;
 }
+
+function coupons_create_taxonomy_term($name, $vid) {
+  $term = new stdClass();
+  $term->name = $name;
+  $term->vid = $vid;
+  taxonomy_term_save($term);
+  return $term->tid;
+}
+
+/**
+* Helper function to dynamically get the tid from the term_name
+*
+* @param $term_name Term name
+* @param $vocabulary_name Name of the vocabulary to search the term in
+*
+* @return Term id of the found term or else FALSE
+*/
+function coupons_get_term_from_name($term_name, $vocabulary_name) {
+  if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name)) {
+    $tree = taxonomy_get_tree($vocabulary->vid);
+    foreach ($tree as $term) {
+      if ($term->name == $term_name) {
+       return $term->tid;
+       //return 1;
+      }
+    }
+  }
+
+  //return FALSE;
+  return 0;
+}
+
+function coupons_copy_best_coupon($nid){
+
+  $baseUrl = db_select('field_data_field_base_url', 'b')
+		     ->fields('b', array('field_base_url_value') )
+		     ->condition('b.entity_id', $nid, '=');		   
+  $RbaseUrl = $baseUrl->execute();
+  $FRbaseUrl = $RbaseUrl->fetch();
+  
+  $raw_url = $FRbaseUrl->field_base_url_value;
+  /*******************************************************************/  
+   
+  $cid = urldecode($raw_url);
+  
+  /* Mixpanel start*/
+  $fullProdUrl = $cid;
+
+  if(strpos($fullProdUrl,'?') > 1) {
+    $prodUrl = reset(explode("?",$fullProdUrl));}
+  else
+    $prodUrl = $fullProdUrl;
+
+  $retailerDomain = get_domain($fullProdUrl);
+  $brand = reset(explode(".",$retailerDomain));
+  /*Mixpanel End */
+  
+  /******************************************************************/ 
+  $node = node_load($nid);
+  
+  $BestCouponCodeStatus = 1;
+  $bestSaving = $node->field_best_coupon_saving[und][0]['value'];
+  $bestCouponCodeStatus = $node->field_best_coupon_status[und][0]['value'];  //successful  
+  $bestCouponCode = $node->field_best_coupon_couponcode[und][0]['value'];
+  $bestCouponDescription = $node->field_best_coupon_description[und][0]['value'];
+  $bestCouponDomain = $retailerDomain;
+  $bestCouponUrl = $node->field_best_coupon_url[und][0]['value'];
+  
+  $bestCouponValue = (object) array('BestCoupon' => $BestCouponCodeStatus,
+			  'Saving' => $bestSaving,
+			  'Successful' => $bestCouponCodeStatus,
+			  'couponCode' => $bestCouponCode,
+			  'description' => $bestCouponDescription,
+			  'domain' => $bestCouponDomain,
+			  'url' => $bestCouponUrl
+			  );
+  
+    global $base_root;
+    $items = array();
+    
+    $type = 'ul';
+    $attributes = array(
+        'id' => 'coupon_search_listing',
+        'class' => 'custom-coupon_search_listing',
+    );
+    $i = 0;
+    $coupons = array();  
+      if (is_object($bestCouponValue)) {
+        if ($bestCouponCodeStatus =="1") {
+          $is_success = false;
+        }
+        $i++;
+        $bestCouponValue->counter = $i;
+	
+        $items[] = array(
+            'data' => theme('coupons_bestcouons', array('row' => $bestCouponValue)),
+            'id' => 'search_listing_li_row_' . $i,
+            'class' => array('search_listing_row_li'),
+        );
+        $coupons['best_' . $i] = $bestCouponValue->couponCode;
+	/* Mixpanel start*/
+        $savings['best_' . $i] = $bestCouponValue->Saving;
+	/* Mixpanel end*/
+      }
+
+  //drupal_add_js(drupal_get_path('theme', 'basic') . '/js/jquery.clipboard.js');
+  drupal_add_js(drupal_get_path('module', 'coupons') . '/coupons.js');
+  $path = $base_url . "/" . drupal_get_path('theme', 'basic') . "/js/jquery.clipboard.swf";
+  
+
+    /* mixpanel */
+drupal_add_js(array('coupons' => $coupons, 'savings' => $savings, 'fullProdUrl' => $fullProdUrl, 'prodUrl' => $prodUrl, 'retailerDomain' => $retailerDomain, 'brand' => $brand), 'setting');
+    /* mixpanel */
+drupal_add_js("jQuery(document).ready(function($){
+          $('.unlock_best_coupon').click(function(){
+	      //alert('test test');
+	      
+	      var coupon_code = '';
+              var c = jQuery(this).attr('rel');
+	      
+	      coupon_code = Drupal.settings.coupons.best_1;
+	      /*mixpanel*/
+	      saving = Drupal.settings.savings;
+	      brand =  Drupal.settings.brand;
+	      fullProdUrl =  Drupal.settings.fullProdUrl;
+	      prodUrl =  Drupal.settings.prodUrl;
+	      retailerDomain =  Drupal.settings.retailerDomain;
+	      /*mixpanel*/
+
+              $(this).html(coupon_code);
+              $(this).addClass('copied_coupon')
+              var url = $(this).attr('href')+'&c='+coupon_code;
+	      
+              $(this).attr('href',url);
+              window.open($(this).attr('href'));
+	    
+	      /* Mixpanel integration Start*/
+	      mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
+	      
+	      /* Mixpanel integration Close*/
+
+             return true;
+          });
+        });", array('type' => 'inline', 'scope' => 'footer'));
+
+
+    
+    drupal_add_js("jQuery(window).load(function($){
+                      jQuery('.unlock_best_coupon').clipboard({
+                            path:'" . $path . "',
+                            copy: function() {
+                                return Drupal.settings.coupons.best_1;
+                              }
+                      });
+                });", array('type' => 'inline', 'scope' => 'footer'));
+
+    if ($is_success) {
+      $error_msg = '<div class="messages error">
+                Sorry! We tried our best but no coupons work for your product. Here is a list of coupons we tried, please read the response field for each coupon, you maybe able to avail discounts by increasing your cart value or selecting anther product:
+          </div>';
+    }
+    return theme_item_list(array('items' => $items, 'title' => $title.$error_msg, 'type' => $type, 'attributes' => $attributes));
+  /*} else {
+    return '<span class="error">Bummer! Something went wrong. Please try another product.</span>';
+  } */ 
+}
+
+
+function coupons_copy_coupon($nid){
+  
+  $ProUrl = db_select('field_revision_field_best_coupon_info', 'n')
+		     ->fields('n', array('field_best_coupon_info_value') )
+		     ->condition('n.entity_id', $nid, '=');		   
+  $RProUrl = $ProUrl->execute();
+  $FRProUrl = $RProUrl->fetch();
+  
+  /*******************************************************************/
+   
+  $baseUrl = db_select('field_data_field_base_url', 'b')
+		     ->fields('b', array('field_base_url_value') )
+		     ->condition('b.entity_id', $nid, '=');		   
+  $RbaseUrl = $baseUrl->execute();
+  $FRbaseUrl = $RbaseUrl->fetch();
+  
+  $raw_url = $FRbaseUrl->field_base_url_value;
+  $cid = urldecode($raw_url);
+  
+/* Mixpanel start*/
+  $fullProdUrl = $cid;
+
+  if(strpos($fullProdUrl,'?') > 1) {
+    $prodUrl = reset(explode("?",$fullProdUrl));}
+  else
+    $prodUrl = $fullProdUrl;
+
+  $retailerDomain = get_domain($fullProdUrl);
+  $brand = reset(explode(".",$retailerDomain));
+/*Mixpanel End */
+  
+  /******************************************************************/
+  
+  //$jsonArray = unserialize(($FRProUrl->field_best_coupon_info_value));
+  $jsonArray = unserialize(($FRProUrl->field_best_coupon_info_value));
+  if (isset($jsonArray)) {
+    global $base_root;
+    $items = array();
+    
+    $type = 'ul';
+    $attributes = array(
+        'id' => 'coupon_search_listing',
+        'class' => 'custom-coupon_search_listing',
+    );
+    $i = 0;
+    $coupons = array();  
+    foreach ($jsonArray as $key => $value) {	//url replaced by sanjay
+      if (is_object($value)) {
+        if ($value->Successful =="1") {
+          $is_success = false;
+        }
+        $i++;
+        $value->counter = $i;
+	
+        $items[] = array(
+            'data' => theme('coupons_result_page', array('row' => $value)),
+            'id' => 'search_listing_li_row_' . $i,
+            'class' => array('search_listing_row_li'),
+        );
+        $coupons['c_' . $i] = $value->couponCode;
+	/* Mixpanel start*/
+        $savings['c_' . $i] = $value->Saving;
+	/* Mixpanel end*/
+      }
+    }
+    /* mixpanel */
+drupal_add_js(array('coupons' => $coupons, 'savings' => $savings, 'fullProdUrl' => $fullProdUrl, 'prodUrl' => $prodUrl, 'retailerDomain' => $retailerDomain, 'brand' => $brand), 'setting');
+    /* mixpanel */
+drupal_add_js("jQuery(document).ready(function($){
+          $('.unlock_coupon').click(function(){
+              var coupon_code = '';
+              
+              var c = jQuery(this).attr('rel');
+	      
+              for (var item in Drupal.settings.coupons) {
+                if (item == c){
+                  coupon_code = Drupal.settings.coupons[item];
+	      /*mixpanel*/
+	      saving = Drupal.settings.savings[item];
+	      brand =  Drupal.settings.brand;
+	      fullProdUrl =  Drupal.settings.fullProdUrl;
+	      prodUrl =  Drupal.settings.prodUrl;
+	      retailerDomain =  Drupal.settings.retailerDomain;
+	      /*mixpanel*/
+
+                }
+              }
+
+              $(this).html(coupon_code);
+              $(this).addClass('copied_coupon')
+              var url = $(this).attr('href')+'&c='+coupon_code;
+	      
+              $(this).attr('href',url);
+              window.open($(this).attr('href'));
+	      /* Mixpanel integration Start*/
+	      mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
+	      
+	      /* Mixpanel integration Close*/
+             return true;
+          });
+        });", array('type' => 'inline', 'scope' => 'footer'));
+
+
+    drupal_add_js(drupal_get_path('theme', 'basic') . '/js/jquery.zclip.min.js');
+    drupal_add_js(drupal_get_path('module', 'coupons') . '/coupons.js');
+    $path = $base_url . "/" . drupal_get_path('theme', 'basic') . "/js/ZeroClipboard1.swf";
+    drupal_add_js("jQuery(window).load(function($){
+                     jQuery('.unlock_coupon').zclip({
+                            path:'" . $path . "',
+                            copy: function() {
+                                  var c = jQuery(this).attr('rel');
+                                  for (var item in Drupal.settings.coupons) {
+                                    if (item == c){
+                                      return Drupal.settings.coupons[item];
+                                    }
+                                  }
+                              }
+                       });
+                });", array('type' => 'inline', 'scope' => 'footer'));
+
+
+    if ($is_success) {
+      $error_msg = '<div class="messages error">
+                Sorry! We tried our best but no coupons work for your product. Here is a list of coupons we tried, please read the response field for each coupon, you maybe able to avail discounts by increasing your cart value or selecting anther product:
+          </div>';
+    }
+    return theme_item_list(array('items' => $items, 'title' => $title.$error_msg, 'type' => $type, 'attributes' => $attributes));
+  } else {
+    return '<span class="error">Bummer! Something went wrong. Please try another product.</span>';
+  }  
+}
+
+function coupons_copy_coupon_taxonomy($nid, $taxoType){
+  
+  if($taxoType == 4){
+    $taxoType = 'brand';
+  }elseif($taxoType == 3){
+    $taxoType = 'cate';
+  }elseif($taxoType == 2){
+    $taxoType = 'ret';
+  }
+  
+  $baseUrl = db_select('field_data_field_base_url', 'b')
+		     ->fields('b', array('field_base_url_value') )
+		     ->condition('b.entity_id', $nid, '=');		   
+  $RbaseUrl = $baseUrl->execute();
+  $FRbaseUrl = $RbaseUrl->fetch();
+  
+  $raw_url = $FRbaseUrl->field_base_url_value;
+  /*******************************************************************/  
+   
+  $cid = urldecode($raw_url);
+  
+/* Mixpanel start*/
+  $fullProdUrl = $cid;
+
+  if(strpos($fullProdUrl,'?') > 1) {
+    $prodUrl = reset(explode("?",$fullProdUrl));}
+  else
+    $prodUrl = $fullProdUrl;
+
+  $retailerDomain = get_domain($fullProdUrl);
+  $brand = reset(explode(".",$retailerDomain));
+/*Mixpanel End */
+  
+  /******************************************************************/ 
+    
+  $node = node_load($nid);
+  
+  $BestCouponCodeStatus = 1;
+  $bestSaving = $node->field_best_coupon_saving[und][0]['value'];
+  $bestCouponCodeStatus = $node->field_best_coupon_status[und][0]['value'];  //successful  
+  $bestCouponCode = $node->field_best_coupon_couponcode[und][0]['value'];
+  $bestCouponDescription = $node->field_best_coupon_description[und][0]['value'];
+  $bestCouponDomain = $retailerDomain;
+  $bestCouponUrl = $node->field_best_coupon_url[und][0]['value'];
+  
+  $bestCouponValue = (object) array('BestCoupon' => $BestCouponCodeStatus,
+			  'Saving' => $bestSaving,
+			  'Successful' => $bestCouponCodeStatus,
+			  'couponCode' => $bestCouponCode,
+			  'description' => $bestCouponDescription,
+			  'domain' => $bestCouponDomain,
+			  'url' => $bestCouponUrl
+			  );
+  
+  
+    global $base_root;
+    $items = array();
+    
+    $type = 'ul';
+    $attributes = array(
+        'id' => 'coupon_search_listing',
+        'class' => 'custom-coupon_search_listing',
+    );
+    $coupons = array();  
+
+      if (is_object($bestCouponValue)) {
+        if ($bestCouponCodeStatus =="1") {
+          $is_success = false;
+        }
+	$bestCouponValue->counter = $nid;
+	
+        $items[] = array(
+            'data' => theme('coupons_taxonomy', array('row' => $bestCouponValue)),
+            //'id' => 'search_listing_li_row_' . $i,
+	    'id' => 'search_listing_li_row_' . $nid,
+	    
+            'class' => array('search_listing_row_li'),
+        );
+	$coupons['best_' . $nid] = $bestCouponValue->couponCode;
+      /* Mixpanel start*/
+	$savings['best_' . $nid] = $bestCouponValue->Saving;
+      /* Mixpanel end*/
+      }
+
+    /* mixpanel */
+drupal_add_js(array('coupons' => $coupons, 'savings' => $savings, 'fullProdUrl' => $fullProdUrl, 'prodUrl' => $prodUrl, 'retailerDomain' => $retailerDomain, 'brand' => $brand), 'setting');
+    /* mixpanel */
+drupal_add_js("jQuery(document).ready(function($){
+          $('.unlock_coupon_$nid').click(function(){
+	 
+	      var coupon_code = '';
+              var c = jQuery(this).attr('rel');	      
+	      coupon_code = Drupal.settings.coupons.best_$nid;
+	      
+	      /*mixpanel*/
+	      saving = Drupal.settings.savings.best_$nid;
+	      brand =  Drupal.settings.brand;
+	      fullProdUrl =  Drupal.settings.fullProdUrl;
+	      prodUrl =  Drupal.settings.prodUrl;
+	      retailerDomain =  Drupal.settings.retailerDomain;
+	      /*mixpanel*/
+
+              $(this).html(coupon_code);
+              $(this).addClass('copied_coupon')
+              var url = $(this).attr('href')+'&c='+coupon_code;
+	      
+              $(this).attr('href',url);
+              window.open($(this).attr('href'));
+	    
+	      /* Mixpanel integration Start*/
+	      mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
+	      
+	      /* Mixpanel integration Close*/
+
+             return true;
+          });
+        });", array('type' => 'inline', 'scope' => 'footer'));
+
+
+    drupal_add_js(drupal_get_path('theme', 'basic') . '/js/jquery.zclip.min.js');
+    drupal_add_js(drupal_get_path('module', 'coupons') . '/coupons.js');
+    $path = $base_url . "/" . drupal_get_path('theme', 'basic') . "/js/ZeroClipboard1.swf";
+    drupal_add_js("jQuery(window).load(function($){
+                     jQuery('.unlock_coupon').zclip({
+                            path:'" . $path . "',
+                            copy: function() {
+                                var c = jQuery(this).attr('rel');
+				return Drupal.settings.coupons.best_$nid;
+                              }
+                       });
+                });", array('type' => 'inline', 'scope' => 'footer'));
+
+
+    if ($is_success) {
+      $error_msg = '<div class="messages error">
+                Sorry! We tried our best but no coupons work for your product. Here is a list of coupons we tried, please read the response field for each coupon, you maybe able to avail discounts by increasing your cart value or selecting anther product:
+          </div>';
+    }
+    //mail('sanjay.kumar1@mail.vinove.com', 'items', 'items-->'.print_r($items,1));
+    return theme_item_list(array('items' => $items, 'title' => $title.$error_msg, 'type' => $type, 'attributes' => $attributes));
+  /*} else {
+    return '<span class="error">Bummer! Something went wrong. Please try another product.</span>';
+  } */ 
+}
+
+
+
+//function coupons_views_query_alter(&$view, &$query) {
+function coupons_views_pre_build(&$view) {
+  
+  /*if($view->current_display == 'block_3' &&  $view->name == 'apache_retailer_products' ) {
+    $nid = arg(1);
+    $node = node_load($nid);
+  //  echo '===>'.$node->field_brand[und][0]['tid'];
+    $view->display_handler->handlers['filter']['im_field_brand']->value = $node->field_brand[und][0]['tid'];
+  }*/
+  
+  if($view->current_display == 'block' &&  $view->name == 'apache_retailer_products' ) {
+    $nid = arg(1);
+    $node = node_load($nid);
+    $view->display_handler->handlers['filter']['im_field_retailer']->value = $node->field_retailer[und][0]['tid'];
+  }
+}
+
+
+function coupons_get_taxonomy_url($tid, $block = '') {
+  if($block == 'block'){
+    $termPath = taxonomy_term_load($tid); // load term object
+    $term_uri = taxonomy_term_uri($termPath); // get array with path
+    $term_title = taxonomy_term_title($termPath);
+    $term_path = $term_uri['path'];
+    $link = l($term_title,$term_path);
+  }else{
+    $termPath = taxonomy_term_load($tid); // load term object
+    $term_uri = taxonomy_term_uri($termPath); // get array with path
+    $term_title = substr( taxonomy_term_title($termPath) , 0, 30);
+    $term_path = $term_uri['path'];
+    $link = l($term_title,$term_path);
+  }
+  return $link;
+}
+
+
+?>
