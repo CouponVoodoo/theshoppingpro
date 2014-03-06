@@ -356,10 +356,6 @@ body.domain-products-cuponation-in #header{background: #51a7da;}
   float: left;
 }
 
-body.domain-cuponation .front #coupons-finder-form .submit {width: 30%;}
-body.domain-cuponation-couponvoodoo-com .front #coupons-finder-form .submit {width: 30%;}
-body.domain-products-cuponation-in .front #coupons-finder-form .submit {width: 30%;}
-
 .front #coupons-finder-form .view_video{
   display: inline-block;
   float: right;
