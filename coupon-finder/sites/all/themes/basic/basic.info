@@ -40,7 +40,6 @@ stylesheets[print][] = css/print.css
 scripts[] = js/modernizr.js
 ; scripts[] = js/modal.js
 scripts[] = js/custom.js
-scripts[] = js/jquery.multiselect.min.js
 
 settings[basic_tabs] = 1
 settings[basic_breadcrumb] = 1
