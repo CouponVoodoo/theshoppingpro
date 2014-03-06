@@ -291,7 +291,7 @@ body.domain-products-cuponation-in #header{background: #51a7da;}
 
 }
 .front #coupons-finder-form .form-item-url{
-  float:left;width:88%;
+  float:left;
 }
 .front #coupons-finder-form .name-and-slogan{ color: #FF9900;
                                               font-family: Heartbreaker;
