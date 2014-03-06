@@ -1118,7 +1118,7 @@ img{max-width: 100%;}
 .page-content-retailers-covered #main, 
 .page-contact #main{padding: 10px;}
 #header{padding-bottom: 5px;}
-#header #block-nice_menus-1 #nice-menu-1 > li > a{padding-top: 3px; padding-bottom:  3px;}
+#header #block-nice_menus-1 #nice-menu-1 > li > a{}
 
 
 @media all and (max-width: 980px) and (min-width: 700px){
