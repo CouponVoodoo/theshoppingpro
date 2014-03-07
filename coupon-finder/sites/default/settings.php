@@ -215,7 +215,7 @@ $databases = array (
   array (
     'default' => 
     array (
-      'database' => 'coupon_finder',
+      'database' => 'cv1',
       'username' => 'root',
       'password' => '',
       'host' => 'localhost',
@@ -231,8 +231,8 @@ $databases = array (
  *
  * If you are updating your Drupal installation using the update.php script but
  * are not logged in using either an account with the "Administer software
- * updates" permission or the site maintenance account (the account that was
- * created during installation), you will need to modify the access check
+ * updates" permission or the site maintenance account (the account that was 
+* created during installation), you will need to modify the access check
  * statement below. Change the FALSE to a TRUE to disable the access check.
  * After finishing the upgrade, be sure to open this file again and change the
  * TRUE back to a FALSE!
@@ -565,3 +565,7 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  * Remove the leading hash signs to disable.
  */
 # $conf['allow_authorize_operations'] = FALSE;
+/**
+ * Add the domain module setup routine.
+ */
+include DRUPAL_ROOT . '/sites/all/modules/contrib/domain/settings.inc';
