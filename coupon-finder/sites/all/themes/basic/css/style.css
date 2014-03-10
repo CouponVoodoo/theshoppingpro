@@ -1406,8 +1406,13 @@ display:block ; float:left ; width:100px ; min-height:180px ;
 #block-sitemap-block-sitemap-block {
         width: 1000px;
     }
-
-/*
-#block-sitemap_block-sitemap_block { overflow:hidden; }
-#block-sitemap_block-sitemap_block ul { display:block ; float:left ; width:100px ; min-height:180px ;}
-*/
+/*==========footer menu css added by ashish===========*/
+    #block-menu_block-2 .menu-block-wrapper{padding: 20px; background-color: #f2f2f2; position: relative; z-index: -1;}
+    #block-menu_block-2 ul li.expanded{display: inline-block; vertical-align: top;}
+    #block-menu_block-2 ul li.expanded > a{color: #666;}
+    #block-menu_block-2 ul li.expanded span.nolink{color: #666; display: block; border-bottom: 1px solid #999; padding-bottom: 3px; margin-bottom: 3px;}
+    #block-menu_block-2 ul li ul li, 
+    #block-menu_block-2 ul li.leaf{margin: 0; list-style-type: none; list-style-image: none;}
+    #block-menu_block-2 ul li.leaf{margin: 0 0 0 0.5em;}
+    #block-menu_block-2 > ul > li > ul > li > ul > li > a{color: #FF9900;}
+/*=============End of css==============*/
