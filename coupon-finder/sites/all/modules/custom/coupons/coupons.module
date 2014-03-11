@@ -213,13 +213,14 @@ function coupons_redirect_interim_page() {
 		$nid_redirect = $_GET['nid'];
 		$node_redirect = node_load($nid_redirect);
 		$retailer_id_redirect = strip_tags($node_redirect->field_retailer['und']['0'][tid]);
-		if(empty($_GET['t'])){
+		if(empty($_GET['t'])){ // means this is not coming from coupon retailer page 
 			$baseurl_redirect = strip_tags($node_redirect->field_base_url['und']['0']['value']);
+			$coupon_status_track = strip_tags($node_redirect->field_best_coupon_status['und']['0']['value']);
 		} else {
-			if ($_GET['l']=='cpc'){
+			if ($_GET['l']=='cpc'){ // identifying click on categories on the retailer coupon page 
 				$baseurl_redirect = $_GET['s'];
 				$coupon_status_track = 2;			
-			} else {
+			} else { // identifying click on coupon / offer code  on the retailer coupon page 
 				$baseurl_redirect = strip_tags($node_redirect->field_baseurl_coupon['und']['0']['value']);
 				$coupon_status_track = 2;
 			}
@@ -367,6 +368,35 @@ function coupons_redirect_interim_page() {
 		}
 	}
 	
+	echo "\r\n - ". $uid2;
+	echo nl2br("\n");
+	echo "\r\n - ". $uid1;
+	echo nl2br("\n");
+	echo "\r\n - ". $url;
+	echo nl2br("\n");
+	echo "\r\n - ". $coupon_code;
+	echo nl2br("\n");
+	echo "\r\n - ". $loc;
+	echo nl2br("\n");
+	echo "\r\n - ". $_GET['p'];
+	echo nl2br("\n");
+	echo "\r\n - ". gmdate('Y-m-d\TH:i:s\Z', (time()-(5.5*3600)));
+	echo nl2br("\n");
+	echo "\r\n - ". gmdate('Y-m-d\TH:i:s\Z', strip_tags($node_redirect->field_lastcheckedtime['und']['0']['value']));
+	echo nl2br("\n");
+	echo "\r\n - ". $retailer_redirect->name.'('.$node_redirect->field_retailer['und']['0'][tid].')';
+	echo nl2br("\n");
+	echo "\r\n - ". $brand_track->name.'('.$node_redirect->field_brand['und']['0'][tid].')';
+	echo nl2br("\n");
+	echo "\r\n - ". $category_track->name.'('.$node_redirect->field_category['und']['0'][tid].')';
+	echo nl2br("\n");
+	echo "\r\n - ".$network_name_redirect;
+	echo nl2br("\n");
+	echo "\r\n - ".$coupon_status_track;
+	echo nl2br("\n");
+	echo "\r\n - ".$track_domain;
+	echo nl2br("\n");
+	
 	
 	
 	drupal_add_js(array('coupons' => array(			
@@ -385,6 +415,9 @@ function coupons_redirect_interim_page() {
 			'Coupon_Status' => $coupon_status_track,
 			'Domain' => $track_domain
 			)), array('type' => 'setting'));
+	
+	
+	
 	drupal_add_js("jQuery(window).load(function(){
                   setTimeout(function(){
                       window.location.replace(\"" . $url . "\");

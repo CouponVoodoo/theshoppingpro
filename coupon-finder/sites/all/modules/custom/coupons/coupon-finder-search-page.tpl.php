@@ -1,6 +1,7 @@
 <?php
 $url_path = rawurlencode(drupal_get_path_alias());
 global $base_url;
+$nid = arg(1);
 $net_price = $row->productPrice - $row->Saving;
 if ($row->Successful=="1") {
   $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u67_normal.png";
