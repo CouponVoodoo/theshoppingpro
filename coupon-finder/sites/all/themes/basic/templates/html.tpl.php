@@ -13,7 +13,6 @@
  
 <?php
  $current_domain = get_current_domain();
- echo $current_domain;
  If ($current_domain == 'cuponation'){
 ?>
 <script>
