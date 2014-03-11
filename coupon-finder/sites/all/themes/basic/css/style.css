@@ -1142,6 +1142,7 @@ img{max-width: 100%;}
     .find_coupon .whatisthis{top: 48px;}
     .one-sidebar.sidebar-first #content{max-width: 65%;}
     .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon{width: 220px;}
+	.zopim-chat {display: none;}
 }
 @media all and (max-width: 900px){
     .footer_logos table{width: 100%;}
@@ -1152,15 +1153,18 @@ img{max-width: 100%;}
     .shareaholic-canvas{position: static;}
     .shareaholic-canvas > div.shareaholic-share-buttons-container{text-align: center;}
     .shareaholic-share-buttons-container.vertical ul.shareaholic-share-buttons li.shareaholic-share-button{display: inline-block; vertical-align: top;}
+	.zopim-chat {display: none;}
 }
 @media all and (max-width: 745px){
     .whatisthis{top: 72px;}
     .main_menu{width: 100%; margin-left: 0;}
     #header #block-nice_menus-1{margin-top: 0;}
+	.zopim-chat {display: none;}
 }
 
 @media all and (max-width: 700px){
     .shareaholic-canvas{display: none;}
+	.zopim-chat {display: none;}
 	#block-coupons-coupons_taxonomy_description {display: none;}
 	#sidebar-second {display: none;}
 	.page-taxonomy-term #block-system-main .block-inner .content{text-align: center;}
