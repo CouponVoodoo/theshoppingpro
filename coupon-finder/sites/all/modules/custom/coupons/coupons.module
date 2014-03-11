@@ -368,37 +368,7 @@ function coupons_redirect_interim_page() {
 		}
 	}
 	
-	echo "\r\n - ". $uid2;
-	echo nl2br("\n");
-	echo "\r\n - ". $uid1;
-	echo nl2br("\n");
-	echo "\r\n - ". $url;
-	echo nl2br("\n");
-	echo "\r\n - ". $coupon_code;
-	echo nl2br("\n");
-	echo "\r\n - ". $loc;
-	echo nl2br("\n");
-	echo "\r\n - ". $_GET['p'];
-	echo nl2br("\n");
-	echo "\r\n - ". gmdate('Y-m-d\TH:i:s\Z', (time()-(5.5*3600)));
-	echo nl2br("\n");
-	echo "\r\n - ". gmdate('Y-m-d\TH:i:s\Z', strip_tags($node_redirect->field_lastcheckedtime['und']['0']['value']));
-	echo nl2br("\n");
-	echo "\r\n - ". $retailer_redirect->name.'('.$node_redirect->field_retailer['und']['0'][tid].')';
-	echo nl2br("\n");
-	echo "\r\n - ". $brand_track->name.'('.$node_redirect->field_brand['und']['0'][tid].')';
-	echo nl2br("\n");
-	echo "\r\n - ". $category_track->name.'('.$node_redirect->field_category['und']['0'][tid].')';
-	echo nl2br("\n");
-	echo "\r\n - ".$network_name_redirect;
-	echo nl2br("\n");
-	echo "\r\n - ".$coupon_status_track;
-	echo nl2br("\n");
-	echo "\r\n - ".$track_domain;
-	echo nl2br("\n");
-	
-	
-	
+
 	drupal_add_js(array('coupons' => array(			
 			'User_Guid' => $uid2,
 			'Event_Id' => $uid1,
