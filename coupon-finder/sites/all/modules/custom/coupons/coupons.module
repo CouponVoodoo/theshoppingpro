@@ -355,6 +355,20 @@ function coupons_redirect_interim_page() {
 	//}
 	$brand_track = taxonomy_term_load($node_redirect->field_brand['und']['0'][tid]);
 	$category_track = taxonomy_term_load($node_redirect->field_category['und']['0'][tid]);
+	
+	global $base_url;
+	if (stripos($base_url,'cuponation') != false){
+		$track_domain = 'cuponation';
+	} else {
+		if (stripos($base_url,'m.couponvoodoo') != false) {
+			$track_domain = 'm.couponvoodoo';
+		} else {
+			$track_domain = 'couponvoodoo';
+		}
+	}
+	
+	
+	
 	drupal_add_js(array('coupons' => array(			
 			'User_Guid' => $uid2,
 			'Event_Id' => $uid1,
@@ -368,7 +382,8 @@ function coupons_redirect_interim_page() {
 			'Brand' => $brand_track->name.'('.$node_redirect->field_brand['und']['0'][tid].')',
 			'Category' => $category_track->name.'('.$node_redirect->field_category['und']['0'][tid].')',
 			'Network' => $network_name_redirect,
-			'Coupon_Status' => $coupon_status_track
+			'Coupon_Status' => $coupon_status_track,
+			'Domain' => $track_domain
 			)), array('type' => 'setting'));
 	drupal_add_js("jQuery(window).load(function(){
                   setTimeout(function(){
@@ -386,7 +401,8 @@ function coupons_redirect_interim_page() {
 					'dimension10': Drupal.settings.coupons.Brand, 
 					'dimension11': Drupal.settings.coupons.Category, 
 					'dimension12': Drupal.settings.coupons.Network,
-					'dimension2': Drupal.settings.coupons.Coupon_Status
+					'dimension2': Drupal.settings.coupons.Coupon_Status,
+					'dimension13': Drupal.settings.coupons.Domain
 					});
 	        });", array('type' => 'inline', 'scope' => 'footer'));
 
