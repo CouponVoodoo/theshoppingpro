@@ -707,6 +707,21 @@ a.copied_coupon {
 
 }
 
+#block-fb_likebox-0.block-fb-likebox {
+  clear: both;
+  left: 0%;
+  position: fixed;
+  bottom: -2%;
+  z-index: 1;
+  }
+
+body.domain-cuponation #block-fb_likebox-0.block-fb-likebox{display: none}
+body.domain-cuponation-couponvoodoo-com #block-fb_likebox-0.block-fb-likebox{display: none}
+body.domain-products-cuponation-in #block-fb_likebox-0.block-fb-likebox{display: none}
+
+  
+  
+  
 .shareaholic-canvas {
   clear: both;
   left: 1%;
@@ -1145,6 +1160,12 @@ img{max-width: 100%;}
 #header{padding-bottom: 5px;}
 #header #block-nice_menus-1 #nice-menu-1 > li > a{}
 
+@media all and (max-width: 1230px){
+#block-fb_likebox-0.block-fb-likebox {display: none}
+.zopim-chat {display: none;}
+}
+
+
 
 @media all and (max-width: 980px) and (min-width: 700px){
     .find_coupon .form-type-textfield{width: 80%;}
@@ -1162,7 +1183,6 @@ img{max-width: 100%;}
     .shareaholic-canvas{position: static;}
     .shareaholic-canvas > div.shareaholic-share-buttons-container{text-align: center;}
     .shareaholic-share-buttons-container.vertical ul.shareaholic-share-buttons li.shareaholic-share-button{display: inline-block; vertical-align: top;}
-	.zopim-chat {display: none;}
 }
 @media all and (max-width: 745px){
     .whatisthis{top: 72px;}
