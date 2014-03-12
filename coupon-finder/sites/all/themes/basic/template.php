@@ -131,7 +131,7 @@ function basic_preprocess_html(&$vars) {
 				$nid = arg(1);
 				$node = node_load($nid);
 				$node_title = $node->field_retailer_product_name['und']['0']['value'].' @ Rs. '.$node->field_best_coupon_netpriceafters['und']['0']['value'].' | CupoNation';
-				$vars['head_title'] = "Coupons for ".$node_title;
+				$vars['head_title'] = $node_title;
 			break;
 		}
 	}
