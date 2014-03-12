@@ -1186,7 +1186,7 @@ img{max-width: 100%;}
 	.product-detail .product-left {width: 100%; margin-left: 0;}
 	.product-detail .product-left .view_store1 {width:100%;}
 	.d_view_store {display: none;}
-	.product-right .coupon_code, .product-right .coupon_code1 {float: left; padding: 0; position: static; text-align: center;}
+	.product-right .coupon_code, .product-right .coupon_code1 {float: left; padding: 0; position: static; text-align: center; z-index: 0;}
 	#coupon_search_listing > li {margin-bottom:0;}
 	.search_listing_right {margin-top: 0 !important}
 	.product-detail h2 .field-content {text-align: center; float: none;}
