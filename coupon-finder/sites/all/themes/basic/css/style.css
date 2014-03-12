@@ -356,9 +356,9 @@ body.domain-products-cuponation-in #header{background: #51a7da;}
   float: left;
 }
 
-body.domain-cuponation .front #coupons-finder-form .submit {width: 63%;}
-body.domain-cuponation-couponvoodoo-com .front #coupons-finder-form .submit {width: 63%;}
-body.domain-products-cuponation-in .front #coupons-finder-form .submit {width: 63%;}
+body.domain-cuponation.front #coupons-finder-form .submit {width: 63% !important;}
+body.domain-cuponation-couponvoodoo-com.front #coupons-finder-form .submit {width: 63% !important;}
+body.domain-products-cuponation-in.front #coupons-finder-form .submit {width: 63%;}
 
 
 
