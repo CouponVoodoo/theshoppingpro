@@ -722,14 +722,6 @@ body.domain-products-cuponation-in #block-fb_likebox-0.block-fb-likebox{display:
   
   
   
-.shareaholic-canvas {
-  clear: both;
-  left: 1%;
-  position: fixed;
-  top: 20%;
-  z-index: 1;
-  }
-
 .zopim-chat {
   clear: both;
   right: 1%;
@@ -744,7 +736,6 @@ body.domain-products-cuponation-in #block-fb_likebox-0.block-fb-likebox{display:
 
   
   
-.shareaholic-share-buttons-container .shareaholic-share-buttons-wrapper {text-align: right !important}
 
 /* By Ashish to make images overlap */
 
@@ -1180,9 +1171,6 @@ img{max-width: 100%;}
     #header #logo{padding-left: 10px;}
     .front #coupons-finder-form{width: 100%;}
     .front #coupons-finder-form .form-item-url{width: 80%;}
-    .shareaholic-canvas{position: static;}
-    .shareaholic-canvas > div.shareaholic-share-buttons-container{text-align: center;}
-    .shareaholic-share-buttons-container.vertical ul.shareaholic-share-buttons li.shareaholic-share-button{display: inline-block; vertical-align: top;}
 }
 @media all and (max-width: 745px){
     .whatisthis{top: 72px;}
@@ -1192,7 +1180,6 @@ img{max-width: 100%;}
 }
 
 @media all and (max-width: 700px){
-    .shareaholic-canvas{display: none;}
 	.zopim-chat {display: none;}
 	#block-coupons-coupons_taxonomy_description {display: none;}
 	#sidebar-second {display: none;}
