@@ -709,9 +709,9 @@ a.copied_coupon {
 
 #block-fb_likebox-0.block-fb-likebox {
   clear: both;
-  left: 0%;
+  right: 0%;
   position: fixed;
-  bottom: 0%;
+  top: 20%;
   z-index: 1;
   }
 
