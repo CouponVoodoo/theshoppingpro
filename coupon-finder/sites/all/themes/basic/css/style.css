@@ -772,7 +772,7 @@ img.dollor { left: 452px; position: absolute; top: 324px; z-index: 0;}
 .product-right ul li label,.product-bottom .product-left ul li label{float:left;color: #F7971C;font-family: Arial;font-size: 13px;font-style: normal;font-weight: bold;width:139px;padding-right:7px}
 .product-right .coupon_code, .product-right .coupon_code1 {z-index: 0}
 div.view-id-product_info .search_listing_right .unlock_coupon {z-index: 0}
-.view-id-retailer_coupon_page .retailer_coupon_page_row .search_listing_right {z-index: 0}
+.view-id-retailer_coupon_page .retailer_coupon_page_row .unlock_best_coupon {z-index: 0}
 .product-bottom .product-left ul li label{ text-align: left;
     width: 65px;}
 
