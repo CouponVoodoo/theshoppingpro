@@ -45,23 +45,6 @@ function basic_preprocess_html(&$vars) {
 
     drupal_add_js($settings, 'setting');
 
-
-    drupal_add_js("(function() {
-                        var shr = document.createElement('script');
-                        shr.setAttribute('data-cfasync', 'false');
-                        shr.src = '//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js';
-                        shr.type = 'text/javascript'; shr.async = 'true';
-                        shr.onload = shr.onreadystatechange = function() {
-                          var rs = this.readyState;
-                          if (rs && rs != 'complete' && rs != 'loaded') return;
-                          var apikey = '0b194b2f76459725aa70a97c972a65d6';
-                          try { Shareaholic.init(apikey); } catch (e) {}
-                        };
-                        var s = document.getElementsByTagName('script')[0];
-                        s.parentNode.insertBefore(shr, s);
-                      })();
-                   ", array('type' => 'inline', 'scope' => 'header'));
-
     // Add role name classes (to allow css based show for admin/hidden from user)
     foreach ($user->roles as $role) {
         $vars['classes_array'][] = 'role-' . basic_id_safe($role);
