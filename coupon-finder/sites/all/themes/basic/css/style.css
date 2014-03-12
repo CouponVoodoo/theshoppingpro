@@ -719,7 +719,11 @@ body.domain-cuponation #block-fb_likebox-0.block-fb-likebox{display: none}
 body.domain-cuponation-couponvoodoo-com #block-fb_likebox-0.block-fb-likebox{display: none}
 body.domain-products-cuponation-in #block-fb_likebox-0.block-fb-likebox{display: none}
 
-  
+ 
+body.domain-cuponation #block-block-13{display: none}
+body.domain-cuponation-couponvoodoo-com #block-block-13{display: none}
+body.domain-products-cuponation-in #block-block-13{display: none}
+
   
   
 .zopim-chat {
@@ -1466,4 +1470,6 @@ display:block ; float:left ; width:100px ; min-height:180px ;
 .breadcrumb {padding-bottom: 0px; margin-top: -20px}
 #header {padding-bottom: 0px}
 .shareaholic-canvas { margin-top: -10px; margin-bottom: -17px}
+
+
 
