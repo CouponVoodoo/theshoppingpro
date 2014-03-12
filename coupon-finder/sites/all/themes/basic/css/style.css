@@ -770,6 +770,7 @@ img.dollor { left: 452px; position: absolute; top: 324px; z-index: 0;}
 .product-right ul li .pro_savings_text{color:#8b3d00;line-height:23px;font-weight:bold;}
 .product-right ul li .pro_no_coupons_found .pro_no_coupons_text{color:#AC0706;line-height:23px;font-weight:bold;}
 .product-right ul li label,.product-bottom .product-left ul li label{float:left;color: #F7971C;font-family: Arial;font-size: 13px;font-style: normal;font-weight: bold;width:139px;padding-right:7px}
+.product-right .coupon_code, .product-right .coupon_code1 {z-index: 0}
 .product-bottom .product-left ul li label{ text-align: left;
     width: 65px;}
 
@@ -1186,7 +1187,7 @@ img{max-width: 100%;}
 	.product-detail .product-left {width: 100%; margin-left: 0;}
 	.product-detail .product-left .view_store1 {width:100%;}
 	.d_view_store {display: none;}
-	.product-right .coupon_code, .product-right .coupon_code1 {float: left; padding: 0; position: static; text-align: center; z-index: 0;}
+	.product-right .coupon_code, .product-right .coupon_code1 {float: left; padding: 0; position: static; text-align: center;}
 	#coupon_search_listing > li {margin-bottom:0;}
 	.search_listing_right {margin-top: 0 !important}
 	.product-detail h2 .field-content {text-align: center; float: none;}
