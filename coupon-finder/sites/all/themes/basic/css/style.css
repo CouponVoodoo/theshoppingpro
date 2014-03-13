@@ -1468,7 +1468,7 @@ display:block ; float:left ; width:100px ; min-height:180px ;
 /*=============End of css==============*/
 
 .breadcrumb {padding-bottom: 0px; margin-top: -20px}
-body.page-search-site {display: none;}
+body.page-search-site .breadcrumb {display: none;}
 #header {padding-bottom: 0px}
 .shareaholic-canvas { margin-top: -10px; margin-bottom: -17px}
 
