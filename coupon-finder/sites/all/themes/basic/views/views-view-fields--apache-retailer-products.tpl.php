@@ -25,7 +25,6 @@
  */
 ?>
 <?php 
-
 global $base_url;
 $nid = $row->entity_id;
 $node = node_load($nid);
