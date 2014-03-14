@@ -1470,8 +1470,7 @@ display:block ; float:left ; width:100px ; min-height:180px ;
 .breadcrumb {padding-bottom: 0px; margin-top: 0px}
 body.page-search-site .breadcrumb {display: none;}
 #header {padding-bottom: 0px}
-.shareaholic-canvas { margin-top: 0px; margin-bottom: 0px}
-.shareaholic-share-buttons-container {margin-top: -20px; height: 40px};
+.shareaholic-canvas { margin-top: -20px; margin-bottom: 20px; height:20px}
 
 .views-slideshow-cycle-main-frame-row-item {
 float: left;
