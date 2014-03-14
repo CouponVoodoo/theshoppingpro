@@ -947,7 +947,7 @@ body.domain-products-cuponation-in .nice_menu1 .content ul li ul{background:#51a
     top: 100px;} */
 .find_coupon .whatisthis{top:28px;left:0px}
 .find_coupon .form-type-textfield .description{margin-top:5px}
-#content-header{margin-top:15px}
+#content-header{margin-top:0px}
 #content-header h1.title{margin-bottom:0px;}
 /*****************/
 .node-type--product-and-coupon div.submitted,.node-type--product-and-coupon h1.title{display:none;}
@@ -1467,10 +1467,11 @@ display:block ; float:left ; width:100px ; min-height:180px ;
 	
 /*=============End of css==============*/
 
-.breadcrumb {padding-bottom: 0px; margin-top: -20px}
+.breadcrumb {padding-bottom: 0px; margin-top: 0px}
 body.page-search-site .breadcrumb {display: none;}
 #header {padding-bottom: 0px}
-.shareaholic-canvas { margin-top: -10px; margin-bottom: -17px}
+.shareaholic-canvas { margin-top: 0px; margin-bottom: 0px}
+.shareaholic-share-buttons-container {margin-top: -20px; height: 40px};
 
 .views-slideshow-cycle-main-frame-row-item {
 float: left;
