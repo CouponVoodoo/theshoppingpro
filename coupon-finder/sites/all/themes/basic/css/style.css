@@ -1480,7 +1480,7 @@ width: 20%
 .views-field img { max-height: 150px; max-width: 150px;width: auto;margin-top:-100px}
 .views-field-field-retailer-product-name {height: 45px; padding: 0px 15px 0px 15px}
 .views-field-field-product-price, .views-field-field-best-coupon-netpriceafters, .views-field-field-best-coupon-saving{color: #666666; font-weight: bold;font-size: 11px;}
-#block-views-home_page_slider-block .ribbon-wrapper-green {height: 100px; right:-45px; width: 103px; position: relative}
+#block-views-home_page_slider-block .ribbon-wrapper-green {height: 98px; right:-47px; width: 103px; position: relative}
 #block-views-home_page_slider-block .ribbon-green {padding: 4px 0px 4px 14px; width: 140px}
 #block-views-home_page_slider-block .ribbon-green:before {display:none}
 #block-views-home_page_slider-block .ribbon-green:after{display:none}
