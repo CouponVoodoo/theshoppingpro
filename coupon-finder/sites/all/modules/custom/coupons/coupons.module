@@ -591,7 +591,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
       '#title' => t('Try Another Product'),
       '#type' => 'textfield',
       '#size' => 100,
-      '#attributes' => array('class' => array('apachesolr-autocomplete','unprocessed'), 'placeholder' => t('Enter a search term or a product url')),
+      '#attributes' => array('class' => array('apachesolr-autocomplete','unprocessed'), 'placeholder' => t('Enter product name or its url from your favorite site')),
       '#maxlength' => 255,
   );
 
@@ -607,7 +607,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
     
 	$form['url']['#title'] = t(get_label('The only place where you get product prices net of coupons and offers! Try it!'));
     if ($current_domain == 'couponvoodoo') {
-		$form['url']['#description'] = t('Try It: <a href="' . $base_url . '/c/men-shoes-other-footwear-coupons" target="_blank">Mens Shoes</a>, <a href="' . $base_url . '/c/women-watches-coupons" target="_blank">Womens Watches</a>, <a href="' . $base_url . '/b/reebok-coupons" target="_blank">Reebok</a>, <a href="' . $base_url . '/b/nike-coupons" target="_blank">Nike</a>, <a href="' . $base_url . '/rcp/Jabong.com/coupons-offers" target="_blank">Jabong</a>, <a href="' . $base_url . '/rcp/myntracom/coupons-offers" target="_blank">Myntra</a>');
+		// $form['url']['#description'] = t('Try It: <a href="' . $base_url . '/c/men-shoes-other-footwear-coupons" target="_blank">Mens Shoes</a>, <a href="' . $base_url . '/c/women-watches-coupons" target="_blank">Womens Watches</a>, <a href="' . $base_url . '/b/reebok-coupons" target="_blank">Reebok</a>, <a href="' . $base_url . '/b/nike-coupons" target="_blank">Nike</a>, <a href="' . $base_url . '/rcp/Jabong.com/coupons-offers" target="_blank">Jabong</a>, <a href="' . $base_url . '/rcp/myntracom/coupons-offers" target="_blank">Myntra</a>');
 		$form['actions']['view_video'] = array(
 			'#markup' => '<a href="' . $base_url . '/coupons_viewdemo/nojs" id="edit-view_video" class="ctools-use-modal form-view_video">View Video</a>',
 			'#prefix' => '<div class="view_video">',
