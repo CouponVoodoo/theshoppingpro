@@ -24,10 +24,7 @@
  * @ingroup views_templates
  */
 ?>
-<div>
-		<div class="ribbon-wrapper-green">
-			<div class="ribbon-green"><?php echo strip_tags($fields['field_best_coupon_saving']->content).' Off'; ?></div>
-		</div>
+
 
 <?php
 global $base_url;
@@ -35,6 +32,12 @@ $product_name =  strip_tags($fields['field_retailer_product_name']->content);
 $nid =  $row->nid;
 $path = $base_url.'/'.drupal_lookup_path('alias',"node/".$nid);
 ?>
+<a href='<?php echo $path; ?>'>
+	<div class="ribbon-wrapper-green">
+			<div class="ribbon-green"><?php echo strip_tags($fields['field_best_coupon_saving']->content).' Off'; ?></div>
+	</div>
+</a>
+
 <?php foreach ($fields as $id => $field): ?>
   <?php if (!empty($field->separator)): ?>
     <?php print $field->separator; ?>
@@ -71,4 +74,3 @@ $path = $base_url.'/'.drupal_lookup_path('alias',"node/".$nid);
 	?>
   <?php print $field->wrapper_suffix; ?>
 <?php endforeach; ?>
-</div>
