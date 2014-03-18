@@ -1491,9 +1491,10 @@ float:left;
 
 .front #coupons-finder-form{
 display: inline-block; 
- width: 250px;
-  margin: 0px 0px 0px 0px;
-  text-align: right; 
+width: 250px;
+margin: 0px 0px 0px 0px;
+text-align: left; 
+float: right;
 }
 
 .front #coupons-finder-form .form-item-url label{
