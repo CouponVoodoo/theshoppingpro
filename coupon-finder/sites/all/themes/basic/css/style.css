@@ -1493,7 +1493,7 @@ float:left;
 display: inline-block; 
  width: 250px;
   margin: 0px 0px 0px 0px;
-  text-align: left; 
+  text-align: right; 
 }
 
 .front #coupons-finder-form .form-item-url label{
