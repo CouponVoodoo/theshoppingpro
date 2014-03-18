@@ -281,15 +281,13 @@ body.domain-products-cuponation-in #header{background: #51a7da;}
 
 .front #main {padding:10px;}
 .front #content{padding: 10px;
-                background: #f2f2f2;
-                border: 1px solid #d7d7d7;
+                // background: #f2f2f2;
+                // border: 1px solid #d7d7d7;
                 margin: 10px auto;
                 text-align: center;
+				
 }
-.front #coupons-finder-form .form-item-url label{
-  color: #666666;font-size: 13px;font-style: normal;font-weight: normal;text-decoration: none;
 
-}
 .front #coupons-finder-form .form-item-url{
   float:left;
 }
@@ -349,16 +347,13 @@ body.domain-products-cuponation-in #header{background: #51a7da;}
              top: 36px;
              left: 364px;
 }
+// removed view video tag
 
-.front #coupons-finder-form .submit{
-  width: 48%;
-  display: inline-block;
-  float: left;
-}
-
-body.domain-cuponation.front #coupons-finder-form .submit {width: 63% !important;}
-body.domain-cuponation-couponvoodoo-com.front #coupons-finder-form .submit {width: 63% !important;}
-body.domain-products-cuponation-in.front #coupons-finder-form .submit {width: 63%;}
+// .front #coupons-finder-form .submit{ width: 48%; display: inline-block; float: left;} 
+// body.domain-cuponation.front #coupons-finder-form .submit {width: 63% !important;}
+// body.domain-cuponation-couponvoodoo-com.front #coupons-finder-form .submit {width: 63% !important;}
+// body.domain-products-cuponation-in.front #coupons-finder-form .submit {width: 63%;}
+.front #coupons-finder-form .submit{display: inline-block; text-align: center;}
 
 
 
@@ -440,11 +435,6 @@ body.domain-products-cuponation-in.front #coupons-finder-form .submit {width: 63
   margin-top:20px;
 }
 
-.front #coupons-finder-form{
-  width: 670px;
-  margin: 0px auto;
-  text-align: left;
-}
 
 .front #footer{
   margin-top:50px;
@@ -1484,8 +1474,33 @@ width: 20%
 #block-views-home_page_slider-block .ribbon-green {padding: 4px 0px 4px 14px; width: 140px}
 #block-views-home_page_slider-block .ribbon-green:before {display:none}
 #block-views-home_page_slider-block .ribbon-green:after{display:none}
-#block-views-home_page_slider-block {margin-top:20px;}
-#block-views-home_page_slider-block h2{font-size: 12px;color: #F7971C; font-weight: bold;}
-#logo img { max-height: 100px; max-width: 400px;width: auto;margin-top: 10px}
+#block-views-home_page_slider-block {margin-top:40px; width: 100%; background: #F2F2F2; border: 1px solid #D7D7D7; box-shadow: 10px 10px 10px #888888;}
+#block-views-home_page_slider-block h2{font-size: 16px;color: #F7971C; font-weight: bold; margin-top: 10px}
+#block-block-8 {width: 500px; display: inline-block; float: left;}
+#block-block-8 img {
+float:left; 
+    max-height: 400px;
+    max-width: 500px;
+    width: auto;}
 
- 
+.front #block-system-main { width: 100%; border: 1px solid #D7D7D7; box-shadow: 10px 10px 10px #888888; }
+#block-views-home_page_welcome-block  {width: 620px; float:left; display: inline-block; }
+.view-home-page-welcome .views-field img {max-height: 240px; max-width: 600px;width: auto; margin: 10px; float: left}
+.search-suggestion {display:none;}
+.front .search-suggestion {display: block; text-align: left; color: #888888; font-weight: bold; margin-top: 30px}
+
+.front #coupons-finder-form{
+display: inline-block; 
+ width: 250px;
+  margin: 0px 0px 0px 0px;
+  text-align: left; 
+}
+
+.front #coupons-finder-form .form-item-url label{
+  color: #888888;font-size: 16px;font-style: normal;font-weight: bold;text-decoration: none;
+}
+.front .flex-control-nav {text-align: right; bottom:15px; z-index: 10; padding-right: 20px}
+.front  .flex-control-paging li a.flex-active{background: #F7971C; color: none; font-size:0px}
+.front .flex-control-paging li a {background: #25ade3;color: none; font-size:0px}
+.front .flex-direction-nav { display: none}
+.front .flexslider {background: none; margin: 0px 0px 0px 0px; box-shadow: none; border: none}
