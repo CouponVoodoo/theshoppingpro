@@ -142,8 +142,8 @@ $current_domain = get_current_domain();
 								</h1>
             <?php endif; ?>
           <?php if ($is_front):?>
-            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
-              <img src="<?php 
+    <!--        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+				<img src="<?php 
 							if ($current_domain == 'cuponation') {
 								print base_path() . drupal_get_path('theme', 'basic') . '/images/logo-cuponation.png';
 							} else { 
@@ -151,7 +151,8 @@ $current_domain = get_current_domain();
 							} 
 						?>" alt="<?php print t('Home'); ?>"/>
 			</a>
-          <?php endif; ?>
+	-->		
+		<?php endif; ?>
           <?php if ($is_front): ?>
                 <?php print $messages; ?>
           <?php endif; ?>
