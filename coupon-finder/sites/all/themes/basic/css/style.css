@@ -1484,8 +1484,8 @@ float:left;
     width: auto;}
 
 .front #block-system-main { width: 100%; border: 1px solid #D7D7D7; box-shadow: 10px 10px 10px #888888; }
-#block-views-home_page_welcome-block  {width: 620px; float:left; display: inline-block; }
-.view-home-page-welcome .views-field img {max-height: 240px; max-width: 600px;width: auto; margin: 10px; float: left}
+#block-views-home_page_welcome-block  {width: 650px; float:left; display: inline-block; }
+.view-home-page-welcome .views-field img {max-height: 250px; max-width: 650px;width: auto; margin: 10px; float: left}
 .search-suggestion {display:none;}
 .front .search-suggestion {display: block; text-align: left; color: #888888; font-weight: bold; margin-top: 30px}
 
@@ -1495,6 +1495,7 @@ width: 250px;
 margin: 0px 0px 0px 0px;
 text-align: left; 
 float: right;
+padding-right: 20px;
 }
 
 .front #coupons-finder-form .form-item-url label{
