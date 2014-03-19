@@ -1483,11 +1483,11 @@ float:left;
     max-width: 500px;
     width: auto;}
 
-.front #block-system-main { width: 100%; border: 1px solid #D7D7D7; box-shadow: 10px 10px 10px #888888; }
-#block-views-home_page_welcome-block  {width: 650px; float:left; display: inline-block; }
+.front #block-system-main {border: 1px solid #D7D7D7; box-shadow: 10px 10px 10px #888888; }
+#block-views-home_page_welcome-block  {width: 670px; float:left; display: inline-block; box-shadow: 15px 10px 10px #888888;}
 .view-home-page-welcome .views-field img {max-height: 250px; max-width: 650px;width: auto; margin: 10px; float: left}
 .search-suggestion {display:none;}
-.front .search-suggestion {display: block; text-align: left; color: #888888; font-weight: bold; margin-top: 30px}
+.front .search-suggestion {display: block; text-align: left; color: #ffffff; font-weight: bold; margin-top: 30px}
 
 .front #coupons-finder-form{
 display: inline-block; 
@@ -1496,13 +1496,17 @@ margin: 0px 0px 0px 0px;
 text-align: left; 
 float: right;
 padding-right: 20px;
+padding-top: 5px
 }
 
 .front #coupons-finder-form .form-item-url label{
-  color: #888888;font-size: 16px;font-style: normal;font-weight: bold;text-decoration: none;
+  color: #ffffff;font-size: 16px;font-style: normal;font-weight: bold;text-decoration: none;
 }
 .front .flex-control-nav {text-align: right; bottom:15px; z-index: 10; padding-right: 20px}
 .front  .flex-control-paging li a.flex-active{background: #F7971C; color: none; font-size:0px}
 .front .flex-control-paging li a {background: #25ade3;color: none; font-size:0px}
 .front .flex-direction-nav { display: none}
 .front .flexslider {background: none; margin: 0px 0px 0px 0px; box-shadow: none; border: none}
+.front div.region-content #block-system-main {width:270px;float:left;}
+.front div#block-views-home_page_slider-block {clear:both;}
+.front div#block-views-home_page_welcome-block, .front div.region-content #block-system-main { background: #157CA4; height: 270px; border: none; margin-bottom: 30px}
