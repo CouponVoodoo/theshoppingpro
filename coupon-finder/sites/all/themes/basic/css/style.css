@@ -737,9 +737,11 @@ body.domain-products-cuponation-in #block-block-13{display: none}
 
 
 .page-coupon-finder #content {position:relative; border:none;}
-img.dollor { left: 452px; position: absolute; top: 324px; z-index: 0;}
+img.dollor { left: -225px; position: relative; top: -80px; z-index: 0;}
+
 .frog_title {color: #F7971C; float: left; font-size: 21px; font-weight: bold; text-align: center; width: 100%; margin-top: -50px;}
 
+.locader img.dollor { left: 438px; position: absolute;bottom: auto; z-index: 0; top: 259px;}
 .page-coupon-result {position:relative;}
 .page-coupon-result .frog_title {margin-top:0;}
 .page-coupon-result #content {position:relative;}
@@ -1115,11 +1117,6 @@ body.domain-products-cuponation-in .nice_menu1 .content ul li ul{background:#51a
   position:relative;
 }
 
-.locader img.dollor { left: 438px;
-position: absolute;
-bottom: auto;
-z-index: 0;
-top: 259px;}
 
 
 #imageDataContainer {height:30px !important;}
