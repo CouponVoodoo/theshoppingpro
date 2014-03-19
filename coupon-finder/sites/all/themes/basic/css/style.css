@@ -1476,13 +1476,6 @@ width: 20%
 #block-views-home_page_slider-block .ribbon-green:after{display:none}
 #block-views-home_page_slider-block {margin-top:40px; width: 100%; background: #F2F2F2; border: 1px solid #D7D7D7; box-shadow: 10px 10px 10px #888888;}
 #block-views-home_page_slider-block h2{font-size: 16px;color: #F7971C; font-weight: bold; margin-top: 10px}
-#block-block-8 {width: 500px; display: inline-block; float: left;}
-#block-block-8 img {
-float:left; 
-    max-height: 400px;
-    max-width: 500px;
-    width: auto;}
-
 .front #block-system-main {border: 1px solid #D7D7D7; box-shadow: 10px 10px 10px #888888; }
 #block-views-home_page_welcome-block  {width: 670px; float:left; display: inline-block; box-shadow: 15px 10px 10px #888888;}
 .view-home-page-welcome .views-field img {max-height: 250px; max-width: 650px;width: auto; margin: 10px; float: left}
