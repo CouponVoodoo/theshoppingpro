@@ -704,6 +704,7 @@ a.copied_coupon {
   position: fixed;
   top: 15%;
   z-index: 1;
+  background: #ffffff;
   }
 
 body.domain-cuponation #block-fb_likebox-0.block-fb-likebox{display: none}
