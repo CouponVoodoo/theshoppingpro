@@ -430,7 +430,7 @@ body.domain-products-cuponation-in #header{background: #51a7da;}
 
 /* After sushant*/
 #footer {
-  border-top:1px solid #ffffff;
+  border-top:1px solid #999999;
   width:100%;
   margin-top:20px;
 }
@@ -688,7 +688,7 @@ a.copied_coupon {
 }
 #block-menu-menu-footer-links .menu ul a {color: #999999}
 #block-menu-menu-footer-links ul a {
-  color:#ffffff;font-weight:bold;
+  color:#999999;font-weight:bold;
   border-right: 1px solid #ccc;
   padding:0px 10px 0px 0px;
 }
