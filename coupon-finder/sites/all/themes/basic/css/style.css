@@ -913,7 +913,7 @@ body.domain-products-cuponation-in .nice_menu1 .content ul li ul{background:#51a
 
 /******Find coupon*********/
 .find_coupon{background:none repeat scroll 0 0 #F2F2F2;padding:10px 20px 10px 20px;border:1px solid #D7D7D7;border-radius:8px;position:relative;}
-.find_coupon .submit{display: inline-block;float: left;width: 48%;}
+.find_coupon .submit{display: inline-block;float: center}
 .find_coupon .submit input[type="submit"],.find_coupon .view_video a{  background: none repeat scroll 0 0 #F7971C;
     border: medium none;
     color: white;
@@ -1503,3 +1503,5 @@ padding-top: 5px
 .front div.region-content #block-system-main {width:270px;float:left;}
 .front div#block-views-home_page_slider-block {clear:both;}
 .front div#block-views-home_page_welcome-block, .front div.region-content #block-system-main { background: #157CA4; height: 270px; border: none; margin-bottom: 30px}
+.block-multiblock.find_coupon {margin-bottom: 10px; margin-top: 10px}
+.block-multiblock.find_coupon .form-type-textfield{width:100%}
