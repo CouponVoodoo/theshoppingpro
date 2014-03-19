@@ -1504,7 +1504,7 @@ padding-top: 5px
 .front .flexslider {background: none; margin: 0px 0px 0px 0px; box-shadow: none; border: none}
 .front div.region-content #block-system-main {width:270px;float:left;}
 .front div#block-views-home_page_slider-block {clear:both;}
-.front div#block-views-home_page_welcome-block, .front div.region-content #block-system-main { background: #000000; height: 270px; border: none; margin-bottom: 30px}
+.front div#block-views-home_page_welcome-block, .front div.region-content #block-system-main { background: #25ade3; height: 270px; border: none; margin-bottom: 30px}
 .block-multiblock.find_coupon {margin-bottom: 10px; margin-top: 10px}
 .block-multiblock.find_coupon .form-type-textfield{width:100%}
-.page-coupon-finder {background:#25ade3;}
+.page-coupon-finder {background:#ffffff;}
