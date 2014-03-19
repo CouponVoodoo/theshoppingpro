@@ -739,7 +739,7 @@ body.domain-products-cuponation-in #block-block-13{display: none}
 .page-coupon-finder #content {position:relative; border:none;}
 img.dollor { left: -225px; position: relative; top: -80px; z-index: 0;}
 
-.frog_title {color: #F7971C; float: left; font-size: 21px; font-weight: bold; text-align: center; width: 100%; margin-top: -50px;}
+.frog_title {color: #F7971C; float: left; font-size: 21px; font-weight: bold; text-align: center; width: 100%; margin-top: 0px;}
 
 .locader img.dollor { left: 438px; position: absolute;bottom: auto; z-index: 0; top: 259px;}
 .page-coupon-result {position:relative;}
