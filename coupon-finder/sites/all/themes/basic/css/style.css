@@ -1153,7 +1153,6 @@ img{max-width: 100%;}
 }
 
 
-
 @media all and (max-width: 980px) and (min-width: 700px){
     .find_coupon .form-type-textfield{width: 80%;}
     .find_coupon .whatisthis{top: 48px;}
@@ -1464,10 +1463,12 @@ body.page-search-site .breadcrumb {display: none;}
 #header {padding-bottom: 0px}
 .shareaholic-canvas { margin-top: -15px; margin-bottom: 17px; height:20px}
 
-#block-views-home_page_retailers-block .views-slideshow-cycle-main-frame-row-item , #block-views-home_page_slider-block .views-slideshow-cycle-main-frame-row-item {
-float: left;
-width: 180px
+#block-views-home_page_retailers-block .views-slideshow-cycle-main-frame-row-item , #block-views-home_page_slider-block .views-slideshow-cycle-main-frame-row-item {float: left; width: 25%}
+@media all and (max-width: 650px){
+#block-views-home_page_retailers-block .views-slideshow-cycle-main-frame-row-item , #block-views-home_page_slider-block .views-slideshow-cycle-main-frame-row-item {float: left; width: 50%}
 }
+
+
 
 #block-views-home_page_slider-block .views-field img { max-height: 150px; max-width: 150px;width: auto;margin-top:-100px}
 #block-views-home_page_retailers-block .views-field img { max-height: 100px; max-width: 100px;width: auto;margin-top:10px}
@@ -1484,7 +1485,6 @@ width: 180px
 .view-home-page-welcome .views-field img {max-height: 250px; max-width: 650px;width: auto; margin: 10px; float: left}
 .search-suggestion {display:none;}
 .front .search-suggestion {display: block; text-align: left; color: #ffffff; font-weight: bold; margin-top: 30px}
-
 .front #coupons-finder-form{
 display: inline-block; 
 width: 250px;
@@ -1509,3 +1509,12 @@ padding-top: 5px
 .block-multiblock.find_coupon {margin-bottom: 10px; margin-top: 10px}
 .block-multiblock.find_coupon .form-type-textfield{width:100%}
 .page-coupon-finder {background:#ffffff;}
+
+@media all and (max-width: 980px){
+#block-views-home_page_welcome-block {float: centre; width: 100%}
+.front div.region-content #block-system-main {width: 100%}
+.front #coupons-finder-form {width: 100%; floar: center; text-align: center; padding: 10px;}
+.front #coupons-finder-form .form-item-url {float: center; width: 100%; padding: 0x 10px;}
+.view-home-page-welcome .views-field img {max-width: 96%; height: auto; max-height:1000px;}
+.front div#block-views-home_page_welcome-block, .front div.region-content #block-system-main {height: auto}
+}
