@@ -135,14 +135,14 @@ function basic_preprocess_html(&$vars) {
 			break;
 			case "rcp":
 				$retailer_name = str_replace('.com','',arg(1));
-				$head_elements['metatag_description']['#value'] = 'Save Big Via '.$retailer_name.' Coupons';
+				$vars['head_title'] = 'Save Big Via '.$retailer_name.' Coupons';
 			break;
 		}
 	} Else {
 	switch ($content_type) {
 			case "rcp":
 				$retailer_name = str_replace('.com','',arg(1));
-				$head_elements['metatag_description']['#value'] = 'Latest '.$retailer_name.' Coupons - Save Upto 50%';
+				$vars['head_title'] = 'Latest '.$retailer_name.' Coupons - Save Upto 50%';
 			break;
 		}
 	}
