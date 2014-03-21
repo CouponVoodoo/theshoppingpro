@@ -140,8 +140,8 @@ function basic_preprocess_html(&$vars) {
 /* BY ASHISH TO CHANGE THE META TAGS OF WHITE LABEL DOMAIN*/
 function basic_html_head_alter(&$head_elements) {
 	$current_domain = get_current_domain();
+	$content_type = arg(0);
 	if ($current_domain == 'cuponation') {
-		$content_type = arg(0);
 		switch ($content_type) {
 			case "taxonomy":
 				$tid = arg(2);
@@ -162,9 +162,22 @@ function basic_html_head_alter(&$head_elements) {
 				$head_elements['metatag_abstract']['#value'] = $node_product_name.' is available for the best price of Rs. '.$node_net_price.' @ '.$retailer_name.' using Discount Coupons and Promo Codes from CupoNation';
 				$head_elements['rdf_node_title']['#attributes']['content'] = $node_product_name.' is available for the best price of Rs. '.$node_net_price.' @ '.$retailer_name.' using Discount Coupons and Promo Codes from CupoNation';
 			break;
+			case "rcp":
+				$retailer_name = str_replace('.com','',arg(1));
+				$head_elements['metatag_description']['#value'] = $retailer_name.' Coupons - Tested & Guaranteed to work';
+				$head_elements['metatag_abstract']['#value'] = 'Save every time you shop via '.$retailer_name.' Coupons. Cuponation tests all '.$retailer.' coupons so they work without a glitch';
+				$head_elements['rdf_node_title']['#attributes']['content'] = 'Save every time you shop via '.$retailer_name.' Coupons. Cuponation tests all '.$retailer.' coupons so they work without a glitch';
+			break;
 		}
 		$head_elements['metatag_author']['#value'] = '';
 
+	} Else {
+	switch ($content_type) {
+			case "rcp":
+				$retailer_name = str_replace('.com','',arg(1));
+				$head_elements['metatag_description']['#value'] = 'Latest '.$retailer_name.' Coupons - Save Upto 50%';
+			break;
+		}
 	}
 }
 
