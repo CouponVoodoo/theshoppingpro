@@ -22,6 +22,7 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-44240799-2', 'cuponation.in');
+  ga('require', 'linkid', 'linkid.js');
   ga('send', 'pageview');
 
 </script>
@@ -37,6 +38,7 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-44240799-1', 'couponvoodoo.com');
+  ga('require', 'linkid', 'linkid.js');
   ga('send', 'pageview');
 
 </script>
