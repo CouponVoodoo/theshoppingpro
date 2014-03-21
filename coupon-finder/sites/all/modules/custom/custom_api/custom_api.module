@@ -534,9 +534,11 @@ $field_best_coupon_netpriceafters = ( $jsonArray->header->bestCouponResult->NetP
 		echo nl2br("\n");
 		 -----------------------------------------   */
 	
-		//NOW USING NODE_SAVE 
+		//MARK PRODUCT FOR INDEXING ON APACHE 
 				apachesolr_mark_entity ('node', $node->nid);
 	 
+		//UPDATE SITEMAP
+				xmlsitemap_node_node_update($node);
 	 
  	  	/** ASHISH NODE CREATION TIMING  - Node Data
 		$time1 = round(microtime(true)* 1000);
