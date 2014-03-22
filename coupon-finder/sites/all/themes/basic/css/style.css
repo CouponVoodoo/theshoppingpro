@@ -1474,7 +1474,7 @@ body.page-search-site .breadcrumb {display: none;}
 
 #block-views-home_page_slider-block .views-field img { max-height: 200px; max-width: 150px;width: auto;margin-top:-100px}
 #block-views-home_page_retailers-block .views-field img { max-height: 100px; max-width: 100px;width: auto;margin-top:10px}
-#block-views-home_page_slider-block .views-field-field-retailer-product-name {height: 45px; padding: 0px 15px 0px 15px}
+#block-views-home_page_slider-block .views-field-field-retailer-product-name {height: 40px; padding: 0px 15px 0px 15px}
 #block-views-home_page_retailers-block .views-field-name {padding: 10px}
 #block-views-home_page_slider-block .ribbon-wrapper-green {height: 98px; right:-47px; width: 103px; position: relative}
 #block-views-home_page_slider-block .ribbon-green {padding: 4px 0px 4px 14px; width: 140px}
