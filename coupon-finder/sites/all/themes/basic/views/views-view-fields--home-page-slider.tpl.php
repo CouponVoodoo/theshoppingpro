@@ -50,7 +50,7 @@ $path = $base_url.'/'.drupal_lookup_path('alias',"node/".$nid);
     <?php 
 	switch ($field->class) {
 			case "field-retailer-product-name":
-				echo "<a href='{$path}'>".substr(strip_tags($field->content),0,26).'...'."</a>";
+				echo "<a href='{$path}'>".strip_tags($field->content)."</a>";
 			break;
 	?>
 	<?php
