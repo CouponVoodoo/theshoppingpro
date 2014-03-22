@@ -69,7 +69,11 @@ $mixpanel_type='Product Page View Store';
 
 
 <div class="product-right-inner">
-<h1> <?php if ($current_domain =='cuponation'){echo "<meta itemprop='name' content ='".$node->field_retailer_product_name['und']['0']['value']."'/>".$node->field_retailer_product_name['und']['0']['value']." @ ".$retailer." For Rs. ".$node->field_best_coupon_netpriceafters['und']['0']['value']." Using Coupons & Discount Offers"; } else { echo "<meta itemprop='name' content ='".$node->field_retailer_product_name['und']['0']['value']."'/>".$fields['field_retailer_product_name']->content; }?></h1>
+<h1> <?php 
+	if ($current_domain =='cuponation'){
+		echo "<meta itemprop='name' content ='".$node->field_retailer_product_name['und']['0']['value']."'/>".$node->field_retailer_product_name['und']['0']['value']." @ ".$retailer." For Rs. ".$node->field_best_coupon_netpriceafters['und']['0']['value']." Using Coupons & Discount Offers"; } 
+	else { 
+		echo "<meta itemprop='name' content ='".$node->field_retailer_product_name['und']['0']['value']."'/>".strip_tags($fields['field_retailer_product_name']->content); }?></h1>
 
 <?php 
 
