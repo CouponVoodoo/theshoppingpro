@@ -27,23 +27,22 @@ if ($row->Successful=="1") {
   </div>
   <div class="row_2">
     <?php if ($row->Successful=="1") : ?>
-    <label><?php echo get_label('Savings:');?></label>
-    <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"><?php print get_label('INR ').$row->Saving;?>
-	</div><?php print $best_coupon; ?></div>
+		<label><?php echo get_label('Savings:');?></label>
+		<div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"><?php print get_label('This coupon helps you save ').get_label('INR ').$row->Saving.get_label(' on ').$row->productName;?></div></div>
+<!--		</div><?php print $best_coupon; ?></div> -->
     <label><?php echo get_label('Net Price:');?></label>
     <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"><?php print get_label('INR ').$net_price;?></div></div>
-	
     <?php else: ?>
         <label><?php echo get_label('Savings:');?></label>
-	<div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"></div><?php print $best_coupon; ?></div>
+	<div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"></div><?php print get_label('This coupon does not work for your product'); ?></div>
     <?php endif; ?>
   </div>
-  <?php if ($row->Successful != "1") : ?>
+  <?php /* if ($row->Successful != "1") : ?>
   <div class="row_3">
     <label><?php echo get_label('Response:');?></label>
     <div class="search_listing_row_<?php print $row->counter; ?>' search_listing_row"><?php print $row->Saving;?></div>
   </div>
-  <?php endif; ?>
+  <?php endif; */?>
 </div>
 
 <div class="search_listing_right">

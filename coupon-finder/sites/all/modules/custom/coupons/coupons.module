@@ -1509,6 +1509,7 @@ $product_node = node_load($nid);
         $i++;
         $value->counter = $i;
 		$value->productPrice = $productPrice;
+		$value->productName = $product_node->field_retailer_product_name['und']['0']['value'];
  /* PRINTING TITLE BASED ON WHETHER THE DOMAIN IS CUPONATION OR NOT*/
 		$current_domain = get_current_domain();
 		if ($current_domain == 'cuponation'){
@@ -1905,6 +1906,16 @@ function get_label($label) {
 			break;
 			case "Never pay the listed price! Additional discounts via coupons are just a click away!":
 				return 'Check for coupons with a single click! Could not be simpler now, could it!';
+			break;
+			
+			case "This coupon helps you save ":
+				return 'Now Save ';
+			break;
+			case " on ":
+				return ' using this coupon when you buy ';
+			break;
+			case "This coupon does not work for your product":
+				return 'Sorry! This coupon does not work on the selected product';
 			break;
 			default:
 				return $label;
