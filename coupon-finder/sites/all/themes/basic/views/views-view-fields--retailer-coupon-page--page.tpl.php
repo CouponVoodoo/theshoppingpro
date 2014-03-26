@@ -36,8 +36,8 @@
 			$coupon_title = strip_tags($fields['field_coupon_title']->content);
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
 			$node = node_load($nid);
-			echo '1:'strip_tags(($fields['field_field_cuponation_title']->content); 
-			echo '2:'strip_tags(($fields['field_cuponation_title']->content); 
+			echo '1:'.strip_tags(($fields['field_field_cuponation_title']->content); 
+			echo '2:'.strip_tags(($fields['field_cuponation_title']->content); 
 			// $affiliate_url = strip_tags($fields['field_affiliate_url']->content);
 			$affiliate_url = $node->field_affiliate_url['und']['0']['value'];
 			$current_domain = get_current_domain();
