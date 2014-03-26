@@ -129,8 +129,8 @@ function basic_preprocess_html(&$vars) {
 			case "node":
 				$nid = arg(1);
 				$node = node_load($nid);
-				if($node == '_product_and_coupon') {
-					$node_title = $node->field_retailer_product_name['und']['0']['value'].' @ Rs. '.$node->field_best_coupon_netpriceafters['und']['0']['value'].' | CupoNation';
+				if($node->type == '_product_and_coupon') {
+					$node_title = $node->field_retailer_product_name['und']['0']['value'].' @ Rs. '.$node->field_best_coupon_netpriceafters['und']['0']['value'].' (CV'.$nid.') | CupoNation';
 					$vars['head_title'] = $node_title;
 				} else { 
 					$variables = get_defined_vars();
@@ -148,6 +148,19 @@ function basic_preprocess_html(&$vars) {
 				$retailer_name = str_replace('.com','',arg(1));
 				$vars['head_title'] = 'Latest '.$retailer_name.' Coupons - Save Upto 50% | Couponvoodoo';
 			break;
+			case "node":
+				$nid = arg(1);
+				$node = node_load($nid);
+				if($node->type == '_product_and_coupon') {
+					$node_title = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.')| CouponVoodoo';
+					$vars['head_title'] = $node_title;
+				} else { 
+					$variables = get_defined_vars();
+					$vars['head_title'] = $variables[vars]['page']['content']['system_main']['nodes'][$nid]['#node']->title;
+				}
+			break;
+
+
 		}
 	}
 }
@@ -171,15 +184,15 @@ function basic_html_head_alter(&$head_elements) {
 				$variables = get_defined_vars();
 				$node = node_load($nid);
 				if($node->type == '_product_and_coupon') {
-					$node_title = $node->field_retailer_product_name['und']['0']['value'].' @ Rs. '.$node->field_best_coupon_netpriceafters['und']['0']['value'].' | CupoNation';
-					$vars['head_title'] = $node_title;
+					// $node_title = 'ddd'.$node->field_retailer_product_name['und']['0']['value'].' @ Rs. '.$node->field_best_coupon_netpriceafters['und']['0']['value'].' | CupoNation';
+					// $vars['head_title'] = $node_title;
 					$node_product_name = $node->field_retailer_product_name['und']['0']['value'];
 					$node_net_price = $node->field_best_coupon_netpriceafters['und']['0']['value'];
 					$retailer = taxonomy_term_load($node->field_retailer['und']['0'][tid]);
 					$retailer_name = $retailer->name;
-					$head_elements['metatag_description']['#value'] = $node_product_name.' is available for the best price of Rs. '.$node_net_price.' @ '.$retailer_name.' using Discount Coupons and Promo Codes from CupoNation';
-					$head_elements['metatag_abstract']['#value'] = $node_product_name.' is available for the best price of Rs. '.$node_net_price.' @ '.$retailer_name.' using Discount Coupons and Promo Codes from CupoNation';
-					$head_elements['rdf_node_title']['#attributes']['content'] = $node_product_name.' is available for the best price of Rs. '.$node_net_price.' @ '.$retailer_name.' using Discount Coupons and Promo Codes from CupoNation';
+					$head_elements['metatag_description']['#value'] = $node_product_name.' (CN'.$nid.')'.' is available for the best price of Rs. '.$node_net_price.' @ '.$retailer_name.' using Discount Coupons and Promo Codes from CupoNation';
+					$head_elements['metatag_abstract']['#value'] = $node_product_name.' (CN'.$nid.')'.' is available for the best price of Rs. '.$node_net_price.' @ '.$retailer_name.' using Discount Coupons and Promo Codes from CupoNation';
+					$head_elements['rdf_node_title']['#attributes']['content'] = $node_product_name.' (CN'.$nid.')'.' is available for the best price of Rs. '.$node_net_price.' @ '.$retailer_name.' using Discount Coupons and Promo Codes from CupoNation';
 				} 
 			break;
 			case "rcp":
@@ -190,6 +203,25 @@ function basic_html_head_alter(&$head_elements) {
 			break;
 		}
 		$head_elements['metatag_author']['#value'] = '';
+	} else{
+		switch ($content_type) {
+			case "node":
+				$nid = arg(1);
+				$variables = get_defined_vars();
+				$node = node_load($nid);
+				if($node->type == '_product_and_coupon') {
+					// $node_title = $node->field_retailer_product_name['und']['0']['value'].' @ Rs. '.$node->field_best_coupon_netpriceafters['und']['0']['value'].' | CupoNation';
+					// $vars['head_title'] = $node_title;
+					$node_product_name = $node->field_retailer_product_name['und']['0']['value'];
+					$node_net_price = $node->field_best_coupon_netpriceafters['und']['0']['value'];
+					$retailer = taxonomy_term_load($node->field_retailer['und']['0'][tid]);
+					$retailer_name = $retailer->name;
+					$head_elements['metatag_description']['#value'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' by using coupons for '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
+					$head_elements['metatag_abstract']['#value'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' by using coupons for '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
+					$head_elements['rdf_node_title']['#attributes']['content'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' by using coupons for '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
+				} 
+			break;
+		}
 	}
 }
 
