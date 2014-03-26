@@ -30,13 +30,6 @@
 		<?php
 			/* GETTING FIELD VALUES*/
 			$url_path = rawurlencode(drupal_get_path_alias());
-			$current_domain = get_current_domain();
-			echo 'cuponation-title'.$fields['cuponation_title']->content;
-			if ($current_domain == 'cuponation' && !empty($fields['cuponation_title']->content )){
-				$title = $fields['cuponation_title']->content;
-			} else {
-				$title = $fields['title']->content;
-			}
 			$nid = strip_tags($fields['nid']->content);
 			$retailer = strip_tags($fields['field_retailer']->content);
 			$offer_type = strip_tags($fields['field_offer_type']->content);
@@ -45,6 +38,15 @@
 			$node = node_load($nid);
 			// $affiliate_url = strip_tags($fields['field_affiliate_url']->content);
 			$affiliate_url = $node->field_affiliate_url['und']['0']['value'];
+			$current_domain = get_current_domain();
+			echo 'cuponation-title'.$node->field_cuponation_title['und']['0']['value'];
+			if ($current_domain == 'cuponation' && !empty($node->field_cuponation_title)){
+				$title = $fields['cuponation_title']->content;
+			} else {
+				$title = $fields['title']->content;
+			}
+
+
 			// $affiliate_url = 'http://track.in.omgpm.com/?AID=387355&MID=304697&PID=9170&CID=3697672&WID=43135&uid=homePage&r=http%3A%2F%2Fwww.jabong.com';
 			$status = strip_tags($fields['field_status']->content);
 			$weight = $fields['field_weight']->content;
