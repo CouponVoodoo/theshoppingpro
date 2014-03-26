@@ -36,7 +36,7 @@
 			$coupon_title = strip_tags($fields['field_coupon_title']->content);
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
 			$node = node_load($nid);
-			//var_dump ($fields);
+			var_dump($fields);
 			echo '1:'.$fields['field_field_cuponation_title']->content; 
 			echo '2:'.$fields['field_cuponation_title']->content;
 			echo '3:'.$node->field_cuponation_title['und']['0']['value'];
