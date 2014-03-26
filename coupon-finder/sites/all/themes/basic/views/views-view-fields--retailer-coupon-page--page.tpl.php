@@ -39,6 +39,7 @@
 			// $affiliate_url = strip_tags($fields['field_affiliate_url']->content);
 			$affiliate_url = $node->field_affiliate_url['und']['0']['value'];
 			$current_domain = get_current_domain();
+			print_r ($nid);
 			print_r ($fields);
 			exit;
 			echo 'cuponation-title'.$node->field_cuponation_title['und']['0']['value'];
