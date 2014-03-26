@@ -216,9 +216,9 @@ function basic_html_head_alter(&$head_elements) {
 					$node_net_price = $node->field_best_coupon_netpriceafters['und']['0']['value'];
 					$retailer = taxonomy_term_load($node->field_retailer['und']['0'][tid]);
 					$retailer_name = $retailer->name;
-					$head_elements['metatag_description']['#value'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' by using coupons for '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
-					$head_elements['metatag_abstract']['#value'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' by using coupons for '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
-					$head_elements['rdf_node_title']['#attributes']['content'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' by using coupons for '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
+					$head_elements['metatag_description']['#value'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') at '.$retailer_name.' via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
+					$head_elements['metatag_abstract']['#value'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') at '.$retailer_name.' via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
+					$head_elements['rdf_node_title']['#attributes']['content'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') at '.$retailer_name.' via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
 				} 
 			break;
 		}
