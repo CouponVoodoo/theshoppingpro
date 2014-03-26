@@ -38,17 +38,21 @@
 			$node = node_load($nid);
 			//var_dump ($fields);
 			echo '1:'.$fields['field_field_cuponation_title']->content; 
-			echo '2:'.$fields['field_cuponation_title']->content; 
+			echo '2:'.$fields['field_cuponation_title']->content;
+			echo '3:'.$node->field_cuponation_title['und']['0']['value'];
+			echo '4:'.$node->field_cuponation_title;
+			echo '5:'.$node->field_cuponation_title->content;
+				
 			// $affiliate_url = strip_tags($fields['field_affiliate_url']->content);
 			$affiliate_url = $node->field_affiliate_url['und']['0']['value'];
 			$current_domain = get_current_domain();
 			// echo 'cuponation-title'.$node->field_cuponation_title['und']['0']['value'];
-			/* if ($current_domain == 'cuponation' && !empty($node->field_cuponation_title)){
-				$title = $fields['cuponation_title']->content;
+			if ($current_domain == 'cuponation' && !empty($node->field_cuponation_title['und']['0']['value'])){
+				$title = $node->field_cuponation_title['und']['0']['value'];
 			} else {
 				$title = $fields['title']->content;
 			}
-			*/
+			
 
 			// $affiliate_url = 'http://track.in.omgpm.com/?AID=387355&MID=304697&PID=9170&CID=3697672&WID=43135&uid=homePage&r=http%3A%2F%2Fwww.jabong.com';
 			$status = strip_tags($fields['field_status']->content);
