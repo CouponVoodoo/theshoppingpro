@@ -30,7 +30,12 @@
 		<?php
 			/* GETTING FIELD VALUES*/
 			$url_path = rawurlencode(drupal_get_path_alias());
-			$title = $fields['title']->content;
+			$current_domain = get_current_domain();
+			if ($current_domain == 'cuponation' && !empty($fields['cuponation_title']->content )){
+				$title = $fields['cuponation_title']->content;
+			} else {
+				$title = $fields['title']->content;
+			}
 			$nid = strip_tags($fields['nid']->content);
 			$retailer = strip_tags($fields['field_retailer']->content);
 			$offer_type = strip_tags($fields['field_offer_type']->content);
