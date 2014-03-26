@@ -262,6 +262,8 @@ function coupons_redirect_interim_page() {
 					//$url = $baseurl_redirect.$part2_redirect.'&AffExtParam1='.$uid1;
 					$url = $baseurl_redirect.$part2_redirect;
 				break;
+				default:
+					$url = $baseurl_redirect;
 			}
 		} else {
 			switch ($network_name_redirect) {
@@ -279,6 +281,8 @@ function coupons_redirect_interim_page() {
 					// $url = "http://www.flipkart.com".$part2_redirect.'&AffExtParam1='.$uid1;
 					$url = "http://www.amazon.in/".$part2_redirect;
 				break;
+				default:
+					$url = $node_redirect->field_affiliate_url['und']['0']['value'];
 			}
 		}
 //	  echo $url;
