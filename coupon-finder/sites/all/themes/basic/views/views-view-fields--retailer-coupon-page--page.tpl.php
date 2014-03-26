@@ -31,6 +31,7 @@
 			/* GETTING FIELD VALUES*/
 			$url_path = rawurlencode(drupal_get_path_alias());
 			$current_domain = get_current_domain();
+			echo 'cuponation-title'.$fields['cuponation_title']->content;
 			if ($current_domain == 'cuponation' && !empty($fields['cuponation_title']->content )){
 				$title = $fields['cuponation_title']->content;
 			} else {
