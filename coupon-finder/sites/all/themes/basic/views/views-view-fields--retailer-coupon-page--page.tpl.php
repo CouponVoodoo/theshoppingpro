@@ -39,16 +39,13 @@
 			// $affiliate_url = strip_tags($fields['field_affiliate_url']->content);
 			$affiliate_url = $node->field_affiliate_url['und']['0']['value'];
 			$current_domain = get_current_domain();
-			var_dump ($node);
-			var_dump ($fields);
-			exit;
-			echo 'cuponation-title'.$node->field_cuponation_title['und']['0']['value'];
-			if ($current_domain == 'cuponation' && !empty($node->field_cuponation_title)){
+			// echo 'cuponation-title'.$node->field_cuponation_title['und']['0']['value'];
+			/* if ($current_domain == 'cuponation' && !empty($node->field_cuponation_title)){
 				$title = $fields['cuponation_title']->content;
 			} else {
 				$title = $fields['title']->content;
 			}
-
+			*/
 
 			// $affiliate_url = 'http://track.in.omgpm.com/?AID=387355&MID=304697&PID=9170&CID=3697672&WID=43135&uid=homePage&r=http%3A%2F%2Fwww.jabong.com';
 			$status = strip_tags($fields['field_status']->content);
