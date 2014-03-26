@@ -30,15 +30,15 @@
 		<?php
 			/* GETTING FIELD VALUES*/
 			$url_path = rawurlencode(drupal_get_path_alias());
+			$current_domain = get_current_domain();
 			$nid = strip_tags($fields['nid']->content);
 			$retailer = strip_tags($fields['field_retailer']->content);
 			$offer_type = strip_tags($fields['field_offer_type']->content);
 			$coupon_title = strip_tags($fields['field_coupon_title']->content);
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
-			$node = node_load($nid);
+ 			$node = node_load($nid);
 			// $affiliate_url = strip_tags($fields['field_affiliate_url']->content);
 			$affiliate_url = $node->field_affiliate_url['und']['0']['value'];
-			$current_domain = get_current_domain();
 			// echo 'cuponation-title'.$node->field_cuponation_title['und']['0']['value'];
 			if ($current_domain == 'cuponation' && !empty($node->field_cuponation_title['und']['0']['value'])){
 				$title = $node->field_cuponation_title['und']['0']['value'];
