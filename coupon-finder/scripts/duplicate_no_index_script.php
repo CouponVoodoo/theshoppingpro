@@ -2,6 +2,11 @@
 $results = db_query("SELECT GROUP_CONCAT(CONCAT(lc.`entity_id`,':',lc.`field_lastcheckedtime_value`) SEPARATOR  ',' ) last_checked_time,GROUP_CONCAT( i.`field_no_index_value` SEPARATOR  ',' ) index_check,COUNT( pn.`entity_id` ) num, GROUP_CONCAT( pn.`entity_id` SEPARATOR  ',' ) NIDlist, pn.`field_retailer_product_name_value` , r.`field_retailer_tid` FROM  {field_data_field_retailer_product_name} pn INNER JOIN {field_data_field_retailer} r ON pn.`entity_id` = r.`entity_id` inner join {field_data_field_lastcheckedtime} lc on lc.`entity_id` = r.`entity_id` left join {field_data_field_no_index}  i on lc.`entity_id` = i.`entity_id` where  i.`field_no_index_value` is null or i.`field_no_index_value` = 0  GROUP BY pn.`field_retailer_product_name_value` , r.`field_retailer_tid` HAVING num >1");
 $i=0;
 foreach ($results as $result) {
+	echo nl2br("\n");
+	echo 'counter: '.$i;
+	echo nl2br("\n");
+	echo '--------------------------------------------------';
+	
 	$sets = explode(",",$result->last_checked_time);
 	// echo 'run:'.$i;
 	// print_r($sets);
@@ -20,12 +25,15 @@ foreach ($results as $result) {
 	foreach ($nids as $nid) {
 		if ($nid == $latest_nid) {
 			echo 'ignore'.$nid;
+			echo nl2br("\n");
 		} else {
 			echo 'modify'.$nid;
+			echo nl2br("\n");
 			$no_index_query = "SELECT * FROM {field_data_field_no_index} i where i.entity_id= :entity_id and i.bundle = '_product_and_coupon' and i.entity_type = 'node'";
 			$count = db_query($no_index_query, array(':entity_id' => $nid));
 			if($count->rowCount()==0){
 				echo 'insert';
+				echo nl2br("\n");
 				$insertQuery = db_insert('field_data_field_no_index') // Table name no longer needs {}
 					->fields(array(
 					  'entity_type' => 'node',
@@ -56,6 +64,7 @@ foreach ($results as $result) {
 					
 			} else {
 				echo 'update';
+				echo nl2br("\n");
 				db_update('field_data_field_no_index')
 					->expression('field_no_index_value',1)
 					->condition('entity_id', $nid)
@@ -70,6 +79,7 @@ foreach ($results as $result) {
 			$sm_count = db_query($sitemap_removal_query, array(':entity_id' => $nid));
 			if($sm_count->rowCount()==0){
 				echo 'sm_insert';
+				echo nl2br("\n");
 				$insertQuery = db_insert('xmlsitemap') // Table name no longer needs {}
 					->fields(array(
 					  'id' => $nid,
@@ -89,6 +99,8 @@ foreach ($results as $result) {
 					->execute();
 				
 			} else {
+				echo 'sm_update';
+				echo nl2br("\n");
 				db_update('xmlsitemap')
 				  ->fields(array(
 					'status' => 0,
@@ -103,6 +115,7 @@ foreach ($results as $result) {
 			$result_count = db_query($result_store_query, array(':entity_id' => $nid));
 			if($result_count->rowCount()==0){
 				echo 'result_insert';
+				echo nl2br("\n");
 				$insertQuery = db_insert('no_index_results') // Table name no longer needs {}
 					->fields(array(
 					  'Modified_NID' => $nid,
@@ -112,6 +125,7 @@ foreach ($results as $result) {
 					->execute();
 			} else {
 				echo 'result_update';
+				echo nl2br("\n");
 					db_update('no_index_results')
 					  ->fields(array(
 						  'Modified_NID' => $nid,
@@ -129,9 +143,12 @@ foreach ($results as $result) {
 
 	
 	echo '--------------------------------------------------';
+	echo nl2br("\n");
 	$i=$i+1;
 	if ($i>2){
-		exit(1);
+		drush_die;
+		echo 'die in between';
+		exit;
 	}
 }
 
