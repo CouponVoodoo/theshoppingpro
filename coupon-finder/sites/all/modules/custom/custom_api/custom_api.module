@@ -199,8 +199,10 @@ function custom_api_addproduct($ProInfo){
 	$node->field_product_images[LANGUAGE_NONE]['0']['fid'] = $file->fid;*/
 	
 	node_save($node);
+	echo 'test before';
 	$nid_noIndex = $node->nid;
 	global $base_url;
+	echo after;
 	
 	/*$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
 	
