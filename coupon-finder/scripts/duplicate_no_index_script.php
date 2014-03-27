@@ -7,8 +7,9 @@ foreach ($results as $result) {
 	// print_r($sets);
 	$nid_last_checked_pairs = array();
 	foreach ($sets as $set) {
-		$nid = explode(":",$set)[0];
-		$last_checked_time = explode(":",$set)[1];
+		$split_array = explode(":",$set);
+		$nid = $split_array[0];
+		$last_checked_time = $split_array[1];
 		$nid_last_checked_pairs[$nid] = $last_checked_time;
 		// print_r ($array);
 	}
