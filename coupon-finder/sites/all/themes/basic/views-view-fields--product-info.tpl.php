@@ -100,7 +100,7 @@ if ($current_domain != 'cuponation'){
     if( $CouponStatus == 1 ){
         print coupons_copy_best_coupon($nid);
     }else{
-        echo "<div class='d_view_store'><a class='view_store' href='{$redirect_url}' >".get_label('Buy Now')."</a></div>";
+        echo "<div class='d_view_store'><a class='view_store' href='{$redirect_url}' target='_blank'>".get_label('Buy Now')."</a></div>";
 		
     }
     ?>

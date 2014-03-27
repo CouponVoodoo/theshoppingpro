@@ -202,14 +202,20 @@ function basic_html_head_alter(&$head_elements) {
 			break;
 			case "rcp":
 				$retailer_name = str_replace('.com','',arg(1));
-				$head_elements['metatag_description']['#value'] = 'Save every time you shop via '.$retailer_name.' Coupons. Cuponation tests all '.$retailer.' coupons so they work without a glitch';
-				$head_elements['metatag_abstract']['#value'] = 'Save every time you shop via '.$retailer_name.' Coupons. Cuponation tests all '.$retailer.' coupons so they work without a glitch';
-				$head_elements['rdf_node_title']['#attributes']['content'] = 'Save every time you shop via '.$retailer_name.' Coupons. Cuponation tests all '.$retailer.' coupons so they work without a glitch';
+				$head_elements['metatag_description']['#value'] = 'Save every time you shop via '.$retailer_name.' Coupons. Cuponation tests all '.$retailer_name.' coupons so they work without a glitch';
+				$head_elements['metatag_abstract']['#value'] = 'Save every time you shop via '.$retailer_name.' Coupons. Cuponation tests all '.$retailer_name.' coupons so they work without a glitch';
+				$head_elements['rdf_node_title']['#attributes']['content'] = 'Save every time you shop via '.$retailer_name.' Coupons. Cuponation tests all '.$retailer_name.' coupons so they work without a glitch';
 			break;
 		}
 		$head_elements['metatag_author']['#value'] = '';
 	} else{
 		switch ($content_type) {
+			case "rcp":
+				$retailer_name = str_replace('.com','',arg(1));
+				$head_elements['metatag_description']['#value'] = 'Now get the latest and tested '.$retailer_name.' coupons for via CouponVoodoo. Save every time you shop at '.$retailer_name;
+				$head_elements['metatag_abstract']['#value'] = 'Now get the latest and tested '.$retailer_name.' coupons for via CouponVoodoo. Save every time you shop at '.$retailer_name;
+				$head_elements['rdf_node_title']['#attributes']['content'] = 'Now get the latest and tested '.$retailer_name.' coupons for via CouponVoodoo. Save every time you shop at '.$retailer_name;
+			break;
 			case "node":
 				$nid = arg(1);
 				$variables = get_defined_vars();
