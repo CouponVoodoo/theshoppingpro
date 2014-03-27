@@ -136,7 +136,7 @@ function custom_api_addproduct($ProInfo){
 	$node->field_category['und'][0]['tid']			= trim( $jsonArray->header->Category );
 	$node->field_category['und'][0]['tid']			= trim( $jsonArray->header->Category );
 	//$node->field_category['und'][0]['tid']			= 1;
-	
+	 
 	$node->title    				  	= $proTitle;
 	$node->field_description['und']['0'][value]	 	  	= trim( $jsonArray->header->ProductDescription );
 	$node->field_product_price['und']['0'][value]	  	= ( $jsonArray->header->ListingProductPrice )?$jsonArray->header->ListingProductPrice:0;
@@ -199,6 +199,7 @@ function custom_api_addproduct($ProInfo){
 	$node->field_product_images[LANGUAGE_NONE]['0']['fid'] = $file->fid;*/
 	
 	node_save($node);
+	$nid_noIndex = $node->nid;
 	global $base_url;
 	
 	/*$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
@@ -241,6 +242,7 @@ function custom_api_addproduct($ProInfo){
 	$recordLastUpdate = $resultLastUpdate->fetch();
 	
 	$lastUpdatedDate = $recordLastUpdate->field_lastcheckedtime_value;
+	$nid_noIndex = $record->entity_id;
 	global $base_url;
 	  
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$record->entity_id);
@@ -591,6 +593,9 @@ $field_best_coupon_netpriceafters = ( $jsonArray->header->bestCouponResult->NetP
 	    echo $response;	    
 	}
       }	
+	 echo 'nid_noIndex '.$nid_noIndex;
+	 echo 'pName: '.trim( $jsonArray->header->ProductName );
+     echo 'rId: '.$jsonArray->header->Retailer;
     } 
     /*end here*/   
      
