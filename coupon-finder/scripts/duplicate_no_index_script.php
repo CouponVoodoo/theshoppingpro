@@ -145,10 +145,10 @@ foreach ($results as $result) {
 	echo '--------------------------------------------------';
 	echo nl2br("\n");
 	$i=$i+1;
-	if ($i>2){
+	if ($i>5){
 		drush_set_error('succesffull exit');
 		echo 'successful exit';
-		die;
+		die();
 		echo 'die in between';
 		exit;
 	}
