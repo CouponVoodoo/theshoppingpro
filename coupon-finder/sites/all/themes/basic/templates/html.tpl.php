@@ -2,8 +2,6 @@
 <!DOCTYPE html>
 <html<?php print $html_attributes . $rdf_namespaces; ?>>
 <head>
-<!-- Adding no index for products with field no_index = 1 -->
-
 <?php
 	$node = node_load(arg(1));
 	if ($node->field_no_index['und']['0']['value'] == 1){
