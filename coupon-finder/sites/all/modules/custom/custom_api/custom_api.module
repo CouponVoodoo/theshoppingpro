@@ -216,7 +216,7 @@ function custom_api_addproduct($ProInfo){
 	}
 	
       }elseif($record->expression == 1){
-	 echo 'update';
+	 // echo 'update';
 	
 		/** ASHISH NODE CREATION TIMING  - UPDATE LOOP ENTERED
 		$time1 = round(microtime(true)* 1000);
@@ -246,7 +246,7 @@ function custom_api_addproduct($ProInfo){
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$record->entity_id);
 	
 	if( $expDate[0] != $lastUpdatedDate){
-	  echo 'update loop';
+	 // echo 'update loop';
   	  	/** ASHISH NODE CREATION TIMING  - LAST UPDATE URL
 		$time1 = round(microtime(true)* 1000);
 		echo 'Last Update Time Loop: '.$time1;
