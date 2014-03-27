@@ -517,7 +517,7 @@ div.ctools-modal-content .modal-content{
 #coupon_search_listing > li .row_1{margin-bottom:10px;}
 .search_listing_left{
   min-height: 86px;
-  width: 100%;
+  width: 80%;
   padding: 15px;
   float:left;
   margin:0 0 10px 0;
@@ -525,14 +525,14 @@ div.ctools-modal-content .modal-content{
 
 .search_listing_right{
   float: left;
-  margin :-10px 20px 10px 20px;
+  margin :30px 0px 0px 0px;
 }
 
 
 .product-detail .search_listing_right{
-  float: left;
-  width: 17%;
-  margin: 30px 0px 0px 0px;
+//  float: left;
+//  width: 17%;
+//  margin: ;
 }
 
 
