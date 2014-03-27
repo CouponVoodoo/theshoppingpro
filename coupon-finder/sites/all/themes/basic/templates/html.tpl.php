@@ -10,8 +10,6 @@
 <?php
 	} 
 ?>
-
-
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
