@@ -152,8 +152,13 @@ function basic_preprocess_html(&$vars) {
 				$nid = arg(1);
 				$node = node_load($nid);
 				if($node->type == '_product_and_coupon') {
-					$node_title = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.')| CouponVoodoo';
-					$vars['head_title'] = $node_title;
+					if ($node->field_best_coupon_saving['und']['0']['value'] > 0) {
+						$node_title = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.')| CouponVoodoo';
+						$vars['head_title'] = $node_title;
+					} Else {
+						$node_title = 'Latest Coupons update for '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.')| CouponVoodoo';
+						$vars['head_title'] = $node_title;					
+					}
 				} else { 
 					$variables = get_defined_vars();
 					$vars['head_title'] = $variables[vars]['page']['content']['system_main']['nodes'][$nid]['#node']->title;
@@ -216,9 +221,15 @@ function basic_html_head_alter(&$head_elements) {
 					$node_net_price = $node->field_best_coupon_netpriceafters['und']['0']['value'];
 					$retailer = taxonomy_term_load($node->field_retailer['und']['0'][tid]);
 					$retailer_name = $retailer->name;
-					$head_elements['metatag_description']['#value'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') at '.$retailer_name.' via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
-					$head_elements['metatag_abstract']['#value'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') at '.$retailer_name.' via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
-					$head_elements['rdf_node_title']['#attributes']['content'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') at '.$retailer_name.' via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
+					if ($node->field_best_coupon_saving['und']['0']['value'] > 0) {
+						$head_elements['metatag_description']['#value'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') at '.$retailer_name.' via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
+						$head_elements['metatag_abstract']['#value'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') at '.$retailer_name.' via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
+						$head_elements['rdf_node_title']['#attributes']['content'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') at '.$retailer_name.' via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
+					} else {
+						$head_elements['metatag_description']['#value'] = 'Now check the latest coupons for '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') at '.$retailer_name.' with one click via CouponVoodoo - the #1 destination for savings across brands and retailers';
+						$head_elements['metatag_abstract']['#value'] =  'Now check the latest coupons for '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') at '.$retailer_name.' with one click via CouponVoodoo - the #1 destination for savings across brands and retailers';
+						$head_elements['rdf_node_title']['#attributes']['content'] =  'Now check the latest coupons for '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') at '.$retailer_name.' with one click via CouponVoodoo - the #1 destination for savings across brands and retailers';
+					}
 				} 
 			break;
 		}
