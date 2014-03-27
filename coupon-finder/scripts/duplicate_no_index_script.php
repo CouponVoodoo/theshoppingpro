@@ -3,7 +3,7 @@ $results = db_query("SELECT GROUP_CONCAT(CONCAT(lc.`entity_id`,':',lc.`field_las
 $i=0;
 foreach ($results as $result) {
 	echo nl2br("\n");
-	echo 'counter: '.$i;
+	echo 'counter: '.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i.$i;
 	echo nl2br("\n");
 	echo '--------------------------------------------------';
 	
@@ -146,7 +146,9 @@ foreach ($results as $result) {
 	echo nl2br("\n");
 	$i=$i+1;
 	if ($i>2){
-		drush_die;
+		drush_set_error('succesffull exit');
+		echo 'successful exit';
+		die;
 		echo 'die in between';
 		exit;
 	}
