@@ -6,7 +6,7 @@
 	$node = node_load(arg(1));
 	if ($node->field_no_index['und']['0']['value'] == 1){
 ?>
-	<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+	<META NAME="ROBOTS" CONTENT="NOINDEX">
 <?php
 	} 
 ?>
