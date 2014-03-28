@@ -919,7 +919,7 @@ function custom_breadcrumbs_override_links($links, $attributes = array('class' =
       if (custom_breadcrumbs_in_active_trail($link) && ($link['href'] != '<front>')) {
         $class .= ' active-trail';
       }
-      $output .= '<li'. ' itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb "' . drupal_attributes(array('class' => $class)) . '>';
+      $output .= '<li' . drupal_attributes(array('class' => $class)) . '>';
 
       if (isset($link['href'])) {
         // Pass in $link as $options, they share the same keys.
@@ -970,7 +970,7 @@ function custom_breadcrumbs_theme_menu_item_link($link) {
     // Some themes use options, others use localized_options. Populate both.
     $link['localized_options']['attributes']['id'] = 'custom_breadcrumbs_menu-' . _custom_breadcrumbs_menu_unique_id($link['mlid']);
     $link['options']['attributes']['id'] = $link['localized_options']['attributes']['id'];
-		
+
     // Each link in series is another level of recursion. Add it to the stack.
     _custom_breadcrumbs_menu_stack($link);
     if (custom_breadcrumbs_in_active_trail($link)) {
