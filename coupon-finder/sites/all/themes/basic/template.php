@@ -225,7 +225,7 @@ function basic_html_head_alter(&$head_elements) {
 					// $vars['head_title'] = $node_title;
 					$node_product_name = $node->field_retailer_product_name['und']['0']['value'];
 					$node_net_price = $node->field_best_coupon_netpriceafters['und']['0']['value'];
-					$retailer = taxonomy_term_load($node->field_retailer['und']['0'][tid]);
+					$retailer = taxonomy_term_load($node->field_retailer['und']['0']['tid']);
 					$retailer_name = $retailer->name;
 					if ($node->field_best_coupon_saving['und']['0']['value'] > 0) {
 						$head_elements['metatag_description']['#value'] = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.') at '.$retailer_name.' via coupons by CouponVoodoo - the #1 destination for savings across brands and retailers';
