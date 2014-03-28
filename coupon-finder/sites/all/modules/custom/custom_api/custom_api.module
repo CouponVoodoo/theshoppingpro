@@ -618,7 +618,7 @@ $field_best_coupon_netpriceafters = ( $jsonArray->header->bestCouponResult->NetP
 function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $current_time= time();
    $boost_time=$current_time-(48*3600);
-   $hide_time=$current_time-(92*3600);
+   $hide_time=$current_time-(72*3600);
    $solr_boost_time=gmdate('Y-m-d\TH:i:s\Z', $boost_time);
    $solr_hide_time=gmdate('Y-m-d\TH:i:s\Z', $hide_time);
    $solr_time_coupon_boost= "'(itm_field_best_coupon_status:1 AND dm_field_lastcheckedtime:[".$solr_boost_time." TO *])^2'";
