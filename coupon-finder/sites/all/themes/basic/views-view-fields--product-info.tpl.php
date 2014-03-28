@@ -42,7 +42,7 @@ $current_time = round(microtime(true));
 $time_gap = $current_time-$lastcheckedtime_check;
 $CouponStatus = trim(strip_tags($fields['field_best_coupon_status']->content));
 $coupon_saving = trim(strip_tags($fields['field_best_coupon_saving']->content));
-$best_coupon_description = $fields['field_best_coupon_description']->content;
+$best_coupon_description = trim(str_replace("+&nbsp;","",$fields['field_best_coupon_description']->content));
 $best_coupon_code = $node->field_best_coupon_couponcode['und']['0']['value'];
 global $base_url;
 $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&p='.$url_path;
