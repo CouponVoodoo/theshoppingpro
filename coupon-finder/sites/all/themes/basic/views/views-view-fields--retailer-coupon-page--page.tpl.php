@@ -24,13 +24,18 @@
  * @ingroup views_templates
  */
 ?>
+<?php
+$current_domain = get_current_domain();
+if ($current_domain == 'couponvoodoo') {
+?>
+
 
 <div class="retailer_coupon_page_row">
 	<div class="search_listing_left">
 		<?php
 			/* GETTING FIELD VALUES*/
 			$url_path = rawurlencode(drupal_get_path_alias());
-			$current_domain = get_current_domain();
+			
 			$nid = strip_tags($fields['nid']->content);
 			$retailer = strip_tags($fields['field_retailer']->content);
 			$offer_type = strip_tags($fields['field_offer_type']->content);
@@ -190,3 +195,4 @@
 	}
 	?>
 </div>
+<?php }?>
