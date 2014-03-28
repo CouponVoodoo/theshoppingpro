@@ -32,8 +32,18 @@ $node = node_load($nid);
 $mrp = $node->field_mrpproductprice['und'][0]['value'];
 $list_price = $node->field_product_price['und'][0]['value'];
 $retailer = strip_tags($fields['field_retailer']->content);
+$retailer_name_predictor = str_replace(".com", "", $retailer);
 $brand = strip_tags($fields['field_brand']->content);
+$category_id = $node->field_category['und'][0]['tid'];
+$base_url_predictor = $node->field_base_url['und'][0]['value'];
 $non_coupon_saving = $mrp - $list_price;
+$lastcheckedtime_check = strtotime(strip_tags($fields['field_lastcheckedtime']->content));
+$current_time = round(microtime(true));
+$time_gap = $current_time-$lastcheckedtime_check;
+$CouponStatus = trim(strip_tags($fields['field_best_coupon_status']->content));
+$coupon_saving = trim(strip_tags($fields['field_best_coupon_saving']->content));
+$best_coupon_description = $fields['field_best_coupon_description']->content;
+$best_coupon_code = $node->field_best_coupon_couponcode['und']['0']['value'];
 global $base_url;
 $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&p='.$url_path;
 /** Start of By Ashish to get mixpanel variables */		
@@ -46,7 +56,54 @@ $mixpanel_product_name= strip_tags($fields['field_retailer_product_name']->conte
 $mixpanel_base_url= strip_tags($fields['field_base_url']->content);
 $mixpanel_type='Product Page View Store';
 /** End of By Ashish to get mixpanel variables */			
+
+/** Start of getting live coupon info from predictor */
+$test_nid_array = array();
+	if (in_array($nid, $test_nid_array)){ 
+		if ($time_gap > (1 * 18 * 3600)) {
+			$predictor_result = predictor_json($retailer_name_predictor, $brand, $category_id, $mrp, $list_price, 'full', $base_url_predictor);
+			// echo 'predictor: '.$predictor_result;
+			$predictor_array = json_decode($predictor_result,true);
+			var_dump($predictor_array);
+			// echo 'test for error'.$predictor_array['Error'];
+			if ($predictor_result != 'error' && empty($predictor_array['Error'])){
+				$predictor_status = 1;
+				if($predictor_array[0]["Successful"]==1){
+					$best_status_predictor = 1;
+					$CouponStatus = $best_status_predictor; // overwriting database value
+					// echo ' best_status_predictor: '.$best_status_predictor;
+					$best_coupon_code_predictor = $predictor_array[0]["couponCode"];
+					$best_coupon_code = $best_coupon_code_predictor;
+					
+					// echo ' best_coupon_code_predictor: '.$best_coupon_code_predictor;
+					$saving_predictor = $predictor_array[0]["Saving"];
+					$coupon_saving = $saving_predictor; // overwriting database value
+					echo 'saving predicted '.$coupon_saving;
+					// echo ' saving_predictor: '.$saving_predictor;
+					$coupon_description_predictor = $predictor_array[0]["description"];
+					$best_coupon_description = $coupon_description_predictor; // overwriting database value
+					// echo ' coupon_description_predictor: '.$coupon_description_predictor;
+					
+				} else {
+					// echo 'no successful coupon';
+					$best_status_predictor = 0;
+				}
+			} else {
+				 // echo 'error';
+				
+				mail('team@theshoppingpro.com','Prediction Error','NID: '.$NID.' PATH: '.drupal_get_path_alias().' Json error: '.$predictor_array['Error'].' Predictor Function Error: '.$predictor_result); 
+				$best_status_predictor = 0;
+			}
+		/** End of getting live coupon info from predictor */
+		}
+	}
+
 ?>
+
+
+
+
+
 <div class="product-detail">
 
 <div class="product-inner">
@@ -77,28 +134,36 @@ $mixpanel_type='Product Page View Store';
 
 <?php 
 
-$lastcheckedtime_check = strtotime(strip_tags($fields['field_lastcheckedtime']->content));
-$current_time = round(microtime(true));
-$time_gap = $current_time-$lastcheckedtime_check;
 
 /* Commented out since recheck alert there below status too */
 // if ( $time_gap > (1 * 27 * 3600)) {
 
 if ($current_domain != 'cuponation'){
 ?>
-
-<div class="custom_link">Last Checked : <?php echo strip_tags($fields['field_lastcheckedtime']->content); ?> | <a onclick="locader('<?php echo $base_root.base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>')" class="active">Recheck Now</a></div>
+	<div class="custom_link">Last Checked : <?php echo strip_tags($fields['field_lastcheckedtime']->content); ?> | <a onclick="locader('<?php echo $base_root.base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>')" class="active">Recheck Now</a></div>
 <?php } ?>
 
 <div class="product-right">
 <h4><?php echo get_label('Best Coupon Or Discounts');?></h4>
 <div class="coupon_code1">
     <?php       
-    $CouponStatus = trim(strip_tags($fields['field_best_coupon_status']->content));
-	$Couponsavingcheck = trim(strip_tags($fields['field_best_coupon_saving']->content));
-	    
     if( $CouponStatus == 1 ){
-        print coupons_copy_best_coupon($nid);
+		/** start of changed to display copy coupon right here - uncomment print and comment rest if problem happens **/
+         //print coupons_copy_best_coupon($nid);
+		 
+	?>	
+	<div class="search_listing_right">
+		<div class="search_listing_row__<?php print $row->counter; ?> copy_coupon_row">
+			<a href="<?php print $base_url ?>/coupon-redirect?l=bc&nid=<?php print $nid;?>&c=<?php print $best_coupon_code; ?>&p=<?php print $url_path; ?>&s=<?php print base_url_predictor;?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $best_coupon_code?>" >
+				<span class="copy_coupon">Copy Coupon</span><span></span>
+			</a>
+		</div>		
+	</div>
+		
+	<?php	
+		
+		/** end of changed to display copy coupon right here - uncomment print and comment rest if problem happens **/
+		
     }else{
         echo "<div class='d_view_store'><a class='view_store' href='{$redirect_url}' target='_blank'>".get_label('Buy Now')."</a></div>";
 		
@@ -111,17 +176,16 @@ if ($current_domain != 'cuponation'){
     <label>Status:</label>
     <?php
 
-		if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
-        echo "<div class='pro_coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='pro_coupons_text'>".get_label('Coupons Found')."</div></div>";
-		$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value'];	
-		$coupon_code=rawurlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
-	}else{
+		if($CouponStatus == 1 ){
+			echo "<div class='pro_coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='pro_coupons_text'>".get_label('Coupons Found')."</div></div>";
+			$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value'];	
+			$coupon_code=rawurlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
+		}else{
 		if ($non_coupon_saving > 0){
 			echo "<div class='pro_coupons_found'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><div class='pro_savings_text'>".get_label('Discount Found')."</div></div>";
 			$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
 			$coupon_code='Savings_Found';
 		} Else {
-		
 				// echo "<div class='pro_no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='pro_no_coupons_text'>No Discounts</div></div>";
 				echo "<div class='pro_no_coupons_found'><div class='pro_no_coupons_text'>".get_label('No Discounts')."</div></div>";
 				$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
@@ -138,17 +202,17 @@ if ($current_domain != 'cuponation'){
 
 
 <?php
-	if ($node->field_best_coupon_saving['und'][0]['value'] == 1 && $node->field_best_coupon_status[und][0]['value'] == 1){
+	if ($node->field_best_coupon_saving['und'][0]['value'] == 1 && $CouponStatus == 1){
 		echo "<li> <label>".get_label('List Price:')."</label><meta itemprop='currency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
 		echo "<li> <label>".get_label('Savings:')."</label>See Best Coupon</li>";
 		echo "<li> <label>".get_label('Offer:')."</label>See Best Coupon</li>";
 	
 	
 	} else {
-		if ($node->field_best_coupon_saving['und'][0]['value'] > 1 && $node->field_best_coupon_status[und][0]['value'] == 1){
+		if ($coupon_saving > 1 && $CouponStatus == 1){
 				echo "<li> <label>".get_label('List Price:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
-				echo "<li> <label>".get_label('Savings:')."</label>".get_label('INR ').number_format($node->field_best_coupon_saving['und'][0]['value'],0, '.', ',')."</li>";
-				echo "<li> <label>".get_label('Net Price:')."</label><meta itemprop='currency' content='INR' /><meta itemprop='price' content='".number_format($node->field_best_coupon_netpriceafters['und'][0]['value'],0, '.', ',')."'/>".get_label('INR ').number_format($node->field_best_coupon_netpriceafters['und'][0]['value'],0, '.', ',')."</li>";
+				echo "<li> <label>".get_label('Savings:')."</label>".get_label('INR ').number_format($coupon_saving,0, '.', ',')."</li>";
+				echo "<li> <label>".get_label('Net Price:')."</label><meta itemprop='currency' content='INR' /><meta itemprop='price' content='".number_format(($list_price-$coupon_saving),0, '.', ',')."'/>".get_label('INR ').number_format($list_price-$coupon_saving,0, '.', ',')."</li>";
 
 		} else {
 			if ($non_coupon_saving > 0){
@@ -173,7 +237,7 @@ if ($current_domain != 'cuponation'){
 		$query->entityCondition('entity_type', 'node')
 			->entityCondition('bundle', 'retailer_coupon_page')
 			->fieldCondition('field_retailer', 'tid', $node->field_retailer['und']['0']['tid'], '=')
-			->fieldCondition('field_coupon_code', 'value', $node->field_best_coupon_couponcode['und']['0']['value'], '=');
+			->fieldCondition('field_coupon_code', 'value', $best_coupon_code, '=');
 		$result = $query->execute();		
 		$nids = array_keys($result['node']);
 		$retailer_coupon = node_load($nids[0]);
@@ -183,11 +247,11 @@ if ($current_domain != 'cuponation'){
 			echo"<span itemprop='offerDetails'>".$cuponation_title."</span>";
 		} else {
 			// print ($fields['field_best_coupon_description']->content); 
-			echo"<span itemprop='offerDetails'>".strip_tags($fields['field_best_coupon_description']->content)."</span>";
+			echo"<span itemprop='offerDetails'>".$best_coupon_description."</span>";
 		}	
 	} else {
 		// print ($fields['field_best_coupon_description']->content); 
-		echo"<span itemprop='offerDetails'>".strip_tags($fields['field_best_coupon_description']->content)."</span>";
+		echo"<span itemprop='offerDetails'>".$best_coupon_description."</span>";
 	}
 	?></li>
 
@@ -278,8 +342,83 @@ if ($brand_check != 'Other') {
 </div>
 <h4> <a id="All_Coupons"><?php echo get_label('Results For All Coupons Of This Product');?></a></h4>
 <?php
+	/** If predictor then the other coupons comes via the predictor array**/
+	$i = 0;
+	if ($predictor_status == 1) {
+	
+	?>
+	<ul id="coupon_search_listing" class="custom-coupon_search_listing"><li id="search_listing_li_row_1" class="search_listing_row_li first">
+	<?php
+		foreach($predictor_array as $predictor_set){
+			$coupon_code_predictor = $predictor_array[$i]["couponCode"];
+			$saving_predictor = $predictor_array[$i]["Saving"];
+			$coupon_description_predictor = $predictor_array[$i]["description"];
+			$successful_predictor = $predictor_array[$i]["Successful"];
+			$i++;
+					$net_price = $list_price - $saving_predictor;
+					if ($successful_predictor=="1") {
+					  $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u67_normal.png";
+					  $best_coupon = !empty($best_status_predictor) ? '<span class="best_coupon">Best Coupon (Guaranteed To Work)</span>' : '<div class="coupon_status_guaranteed"><img src="'.$image_right.'"><span>Guaranteed To Work</span></div>';
+					}else {
+					  $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u71_normal.png";
+					  $best_coupon = !empty($best_status_predictor) ? '<span class="best_coupon">Best Coupon (Guaranteed To Work)</span>' : '<span class="best_coupon_image red">This coupon does not work for your product</span>';
+					}
+				?>
+			<li id="search_listing_li_row_<?php echo $i;?>" class="search_listing_row_li first">
+				<div class="search_listing_left">
+				  <div class="row_1">
+				   <div class='description'>
+					  <label><?php echo get_label('Description:');?></label>
+					  <div class="search_listing_row_1 search_listing_row"><?php print $coupon_description_predictor;?></div>
+					</div>
+				  </div>
+				  <div class="row_2">
+					<?php if ($successful_predictor=="1") : ?>
+						<label><?php echo get_label('Savings:');?></label>
+						<div class="search_listing_row_1 search_listing_row"><div class="saving"><?php print get_label('This coupon helps you save ').get_label('INR ').$saving_predictor.get_label(' on ').strip_tags($fields['field_retailer_product_name']->content);?></div></div>
+						<label><?php echo get_label('Net Price:');?></label>
+						<div class="search_listing_row_1 search_listing_row"><div class="saving"><?php print get_label('INR ').number_format($net_price,0, '.', ',');?></div></div>
+					<?php else: ?>
+						<label><?php echo get_label('Savings:');?></label>
+						<div class="search_listing_row_1 search_listing_row"><div class="saving"></div><?php print get_label('This coupon does not work for your product'); ?></div>
+					<?php endif; ?>
+				  </div>
+				 <?php /* if ($row->Successful != "1") : ?>
+				  <div class="row_3">
+					<label><?php echo get_label('Response:');?></label>
+					<div class="search_listing_row_<?php print $row->counter; ?>' search_listing_row"><?php print $row->Saving;?></div>
+				  </div>
+				  <?php endif; */?>
+				</div>
+			
+				<div class="search_listing_right">
+				  <div class="search_listing_row__1 copy_coupon_row">
+					<a href="<?php print $base_url ?>/coupon-redirect?l=oc&nid=<?php print $nid;?>&c=<?php print $coupon_code_predictor; ?>&p=<?php print $url_path; ?>&s=<?php print urlencode($url_path);?>" target="_blank" class="unlock_coupon" rel="c_1" data-clipboard-text="<?php echo $coupon_code_predictor?>">
+					  <span class="copy_coupon">Copy Coupon</span><span></span>
+					</a>
+				  </div>
+				</div>
+			</li>
 
-echo $coupon =  coupons_copy_coupon($nid);
+<?php			
+			
+
+
+			
+	
+		}
+		
+?>
+	</ul>
+
+<?php
+		
+		
+		
+
+	} else {
+		echo $coupon =  coupons_copy_coupon($nid);
+	}
 
 /** Start of By Ashish to track for view store click on product page */		
 
