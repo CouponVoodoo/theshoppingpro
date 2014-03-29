@@ -75,105 +75,7 @@ function coupons_menu() {
 	// this function required. please don't remove it until u are not aware fully.
 	// set it to 600 second
 	drupal_set_time_limit(600);
-
-	/* GETTING USERS GUID*/
-	if (!isset($_COOKIE['CV_User_GUID'])) {
-		$CV_User_GUID = getGUID();
-		setcookie('CV_User_GUID', $CV_User_GUID, (time()+60*60*24*365*10),'/', 'couponvoodoo.com');
-		$new_user = 1;
-	} Else {
-		$CV_User_GUID = $_COOKIE['CV_User_GUID'];		
-		$new_user = 0;
-	}
 	
-	/* GETTING USERS OS*/
-	if (!isset($_COOKIE['CV_OS'])) {
-		$os = 'unknown';
-		$user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
-		if (strpos($user_agent,'android') > 1) {
-			$os = 'android';
-		} else {
-			if (strpos($user_agent,'iphone') > 1) {
-				$os = 'iphone';
-			}else{
-				if (strpos($user_agent,'ipad') > 1) {
-					$os = 'ipad';
-				}else{
-					if (strpos($user_agent,'windows') > 1) {
-						$os = 'windows';
-					} else {
-						if (strpos($user_agent,'blackberry') > 1) {
-							$os = 'blackberry';
-						} else {
-							if (strpos($user_agent,'linux') > 1) {
-								$os = 'linux';
-							} else {
-								$os = 'others';
-							}
-						}
-					}
-				}
-			}
-		}
-		setcookie('CV_OS', $os, (time()+60*60*24*1),'/', 'couponvoodoo.com');
-	} else {
-	$os = $_COOKIE['CV_OS'];
-	}
-	/* GETTING USERS REFERER*/
-	if (!isset($_COOKIE['CV_Traffic_Source'])) { 
-		if (isset($_SERVER['HTTP_REFERER'])) {
-			$new_visit = 1;
-			$referer = $_SERVER['HTTP_REFERER'];
-			$uri = parse_url($_SERVER['HTTP_REFERER']);
-			// $domain = substr($uri['host'], strpos($uri['host'], ".")+1, strlen($uri['host']));
-			$domain = $uri['host'];
-			
-			
-			if ( $parts = parse_url( "$referer" ) ) {
-			   $host = $parts[ "scheme" ] . "://" . $parts[ "host" ];
-			}
-			if (strpos($domain,'google') != false) {
-				$parts = parse_url($referer);
-				parse_str($parts['query'], $query);
-				// $traffic_source = rawurlencode($host).'---'.rawurlencode ($query['q']).'---'.rawurlencode($query['adurl']);
-				$traffic_source = 'Ggl-'.rawurlencode($query['q']);
-			} else {
-				$traffic_source = rawurlencode($domain);
-			}
-		} ELSE {
-			$new_visit = 1;
-			$referer = 'Direct';
-			$traffic_source = 'Direct';
-		}
-		setcookie('CV_Traffic_Source', $traffic_source, (time()+60*60*24*1),'/', 'couponvoodoo.com');
-		setcookie('CV_Referrer', $referer, (time()+60*60*24*1),'/', 'couponvoodoo.com');
-		
-	} Else {
-		$new_visit = 0;
-	}
-	
-	
-	if ($os != 'others') {
-		if ($new_user == 1) {
-			mixpanel_track('NEW USER', array(
-				'GUID' => $CV_User_GUID,
-				'OS' => $os,
-				'REFERER' => $referer,
-				'TRAFFIC SOURCE' =>  $traffic_source
-				)
-			);
-		} Else {
-			if ($new_visit ==1) {
-			mixpanel_track('NEW VISIT', array(
-				'GUID' => $CV_User_GUID,
-				'OS' => $os,
-				'REFERRER' => $referer,
-				'TRAFFIC SOURCE' =>  $traffic_source
-				)
-			);		
-			}
-		}
-	}
 }
 
 function coupons_viewdemo($ajax) {
@@ -343,21 +245,6 @@ function coupons_redirect_interim_page() {
 			}
 	}
 	
-	//if ($CV_OS != 'others') {
-		mixpanel_track('Coupon Click Redirect', array(
-			'USER GUID' => $uid2,
-			'Event Id' => $uid1,
-			'Affiliate URL' => $url,
-			'Coupon Code' => $coupon_code,
-			'OS' => $os,
-			'Traffic Source' => $traffic_source,
-			'Referrer' =>  $cv_referrer,
-			'Event Page' => $_GET['p'],
-			'Event Location Id' => $loc_id,
-			'Event Location' => $loc
-			)
-		);
-	//}
 	$brand_track = taxonomy_term_load($node_redirect->field_brand['und']['0'][tid]);
 	$category_track = taxonomy_term_load($node_redirect->field_category['und']['0'][tid]);
 	
@@ -672,27 +559,10 @@ function coupons_finder_form_validate($form, &$form_state) {
   if( !empty($form_state['values']['url']) ){
       if($urlStatus == 0){
       $searchText = "search/site/".$form_state['values']['url'];
-	  
-	      /* Start of Mixpanel Tracking Keyword Search*/
-		  
-	      mixpanel_track('Keyword Search', array(
-				'Keyword' => $form_state['values']['url']
-			)) ;
-	      /* End of Mixpanel Tracking Keyword Search*/	
-
-      drupal_goto( $searchText );
+	   drupal_goto( $searchText );
   }
   }elseif( empty($form_state['values']['url']) ){
     $searchText = "search/site/";
-
-	      /* Start of Mixpanel Tracking Empty Search*/
-		  
-	      mixpanel_track('Empty Search', array(
-				'Keyword' => 'Empty'
-			));
-	      /* End of Mixpanel Tracking Empty Search*/	
-
-
     drupal_goto( $searchText );
   }
   
@@ -722,13 +592,7 @@ else $prodUrl = $fullProdUrl;
 
 $retailerDomain = get_domain($fullProdUrl);
 $brand = reset(explode(".",$retailerDomain));
-mixpanel_track('URL Search', array(
-'Retailer' => $brand,
-'RetailerDomain' => $retailerDomain,
-'FullUrl' => $fullProdUrl,
-'ProdUrl' => $prodUrl
-)
- );
+
 
 
 //exit;
@@ -767,17 +631,7 @@ mixpanel_track('URL Search', array(
     
     $cpnResultJson = $cpnResultJson . $couponResult->couponCode.'~'.$cpnSaving.'|';
   }
-mixpanel_track('Coupon Result', array(
-    'Brand' => $brand,
-    'RetailerDomain' => $retailerDomain,
-    'FullUrl' => $fullProdUrl,
-    'ProdUrl' => $prodUrl,
-    'isSuccessful' => $isSuccessful,
-    'CouponCode' => $couponCode ,
-    'Saving' => $saving,
-    'FullResultArray' => $cpnResultJson
-    )
-);
+
 
 
 /* End By Lavesh to track event on mixpanel */   
@@ -1189,12 +1043,6 @@ drupal_add_js("jQuery(document).ready(function($){
               var url = $(this).attr('href')+'&c='+coupon_code;
               $(this).attr('href',url);
               window.open($(this).attr('href'));
-
-// mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
-
-
-
-
              return true;
           });
         });", array('type' => 'inline', 'scope' => 'footer'));
@@ -1576,13 +1424,7 @@ drupal_add_js("jQuery(document).ready(function($){
 			// window.open($(this).attr('href'));
 			//}
 			//else {console.log('else');return ;}
-			
-			
-
-//	      mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
-	      
-
-             return true;
+			return true;
           });
         });", array('type' => 'inline', 'scope' => 'footer'));
 
@@ -1724,12 +1566,6 @@ drupal_add_js("jQuery(document).ready(function($){
 	      
               $(this).attr('href',url);
 			  window.open($(this).attr('href'));
-	    
-	      /* Mixpanel integration Start*/
-//	      mixpanel.track('Coupon Click', {'CouponCode': coupon_code, 'Saving': saving , 'Brand':brand, 'retailerDomain':retailerDomain, 'fullProdUrl':fullProdUrl, 'prodUrl':prodUrl});
-	      
-	      /* Mixpanel integration Close*/
-
              return true;
           });
         });", array('type' => 'inline', 'scope' => 'footer'));
