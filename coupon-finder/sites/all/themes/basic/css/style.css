@@ -928,7 +928,7 @@ body.domain-products-cuponation-in .nice_menu1 .content ul li ul{background:#51a
 .nice_menu2{float:left;}
 
 /******Find coupon*********/
-.find_coupon{background:none repeat scroll 0 0 #F2F2F2;padding:10px 20px 10px 20px;border:1px solid #D7D7D7;border-radius:8px;position:relative;}
+.find_coupon{background:none repeat scroll 0 0 #F2F2F2;padding:10px 20px 10px 20px;border:1px solid #D7D7D7;border-radius:8px;position:relative; box-shadow: 5x 5px 5px #cccccc}
 .find_coupon .submit{display: inline-block;float: center}
 .find_coupon .submit input[type="submit"],.find_coupon .view_video a{  background: none repeat scroll 0 0 #F7971C;
     border: medium none;
@@ -958,10 +958,14 @@ body.domain-products-cuponation-in .nice_menu1 .content ul li ul{background:#51a
 /*****************/
 .node-type--product-and-coupon div.submitted,.node-type--product-and-coupon h1.title{display:none;}
 /*****Retailer Product Right***********/
-.retailer_product_right{ background: none repeat scroll 0 0 #F2F2F2;
+.retailer_product_right{ 
+	background: none repeat scroll 0 0 #F2F2F2;
     float: left;
     padding: 12px;
-    width: 100%;border:1px solid #E6E6E6;border-radius:8px}
+    width: 100%;border:1px solid #E6E6E6;
+	border-radius:8px;
+	box-shadow: 5px 5px 5px #cccccc
+	}
 .retailer_product_right h2{font-size:15px;font-weight:bold;text-align:center;}
 #sidebar-second{margin-top:43px;}
 .not-logged-in #sidebar-second{margin-top:16px;}
