@@ -42,7 +42,7 @@ $current_time = round(microtime(true));
 $time_gap = $current_time-$lastcheckedtime_check;
 $CouponStatus = trim(strip_tags($fields['field_best_coupon_status']->content));
 $coupon_saving = strip_tags($fields['field_best_coupon_saving']->content);
-echo 'coupon1:'$coupon_saving;
+echo 'coupon1:'.$coupon_saving;
 $best_coupon_description = trim(str_replace('+','',str_replace('&amp;nbsp;','',str_replace('amp;','',$fields['field_best_coupon_description']->content))));
 $best_coupon_code = $node->field_best_coupon_couponcode['und']['0']['value'];
 global $base_url;
@@ -100,7 +100,7 @@ $test_nid_array = array();
 		/** End of getting live coupon info from predictor */
 		}
 	}
-echo 'coupon1:'$coupon_saving;
+echo 'coupon1:'.$coupon_saving;
 
 ?>
 
@@ -214,7 +214,7 @@ if ($current_domain != 'cuponation'){
 	
 	} else {
 		if ($coupon_saving > 1 && $CouponStatus == 1){
-		echo 'coupon1:'$coupon_saving;
+		echo 'coupon1:'.$coupon_saving;
 
 				echo "<li> <label>".get_label('List Price:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
 				echo "<li> <label>".get_label('Savings:')."</label>".get_label('INR ').number_format($coupon_saving,0, '.', ',')."</li>";
