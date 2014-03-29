@@ -1506,10 +1506,10 @@ background: #999999;
 #block-views-home_page_slider-block .ribbon-green {padding: 4px 0px 4px 14px; width: 140px}
 #block-views-home_page_slider-block .ribbon-green:before {display:none}
 #block-views-home_page_slider-block .ribbon-green:after{display:none}
-#block-views-home_page_slider-block, #block-views-home_page_retailers-block {margin-top:40px; width: 100%; background: #F2F2F2; border: 1px solid #D7D7D7; box-shadow: 10px 10px 10px #333333;}
+#block-views-home_page_slider-block, #block-views-home_page_retailers-block {margin-top:40px; width: 100%; background: #F2F2F2; border: 1px solid #D7D7D7; box-shadow: 5px 5px 5px #999999;}
 #block-views-home_page_slider-block h2, #block-views-home_page_retailers-block h2{font-size: 16px;color: #F7971C; font-weight: bold; margin-top: 10px; text-align: center;}
-.front #block-system-main {border: 1px solid #D7D7D7; box-shadow: 10px 10px 10px #333333; }
-#block-views-home_page_welcome-block  {width: 670px; float:left; display: inline-block; box-shadow: 15px 10px 10px #333333;}
+.front #block-system-main {border: 1px solid #D7D7D7; box-shadow: 5px 5px 5px #999999;; }
+#block-views-home_page_welcome-block  {width: 670px; float:left; display: inline-block; box-shadow: 5px 5px 5px #999999;}
 .view-home-page-welcome .views-field img {max-height: 250px; max-width: 650px;width: auto; margin: 10px; float: left}
 .search-suggestion {display:none;}
 .front .search-suggestion {display: block; text-align: left; color: #ffffff; font-weight: bold; margin-top: 30px}
