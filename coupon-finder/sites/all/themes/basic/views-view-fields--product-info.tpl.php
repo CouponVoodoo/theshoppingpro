@@ -47,7 +47,7 @@ $best_coupon_code = $node->field_best_coupon_couponcode['und']['0']['value'];
 global $base_url;
 $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&p='.$url_path;
 /** Start of By Ashish to get mixpanel variables */		
-global $base_url;
+// global $base_url;
 // $mixpanel_urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$nid);
 // $mixpanel_retailer= strip_tags($fields['field_retailer']->content);
 // $mixpanel_brand= strip_tags($fields['field_brand']->content);
