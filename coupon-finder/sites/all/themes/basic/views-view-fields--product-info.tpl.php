@@ -40,7 +40,8 @@ $non_coupon_saving = $mrp - $list_price;
 $lastcheckedtime_check = strtotime(strip_tags($fields['field_lastcheckedtime']->content));
 $current_time = round(microtime(true));
 $time_gap = $current_time-$lastcheckedtime_check;
-$CouponStatus = trim(strip_tags($fields['field_best_coupon_status']->content));
+$CouponStatus = strip_tags($fields['field_best_coupon_status']->content);
+echo $CouponStatus;
 $coupon_saving = strip_tags($fields['field_best_coupon_saving']->content);
 echo 'coupon1:'.$coupon_saving;
 $best_coupon_description = trim(str_replace('+','',str_replace('&amp;nbsp;','',str_replace('amp;','',$fields['field_best_coupon_description']->content))));
@@ -206,6 +207,8 @@ if ($current_domain != 'cuponation'){
 
 
 <?php
+echo 'coupon1:'.$coupon_saving;
+
 	if ($node->field_best_coupon_saving['und'][0]['value'] == 1 && $CouponStatus == 1){
 		echo "<li> <label>".get_label('List Price:')."</label><meta itemprop='currency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
 		echo "<li> <label>".get_label('Savings:')."</label>See Best Coupon</li>";
