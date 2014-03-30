@@ -1813,4 +1813,3 @@ function coupons_menu_breadcrumb_alter(&$active_trail, $item) {
     }
 }
 
-
