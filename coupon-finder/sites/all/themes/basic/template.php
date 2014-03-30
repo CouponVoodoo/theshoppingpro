@@ -344,11 +344,10 @@ function basic_breadcrumb($variables) {
     $breadcrumb = $variables['breadcrumb'];
     // Determine if we are to display the breadcrumb.
     $show_breadcrumb = theme_get_setting('basic_breadcrumb');
+	$wrapDiv = '<div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">';	
     if ($show_breadcrumb == 'yes' || $show_breadcrumb == 'admin' && arg(0) == 'admin') {
-
         // Optionally get rid of the homepage link.
         $show_breadcrumb_home = theme_get_setting('basic_breadcrumb_home');
-		$wrapDiv = '<div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">';
         if (!$show_breadcrumb_home) {
             array_shift($breadcrumb);
         }
@@ -376,7 +375,7 @@ function basic_breadcrumb($variables) {
             // screen-reader users. Make the heading invisible with .element-invisible.
             $heading = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
             //return $heading . '<div class="breadcrumb">' . implode($breadcrumb_separator, $breadcrumb) . $trailing_separator . $title . '</div>';
-             return $heading . '<div class="breadcrumb">' . $wrapDiv . implode('</div>' . $wrapDiv . $breadcrumb_separator, $breadcrumb) . $trailing_separator . $title . '</div></div>';
+			return $heading . '<div class="breadcrumb">' . $wrapDiv . implode('</div>' . $breadcrumb_separator . $wrapDiv, $breadcrumb) . $trailing_separator . $title . '</div></div>';
         }
     }
     // Otherwise, return an empty string.
