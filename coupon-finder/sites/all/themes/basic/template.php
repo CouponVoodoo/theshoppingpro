@@ -375,13 +375,26 @@ function basic_breadcrumb($variables) {
             // screen-reader users. Make the heading invisible with .element-invisible.
             $heading = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
 
-            return $heading . '<div class="breadcrumb">' . implode($breadcrumb_separator, $breadcrumb) . $trailing_separator . $title . '</div>';
+            return $heading . '<div class="breadcrumb"><li itemtype="http://data-vocabulary.org/Breadcrumb">' . implode('<li itemtype="http://data-vocabulary.org/Breadcrumb">'.$breadcrumb_separator, $breadcrumb.'</li>') . $trailing_separator . $title . '</li></div>';
         }
     }
     // Otherwise, return an empty string.
     return '';
 }
+/*
+function basic_breadcrumb($variables) {
+  $breadcrumb = $variables['breadcrumb'];
 
+  if (!empty($breadcrumb)) {
+    // Provide a navigational heading to give context for breadcrumb links to
+    // screen-reader users. Make the heading invisible with .element-invisible.
+    $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
+
+    $output .= '<div class="breadcrumb"><li itemtype="http://data-vocabulary.org/Breadcrumb">' . implode(' </li> » <li itemtype="http://data-vocabulary.org/Breadcrumb">', $breadcrumb) . '</li></div>';
+    return $output;
+  }
+}
+*/
 /**
  * Converts a string to a suitable html ID attribute.
  *
@@ -495,4 +508,6 @@ function basic_apachesolr_search_noresults(&$variables) {
 <li>Visit the <a href="/search/site">All Products Page</a></li>
 </ul>');
 }
+
+
 
