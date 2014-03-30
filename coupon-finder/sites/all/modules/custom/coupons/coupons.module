@@ -1807,3 +1807,10 @@ function get_block_subject($block_subject) {
 	}
 }
 
+function coupons_menu_breadcrumb_alter(&$active_trail, $item) {
+    foreach ($active_trail as $key => $menu_item) {
+        $active_trail[$key]['localized_options']['attributes']['itemProp'] = 'url';
+    }
+}
+
+
