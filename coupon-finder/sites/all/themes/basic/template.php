@@ -375,7 +375,7 @@ function basic_breadcrumb($variables) {
             // screen-reader users. Make the heading invisible with .element-invisible.
             $heading = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
 
-            return $heading . '<div class="breadcrumb"><li itemtype="http://data-vocabulary.org/Breadcrumb">' . implode('<li itemtype="http://data-vocabulary.org/Breadcrumb">'.$breadcrumb_separator, $breadcrumb.'</li>') . $trailing_separator . $title . '</li></div>';
+            return $heading . '<div class="breadcrumb"><li itemtype="http://data-vocabulary.org/Breadcrumb">' . implode('</li> '.$breadcrumb_separator.' <li itemtype="http://data-vocabulary.org/Breadcrumb">'.$breadcrumb_separator, $breadcrumb) . $trailing_separator . $title . '</li></div>';
         }
     }
     // Otherwise, return an empty string.
