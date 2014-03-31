@@ -450,7 +450,6 @@ function custom_api_addproduct($ProInfo){
 		$response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
 		echo $response;
 	}
-
  	  	/** ASHISH NODE CREATION TIMING  - End Process*/
 	/*	$time1 = round(microtime(true)* 1000);
 		echo 'End Process: '.$time1;
@@ -459,8 +458,6 @@ function custom_api_addproduct($ProInfo){
 			echo '___________________________________________'    ;
 	*/	
 		/** -----------------------------------------   */
-
-	  
 }else{
     $response = json_encode( array('ResponseCode' => '3', 'Response' => 'Node Ignored - Node Already Updated.', 'NodeId' => $jsonArray->header->BaseUrl) );
     echo $response;	    
