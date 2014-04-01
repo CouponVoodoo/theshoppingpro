@@ -133,12 +133,7 @@ function coupons_redirect_interim_page() {
 		$network_id_redirect = strip_tags($retailer_redirect->field_network['und']['0'][tid]);
 		$network_redirect = taxonomy_term_load($network_id_redirect);
 		$network_name_redirect = strtolower(strip_tags($network_redirect->name));
-		$uid1 = $nid_redirect.'iii'.uniqid(); // nid + event id
-		if (!isset($_COOKIE['CV_User_GUID'])) {
-			$uid2 = 'NOT_SET';
-		} Else {
-			$uid2 = $_COOKIE['CV_User_GUID'];		
-		}		
+		$uid1 = $nid_redirect.'iii'.uniqid(); // nid + event id		
 		/* CHECK IF ? EXISTS IN BASEURL AND ACCORDING ADD PART 2 WITH & OR ?*/
 		$question_mark = strpos($baseurl_redirect, "?");
 		if (strpos($baseurl_redirect, "?") > -1){
@@ -154,6 +149,7 @@ function coupons_redirect_interim_page() {
 					$url = $part1_redirect.'&uid='.$uid1.'&redirect='.rawurlencode($baseurl_redirect.$part2_redirect);
 				break;
 				case "tyroo":
+					//$url = $part1_redirect.'/&lnkurl='.rawurlencode(rawurlencode($baseurl_redirect.$part2_redirect)).'&subid1='.$uid1;
 					$url = $part1_redirect.'/&lnkurl='.rawurlencode(rawurlencode($baseurl_redirect.$part2_redirect)).'&subid1='.$uid1;
 					echo $url;
 				break;
@@ -201,25 +197,6 @@ function coupons_redirect_interim_page() {
   //  $url = urldecode($url); 
 
   
-/** START OF BY ASHISH TO MOVE MIXPANEL TRACKING TO REDIRECT PAGE */  
-	/* GETTING USER OS */
-	if (!isset($_COOKIE['CV_OS'])) {
-		$CV_OS = 'others';
-	} Else {
-		$CV_OS = $_COOKIE['CV_OS'];		
-	}
-	/* GETTING USER REFERRER */
-	if (!isset($_COOKIE['CV_Referrer'])) {
-		$cv_referrer = 'NOT_SET';
-	} Else {
-		$cv_referrer = $_COOKIE['CV_Referrer'];		
-	}
-	/* GETTING USER TRAFFIC SOURCE */
-	if (!isset($_COOKIE['CV_Traffic_Source'])) {
-		$traffic_source = 'NOT_SET';
-	} Else {
-		$traffic_source = $_COOKIE['CV_Traffic_Source'];		
-	}	
 	/* EVENT LOCATION */
 	if(!empty($_GET['l'])){
 	$loc_id = $_GET['l'];
