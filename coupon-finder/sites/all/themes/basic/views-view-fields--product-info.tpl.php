@@ -61,14 +61,14 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 /** Start of getting live coupon info from predictor */
 
-	$test_nid_array = array(184733, 175283);
-	if (in_array($nid, $test_nid_array)){ 
+//	$test_nid_array = array(184733, 175283);
+//	if (in_array($nid, $test_nid_array)){ 
 		if ($time_gap > (1 * 24 * 3600) && $category_id != 7400) {
 			If ( strtolower($retailer_name_predictor) == 'jabong' || strtolower($retailer_name_predictor) == 'myntra') {
-				$predictor_result = predictor_json($retailer_name_predictor, $brand, $category_id, $mrp, $list_price, 'full', $base_url_predictor);
+				$predictor_result = predictor_json($retailer_name_predictor, $brand, $category_id, $mrp, $list_price, 'full');
 				// echo 'predictor: '.$predictor_result;
 				$predictor_array = json_decode($predictor_result,true);
-				  var_dump($predictor_array);
+				//  var_dump($predictor_array);
 				// echo 'test for error'.$predictor_array['Error'];
 				if ($predictor_result != 'error' && empty($predictor_array['Error'])){
 					$predictor_status = 1;
@@ -87,21 +87,21 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 						$coupon_description_predictor = $predictor_array[0]["description"];
 						$best_coupon_description = $coupon_description_predictor; // overwriting database value
 						// echo ' coupon_description_predictor: '.$coupon_description_predictor;
-						
 					} else {
 						// echo 'no successful coupon';
 						$best_status_predictor = 0;
 					}
 				} else {
 					 // echo 'error';
-					
-					mail('team@theshoppingpro.com','Prediction Error: '.$retailer_name_predictor,'NID: '.$nid.' PATH: '.drupal_get_path_alias().' Json error: '.$predictor_array['Error'].' Predictor Function Error: '.$predictor_result); 
+					if ($mrp == 0) {$mrp = $list_price;}
+					$sid = $retailer_name_predictor.'-'.$brand.'-'.$category_id; 
+					mail('team@theshoppingpro.com','Prediction Error: '.$retailer_name_predictor,'NID: '.$nid.' PATH: '.drupal_get_path_alias().' Json error: '.$predictor_array['Error'].' Predictor Function Error: '.$predictor_result. ' API URL: '.'http://plugin.theshoppingpro.com/cpnVodo/simulation/updateOldUrlsApi.php?sid='.urlencode($sid).'&mrp='.urlencode($mrp).'&listPrice='.urlencode($list_price).'&type=full'); 
 					$best_status_predictor = 0;
 				}
 			/** End of getting live coupon info from predictor */
 			}
 		}
-	}
+//	}
 ?>
 
 
