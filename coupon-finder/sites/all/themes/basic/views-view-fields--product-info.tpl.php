@@ -62,9 +62,10 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 /** Start of getting live coupon info from predictor */
 
 //	$test_nid_array = array(184733, 175283);
-//	if (in_array($nid, $test_nid_array)){ 
+//	if (in_array($nid, $test_nid_array)){
 		if ($time_gap > (1 * 24 * 3600) && $category_id != 7400) {
 			If ( strtolower($retailer_name_predictor) == 'jabong' || strtolower($retailer_name_predictor) == 'myntra') {
+				if ($mrp == 0) {$mrp = $list_price;}
 				$sid = $retailer_name_predictor.'-'.$brand.'-'.$category_id; 
 				$predictor_result = predictor_json($retailer_name_predictor, $brand, $category_id, $mrp, $list_price, 'full');
 				// echo 'predictor: '.$predictor_result;
@@ -106,7 +107,6 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 		
 	/** Pushing Predictor Status Into Google Analytics **/
-	
 	
 		drupal_add_js(array('predictor' => array(			
 			'Event_Id' => 'Predictor-'.uniqid(),
