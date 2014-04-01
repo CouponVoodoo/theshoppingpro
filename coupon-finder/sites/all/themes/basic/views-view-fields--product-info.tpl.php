@@ -65,6 +65,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 //	if (in_array($nid, $test_nid_array)){ 
 		if ($time_gap > (1 * 24 * 3600) && $category_id != 7400) {
 			If ( strtolower($retailer_name_predictor) == 'jabong' || strtolower($retailer_name_predictor) == 'myntra') {
+				$sid = $retailer_name_predictor.'-'.$brand.'-'.$category_id; 
 				$predictor_result = predictor_json($retailer_name_predictor, $brand, $category_id, $mrp, $list_price, 'full');
 				// echo 'predictor: '.$predictor_result;
 				$predictor_array = json_decode($predictor_result,true);
@@ -73,6 +74,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 				if ($predictor_result != 'error' && empty($predictor_array['Error'])){
 					$predictor_status = 1;
 					if($predictor_array[0]["Successful"]==1){
+						$prediction_state = 'Coupon Found';
 						$best_status_predictor = 1;
 						$CouponStatus = $best_status_predictor; // overwriting database value
 						// echo ' best_status_predictor: '.$best_status_predictor;
@@ -82,7 +84,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 						// echo ' best_coupon_code_predictor: '.$best_coupon_code_predictor;
 						$saving_predictor = $predictor_array[0]["Saving"];
 						$coupon_saving = $saving_predictor; // overwriting database value
-						echo 'saving predicted '.$coupon_saving;
+						// echo 'saving predicted '.$coupon_saving;
 						// echo ' saving_predictor: '.$saving_predictor;
 						$coupon_description_predictor = $predictor_array[0]["description"];
 						$best_coupon_description = $coupon_description_predictor; // overwriting database value
@@ -90,18 +92,54 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 					} else {
 						// echo 'no successful coupon';
 						$best_status_predictor = 0;
+						$prediction_state = 'Coupon Not Found';
 					}
 				} else {
 					 // echo 'error';
-					if ($mrp == 0) {$mrp = $list_price;}
-					$sid = $retailer_name_predictor.'-'.$brand.'-'.$category_id; 
 					mail('team@theshoppingpro.com','Prediction Error: '.$retailer_name_predictor,'NID: '.$nid.' PATH: '.drupal_get_path_alias().' Json error: '.$predictor_array['Error'].' Predictor Function Error: '.$predictor_result. ' API URL: '.'http://plugin.theshoppingpro.com/cpnVodo/simulation/updateOldUrlsApi.php?sid='.urlencode($sid).'&mrp='.urlencode($mrp).'&listPrice='.urlencode($list_price).'&type=full'); 
 					$best_status_predictor = 0;
+					$predictor_status = 0;
+					$prediction_state = 'API Error';
+						
 				}
 			/** End of getting live coupon info from predictor */
+
+		
+	/** Pushing Predictor Status Into Google Analytics **/
+	
+	
+		drupal_add_js(array('predictor' => array(			
+			'Event_Id' => 'Predictor-'.uniqid(),
+			'Event_Location' => 'http://plugin.theshoppingpro.com/cpnVodo/simulation/updateOldUrlsApi.php?sid='.urlencode($sid).'&mrp='.urlencode($mrp).'&listPrice='.urlencode($list_price).'&type=full',
+			'Event_Page' => drupal_get_path_alias(),
+			'Click_Time' => gmdate('Y-m-d\TH:i:s\Z', (time()-(5.5*3600))),
+			'Retailer' =>  $retailer_name_predictor.'('.$node->field_retailer['und']['0'][tid].')',
+			'Brand' => $brand.'('.$node->field_brand['und']['0'][tid].')',
+			'Category' => $category_id,
+			'Prediction_State' => $prediction_state,
+			'Domain' => get_current_domain()
+			)), array('type' => 'setting'));
+	
+	
+	
+	drupal_add_js("jQuery(window).load(function(){
+                  setTimeout(function(){
+                      window.location.replace(\"" . $url . "\");
+                  }, 5000);
+				 ga('send', 'predictor', 'result-status', 'product-page', Drupal.settings.predictor.Event_Id,{
+					'dimension5': Drupal.settings.predictor.Event_Location, 
+					'dimension6': Drupal.settings.predictor.Event_Page, 
+					'dimension7': Drupal.settings.predictor.Click_Time, 
+					'dimension9': Drupal.settings.predictor.Retailer, 
+					'dimension10': Drupal.settings.predictor.Brand, 
+					'dimension11': Drupal.settings.predictor.Category, 
+					'dimension13': Drupal.settings.predictor.Domain
+					'dimension14': Drupal.settings.predictor.Prediction_State,
+					});
+	        });", array('type' => 'inline', 'scope' => 'footer'));
+	
 			}
 		}
-//	}
 ?>
 
 
