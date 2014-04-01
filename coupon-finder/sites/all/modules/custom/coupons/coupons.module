@@ -151,7 +151,7 @@ function coupons_redirect_interim_page() {
 				case "tyroo":
 					//$url = $part1_redirect.'/&lnkurl='.rawurlencode(rawurlencode($baseurl_redirect.$part2_redirect)).'&subid1='.$uid1;
 					$url = $part1_redirect.'&subid1=%%'.$uid1.'%%&dest='.$baseurl_redirect.$part2_redirect;
-					echo $url;
+					//echo $url;
 				break;
 				case "flipkart":
 					$url = $baseurl_redirect.$part2_redirect.'&affExtParam1='.$uid1;
