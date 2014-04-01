@@ -60,7 +60,8 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 
 /** Start of getting live coupon info from predictor */
-//	$test_nid_array = array();
+
+	$test_nid_array = array();
 	if (in_array($nid, $test_nid_array)){ 
 		if ($time_gap > (1 * 24 * 3600)) {
 			$predictor_result = predictor_json($retailer_name_predictor, $brand, $category_id, $mrp, $list_price, 'full', $base_url_predictor);
