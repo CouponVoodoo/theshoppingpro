@@ -148,7 +148,6 @@ function coupons_redirect_interim_page() {
 			$part2_redirect = "?".$part2_redirect;
 			// echo "y";
 		}
-		echo 'bu: '.$baseurl_redirect;
 		if(!empty($baseurl_redirect)){
 			switch ($network_name_redirect) {
 				case "omgpm":
@@ -156,6 +155,7 @@ function coupons_redirect_interim_page() {
 				break;
 				case "tyroo":
 					$url = $part1_redirect.'/&lnkurl='.rawurlencode(rawurlencode($baseurl_redirect.$part2_redirect)).'&subid1='.$uid1;
+					echo $url;
 				break;
 				case "flipkart":
 					$url = $baseurl_redirect.$part2_redirect.'&affExtParam1='.$uid1;
