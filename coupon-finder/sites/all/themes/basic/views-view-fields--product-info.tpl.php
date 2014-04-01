@@ -60,13 +60,13 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 
 /** Start of getting live coupon info from predictor */
-$test_nid_array = array();
-	if (in_array($nid, $test_nid_array)){ 
-		if ($time_gap > (1 * 18 * 3600)) {
+//	$test_nid_array = array();
+//	if (in_array($nid, $test_nid_array)){ 
+		if ($time_gap > (1 * 24 * 3600)) {
 			$predictor_result = predictor_json($retailer_name_predictor, $brand, $category_id, $mrp, $list_price, 'full', $base_url_predictor);
 			// echo 'predictor: '.$predictor_result;
 			$predictor_array = json_decode($predictor_result,true);
-			var_dump($predictor_array);
+			// var_dump($predictor_array);
 			// echo 'test for error'.$predictor_array['Error'];
 			if ($predictor_result != 'error' && empty($predictor_array['Error'])){
 				$predictor_status = 1;
@@ -98,7 +98,7 @@ $test_nid_array = array();
 			}
 		/** End of getting live coupon info from predictor */
 		}
-	}
+//	}
 ?>
 
 
