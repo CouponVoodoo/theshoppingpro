@@ -57,47 +57,49 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 // $mixpanel_type='Product Page View Store';
 /** End of By Ashish to get mixpanel variables */			
 
-
+// ECHO $nid.'   '.$time_gap.'   '.$category_id.'   '.$retailer_name_predictor;
 
 /** Start of getting live coupon info from predictor */
 
-	$test_nid_array = array();
+	$test_nid_array = array(50894, 14901, 34239, 53167);
 	if (in_array($nid, $test_nid_array)){ 
-		if ($time_gap > (1 * 24 * 3600)) {
-			$predictor_result = predictor_json($retailer_name_predictor, $brand, $category_id, $mrp, $list_price, 'full', $base_url_predictor);
-			// echo 'predictor: '.$predictor_result;
-			$predictor_array = json_decode($predictor_result,true);
-			// var_dump($predictor_array);
-			// echo 'test for error'.$predictor_array['Error'];
-			if ($predictor_result != 'error' && empty($predictor_array['Error'])){
-				$predictor_status = 1;
-				if($predictor_array[0]["Successful"]==1){
-					$best_status_predictor = 1;
-					$CouponStatus = $best_status_predictor; // overwriting database value
-					// echo ' best_status_predictor: '.$best_status_predictor;
-					$best_coupon_code_predictor = $predictor_array[0]["couponCode"];
-					$best_coupon_code = $best_coupon_code_predictor;
-					
-					// echo ' best_coupon_code_predictor: '.$best_coupon_code_predictor;
-					$saving_predictor = $predictor_array[0]["Saving"];
-					$coupon_saving = $saving_predictor; // overwriting database value
-					echo 'saving predicted '.$coupon_saving;
-					// echo ' saving_predictor: '.$saving_predictor;
-					$coupon_description_predictor = $predictor_array[0]["description"];
-					$best_coupon_description = $coupon_description_predictor; // overwriting database value
-					// echo ' coupon_description_predictor: '.$coupon_description_predictor;
-					
+		if ($time_gap > (1 * 24 * 3600) && $category_id != 7400) {
+			If ( strtolower($retailer_name_predictor) == 'jabong' || strtolower($retailer_name_predictor) == 'myntra') {
+				$predictor_result = predictor_json($retailer_name_predictor, $brand, $category_id, $mrp, $list_price, 'full', $base_url_predictor);
+				 echo 'predictor: '.$predictor_result;
+				$predictor_array = json_decode($predictor_result,true);
+				 var_dump($predictor_array);
+				// echo 'test for error'.$predictor_array['Error'];
+				if ($predictor_result != 'error' && empty($predictor_array['Error'])){
+					$predictor_status = 1;
+					if($predictor_array[0]["Successful"]==1){
+						$best_status_predictor = 1;
+						$CouponStatus = $best_status_predictor; // overwriting database value
+						// echo ' best_status_predictor: '.$best_status_predictor;
+						$best_coupon_code_predictor = $predictor_array[0]["couponCode"];
+						$best_coupon_code = $best_coupon_code_predictor;
+						
+						// echo ' best_coupon_code_predictor: '.$best_coupon_code_predictor;
+						$saving_predictor = $predictor_array[0]["Saving"];
+						$coupon_saving = $saving_predictor; // overwriting database value
+						echo 'saving predicted '.$coupon_saving;
+						// echo ' saving_predictor: '.$saving_predictor;
+						$coupon_description_predictor = $predictor_array[0]["description"];
+						$best_coupon_description = $coupon_description_predictor; // overwriting database value
+						// echo ' coupon_description_predictor: '.$coupon_description_predictor;
+						
+					} else {
+						// echo 'no successful coupon';
+						$best_status_predictor = 0;
+					}
 				} else {
-					// echo 'no successful coupon';
+					 // echo 'error';
+					
+					mail('team@theshoppingpro.com','Prediction Error: '.$retailer_name_predictor,'NID: '.$nid.' PATH: '.drupal_get_path_alias().' Json error: '.$predictor_array['Error'].' Predictor Function Error: '.$predictor_result); 
 					$best_status_predictor = 0;
 				}
-			} else {
-				 // echo 'error';
-				
-				mail('team@theshoppingpro.com','Prediction Error','NID: '.$NID.' PATH: '.drupal_get_path_alias().' Json error: '.$predictor_array['Error'].' Predictor Function Error: '.$predictor_result); 
-				$best_status_predictor = 0;
+			/** End of getting live coupon info from predictor */
 			}
-		/** End of getting live coupon info from predictor */
 		}
 	}
 ?>
