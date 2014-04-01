@@ -61,14 +61,14 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 /** Start of getting live coupon info from predictor */
 
-	$test_nid_array = array(50894, 14901, 34239, 53167);
+	$test_nid_array = array(184733, 14901, 34239, 53167);
 	if (in_array($nid, $test_nid_array)){ 
 		if ($time_gap > (1 * 24 * 3600) && $category_id != 7400) {
 			If ( strtolower($retailer_name_predictor) == 'jabong' || strtolower($retailer_name_predictor) == 'myntra') {
 				$predictor_result = predictor_json($retailer_name_predictor, $brand, $category_id, $mrp, $list_price, 'full', $base_url_predictor);
-				 echo 'predictor: '.$predictor_result;
+				// echo 'predictor: '.$predictor_result;
 				$predictor_array = json_decode($predictor_result,true);
-				 var_dump($predictor_array);
+				  var_dump($predictor_array);
 				// echo 'test for error'.$predictor_array['Error'];
 				if ($predictor_result != 'error' && empty($predictor_array['Error'])){
 					$predictor_status = 1;
