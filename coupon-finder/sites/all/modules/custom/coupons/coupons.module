@@ -148,6 +148,7 @@ function coupons_redirect_interim_page() {
 			$part2_redirect = "?".$part2_redirect;
 			// echo "y";
 		}
+		echo 'bu: '.$baseurl_redirect;
 		if(!empty($baseurl_redirect)){
 			switch ($network_name_redirect) {
 				case "omgpm":
