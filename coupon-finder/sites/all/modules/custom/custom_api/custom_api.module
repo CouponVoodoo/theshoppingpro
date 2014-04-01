@@ -523,21 +523,21 @@ function predictor_json($retailer_name,$brand,$category_id,$mrp,$list_price,$res
 			$sid = $retailer_name.'-'.$brand.'-'.$category_id;
 			$url_api = "http://plugin.theshoppingpro.com/cpnVodo/simulation/updateOldUrlsApi.php?sid=".urlencode($sid)."&mrp=".urlencode($mrp)."&listPrice=".urlencode($list_price)."&type=".urlencode($result_type);
 			echo $url_api;
-			echo nl2br("\n");
+//			echo nl2br("\n");
 			$json = drupal_http_request($url_api, array('timeout' => 600.0));
 			$json = $json->data;
-			echo 'json';
-			echo nl2br("\n");
+//			echo 'json';
+//			echo nl2br("\n");
 			return $json;
 			
 		} Else {
-			echo 'error';
-			echo nl2br("\n");
+//			echo 'error';
+//			echo nl2br("\n");
 			Return 'error';				
 		}
 	} Else {
-		echo 'error2';
-		echo nl2br("\n");
+//		echo 'error2';
+//		echo nl2br("\n");
 		return 'error';			
 	}
 }
