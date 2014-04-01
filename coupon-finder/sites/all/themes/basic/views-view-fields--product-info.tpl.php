@@ -61,7 +61,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 /** Start of getting live coupon info from predictor */
 
-	$test_nid_array = array(184733, 14901, 34239, 53167);
+	$test_nid_array = array(184733, 175283);
 	if (in_array($nid, $test_nid_array)){ 
 		if ($time_gap > (1 * 24 * 3600) && $category_id != 7400) {
 			If ( strtolower($retailer_name_predictor) == 'jabong' || strtolower($retailer_name_predictor) == 'myntra') {
