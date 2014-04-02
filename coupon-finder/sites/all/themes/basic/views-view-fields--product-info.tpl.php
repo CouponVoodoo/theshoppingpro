@@ -123,7 +123,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 	
 	
 	drupal_add_js("jQuery(window).load(function(){
-				 ga('send', 'event', 'predictor', 'product-page', Drupal.settings.predictor.Event_Id,{
+				 ga('send', 'event', 'predictor', 'product-page', Drupal.settings.predictor.Event_Page,{
 					'dimension5': Drupal.settings.predictor.Event_Location, 
 					'dimension6': Drupal.settings.predictor.Event_Page, 
 					'dimension7': Drupal.settings.predictor.Click_Time, 
