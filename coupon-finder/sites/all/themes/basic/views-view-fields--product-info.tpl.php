@@ -107,8 +107,8 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 		
 	/** Pushing Predictor Status Into Google Analytics **/
-	
-		drupal_add_js(array('predictor' => array(			
+		
+	drupal_add_js(array('predictor' => array(			
 			'Event_Id' => 'Predictor-'.uniqid(),
 			'Event_Location' => 'http://plugin.theshoppingpro.com/cpnVodo/simulation/updateOldUrlsApi.php?sid='.urlencode($sid).'&mrp='.urlencode($mrp).'&listPrice='.urlencode($list_price).'&type=full',
 			'Event_Page' => drupal_get_path_alias(),
@@ -130,7 +130,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 					'dimension9': Drupal.settings.predictor.Retailer, 
 					'dimension10': Drupal.settings.predictor.Brand, 
 					'dimension11': Drupal.settings.predictor.Category, 
-					'dimension13': Drupal.settings.predictor.Domain
+					'dimension13': Drupal.settings.predictor.Domain,
 					'dimension14': Drupal.settings.predictor.Prediction_State,
 					});
 	        });", array('type' => 'inline', 'scope' => 'footer'));
