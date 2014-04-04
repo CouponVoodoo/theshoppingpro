@@ -26,13 +26,6 @@
 ?>
 <?php
 $current_domain = get_current_domain();
-
-?>
-
-
-<div class="retailer_coupon_page_row">
-	<div class="search_listing_left">
-		<?php
 			/* GETTING FIELD VALUES*/
 			$url_path = rawurlencode(drupal_get_path_alias());
 			
@@ -59,6 +52,13 @@ $current_domain = get_current_domain();
 			
 			
 	If ($display ==1) {
+
+?>
+
+
+<div class="retailer_coupon_page_row">
+	<div class="search_listing_left">
+		<?php
 
 			// $affiliate_url = 'http://track.in.omgpm.com/?AID=387355&MID=304697&PID=9170&CID=3697672&WID=43135&uid=homePage&r=http%3A%2F%2Fwww.jabong.com';
 			$status = strip_tags($fields['field_status']->content);
