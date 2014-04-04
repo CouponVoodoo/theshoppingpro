@@ -107,7 +107,6 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 		
 	/** Pushing Predictor Status Into Google Analytics **/
-	echo 'teest3';
 	drupal_add_js(array('predictor' => array(			
 			'Event_Id' => 'Predictor-'.uniqid(),
 			'Event_Location' => 'http://plugin.theshoppingpro.com/cpnVodo/simulation/updateOldUrlsApi.php?sid='.urlencode($sid).'&mrp='.urlencode($mrp).'&listPrice='.urlencode($list_price).'&type=full',
