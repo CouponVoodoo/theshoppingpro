@@ -97,7 +97,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 					}
 				} else {
 					 // echo 'error';
-					mail('team@theshoppingpro.com','Prediction Error: '.$retailer_name_predictor,'NID: '.$nid.' TIME: '.time().' PATH: '.drupal_get_path_alias().' Json error: '.$predictor_array['Error'].' Predictor Function Error: '.$predictor_result. ' API URL: '.'http://plugin.theshoppingpro.com/cpnVodo/simulation/updateOldUrlsApi.php?sid='.urlencode($sid).'&mrp='.urlencode($mrp).'&listPrice='.urlencode($list_price).'&type=full'); 
+					// mail('team@theshoppingpro.com','Prediction Error: '.$retailer_name_predictor,'NID: '.$nid.' TIME: '.time().' PATH: '.drupal_get_path_alias().' Json error: '.$predictor_array['Error'].' Predictor Function Error: '.$predictor_result. ' API URL: '.'http://plugin.theshoppingpro.com/cpnVodo/simulation/updateOldUrlsApi.php?sid='.urlencode($sid).'&mrp='.urlencode($mrp).'&listPrice='.urlencode($list_price).'&type=full'); 
 					$best_status_predictor = 0;
 					$predictor_status = 0;
 					$prediction_state = 'API Error';
@@ -107,7 +107,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 		
 	/** Pushing Predictor Status Into Google Analytics **/
-		
+	echo 'teest3';
 	drupal_add_js(array('predictor' => array(			
 			'Event_Id' => 'Predictor-'.uniqid(),
 			'Event_Location' => 'http://plugin.theshoppingpro.com/cpnVodo/simulation/updateOldUrlsApi.php?sid='.urlencode($sid).'&mrp='.urlencode($mrp).'&listPrice='.urlencode($list_price).'&type=full',
@@ -117,7 +117,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 			'Brand' => $brand.'('.$node->field_brand['und']['0'][tid].')',
 			'Category' => $category_id,
 			'Prediction_State' => $prediction_state,
-			'Domain' => get_current_domain()
+			'Domain' => get_current_domain(),
 			)), array('type' => 'setting'));
 	
 	
