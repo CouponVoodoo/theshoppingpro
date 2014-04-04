@@ -26,7 +26,7 @@
 ?>
 <?php
 $current_domain = get_current_domain();
-if ($current_domain == 'couponvoodoo') {
+
 ?>
 
 
@@ -47,10 +47,18 @@ if ($current_domain == 'couponvoodoo') {
 			// echo 'cuponation-title'.$node->field_cuponation_title['und']['0']['value'];
 			if ($current_domain == 'cuponation' && !empty($node->field_cuponation_title['und']['0']['value'])){
 				$title = $node->field_cuponation_title['und']['0']['value'];
+				$display = 1;
 			} else {
-				$title = $fields['title']->content;
+				if( $current_domain == 'couponvoodoo'){
+					$title = $fields['title']->content;
+					$display = 1;
+				} else {
+					$display = 0;
+				}
 			}
 			
+			
+	If ($display ==1) {
 
 			// $affiliate_url = 'http://track.in.omgpm.com/?AID=387355&MID=304697&PID=9170&CID=3697672&WID=43135&uid=homePage&r=http%3A%2F%2Fwww.jabong.com';
 			$status = strip_tags($fields['field_status']->content);
@@ -108,7 +116,8 @@ if ($current_domain == 'couponvoodoo') {
 	</div>
 
 	<?php 
-	if ($current_domain == 'couponvoodoo') {
+	$enable = 'no'; // category display enabled?
+	if ($current_domain == 'couponvoodoo' && $enable == 'yes') {
 		if (strtolower($retailer) == 'jabong.com' || strtolower($retailer) == 'myntra.com' || strtolower($retailer) == 'flipkart.com') {
 	?>
 
@@ -195,4 +204,4 @@ if ($current_domain == 'couponvoodoo') {
 	}
 	?>
 </div>
-<?php }?>
+<?php  }?>
