@@ -6,7 +6,7 @@ echo 'start';
 
 // $return = db_query("SELECT * FROM {predictorCompiledResultTable} LIMIT 1");
 
-db_select('predictorCompiledResultTable', 'pcrt')->fields('pcrt')->execute()->fetchAll();
+// db_select('predictorCompiledResultTable', 'pcrt')->fields('pcrt')->execute()->fetchAll();
 
 //var_dump($return->fetchAll());
 
