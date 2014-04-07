@@ -9,7 +9,7 @@ echo nl2br("\n");
 // db_query("UPDATE {coupon_finder_march2nd.predictorCompiledResultTable} LEFT JOIN {coupon_finder_march2nd.field_data_field_base_url} ON coupon_finder_march2nd.field_data_field_base_url.field_base_url_value = coupon_finder_march2nd.predictorCompiledResultTable.BaseUrl SET coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_data_field_base_url.entity_id Where coupon_finder_march2nd.predictorCompiledResultTable.BaseUrl = 'http://www.jabong.com/macroman-Assorted-Boxer-468481.html' ");
 
 
-db_query ("UPDATE coupon_finder_march2nd.field_data_field_mrpproductprice INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_data_field_mrpproductprice.entity_id SET coupon_finder_march2nd.field_data_field_mrpproductprice.field_mrpproductprice_value = coupon_finder_march2nd.predictorCompiledResultTable.MRP WHERE coupon_finder_march2nd.field_data_field_mrpproductprice.entity_id = ");
+db_query ("UPDATE coupon_finder_march2nd.field_data_field_mrpproductprice INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_data_field_mrpproductprice.entity_id SET coupon_finder_march2nd.field_data_field_mrpproductprice.field_mrpproductprice_value = coupon_finder_march2nd.predictorCompiledResultTable.MRP WHERE coupon_finder_march2nd.field_data_field_mrpproductprice.entity_id = 173951 ");
 
 
 //$return = db_query("SELECT * FROM {coupon_finder_march2nd.predictorCompiledResultTable} LIMIT 1");
