@@ -215,9 +215,9 @@ $databases = array (
   array (
     'default' => 
     array (
-      'database' => 'coupon_finder',
-      'username' => 'root',
-      'password' => '',
+      'database' => 'coupon_finder_march2nd',
+      'username' => 'coupon_finder',
+      'password' => '2c0uPonf!nder$&*',
       'host' => 'localhost',
       'port' => '',
       'driver' => 'mysql',
