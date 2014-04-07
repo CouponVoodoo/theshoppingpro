@@ -6,7 +6,7 @@ echo 'start';
 
 $return = db_query("SELECT * FROM {predictorCompiledResultTable} LIMIT 1");
 
-var_dump ($return);
+var_dump($return->fetchAll());
 
 echo 'end';
 
