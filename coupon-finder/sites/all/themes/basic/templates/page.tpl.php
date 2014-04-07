@@ -1,8 +1,10 @@
 <?php 
 // print_r(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)); die;
 $current_domain = get_current_domain();
+// <script type="text/javascript" src="<?php echo base_path().path_to_theme(); ?'>/js/jquery.clipboard.js"></script> // removed ' added in ? > to comment out
+
 ?>
-<script type="text/javascript" src="<?php echo base_path().path_to_theme(); ?>/js/jquery.clipboard.js"></script>
+
 <div id="page" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
   <!-- ______________________ HEADER _______________________ -->
