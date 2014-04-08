@@ -334,7 +334,7 @@ echo("\n\n CHANGED \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node SET coupon_finder_march2nd.node.changed = 1396942501");
 
 echo("\n\n TITLE \n\n").time();
-db_query ("UPDATE coupon_finder_march2nd.node SET coupon_finder_march2nd.node.title = NULL ");
+db_query ("UPDATE coupon_finder_march2nd.node SET coupon_finder_march2nd.node.title = 'abc' ");
 
 echo("\n\n STATUS \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node SET coupon_finder_march2nd.node.status = NULL ");
