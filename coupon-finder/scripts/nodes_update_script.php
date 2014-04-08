@@ -1,23 +1,22 @@
 <?PHP
 /**															**\
-		NEED TO WORK ON BRAND, SOLR, SITEMAP,  
+		NEED TO WORK ON BRAND, SITEMAP  
 \**															**/
 
 echo "\n\n START - Entity Id Update \n\n";
-
-// db_query("UPDATE {coupon_finder_march2nd.predictorCompiledResultTable} LEFT JOIN {coupon_finder_march2nd.field_data_field_base_url} ON coupon_finder_march2nd.field_data_field_base_url.field_base_url_value = coupon_finder_march2nd.predictorCompiledResultTable.BaseUrl SET coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_data_field_base_url.entity_id Where coupon_finder_march2nd.predictorCompiledResultTable.BaseUrl = 'http://www.jabong.com/macroman-Assorted-Boxer-468481.html' ");
-
+db_query("UPDATE {coupon_finder_march2nd.predictorCompiledResultTable} LEFT JOIN {coupon_finder_march2nd.field_data_field_base_url} ON coupon_finder_march2nd.field_data_field_base_url.field_base_url_value = coupon_finder_march2nd.predictorCompiledResultTable.BaseUrl SET coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_data_field_base_url.entity_id Where coupon_finder_march2nd.predictorCompiledResultTable.BaseUrl = 'http://www.jabong.com/macroman-Assorted-Boxer-468481.html' ");
 echo "\n\n END - Entity Id Update \n\n";
+
+echo "\n\n BRAND - GETTING TID FROM NAME \n\n";
+db_query("UPDATE coupon_finder_march2nd.predictorCompiledResultTable LEFT JOIN taxonomy_term_data ON coupon_finder_march2nd.taxonomy_term_data.name = coupon_finder_march2nd.predictorCompiledResultTable.Brand SET coupon_finder_march2nd.predictorCompiledResultTable.BrandId = coupon_finder_march2nd.taxonomy_term_data.tid Where coupon_finder_march2nd.predictorCompiledResultTable.Brand = 'Adidas' ");
+
+
 
 echo "\n\n APACHE SOLR - STATUS \n\n";
 db_query ("UPDATE coupon_finder_march2nd.apachesolr_index_entities_node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.apachesolr_index_entities_node.entity_id SET coupon_finder_march2nd.apachesolr_index_entities_node.status = 1 WHERE coupon_finder_march2nd.apachesolr_index_entities_node.entity_id = 173951 ");
 
-
 echo "\n\n APACHE SOLR - CHANGED \n\n";
 db_query ("UPDATE coupon_finder_march2nd.apachesolr_index_entities_node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.apachesolr_index_entities_node.entity_id SET coupon_finder_march2nd.apachesolr_index_entities_node.changed = ".time()." WHERE coupon_finder_march2nd.apachesolr_index_entities_node.entity_id = 173951");
-
-
-
 
 echo("\n\n CHANGED \n\n");
 db_query ("UPDATE coupon_finder_march2nd.node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.node.nid SET coupon_finder_march2nd.node.changed = ".time()." WHERE coupon_finder_march2nd.node.nid = 173951");
