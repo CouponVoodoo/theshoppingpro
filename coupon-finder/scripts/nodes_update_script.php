@@ -322,7 +322,7 @@ echo "\n\n XML SITEMAP SOLR - LAST MODIFIED \n\n".time();
 db_query ("UPDATE coupon_finder_march2nd.xmlsitemap SET coupon_finder_march2nd.xmlsitemap.lastmod = 1396942501");
 
 echo "\n\n XML SITEMAP SOLR - CHANGE FREQUENCY \n\n".time();
-db_query ("UPDATE coupon_finder_march2nd.xmlsitemap SET coupon_finder_march2nd.xmlsitemap.changefreq = NULL ");
+db_query ("UPDATE coupon_finder_march2nd.xmlsitemap SET coupon_finder_march2nd.xmlsitemap.changefreq = 604800 ");
 
 echo "\n\n APACHE SOLR - STATUS \n\n".time();
 db_query ("UPDATE coupon_finder_march2nd.apachesolr_index_entities_node SET coupon_finder_march2nd.apachesolr_index_entities_node.status = NULL ");
