@@ -68,13 +68,12 @@ db_query ("UPDATE coupon_finder_march2nd.field_data_field_product_image INNER JO
 echo("\n\n FIELD_PRODUCT_IMAGE_VALUE - REVISION \n\n");
 db_query ("UPDATE coupon_finder_march2nd.field_revision_field_product_image INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_revision_field_product_image.entity_id SET coupon_finder_march2nd.field_revision_field_product_image.field_product_image_value = coupon_finder_march2nd.predictorCompiledResultTable.ProductImage WHERE coupon_finder_march2nd.field_revision_field_product_image.entity_id = 173951 ");
 
-/*
+
 echo("\n\n FIELD_BRAND_TID \n\n");
-db_query ("UPDATE coupon_finder_march2nd.field_data_field_brand INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_data_field_brand.entity_id SET coupon_finder_march2nd.field_data_field_brand.field_brand_tid = coupon_finder_march2nd.predictorCompiledResultTable. WHERE coupon_finder_march2nd.field_data_field_brand.entity_id = 173951 ");
+db_query ("UPDATE coupon_finder_march2nd.field_data_field_brand INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_data_field_brand.entity_id SET coupon_finder_march2nd.field_data_field_brand.field_brand_tid = coupon_finder_march2nd.predictorCompiledResultTable.BrandId WHERE coupon_finder_march2nd.field_data_field_brand.entity_id = 173951 ");
 
 echo("\n\n FIELD_BRAND_TID - REVISION \n\n");
-db_query ("UPDATE coupon_finder_march2nd.field_revision_field_brand INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_revision_field_brand.entity_id SET coupon_finder_march2nd.field_revision_field_brand.field_brand_tid = coupon_finder_march2nd.predictorCompiledResultTable. WHERE coupon_finder_march2nd.field_revision_field_brand.entity_id = 173951 ");
-*/
+db_query ("UPDATE coupon_finder_march2nd.field_revision_field_brand INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_revision_field_brand.entity_id SET coupon_finder_march2nd.field_revision_field_brand.field_brand_tid = coupon_finder_march2nd.predictorCompiledResultTable.BrandId WHERE coupon_finder_march2nd.field_revision_field_brand.entity_id = 173951 ");
 
 echo("\n\n FIELD_LASTCHECKEDTIME_VALUE \n\n");
 db_query ("UPDATE coupon_finder_march2nd.field_data_field_lastcheckedtime INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_data_field_lastcheckedtime.entity_id SET coupon_finder_march2nd.field_data_field_lastcheckedtime.field_lastcheckedtime_value = coupon_finder_march2nd.predictorCompiledResultTable.LastCheckTime WHERE coupon_finder_march2nd.field_data_field_lastcheckedtime.entity_id = 173951 ");
