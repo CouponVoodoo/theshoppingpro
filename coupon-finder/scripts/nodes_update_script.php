@@ -307,7 +307,7 @@ db_query ("UPDATE coupon_finder_march2nd.field_revision_field_best_coupon_info I
 		TO MAKE ALL TARGET COLUMNS NULL FOR TESTING
 
 \**													**/
-
+/*
 echo "\n\n START - Entity Id Update \n\n".time();
 db_query("UPDATE coupon_finder_march2nd.predictorCompiledResultTable SET coupon_finder_march2nd.predictorCompiledResultTable.entity_id = NULL");
 echo "\n\n END - Entity Id Update \n\n".time();
@@ -341,9 +341,9 @@ db_query ("UPDATE coupon_finder_march2nd.node SET coupon_finder_march2nd.node.st
 
 echo("\n\n TIMESTAMP - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node_revision SET coupon_finder_march2nd.node_revision.timestamp = 1396942501");
-
+*/
 echo("\n\n TITLE - REVISION \n\n").time();
-db_query ("UPDATE coupon_finder_march2nd.node_revision SET coupon_finder_march2nd.node_revision.title = NULL");
+db_query ("UPDATE coupon_finder_march2nd.node_revision SET coupon_finder_march2nd.node_revision.title = 'ABC'");
 
 echo("\n\n STATUS - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node_revision SET coupon_finder_march2nd.node_revision.status = 1 ");
