@@ -331,7 +331,7 @@ echo "\n\n APACHE SOLR - CHANGED \n\n".time();
 db_query ("UPDATE coupon_finder_march2nd.apachesolr_index_entities_node SET coupon_finder_march2nd.apachesolr_index_entities_node.changed = NULL");
 
 echo("\n\n CHANGED \n\n").time();
-db_query ("UPDATE coupon_finder_march2nd.node SET coupon_finder_march2nd.node.changed = NULL");
+db_query ("UPDATE coupon_finder_march2nd.node SET coupon_finder_march2nd.node.changed = 1396942501");
 
 echo("\n\n TITLE \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node SET coupon_finder_march2nd.node.title = NULL ");
@@ -340,7 +340,7 @@ echo("\n\n STATUS \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node SET coupon_finder_march2nd.node.status = NULL ");
 
 echo("\n\n TIMESTAMP - REVISION \n\n").time();
-db_query ("UPDATE coupon_finder_march2nd.node_revision SET coupon_finder_march2nd.node_revision.timestamp = NULL");
+db_query ("UPDATE coupon_finder_march2nd.node_revision SET coupon_finder_march2nd.node_revision.timestamp = 1396942501");
 
 echo("\n\n TITLE - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node_revision NULLSET coupon_finder_march2nd.node_revision.title = NULL");
