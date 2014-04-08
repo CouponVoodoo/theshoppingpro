@@ -316,7 +316,7 @@ echo "\n\n BRAND - GETTING TID FROM NAME \n\n".time();
 db_query("UPDATE coupon_finder_march2nd.predictorCompiledResultTable SET coupon_finder_march2nd.predictorCompiledResultTable.BrandId = NULL ");
 
 echo "\n\n UPDATE LOCATION \n\n".time();
-db_query ("UPDATE coupon_finder_march2nd.predictorCompiledResultTable SET coupon_finder_march2nd.predictorCompiledResultTable.loc = NULL) ");
+db_query ("UPDATE coupon_finder_march2nd.predictorCompiledResultTable SET coupon_finder_march2nd.predictorCompiledResultTable.loc = NULL ");
 
 echo "\n\n XML SITEMAP SOLR - LAST MODIFIED \n\n".time();
 db_query ("UPDATE coupon_finder_march2nd.xmlsitemap SET coupon_finder_march2nd.xmlsitemap.lastmod = NULL");
