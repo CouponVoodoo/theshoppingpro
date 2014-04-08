@@ -337,7 +337,7 @@ echo("\n\n TITLE \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node SET coupon_finder_march2nd.node.title = 'abc' ");
 
 echo("\n\n STATUS \n\n").time();
-db_query ("UPDATE coupon_finder_march2nd.node SET coupon_finder_march2nd.node.status = NULL ");
+db_query ("UPDATE coupon_finder_march2nd.node SET coupon_finder_march2nd.node.status = 1 ");
 
 echo("\n\n TIMESTAMP - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node_revision SET coupon_finder_march2nd.node_revision.timestamp = 1396942501");
@@ -346,7 +346,7 @@ echo("\n\n TITLE - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node_revision NULLSET coupon_finder_march2nd.node_revision.title = NULL");
 
 echo("\n\n STATUS - REVISION \n\n").time();
-db_query ("UPDATE coupon_finder_march2nd.node_revision NULLSET coupon_finder_march2nd.node_revision.status = NULL ");
+db_query ("UPDATE coupon_finder_march2nd.node_revision NULLSET coupon_finder_march2nd.node_revision.status = 1 ");
 
 echo("\n\n FIELD_CATEGORY_TID \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.field_data_field_category NULLSET coupon_finder_march2nd.field_data_field_category.field_category_tid = NULL ");
