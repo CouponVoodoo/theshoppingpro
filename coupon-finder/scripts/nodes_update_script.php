@@ -343,7 +343,7 @@ echo("\n\n TIMESTAMP - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node_revision SET coupon_finder_march2nd.node_revision.timestamp = 1396942501");
 */
 echo("\n\n TITLE - REVISION \n\n").time();
-db_query ("UPDATE coupon_finder_march2nd.node_revision SET coupon_finder_march2nd.node_revision.title = 'ABC'");
+db_query ("UPDATE coupon_finder_march2nd.node_revision SET coupon_finder_march2nd.node_revision.title = 'ABCD'");
 
 echo("\n\n STATUS - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node_revision SET coupon_finder_march2nd.node_revision.status = 1 ");
