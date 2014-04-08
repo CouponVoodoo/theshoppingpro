@@ -17,10 +17,10 @@ echo '\n\n END - Entity Id Update \n\n';
 
 
 echo("\n\n CHANGED \n\n");
-db_query ("UPDATE coupon_finder_march2nd.Node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.Node.entity_id SET coupon_finder_march2nd.Node.changed = ".time()." WHERE coupon_finder_march2nd.Node.entity_id = 173951 ");
+db_query ("UPDATE coupon_finder_march2nd.node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.node.entity_id SET coupon_finder_march2nd.node.changed = ".time()." WHERE coupon_finder_march2nd.node.entity_id = 173951 ");
 
 echo("\n\n TITLE \n\n");
-db_query ("UPDATE coupon_finder_march2nd.Node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.Node.entity_id SET coupon_finder_march2nd.Node.title = coupon_finder_march2nd.predictorCompiledResultTable.pagetitle WHERE coupon_finder_march2nd.Node.entity_id = 173951 ");
+db_query ("UPDATE coupon_finder_march2nd.node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.node.entity_id SET coupon_finder_march2nd.node.title = coupon_finder_march2nd.predictorCompiledResultTable.pagetitle WHERE coupon_finder_march2nd.node.entity_id = 173951 ");
 
 echo("\n\n CHANGED - REVISION \n\n");
 db_query ("UPDATE coupon_finder_march2nd.node_revision INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.node_revision.entity_id SET coupon_finder_march2nd.node_revision.changed = ".time()."WHERE coupon_finder_march2nd.node_revision.entity_id = 173951 ");
