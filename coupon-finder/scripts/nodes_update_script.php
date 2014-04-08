@@ -343,13 +343,13 @@ echo("\n\n TIMESTAMP - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node_revision SET coupon_finder_march2nd.node_revision.timestamp = 1396942501");
 
 echo("\n\n TITLE - REVISION \n\n").time();
-db_query ("UPDATE coupon_finder_march2nd.node_revision NULLSET coupon_finder_march2nd.node_revision.title = NULL");
+db_query ("UPDATE coupon_finder_march2nd.node_revision SET coupon_finder_march2nd.node_revision.title = NULL");
 
 echo("\n\n STATUS - REVISION \n\n").time();
-db_query ("UPDATE coupon_finder_march2nd.node_revision NULLSET coupon_finder_march2nd.node_revision.status = 1 ");
+db_query ("UPDATE coupon_finder_march2nd.node_revision SET coupon_finder_march2nd.node_revision.status = 1 ");
 
 echo("\n\n FIELD_CATEGORY_TID \n\n").time();
-db_query ("UPDATE coupon_finder_march2nd.field_data_field_category NULLSET coupon_finder_march2nd.field_data_field_category.field_category_tid = NULL ");
+db_query ("UPDATE coupon_finder_march2nd.field_data_field_category SET coupon_finder_march2nd.field_data_field_category.field_category_tid = NULL ");
 
 echo("\n\n FIELD_CATEGORY_TID - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.field_revision_field_category SET coupon_finder_march2nd.field_revision_field_category.field_category_tid = NULL ");
@@ -367,7 +367,7 @@ echo("\n\n FIELD_MRPPRODUCTPRICE_VALUE - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.field_revision_field_mrpproductprice SET coupon_finder_march2nd.field_revision_field_mrpproductprice.field_mrpproductprice_value = NULL ");
 
 echo("\n\n FIELD_RETAILER_PRODUCT_NAME_VALUE \n\n").time();
-db_query ("UPDATE coupon_finder_march2nd.field_data_field_retailer_product_name NULLSET coupon_finder_march2nd.field_data_field_retailer_product_name.field_retailer_product_name_value = NULL ");
+db_query ("UPDATE coupon_finder_march2nd.field_data_field_retailer_product_name SET coupon_finder_march2nd.field_data_field_retailer_product_name.field_retailer_product_name_value = NULL ");
 
 echo("\n\n FIELD_RETAILER_PRODUCT_NAME_VALUE - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.field_revision_field_retailer_product_name  SET coupon_finder_march2nd.field_revision_field_retailer_product_name.field_retailer_product_name_value = NULL ");
