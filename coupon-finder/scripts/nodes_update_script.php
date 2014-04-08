@@ -26,14 +26,13 @@ db_query ("UPDATE coupon_finder_march2nd.xmlsitemap INNER JOIN coupon_finder_mar
 
 echo "\n\n XML SITEMAP SOLR - CHANGE FREQUENCY \n\n".time();
 db_query ("UPDATE coupon_finder_march2nd.xmlsitemap INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.loc = coupon_finder_march2nd.xmlsitemap.loc SET coupon_finder_march2nd.xmlsitemap.changefreq = 86400 ");
-
-
+*/
 echo "\n\n APACHE SOLR - STATUS \n\n".time();
 db_query ("UPDATE coupon_finder_march2nd.apachesolr_index_entities_node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.apachesolr_index_entities_node.entity_id SET coupon_finder_march2nd.apachesolr_index_entities_node.status = 1 ");
 
 echo "\n\n APACHE SOLR - CHANGED \n\n".time();
 db_query ("UPDATE coupon_finder_march2nd.apachesolr_index_entities_node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.apachesolr_index_entities_node.entity_id SET coupon_finder_march2nd.apachesolr_index_entities_node.changed = ".time());
-
+/*
 echo("\n\n CHANGED \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.node.nid SET coupon_finder_march2nd.node.changed = ".time());
 
@@ -132,10 +131,10 @@ db_query ("UPDATE coupon_finder_march2nd.field_revision_field_best_coupon_netpri
 
 echo("\n\n FIELD_BEST_COUPON_STATUS_VALUE \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.field_data_field_best_coupon_status INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_data_field_best_coupon_status.entity_id SET coupon_finder_march2nd.field_data_field_best_coupon_status.field_best_coupon_status_value = coupon_finder_march2nd.predictorCompiledResultTable.BestCouponStatus ");
-*/
+
 echo("\n\n FIELD_BEST_COUPON_STATUS_VALUE  - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.field_revision_field_best_coupon_status INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_revision_field_best_coupon_status.entity_id SET coupon_finder_march2nd.field_revision_field_best_coupon_status.field_best_coupon_status_value = coupon_finder_march2nd.predictorCompiledResultTable.BestCouponStatus");
-/*
+
 echo("\n\n FIELD_BEST_COUPON_URL_VALUE \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.field_data_field_best_coupon_url INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_data_field_best_coupon_url.entity_id SET coupon_finder_march2nd.field_data_field_best_coupon_url.field_best_coupon_url_value = coupon_finder_march2nd.predictorCompiledResultTable.BaseUrl ");
 
