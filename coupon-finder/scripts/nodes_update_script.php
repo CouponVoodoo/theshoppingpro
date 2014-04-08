@@ -8,7 +8,7 @@ db_query("UPDATE {coupon_finder_march2nd.predictorCompiledResultTable} LEFT JOIN
 echo "\n\n END - Entity Id Update \n\n";
 
 echo "\n\n BRAND - GETTING TID FROM NAME \n\n";
-db_query("UPDATE coupon_finder_march2nd.predictorCompiledResultTable LEFT JOIN taxonomy_term_data ON coupon_finder_march2nd.taxonomy_term_data.name = coupon_finder_march2nd.predictorCompiledResultTable.Brand SET coupon_finder_march2nd.predictorCompiledResultTable.BrandId = coupon_finder_march2nd.taxonomy_term_data.tid Where coupon_finder_march2nd.predictorCompiledResultTable.Brand = 'Adidas' ");
+db_query("UPDATE coupon_finder_march2nd.predictorCompiledResultTable LEFT JOIN coupon_finder_march2nd.taxonomy_term_data ON coupon_finder_march2nd.taxonomy_term_data.name = coupon_finder_march2nd.predictorCompiledResultTable.Brand SET coupon_finder_march2nd.predictorCompiledResultTable.BrandId = coupon_finder_march2nd.taxonomy_term_data.tid Where coupon_finder_march2nd.predictorCompiledResultTable.Brand = 'Adidas' ");
 
 
 
