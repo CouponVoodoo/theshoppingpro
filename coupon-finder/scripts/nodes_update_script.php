@@ -9,7 +9,7 @@
 
  
 \**																			**/
-/*
+
 echo "\n\n START - Entity Id Update \n\n".time();
 db_query("UPDATE coupon_finder_march2nd.predictorCompiledResultTable LEFT JOIN coupon_finder_march2nd.field_data_field_base_url ON coupon_finder_march2nd.field_data_field_base_url.field_base_url_value = coupon_finder_march2nd.predictorCompiledResultTable.BaseUrl SET coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_data_field_base_url.entity_id ");
 echo "\n\n END - Entity Id Update \n\n".time();
@@ -84,7 +84,6 @@ db_query ("UPDATE coupon_finder_march2nd.field_data_field_product_image INNER JO
 echo("\n\n FIELD_PRODUCT_IMAGE_VALUE - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.field_revision_field_product_image INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_revision_field_product_image.entity_id SET coupon_finder_march2nd.field_revision_field_product_image.field_product_image_value = coupon_finder_march2nd.predictorCompiledResultTable.ProductImage ");
 
-
 echo("\n\n FIELD_BRAND_TID \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.field_data_field_brand INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_data_field_brand.entity_id SET coupon_finder_march2nd.field_data_field_brand.field_brand_tid = coupon_finder_march2nd.predictorCompiledResultTable.BrandId ");
 
@@ -151,7 +150,7 @@ db_query ("UPDATE coupon_finder_march2nd.field_data_field_best_coupon_info INNER
 echo("\n\n FIELD_BEST_COUPON_INFO_VALUE  - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.field_revision_field_best_coupon_info INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_revision_field_best_coupon_info.entity_id SET coupon_finder_march2nd.field_revision_field_best_coupon_info.field_best_coupon_info_value = coupon_finder_march2nd.predictorCompiledResultTable.Result ");
 
-*/
+
 
 
 
@@ -284,7 +283,7 @@ db_query ("UPDATE coupon_finder_march2nd.field_data_field_best_coupon_status SET
 
 echo("\n\n FIELD_BEST_COUPON_STATUS_VALUE  - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.field_data_field_best_coupon_url SET coupon_finder_march2nd.field_data_field_best_coupon_url.field_best_coupon_url_value = NULL ");
-*/
+
 echo("\n\n FIELD_BEST_COUPON_URL_VALUE \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.field_data_field_best_coupon_url SET coupon_finder_march2nd.field_data_field_best_coupon_url.field_best_coupon_url_value = NULL");
 
@@ -296,7 +295,7 @@ db_query ("UPDATE coupon_finder_march2nd.field_data_field_best_coupon_info SET c
 
 echo("\n\n FIELD_BEST_COUPON_INFO_VALUE  - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.field_revision_field_best_coupon_info SET coupon_finder_march2nd.field_revision_field_best_coupon_info.field_best_coupon_info_value = NULL");
-
+*/
 
 /**                                              	**\
 
