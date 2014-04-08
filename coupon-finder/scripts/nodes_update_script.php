@@ -1,15 +1,31 @@
 <?PHP
 /**															**\
-		NEED TO WORK ON BRAND, SITEMAP  
+* PROCESS HIGHLIGHT:
+* - GET ENTITY ID INTO PREDICTOR TABLE USING BASEURL
+* - CONVERT BRAND NAME TO BRAND ID IN PREDICTOR TABLE
+* - UPDATE VALUE OF LOCATION IN PREDICTOR TABLE (TO BE USED FOR SITEMAP)
+* - UPDATE APACHE SOLR CHANGE FREQ & LASTMOD
+* - UPDATE ALL NODE VALUE FIELDS ONE BY ONE INCLUDING SETTING NODE STATUS TO 1
+
+ 
 \**															**/
 
 echo "\n\n START - Entity Id Update \n\n";
-db_query("UPDATE {coupon_finder_march2nd.predictorCompiledResultTable} LEFT JOIN {coupon_finder_march2nd.field_data_field_base_url} ON coupon_finder_march2nd.field_data_field_base_url.field_base_url_value = coupon_finder_march2nd.predictorCompiledResultTable.BaseUrl SET coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_data_field_base_url.entity_id Where coupon_finder_march2nd.predictorCompiledResultTable.BaseUrl = 'http://www.jabong.com/macroman-Assorted-Boxer-468481.html' ");
+db_query("UPDATE coupon_finder_march2nd.predictorCompiledResultTable LEFT JOIN coupon_finder_march2nd.field_data_field_base_url ON coupon_finder_march2nd.field_data_field_base_url.field_base_url_value = coupon_finder_march2nd.predictorCompiledResultTable.BaseUrl SET coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.field_data_field_base_url.entity_id Where coupon_finder_march2nd.predictorCompiledResultTable.BaseUrl = 'http://www.jabong.com/macroman-Assorted-Boxer-468481.html' ");
 echo "\n\n END - Entity Id Update \n\n";
 
 echo "\n\n BRAND - GETTING TID FROM NAME \n\n";
 db_query("UPDATE coupon_finder_march2nd.predictorCompiledResultTable LEFT JOIN coupon_finder_march2nd.taxonomy_term_data ON coupon_finder_march2nd.taxonomy_term_data.name = coupon_finder_march2nd.predictorCompiledResultTable.Brand SET coupon_finder_march2nd.predictorCompiledResultTable.BrandId = coupon_finder_march2nd.taxonomy_term_data.tid Where coupon_finder_march2nd.predictorCompiledResultTable.Brand = 'Adidas' ");
 
+echo "\n\n UPDATE LOCATION \n\n";
+db_query ("UPDATE coupon_finder_march2nd.predictorCompiledResultTable SET coupon_finder_march2nd.predictorCompiledResultTable.loc = concat('node/',CAST(coupon_finder_march2nd.predictorCompiledResultTable.entity_id as CHAR(50))) ");
+
+
+echo "\n\n XML SITEMAP SOLR - LAST MODIFIED \n\n";
+db_query ("UPDATE coupon_finder_march2nd.xmlsitemap INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.loc = coupon_finder_march2nd.xmlsitemap.loc SET coupon_finder_march2nd.xmlsitemap.lastmod = ".time()." WHERE coupon_finder_march2nd.xmlsitemap.loc = 'node/173951' ");
+
+echo "\n\n XML SITEMAP SOLR - CHANGE FREQUENCY \n\n";
+db_query ("UPDATE coupon_finder_march2nd.xmlsitemap INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.loc = coupon_finder_march2nd.xmlsitemap.loc SET coupon_finder_march2nd.xmlsitemap.changefreq = 86400 WHERE coupon_finder_march2nd.xmlsitemap.loc = 'node/173951' ");
 
 
 echo "\n\n APACHE SOLR - STATUS \n\n";
