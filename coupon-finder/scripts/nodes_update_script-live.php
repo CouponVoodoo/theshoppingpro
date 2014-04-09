@@ -22,7 +22,7 @@ echo "\n\n UPDATE LOCATION \n\n".time();
 db_query ("UPDATE coupon_finder.predictorCompiledResultTable SET coupon_finder.predictorCompiledResultTable.loc = concat('node/',CAST(coupon_finder.predictorCompiledResultTable.entity_id as CHAR(50))) ");
 
 echo "\n\n XML SITEMAP SOLR - LAST MODIFIED \n\n".time();
-db_query ("UPDATE coupon_finder.xmlsitemap INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.loc = coupon_finder.xmlsitemap.loc SET coupon_finder.xmlsitemap.lastmod = ".time()+(4.5*3600));
+db_query ("UPDATE coupon_finder.xmlsitemap INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.loc = coupon_finder.xmlsitemap.loc SET coupon_finder.xmlsitemap.lastmod = ".(time()+(4.5*3600)));
 
 echo "\n\n XML SITEMAP SOLR - CHANGE FREQUENCY \n\n".time();
 db_query ("UPDATE coupon_finder.xmlsitemap INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.loc = coupon_finder.xmlsitemap.loc SET coupon_finder.xmlsitemap.changefreq = 86400 ");
@@ -31,10 +31,10 @@ echo "\n\n APACHE SOLR - STATUS \n\n".time();
 db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.status = 1 ");
 
 echo "\n\n APACHE SOLR - CHANGED \n\n".time();
-db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.changed = ".time()+(4.5*3600));
+db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.changed = ".(time()+(4.5*3600)));
 
 echo("\n\n CHANGED \n\n").time();
-db_query ("UPDATE coupon_finder.node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node.nid SET coupon_finder.node.changed = ".time()+(4.5*3600));
+db_query ("UPDATE coupon_finder.node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node.nid SET coupon_finder.node.changed = ".(time()+(4.5*3600)));
 
 echo("\n\n TITLE \n\n").time();
 db_query ("UPDATE coupon_finder.node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node.nid SET coupon_finder.node.title = coupon_finder.predictorCompiledResultTable.pagetitle ");
@@ -338,7 +338,7 @@ echo "\n\n UPDATE LOCATION \n\n".time();
 db_query ("UPDATE coupon_finder.predictorCompiledResultTable SET coupon_finder.predictorCompiledResultTable.loc = concat('node/',CAST(coupon_finder.predictorCompiledResultTable.entity_id as CHAR(50))) ");
 
 echo "\n\n XML SITEMAP SOLR - LAST MODIFIED \n\n".time();
-db_query ("UPDATE coupon_finder.xmlsitemap INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.loc = coupon_finder.xmlsitemap.loc SET coupon_finder.xmlsitemap.lastmod = ".time()+(4.5*3600)." WHERE coupon_finder.predictorCompiledResultTable.loc = 'node/194938'");
+db_query ("UPDATE coupon_finder.xmlsitemap INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.loc = coupon_finder.xmlsitemap.loc SET coupon_finder.xmlsitemap.lastmod = ".(time()+(4.5*3600))." WHERE coupon_finder.predictorCompiledResultTable.loc = 'node/194938'");
 
 echo "\n\n XML SITEMAP SOLR - CHANGE FREQUENCY \n\n".time();
 db_query ("UPDATE coupon_finder.xmlsitemap INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.loc = coupon_finder.xmlsitemap.loc SET coupon_finder.xmlsitemap.changefreq = 86400 WHERE coupon_finder.predictorCompiledResultTable.loc = 'node/194938'");
@@ -347,10 +347,10 @@ echo "\n\n APACHE SOLR - STATUS \n\n".time();
 db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.status = 1 WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194938");
 
 echo "\n\n APACHE SOLR - CHANGED \n\n".time();
-db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.changed = ".time()+(4.5*3600)." WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194938");
+db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.changed = ".(time()+(4.5*3600))." WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194938");
 
 echo("\n\n CHANGED \n\n").time();
-db_query ("UPDATE coupon_finder.node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node.nid SET coupon_finder.node.changed = ".time()+(4.5*3600)." WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194938");
+db_query ("UPDATE coupon_finder.node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node.nid SET coupon_finder.node.changed = ".(time()+(4.5*3600))." WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194938");
 
 echo("\n\n TITLE \n\n").time();
 db_query ("UPDATE coupon_finder.node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node.nid SET coupon_finder.node.title = coupon_finder.predictorCompiledResultTable.pagetitle WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194938");
@@ -359,7 +359,7 @@ echo("\n\n STATUS \n\n").time();
 db_query ("UPDATE coupon_finder.node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node.nid SET coupon_finder.node.status = 1 WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194938");
 
 echo("\n\n TIMESTAMP - REVISION \n\n").time();
-db_query ("UPDATE coupon_finder.node_revision INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node_revision.nid SET coupon_finder.node_revision.timestamp = ".time()+(4.5*3600)." WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194938");
+db_query ("UPDATE coupon_finder.node_revision INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node_revision.nid SET coupon_finder.node_revision.timestamp = ".(time()+(4.5*3600))." WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194938");
 
 echo("\n\n TITLE - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder.node_revision INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node_revision.nid SET coupon_finder.node_revision.title = coupon_finder.predictorCompiledResultTable.pagetitle WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194938");
