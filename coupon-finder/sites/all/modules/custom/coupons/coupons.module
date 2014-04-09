@@ -269,7 +269,7 @@ function coupons_redirect_interim_page() {
 	drupal_add_js("jQuery(window).load(function(){
                   setTimeout(function(){
                       window.location.replace(\"" . $url . "\");
-                  }, 5000);
+                  }, 2000);
 				 ga('send', 'event', 'coupon-redirection', 'redirect-page', Drupal.settings.coupons.Event_Id,{
 					'dimension1': Drupal.settings.coupons.User_Guid, 
 					'dimension3': Drupal.settings.coupons.Affiliate_URL, 
