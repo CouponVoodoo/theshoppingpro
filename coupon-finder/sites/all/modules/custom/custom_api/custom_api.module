@@ -19,9 +19,9 @@ function custom_api_menu() {
 function custom_api_addproduct($ProInfo){
 	
 
-     // print_r($_REQUEST['url']);
+      print_r($_REQUEST['predictor']);
     
-     // die;
+      die;
     //$baseUrl = base64_decode( ($ProInfo) );
     $baseUrl = $_REQUEST['url'];
 	if($_REQUEST['predictor'] == 1){
@@ -29,6 +29,8 @@ function custom_api_addproduct($ProInfo){
       $url = "http://54.243.150.171/cpnVodo/simulation/predictorNewNodeCreation.php";
       $json = drupal_http_request($url, array('timeout' => 600.0));
 	  $json = $json->data;
+	  echo $json;
+	  exit;
 	  $jsonArr = json_decode($json,true);
 	  foreach($jsonArr as $json){
     	$json = json_encode($json); 
