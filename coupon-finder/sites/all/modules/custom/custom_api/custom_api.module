@@ -30,7 +30,7 @@ function custom_api_addproduct($ProInfo){
       $url = "http://54.243.150.171/cpnVodo/simulation/predictorNewNodeCreation.php";
       $json = drupal_http_request($url, array('timeout' => 600.0));
 	  $json = $json->data;
-	  echo $json;
+	  //echo $json;
 	 // exit;
 	  $jsonArr = json_decode($json,true);
 	  foreach($jsonArr as $json){
@@ -52,7 +52,9 @@ function custom_api_addproduct($ProInfo){
 		$node->type     = '_product_and_coupon';	
 		$node->uid      = 1;
 		$node->status      = 0;
+		$node->title = trim($jsonArray->Title);
 		$node->field_base_url['und']['0'][value] 		  	= trim( $jsonArray->BaseUrl);
+		$node->field_brand['und']['0']['tid'] 		  	= $BrandId;
 		node_save($node);
 		$response = json_encode( array('ResponseCode' => '1', 'Response' => 'Node added.', 'URL' => $url, 'BASEURL' => $jsonArray->header->BaseUrl) );
 	  echo $response;
