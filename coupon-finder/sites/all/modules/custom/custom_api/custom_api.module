@@ -52,7 +52,7 @@ function custom_api_addproduct($ProInfo){
 		$node->type     = '_product_and_coupon';	
 		$node->uid      = 1;
 		$node->status      = 0;
-		$node->title = trim($jsonArray->Title);
+		$node->title = trim($jsonArray->Product);
 		$node->field_base_url['und']['0'][value] 		  	= trim( $jsonArray->BaseUrl);
 		$node->field_brand['und']['0']['tid'] 		  	= $BrandId;
 		node_save($node);
