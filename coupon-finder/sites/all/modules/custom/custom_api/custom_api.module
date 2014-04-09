@@ -74,8 +74,12 @@ function custom_api_addproduct($ProInfo){
 		$node->field_best_coupon_netpriceafters['und']['0'][value]= null;
 		$node->field_best_coupon_url['und']['0'][value]		= null;
 		$node->field_best_coupon_info['und']['0'][value]		= null;
+		
+	
 		node_save($node);
-		//$node->status      = 0;
+		$nid=$node->nid;
+		db_query("UPDATE {apachesolr_index_entities_node} SET changed = :timestamp WHERE entity_id = :nid", array(':timestamp' => 1365503270, ':nid' => $nid));
+		//$node->status = 0;
 		//node_save($node);
 		$response = json_encode( array('ResponseCode' => '1', 'Response' => 'Node added.', 'URL' => $url, 'BASEURL' => $jsonArray->BaseUrl) );
 	  echo $response;
