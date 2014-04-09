@@ -18,11 +18,11 @@ function custom_api_menu() {
 
 function custom_api_addproduct($ProInfo){
 	
-echo 'fdef';
-      print_r($_REQUEST['predictor']);
+
+//      print_r($_REQUEST['predictor']);
     
-      die;
-	  exit;
+  //    die;
+	
     //$baseUrl = base64_decode( ($ProInfo) );
     $baseUrl = $_REQUEST['url'];
 	if($_REQUEST['predictor'] == 1){
@@ -31,7 +31,7 @@ echo 'fdef';
       $json = drupal_http_request($url, array('timeout' => 600.0));
 	  $json = $json->data;
 	  echo $json;
-	  exit;
+	 // exit;
 	  $jsonArr = json_decode($json,true);
 	  foreach($jsonArr as $json){
     	$json = json_encode($json); 
