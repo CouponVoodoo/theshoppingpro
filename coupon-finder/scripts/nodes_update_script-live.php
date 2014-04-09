@@ -135,6 +135,13 @@ db_query ("UPDATE coupon_finder.field_data_field_best_coupon_status INNER JOIN c
 echo("\n\n FIELD_BEST_COUPON_STATUS_VALUE  - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder.field_revision_field_best_coupon_status INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_revision_field_best_coupon_status.entity_id SET coupon_finder.field_revision_field_best_coupon_status.field_best_coupon_status_value = coupon_finder.predictorCompiledResultTable.BestCouponStatus");
 
+echo("\n\n FIELD_BEST_COUPON_STATUS_DISPLAY_VALUE \n\n").time();
+db_query ("UPDATE coupon_finder.field_data_field_best_coupon_status_display INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_data_field_best_coupon_status_display.entity_id SET coupon_finder.field_data_field_best_coupon_status_display.field_best_coupon_status_display_value = coupon_finder.predictorCompiledResultTable.BestCouponDisplay ");
+
+echo("\n\n FIELD_BEST_COUPON_STATUS_DISPLAY_VALUE  - REVISION \n\n").time();
+db_query ("UPDATE coupon_finder.field_revision_field_best_coupon_status_display INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_revision_field_best_coupon_status_display.entity_id SET coupon_finder.field_revision_field_best_coupon_status_display.field_best_coupon_status_display_value = coupon_finder.predictorCompiledResultTable.BestCouponDisplay");
+
+
 echo("\n\n FIELD_BEST_COUPON_URL_VALUE \n\n").time();
 db_query ("UPDATE coupon_finder.field_data_field_best_coupon_url INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_data_field_best_coupon_url.entity_id SET coupon_finder.field_data_field_best_coupon_url.field_best_coupon_url_value = coupon_finder.predictorCompiledResultTable.BaseUrl ");
 
@@ -285,6 +292,13 @@ db_query ("UPDATE coupon_finder.field_data_field_best_coupon_status SET coupon_f
 
 echo("\n\n FIELD_BEST_COUPON_STATUS_VALUE  - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder.field_data_field_best_coupon_url SET coupon_finder.field_data_field_best_coupon_url.field_best_coupon_url_value = NULL ");
+
+echo("\n\n FIELD_BEST_COUPON_STATUS_DISPLAY_VALUE \n\n").time();
+db_query ("UPDATE coupon_finder.field_data_field_best_coupon_status_display SET coupon_finder.field_data_field_best_coupon_status_display.field_best_coupon_status_value = NULL");
+
+echo("\n\n FIELD_BEST_COUPON_STATUS_DISPLAY_VALUE - REVISION \n\n").time();
+db_query ("UPDATE coupon_finder.field_revision_field_best_coupon_status_display SET coupon_finder.field_revision_field_best_coupon_status_display.field_best_coupon_status_value = NULL");
+
 
 echo("\n\n FIELD_BEST_COUPON_URL_VALUE \n\n").time();
 db_query ("UPDATE coupon_finder.field_data_field_best_coupon_url SET coupon_finder.field_data_field_best_coupon_url.field_best_coupon_url_value = NULL");
@@ -437,6 +451,12 @@ db_query ("UPDATE coupon_finder.field_data_field_best_coupon_status INNER JOIN c
 echo("\n\n FIELD_BEST_COUPON_STATUS_VALUE  - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder.field_revision_field_best_coupon_status INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_revision_field_best_coupon_status.entity_id SET coupon_finder.field_revision_field_best_coupon_status.field_best_coupon_status_value = coupon_finder.predictorCompiledResultTable.BestCouponStatus WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194935");
 
+echo("\n\n FIELD_BEST_COUPON_STATUS_DISPLAY_VALUE \n\n").time();
+db_query ("UPDATE coupon_finder.field_data_field_best_coupon_status_display INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_data_field_best_coupon_status_display.entity_id SET coupon_finder.field_data_field_best_coupon_status_display.field_best_coupon_status_display_value = coupon_finder.predictorCompiledResultTable.BestCouponDisplay  WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194935");
+
+echo("\n\n FIELD_BEST_COUPON_STATUS_DISPLAY_VALUE  - REVISION \n\n").time();
+db_query ("UPDATE coupon_finder.field_revision_field_best_coupon_status_display INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_revision_field_best_coupon_status_display.entity_id SET coupon_finder.field_revision_field_best_coupon_status_display.field_best_coupon_status_display_value = coupon_finder.predictorCompiledResultTable.BestCouponDisplay  WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194935");
+
 echo("\n\n FIELD_BEST_COUPON_URL_VALUE \n\n").time();
 db_query ("UPDATE coupon_finder.field_data_field_best_coupon_url INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_data_field_best_coupon_url.entity_id SET coupon_finder.field_data_field_best_coupon_url.field_best_coupon_url_value = coupon_finder.predictorCompiledResultTable.BaseUrl WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194935");
 
@@ -448,7 +468,6 @@ db_query ("UPDATE coupon_finder.field_data_field_best_coupon_info INNER JOIN cou
 
 echo("\n\n FIELD_BEST_COUPON_INFO_VALUE  - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder.field_revision_field_best_coupon_info INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_revision_field_best_coupon_info.entity_id SET coupon_finder.field_revision_field_best_coupon_info.field_best_coupon_info_value = coupon_finder.predictorCompiledResultTable.Result WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194935");
-
 
 echo("\n\n field_data_field_retailer \n\n").time();
 db_query ("UPDATE coupon_finder.field_data_field_retailer INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_data_field_retailer.entity_id SET coupon_finder.field_data_field_retailer.field_retailer_tid   = coupon_finder.predictorCompiledResultTable.RetailerId WHERE coupon_finder.predictorCompiledResultTable.entity_id = 194935");
