@@ -1314,17 +1314,19 @@ $product_node = node_load($nid);
 
   if(strpos($fullProdUrl,'?') > 1) {
     $prodUrl = reset(explode("?",$fullProdUrl));}
-  else
+  else {
     $prodUrl = $fullProdUrl;
-
+ }
   $retailerDomain = get_domain($fullProdUrl);
   $brand = reset(explode(".",$retailerDomain));
 /*Mixpanel End */
   
   /******************************************************************/
-  
-  //$jsonArray = unserialize(($FRProUrl->field_best_coupon_info_value));
-  $jsonArray = unserialize(($FRProUrl->field_best_coupon_info_value));
+
+	$jsonArray = @unserialize($FRProUrl->field_best_coupon_info_value);
+	if ($jsonArray == false){
+		$jsonArray = json_decode($FRProUrl->field_best_coupon_info_value);
+	} 
   if (isset($jsonArray)) {
     global $base_root;
     $items = array();
@@ -1433,15 +1435,16 @@ drupal_add_js("jQuery(document).ready(function($){
                        });
                 });", array('type' => 'inline', 'scope' => 'footer'));
 
-*/
+
     if ($is_success) {
       $error_msg = '<div class="messages error">
                 Sorry! We tried our best but no coupons work for your product. Here is a list of coupons we tried, please read the response field for each coupon, you maybe able to avail discounts by increasing your cart value or selecting anther product:
           </div>';
-    }
-    return theme_item_list(array('items' => $items, 'title' => $title.$error_msg, 'type' => $type, 'attributes' => $attributes));
-  } else {
+    } else {
     return '<span class="error">Bummer! Something went wrong. Please try another product.</span>';
+  } 
+*/
+    return theme_item_list(array('items' => $items, 'title' => $title.$error_msg, 'type' => $type, 'attributes' => $attributes));
   }  
 }
 
