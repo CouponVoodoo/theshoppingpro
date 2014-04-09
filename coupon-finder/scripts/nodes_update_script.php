@@ -333,10 +333,10 @@ echo "\n\n APACHE SOLR - STATUS \n\n".time();
 db_query ("UPDATE coupon_finder_march2nd.apachesolr_index_entities_node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.apachesolr_index_entities_node.entity_id SET coupon_finder_march2nd.apachesolr_index_entities_node.status = 1 WHERE coupon_finder_march2nd.predictorCompiledResultTable.entity_id = 17238");
 
 echo "\n\n APACHE SOLR - CHANGED \n\n".time();
-db_query ("UPDATE coupon_finder_march2nd.apachesolr_index_entities_node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.apachesolr_index_entities_node.entity_id SET coupon_finder_march2nd.apachesolr_index_entities_node.changed = ".time()."WHERE coupon_finder_march2nd.predictorCompiledResultTable.entity_id = 17238");
+db_query ("UPDATE coupon_finder_march2nd.apachesolr_index_entities_node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.apachesolr_index_entities_node.entity_id SET coupon_finder_march2nd.apachesolr_index_entities_node.changed = ".time()." WHERE coupon_finder_march2nd.predictorCompiledResultTable.entity_id = 17238");
 
 echo("\n\n CHANGED \n\n").time();
-db_query ("UPDATE coupon_finder_march2nd.node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.node.nid SET coupon_finder_march2nd.node.changed = ".time()."WHERE coupon_finder_march2nd.predictorCompiledResultTable.entity_id = 17238");
+db_query ("UPDATE coupon_finder_march2nd.node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.node.nid SET coupon_finder_march2nd.node.changed = ".time()." WHERE coupon_finder_march2nd.predictorCompiledResultTable.entity_id = 17238");
 
 echo("\n\n TITLE \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.node.nid SET coupon_finder_march2nd.node.title = coupon_finder_march2nd.predictorCompiledResultTable.pagetitle WHERE coupon_finder_march2nd.predictorCompiledResultTable.entity_id = 17238");
@@ -345,7 +345,7 @@ echo("\n\n STATUS \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.node.nid SET coupon_finder_march2nd.node.status = 1 WHERE coupon_finder_march2nd.predictorCompiledResultTable.entity_id = 17238");
 
 echo("\n\n TIMESTAMP - REVISION \n\n").time();
-db_query ("UPDATE coupon_finder_march2nd.node_revision INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.node_revision.nid SET coupon_finder_march2nd.node_revision.timestamp = ".time()."WHERE coupon_finder_march2nd.predictorCompiledResultTable.entity_id = 17238");
+db_query ("UPDATE coupon_finder_march2nd.node_revision INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.node_revision.nid SET coupon_finder_march2nd.node_revision.timestamp = ".time()." WHERE coupon_finder_march2nd.predictorCompiledResultTable.entity_id = 17238");
 
 echo("\n\n TITLE - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder_march2nd.node_revision INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder_march2nd.predictorCompiledResultTable.entity_id = coupon_finder_march2nd.node_revision.nid SET coupon_finder_march2nd.node_revision.title = coupon_finder_march2nd.predictorCompiledResultTable.pagetitle WHERE coupon_finder_march2nd.predictorCompiledResultTable.entity_id = 17238");
