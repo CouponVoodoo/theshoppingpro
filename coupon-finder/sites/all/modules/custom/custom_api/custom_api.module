@@ -24,12 +24,42 @@ function custom_api_addproduct($ProInfo){
      // die;
     //$baseUrl = base64_decode( ($ProInfo) );
     $baseUrl = $_REQUEST['url'];
-	
-	if($_REQUEST['recheck'] == 1){
+	if($_REQUEST['predictor'] == 1){
+	  $Pageurl = "http://54.243.150.171/cpnVodo/simulation/predictorNewNodeCreation.php";
+      $url = "http://54.243.150.171/cpnVodo/simulation/predictorNewNodeCreation.php";
+      $json = drupal_http_request($url, array('timeout' => 600.0));
+	  $json = $json->data;
+	  $jsonArr = json_decode($json,true);
+	  foreach($jsonArr as $json){
+    	$json = json_encode($json); 
+        $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
+        $jsonArray = json_decode($jsonData);
+		$brand_name = $jsonArray->Brand;
+	 // $Query = db_query("SELECT tid FROM taxonomy_term_data WHERE vid = 4 and name = '$brand_name' ");
+	  $Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 4 and ttd.name = :brand_name', array(':brand_name' => $brand_name));
+	  $Ruery = $Query->fetch();
+	  $BrandId = $Ruery->tid;
+
+      if($BrandId == ''){ 
+	   $BrandId = coupons_create_taxonomy_term($brand_name, 4);
+	   
+      }
+		$node = new stdClass();
+		$node->language = LANGUAGE_NONE;
+		$node->type     = '_product_and_coupon';	
+		$node->uid      = 1;
+		$node->status      = 0;
+		$node->field_base_url['und']['0'][value] 		  	= trim( $jsonArray->BaseUrl);
+		node_save($node);
+		$response = json_encode( array('ResponseCode' => '1', 'Response' => 'Node added.', 'URL' => $url, 'BASEURL' => $jsonArray->header->BaseUrl) );
+	  echo $response;
+	  }
+		return;
+    }else if($_REQUEST['recheck'] == 1){
 	  $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
       $url = "http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=" . urldecode( $baseUrl );
-      //http://54.243.150.171/CouponAutoWebPhase2Recheck.php?q=http://www.firstcry.com/zeme-organics/maternity-top-orange/61968/product-detail
       $node_url = $base_url.drupal_get_path_alias('node/'.$_REQUEST['id']);
+	  
     }else{
       $Pageurl = "http://54.243.150.171/nodeCreation.php";    
       $url = "http://54.243.150.171/nodeCreation.php";
