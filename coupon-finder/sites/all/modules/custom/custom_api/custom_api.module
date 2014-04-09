@@ -75,8 +75,8 @@ function custom_api_addproduct($ProInfo){
 		$node->field_best_coupon_url['und']['0'][value]		= null;
 		$node->field_best_coupon_info['und']['0'][value]		= null;
 		node_save($node);
-		$node->status      = 0;
-		node_save($node);
+		//$node->status      = 0;
+		//node_save($node);
 		$response = json_encode( array('ResponseCode' => '1', 'Response' => 'Node added.', 'URL' => $url, 'BASEURL' => $jsonArray->BaseUrl) );
 	  echo $response;
 	  }
