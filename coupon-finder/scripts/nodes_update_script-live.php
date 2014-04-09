@@ -338,7 +338,7 @@ echo "\n\n UPDATE LOCATION \n\n".time();
 db_query ("UPDATE coupon_finder.predictorCompiledResultTable SET coupon_finder.predictorCompiledResultTable.loc = concat('node/',CAST(coupon_finder.predictorCompiledResultTable.entity_id as CHAR(50))) ");
 
 echo "\n\n XML SITEMAP SOLR - LAST MODIFIED \n\n".time();
-db_query ("UPDATE coupon_finder.xmlsitemap INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.loc = coupon_finder.xmlsitemap.loc SET coupon_finder.xmlsitemap.lastmod = ".time()." WHERE coupon_finder.predictorCompiledResultTable.loc = 'node/194935'");
+db_query ("UPDATE coupon_finder.xmlsitemap INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.loc = coupon_finder.xmlsitemap.loc SET coupon_finder.xmlsitemap.lastmod = ".time()." WHERE coupon_finder.predictorCompiledResultTable.loc = 'node/194936'");
 
 echo "\n\n XML SITEMAP SOLR - CHANGE FREQUENCY \n\n".time();
 db_query ("UPDATE coupon_finder.xmlsitemap INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.loc = coupon_finder.xmlsitemap.loc SET coupon_finder.xmlsitemap.changefreq = 86400 WHERE coupon_finder.predictorCompiledResultTable.loc = 'node/194935'");
