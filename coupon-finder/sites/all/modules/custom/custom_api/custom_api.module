@@ -59,7 +59,7 @@ function custom_api_addproduct($ProInfo){
 		$node->field_category['und'][0]['tid']			= trim( $jsonArray->Category );
 		$node->field_retailer_product_name['und']['0'][value] 	= trim( $jsonArray->Product );
 		node_save($node);
-		$response = json_encode( array('ResponseCode' => '1', 'Response' => 'Node added.', 'URL' => $url, 'BASEURL' => $jsonArray->header->BaseUrl) );
+		$response = json_encode( array('ResponseCode' => '1', 'Response' => 'Node added.', 'URL' => $url, 'BASEURL' => $jsonArray->BaseUrl) );
 	  echo $response;
 	  }
 		return;
