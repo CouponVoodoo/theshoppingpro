@@ -18,10 +18,11 @@ function custom_api_menu() {
 
 function custom_api_addproduct($ProInfo){
 	
-
+echo 'fdef';
       print_r($_REQUEST['predictor']);
     
       die;
+	  exit;
     //$baseUrl = base64_decode( ($ProInfo) );
     $baseUrl = $_REQUEST['url'];
 	if($_REQUEST['predictor'] == 1){
