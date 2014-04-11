@@ -162,7 +162,7 @@ echo("\n\n field_data_field_retailer - revision \n\n").time();
 db_query ("UPDATE coupon_finder.field_revision_field_retailer INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_revision_field_retailer.entity_id SET coupon_finder.field_revision_field_retailer.field_retailer_tid   = coupon_finder.predictorCompiledResultTable.RetailerId");
 
 echo("\n\n FLUSH ALL CACHE \n\n").time();
-drush cc all;
+cache_clear_all();
 
 echo("\n\n FINISHED \n\n").time();
 
@@ -324,7 +324,7 @@ echo("\n\n field_data_field_retailer - revision \n\n").time();
 db_query ("UPDATE coupon_finder.field_revision_field_retailer SET coupon_finder.field_revision_field_retailer.field_retailer_tid   = NULL");
 
 echo("\n\n FLUSH ALL CACHE \n\n").time();
-drush cc all;
+cache_clear_all();
 
 echo("\n\n FINISHED \n\n").time();
 */
@@ -484,7 +484,7 @@ echo("\n\n field_data_field_retailer - revision \n\n").time();
 db_query ("UPDATE coupon_finder.field_revision_field_retailer INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_revision_field_retailer.entity_id SET coupon_finder.field_revision_field_retailer.field_retailer_tid   = coupon_finder.predictorCompiledResultTable.RetailerId WHERE coupon_finder.predictorCompiledResultTable.entity_id = 197758");
 
 echo("\n\n FLUSH ALL CACHE \n\n").time();
-drush cc all;
+cache_clear_all();
 
 echo("\n\n FINISHED \n\n").time();
 */
