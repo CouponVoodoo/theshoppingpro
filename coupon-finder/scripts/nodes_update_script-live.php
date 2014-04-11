@@ -36,8 +36,8 @@ db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon
 echo("\n\n CHANGED \n\n").time();
 db_query ("UPDATE coupon_finder.node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node.nid SET coupon_finder.node.changed = ".(time()+(4.5*3600)));
 
-echo("\n\n TITLE \n\n").time();
-db_query ("UPDATE coupon_finder.node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node.nid SET coupon_finder.node.title = coupon_finder.predictorCompiledResultTable.pagetitle ");
+// echo("\n\n TITLE \n\n").time();
+// db_query ("UPDATE coupon_finder.node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node.nid SET coupon_finder.node.title = coupon_finder.predictorCompiledResultTable.pagetitle ");
 
 echo("\n\n STATUS \n\n").time();
 db_query ("UPDATE coupon_finder.node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node.nid SET coupon_finder.node.status = 1 ");
@@ -45,8 +45,8 @@ db_query ("UPDATE coupon_finder.node INNER JOIN coupon_finder.predictorCompiledR
 echo("\n\n TIMESTAMP - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder.node_revision INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node_revision.nid SET coupon_finder.node_revision.timestamp = ".time());
 
-echo("\n\n TITLE - REVISION \n\n").time();
-db_query ("UPDATE coupon_finder.node_revision INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node_revision.nid SET coupon_finder.node_revision.title = coupon_finder.predictorCompiledResultTable.pagetitle ");
+// echo("\n\n TITLE - REVISION \n\n").time();
+// db_query ("UPDATE coupon_finder.node_revision INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node_revision.nid SET coupon_finder.node_revision.title = coupon_finder.predictorCompiledResultTable.pagetitle ");
 
 echo("\n\n STATUS - REVISION \n\n").time();
 db_query ("UPDATE coupon_finder.node_revision INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node_revision.nid SET coupon_finder.node_revision.status = 1 ");
