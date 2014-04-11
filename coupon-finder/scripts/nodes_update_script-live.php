@@ -10,7 +10,7 @@
  
 \**																			**/
 
-/*
+
 echo "\n\n START - Entity Id Update \n\n".time();
 db_query("UPDATE coupon_finder.predictorCompiledResultTable LEFT JOIN coupon_finder.field_data_field_base_url ON coupon_finder.field_data_field_base_url.field_base_url_value = coupon_finder.predictorCompiledResultTable.BaseUrl SET coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_data_field_base_url.entity_id ");
 echo "\n\n END - Entity Id Update \n\n".time();
@@ -161,9 +161,12 @@ db_query ("UPDATE coupon_finder.field_data_field_retailer INNER JOIN coupon_find
 echo("\n\n field_data_field_retailer - revision \n\n").time();
 db_query ("UPDATE coupon_finder.field_revision_field_retailer INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_revision_field_retailer.entity_id SET coupon_finder.field_revision_field_retailer.field_retailer_tid   = coupon_finder.predictorCompiledResultTable.RetailerId");
 
+echo("\n\n FLUSH ALL CACHE \n\n").time();
 drupal_flush_all_caches();
 
-*/
+echo("\n\n FINISHED \n\n").time();
+
+
 
 /**                                              	**\
 
@@ -320,7 +323,10 @@ db_query ("UPDATE coupon_finder.field_data_field_retailer SET coupon_finder.fiel
 echo("\n\n field_data_field_retailer - revision \n\n").time();
 db_query ("UPDATE coupon_finder.field_revision_field_retailer SET coupon_finder.field_revision_field_retailer.field_retailer_tid   = NULL");
 
+echo("\n\n FLUSH ALL CACHE \n\n").time();
 drupal_flush_all_caches();
+
+echo("\n\n FINISHED \n\n").time();
 */
 
 /**                                              	**\
@@ -328,7 +334,7 @@ drupal_flush_all_caches();
 		TO LIMIT CHANGES TO ONE ROW FOR TESTING
 
 \**													**/
-
+/*
 echo "\n\n START - Entity Id Update \n\n".time();
 db_query("UPDATE coupon_finder.predictorCompiledResultTable LEFT JOIN coupon_finder.field_data_field_base_url ON coupon_finder.field_data_field_base_url.field_base_url_value = coupon_finder.predictorCompiledResultTable.BaseUrl SET coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_data_field_base_url.entity_id ");
 echo "\n\n END - Entity Id Update \n\n".time();
@@ -477,6 +483,9 @@ db_query ("UPDATE coupon_finder.field_data_field_retailer INNER JOIN coupon_find
 echo("\n\n field_data_field_retailer - revision \n\n").time();
 db_query ("UPDATE coupon_finder.field_revision_field_retailer INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_revision_field_retailer.entity_id SET coupon_finder.field_revision_field_retailer.field_retailer_tid   = coupon_finder.predictorCompiledResultTable.RetailerId WHERE coupon_finder.predictorCompiledResultTable.entity_id = 197758");
 
+echo("\n\n FLUSH ALL CACHE \n\n").time();
 drupal_flush_all_caches();
 
+echo("\n\n FINISHED \n\n").time();
+*/
 ?>
