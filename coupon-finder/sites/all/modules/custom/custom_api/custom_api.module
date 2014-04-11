@@ -577,9 +577,11 @@ if ($vid == 3 OR $vid == 4){
 
 /** Function to get result from Predictor API**/
 function predictor_json($retailer_name,$brand,$category_id,$mrp,$list_price,$result_type){ // result_type has 2 type: full, bc
-	if ($mrp == 0) {$mrp = $list_price;}
-	$on = 0;
-	If ( $mrp >= $list_price && $mrp > 0 && $list_price > 0 && $retailer_name !='' && $brand !='' && $category_id != '' $on = 1){
+	if ($mrp == 0) {
+		$mrp = $list_price;
+	}
+	$run = 0;
+	If ( $mrp >= $list_price && $mrp > 0 && $list_price > 0 && $retailer_name !='' && $brand !='' && $category_id != '' && $run = 1){
 		If ( strtolower($retailer_name) == 'jabong' || strtolower($retailer_name) == 'myntra') {
 			$sid = $retailer_name.'-'.$brand.'-'.$category_id;
 			$url_api = "http://plugin.theshoppingpro.com/cpnVodo/simulation/updateOldUrlsApi.php?sid=".urlencode($sid)."&mrp=".urlencode($mrp)."&listPrice=".urlencode($list_price)."&type=".urlencode($result_type);
