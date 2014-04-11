@@ -544,6 +544,12 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $query->addParam('fq', $solr_hide_time_coupon);
    $query->addParam('fq', '-(sm_vid_Retailer:Snapdeal.com)');
    $query->addParam('bq', $solr_time_coupon_boost);
+   $query->addParam('fq', $solr_hide_time_coupon);
+   global $user;
+	if ($user->uid != 1) {
+		$solr_hide_negative="itm_field_best_coupon_netpriceaf:[* TO 0]";
+		$query->addParam('fq', $solr_hide_negative);
+	};
   // $query->addFilter('sm_field_retailer_product_name', $VALUE);
    
 	$termid = arg(2);
