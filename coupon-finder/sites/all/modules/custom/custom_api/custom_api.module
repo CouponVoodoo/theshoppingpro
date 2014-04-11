@@ -547,7 +547,7 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $query->addParam('fq', $solr_hide_time_coupon);
    global $user;
 	if ($user->uid != 1) {
-		$solr_hide_negative="itm_field_best_coupon_netpriceaf:[1 TO 50000]";
+		$solr_hide_negative="itm_field_best_coupon_netpriceaf:[1 TO *]";
 		$query->addParam('fq', $solr_hide_negative);
 	};
   // $query->addFilter('sm_field_retailer_product_name', $VALUE);
