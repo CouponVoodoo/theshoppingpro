@@ -156,7 +156,7 @@ function basic_preprocess_html(&$vars) {
 						$node_title = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.')| CouponVoodoo';
 						$vars['head_title'] = $node_title;
 					} Else {
-						$node_title = 'Todays coupon update for '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.')| CouponVoodoo';
+						$node_title = 'Todays coupons for '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.')| CouponVoodoo';
 						$vars['head_title'] = $node_title;					
 					}
 				} else { 
