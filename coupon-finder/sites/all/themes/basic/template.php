@@ -342,6 +342,18 @@ function basic_preprocess_block(&$vars, $hook) {
  */
 function basic_breadcrumb($variables) {
     $breadcrumb = $variables['breadcrumb'];
+    // Dirty code to wrap A href text in Span tag.
+    $delimenator1 = '</a>';
+    $delimenator2 = '>';
+    foreach ($breadcrumb as $key => $bc) {
+        // Remove '</a>' from the link
+        $linkAndText = explode($delimenator1, $bc);
+        // Get only text from the exploded array above
+        $text = explode($delimenator2, $linkAndText[0]);
+        $text[1] = '<span itemprop="title">' . $text[1] . '</span>';
+        // Assign the current breadcrumb array key with updated value.
+        $breadcrumb[$key] = implode($delimenator2, $text) . $delimenator1;
+    }
     // Determine if we are to display the breadcrumb.
     $show_breadcrumb = theme_get_setting('basic_breadcrumb');
 	$wrapDiv = '<div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">';	
