@@ -352,7 +352,7 @@ function basic_breadcrumb($variables) {
         $text = explode($delimenator2, $linkAndText[0]);
         $text[1] = '<span itemprop="title">' . $text[1] . '</span>';
         // Assign the current breadcrumb array key with updated value.
-        $breadcrumb[$key] = implode($delimenator2, $text) . $delimenator1;
+        $breadcrumb[$key] = $text[0] . ' itemprop="url" ' . $delimenator2 . $text[1] . $delimenator1;
     }
     // Determine if we are to display the breadcrumb.
     $show_breadcrumb = theme_get_setting('basic_breadcrumb');
