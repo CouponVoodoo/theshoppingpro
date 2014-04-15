@@ -164,7 +164,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 	</div>
 
 
-<div class="product-right-inner">
+<div class="product-right-inner" >
 <h1> <?php 
 	if ($current_domain =='cuponation'){
 		echo "<meta itemprop='name' content ='".$node->field_retailer_product_name['und']['0']['value']."'/>".$node->field_retailer_product_name['und']['0']['value']." @ ".$retailer." For Rs. ".$node->field_best_coupon_netpriceafters['und']['0']['value']." Using Coupons & Discount Offers | CN".$nid; } 
@@ -242,7 +242,7 @@ if ($current_domain != 'cuponation'){
 
 <?php
 	if ($node->field_best_coupon_saving['und'][0]['value'] == 1 && $CouponStatus == 1){
-		echo "<li> <label>".get_label('List Price:')."</label><meta itemprop='currency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
+		echo "<li> <label>".get_label('List Price:')."</label><meta itemprop='priceCurrency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
 		echo "<li> <label>".get_label('Savings:')."</label>See Best Coupon</li>";
 		echo "<li> <label>".get_label('Offer:')."</label>See Best Coupon</li>";
 	
@@ -251,18 +251,18 @@ if ($current_domain != 'cuponation'){
 		if ($coupon_saving > 1 && $CouponStatus == 1){
 				echo "<li> <label>".get_label('List Price:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
 				echo "<li> <label>".get_label('Savings:')."</label>".get_label('INR ').number_format($coupon_saving,0, '.', ',')."</li>";
-				echo "<li> <label>".get_label('Net Price:')."</label><meta itemprop='currency' content='INR' /><meta itemprop='price' content='".number_format(($list_price-$coupon_saving),0, '.', ',')."'/>".get_label('INR ').number_format($list_price-$coupon_saving,0, '.', ',')."</li>";
+				echo "<li> <label>".get_label('Net Price:')."</label><div class='net_price' itemprop='offers' itemscope itemtype='http://schema.org/Offer'><meta itemprop='priceCurrency' content='INR' /><meta itemprop='price' content='".number_format(($list_price-$coupon_saving),0, '.', ',')."'/>".get_label('INR ').number_format($list_price-$coupon_saving,0, '.', ',')."</div></li>";
 
 		} else {
 			if ($non_coupon_saving > 0){
 				echo "<li> <label>".get_label('MRP:')."</label>".get_label('INR ').number_format($mrp,0, '.', ',')."</li>";
 				echo "<li> <label>".get_label('Savings:')."</label>".get_label('INR ').number_format($non_coupon_saving,0, '.', ',')."</li>";
-				echo "<li> <label>".get_label('Net Price:')."</label><meta itemprop='currency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
+				echo "<li> <label>".get_label('Net Price:')."</label><div class='net_price' itemprop='offers' itemscope itemtype='http://schema.org/Offer'><meta itemprop='priceCurrency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</div></li>";
 					
 			} else {
 				echo "<li> <label>".get_label('MRP:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
 				echo "<li> <label>".get_label('Savings:')."</label>-</li>";
-				echo "<li> <label>".get_label('Net Price:')."</label><meta itemprop='currency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";	
+				echo "<li> <label>".get_label('Net Price:')."</label><div class='net_price' itemprop='offers' itemscope itemtype='http://schema.org/Offer'><meta itemprop='priceCurrency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</div></li>";	
 			}
 		}
 	}
