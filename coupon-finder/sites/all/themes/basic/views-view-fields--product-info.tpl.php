@@ -142,7 +142,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 
 
-<div class="product-detail">
+<div class="product-detail" itemscope itemtype='http://schema.org/Product'>
 
 <div class="product-inner">
 <div class="product-left">
@@ -164,7 +164,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 	</div>
 
 
-<div class="product-right-inner" itemscope itemtype='http://schema.org/Product'>
+<div class="product-right-inner">
 <h1> <?php 
 	if ($current_domain =='cuponation'){
 		echo "<meta itemprop='name' content ='".$node->field_retailer_product_name['und']['0']['value']."'/>".$node->field_retailer_product_name['und']['0']['value']." @ ".$retailer." For Rs. ".$node->field_best_coupon_netpriceafters['und']['0']['value']." Using Coupons & Discount Offers | CN".$nid; } 
@@ -283,14 +283,14 @@ if ($current_domain != 'cuponation'){
 		$cuponation_title = $retailer_coupon->field_cuponation_title['und']['0']['value'];
 		if (!empty($result['node']) && !empty($cuponation_title)) {
 			//echo $cuponation_title;
-			echo"<span itemprop='offerDetails'>".$cuponation_title."</span>";
+			echo $cuponation_title;
 		} else {
 			// print ($fields['field_best_coupon_description']->content); 
-			echo"<span itemprop='offerDetails'>".$best_coupon_description."</span>";
+			echo $best_coupon_description;
 		}	
 	} else {
 		// print ($fields['field_best_coupon_description']->content); 
-		echo"<span itemprop='offerDetails'>".$best_coupon_description."</span>";
+		echo $best_coupon_description;
 	}
 	?></li>
 
