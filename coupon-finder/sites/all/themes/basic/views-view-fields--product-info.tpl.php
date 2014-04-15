@@ -164,7 +164,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 	</div>
 
 
-<div class="product-right-inner" >
+<div class="product-right-inner" itemscope itemtype='http://schema.org/Product'>
 <h1> <?php 
 	if ($current_domain =='cuponation'){
 		echo "<meta itemprop='name' content ='".$node->field_retailer_product_name['und']['0']['value']."'/>".$node->field_retailer_product_name['und']['0']['value']." @ ".$retailer." For Rs. ".$node->field_best_coupon_netpriceafters['und']['0']['value']." Using Coupons & Discount Offers | CN".$nid; } 
@@ -182,7 +182,7 @@ if ($current_domain != 'cuponation'){
 	<div class="custom_link">Last Checked : <?php echo strip_tags($fields['field_lastcheckedtime']->content); ?> | <a onclick="locader('<?php echo $base_root.base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>')" class="active">Recheck Now</a></div>
 <?php } ?>
 
-<div class="product-right">
+<div class="product-right" >
 <h4><?php echo get_label('Best Coupon Or Discounts');?></h4>
 <div class="coupon_code1">
     <?php       
@@ -242,7 +242,7 @@ if ($current_domain != 'cuponation'){
 
 <?php
 	if ($node->field_best_coupon_saving['und'][0]['value'] == 1 && $CouponStatus == 1){
-		echo "<li> <label>".get_label('List Price:')."</label><meta itemprop='priceCurrency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
+		echo "<li> <label>".get_label('List Price:')."</label><div itemscope itemtype='http://schema.org/Offer'><meta itemprop='priceCurrency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</div></li>";
 		echo "<li> <label>".get_label('Savings:')."</label>See Best Coupon</li>";
 		echo "<li> <label>".get_label('Offer:')."</label>See Best Coupon</li>";
 	
@@ -352,11 +352,11 @@ $brand_check = strip_tags($fields['field_brand']->content);
 if ($category_check != 'Other') {
 	$category = $fields['field_category']->handler->view->result[0]->field_field_category[0]['rendered'];
 	if ($category['#type'] == 'link') {
-	echo " | ";
+	echo " | <meta itemprop='category' content='".$category['#title']."' /> ";
 	print '<div class="field-content">' . l(t($category['#title']), $category['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
 	}
 	else {
-	echo " | ";
+	echo " | <meta itemprop='category' content='".$fields['field_category']->content."' />";
 	print $fields['field_category']->content;
 	}
 }
