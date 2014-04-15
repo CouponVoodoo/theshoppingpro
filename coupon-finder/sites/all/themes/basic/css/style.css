@@ -1553,3 +1553,7 @@ div#block-views-home_page_welcome-block, .front div.region-content #block-system
 .view-home-page-welcome .views-field img {max-width: 96%; height: auto; max-height:1000px;}
 .front div#block-views-home_page_welcome-block, .front div.region-content #block-system-main {height: auto}
 }
+.net_price{
+Font-size: 20px !important;
+color: #8B3D00;
+}
