@@ -63,7 +63,8 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 //	$test_nid_array = array(184733, 175283);
 //	if (in_array($nid, $test_nid_array)){
-		if ($time_gap > (1 * 24 * 3600) && $category_id != 7400) {
+	$run = 0; //currently the predictor feature is disabled
+		if ($time_gap > (1 * 24 * 3600) && $category_id != 7400 && $run ==1) {
 			If ( strtolower($retailer_name_predictor) == 'jabong' || strtolower($retailer_name_predictor) == 'myntra') {
 				if ($mrp == 0) {$mrp = $list_price;}
 				$sid = $retailer_name_predictor.'-'.$brand.'-'.$category_id; 
@@ -384,7 +385,7 @@ if ($brand_check != 'Other') {
 	/** If predictor then the other coupons comes via the predictor array**/
 	$i = 0;
 	if ($predictor_status == 1) {
-	
+		
 	?>
 	<ul id="coupon_search_listing" class="custom-coupon_search_listing"><li id="search_listing_li_row_1" class="search_listing_row_li first">
 	<?php
@@ -440,21 +441,11 @@ if ($brand_check != 'Other') {
 			</li>
 
 <?php			
-			
-
-
-			
-	
 		}
-		
 ?>
 	</ul>
 
 <?php
-		
-		
-		
-
 	} else {
 		echo $coupon =  coupons_copy_coupon($nid);
 	}
