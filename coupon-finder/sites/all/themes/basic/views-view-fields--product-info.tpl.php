@@ -308,7 +308,7 @@ if ($current_domain != 'cuponation'){
 </div>
 </div>
 </div>
-<div class="product-bottom" itemscope itemtype='http://schema.org/Offer'>
+<div class="product-bottom" >
 <?php /* ?> <div class="product-left">
 <ul>
 <li><label>Retailer:</label><?php print ($fields['field_retailer']->content); ?></li>
