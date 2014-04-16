@@ -59,19 +59,19 @@ function custom_api_addproduct($ProInfo){
 		$node->field_category['und'][0]['tid']			= trim( $jsonArray->Category );
 		$node->field_retailer_product_name['und']['0'][value] 	= trim( $jsonArray->Product );
 		$node->field_description['und']['0'][value]	 	  	= null;
-		$node->field_product_price['und']['0'][value]	  	= null;
-		$node->field_product_image['und']['0'][value] 	  	= null;
-		$node->field_mrpproductprice['und']['0'][value]	  	= null;
+		$node->field_product_price['und']['0'][value]	  	= trim( $jsonArray->ListingPrice );
+		$node->field_product_image['und']['0'][value] 	  	= trim( $jsonArray->ProductImage );
+		$node->field_mrpproductprice['und']['0'][value]	  	= trim( $jsonArray->MRPprice );
 		$node->field_lastcheckedtime['und']['0'][value]	  	= null;
 		$node->field_affiliateurl['und']['0'][value]	  	= null;
 		$node->body['und']['0'][value]			  	= null;
 		$node->field_best_coupon_description['und']['0'][value]	= null;
 		$node->field_best_coupon_status['und']['0'][value]	  	= null;
-		$node->field_best_coupon_saving['und']['0'][value]	= null;
+		$node->field_best_coupon_saving['und']['0'][value]	= $node->field_mrpproductprice['und']['0'][value]-$node->field_product_price['und']['0'][value];
 		$node->field_best_coupon_status_display['und']['0'][value] = null;
 		$node->field_product_popularity['und']['0'][value]	  	= null;
 		$node->field_best_coupon_couponcode['und']['0'][value] 	= null;
-		$node->field_best_coupon_netpriceafters['und']['0'][value]= null;
+		$node->field_best_coupon_netpriceafters['und']['0'][value]= $node->field_product_price['und']['0'][value];
 		$node->field_best_coupon_url['und']['0'][value]		= null;
 		$node->field_best_coupon_info['und']['0'][value]		= null;
 		
