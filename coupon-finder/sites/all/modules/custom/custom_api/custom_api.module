@@ -28,7 +28,7 @@ function custom_api_addproduct($ProInfo){
 	if($_REQUEST['predictor'] == 1){
 	  $Pageurl = "http://54.243.150.171/cpnVodo/simulation/predictorNewNodeCreation.php";
       $url = "http://54.243.150.171/cpnVodo/simulation/predictorNewNodeCreation.php";
-      $json = drupal_http_request($url, array('timeout' => 600.0));
+      $json = drupal_http_request($url, array('timeout' => 1200.0));
 	  $json = $json->data;
 	  //echo $json;
 	 // exit;
