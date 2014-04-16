@@ -118,7 +118,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 			'Category' => $category_id,
 			'Prediction_State' => $prediction_state,
 			'Domain' => get_current_domain(),
-			)), array('type' => 'setting'));
+			)), array('type' => 'setting', 'scope' => 'footer'));
 	
 	
 	
