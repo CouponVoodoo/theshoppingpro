@@ -318,7 +318,7 @@ if ($current_domain != 'cuponation'){
 </div>
 */ ?>
 
-<div class="product-right-bottom">
+<div class="product-right-bottom" itemprop="description">
 
 
 <?php 
@@ -352,11 +352,11 @@ $brand_check = strip_tags($fields['field_brand']->content);
 if ($category_check != 'Other') {
 	$category = $fields['field_category']->handler->view->result[0]->field_field_category[0]['rendered'];
 	if ($category['#type'] == 'link') {
-	echo " | <meta itemscope itemtype='http://schema.org/offer' itemprop='category' content='".$category['#title']."' /> ";
+	echo " | <div class='category_meta' itemscope itemtype='http://schema.org/offer'><meta  itemprop='category' content='".$fields['field_category']->content."' /></div>";
 	print '<div class="field-content">' . l(t($category['#title']), $category['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
 	}
 	else {
-	echo " | <meta itemscope itemtype='http://schema.org/offer' itemprop='category' content='".$fields['field_category']->content."' />";
+	echo " | <div class='category_meta' itemscope itemtype='http://schema.org/offer'><meta  itemprop='category' content='".$fields['field_category']->content."' /></div>";
 	print $fields['field_category']->content;
 	}
 }
