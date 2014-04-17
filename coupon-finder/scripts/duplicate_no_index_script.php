@@ -38,7 +38,7 @@ foreach ($results as $result) {
 			echo "\n";
 		} else {
 			echo 'modify'.$nid;
-			echo nl2br("\n");
+			echo "\n";
 			$no_index_query = "SELECT * FROM {field_data_field_no_index} i where i.entity_id= :entity_id and i.bundle = '_product_and_coupon' and i.entity_type = 'node'";
 			$count = db_query($no_index_query, array(':entity_id' => $nid));
 			if($count->rowCount()==0){
