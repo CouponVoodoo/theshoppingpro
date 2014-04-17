@@ -28,6 +28,8 @@ foreach ($results as $result) {
 	echo 'latest nid:';
 	echo "\n";
 	print_r($latest_nid);
+	echo "\n";
+	echo "\n";
 	$nids = array_keys($nid_last_checked_pairs);
 	foreach ($nids as $nid) {
 		if ($nid == $latest_nid) {
