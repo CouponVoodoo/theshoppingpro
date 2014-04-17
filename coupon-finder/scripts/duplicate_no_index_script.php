@@ -26,11 +26,13 @@ foreach ($results as $result) {
 	arsort($nid_last_checked_pairs);
 	echo "\n";
 	echo '--------------------------------------------------';
+	echo "\n";
 	echo 'nid_last_checked_pairs:';	
 	print_r($nid_last_checked_pairs);
 	$latest_nid = key($nid_last_checked_pairs);
 	echo "\n";
 	echo '--------------------------------------------------';
+	echo "\n";
 	echo 'latest nid:';
 	echo "\n";
 	print_r($latest_nid);
