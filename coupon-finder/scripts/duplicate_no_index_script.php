@@ -3,15 +3,6 @@ $results = db_query("SELECT GROUP_CONCAT(CONCAT(lc.`entity_id`,':',lc.`field_las
 $j=0;
 foreach ($results as $result) {
 	$i=0;
-	$j=$j+1;
-	echo "\n";
-	echo 'counter: '.$j;
-	echo "\n";
-	echo 'counter: '.$j;
-	echo "\n";
-	echo 'counter: '.$j;
-	echo "\n";
-	echo '--------------------------------------------------';
 	
 	$sets = explode(",",$result->last_checked_time);
 	// echo 'run:'.$i;
@@ -164,6 +155,16 @@ foreach ($results as $result) {
 	echo '--------------------------------------------------';
 	echo "\n";
 	echo "\n";
+		$j=$j+1;
+	echo "\n";
+	echo 'counter: '.$j;
+	echo "\n";
+	echo 'counter: '.$j;
+	echo "\n";
+	echo 'counter: '.$j;
+	echo "\n";
+	echo '--------------------------------------------------';
+
 	$i=$i+1;
 	if ($i>25){
 		exit;
