@@ -1349,20 +1349,31 @@ $product_node = node_load($nid);
 		$value->productName = $product_node->field_retailer_product_name['und']['0']['value'];
  /* PRINTING TITLE BASED ON WHETHER THE DOMAIN IS CUPONATION OR NOT*/
 		$current_domain = get_current_domain();
-		if ($current_domain == 'cuponation'){
-			$query = new EntityFieldQuery();
-			$query->entityCondition('entity_type', 'node')
-				->entityCondition('bundle', 'retailer_coupon_page')
-				->fieldCondition('field_retailer', 'tid', $product_node->field_retailer['und']['0']['tid'], '=')
-				->fieldCondition('field_coupon_code', 'value', $value->couponCode, '=');
-			$result = $query->execute();		
-			$nids = array_keys($result['node']);
-			$retailer_coupon = node_load($nids[0]);
-			$cuponation_title = $retailer_coupon->field_cuponation_title['und']['0']['value'];
-			if (!empty($result['node']) && !empty($cuponation_title)) {
+	//	if ($current_domain == 'cuponation'){
+		$query = new EntityFieldQuery();
+		$query->entityCondition('entity_type', 'node')
+			->entityCondition('bundle', 'retailer_coupon_page')
+			->fieldCondition('field_retailer', 'tid', $product_node->field_retailer['und']['0']['tid'], '=')
+			->fieldCondition('field_coupon_code', 'value', $value->couponCode, '=');
+		$result = $query->execute();		
+		$nids = array_keys($result['node']);
+		$retailer_coupon = node_load($nids[0]);
+		$cuponation_title = $retailer_coupon->field_cuponation_title['und']['0']['value'];
+		$couponvoodoo_title = $retailer_coupon->title;
+		if (!empty($result['node']) && !empty($couponvoodoo_title)){
+			if ( $current_domain == 'cuponation' && !empty($cuponation_title)){
 				$value->description = $cuponation_title;
+			} Else{
+				$value->description = $couponvoodoo_title;
 			}
 		}
+/*		if ($current_domain == 'cuponation'){		
+			$value->description = 'test'.$couponvoodoo_title;
+			if (!empty($result['node']) && !empty($cuponation_title)) {
+				$value->description = 'aaaa'.$cuponation_title;
+			}
+		}
+*/
         $items[] = array(
             'data' => theme('coupons_result_page', array('row' => $value)),
             'id' => 'search_listing_li_row_' . $i,
