@@ -35,8 +35,6 @@ foreach ($results as $result) {
 	echo "\n";
 	print_r($latest_nid);
 	$nids = array_keys($nid_last_checked_pairs);
-	echo "\n : manual exit";
-	exit;
 	foreach ($nids as $nid) {
 		if ($nid == $latest_nid) {
 			echo 'ignore'.$nid;
