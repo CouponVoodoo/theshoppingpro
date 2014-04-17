@@ -157,6 +157,13 @@ foreach ($results as $result) {
 	echo '--------------------------------------------------';
 	echo "\n";
 	echo "\n";
+
+	$i=$i+1;
+	if ($i>25){
+		exit;
+	}
+}
+
 		$j=$j+1;
 	echo "\n";
 	echo 'counter: '.$j;
@@ -166,13 +173,6 @@ foreach ($results as $result) {
 	echo 'counter: '.$j;
 	echo "\n";
 	echo '--------------------------------------------------';
-
-	$i=$i+1;
-	if ($i>25){
-		exit;
-	}
-}
-
 	
 
 }
