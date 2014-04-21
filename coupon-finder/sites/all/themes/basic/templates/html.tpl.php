@@ -4,8 +4,8 @@
 <head>
 <?php
 //	$current_domain = get_current_domain();
-//	$node = node_load(arg(1));
 //	if (($node->field_no_index['und']['0']['value'] == 1 &&  $current_domain == 'cuponation')|| arg(0) == 'search'){
+	$node = node_load(arg(1));
 	if ($node->field_no_index['und']['0']['value'] == 1 || arg(0) == 'search'){
 ?>
 	<META NAME="ROBOTS" CONTENT="NOINDEX, FOLLOW">
