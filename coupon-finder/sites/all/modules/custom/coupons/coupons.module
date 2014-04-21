@@ -1808,7 +1808,7 @@ function get_block_subject($block_subject) {
 	}
 }
 
-function coupons_cron_BROKEN() {
+function coupons_cron() {
     db_query("UPDATE coupon_finder.predictorCompiledResultTable LEFT JOIN coupon_finder.field_data_field_base_url ON coupon_finder.field_data_field_base_url.field_base_url_value = coupon_finder.predictorCompiledResultTable.BaseUrl SET coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_data_field_base_url.entity_id ");
     db_query("UPDATE coupon_finder.predictorCompiledResultTable LEFT JOIN coupon_finder.taxonomy_term_data ON coupon_finder.taxonomy_term_data.name = coupon_finder.predictorCompiledResultTable.Brand SET coupon_finder.predictorCompiledResultTable.BrandId = coupon_finder.taxonomy_term_data.tid ");
     db_query("UPDATE coupon_finder.predictorCompiledResultTable SET coupon_finder.predictorCompiledResultTable.loc = concat('node/',CAST(coupon_finder.predictorCompiledResultTable.entity_id as CHAR(50))) ");
