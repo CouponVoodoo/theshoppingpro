@@ -1830,7 +1830,7 @@ function coupons_cron() {
 	
 	
 
-	If ($run == 1) {
+	If ($run == 557) {
 		mail('team@theshoppingpro.com', 'Update Node Script Start', gmdate('Y-m-d\TH:i:s\Z', time()));
 		$result = "Start Time: ".gmdate('Y-m-d\TH:i:s\Z', time())."\n\n";
 		echo "\n\n START - Entity Id Update \n\n".time();
@@ -1995,7 +1995,6 @@ function coupons_cron() {
 		$result = $result."Myntra Count: ".$myntra_count."\n\n";
 		$result = $result."Flipkart Count: ".$flipkart_count."\n\n";
 		$result = $result."Firstcry Count: ".$firstcry_count."\n\n";
-		
 		mail('team@theshoppingpro.com', 'Update Node Script End', $result);	
 		db_query("UPDATE coupon_finder.1Variables SET Status = 0, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Update_Node_Script'");
 		
