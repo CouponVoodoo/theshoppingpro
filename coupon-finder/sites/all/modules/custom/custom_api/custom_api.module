@@ -147,7 +147,7 @@ function custom_api_addproduct($ProInfo){
 		   ->fields('n', array('entity_id') )
 		   ->condition('n.field_base_url_value', $baseUrl, '=')
 		   ->countQuery();
-	 // echo $query->__toString();
+	 var_dump($query);
 	 
 	 
       $result = $query->execute();
