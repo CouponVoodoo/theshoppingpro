@@ -143,14 +143,15 @@ function custom_api_addproduct($ProInfo){
       $proTitle = $jsonArray->header->PageTitle;
       
       $baseUrl = $jsonArray->header->BaseUrl;
-      
+      echo 'baseUrl '.$baseUrl;
       $query = db_select('field_data_field_base_url', 'n')
 		   ->fields('n', array('ntity_id') )
 		   ->condition('n.field_base_url_value', $baseUrl, '=')
 		   ->countQuery();
       $result = $query->execute();
       $record = $result->fetch();
-      
+	  echo'---';
+      var_dump($record);
 	  	/** ASHISH NODE CREATION TIMING  - NODE FETCHED
 		$time1 = round(microtime(true)* 1000);
 		echo 'Node Fetched: '.$time1;
@@ -282,7 +283,7 @@ echo '$record->expression '.$record->expression;
 	}
 	
       }elseif($record->expression == 1){
-	 // echo 'update';
+	  echo 'update';
 	
 		/** ASHISH NODE CREATION TIMING  - UPDATE LOOP ENTERED
 		$time1 = round(microtime(true)* 1000);
