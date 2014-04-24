@@ -27,12 +27,6 @@ db_query ("UPDATE coupon_finder.xmlsitemap INNER JOIN coupon_finder.predictorCom
 echo "\n\n XML SITEMAP SOLR - CHANGE FREQUENCY \n\n".time();
 db_query ("UPDATE coupon_finder.xmlsitemap INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.loc = coupon_finder.xmlsitemap.loc SET coupon_finder.xmlsitemap.changefreq = 86400 ");
 
-echo "\n\n APACHE SOLR - STATUS \n\n".time();
-db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.status = 1 ");
-
-echo "\n\n APACHE SOLR - CHANGED \n\n".time();
-db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.changed = ".(time()+(4.5*3600)));
-
 echo("\n\n CHANGED \n\n").time();
 db_query ("UPDATE coupon_finder.node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.node.nid SET coupon_finder.node.changed = ".(time()+(4.5*3600)));
 
@@ -163,6 +157,12 @@ db_query ("UPDATE coupon_finder.field_revision_field_retailer INNER JOIN coupon_
 
 echo("\n\n FLUSH ALL CACHE \n\n").time();
 cache_clear_all();
+
+echo "\n\n APACHE SOLR - STATUS \n\n".time();
+db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.status = 1 ");
+
+echo "\n\n APACHE SOLR - CHANGED \n\n".time();
+db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.changed = ".(time()+(4.5*3600)));
 
 echo("\n\n FINISHED \n\n").time();
 
