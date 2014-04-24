@@ -2003,3 +2003,10 @@ function coupons_cron() {
 		mail('team@theshoppingpro.com', 'Update Node Script Was Not Run', gmdate('Y-m-d\TH:i:s\Z', time()));
 	}
 }
+
+/**
+ * Implements hook_metatag_metatags_view_alter
+ */
+function retailer_coupon_metatag_metatags_view_alter(&$output, $instance) {
+    //$output['canonical']['#attached']['drupal_add_html_head'][0][0]['#value'] = 'THIS IS TEST URL';
+}

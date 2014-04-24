@@ -348,7 +348,7 @@ function basic_breadcrumb($variables) {
     foreach ($breadcrumb as $key => $bc) {
         if (preg_match('[</[a]>$]', $bc)) {
             // Remove '</a>' from the link
-            $linkAndText = explode($delimiter1, $bc); print_r($bc);
+            $linkAndText = explode($delimiter1, $bc);
             // Get only text from the exploded array above
             $text = explode($delimiter2, $linkAndText[0]);
             $text[1] = '<span itemprop="title">' . $text[1] . '</span>';
