@@ -146,9 +146,10 @@ function custom_api_addproduct($ProInfo){
 		   ->condition('n.field_base_url_value', $baseUrl, '=')
 		   ->countQuery();
 	  print_r($query->__toString());
-	 die;
-     exit;	 
+	 
+	 
       $result = $query->execute();
+	  	  print_r($result);
       $record = $result->fetch();
       
 	  	/** ASHISH NODE CREATION TIMING  - NODE FETCHED
