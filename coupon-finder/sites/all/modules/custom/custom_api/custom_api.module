@@ -151,7 +151,7 @@ function custom_api_addproduct($ProInfo){
       $result = $query->execute();
       $record = $result->fetch();
 	  echo'---';
-      var_dump($record);
+      var_dump($result);
 	  	/** ASHISH NODE CREATION TIMING  - NODE FETCHED
 		$time1 = round(microtime(true)* 1000);
 		echo 'Node Fetched: '.$time1;
@@ -189,7 +189,7 @@ function custom_api_addproduct($ProInfo){
 		 -----------------------------------------   */
       
 echo '$record->expression '.$record->expression;
-      if($record->expression == 0){
+      if($record->expression == 0 ){
 	//echo 'add';
 	//die;
 	$node = new stdClass();
