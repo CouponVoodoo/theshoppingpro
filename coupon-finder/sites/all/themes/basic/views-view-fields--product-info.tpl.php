@@ -64,7 +64,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 //	$test_nid_array = array(184733, 175283);
 //	if (in_array($nid, $test_nid_array)){
 	$run = 0; //currently the predictor feature is disabled
-		if ($time_gap > (1 * 24 * 3600) && $category_id != 7400 && $run ==1) {
+		if ($time_gap > (1.5 * 24 * 3600) && $category_id != 7400 && $run ==1) {
 			If ( strtolower($retailer_name_predictor) == 'jabong' || strtolower($retailer_name_predictor) == 'myntra') {
 				if ($mrp == 0) {$mrp = $list_price;}
 				$sid = $retailer_name_predictor.'-'.$brand.'-'.$category_id; 
@@ -235,7 +235,7 @@ if ($current_domain != 'cuponation'){
 
     ?>
 </li>
-<?php if ( $time_gap > (1 * 27 * 3600)) {?>
+<?php if ( $time_gap > (1.5 * 24 * 3600)) {?>
 	<div class="custom_link_inner"><span style= "color: red; font-weight: bold"><?php echo get_label('Data is more than 24hrs old: ');?></span><a onclick="locader('<?php echo $base_root.base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>')" class="active">Recheck Now</a></div>
 <?php } ?>
 
