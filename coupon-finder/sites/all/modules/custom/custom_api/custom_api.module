@@ -147,7 +147,7 @@ function custom_api_addproduct($ProInfo){
 		   ->countQuery();
 	 // echo $query->__toString();
 	 
-	 var_dump($query);
+	 var_dump($query->__toString());
       $result = $query->execute();
 	  	  print_r($result);
       $record = $result->fetch();
