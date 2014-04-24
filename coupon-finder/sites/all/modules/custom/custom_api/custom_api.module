@@ -143,20 +143,18 @@ function custom_api_addproduct($ProInfo){
       $proTitle = $jsonArray->header->PageTitle;
       
       $baseUrl = $jsonArray->header->BaseUrl;
-      echo 'baseUrl '.$baseUrl;
+      
+	  
+	  if ($_REQUEST['recheck'] != 1) {
       $query = db_select('field_data_field_base_url', 'n')
 		   ->fields('n', array('ntity_id') )
 		   ->condition('n.field_base_url_value', $baseUrl, '=')
 		   ->countQuery();
-		   echo'query';
-		print_r($query->__toString());
-print_r($query->arguments());
+		
       $result = $query->execute();
-	  echo'result';
-		   var_dump($result);
+	  
       $record = $result->fetch();
-	  echo'---';
-      var_dump($query);
+	  }
 	  	/** ASHISH NODE CREATION TIMING  - NODE FETCHED
 		$time1 = round(microtime(true)* 1000);
 		echo 'Node Fetched: '.$time1;
@@ -193,8 +191,8 @@ print_r($query->arguments());
 	echo nl2br("\n");
 		 -----------------------------------------   */
       
-echo '$record->expression '.$record->expression;
-      if($record->expression == 0 ){
+
+      if($record->expression == 0){
 	//echo 'add';
 	//die;
 	$node = new stdClass();
@@ -287,7 +285,7 @@ echo '$record->expression '.$record->expression;
 	  echo $response;
 	}
 	
-      }elseif($record->expression == 1){
+      }elseif($record->expression == 1 || $_REQUEST['recheck'] == 1){
 	  echo 'update';
 	
 		/** ASHISH NODE CREATION TIMING  - UPDATE LOOP ENTERED
