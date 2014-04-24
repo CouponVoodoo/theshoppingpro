@@ -155,23 +155,23 @@ function custom_api_addproduct($ProInfo){
       $result = $query->execute();
 	  
       $record = $result->fetch();
-	  }
+	  
 	  	/** ASHISH NODE CREATION TIMING  - NODE FETCHED
 		$time1 = round(microtime(true)* 1000);
 		echo 'Node Fetched: '.$time1;
 	echo nl2br("\n");
 		 -----------------------------------------   */
 
-	  echo 'outside';
+	  
 	  
       
       $brand_name = $jsonArray->header->ProductBrand;
-	  echo $brand_name;
+	  
 	 // $Query = db_query("SELECT tid FROM taxonomy_term_data WHERE vid = 4 and name = '$brand_name' ");
 	  $Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 4 and ttd.name = :brand_name', array(':brand_name' => $brand_name));
 	  $Ruery = $Query->fetch();
 	  $BrandId = $Ruery->tid;
-      echo 'bid'.$brand_name;
+      
 	  /** ASHISH NODE CREATION TIMING  - BRAND CHECKED
 		$time1 = round(microtime(true)* 1000);
 		echo 'Brand CHecked: '.$time1;
@@ -192,7 +192,8 @@ function custom_api_addproduct($ProInfo){
 		echo 'Brand Created: '.$time1;
 	echo nl2br("\n");
 		 -----------------------------------------   */
-      
+      }
+	  else {$record->expression == 1;}
 
       if($record->expression == 0){
 	//echo 'add';
@@ -365,9 +366,11 @@ function custom_api_addproduct($ProInfo){
 		}
 		 
 		$node->field_product_image['und']['0'][value] 	  	= trim( $jsonArray->header->ProductImage );
+		if($_REQUEST['recheck'] != 1){
 		if ($node->field_brand['und']['0']['tid'] 		  	!= $BrandId){
 			db_query("UPDATE {field_data_field_brand} SET field_brand_tid = :brandid WHERE revision_id = :vid", array(':brandid' => $BrandId, ':vid' => $node->vid));
 			db_query("UPDATE {field_revision_field_brand} SET field_brand_tid = :brandid WHERE revision_id = :vid", array(':brandid' => $BrandId, ':vid' => $node->vid));
+		}
 		}
 		$field_mrpproductprice = trim($jsonArray->header->MRPProductPrice);
 		if ($node->field_mrpproductprice['und']['0'][value]	!=$field_mrpproductprice   	 ){
