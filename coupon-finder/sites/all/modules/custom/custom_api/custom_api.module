@@ -97,10 +97,8 @@ function custom_api_addproduct($ProInfo){
     }
 	// mail('ashishgupta97065@gmail.com', 'URL', print_r($url));
 	// mail('ashishgupta97065@gmail.com', 'URL', print_r($url));
-    echo $url;
-	$json = drupal_http_request($url, array('timeout' => 600.0));
-    //var_dump($json);
-	if ( $json == 'done') {echo "done"; exit;}
+    $json = drupal_http_request($url, array('timeout' => 600.0));
+    if ( $json == 'done') {echo "done"; exit;}
     
 	/** ASHISH NODE CREATION TIMING  - DATA REVEIVED
 		$time1 = round(microtime(true)* 1000);
@@ -121,7 +119,6 @@ function custom_api_addproduct($ProInfo){
 }*/
      
     $jsonArr = json_decode($json,true);
-	
     if (isset($jsonArray->data[0]->ErrorCode) && ($jsonArray->data[0]->ErrorCode == "2")) {
         form_set_error('url', 'CouponVoodoo only works with the product page url e.g. http://www.jabong.com/giordano-Victory-Black-P9275-Black-Black-Analog-Watch-168021.html for products that are still in stock. Please recheck if the url you entered is that of a product and if so that the product is still in stock.');
       }
@@ -144,18 +141,13 @@ function custom_api_addproduct($ProInfo){
       
       $baseUrl = $jsonArray->header->BaseUrl;
       
-	  
-	  if ($_REQUEST['recheck'] != 1) {
-	  echo 'inside';
       $query = db_select('field_data_field_base_url', 'n')
 		   ->fields('n', array('ntity_id') )
 		   ->condition('n.field_base_url_value', $baseUrl, '=')
 		   ->countQuery();
-		
       $result = $query->execute();
-	  
       $record = $result->fetch();
-	  
+      
 	  	/** ASHISH NODE CREATION TIMING  - NODE FETCHED
 		$time1 = round(microtime(true)* 1000);
 		echo 'Node Fetched: '.$time1;
@@ -166,12 +158,11 @@ function custom_api_addproduct($ProInfo){
 	  
       
       $brand_name = $jsonArray->header->ProductBrand;
-	  
 	 // $Query = db_query("SELECT tid FROM taxonomy_term_data WHERE vid = 4 and name = '$brand_name' ");
 	  $Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 4 and ttd.name = :brand_name', array(':brand_name' => $brand_name));
 	  $Ruery = $Query->fetch();
 	  $BrandId = $Ruery->tid;
-      
+
 	  /** ASHISH NODE CREATION TIMING  - BRAND CHECKED
 		$time1 = round(microtime(true)* 1000);
 		echo 'Brand CHecked: '.$time1;
@@ -192,8 +183,7 @@ function custom_api_addproduct($ProInfo){
 		echo 'Brand Created: '.$time1;
 	echo nl2br("\n");
 		 -----------------------------------------   */
-      }
-	  else { $record->expression = 1;}
+      
 
       if($record->expression == 0){
 	//echo 'add';
@@ -288,8 +278,8 @@ function custom_api_addproduct($ProInfo){
 	  echo $response;
 	}
 	
-      }elseif($record->expression == 1 || $_REQUEST['recheck'] == 1){
-	  echo 'update';
+      }elseif($record->expression == 1){
+	 // echo 'update';
 	
 		/** ASHISH NODE CREATION TIMING  - UPDATE LOOP ENTERED
 		$time1 = round(microtime(true)* 1000);
@@ -306,7 +296,7 @@ function custom_api_addproduct($ProInfo){
 		     ->condition('n.field_base_url_value', $baseUrl, '=');		   
 	$result = $query->execute();
 	$record = $result->fetch();
- echo 'dfwd';
+
 	$queryLastUpdate = db_select('field_data_field_lastcheckedtime', 'n')
 		     ->fields('n', array('field_lastcheckedtime_value') )
 		     ->condition('n.entity_id ', $record->entity_id , '=');		   
@@ -366,11 +356,9 @@ function custom_api_addproduct($ProInfo){
 		}
 		 
 		$node->field_product_image['und']['0'][value] 	  	= trim( $jsonArray->header->ProductImage );
-		if($_REQUEST['recheck'] != 1){
 		if ($node->field_brand['und']['0']['tid'] 		  	!= $BrandId){
 			db_query("UPDATE {field_data_field_brand} SET field_brand_tid = :brandid WHERE revision_id = :vid", array(':brandid' => $BrandId, ':vid' => $node->vid));
 			db_query("UPDATE {field_revision_field_brand} SET field_brand_tid = :brandid WHERE revision_id = :vid", array(':brandid' => $BrandId, ':vid' => $node->vid));
-		}
 		}
 		$field_mrpproductprice = trim($jsonArray->header->MRPProductPrice);
 		if ($node->field_mrpproductprice['und']['0'][value]	!=$field_mrpproductprice   	 ){
@@ -493,14 +481,7 @@ function custom_api_addproduct($ProInfo){
 		echo 'All Coupon Info Update: '.$time1;
 		echo nl2br("\n");
 		 -----------------------------------------   */
-		 echo 'outside';
-	     if($_REQUEST['recheck'] == 1){
-		 echo 'inside';
-		 echo $node_url;
-		/*	drupal_flush_all_caches();
-			cache_clear_all('field:node:' . $node->nid, 'cache_field');
-			drupal_goto($node_url);*/
-		}
+	
 		//MARK PRODUCT FOR INDEXING ON APACHE 
 				apachesolr_mark_entity ('node', $node->nid);
 
@@ -520,7 +501,11 @@ function custom_api_addproduct($ProInfo){
 	if( !empty($node->nid) ){
 	    $response = json_encode( array('ResponseCode' => '2', 'Response' => 'Node Updated.', 'URL' => $url, 'BASEURL' => $jsonArray->header->BaseUrl) );
 	    echo $response;
-		
+		if($_REQUEST['recheck'] == 1){
+			drupal_flush_all_caches();
+			cache_clear_all('field:node:' . $node->nid, 'cache_field');
+			drupal_goto($node_url);
+		}
 	}else{
 		$response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
 		echo $response;
@@ -549,8 +534,8 @@ function custom_api_addproduct($ProInfo){
 /** START OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND LAST CHECKED, HIDE WHERE LAST CHECKED IS GREATER THAN THRESHHOLD*/
 function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $current_time= time();
-   $boost_time=$current_time-(36*3600);
-   $hide_time=$current_time-(36*3600);
+   $boost_time=$current_time-(48*3600);
+   $hide_time=$current_time-(56*3600);
    $solr_boost_time=gmdate('Y-m-d\TH:i:s\Z', $boost_time);
    $solr_hide_time=gmdate('Y-m-d\TH:i:s\Z', $hide_time);
    $solr_time_coupon_boost= "'(itm_field_best_coupon_status:1 AND dm_field_lastcheckedtime:[".$solr_boost_time." TO *])^2'";
