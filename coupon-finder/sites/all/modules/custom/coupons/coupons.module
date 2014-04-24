@@ -1827,6 +1827,8 @@ function coupons_cron() {
 	$run_check = $Query->execute();
 	$run_check_fetch = $run_check->fetch();
 	$run = $run_check_fetch->Status;
+	
+	
 
 	If ($run == 1) {
 		mail('team@theshoppingpro.com', 'Update Node Script Start', gmdate('Y-m-d\TH:i:s\Z', time()));
@@ -1985,6 +1987,15 @@ function coupons_cron() {
 
 		echo("\n\n FINISHED \n\n").time();
 		$result = $result."All Data Updated: ".gmdate('Y-m-d\TH:i:s\Z', time())."\n\n";
+		$myntra_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 8")->fetchField();
+		$jabong_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 5")->fetchField();
+		$flipkart_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 13419")->fetchField();
+		$firstcry_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 3")->fetchField();
+		$result = $result."Jabong Count: ".$jabong_count."\n\n";
+		$result = $result."Myntra Count: ".$myntra_count."\n\n";
+		$result = $result."Flipkart Count: ".$flipkart_count."\n\n";
+		$result = $result."Firstcry Count: ".$firstcry_count."\n\n";
+		
 		mail('team@theshoppingpro.com', 'Update Node Script End', $result);	
 		db_query("UPDATE coupon_finder.1Variables SET Status = 0, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Update_Node_Script'");
 		
