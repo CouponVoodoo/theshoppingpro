@@ -193,8 +193,8 @@ function custom_api_addproduct($ProInfo){
 	echo nl2br("\n");
 		 -----------------------------------------   */
       }
-	  else { echo 'right' ;$record->expression = 1;}
-echo $record->expression;
+	  else { $record->expression = 1;}
+
       if($record->expression == 0){
 	//echo 'add';
 	//die;
@@ -306,7 +306,7 @@ echo $record->expression;
 		     ->condition('n.field_base_url_value', $baseUrl, '=');		   
 	$result = $query->execute();
 	$record = $result->fetch();
-
+ echo 'dfwd';
 	$queryLastUpdate = db_select('field_data_field_lastcheckedtime', 'n')
 		     ->fields('n', array('field_lastcheckedtime_value') )
 		     ->condition('n.entity_id ', $record->entity_id , '=');		   
