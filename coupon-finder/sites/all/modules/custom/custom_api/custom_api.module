@@ -121,22 +121,20 @@ function custom_api_addproduct($ProInfo){
 }*/
      
     $jsonArr = json_decode($json,true);
-	var_dump($jsonArr);
-	echo '----------';
+	
     if (isset($jsonArray->data[0]->ErrorCode) && ($jsonArray->data[0]->ErrorCode == "2")) {
         form_set_error('url', 'CouponVoodoo only works with the product page url e.g. http://www.jabong.com/giordano-Victory-Black-P9275-Black-Black-Analog-Watch-168021.html for products that are still in stock. Please recheck if the url you entered is that of a product and if so that the product is still in stock.');
       }
 
      foreach($jsonArr as $json){
     
-	var_dump($json);
-	echo '----fffffff';
+	
+	
 	$json = json_encode($json); 
     $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
     $jsonArray = json_decode($jsonData);
  //   echo $jsonArray->header->BaseUrl. "</br>";
-    var_dump($jsonArray);
-	echo '----gggggg';
+    
     
     /**added by sanjay*/
     //if($jsonArray->header->Use == 1 || $jsonArray->header->Use == 0){
@@ -189,7 +187,7 @@ function custom_api_addproduct($ProInfo){
 	echo nl2br("\n");
 		 -----------------------------------------   */
       
-
+echo '$record->expression '.$record->expression;
       if($record->expression == 0){
 	//echo 'add';
 	//die;
@@ -486,6 +484,7 @@ function custom_api_addproduct($ProInfo){
 		echo 'All Coupon Info Update: '.$time1;
 		echo nl2br("\n");
 		 -----------------------------------------   */
+		 echo 'outside';
 	     if($_REQUEST['recheck'] == 1){
 		 echo 'inside';
 		 echo $node_url;
