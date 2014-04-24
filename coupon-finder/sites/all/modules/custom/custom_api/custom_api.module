@@ -483,7 +483,13 @@ function custom_api_addproduct($ProInfo){
 		echo 'All Coupon Info Update: '.$time1;
 		echo nl2br("\n");
 		 -----------------------------------------   */
-	
+	     if($_REQUEST['recheck'] == 1){
+		 echo 'inside';
+		 echo $node_url;
+		/*	drupal_flush_all_caches();
+			cache_clear_all('field:node:' . $node->nid, 'cache_field');
+			drupal_goto($node_url);*/
+		}
 		//MARK PRODUCT FOR INDEXING ON APACHE 
 				apachesolr_mark_entity ('node', $node->nid);
 
@@ -503,11 +509,7 @@ function custom_api_addproduct($ProInfo){
 	if( !empty($node->nid) ){
 	    $response = json_encode( array('ResponseCode' => '2', 'Response' => 'Node Updated.', 'URL' => $url, 'BASEURL' => $jsonArray->header->BaseUrl) );
 	    echo $response;
-		if($_REQUEST['recheck'] == 1){
-			drupal_flush_all_caches();
-			cache_clear_all('field:node:' . $node->nid, 'cache_field');
-			drupal_goto($node_url);
-		}
+		
 	}else{
 		$response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
 		echo $response;
