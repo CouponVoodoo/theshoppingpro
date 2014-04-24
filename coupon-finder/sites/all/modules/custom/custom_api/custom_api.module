@@ -193,8 +193,8 @@ function custom_api_addproduct($ProInfo){
 	echo nl2br("\n");
 		 -----------------------------------------   */
       }
-	  else { echo 'right' ;$record->expression == 1;}
-
+	  else { echo 'right' ;$record->expression = 1;}
+echo $record->expression;
       if($record->expression == 0){
 	//echo 'add';
 	//die;
