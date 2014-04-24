@@ -99,7 +99,7 @@ function custom_api_addproduct($ProInfo){
 	// mail('ashishgupta97065@gmail.com', 'URL', print_r($url));
     echo $url;
 	$json = drupal_http_request($url, array('timeout' => 600.0));
-    var_dump($json);
+    //var_dump($json);
 	if ( $json == 'done') {echo "done"; exit;}
     
 	/** ASHISH NODE CREATION TIMING  - DATA REVEIVED
@@ -121,19 +121,22 @@ function custom_api_addproduct($ProInfo){
 }*/
      
     $jsonArr = json_decode($json,true);
+	var_dump($jsonArr);
+	echo '----------';
     if (isset($jsonArray->data[0]->ErrorCode) && ($jsonArray->data[0]->ErrorCode == "2")) {
         form_set_error('url', 'CouponVoodoo only works with the product page url e.g. http://www.jabong.com/giordano-Victory-Black-P9275-Black-Black-Analog-Watch-168021.html for products that are still in stock. Please recheck if the url you entered is that of a product and if so that the product is still in stock.');
       }
 
      foreach($jsonArr as $json){
     
-	
-	
+	var_dump($json);
+	echo '----fffffff';
 	$json = json_encode($json); 
     $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
     $jsonArray = json_decode($jsonData);
  //   echo $jsonArray->header->BaseUrl. "</br>";
-    
+    var_dump($jsonArray);
+	echo '----gggggg';
     
     /**added by sanjay*/
     //if($jsonArray->header->Use == 1 || $jsonArray->header->Use == 0){
