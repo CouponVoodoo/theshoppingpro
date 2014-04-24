@@ -146,6 +146,7 @@ function custom_api_addproduct($ProInfo){
       
 	  
 	  if ($_REQUEST['recheck'] != 1) {
+	  echo 'inside';
       $query = db_select('field_data_field_base_url', 'n')
 		   ->fields('n', array('ntity_id') )
 		   ->condition('n.field_base_url_value', $baseUrl, '=')
@@ -161,7 +162,7 @@ function custom_api_addproduct($ProInfo){
 	echo nl2br("\n");
 		 -----------------------------------------   */
 
-	  
+	  echo 'outside';
 	  
       
       $brand_name = $jsonArray->header->ProductBrand;
