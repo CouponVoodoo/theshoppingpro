@@ -97,8 +97,10 @@ function custom_api_addproduct($ProInfo){
     }
 	// mail('ashishgupta97065@gmail.com', 'URL', print_r($url));
 	// mail('ashishgupta97065@gmail.com', 'URL', print_r($url));
-    $json = drupal_http_request($url, array('timeout' => 600.0));
-    if ( $json == 'done') {echo "done"; exit;}
+    echo $url;
+	$json = drupal_http_request($url, array('timeout' => 600.0));
+    var_dump($json);
+	if ( $json == 'done') {echo "done"; exit;}
     
 	/** ASHISH NODE CREATION TIMING  - DATA REVEIVED
 		$time1 = round(microtime(true)* 1000);
@@ -534,8 +536,8 @@ function custom_api_addproduct($ProInfo){
 /** START OF BY ASHISH TO MODIFY SEARCH RESULTS BY BOOSTING ON COUPON STATUS AND LAST CHECKED, HIDE WHERE LAST CHECKED IS GREATER THAN THRESHHOLD*/
 function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $current_time= time();
-   $boost_time=$current_time-(48*3600);
-   $hide_time=$current_time-(56*3600);
+   $boost_time=$current_time-(36*3600);
+   $hide_time=$current_time-(36*3600);
    $solr_boost_time=gmdate('Y-m-d\TH:i:s\Z', $boost_time);
    $solr_hide_time=gmdate('Y-m-d\TH:i:s\Z', $hide_time);
    $solr_time_coupon_boost= "'(itm_field_best_coupon_status:1 AND dm_field_lastcheckedtime:[".$solr_boost_time." TO *])^2'";
