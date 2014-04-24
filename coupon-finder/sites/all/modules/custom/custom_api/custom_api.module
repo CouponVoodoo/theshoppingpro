@@ -142,11 +142,8 @@ function custom_api_addproduct($ProInfo){
       $baseUrl = $jsonArray->header->BaseUrl;
       echo $baseUrl;
 	  
-	  $query = db_select('field_data_field_base_url', 'n')
-     ->fields('n', array('entity_id') )
-     ->condition('n.field_base_url_value', $baseUrl, '=')
- $num_rows = $query->countQuery()->execute()->fetchField();
-echo 'count :'	  .$num_rows;
+	  
+	  
 	  
       $query = db_select('field_data_field_base_url', 'n')
 		   ->fields('n', array('entity_id') )
