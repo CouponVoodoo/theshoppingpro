@@ -1830,7 +1830,7 @@ function coupons_cron() {
 	
 	
 
-	If ($run == 557) {
+	If ($run == 1) {
 		mail('team@theshoppingpro.com', 'Update Node Script Start', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 		$result = "Start Time: ".gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600)))."\n\n";
 		echo "\n\n START - Entity Id Update \n\n".time();
