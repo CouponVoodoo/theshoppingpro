@@ -1997,10 +1997,12 @@ function coupons_cron() {
 		$jabong_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 5")->fetchField();
 		$flipkart_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 13419")->fetchField();
 		$firstcry_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 3")->fetchField();
+		$all_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable")->fetchField();
 		$result = $result."Jabong Count: ".$jabong_count."\n\n";
 		$result = $result."Myntra Count: ".$myntra_count."\n\n";
 		$result = $result."Flipkart Count: ".$flipkart_count."\n\n";
 		$result = $result."Firstcry Count: ".$firstcry_count."\n\n";
+		$result = $result."All Count: ".$all_count."\n\n";
 		mail('team@theshoppingpro.com', 'Update Node Script End', $result);	
 		db_query("UPDATE coupon_finder.1Variables SET Status = 0, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Update_Node_Script'");
 		
@@ -2011,10 +2013,16 @@ function coupons_cron() {
 
 /**
  * Implements hook_metatag_metatags_view_alter
+ * Currently used for modifying rel = canonical of a noindexednode to the kept nid 
+ * commented out till a final call is taken on this
  */
 function coupons_metatag_metatags_view_alter(&$output, $instance) {
-	if (arg(1) == 37077){
-	echo 'yes';
-    $output['canonical']['#attached']['drupal_add_html_head'][0][0]['#value'] = 'THIS IssS TEST URL';
+/*
+	global $base_url;
+	$node = node_load(arg(1));
+	if ($node->field_no_index['und']['0']['value'] == 1 || arg(0) == 'search'){
+		$kept_nid = db_query("SELECT Kept_NID FROM  no_index_results WHERE Modified_NID = ".arg(1))->fetchField();
+		$output['canonical']['#attached']['drupal_add_html_head'][0][0]['#value'] = $base_url.'/'.drupal_get_path_alias('node/'.$kept_nid);
 	}
+*/
 }
