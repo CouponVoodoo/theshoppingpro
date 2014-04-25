@@ -1634,7 +1634,7 @@ function coupons_views_pre_build(&$view) {
 	$string = str_replace('-', ' ', $string);
 	//$view->display_handler->handlers['filter']['label']->value = strtolower(strip_tags($node->field_retailer_product_name['und']['0']['value']));
 	$view->display_handler->handlers['filter']['label']->value = $string;
-	$view->display_handler->handlers['filter']['im_field_category']->value = strip_tags($node->field_category['und']['0'][tid]);
+//	$view->display_handler->handlers['filter']['im_field_category']->value = strip_tags($node->field_category['und']['0'][tid]);
 //	$view->display_handler->handlers['filter']['dm_field_lastcheckedtime']->value = $show_time;
 	
 	}
