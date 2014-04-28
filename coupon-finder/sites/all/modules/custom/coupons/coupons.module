@@ -2040,3 +2040,15 @@ function coupons_metatag_metatags_view_alter(&$output, $instance) {
 	}
 */
 }
+
+/**
+ * Implements hook_apachesolr_search_page_alter
+ * @param array $build
+ * @param array $search_page
+ */
+function coupons_apachesolr_search_page_alter(array &$build, array $search_page) {
+    // Need to see, "$build['search_results']['#results']" should come as blank / empty
+  if (!$build['search_results']['#results']) {
+    drupal_add_html_head(array('#tag' => 'meta', '#attributes' => array('name' => 'robots', 'content' => 'noindex, follow')), 'coupons_apachesolr_noresult_metatag');
+  }
+}
