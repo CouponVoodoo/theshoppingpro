@@ -96,7 +96,7 @@ foreach ($results as $result) {
 					->fields(array(
 					  'id' => $nid,
 					  'type' => 'node',
-					  'subtype' => '_product_and_coupon ',
+					  'subtype' => '_product_and_coupon',
 					  'loc' => 'node/'.$nid,
 					  'language' => 'und',
 					  'access' => 1,
@@ -122,6 +122,8 @@ foreach ($results as $result) {
 					'priority_override' => 1,
 				  ))
 				  ->condition('id', $nid)
+				  ->condition('type', 'node')
+				  ->condition('subtype', '_product_and_coupon')
 				  ->execute();
 			}
 			$result_store_query = "SELECT * FROM {no_index_results} i where i.Modified_NID= :entity_id";
