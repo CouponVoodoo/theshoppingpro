@@ -1557,3 +1557,5 @@ div#block-views-home_page_welcome-block, .front div.region-content #block-system
 Font-size: 20px !important;
 color: #438503;
 }
+.page-node-1 .page #content #content-area #block-system-main {width:100%; text-align:justify}
+#content-area h1.title {clear:both}
