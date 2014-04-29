@@ -12,15 +12,8 @@ function retailer_coupon_menu() {
   return $items;
 }
 
-
 /* FUNCTION THAT THE RETAILER API CALLS TO CREATE / UPDATE  REATILER COUPON*/
 function retailer_coupon_addcoupon($CouponInfo){
-echo 'api call';
-exit;
-die;
-insert_predictorCompiledResultTable();
-exit;
-die;
 $retailer = reset(explode('_',$_REQUEST['retailer']));
 //$retailer = reset(explode('_',$urlParam));
 	$url = "http://54.243.150.171/cpnVodo/nodecreation/cpnPageNodeCreation.php?retailer=".$retailer; //The API TO GET ALL RETAILER COUPON DATA 
@@ -130,67 +123,4 @@ $retailer = reset(explode('_',$_REQUEST['retailer']));
 		echo 'node saved';
     }
 echo 'No node to process';
-}
-
-
-function insert_predictorCompiledResultTable(){
-$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"; //The API TO GET ALL RETAILER COUPON DATA 
-	$json = drupal_http_request($url, array('timeout' => 600.0));
-   	$json = $json->data;
-    $jsonArr = json_decode($json,true);
-    foreach($jsonArr as $json){ 
-		$json = json_encode($json); 
-    	$jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
-    	$jsonArray = json_decode($jsonData);
-		
-		$id= trim($jsonArray->id);
-		$baseUrl= trim($jsonArray->BaseUrl);
-		$listPrice= trim($jsonArray->listPrice);
-		$MRP= trim($jsonArray->MRP);
-		$Saving= trim($jsonArray->Saving);
-		$NetPrice= trim($jsonArray->NetPrice);
-		$BestCouponCode= trim($jsonArray->BestCouponCode);
-		$BestCouponDesc= trim($jsonArray->BestCouponDesc);
-		$result= trim($jsonArray->result);
-		$entity_id= trim($jsonArray->entity_id);
-		$brand= trim($jsonArray->brand);
-		$ProductName= trim($jsonArray->ProductName);
-		$ProductImage= trim($jsonArray->ProductImage);
-		$Category= trim($jsonArray->Category);
-		$LastCheckTime= trim($jsonArray->LastCheckTime);
-		$pagetitle= trim($jsonArray->pagetitle);
-		$BestCouponStatus= trim($jsonArray->BestCouponStatus);
-		$BrandId= trim($jsonArray->BrandId);
-		$loc= trim($jsonArray->loc);
-		$retailer= trim($jsonArray->retailer);
-		$retailerId= trim($jsonArray->retailerId);
-		$bestCouponDisplay= trim($jsonArray->bestCouponDisplay);
-		
-		$nid = db_insert('predictorCompiledResultTableTest') // Table name no longer needs {}
-->fields(array(
-  'id' => $id,
-  'BaseUrl' => $baseUrl,
-  'ListPrice' => $listPrice,
-  'MRP' => $MRP,
-  'Saving' => $Saving,
-  'NetPrice' => $NetPrice,
-  'BestCouponCode' => $BestCouponCode,
-  'BestCouponDesc' => $BestCouponDesc,
-  'Result' => $result,
-  'entity_id' => $entity_id,
-  'Brand' => $brand,
-  'ProductName' => $ProductName,
-  'ProductImage' => $ProductImage,
-  'Category' => $Category,
-  'LastCheckTime' => $LastCheckTime,
-  'pagetitle' => $pagetitle,
-  'BestCouponStatus' => $BestCouponStatus,
-  'BrandId' => $BrandId,
-  'loc' => $loc,
-  'Retailer' => $retailer,
-  'RetailerId' => $retailerId,
-  'BestCouponDisplay' => $bestCouponDisplay,
-))
-->execute();
-		
 }
