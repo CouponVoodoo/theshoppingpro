@@ -146,7 +146,8 @@ $url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"
 	
 	var_dump($jsonArr);
 	echo '---';
-	
+	exit;
+	die;
     foreach($jsonArr as $json){ 
 		$json = json_encode($json); 
     	$jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
