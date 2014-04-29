@@ -132,7 +132,7 @@ echo 'No node to process';
 }
 
 
-function insert_predictorCompiledResultTable(){
+function retailer_coupon_cron(){
 
 $url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"; //The API TO GET ALL RETAILER COUPON DATA 
 	$json = drupal_http_request($url, array('timeout' => 600.0));
