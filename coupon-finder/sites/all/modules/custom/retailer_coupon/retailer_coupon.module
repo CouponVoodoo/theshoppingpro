@@ -15,8 +15,9 @@ function retailer_coupon_menu() {
 
 /* FUNCTION THAT THE RETAILER API CALLS TO CREATE / UPDATE  REATILER COUPON*/
 function retailer_coupon_addcoupon($CouponInfo){
-
+echo time();
 insert_predictorCompiledResultTable();
+echo time();
 exit;
 die;
 $retailer = reset(explode('_',$_REQUEST['retailer']));
