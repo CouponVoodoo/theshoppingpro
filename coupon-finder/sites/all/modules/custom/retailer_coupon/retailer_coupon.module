@@ -146,12 +146,14 @@ $url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"
 	
 	var_dump($jsonArr);
 	echo '---';
+	
     foreach($jsonArr as $json){ 
 		$json = json_encode($json); 
     	$jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
     	$jsonArray = json_decode($jsonData);
 		var_dump($jsonArray);
-	echo '---';
+	echo '###';
+	exit;
 		$id= trim($jsonArray->id);
 		$baseUrl= trim($jsonArray->BaseUrl);
 		$listPrice= trim($jsonArray->listPrice);
