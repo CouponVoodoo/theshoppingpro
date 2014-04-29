@@ -135,12 +135,12 @@ function insert_predictorCompiledResultTable(){
 echo 'inside';
 $url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"; //The API TO GET ALL RETAILER COUPON DATA 
 	$json = drupal_http_request($url, array('timeout' => 600.0));
-   	var_dump($json);
+   	//var_dump($json);
 	echo '---';
 	$json = $json->data;
 	
 	var_dump($json);
-	echo '---';
+	echo '@@@';
 	
     $jsonArr = json_decode($json,true);
 	
