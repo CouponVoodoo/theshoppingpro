@@ -132,8 +132,8 @@ echo 'No node to process';
 }
 
 function retailer_coupon_cron(){
-mail('team@theshoppingpro.com', 'Data Push Start', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 while (1>0) {
+	mail('team@theshoppingpro.com', 'Data Push Start', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 	$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"; //The API TO GET ALL RETAILER COUPON DATA 
 	$json = drupal_http_request($url, array('timeout' => 600.0));
    	//var_dump($json);
