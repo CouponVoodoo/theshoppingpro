@@ -197,10 +197,11 @@ function retailer_coupon_cron(){
 				  'BestCouponDisplay' => $bestCouponDisplay,
 				))
 				->execute();
-		}
+			}
 		} Else {
 			// no urls to process
 			$run = 0;
 		}
-	mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 	}
+	mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
+}
