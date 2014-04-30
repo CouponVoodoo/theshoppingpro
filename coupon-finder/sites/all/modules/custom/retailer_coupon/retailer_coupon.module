@@ -133,8 +133,8 @@ echo 'No node to process';
 
 
 function insert_predictorCompiledResultTable(){
-//while (1>0)
- //{
+while (1>0)
+ {
 
 $url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"; //The API TO GET ALL RETAILER COUPON DATA 
 	$json = drupal_http_request($url, array('timeout' => 600.0));
@@ -204,5 +204,5 @@ $url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"
 ->execute();
 		
 }
-//}
+}
 }
