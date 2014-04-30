@@ -132,22 +132,18 @@ echo 'No node to process';
 }
 
 
-function insert_predictorCompiledResultTable(){
-while (1>0)
- {
-
-$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"; //The API TO GET ALL RETAILER COUPON DATA 
+function retailer_coupon_cron(){
+mail('team@theshoppingpro.com', 'Data Puch Start', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
+while (0>1) {
+	$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"; //The API TO GET ALL RETAILER COUPON DATA 
 	$json = drupal_http_request($url, array('timeout' => 600.0));
    	//var_dump($json);
-    
 	$json = $json->data;
 	if ($json=='null') {
-	 echo 'no url to process'; exit; die;
+		mail('team@theshoppingpro.com', 'Data Push End', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
+		echo 'no url to process'; exit; die;
 	}
-	
     $jsonArr = json_decode($json,true);
-	
-	
     foreach($jsonArr as $json){ 
 		$json = json_encode($json); 
     	$jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
@@ -202,7 +198,7 @@ $url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"
   'BestCouponDisplay' => $bestCouponDisplay,
 ))
 ->execute();
-		
 }
 }
+mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 }
