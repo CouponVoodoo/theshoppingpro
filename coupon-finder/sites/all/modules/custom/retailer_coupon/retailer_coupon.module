@@ -201,6 +201,7 @@ function retailer_coupon_cron(){
 		} Else {
 			// no urls to process
 			$run = 0;
+			mail('team@theshoppingpro.com', 'Data Push Ended With '.$i.' loops', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))).' - '.$json);
 		}
 	}
 	mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
