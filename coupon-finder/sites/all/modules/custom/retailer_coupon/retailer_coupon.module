@@ -15,11 +15,11 @@ function retailer_coupon_menu() {
 
 /* FUNCTION THAT THE RETAILER API CALLS TO CREATE / UPDATE  REATILER COUPON*/
 function retailer_coupon_addcoupon($CouponInfo){
-echo 'Start time: '.time();
+/*echo 'Start time: '.time();
 insert_predictorCompiledResultTable();
 echo '    End time: '.time();
 exit;
-die;
+die;*/
 $retailer = reset(explode('_',$_REQUEST['retailer']));
 //$retailer = reset(explode('_',$urlParam));
 	$url = "http://54.243.150.171/cpnVodo/nodecreation/cpnPageNodeCreation.php?retailer=".$retailer; //The API TO GET ALL RETAILER COUPON DATA 
@@ -138,7 +138,7 @@ function retailer_coupon_cron(){
 		$i++;
 		mail('team@theshoppingpro.com', 'Data Push Start Loop: '.$i, gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 		$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"; //The API TO GET ALL RETAILER COUPON DATA 
-		$json = drupal_http_request($url, array('timeout' => 600.0));
+		$json = drupal_http_request($url, array('timeout' => 1200.0));
 		//var_dump($json);
 		$json = $json->data;
 		if ($json !='null') {
