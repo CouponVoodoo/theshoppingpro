@@ -176,7 +176,7 @@ $url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"
 		$retailerId= trim($jsonArray->retailerId);
 		$bestCouponDisplay= trim($jsonArray->bestCouponDisplay);
 	 	
-		$nid = db_insert('predictorCompiledResultTableTest') // Table name no longer needs {}
+		$nid = db_insert('predictorCompiledResultTable') // Table name no longer needs {}
 ->fields(array(
   'id' => $id,
   'BaseUrl' => $baseUrl,
