@@ -141,7 +141,7 @@ function retailer_coupon_cron(){
 		$json = drupal_http_request($url, array('timeout' => 1200.0));
 		//var_dump($json);
 		$json = $json->data;
-		if ($json !='null') {
+		if ($json != 'null') {
 			$jsonArr = json_decode($json,true);
 			foreach($jsonArr as $json){ 
 				$json = json_encode($json); 
@@ -201,8 +201,8 @@ function retailer_coupon_cron(){
 		} Else {
 			// no urls to process
 			$run = 0;
-			mail('team@theshoppingpro.com', 'Data Push Ended With '.$i.' loops', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))).' - '.$json);
+			mail('team@theshoppingpro.com', 'Data Push Ended With '.$i.' loops', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 		}
 	}
-	mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
+	// mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 }
