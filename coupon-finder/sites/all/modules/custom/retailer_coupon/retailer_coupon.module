@@ -15,11 +15,11 @@ function retailer_coupon_menu() {
 
 /* FUNCTION THAT THE RETAILER API CALLS TO CREATE / UPDATE  REATILER COUPON*/
 function retailer_coupon_addcoupon($CouponInfo){
-/*echo 'Start time: '.time();
-insert_predictorCompiledResultTable();
+echo 'Start time: '.time();
+retailer_coupon_cron();
 echo '    End time: '.time();
 exit;
-die;*/
+die;
 $retailer = reset(explode('_',$_REQUEST['retailer']));
 //$retailer = reset(explode('_',$urlParam));
 	$url = "http://54.243.150.171/cpnVodo/nodecreation/cpnPageNodeCreation.php?retailer=".$retailer; //The API TO GET ALL RETAILER COUPON DATA 
@@ -135,6 +135,24 @@ function retailer_coupon_cron(){
 	$run = 1;
 	$i = 0;
 	mail('team@theshoppingpro.com', 'Data Push Start', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
+	
+	$Query = db_select('1Variables', 'b')
+				 ->fields('b', array('Status') )
+				 ->condition('b.Variable', 'Updat_PredictorCompiledResultTableDmp_Table', '=');
+	$run_check = $Query->execute();
+	$run_check_fetch = $run_check->fetch();
+	$isFirstRun = $run_check_fetch->Status;
+	
+	
+    echo $isFirstRun;
+	If ($isFirstRun == 1) {
+		db_query("Truncate table coupon_finder.predictorCompiledResultTableDmp");
+		db_query("insert into coupon_finder.predictorCompiledResultTableDmp select * from coupon_finder.predictorCompiledResultTable");
+		db_query("Truncate table coupon_finder.predictorCompiledResultTable");
+		db_query("UPDATE coupon_finder.1Variables SET Status = 0, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Updat_PredictorCompiledResultTableDmp_Table'");
+	}
+	exit; die;
+	
 	while ($run ==1) {
 		$i++;
 		$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"; //The API TO GET ALL RETAILER COUPON DATA 
