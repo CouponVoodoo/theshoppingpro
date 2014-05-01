@@ -215,6 +215,7 @@ function retailer_coupon_cron(){
 				  'BestCouponDisplay' => $bestCouponDisplay,
 				))
 				->execute();
+				$run = 0;
 			}
 		} Else {
 			// no urls to process
