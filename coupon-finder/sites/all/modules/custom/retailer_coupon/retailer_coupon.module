@@ -151,7 +151,7 @@ function retailer_coupon_cron(){
 		db_query("Truncate table coupon_finder.predictorCompiledResultTable");
 		db_query("UPDATE coupon_finder.1Variables SET Status = 0, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Updat_PredictorCompiledResultTableDmp_Table'");
 	}
-	exit; die;
+	
 	
 	while ($run ==1) {
 		$i++;
