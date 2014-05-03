@@ -15,11 +15,6 @@ function retailer_coupon_menu() {
 
 /* FUNCTION THAT THE RETAILER API CALLS TO CREATE / UPDATE  REATILER COUPON*/
 function retailer_coupon_addcoupon($CouponInfo){
-echo 'Start time: '.time();
-retailer_coupon_cron();
-echo '    End time: '.time();
-exit;
-die;
 $retailer = reset(explode('_',$_REQUEST['retailer']));
 //$retailer = reset(explode('_',$urlParam));
 	$url = "http://54.243.150.171/cpnVodo/nodecreation/cpnPageNodeCreation.php?retailer=".$retailer; //The API TO GET ALL RETAILER COUPON DATA 
