@@ -14,7 +14,8 @@ foreach ($results as $result) {
 			$count = db_query($query, array(':entity_id' => $entity_id));
 	}
 	
-db_query("Insert into priceHistory select '',entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0 from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
+$count=db_query("Insert into priceHistory select '',entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0 from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
+echo $count;
 db_query("update coupon_finder.predictorCompiledResultTable set updatePriceHistoryStatus =0")	;
 
 ?>
