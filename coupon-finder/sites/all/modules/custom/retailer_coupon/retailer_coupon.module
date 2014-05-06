@@ -129,8 +129,6 @@ echo 'No node to process';
 function retailer_coupon_cron(){
 	$run = 1;
 	$i = 0;
-	mail('team@theshoppingpro.com', 'Data Push Start', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
-	
 	$Query = db_select('1Variables', 'b')
 				 ->fields('b', array('Status') )
 				 ->condition('b.Variable', 'Updat_PredictorCompiledResultTableDmp_Table', '=');
@@ -155,6 +153,7 @@ function retailer_coupon_cron(){
 		//var_dump($json);
 		$json = $json->data;
 		if ($json != 'null') {
+			if ($i == 1) {mail('team@theshoppingpro.com', 'Data Push Start', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));}
 			$jsonArr = json_decode($json,true);
 			foreach($jsonArr as $json){ 
 				$json = json_encode($json); 
@@ -215,8 +214,11 @@ function retailer_coupon_cron(){
 		} Else {
 			// no urls to process
 			$run = 0;
-			mail('team@theshoppingpro.com', 'Data Push Ended With '.$i.' loops', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
+			if($i!=1) {
+				mail('team@theshoppingpro.com', 'Data Push Ended With '.$i.' loops', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
+			} else {
+				mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
+			}
 		}
 	}
-	 mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 }
