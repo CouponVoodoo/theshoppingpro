@@ -1471,7 +1471,7 @@ display:block ; float:left ; width:100px ; min-height:180px ;
 	
 /*=============End of css==============*/
 
-.breadcrumb {padding-bottom: 0px; margin-top: 0px; float: left;}
+.breadcrumb {padding-bottom: 0px; margin-top: 0px; float: left; position:relative; z-index:10}
 .breadcrumb div {float:left;}
 body.page-search-site .breadcrumb {display: none;}
 #header {padding-bottom: 0px}
