@@ -499,9 +499,9 @@ function custom_api_addproduct($ProInfo){
 	    $response = json_encode( array('ResponseCode' => '2', 'Response' => 'Node Updated.', 'URL' => $url, 'BASEURL' => $jsonArray->header->BaseUrl) );
 	    echo $response;
 		if($_REQUEST['recheck'] == 1){
-			// drupal_flush_all_caches();
+			drupal_flush_all_caches();
 			// cache_clear_all('field:node:' . $node->nid, 'cache_field');
-			entity_get_controller('node')->resetCache(array($node->nid));
+			// entity_get_controller('node')->resetCache(array($node->nid));
 			varnish_purge('www.couponvoodoo.com', 'node/'.$node->nid);
 			varnish_purge('onlineshopping.cuponation.in', 'node/'.$node->nid);
 			drupal_goto($node_url);
