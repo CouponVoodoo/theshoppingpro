@@ -1772,7 +1772,7 @@ function get_block_subject($block_subject) {
 			case "Similar Products":
 					return 'Cuponation Recommends';
 			break;
-			case "Only Show Products:":
+			case "Only Show Products With:":
 					return 'Filter by Coupon Status';
 			break;
 			case "Net Price (Post Coupons)":
