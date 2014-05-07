@@ -368,7 +368,7 @@ function basic_breadcrumb($variables) {
 
         // Return the breadcrumb with separators.
         if (!empty($breadcrumb)) {
-            $breadcrumb_separator = '<div style="padding:0 5px;"> ' . theme_get_setting('basic_breadcrumb_separator') . ' </div>';
+            $breadcrumb_separator = theme_get_setting('basic_breadcrumb_separator');
             $trailing_separator = $title = '';
             if (theme_get_setting('basic_breadcrumb_title')) {
                 $item = menu_get_item();
@@ -389,7 +389,7 @@ function basic_breadcrumb($variables) {
             // screen-reader users. Make the heading invisible with .element-invisible.
             $heading = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
             //return $heading . '<div class="breadcrumb">' . implode($breadcrumb_separator, $breadcrumb) . $trailing_separator . $title . '</div>';
-			return $heading . '<div class="breadcrumb">' . $wrapDiv . implode('</div>' . $breadcrumb_separator . $wrapDiv, $breadcrumb) . '</div>' . $trailing_separator . $title . '</div>';
+			return $heading . '<div class="breadcrumb">' . $wrapDiv . implode($breadcrumb_separator . '</div>' . $wrapDiv, $breadcrumb) . $trailing_separator . $title . '</div></div>';
         }
     }
     // Otherwise, return an empty string.
