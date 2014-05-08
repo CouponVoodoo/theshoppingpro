@@ -150,7 +150,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
     <?php
     
     // echo "<a rel='nofollow' class='view_store1' href='{$redirect_url}' >".$fields['field_product_image']->content."</a>";
-	echo "<div class='field-content product_img'><img  itemprop='image' src='".$node->field_product_image['und'][0]['value']."' alt='".$node->field_retailer_product_name['und']['0']['value']."' /></div>";
+	echo "<div class='field-content product_img'><a href='".$redirect_url."' target = '_blank'><img  itemprop='image' src='".$node->field_product_image['und'][0]['value']."' alt='".$node->field_retailer_product_name['und']['0']['value']."' /></a></div>";
         
     //print ($fields['field_product_images']->content);
     $status = strip_tags($fields['field_best_coupon_status']->content);
@@ -168,9 +168,9 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 <div class="product-right-inner">
 <h1> <?php 
 	if ($current_domain =='cuponation'){
-		echo "<meta itemprop='name' content ='".$node->field_retailer_product_name['und']['0']['value']."'/><meta itemprop='sku' content ='CN".$nid."'/>".$node->field_retailer_product_name['und']['0']['value']." @ ".$retailer." For Rs. ".$node->field_best_coupon_netpriceafters['und']['0']['value']." Using Coupons & Discount Offers | CN".$nid; } 
+		echo "<meta itemprop='name' content ='".$node->field_retailer_product_name['und']['0']['value']."'/><meta itemprop='sku' content ='CN".$nid."'/><a href='".$redirect_url."' target = '_blank'>".$node->field_retailer_product_name['und']['0']['value']." @ ".$retailer." For Rs. ".$node->field_best_coupon_netpriceafters['und']['0']['value']." Using Coupons & Discount Offers | CN".$nid."</a>"; } 
 	else { 
-		echo "<meta itemprop='name' content ='".$node->field_retailer_product_name['und']['0']['value']."'/><meta itemprop='sku' content ='CV".$nid."'/>".strip_tags($fields['field_retailer_product_name']->content)." | CV".$nid; }?></h1>
+		echo "<meta itemprop='name' content ='".$node->field_retailer_product_name['und']['0']['value']."'/><meta itemprop='sku' content ='CV".$nid."'/><a href='".$redirect_url."' target = '_blank'>".strip_tags($fields['field_retailer_product_name']->content)." | CV".$nid."</a>"; }?></h1>
 
 <?php 
 
