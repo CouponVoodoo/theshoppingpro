@@ -568,7 +568,7 @@ div.ctools-modal-content .modal-content{
   padding: 15px;
   border-radius: 15px;
   right: 10px;
-  min-width: 130px;
+  min-width: 165px;
   display:block;
   color: #FFFFFF;
   font-weight: bold;
@@ -808,7 +808,7 @@ div.view-id-product_info .search_listing_right .unlock_coupon {z-index: 0}
     width: 119px;}
 .product-right .coupon_code1 label{color:#fff;display:none}
 .product-right .coupon_code1 #coupon_search_listing > li{background:none!important;border:0px!important;padding:0px;}
-.product-right .coupon_code1 ul{width:119px!important}
+.product-right .coupon_code1 ul{width:150px!important}
 .product-right .coupon_code1 .item-list ul li{width:50px!important;background:none;border:0px;padding:0px}
 .product-right .coupon_code .field-content{color:#fff}
 .product-bottom{width:100%;float:left;margin-top:10px}
@@ -1480,13 +1480,13 @@ body.page-search-site .breadcrumb {display: none;}
 .homepage_retailer_slider .views-slideshow-cycle-main-frame-row-item, #block-views-home_page_slider-block .views-slideshow-cycle-main-frame-row-item {float: left; width: 16.6%}
 .page-taxonomy .homepage_retailer_slider .views-slideshow-cycle-main-frame-row-item, .page-taxonomy  #block-views-home_page_slider-block .views-slideshow-cycle-main-frame-row-item {padding: 10px;float: left; width: 33%}
 .page-node .homepage_retailer_slider .views-slideshow-cycle-main-frame-row-item, .page-node  #block-views-home_page_slider-block .views-slideshow-cycle-main-frame-row-item {padding: 10px;float: left; width: 33%}
+
 @media all and (max-width: 925px){
 .homepage_retailer_slider .views-slideshow-cycle-main-frame-row-item, #block-views-home_page_slider-block .views-slideshow-cycle-main-frame-row-item {float: left; width: 33%}
 }
 @media all and (max-width: 500px){
 .homepage_retailer_slider .views-slideshow-cycle-main-frame-row-item, #block-views-home_page_slider-block .views-slideshow-cycle-main-frame-row-item {float: left; width: 50%}
 }
-
 
 #transpbody {
 position:absolute;
@@ -1517,10 +1517,6 @@ background: #999999;
 
 .homepage_retailer_slider .views-field img { height: 50px; max-width: 150px;width: auto;}
 .homepage_retailer_slider .views-field-field-retailer-product-name {height: 60px; padding: 0px 15px 0px 15px}
-.homepage_retailer_slider .ribbon-wrapper-green {height: 98px; right:-47px; width: 103px; position: relative}
-.homepage_retailer_slider .ribbon-green {padding: 4px 0px 4px 14px; width: 140px}
-.homepage_retailer_slider .ribbon-green:before {display:none}
-.homepage_retailer_slider .ribbon-green:after{display:none}
 .homepage_retailer_slider {margin-top:40px; width: 100%; background: #F2F2F2; border: 1px solid #D7D7D7; box-shadow: 3px 3px 3px #999999;}
 .homepage_retailer_slider h2{font-size: 16px;color: #F7971C; font-weight: bold; margin-top: 10px; text-align: center;}
 
