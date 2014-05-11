@@ -180,9 +180,9 @@ function basic_html_head_alter(&$head_elements) {
 				$tid = arg(2);
 				$taxonomy = taxonomy_term_load($tid);
 				$taxonomy_name = $taxonomy->name;
-				$head_elements['metatag_description']['#value'] = 'Get '.$taxonomy_name.' products in India across retailers like Jabong, Myntra, Flipkart and others  using Discount Coupons and Promo Codes from CupoNation';
-				$head_elements['metatag_abstract']['#value'] = 'Get '.$taxonomy_name.' products in India across retailers like Jabong, Myntra, Flipkart and others  using Discount Coupons and Promo Codes from CupoNation';
-				$head_elements['rdf_node_title']['#attributes']['content'] = 'Get '.$taxonomy_name.' products in India across retailers like Jabong, Myntra, Flipkart and others  using Discount Coupons and Promo Codes from CupoNation';
+				$head_elements['metatag_description']['#value'] = 'Get '.$taxonomy_name.' products in India at great price using using Discount Coupons and Promo Codes from CupoNation';
+				$head_elements['metatag_abstract']['#value'] = 'Get '.$taxonomy_name.' products in India at great price using using Discount Coupons and Promo Codes from CupoNation';
+				$head_elements['rdf_node_title']['#attributes']['content'] = 'Get '.$taxonomy_name.' products in India at great price using using Discount Coupons and Promo Codes from CupoNation';
 			break;
 			case "node":
 				$nid = arg(1);
