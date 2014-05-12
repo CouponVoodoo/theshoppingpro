@@ -1564,3 +1564,5 @@ div#block-views-home_page_welcome-block, .front div.region-content #block-system
 .page-node-1 .page #content #content-area #block-system-main {width:100%; text-align:justify}
 #content-area h1.title {clear:both}
 .homepage_retailer_slider {padding-bottom: 10px}
+#views_slideshow_cycle_teaser_section_home_page_retailers_slider-block {width:932px !important;}
+#views_slideshow_cycle_teaser_section_home_page_retailers_slider-block .views-slideshow-cycle-main-frame-row {width:932px !important;}
