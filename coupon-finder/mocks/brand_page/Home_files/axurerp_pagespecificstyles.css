@@ -316,7 +316,7 @@ div {
 .u17_container {
     position:absolute;
     left:309px;
-    top:245px;
+    top:275px;
     width:576px;
     height:360px;
 }
@@ -459,6 +459,20 @@ div {
     top:589px;
     width:48px;
     height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u27 {
+    position:absolute;
+    left:309px;
+    top:242px;
+    width:581px;
+    height:35px;
     ;
     ;
     ;
