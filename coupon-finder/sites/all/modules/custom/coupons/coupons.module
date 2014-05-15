@@ -1732,8 +1732,8 @@ function get_label($label) {
 			case "Price History Of This Product":
 				return 'Historical Pricing';
 			break;	
-			case "Coupon History Of This Product":
-				return 'Historical Data For Coupons';
+			case "Coupon History For":
+				return 'Past Coupon Status of';
 			break;	
 			case "Best Coupon Or Discounts":
 				return 'Best Deal';
