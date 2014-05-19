@@ -142,10 +142,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
  
 <!-- ********************* START OF CHART DATA FOR COUPON OVERVIEW ************************  -->
-<h4> <a id="All_Coupons"><?php echo get_label('Coupon & Price History For ')." ".$node->field_retailer_product_name['und']['0']['value'];?></a></h4>
 <script type="text/javascript" src="<?php echo $base_url;?>/sites/all/libraries/Fusioncharts/FusionCharts.js"> </script>
-
-
 <?php
 		$all_count = db_query("SELECT COUNT(*) FROM {priceHistory} WHERE entity_id = ".$nid)->fetchfield();
 		$coupon_count = db_query("SELECT COUNT(*) FROM {priceHistory} WHERE CouponStatus = 1 AND entity_id = ".$nid)->fetchfield();
