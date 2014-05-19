@@ -642,8 +642,8 @@ if ($brand_check != 'Other') {
 					"outCnvbaseFontSize": "12",
 					"outCnvbaseFont":"Arial",
 					"yAxisNamePadding": "0",
-					"outCnvbasePadding": "0",
-					"chartTopMargin":"10",
+					"canvaspadding": "10";
+					"chartTopMargin":"0",
 					"chartLeftMargin":"0",
 					"valuepadding": "1"
 				  },
