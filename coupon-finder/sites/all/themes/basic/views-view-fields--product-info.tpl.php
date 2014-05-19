@@ -266,21 +266,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 		drupal_add_js(array('coupon_overview' => array('coupon_overview_json' => $coupon_overview_json)), array('type' => 'setting'));
 
 ?>
- 
- 
- <!-- ********************* END OF CHART DATA FOR COUPON OVERVIEW ************************  -->
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+<!-- ********************* END OF CHART DATA FOR COUPON OVERVIEW ************************  -->
 <div class="product-detail" itemscope itemtype='http://schema.org/Product'>
 
 <div class="product-inner">
