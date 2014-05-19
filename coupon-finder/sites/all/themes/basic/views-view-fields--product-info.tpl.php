@@ -153,7 +153,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 			{
 			  "chart": {
 				"caption":"Coupon Meter",
-				"subCaption":"(How Often Coupons Work For This)",
+				"subCaption":"Times Coupons Found In Past",
 				"clickURL": "#price_history",
 				"xaxisname": "",
 				"manageresize": "1",
