@@ -279,7 +279,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 	<div id="coupon_overview"></div> 
 	<?PHP
-		if ($coupon_count > 2) {
+		if ($all_count > 2) {
 			drupal_add_js("jQuery(window).load(function(){
 				var myChart = new FusionCharts( 'AngularGauge', 'coupon_overview', '105%', '150', '1' );
 				myChart.setJSONData(Drupal.settings.coupon_overview.coupon_overview_json);
@@ -597,12 +597,10 @@ if ($brand_check != 'Other') {
 		//$coupons = db_query("SELECT couponStatus FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
 		$coupons = db_query("SELECT couponStatus, BestCouponCode FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
 		$coupons_data = drupal_json_encode($coupons);
+		$coupons_data = str_replace('"couponStatus":"0","BestCouponCode":""','"value":"0", "displayValue":"No Coupon Found","link":"N-'.$redirect_url.'", "tooltext":"No Coupon Found"',$coupons_data);
 		$coupons_data = str_replace('"couponStatus":"1","BestCouponCode":"','"value":"1", "displayValue":"Coupon Found","link":"N-'.$redirect_url.'", "tooltext":"Coupon Found: ',$coupons_data);
-		//$coupons_data = str_replace('"couponStatus":"1"','"value":"1", "displayValue":"Coupon Found","tooltext":"Coupon Found","link":"N-'.$redirect_url.'"',$coupons_data);
-		
-		
-		$coupons_data = str_replace('"couponStatus":"0"','"value":"0", "displayValue":"No Coupon Found", "tooltext":" No Coupon Found"',$coupons_data);
-			
+		//$coupons_data = str_replace('"couponStatus":"1","BestCouponCode":"','"value":"1", "displayValue":"Coupon Found","tooltext":"Coupon Found","link":"N-'.$redirect_url.'"',$coupons_data);
+		//$coupons_data = str_replace('"couponStatus":"0"','"value":"0", "displayValue":"No Coupon Found", "tooltext":" No Coupon Found"',$coupons_data);
 		$price = db_query("SELECT NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
 		$price_data = drupal_json_encode($price);
 		$price_data = str_replace("NetPriceAfterSaving","value",$price_data);
@@ -638,7 +636,6 @@ if ($brand_check != 'Other') {
 					"rotatevalues": "1",
 					"valuePosition": "ABOVE",
 					"yaxisvaluespadding": "5",
-					"palettecolors": "f8bd19",
 					"showvalues": "0",
 					"showYAxisValues": "0",
 					"outCnvbaseFontColor": "009933",
@@ -659,6 +656,8 @@ if ($brand_check != 'Other') {
 					{
 					  "seriesname": "PRICE (After Coupons)",
 					  "parentyaxis": "S",
+					  "color": "357EC7",
+					  "Thickness":"3",
 					  "data": '.$price_data.'
 					},
 					{
