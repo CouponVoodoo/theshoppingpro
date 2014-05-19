@@ -24,6 +24,7 @@
  * @ingroup views_templates
  */
 ?>
+
 <?php
 $current_domain = get_current_domain();
 $url_path = rawurlencode(drupal_get_path_alias());
@@ -139,30 +140,173 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 		}
 ?>
 
+ 
+<!-- ********************* START OF CHART DATA FOR COUPON OVERVIEW ************************  -->
+<h4> <a id="All_Coupons"><?php echo get_label('Coupon & Price History For ')." ".$node->field_retailer_product_name['und']['0']['value'];?></a></h4>
+<script type="text/javascript" src="<?php echo $base_url;?>/sites/all/libraries/Fusioncharts/FusionCharts.js"> </script>
 
 
+<?php
+		$all_count = db_query("SELECT COUNT(*) FROM {priceHistory} WHERE entity_id = ".$nid)->fetchfield();
+		$coupon_count = db_query("SELECT COUNT(*) FROM {priceHistory} WHERE CouponStatus = 1 AND entity_id = ".$nid)->fetchfield();
+		$coupon_meter = $coupon_count/$all_count * 100;
+		$coupon_meter = number_format($coupon_meter,2, '.', ',');
+		
+		$coupon_overview_json = '
+			{
+			  "chart": {
+				"caption":"Coupon Meter",
+				"subCaption":"(How Often Coupons Work For This)",
+				"clickURL": "#price_history",
+				"xaxisname": "",
+				"manageresize": "1",
+				"origw": "350",
+				"origh": "200",
+				"palette": "2",
+				"bgalpha": "0",
+				"bgcolor": "FFFFFF",
+				"lowerlimit": "0",
+				"upperlimit": "100",
+				"numbersuffix": "%",
+				"showborder": "0",
+				"basefontcolor": "FFFFFF",
+				"charttopmargin": "3",
+				"captionPadding":"0",
+				"chartbottommargin": "0",
+				"tooltipbgcolor": "F7971C",
+				"gaugefillmix": "{dark-10},{light-70},{dark-10}",
+				"gaugefillratio": "3",
+				"pivotradius": "8",
+				"gaugeouterradius": "90",
+				"gaugeinnerradius": "70%",
+				"gaugeoriginx": "175",
+				"gaugeoriginy": "170",
+				"trendvaluedistance": "5",
+				"tickvaluedistance": "3",
+				"managevalueoverlapping": "1",
+				"autoaligntickvalues": "1"
+			  },
+			  "colorrange": {
+				"color": [
+				  {
+					"minvalue": "0",
+					"maxvalue": "25",
+					"code": "FF654F"
+				  },
+				  {
+					"minvalue": "25",
+					"maxvalue": "75",
+					"code": "F6BD0F"
+				  },
+				  {
+					"minvalue": "75",
+					"maxvalue": "100",
+					"code": "8BBA00"
+				  }
+				]
+			  },
+			  "dials": {
+				"dial": [
+				  {
+					"value": "'.$coupon_meter.'",
+					"rearextension": "10",
+					"basewidth": "10"
+				  }
+				]
+			  },
+			  "annotations": {
+				"groups": [
+				  {
+					"id": "Grp1",
+					"showbelow": "1",
+					"showshadow": "1",
+					"items": [
+					  {
+						"type": "rectangle",
+						"x": "$chartStartX+5",
+						"y": "$chartStartY+5",
+						"tox": "$chartEndX-5",
+						"toy": "$chartEndY-5",
+						"radius": "10",
+						"fillcolor": "25ade3,25ade3",
+						"showborder": "0"
+					  }
+					]
+				  }
+				]
+			  },
+			  "styles": {
+				"definition": [
+				  {
+					"name": "RectShadow",
+					"type": "shadow",
+					"strength": "3"
+				  },
+				  {
+					"name": "trendvaluefont",
+					"type": "font",
+					"bold": "1",
+					"bordercolor": "FFFFDD"
+				  }
+				],
+				"application": [
+				  {
+					"toobject": "Grp1",
+					"styles": "RectShadow"
+				  },
+				  {
+					"toobject": "Trendvalues",
+					"styles": "trendvaluefont"
+				  }
+				]
+			  }
+			}
+		';
 
+		drupal_add_js(array('coupon_overview' => array('coupon_overview_json' => $coupon_overview_json)), array('type' => 'setting'));
 
+?>
+ 
+ 
+ <!-- ********************* END OF CHART DATA FOR COUPON OVERVIEW ************************  -->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 <div class="product-detail" itemscope itemtype='http://schema.org/Product'>
 
 <div class="product-inner">
 <div class="product-left">
     <?php
-    
-    // echo "<a rel='nofollow' class='view_store1' href='{$redirect_url}' >".$fields['field_product_image']->content."</a>";
-	echo "<div class='field-content product_img'><a href='".$redirect_url."' target = '_blank'><img  itemprop='image' src='".$node->field_product_image['und'][0]['value']."' alt='".$node->field_retailer_product_name['und']['0']['value']."' /></a></div>";
-        
-    //print ($fields['field_product_images']->content);
-    $status = strip_tags($fields['field_best_coupon_status']->content);
-  
-//        echo "<div class='d_view_store'><a rel='nofollow' target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' >View Store</a></div>";
-	$product_link = '/search/site/'.str_replace('+at+'.$retailer,'',str_replace(' ','+',strip_tags($fields['field_retailer_product_name']->content)));
-	 ?>
-	
-  <div class='blue_button'><a href="<?php echo $product_link;?>" class='d_view_store'><?php echo get_label('View More From ').substr($brand, 0, 40);?></a></div>
- 
- 	
-	</div>
+		// echo "<a rel='nofollow' class='view_store1' href='{$redirect_url}' >".$fields['field_product_image']->content."</a>";
+		echo "<div class='field-content product_img'><a href='".$redirect_url."' target = '_blank'><img  itemprop='image' src='".$node->field_product_image['und'][0]['value']."' alt='".$node->field_retailer_product_name['und']['0']['value']."' /></a></div>"; 
+		//print ($fields['field_product_images']->content);
+		$status = strip_tags($fields['field_best_coupon_status']->content);
+		// echo "<div class='d_view_store'><a rel='nofollow' target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' >View Store</a></div>";
+		$product_link = '/search/site/'.str_replace('+at+'.$retailer,'',str_replace(' ','+',strip_tags($fields['field_retailer_product_name']->content)));
+	?>
+	<!--
+	<div class='blue_button'><a href="<?php echo $product_link;?>" class='d_view_store'><?php echo get_label('View More From ').substr($brand, 0, 40);?></a></div>
+	-->
+	<div id="coupon_overview"></div> 
+	<?PHP
+		if ($coupon_count > 2) {
+			drupal_add_js("jQuery(window).load(function(){
+				var myChart = new FusionCharts( 'AngularGauge', 'coupon_overview', '105%', '150', '1' );
+				myChart.setJSONData(Drupal.settings.coupon_overview.coupon_overview_json);
+				myChart.render('coupon_overview');
+			});", array('type' => 'inline', 'scope' => 'footer'));
+		}
+	?>
+</div>
 
 
 <div class="product-right-inner">
@@ -457,3 +601,142 @@ if ($brand_check != 'Other') {
 /** End of By Ashish to track for view store click on product page */	
 
 ?>
+
+<!--              ********************* COUPON & PRICE HISTORY CHART *****************************    -->
+
+	
+<?php
+		$dates = db_query("SELECT updateDate FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
+		$dates_data = drupal_json_encode($dates);
+		$dates_data = str_replace("updateDate","label",$dates_data);
+		
+		
+		//$coupons = db_query("SELECT couponStatus FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
+		$coupons = db_query("SELECT couponStatus, BestCouponCode FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
+		$coupons_data = drupal_json_encode($coupons);
+		$coupons_data = str_replace('"couponStatus":"1","BestCouponCode":"','"value":"1", "displayValue":"Coupon Found","link":"N-'.$redirect_url.'", "tooltext":"Coupon Found: ',$coupons_data);
+		//$coupons_data = str_replace('"couponStatus":"1"','"value":"1", "displayValue":"Coupon Found","tooltext":"Coupon Found","link":"N-'.$redirect_url.'"',$coupons_data);
+		
+		
+		$coupons_data = str_replace('"couponStatus":"0"','"value":"0", "displayValue":"No Coupon Found", "tooltext":" No Coupon Found"',$coupons_data);
+			
+		$price = db_query("SELECT NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
+		$price_data = drupal_json_encode($price);
+		$price_data = str_replace("NetPriceAfterSaving","value",$price_data);
+
+		
+		//echo $dates_data."\n\n\n".$coupons_data."\n\n\n".$price_data;
+		
+		if($node->type == '_product_and_coupon' && sizeof($price)>2 && sizeof($dates)>2  && sizeof($coupons)>3) {
+?>
+
+<h4> <a id="price_history"><?php echo get_label('Coupon & Price History For ')." ".$node->field_retailer_product_name['und']['0']['value'];?></a></h4>
+<!-- <script type="text/javascript" src="<?php echo $base_url;?>/sites/all/libraries/Fusioncharts/FusionCharts.js"> </script> -->
+<div id="coupon_price_history"></div> 
+
+<?php
+		
+			$all_data_json = '{
+				  "chart": {
+					"palette": "3",
+					"caption": "",
+					"pyaxisname": "",
+					"syaxisname": "",
+					"xaxisname": "",
+					"animation": "1",
+					"formatnumberscale": "0",
+					"snumberprefix": "Rs. ",
+					"labeldisplay": "STAGGER",
+					"seriesnameintooltip": "0",
+					"showToolTip": "1",
+					"anchoralpha": "100",
+					"anchorradius": "7",
+					"placeValuesInside": "1",
+					"rotatevalues": "1",
+					"valuePosition": "ABOVE",
+					"yaxisvaluespadding": "5",
+					"palettecolors": "f8bd19",
+					"showvalues": "0",
+					"showYAxisValues": "0",
+					"outCnvbaseFontColor": "009933",
+					"outCnvbaseFontSize": "12",
+					"outCnvbaseFont":"Arial",
+					"yAxisNamePadding": "0",
+					"outCnvbasePadding": "0",
+					"chartTopMargin":"0",
+					"chartLeftMargin":"0",
+					"valuepadding": "1"
+				  },
+				  "categories": [
+					{
+					  "category": '.$dates_data.'
+					}
+				  ],
+				  "dataset": [
+					{
+					  "seriesname": "PRICE (After Coupons)",
+					  "parentyaxis": "S",
+					  "data": '.$price_data.'
+					},
+					{
+					  "seriesname": "COUPON FOUND?",
+					  "data": '.$coupons_data.'
+					}
+				  ],
+				  "styles": {
+					"definition": [
+					  {
+						"type": "font",
+						"name": "CaptionFont",
+						"size": "15",
+						"color": "666666"
+					  },
+					  {
+						"type": "font",
+						"name": "SubCaptionFont",
+						"bold": "0"
+					  }
+					],
+					"application": [
+					  {
+						"toobject": "caption",
+						"styles": "CaptionFont"
+					  },
+					  {
+						"toobject": "SubCaption",
+						"styles": "SubCaptionFont"
+					  }
+					]
+				  },
+					"trendlines":[{
+					  "line":[{
+						  "startvalue":"1.02",
+						  "color":"009933",
+						  "displayvalue":"C{br}O{br}U{br}P{br}O{br}N{br}S",
+						  "showValues":"0",
+						  "fontsize": "15",
+						  "thickness":"3",
+						  "dashed": "1",
+						  "dashLen": "10",						  
+						  "dashGap": "4"
+						}
+					  ]
+					}
+				  ]
+
+				  
+				}';
+			
+			//echo $all_data_json; die();
+
+			// $coupon_data_json .= '"data" : '.$coupon_data.'}';
+			drupal_add_js(array('all_data' => array('all_data_json_js' => $all_data_json)), array('type' => 'setting'));
+			drupal_add_js("jQuery(window).load(function(){
+				var myChart = new FusionCharts( 'MSColumn3DLineDY', 'coupon_price_history', '100%', '400', '1' );
+				myChart.setJSONData(Drupal.settings.all_data.all_data_json_js);
+				myChart.render('coupon_price_history');
+			});", array('type' => 'inline', 'scope' => 'footer'));
+		}
+?>
+
+
