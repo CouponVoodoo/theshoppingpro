@@ -281,7 +281,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 	<?PHP
 		if ($all_count > 2) {
 			drupal_add_js("jQuery(window).load(function(){
-				var myChart = new FusionCharts( 'AngularGauge', 'coupon_overview', '105%', '150', '1' );
+				var myChart = new FusionCharts( 'AngularGauge', 'coupon_overview', '100%', '150', '1' );
 				myChart.setJSONData(Drupal.settings.coupon_overview.coupon_overview_json);
 				myChart.render('coupon_overview');
 			});", array('type' => 'inline', 'scope' => 'footer'));
