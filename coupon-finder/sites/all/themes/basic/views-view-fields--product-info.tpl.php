@@ -276,9 +276,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 		// echo "<div class='d_view_store'><a rel='nofollow' target='_blank' class='view_store' href='{$fields['field_affiliateurl']->content}' >View Store</a></div>";
 		$product_link = '/search/site/'.str_replace('+at+'.$retailer,'',str_replace(' ','+',strip_tags($fields['field_retailer_product_name']->content)));
 	?>
-	<!--
-	<div class='blue_button'><a href="<?php echo $product_link;?>" class='d_view_store'><?php echo get_label('View More From ').substr($brand, 0, 40);?></a></div>
-	-->
+
 	<div id="coupon_overview"></div> 
 	<?PHP
 		if ($coupon_count > 2) {
@@ -287,8 +285,10 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 				myChart.setJSONData(Drupal.settings.coupon_overview.coupon_overview_json);
 				myChart.render('coupon_overview');
 			});", array('type' => 'inline', 'scope' => 'footer'));
-		}
+		} else {
 	?>
+	<div class='blue_button'><a href="<?php echo $product_link;?>" class='d_view_store'><?php echo get_label('View More From ').substr($brand, 0, 40);?></a></div>
+	<?php } ?>
 </div>
 
 
