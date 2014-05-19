@@ -642,7 +642,7 @@ if ($brand_check != 'Other') {
 					"outCnvbaseFontSize": "12",
 					"outCnvbaseFont":"Arial",
 					"yAxisNamePadding": "0",
-					"canvaspadding": "10",
+					"canvaspadding": "20",
 					"chartTopMargin":"0",
 					"chartLeftMargin":"0",
 					"valuepadding": "1"
@@ -714,7 +714,7 @@ if ($brand_check != 'Other') {
 			// $coupon_data_json .= '"data" : '.$coupon_data.'}';
 			drupal_add_js(array('all_data' => array('all_data_json_js' => $all_data_json)), array('type' => 'setting'));
 			drupal_add_js("jQuery(window).load(function(){
-				var myChart = new FusionCharts( 'MSColumn3DLineDY', 'coupon_price_history', '100%', '400', '1' );
+				var myChart = new FusionCharts( 'MSColumn3DLineDY', 'coupon_price_history', '95%', '400', '1' );
 				myChart.setJSONData(Drupal.settings.all_data.all_data_json_js);
 				myChart.render('coupon_price_history');
 			});", array('type' => 'inline', 'scope' => 'footer'));
