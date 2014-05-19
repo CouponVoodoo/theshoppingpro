@@ -608,7 +608,7 @@ if ($brand_check != 'Other') {
 		
 		//echo $dates_data."\n\n\n".$coupons_data."\n\n\n".$price_data;
 		
-		if($node->type == '_product_and_coupon' && sizeof($price)>2 && sizeof($dates)>2  && sizeof($coupons)>3) {
+		if($node->type == '_product_and_coupon' && sizeof($price)>2 && sizeof($dates)>2  && sizeof($coupons)>2) {
 ?>
 
 <h4> <a id="price_history"><?php echo get_label('Coupon & Price History For ')." ".$node->field_retailer_product_name['und']['0']['value'];?></a></h4>
