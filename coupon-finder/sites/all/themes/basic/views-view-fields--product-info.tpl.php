@@ -145,8 +145,11 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 
 <!-- ********************* START OF CHART DATA FOR COUPON OVERVIEW ************************  -->
+<!--
 <script type="text/javascript" src="<?php echo $base_url;?>/sites/all/libraries/Fusioncharts/FusionCharts.js"> </script>
+-->
 <?php
+		drupal_add_js($base_url.'/sites/all/libraries/Fusioncharts/FusionCharts.js');
 		$all_count = db_query("SELECT COUNT(*) FROM {priceHistory} WHERE entity_id = ".$nid)->fetchfield();
 		$coupon_count = db_query("SELECT COUNT(*) FROM {priceHistory} WHERE CouponStatus = 1 AND entity_id = ".$nid)->fetchfield();
 		$coupon_meter = $coupon_count/$all_count * 100;
