@@ -575,7 +575,9 @@ if ($brand_check != 'Other') {
 <?php
 	} else {
 		echo $coupon =  coupons_copy_coupon($nid);
+		echo $base_url."/sites/all/themes/basic/js/custom.js";
 ?>
+		<script type="text/javascript" src="<?php echo $base_url;?>/sites/all/themes/basic/js/custom.js"> </script>
 		<div id="show_more"><a onclick="show_more_coupon_list();jQuery(this).hide();"> + Show more</a></div>
 <?php
 	}
