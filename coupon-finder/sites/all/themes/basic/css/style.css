@@ -1,6 +1,4 @@
- 
-
-/* Font styles. */
+ /* Font styles. */
 body {
   margin: 0;
   /* Setting up font size, leading and font family
@@ -1166,6 +1164,7 @@ img{max-width: 100%;}
 @media all and (max-width: 1230px){
 #block-fb_likebox-0.block-fb-likebox {display: none}
 .zopim-chat {display: none;}
+.float_bar{display: none;}
 }
 
 
@@ -1571,3 +1570,49 @@ div#block-views-home_page_welcome-block, .front div.region-content #block-system
 #views_slideshow_cycle_teaser_section_home_page_retailers_slider-block .views-slideshow-cycle-main-frame-row {width:932px !important;}
 .show_more {margin-bottom: 10px;}
 .show_more a{cursor: pointer;}
+
+.node-type--product-and-coupon #sidebar-first {width: 10px}
+
+
+/* START OF FLOATING MENU FOR PAGE */
+
+.float_bar {
+    right: 10;
+    margin: 0px -90px;
+    position: fixed;
+    width: 75px;
+    z-index: 9999; 
+	background: #F2F2F2;
+    border: 1px solid #E6E6E6;
+    border-radius: 6px;
+    box-shadow: 3px 3px 3px #999999;
+	padding: 5px;
+}
+.float_bar ul {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
+.float_bar ul li {
+    display: block;
+    list-style: none outside none;
+    margin: 10px 0px;
+    padding: 0;
+    position: relative;
+    transition: background 0.2s linear 0s;
+    width: 100%;
+}
+.float_bar ul li a {
+    color: #acacac;
+    display: block;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+	text-align:center;
+    text-decoration: none;
+	font-size: 12px;
+	margin-top: 1px;
+	line-height: 13px;
+}
+
+/* END OF FLOATING MENU FOR PAGE */
