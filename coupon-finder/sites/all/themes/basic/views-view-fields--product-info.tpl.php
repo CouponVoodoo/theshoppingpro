@@ -575,6 +575,9 @@ if ($brand_check != 'Other') {
 <?php
 	} else {
 		echo $coupon =  coupons_copy_coupon($nid);
+?>
+		<div id="show_more"><a onclick="show_more_coupon_list();jQuery(this).hide();"> + Show more</a></div>
+<?php
 	}
 
 /** Start of By Ashish to track for view store click on product page */		
