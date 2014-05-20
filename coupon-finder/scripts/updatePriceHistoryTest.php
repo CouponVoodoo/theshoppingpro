@@ -23,7 +23,9 @@ foreach(
 $result as $item) {
   $updateCount= $item->status;
 }
+echo 'updating Count '.$updateCount;
 	if ($updateCount < $freq){
+	echo 'updating table';
 $count=db_query("Insert into priceHistory select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
 $count=db_query("Insert into priceHistoryBatchData select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
 
@@ -31,7 +33,7 @@ echo $count;
 db_query("update coupon_finder.predictorCompiledResultTable set updatePriceHistoryStatus =0")	;
 db_query("update coupon_finder.1Variables set status = status+1 where Serial=3")	;
 }
-else {
+else {echo 'in else loop';
 //db_query("Truncate table priceHistoryBatchData")	;
 db_query("Insert into priceHistory select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
 $count=db_query("Insert into priceHistoryBatchData select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
