@@ -14,10 +14,12 @@ jQuery(document).ready(function () {
 // To show only 3 coupons and hide rest with show more option
 
 jQuery(document).ready(function() {
+  jQuery("li[id^='search_listing_li_row']").hide();
   jQuery('#search_listing_li_row_1').show();
   jQuery('#search_listing_li_row_2').show();
   jQuery('#search_listing_li_row_3').show();
 });
+
 
 function show_more_coupon_list() {
   jQuery("li[id^='search_listing_li_row']").show();
