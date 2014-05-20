@@ -259,7 +259,7 @@ body:before {
 }
 
 
-#header{background:#000000;width:100%;display: inline-block;position:relative;}
+#header{background:#000000;width:100%;display: inline-block;position:relative; margin-bottom: -20px}
 body.domain-cuponation #header{background: #51a7da;}
 body.domain-cuponation-couponvoodoo-com #header{background: #51a7da;}
 body.domain-products-cuponation-in #header{background: #51a7da;}
