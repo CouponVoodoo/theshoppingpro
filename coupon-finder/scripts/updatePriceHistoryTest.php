@@ -9,6 +9,7 @@ $result as $item) {
   $updateCount= $item->status;
 }
 	if ($updateCount < $freq){echo 'inside';}
+	else{echo 'outside';}
 /*
 $results = db_query("SELECT distinct entity_id from coupon_finder.priceHistory where updateDate = CURDATE()");
 
