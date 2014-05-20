@@ -768,11 +768,11 @@ img.dollor { left: -225px; position: relative; top: -80px; z-index: 0;}
 .product_info .content ol li{color: #666666; font-weight: bold; list-style-type: none; text-align: left;line-height: 150%;}
 .product-detail{width:99.8%;float:left;border-radius:4px;border:1px solid #e1e1e1;margin-left:0px;padding:12px;margin-bottom:15px; box-shadow: 3px 3px 3px #999999}
 .product-detail h2{color: #F7971C;font-family: Arial;font-size: 18px;font-style: normal;font-weight: bold;padding-right: 0px;text-decoration: none;}
-.product-detail h1{color: #F7971C;font-family: Arial;font-size: 18px;font-style: normal;font-weight: bold;padding-right: 0px;text-decoration: none;}
+.product-detail h1{color: #F7971C;font-family: Arial;font-size: 18px;font-style: normal;font-weight: bold;padding-right: 0px;text-decoration: none; margin: -8px 0px;}
 .product-detail h2 .field-content{float:left}
 .product-detail h1 .field-content{float:left}
 .product-detail .product-left{ float: left;margin-top: 10px;text-align: center;width: 225px;}
-.product-detail .product-left .field-content{ float: left; height: 200px;text-align: center;width: 200px;}
+.product-detail .product-left .field-content{ float: left; height: 200px;text-align: center;width: 200px;margin-top: -15px;}
 .product-detail .product-right-inner{width:64%;float:left;margin-left:11px}
 .product-detail  .product-right{width:100%;float:left;border:1px solid #e6e6e6;background: #F2F2F2;padding:10px 5px 5px 10px; margin-top: 10px; border-radius:6px;position:relative; box-shadow: 3px 3px 3px #999999}
 .node-type--product-and-coupon .item-list{width:100%;float:left;position:relative}
@@ -820,7 +820,7 @@ div.view-id-product_info .search_listing_right .unlock_coupon {z-index: 0}
 .product-bottom .product-left ul li{float:left;width:100%;margin:0px 0 10px 0;list-style:none}
 .product-bottom .product-right-bottom{float: left; margin-left: 10px; width: 97%;text-align: justify;}
 .product-bottom .product-right-bottom .field-content{color: #666666;display: inline;font-family: Arial;font-size: 13px;font-style: normal; font-weight: normal;text-decoration: none;}
-.custom_link{width:99%;float:left;text-align:right;font:11px/15px arial;color: #9da0a4; padding: 0 0 0}
+.custom_link{width:99%;float:left;text-align:right;font:11px/15px arial;color: #9da0a4; padding: 0 0 0; margin-top: 5px; margin-bottom: -10px;}
 .custom_link a{font:11px/15px arial;color: #9da0a4; cursor:pointer}
 .custom_link a.active{color: #F7971C;}
 .custom_link_inner{width:99%;float:left;text-align:left;font:11px/15px arial;color: #9da0a4; padding:0 0 10px 0}
