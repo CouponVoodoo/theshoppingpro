@@ -187,7 +187,7 @@ $non_coupon_saving = $mrp - $list_price;
 				</div>";
 				echo $listPrice = "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
 				<div class='field-label'>".get_label('Net Price:')."</div>
-					<div class='field-items'>
+					<div class='net_price_list'>
 						<div class='field-item even'>".get_label('INR ').number_format($node->field_best_coupon_netpriceafters['und'][0]['value'],0, '.', ',')."</div>
 					</div>
 				</div>";
@@ -207,7 +207,7 @@ $non_coupon_saving = $mrp - $list_price;
 				</div>";	
 				echo "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
 				<div class='field-label'>".get_label('Net Price:')."</div>
-					<div class='field-items'>
+					<div class='net_price_list'>
 						<div class='field-item even'>".get_label('INR ').number_format($list_price,0, '.', ',')."</div>
 					</div>
 				</div>";
@@ -227,7 +227,7 @@ $non_coupon_saving = $mrp - $list_price;
 				</div>";
 				echo "<div class='field field-name-field-product-price field-type-number-integer field-label-above'>
 				<div class='field-label'>".get_label('Net Price:')."</div>
-					<div class='field-items'>
+					<div class='net_price_list'>
 						<div class='field-item even'>".get_label('INR ').number_format($list_price,0, '.', ',')."</div>
 					</div>
 				</div>";
