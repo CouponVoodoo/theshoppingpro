@@ -272,12 +272,12 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 <div class="float_bar back_button_bg">
 <ul>
 <li><a href="#price_summary"><img src="<?php echo $base_url;?>/sites/all/themes/basic/images/price_summary.png" width="48" height="48" border="0"/>Price Summary</a></li>
-<li><a href="#All_Coupons"><img src="<?php echo $base_url;?>/sites/all/themes/basic/images/coupon_list.PNG" width="48" height="48" border="0"/>Coupon List</a></li>
+<li><a href="#All_Coupons"><img src="<?php echo $base_url;?>/sites/all/themes/basic/images/coupon_list.png" width="48" height="48" border="0"/>Coupon List</a></li>
 <?php if ($all_count > 2) { ?>
-	<li><a href="#price_history"><img src="<?php echo $base_url;?>/sites/all/themes/basic/images/price_history.PNG" width="48" height="48" border="0"/>Price History</a></li>
+	<li><a href="#price_history"><img src="<?php echo $base_url;?>/sites/all/themes/basic/images/price_history.png" width="48" height="48" border="0"/>Price History</a></li>
 <?php } ?>
-<li><a href="<?php echo $base_url;?>/search/site/<?php echo $node->field_retailer_product_name['und']['0']['value']; ?>" target = "_blank"><img src="<?php echo $base_url;?>/sites/all/themes/basic/images/all_similar_products.PNG" width="48" height="48" border="0"/><?php echo nl2br("\n");?>All Similar Products</a></li>
-<li><a href="<?php echo $base_url;?>/search/site/<?php echo $node->field_retailer_product_name['und']['0']['value']; ?>?f[0]=sm_field_best_coupon_status_disp%3AGuaranteed%20Coupons" target = "_blank"><img src="<?php echo $base_url;?>/sites/all/themes/basic/images/similar_with_coupons.PNG" width="48" height="48" border="0"/>Similar With Coupons</a></li>
+<li><a href="<?php echo $base_url;?>/search/site/<?php echo $node->field_retailer_product_name['und']['0']['value']; ?>" target = "_blank"><img src="<?php echo $base_url;?>/sites/all/themes/basic/images/all_similar_products.png" width="48" height="48" border="0"/><?php echo nl2br("\n");?>All Similar Products</a></li>
+<li><a href="<?php echo $base_url;?>/search/site/<?php echo $node->field_retailer_product_name['und']['0']['value']; ?>?f[0]=sm_field_best_coupon_status_disp%3AGuaranteed%20Coupons" target = "_blank"><img src="<?php echo $base_url;?>/sites/all/themes/basic/images/similar_with_coupons.png" width="48" height="48" border="0"/>Similar With Coupons</a></li>
 </ul>
 </div>
 <!-- ********************* END OF FLOATING MENU ************************  --> 
