@@ -606,10 +606,14 @@ if ($brand_check != 'Other') {
 		//$coupons_data = str_replace('"couponStatus":"1","BestCouponCode":"','"value":"1", "displayValue":"Coupon Found","tooltext":"Coupon Found","link":"N-'.$redirect_url.'"',$coupons_data);
 		//$coupons_data = str_replace('"couponStatus":"0"','"value":"0", "displayValue":"No Coupon Found", "tooltext":" No Coupon Found"',$coupons_data);
 		$price = db_query("SELECT NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
-		$price_data = drupal_json_encode($price);
+		$price_data = drupal_json_encode($price);		
+		// start of get max value to create some gao on top of chart
+			$json = json_decode($price_data,true);
+			$max = max($json);
+			$max_value = 1.20 * $max["NetPriceAfterSaving"];
+		// end of get max value to create some gao on top of chart
+		
 		$price_data = str_replace('"NetPriceAfterSaving"','"link":"N-'.$redirect_url.'","value"',$price_data);
-		
-		
 		
 		
 		
@@ -653,6 +657,7 @@ if ($brand_check != 'Other') {
 					"canvaspadding": "20",
 					"chartTopMargin":"10",
 					"chartLeftMargin":"0",
+					"SYAxisMaxValue":"'.$max_value.'",
 					"valuepadding": "1"
 				  },
 				  "categories": [
