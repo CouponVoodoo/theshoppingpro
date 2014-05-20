@@ -577,7 +577,7 @@ if ($brand_check != 'Other') {
 		echo $coupon =  coupons_copy_coupon($nid);
 ?>
 		<script type="text/javascript" src="<?php echo $base_url;?>/sites/all/themes/basic/js/custom.js"> </script>
-		<div id="show_more"><a onclick="show_more_coupon_list();jQuery(this).hide();"> + Show more</a></div>
+		<div id="show_more" class="show_more"><a onclick="show_more_coupon_list();jQuery(this).hide();"> + Show All Coupons</a></div>
 <?php
 	}
 
@@ -606,10 +606,12 @@ if ($brand_check != 'Other') {
 		//$coupons_data = str_replace('"couponStatus":"1","BestCouponCode":"','"value":"1", "displayValue":"Coupon Found","tooltext":"Coupon Found","link":"N-'.$redirect_url.'"',$coupons_data);
 		//$coupons_data = str_replace('"couponStatus":"0"','"value":"0", "displayValue":"No Coupon Found", "tooltext":" No Coupon Found"',$coupons_data);
 		$price = db_query("SELECT NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
-		
-	
 		$price_data = drupal_json_encode($price);
 		$price_data = str_replace('"NetPriceAfterSaving"','"link":"N-'.$redirect_url.'","value"',$price_data);
+		
+		
+		
+		
 		
 		
 		//echo $dates_data."\n\n\n".$coupons_data."\n\n\n".$price_data;
