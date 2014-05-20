@@ -1563,6 +1563,7 @@ div#block-views-home_page_welcome-block, .front div.region-content #block-system
 .front div#block-views-home_page_welcome-block, .front div.region-content #block-system-main {height: auto}
 }
 .net_price{ Font-size: 20px !important; color: #438503;}
+.net_price_list{ Font-size: 16px !important; font-weight: bold; color: #438503 !important;}
 .page-node-1 .page #content #content-area #block-system-main {width:100%; text-align:justify}
 #content-area h1.title {clear:both}
 .homepage_retailer_slider {padding-bottom: 10px}
