@@ -3,14 +3,6 @@
 
 $freq=15;
 
-$result = db_query('SELECT status FROM coupon_finder.1Variables n where Serial=3');
-foreach(
-$result as $item) {
-  $updateCount= $item->status;
-}
-	if ($updateCount < $freq){echo 'inside';}
-	else{echo 'outside';}
-/*
 $results = db_query("SELECT distinct entity_id from coupon_finder.priceHistory where updateDate = CURDATE()");
 
 
@@ -40,10 +32,10 @@ db_query("update coupon_finder.predictorCompiledResultTable set updatePriceHisto
 db_query("update coupon_finder.1Variables set status = status+1 where Serial=3")	;
 }
 else {
-db_query("Truncate table priceHistoryBatchData")	;
+//db_query("Truncate table priceHistoryBatchData")	;
 db_query("Insert into priceHistory select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
 $count=db_query("Insert into priceHistoryBatchData select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
 db_query("update coupon_finder.predictorCompiledResultTable set updatePriceHistoryStatus =0")	;
 db_query("update coupon_finder.1Variables set status = 0 where Serial=3")	;
-}*/
+}
 ?>
