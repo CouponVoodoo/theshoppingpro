@@ -149,9 +149,39 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 <script type="text/javascript" src="<?php //echo $base_url;?>/sites/all/libraries/Fusioncharts/FusionCharts.js"> </script>
 -->
 <?php
+		$full_data_array_std_class = db_query("SELECT updateDate, couponStatus, BestCouponCode, NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
+		$full_data_array = json_decode(drupal_json_encode($full_data_array_std_class), true);
+		$dates = array();
+		$coupons = array();
+		$price = array();
+		$all_count = 0;
+		$coupon_count = 0; 
 		
-		$all_count = db_query("SELECT COUNT(*) FROM {priceHistory} WHERE entity_id = ".$nid)->fetchfield();
-		$coupon_count = db_query("SELECT COUNT(*) FROM {priceHistory} WHERE CouponStatus = 1 AND entity_id = ".$nid)->fetchfield();
+		foreach($full_data_array as $array)
+		{
+			$dates[] = array('updateDate'=>$array['updateDate']);
+			$price[] = array('NetPriceAfterSaving'=>$array['NetPriceAfterSaving']);
+			$coupons[] = array('couponStatus'=>$array['couponStatus'],'BestCouponCode'=>$array['BestCouponCode']);
+			$all_count++;
+			if($array['couponStatus'] == 1){$coupon_count++;}
+		}		
+		// $dates = db_query("SELECT updateDate FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
+		$dates_data = drupal_json_encode($dates);
+		$dates_data = str_replace("updateDate","label",$dates_data);
+		// $coupons = db_query("SELECT couponStatus, BestCouponCode FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
+		$coupons_data = drupal_json_encode($coupons);
+		$coupons_data = str_replace('"couponStatus":"0","BestCouponCode":""','"value":"0", "displayValue":"No Coupon Found","link":"N-'.$redirect_url.'", "tooltext":"No Coupon Found"',$coupons_data);
+		$coupons_data = str_replace('"couponStatus":"1","BestCouponCode":"','"value":"1", "displayValue":"Coupon Found","link":"N-'.$redirect_url.'", "tooltext":"Coupon Found: ',$coupons_data);
+		// $price = db_query("SELECT NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
+		$price_data = drupal_json_encode($price);		
+		// start of get max value to create some gap on top of chart
+			$json = json_decode($price_data,true);
+			$max = max($json);
+			$max_value = 1.20 * $max["NetPriceAfterSaving"];
+		// end of get max value to create some gao on top of chart
+		$price_data = str_replace('"NetPriceAfterSaving"','"link":"N-'.$redirect_url.'","value"',$price_data);
+		// $all_count = db_query("SELECT COUNT(*) FROM {priceHistory} WHERE entity_id = ".$nid)->fetchfield();
+		// $coupon_count = db_query("SELECT COUNT(*) FROM {priceHistory} WHERE CouponStatus = 1 AND entity_id = ".$nid)->fetchfield();
 		$coupon_meter = $coupon_count/$all_count * 100;
 		$coupon_meter = number_format($coupon_meter,2, '.', ',');
 		
@@ -617,26 +647,37 @@ if ($brand_check != 'Other') {
 
 	
 <?php
-		$dates = db_query("SELECT updateDate FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
+
+		$full_data_array_std_class = db_query("SELECT updateDate, couponStatus, BestCouponCode, NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
+		$full_data_array = json_decode(drupal_json_encode($full_data_array_std_class), true);
+		$dates = array();
+		$coupons = array();
+		$price = array();
+		$all_count = 0;
+		$coupon_count = 0; 
+		
+		foreach($full_data_array as $array)
+		{
+			$dates[] = array('updateDate'=>$array['updateDate']);
+			$price[] = array('NetPriceAfterSaving'=>$array['NetPriceAfterSaving']);
+			$coupons[] = array('couponStatus'=>$array['couponStatus'],'BestCouponCode'=>$array['BestCouponCode']);
+			$all_count++;
+			if($array['couponStatus'] == 1){$coupon_count++;}
+		}		
+		// $dates = db_query("SELECT updateDate FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
 		$dates_data = drupal_json_encode($dates);
 		$dates_data = str_replace("updateDate","label",$dates_data);
-		
-		
-		//$coupons = db_query("SELECT couponStatus FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
-		$coupons = db_query("SELECT couponStatus, BestCouponCode FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
+		// $coupons = db_query("SELECT couponStatus, BestCouponCode FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
 		$coupons_data = drupal_json_encode($coupons);
 		$coupons_data = str_replace('"couponStatus":"0","BestCouponCode":""','"value":"0", "displayValue":"No Coupon Found","link":"N-'.$redirect_url.'", "tooltext":"No Coupon Found"',$coupons_data);
 		$coupons_data = str_replace('"couponStatus":"1","BestCouponCode":"','"value":"1", "displayValue":"Coupon Found","link":"N-'.$redirect_url.'", "tooltext":"Coupon Found: ',$coupons_data);
-		//$coupons_data = str_replace('"couponStatus":"1","BestCouponCode":"','"value":"1", "displayValue":"Coupon Found","tooltext":"Coupon Found","link":"N-'.$redirect_url.'"',$coupons_data);
-		//$coupons_data = str_replace('"couponStatus":"0"','"value":"0", "displayValue":"No Coupon Found", "tooltext":" No Coupon Found"',$coupons_data);
-		$price = db_query("SELECT NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
+		// $price = db_query("SELECT NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
 		$price_data = drupal_json_encode($price);		
-		// start of get max value to create some gao on top of chart
+		// start of get max value to create some gap on top of chart
 			$json = json_decode($price_data,true);
 			$max = max($json);
 			$max_value = 1.20 * $max["NetPriceAfterSaving"];
 		// end of get max value to create some gao on top of chart
-		
 		$price_data = str_replace('"NetPriceAfterSaving"','"link":"N-'.$redirect_url.'","value"',$price_data);
 		
 		
@@ -644,7 +685,7 @@ if ($brand_check != 'Other') {
 		
 		//echo $dates_data."\n\n\n".$coupons_data."\n\n\n".$price_data;
 		
-		if($node->type == '_product_and_coupon' && sizeof($price)>2 && sizeof($dates)>2  && sizeof($coupons)>2) {
+		if($node->type == '_product_and_coupon' && $all_count > 2) {
 ?>
 
 <h4> <a id="price_history"><?php echo get_label('Coupon & Price History For ')." ".$node->field_retailer_product_name['und']['0']['value'];?></a></h4>
