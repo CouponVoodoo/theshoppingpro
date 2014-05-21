@@ -156,7 +156,6 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 		$price = array();
 		$all_count = 0;
 		$coupon_count = 0; 
-		
 		foreach($full_data_array as $array)
 		{
 			$dates[] = array('updateDate'=>$array['updateDate']);
