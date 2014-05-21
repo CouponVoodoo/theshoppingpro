@@ -2059,3 +2059,11 @@ function coupons_apachesolr_search_page_alter(array &$build, array $search_page)
     drupal_add_html_head(array('#tag' => 'meta', '#attributes' => array('name' => 'robots', 'content' => 'noindex, nofollow')), 'coupons_apachesolr_noresult_metatag');
   }
 }
+
+function array_column($array, $column){
+    $a2 = array();
+    array_map(function ($a1) use ($column, &$a2){
+        array_push($a2, $a1[$column]);
+    }, $array);
+    return $a2;
+}
