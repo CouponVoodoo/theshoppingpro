@@ -2252,12 +2252,8 @@ function get_solr_data($facet, $query_field, $tid, $best_coupon_status){
 		} else {
 			$query = 'q=*:*&version=2.2&start=0&rows=0&indent=on&facet=true&facet.field='.$facet.'&facet.mincount=1&fq=dm_field_lastcheckedtime:['.$time.' TO *] AND '.$query_field.':'.$tid;
 		}
-		//echo nl2br("\n\n\n");
-		//echo $query;
-		// echo nl2br("\n\n\n");
 		$query = urlencode($query);
 		$url = 'http://plugin.theshoppingpro.com/cpnvodo/api/productDetailsByBrand.php?query='.$query;
-		//echo $url;
 		$json = drupal_http_request($url, array('timeout' => 1200.0));
 		$json = json_decode($json->data,true);
 		return $json;
