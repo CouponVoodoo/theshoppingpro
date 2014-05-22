@@ -329,14 +329,14 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 		$product_link = '/search/site/'.str_replace('+at+'.$retailer,'',str_replace(' ','+',strip_tags($fields['field_retailer_product_name']->content)));
 	?>
 
-	<div id="coupon_overview"></div> 
+	<div id="coupon_meter"></div> 
 	<?PHP
 		if ($all_count > 2) {
 			drupal_add_js($base_url.'/sites/all/libraries/Fusioncharts/FusionCharts.js',  array('scope' => 'footer'));
 			drupal_add_js("jQuery(window).load(function(){
 				var myChart = new FusionCharts( 'AngularGauge', 'coupon_overview', '105%', '150', '1' );
 				myChart.setJSONData(Drupal.settings.coupon_overview.coupon_overview_json);
-				myChart.render('coupon_overview');
+				myChart.render('coupon_meter');
 			});", array('type' => 'inline', 'scope' => 'footer'));
 		} else {
 	?>
@@ -628,8 +628,9 @@ if ($brand_check != 'Other') {
 <?php
 	} else {
 		echo $coupon =  coupons_copy_coupon($nid);
+		drupal_add_js(($base_url.'/sites/all/themes/basic/js/custom.js'), array('scope' => 'footer'));
 ?>
-		<script type="text/javascript" src="<?php echo $base_url;?>/sites/all/themes/basic/js/cusdddtom.js"> </script>
+<!--		<script type="text/javascript" src="<?php //echo $base_url;?>/sites/all/themes/basic/js/custom.js"> </script> -->
 		<div id="show_more" class="show_more"><a onclick="show_more_coupon_list();jQuery(this).hide();"> + Show All Coupons</a></div>
 <?php
 	}
@@ -689,7 +690,7 @@ if ($brand_check != 'Other') {
 
 <h4> <a id="price_history"><?php echo get_label('Coupon & Price History For ')." ".$node->field_retailer_product_name['und']['0']['value'];?></a></h4>
 <!-- <script type="text/javascript" src="<?php echo $base_url;?>/sites/all/libraries/Fusioncharts/FusionCharts.js"> </script> -->
-<div id="coupon_price_history"></div> 
+<div id="coupon_price_history_graph"></div> 
 
 <?php
 		
@@ -793,7 +794,7 @@ if ($brand_check != 'Other') {
 			drupal_add_js("jQuery(window).load(function(){
 				var myChart = new FusionCharts( 'MSColumn3DLineDY', 'coupon_price_history', '100%', '400', '1' );
 				myChart.setJSONData(Drupal.settings.all_data.all_data_json_js);
-				myChart.render('coupon_price_history');
+				myChart.render('coupon_price_history_graph');
 			});", array('type' => 'inline', 'scope' => 'footer'));
 		}
 ?>
