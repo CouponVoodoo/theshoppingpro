@@ -505,7 +505,8 @@ function custom_api_addproduct($ProInfo){
 			// drupal_flush_all_caches();
 			//varnish_purge('www.couponvoodoo.com', 'node/'.$node->nid);
 			//varnish_purge('onlineshopping.cuponation.in', 'node/'.$node->nid);
-			drupal_goto($node_url);
+			// drupal_goto($node_url);
+			echo 'inside';
 		}
 	}else{
 		$response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
