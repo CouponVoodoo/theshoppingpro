@@ -2067,3 +2067,224 @@ function array_column($array, $column){
     }, $array);
     return $a2;
 }
+
+function taxonomy_get_nested_tree($terms = array(), $max_depth = NULL, $parent = 0, $parents_index = array(), $depth = 0) {
+  if (is_int($terms)) {
+	$terms = taxonomy_get_tree($terms);
+  }
+  foreach($terms as $term) {
+	foreach($term->parents as $term_parent) {
+	  if ($term_parent == $parent) {
+		$return[$term->tid] = $term;
+	  }
+	  else {
+		$parents_index[$term_parent][$term->tid] = $term;
+	  }
+	}
+  }
+  foreach($return as &$term) {
+	if (isset($parents_index[$term->tid]) && (is_null($max_depth) || $depth < $max_depth)) {
+	  $term->children = taxonomy_get_nested_tree($parents_index[$term->tid], $max_depth, $term->tid, $parents_index, $depth + 1);
+	}
+  }
+  return $return;
+}
+
+
+
+function coupon_pie_category_json($tree, $taxonomy_list, $original_term_name, $facet, $vid) {
+	if (count($tree)) {
+		$taxonomy_list_keys = array_keys($taxonomy_list);
+		// $output = '<ul class="taxonomy-tree">';
+		//$output .='"category": [{';
+		foreach ($tree as $term) {
+			
+			$color = '25ade3';
+			
+			$parent = taxonomy_get_parents($term['tid']);
+			if (empty($parent)){
+				$color = coupon_pie_color($term['tid'], $vid);
+				$alpha = 100;
+			} else {
+				$parent_key = array_keys($parent);
+				$color = coupon_pie_color($parent_key[0], $vid);
+				$alpha = 75;
+			}
+			// var_dump($parent);
+			// echo nl2br("\n\n\n");
+			
+			
+			if (in_array($term['tid'],$taxonomy_list_keys)){ 
+				$value =  $taxonomy_list[$term['tid']]; 
+				$name = $term['name'];
+				$current_tid = $term['tid'];
+				$tooltext = $name.', '.$value.' products with coupons';
+				if (!empty($term['children'])) {
+						$output .='{';
+						$output .= coupon_pie_json_element($name, $current_tid, $value, $color,$alpha, $tooltext, $original_term_name, $facet); 
+						$output .=',"category": [';
+						//$output .= $term['name'];
+						$output .= coupon_pie_category_json($term['children'], $taxonomy_list, $original_term_name, $facet, $vid);
+						$output .= '],';
+						$output .= '},';
+				} else {
+						$output .='{';
+						$output .= coupon_pie_json_element($name, $current_tid, $value, $color, $alpha, $tooltext, $original_term_name,$facet); 
+						//$output .= $term['name'];
+						$output .= '},';
+				}
+				
+			}
+		}
+		//$output .= '</ul>';
+		// $output .= '}],';
+	}
+	return $output;
+}
+
+function coupon_pie_json_element($name, $current_tid, $value, $color, $alpha, $tooltext, $original_term_name, $facet){
+	global $base_url;
+	$label = $name.' ('.$value.')';
+	$label = str_replace(" ","{br}",$label);
+	$name_url = str_replace(" ","-",strtolower($original_term_name));
+	$link = $base_url.'/b/'.$name_url.'-coupons?f[0]='.$facet.':'.$current_tid;
+	$element = '"label": "'.$label.'", "value": "30", "color": "'.$color.'", "alpha": "'.$alpha.'", "tooltext": "'.$tooltext.'", "link": "'.$link.'"';
+	return $element;
+}
+
+
+/*** DESCRIPTION OF TERMS ******
+ $facet: Facet for search on solr e.g. im_field_category - this is the field that will show up on the graph
+ $vid: vocabulary of the facet
+ $depth: how many levels do we want to plot, normally 1
+ $query field: this is the taxonomy type for which the query will be fired e.g. im_field_brand to create field n brand page
+ $tid: the id of teh taxonomy on which we are creating the graph
+ $original_term_name: Name of the taxonomy term
+ $best_coupon_status: 1 to show only coupon products anything else to show all product
+ ********************************/
+function coupon_pie_create_graph($facet, $vid, $query_field, $tid, $depth, $original_term_name, $best_coupon_status){
+	global $base_url;
+	drupal_add_js($base_url.'/sites/all/libraries/Fusioncharts/FusionCharts.js');
+	$taxonomy_list = get_solr_data($facet, $query_field, $tid, $best_coupon_status); // this gets the solr result 
+	$tree= json_decode(drupal_json_encode(taxonomy_get_nested_tree($vid,$depth)),true); // this gets the nested tree for category
+	$coupon_pie_json=coupon_pie_category_json($tree, $taxonomy_list, $original_term_name, $facet, $vid); // this is the final output string
+	$coupon_pie_json = ',"category": ['.$coupon_pie_json.']';
+	$coupon_pie_json = str_replace(",}","}",$coupon_pie_json);
+	$coupon_pie_json = str_replace(",]","]",$coupon_pie_json);
+	$coupon_pie_json = '
+				{
+				  "chart": {
+					"caption": "Quick Links to '.$original_term_name.' Products With Coupons",
+					"subcaption": "(Click on a Category Name to View Products)",
+					"bgcolor": "FFFFFF",
+					"pieborderthickness": "1",
+					"piebordercolor": "FFFFFF",
+					"usehovercolor": "1",
+					"hoverfillcolor": "800000",
+					"showlabels": "1",
+					"showvalue": "1",
+					"showvalueintooltip": "1",
+					"basefontcolor": "FFFFFF",
+					"captionPadding": "0",
+					"chartTopMargin":"5",
+					"showborder": "0"					
+				  },
+				  "category": [
+					{
+					  "label": "'.$original_term_name.'{br}Products{br}With{br}Coupons",
+					  "color": "800000",
+					  "alpha": "100"
+					'.$coupon_pie_json.'
+				  }],				  
+				  "styles": {
+					"definition": [
+					  {
+						"name": "CaptionFont",
+						"type": "font",
+						"size": "16",
+						"color": "999999"
+					  },
+					  {
+						"name": "SubCaptionFont",
+						"type": "font",
+						"size": "12",
+						"color": "999999"
+					  }
+					],
+					"application": [
+					  {
+						"toobject": "CAPTION",
+						"styles": "CaptionFont"
+					  },
+					  {
+						"toobject": "SUBCAPTION",
+						"styles": "SubCaptionFont"
+					  }
+					]
+				  }
+				}
+			';
+	
+	drupal_add_js(array('coupon_pie_json' => array('coupon_pie_json_js' => $coupon_pie_json)), array('type' => 'setting'));
+
+}
+function get_solr_data($facet, $query_field, $tid, $best_coupon_status){
+		$time=time()-(36*3600);
+		$time=gmdate('Y-m-d\TH:i:s\Z', $time);
+		if ($best_coupon_status == 1){
+			$query = 'q=*:*&version=2.2&start=0&rows=0&indent=on&facet=true&facet.field='.$facet.'&facet.mincount=1&fq=dm_field_lastcheckedtime:['.$time.' TO *] AND '.$query_field.':'.$tid.' AND its_field_best_coupon_status:1';
+		} else {
+			$query = 'q=*:*&version=2.2&start=0&rows=0&indent=on&facet=true&facet.field='.$facet.'&facet.mincount=1&fq=dm_field_lastcheckedtime:['.$time.' TO *] AND '.$query_field.':'.$tid;
+		}
+		$query = urlencode($query);
+		$url = 'http://plugin.theshoppingpro.com/cpnvodo/api/productDetailsByBrand.php?query='.$query;
+		$json = drupal_http_request($url, array('timeout' => 1200.0));
+		$json = json_decode($json->data,true);
+		return $json;
+}
+
+function coupon_pie_color($tid, $vid) {
+
+	switch ($vid) {
+		case "2":
+			switch ($tid) {
+				default:
+					return '25ade3';
+			}
+		break;
+		case "3":
+			switch ($tid) {
+				case "24":
+					return '25ade3';
+				break;				
+				case "46":
+					return 'f7971c';
+				break;
+				case "66":
+					return '009933';
+				break;
+				case "74":
+					return 'CC00CC';
+				break;
+				case "13":
+					return 'CC6600';
+				break;
+				case "84":
+					return 'CC9900';
+				break;
+				case "7400":
+					return '999966';
+				break;				
+				default:
+					return '25ade3';
+			}		break;
+		case "4":
+			switch ($tid) {
+				default:
+					return '25ade3';
+			}		break;
+		default:
+			return '25ade3';	
+
+	}
+}
