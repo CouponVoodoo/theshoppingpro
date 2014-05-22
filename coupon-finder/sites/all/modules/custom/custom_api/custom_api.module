@@ -503,10 +503,9 @@ function custom_api_addproduct($ProInfo){
 			// entity_get_controller('node')->resetCache(array($node->nid)); // did not work
 			// node_save($node);
 			// drupal_flush_all_caches();
-			//varnish_purge('www.couponvoodoo.com', 'node/'.$node->nid);
-			//varnish_purge('onlineshopping.cuponation.in', 'node/'.$node->nid);
-			// drupal_goto($node_url);
-			echo 'inside';
+			// varnish_purge('www.couponvoodoo.com', 'node/'.$node->nid);
+			// varnish_purge('onlineshopping.cuponation.in', 'node/'.$node->nid);
+			drupal_goto($node_url);
 		}
 	}else{
 		$response = json_encode( array('ResponseCode' => '4', 'Response' => 'Unexpected Error.') );
