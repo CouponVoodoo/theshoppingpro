@@ -332,7 +332,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 	<div id="coupon_overview"></div> 
 	<?PHP
 		if ($all_count > 2) {
-			drupal_add_js($base_url.'/sites/all/libraries/Fusioncharts/FusionCharts.js');
+			drupal_add_js($base_url.'/sites/all/libraries/Fusioncharts/FusionCharts.js',  array('scope' => 'footer'));
 			drupal_add_js("jQuery(window).load(function(){
 				var myChart = new FusionCharts( 'AngularGauge', 'coupon_overview', '105%', '150', '1' );
 				myChart.setJSONData(Drupal.settings.coupon_overview.coupon_overview_json);
@@ -629,7 +629,7 @@ if ($brand_check != 'Other') {
 	} else {
 		echo $coupon =  coupons_copy_coupon($nid);
 ?>
-		<script type="text/javascript" src="<?php echo $base_url;?>/sites/all/themes/basic/js/custom.js"> </script>
+		<script type="text/javascript" src="<?php echo $base_url;?>/sites/all/themes/basic/js/cusdddtom.js"> </script>
 		<div id="show_more" class="show_more"><a onclick="show_more_coupon_list();jQuery(this).hide();"> + Show All Coupons</a></div>
 <?php
 	}
