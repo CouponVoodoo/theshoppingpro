@@ -2162,81 +2162,87 @@ function coupon_pie_json_element($name, $current_tid, $value, $color, $alpha, $t
  $original_term_name: Name of the taxonomy term
  $best_coupon_status: 1 to show only coupon products anything else to show all product
  ********************************/
-function coupon_pie_create_graph($facet, $vid, $query_field, $tid, $depth, $original_term_name, $best_coupon_status){
+function coupon_pie_create_graph($facet, $vid, $query_field, $tid, $depth, $original_term_name, $best_coupon_status, $chart_type){
 	global $base_url;
-	drupal_add_js($base_url.'/sites/all/libraries/Fusioncharts/FusionCharts.js');
 	$taxonomy_list = get_solr_data($facet, $query_field, $tid, $best_coupon_status); // this gets the solr result 
-	$tree= json_decode(drupal_json_encode(taxonomy_get_nested_tree($vid,$depth)),true); // this gets the nested tree for category making tid a number
-	$coupon_pie_json=coupon_pie_category_json($tree, $taxonomy_list, $original_term_name, $facet, $vid); // this is the final output string
-	$coupon_pie_json = ',"category": ['.$coupon_pie_json.']';
-	$coupon_pie_json = str_replace(",}","}",$coupon_pie_json);
-	$coupon_pie_json = str_replace(",]","]",$coupon_pie_json);
-	$coupon_pie_json = '
-				{
-				  "chart": {
-					"caption": "Quick Links to '.$original_term_name.' Products With Coupons",
-					"subcaption": "(Click on a Category Name to View Products)",
-					"bgcolor": "FFFFFF",
-					"pieborderthickness": "1",
-					"piebordercolor": "FFFFFF",
-					"usehovercolor": "1",
-					"hoverfillcolor": "800000",
-					"showlabels": "1",
-					"showvalue": "1",
-					"showvalueintooltip": "1",
-					"basefontcolor": "FFFFFF",
-					"captionPadding": "0",
-					"chartTopMargin":"5",
-					"showborder": "0"					
-				  },
-				  "category": [
+	if (sizeof($taxonomy_list) > 4) {
+		drupal_add_js($base_url.'/sites/all/libraries/Fusioncharts/FusionCharts.js');
+		$tree= json_decode(drupal_json_encode(taxonomy_get_nested_tree($vid,$depth)),true); // this gets the nested tree for category making tid a number
+		$coupon_pie_json=coupon_pie_category_json($tree, $taxonomy_list, $original_term_name, $facet, $vid); // this is the final output string
+		$coupon_pie_json = ',"category": ['.$coupon_pie_json.']';
+		$coupon_pie_json = str_replace(",}","}",$coupon_pie_json);
+		$coupon_pie_json = str_replace(",]","]",$coupon_pie_json);
+		$coupon_pie_json = '
 					{
-					  "label": "'.$original_term_name.'{br}Products{br}With{br}Coupons",
-					  "color": "800000",
-					  "alpha": "100"
-					'.$coupon_pie_json.'
-				  }],				  
-				  "styles": {
-					"definition": [
-					  {
-						"name": "CaptionFont",
-						"type": "font",
-						"size": "16",
-						"color": "f7971c"
+					  "chart": {
+						"caption": "Quick Links to '.$original_term_name.' Products With Coupons",
+						"subcaption": "(Click on a Category Name to View Products)",
+						"bgcolor": "FFFFFF",
+						"pieborderthickness": "1",
+						"piebordercolor": "FFFFFF",
+						"usehovercolor": "1",
+						"hoverfillcolor": "800000",
+						"showlabels": "1",
+						"showvalue": "1",
+						"showvalueintooltip": "1",
+						"basefontcolor": "FFFFFF",
+						"captionPadding": "0",
+						"chartTopMargin":"5",
+						"showborder": "0"					
 					  },
-					  {
-						"name": "SubCaptionFont",
-						"type": "font",
-						"size": "12",
-						"color": "f7971c"
-					  },
-					  {
-						"name": "ToolTip",
-						"type": "font",
-						"size": "10",
-						"color": "999999"
+					  "category": [
+						{
+						  "label": "'.$original_term_name.'{br}Products{br}With{br}Coupons",
+						  "color": "800000",
+						  "alpha": "100"
+						'.$coupon_pie_json.'
+					  }],				  
+					  "styles": {
+						"definition": [
+						  {
+							"name": "CaptionFont",
+							"type": "font",
+							"size": "16",
+							"color": "f7971c"
+						  },
+						  {
+							"name": "SubCaptionFont",
+							"type": "font",
+							"size": "12",
+							"color": "f7971c"
+						  },
+						  {
+							"name": "ToolTip",
+							"type": "font",
+							"size": "10",
+							"color": "999999"
+						  }
+						],
+						"application": [
+						  {
+							"toobject": "CAPTION",
+							"styles": "CaptionFont"
+						  },
+						  {
+							"toobject": "TOOLTIP",
+							"styles": "ToolTip"
+						  },
+						  {
+							"toobject": "SUBCAPTION",
+							"styles": "SubCaptionFont"
+						  }
+						]
 					  }
-					],
-					"application": [
-					  {
-						"toobject": "CAPTION",
-						"styles": "CaptionFont"
-					  },
-					  {
-						"toobject": "TOOLTIP",
-						"styles": "ToolTip"
-					  },
-					  {
-						"toobject": "SUBCAPTION",
-						"styles": "SubCaptionFont"
-					  }
-					]
-				  }
-				}
-			';
-	
-	drupal_add_js(array('coupon_pie_json' => array('coupon_pie_json_js' => $coupon_pie_json)), array('type' => 'setting'));
-
+					}
+				';
+		
+		drupal_add_js(array('coupon_pie_json' => array('coupon_pie_json_js' => $coupon_pie_json)), array('type' => 'setting'));
+		drupal_add_js("jQuery(window).load(function(){
+				var myChart = new FusionCharts( '".$chart_type."', 'Coupon Pie Chart', '100%', '500', '1' );
+				myChart.setJSONData(Drupal.settings.coupon_pie_json.coupon_pie_json_js);
+				myChart.render('coupon_pie_chart');
+			});", array('type' => 'inline', 'scope' => 'footer'));
+		}
 }
 function get_solr_data($facet, $query_field, $tid, $best_coupon_status){
 		$time=time()-(36*3600);
