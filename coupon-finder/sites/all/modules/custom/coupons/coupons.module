@@ -2105,20 +2105,20 @@ function coupon_pie_category_json($tree, $taxonomy_list, $original_term_name, $f
 			if (empty($parent)){
 				$color = coupon_pie_color($term['tid'], $vid);
 				$alpha = 100;
+				$parent_name = "";
 			} else {
 				$parent_key = array_keys($parent);
 				$color = coupon_pie_color($parent_key[0], $vid);
 				$alpha = 75;
+				$parent = json_decode(drupal_json_encode($parent),true);
+				$parent_name = $parent[$parent_key[0]]['name'];
 			}
-			// var_dump($parent);
-			// echo nl2br("\n\n\n");
-			
-			
+	
 			if (in_array($term['tid'],$taxonomy_list_keys)){ 
 				$value =  $taxonomy_list[$term['tid']]; 
 				$name = $term['name'];
 				$current_tid = $term['tid'];
-				$tooltext = $name.', '.$value.' products with coupons';
+				$tooltext = 'Click to view '.$value.' '.$original_term_name.' '.$parent_name.' '.$name.' products with coupons';
 				if (!empty($term['children'])) {
 						$output .='{';
 						$output .= coupon_pie_json_element($name, $current_tid, $value, $color,$alpha, $tooltext, $original_term_name, $facet); 
@@ -2166,7 +2166,7 @@ function coupon_pie_create_graph($facet, $vid, $query_field, $tid, $depth, $orig
 	global $base_url;
 	drupal_add_js($base_url.'/sites/all/libraries/Fusioncharts/FusionCharts.js');
 	$taxonomy_list = get_solr_data($facet, $query_field, $tid, $best_coupon_status); // this gets the solr result 
-	$tree= json_decode(drupal_json_encode(taxonomy_get_nested_tree($vid,$depth)),true); // this gets the nested tree for category
+	$tree= json_decode(drupal_json_encode(taxonomy_get_nested_tree($vid,$depth)),true); // this gets the nested tree for category making tid a number
 	$coupon_pie_json=coupon_pie_category_json($tree, $taxonomy_list, $original_term_name, $facet, $vid); // this is the final output string
 	$coupon_pie_json = ',"category": ['.$coupon_pie_json.']';
 	$coupon_pie_json = str_replace(",}","}",$coupon_pie_json);
@@ -2202,12 +2202,18 @@ function coupon_pie_create_graph($facet, $vid, $query_field, $tid, $depth, $orig
 						"name": "CaptionFont",
 						"type": "font",
 						"size": "16",
-						"color": "999999"
+						"color": "f7971c"
 					  },
 					  {
 						"name": "SubCaptionFont",
 						"type": "font",
 						"size": "12",
+						"color": "f7971c"
+					  },
+					  {
+						"name": "ToolTip",
+						"type": "font",
+						"size": "10",
 						"color": "999999"
 					  }
 					],
@@ -2215,6 +2221,10 @@ function coupon_pie_create_graph($facet, $vid, $query_field, $tid, $depth, $orig
 					  {
 						"toobject": "CAPTION",
 						"styles": "CaptionFont"
+					  },
+					  {
+						"toobject": "TOOLTIP",
+						"styles": "ToolTip"
 					  },
 					  {
 						"toobject": "SUBCAPTION",
