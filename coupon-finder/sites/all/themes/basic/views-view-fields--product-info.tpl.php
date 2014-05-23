@@ -798,10 +798,3 @@ if ($brand_check != 'Other') {
 			});", array('type' => 'inline', 'scope' => 'footer'));
 		}
 ?>
-
-<?php
-
-
-
-?>
-
