@@ -3,6 +3,7 @@
 function custom_api_menu() {
   $items = array();
 
+  
   $items['add-product/%'] = array(//this creates a URL that will call this form at "examples/form-example"
       'title' => 'Add Product in database', //page title
       'page callback' => 'custom_api_addproduct', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
