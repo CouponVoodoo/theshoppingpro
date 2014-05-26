@@ -295,7 +295,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 			}
 		';
 
-		drupal_add_js(array('coupon_overview' => array('coupon_overview_json' => $coupon_overview_json)), array('type' => 'setting'));
+		drupal_add_js(array('coupon_overview' => array('coupon_overview_json' => $coupon_overview_json)), array('type' => 'setting', 'scope' => 'footer'));
 
 ?>
 <!-- ********************* END OF CHART DATA FOR COUPON OVERVIEW ************************  -->
@@ -790,7 +790,7 @@ if ($brand_check != 'Other') {
 			//echo $all_data_json; die();
 
 			// $coupon_data_json .= '"data" : '.$coupon_data.'}';
-			drupal_add_js(array('all_data' => array('all_data_json_js' => $all_data_json)), array('type' => 'setting'));
+			drupal_add_js(array('all_data' => array('all_data_json_js' => $all_data_json)), array('type' => 'setting', 'scope' => 'footer'));
 			drupal_add_js("jQuery(window).load(function(){
 				var myChart = new FusionCharts( 'MSColumn3DLineDY', 'coupon_price_history', '100%', '400', '1' );
 				myChart.setJSONData(Drupal.settings.all_data.all_data_json_js);
@@ -803,7 +803,7 @@ if ($brand_check != 'Other') {
     if (isset($_SESSION['CvGa'])) {
 		drupal_add_js(array('ga_search' => array(			
 				'keyword' => $_SESSION['CvGa']['url']
-			)), array('type' => 'setting'));
+			)), array('type' => 'setting'), 'scope' => 'footer'));
 		if($_SESSION['CvGa']['urlStatus'] == 0) {
 			drupal_add_js("jQuery(window).load(function(){
 				ga('send', 'event', 'site-search', 'keyword', Drupal.settings.ga_search.keyword);
