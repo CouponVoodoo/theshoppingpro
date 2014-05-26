@@ -542,26 +542,10 @@ function coupons_validate_url($url) {
 
 function coupons_finder_form_validate($form, &$form_state) {
 	$urlStatus = coupons_validate_url( $form_state['values']['url'] );
-        
-        $_SESSION['CvGa']['url'] = $form_state['values']['url'];
-        $_SESSION['CvGa']['urlStatus'] = $urlStatus;
-
-	/* EVENT TRACKING FOR SEARCH */
-	drupal_add_js(array('ga_search' => array(			
-			'keyword' => $form_state['values']['url']
-		)), array('type' => 'setting'));
-	if($urlStatus == 0) {
-		drupal_add_js("jQuery(window).load(function(){
-			ga('send', 'event', 'site-search', 'keyword', Drupal.settings.ga_search.keyword);
-			alert (Drupal.settings.ga_search.keyword);
-		});", array('type' => 'inline', 'scope' => 'footer'));
-	} else {	
-		drupal_add_js("jQuery(window).load(function(){
-			ga('send', 'event', 'site-search', 'url', Drupal.settings.ga_search.keyword);
-			alert (Drupal.settings.ga_search.keyword);
-		});", array('type' => 'inline', 'scope' => 'footer'));	
-	}
-	  	  
+    /* adding variables to push tp GA event on page load */    
+	$_SESSION['CvGa']['url'] = $form_state['values']['url'];
+    $_SESSION['CvGa']['urlStatus'] = $urlStatus;
+  
 	  
   if( !empty($form_state['values']['url']) ){
       if($urlStatus == 0){
@@ -2327,9 +2311,25 @@ function coupon_pie_color($tid, $vid) {
 
 /**
  * Implements hook_apachesolr_process_results
+ * This currently used to track search
  */
-function custom_sort_apachesolr_process_results(array &$results, DrupalSolrQueryInterface $query) {
+function coupons_apachesolr_process_results(array &$results, DrupalSolrQueryInterface $query) {
     if (isset($_SESSION['CvGa'])) {
-        print_r($_SESSION['CvGa']); die;
+		/* EVENT TRACKING FOR SEARCH */
+		drupal_add_js(array('ga_search' => array(			
+				'keyword' => $_SESSION['CvGa']['url']
+			)), array('type' => 'setting'));
+		if($_SESSION['CvGa']['urlStatus'] == 0) {
+			drupal_add_js("jQuery(window).load(function(){
+				ga('send', 'event', 'site-search', 'keyword', Drupal.settings.ga_search.keyword);
+			});", array('type' => 'inline', 'scope' => 'footer'));
+		} else {	
+			drupal_add_js("jQuery(window).load(function(){
+				ga('send', 'event', 'site-search', 'url', Drupal.settings.ga_search.keyword);
+			});", array('type' => 'inline', 'scope' => 'footer'));	
+		}
+		unset($_SESSION['CvGa']);
     }
 }
+
+
