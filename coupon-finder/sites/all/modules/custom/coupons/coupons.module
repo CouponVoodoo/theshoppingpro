@@ -542,6 +542,9 @@ function coupons_validate_url($url) {
 
 function coupons_finder_form_validate($form, &$form_state) {
 	$urlStatus = coupons_validate_url( $form_state['values']['url'] );
+        
+        $_SESSION['CvGa']['url'] = $form_state['values']['url'];
+        $_SESSION['CvGa']['urlStatus'] = $urlStatus;
 
 	/* EVENT TRACKING FOR SEARCH */
 	drupal_add_js(array('ga_search' => array(			
@@ -2077,13 +2080,13 @@ function coupons_apachesolr_search_page_alter(array &$build, array $search_page)
   }
 }
 
-function array_column($array, $column){
-    $a2 = array();
-    array_map(function ($a1) use ($column, &$a2){
-        array_push($a2, $a1[$column]);
-    }, $array);
-    return $a2;
-}
+//function array_column($array, $column){
+//    $a2 = array();
+//    array_map(function ($a1) use ($column, &$a2){
+//        array_push($a2, $a1[$column]);
+//    }, $array);
+//    return $a2;
+//}
 
 function taxonomy_get_nested_tree($terms = array(), $max_depth = NULL, $parent = 0, $parents_index = array(), $depth = 0) {
   if (is_int($terms)) {
@@ -2320,4 +2323,13 @@ function coupon_pie_color($tid, $vid) {
 			return '25ade3';	
 
 	}
+}
+
+/**
+ * Implements hook_apachesolr_process_results
+ */
+function custom_sort_apachesolr_process_results(array &$results, DrupalSolrQueryInterface $query) {
+    if (isset($_SESSION['CvGa'])) {
+        print_r($_SESSION['CvGa']); die;
+    }
 }
