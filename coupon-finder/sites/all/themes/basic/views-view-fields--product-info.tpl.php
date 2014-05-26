@@ -31,7 +31,6 @@
 <?php
 $current_domain = get_current_domain();
 $url_path = rawurlencode(drupal_get_path_alias());
-mail('team@theshoppingpro.com','testing duplicate', $url_path);
 $nid = arg(1);
 $node = node_load($nid);
 $mrp = $node->field_mrpproductprice['und'][0]['value'];
