@@ -803,7 +803,7 @@ if ($brand_check != 'Other') {
     if (isset($_SESSION['CvGa'])) {
 		drupal_add_js(array('ga_search' => array(			
 				'keyword' => $_SESSION['CvGa']['url']
-			)), array('type' => 'setting'), 'scope' => 'footer'));
+			)), array('type' => 'setting', 'scope' => 'footer'));
 		if($_SESSION['CvGa']['urlStatus'] == 0) {
 			drupal_add_js("jQuery(window).load(function(){
 				ga('send', 'event', 'site-search', 'keyword', Drupal.settings.ga_search.keyword);
