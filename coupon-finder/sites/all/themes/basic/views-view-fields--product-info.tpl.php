@@ -31,6 +31,7 @@
 <?php
 $current_domain = get_current_domain();
 $url_path = rawurlencode(drupal_get_path_alias());
+mail('team@theshoppingpro.com','testing duplicate', $url_path);
 $nid = arg(1);
 $node = node_load($nid);
 $mrp = $node->field_mrpproductprice['und'][0]['value'];
@@ -797,4 +798,24 @@ if ($brand_check != 'Other') {
 				myChart.render('coupon_price_history_graph');
 			});", array('type' => 'inline', 'scope' => 'footer'));
 		}
+		
+		/* EVENT TRACKING FOR SEARCH */
+		
+    if (isset($_SESSION['CvGa'])) {
+		drupal_add_js(array('ga_search' => array(			
+				'keyword' => $_SESSION['CvGa']['url']
+			)), array('type' => 'setting'));
+		if($_SESSION['CvGa']['urlStatus'] == 0) {
+			drupal_add_js("jQuery(window).load(function(){
+				ga('send', 'event', 'site-search', 'keyword', Drupal.settings.ga_search.keyword);
+				alert (Drupal.settings.ga_search.keyword);
+			});", array('type' => 'inline', 'scope' => 'footer'));
+		} else {	
+			drupal_add_js("jQuery(window).load(function(){
+				ga('send', 'event', 'site-search', 'url', Drupal.settings.ga_search.keyword);
+				alert (Drupal.settings.ga_search.keyword);
+			});", array('type' => 'inline', 'scope' => 'footer'));	
+		}
+		unset($_SESSION['CvGa']);
+    }
 ?>
