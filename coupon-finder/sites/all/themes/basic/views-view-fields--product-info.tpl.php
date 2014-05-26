@@ -333,11 +333,13 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 	<?PHP
 		if ($all_count > 2) {
 			drupal_add_js($base_url.'/sites/all/libraries/Fusioncharts/FusionCharts.js',  array('scope' => 'footer'));
-			drupal_add_js("jQuery(window).load(function(){
+			drupal_add_js("jQuery(document).ready(function($){
+				$('#block-system-main').mousemove(function(){
+				alert('dasudsh');
 				var myChart = new FusionCharts( 'AngularGauge', 'coupon_overview', '105%', '150', '1' );
 				myChart.setJSONData(Drupal.settings.coupon_overview.coupon_overview_json);
 				myChart.render('coupon_meter');
-			});", array('type' => 'inline', 'scope' => 'footer'));
+			}});", array('type' => 'inline', 'scope' => 'footer'));
 		} else {
 	?>
 	<div class='blue_button'><a href="<?php echo $product_link;?>" class='d_view_store'><?php echo get_label('View More From ').substr($brand, 0, 40);?></a></div>
