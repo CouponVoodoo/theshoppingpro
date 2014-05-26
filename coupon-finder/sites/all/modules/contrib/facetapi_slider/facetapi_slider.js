@@ -9,7 +9,7 @@ Drupal.behaviors.facetapi_slider = {
         // Find the slider form with the matching Id.
         var $form = $('#' + settings.facetapi.facets[index].id, context);
         // Hide the form itself and create a slider.
-        Drupal.facetapi_slider.makeSlider($form, settings.facetapi.facets[index]);
+  //      Drupal.facetapi_slider.makeSlider($form, settings.facetapi.facets[index]); // commented by Ashish to remove slider JS
       }
     }
   }
