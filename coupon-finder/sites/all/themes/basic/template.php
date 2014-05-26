@@ -312,7 +312,7 @@ function basic_preprocess_node(&$vars) {
         $vars['classes_array'] = array_merge($vars['classes_array'], $node->classes_array);
     }
 }
-
+/* COMMENTED OUT BY ASHISH AS IT WAS CREATING DUPLICATE JS CALL WHENEVER DRUPAL_ADD_JS WAS USED
 function basic_preprocess_block(&$vars, $hook) {
     // Add a striping class.
     $vars['classes_array'][] = 'block-' . $vars['block_zebra'];
@@ -331,7 +331,7 @@ function basic_preprocess_block(&$vars, $hook) {
         $vars['classes_array'][] = $first_last;
     }
 }
-
+*/
 /**
  * Return a themed breadcrumb trail.
  *
