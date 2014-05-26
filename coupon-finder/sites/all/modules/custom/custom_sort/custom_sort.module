@@ -14,3 +14,12 @@ function custom_sort_apachesolr_query_prepare(&$query){
     $query->removeAvailableSort('sort_name');
  
 }
+
+/**
+ * Implements hook_apachesolr_process_results
+ */
+function custom_sort_apachesolr_process_results(array &$results, DrupalSolrQueryInterface $query) {
+    drupal_add_js("jQuery(window).load(function() {
+        ga('send', 'event', 'site-search', 'keyword', Drupal.settings.ga_search.keyword,{'dimension6': Drupal.settings.ga_search.current_page});
+        });", array('type' => 'inline', 'scope' => 'footer'));
+}
