@@ -1617,3 +1617,22 @@ div#block-views-home_page_welcome-block, .front div.region-content #block-system
 }
 
 /* END OF FLOATING MENU FOR PAGE */
+
+.facetapi-facetapi-slider .form-item, .facetapi-facetapi-slider .form-actions {float: left; padding: 0px 5px; margin: 0px !important}
+
+.facetapi-slider-min, .facetapi-slider-max {padding: 3px !important;}
+
+.block-facetapi input[type="submit"]{
+background: none repeat scroll 0 0 #F7971C;
+    border: medium none;
+    color: #FFFFFF;
+    display: inline-block;
+    float: right;
+    font-size: 13px;
+    font-weight: bold;
+    height: 23px;
+    line-height: 24px;
+    margin: 10px 5px;
+    padding: 0 9px;
+    text-decoration: none;
+}
