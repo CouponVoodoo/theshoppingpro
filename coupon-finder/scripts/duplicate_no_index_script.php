@@ -161,8 +161,8 @@ foreach ($results as $result) {
 	echo "\n";
 
 	$i=$i+1;
-	if ($i>40){
-	echo 'exiting';
+	if ($i>50){
+	echo 'exiting': .$i;
 		exit;
 	}
 }
