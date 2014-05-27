@@ -162,6 +162,7 @@ foreach ($results as $result) {
 
 	$i=$i+1;
 	if ($i>40){
+	echo 'exiting';
 		exit;
 	}
 }
