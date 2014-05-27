@@ -56,7 +56,7 @@ $detect = mobile_detect_get_object();
 $is_tablet = $detect->isTablet();
 $is_mobile = $detect->isMobile();
   
-  if(!$is_mobile && !$is_tablet){echo 'show graph';} else {echo 'dont show graph';}
+  if(!$is_mobile){echo 'show graph';} else {echo 'dont show graph';}
 
 /** Start of By Ashish to get mixpanel variables */		
 // global $base_url;
