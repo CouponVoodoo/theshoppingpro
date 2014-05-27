@@ -29,5 +29,5 @@ foreach ($results as $result)
 	return 'not bne';
   }
   else {return 'done';}
-
+}
 ?>
