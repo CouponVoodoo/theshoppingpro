@@ -149,6 +149,8 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 <script type="text/javascript" src="<?php //echo $base_url;?>/sites/all/libraries/Fusioncharts/FusionCharts.js"> </script>
 -->
 <?php
+
+	if (strpos($_SERVER['HTTP_USER_AGENT'],"Googlebot")){}else{ // COMMENTED OUT AS NO VALUE FOR GOOGLE INDEXING
 		$full_data_array_std_class = db_query("SELECT updateDate, couponStatus, BestCouponCode, NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
 		$full_data_array = json_decode(drupal_json_encode($full_data_array_std_class), true);
 		$dates = array();
@@ -296,7 +298,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 		';
 
 		drupal_add_js(array('coupon_overview' => array('coupon_overview_json' => $coupon_overview_json)), array('type' => 'setting', 'scope' => 'footer'));
-
+	}
 ?>
 <!-- ********************* END OF CHART DATA FOR COUPON OVERVIEW ************************  -->
 
@@ -331,19 +333,20 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 	<div id="coupon_meter"></div> 
 	<?PHP
+	if (strpos($_SERVER['HTTP_USER_AGENT'],"Googlebot")){}else{ // COMMENTED OUT AS NO VALUE FOR GOOGLE INDEXING
 		if ($all_count > 2) {
 			drupal_add_js($base_url.'/sites/all/libraries/Fusioncharts/FusionCharts.js',  array('scope' => 'footer'));
-			drupal_add_js("jQuery(document).ready(function($){
-				$('#block-system-main').mousemove(function(){
-				alert('dasudsh');
+			drupal_add_js("jQuery(window).load(function(){
 				var myChart = new FusionCharts( 'AngularGauge', 'coupon_overview', '105%', '150', '1' );
 				myChart.setJSONData(Drupal.settings.coupon_overview.coupon_overview_json);
 				myChart.render('coupon_meter');
-			}});", array('type' => 'inline', 'scope' => 'footer'));
+			});", array('type' => 'inline', 'scope' => 'footer'));
 		} else {
 	?>
 	<div class='blue_button'><a href="<?php echo $product_link;?>" class='d_view_store'><?php echo get_label('View More From ').substr($brand, 0, 40);?></a></div>
-	<?php } ?>
+	<?php }
+	}
+	?>
 </div>
 
 
@@ -695,7 +698,7 @@ if ($brand_check != 'Other') {
 <div id="coupon_price_history_graph"></div> 
 
 <?php
-		
+	if (strpos($_SERVER['HTTP_USER_AGENT'],"Googlebot")){}else{ // COMMENTED OUT AS NO VALUE FOR GOOGLE INDEXING	
 			$all_data_json = '{
 				  "chart": {
 					"palette": "3",
@@ -799,7 +802,7 @@ if ($brand_check != 'Other') {
 				myChart.render('coupon_price_history_graph');
 			});", array('type' => 'inline', 'scope' => 'footer'));
 		}
-		
+	}	
 		/* EVENT TRACKING FOR SEARCH */
 		
     if (isset($_SESSION['CvGa'])) {
