@@ -55,9 +55,6 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 $detect = mobile_detect_get_object();
 $is_tablet = $detect->isTablet();
 $is_mobile = $detect->isMobile();
-  
-  if(!$is_mobile){echo 'show graph';} else {echo 'dont show graph';}
-
 /** Start of By Ashish to get mixpanel variables */		
 // global $base_url;
 // $mixpanel_urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$nid);
