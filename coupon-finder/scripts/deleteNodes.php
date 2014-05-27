@@ -21,7 +21,7 @@ $results = db_query("select distinct(b1.entity_id) as nid FROM field_data_field_
 
 foreach ($results as $result) 
   {
-    $nids = $result->nid;
+    $nids[] = $result->nid;
 	
   }
 echo 'nid array';
