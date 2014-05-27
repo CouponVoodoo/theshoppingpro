@@ -2,7 +2,10 @@
 $i=1; 
 while (1>0){
 echo '---'.$i.'---';
+$start = microtime(TRUE);
 $a=main();
+$taken = microtime(TRUE) - $start;
+echo "Deleted 500 nodes in". $taken." \n";
 $i=$i+1;
 if ($a=='done'){
 break;
@@ -18,7 +21,8 @@ $results = db_query("select distinct(b1.entity_id) as nid FROM field_data_field_
 
 foreach ($results as $result) 
   {
-    $nids[] = $result->nid;
+    $nids = $result->nid;
+	
   }
 echo 'nid array';
 //exit;
@@ -30,5 +34,13 @@ echo 'nid array';
 	return 'not bne';
   }
   else {return 'done';}
-}
+
+  
+  
+  
+  
+  
+  }
+
+
 ?>
