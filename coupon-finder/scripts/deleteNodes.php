@@ -4,7 +4,7 @@ $results = db_query("select b1.entity_id as nid FROM field_data_field_base_url b
 foreach ($results as $result) {
 $nid=$result->nid;
 echo $nid.'--';
-exit;
-  //node_delete($nid);
+//exit;
+  node_delete($nid);
 }
 ?>
