@@ -50,6 +50,14 @@ $best_coupon_description = trim(str_replace('+','',str_replace('&amp;nbsp;','',s
 $best_coupon_code = $node->field_best_coupon_couponcode['und']['0']['value'];
 global $base_url;
 $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&p='.$url_path;
+
+// $mobile_detect_path = $base_url.'/sites/all/libraries/Mobile_Detect/Mobile_Detect.php';
+// include ($mobile_detect_path);
+require_once '/sites/all/libraries/Mobile_Detect/Mobile_Detect.php';
+$detect = new Mobile_Detect;
+if(!$detect->isMobile()){echo 'not mobile';} else {echo 'mobile';}
+
+
 /** Start of By Ashish to get mixpanel variables */		
 // global $base_url;
 // $mixpanel_urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$nid);
