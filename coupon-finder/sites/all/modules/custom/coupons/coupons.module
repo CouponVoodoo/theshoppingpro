@@ -2249,7 +2249,7 @@ function coupon_pie_create_graph($facet, $vid, $query_field, $tid, $depth, $orig
 		}
 }
 function get_solr_data($facet, $query_field, $tid, $best_coupon_status){
-		$time=time()-(36*3600);
+		$time=time()-(72*3600);
 		$time=gmdate('Y-m-d\TH:i:s\Z', $time);
 		if ($best_coupon_status == 1){
 			$query = 'q=*:*&version=2.2&start=0&rows=0&indent=on&facet=true&facet.field='.$facet.'&facet.mincount=1&fq=dm_field_lastcheckedtime:['.$time.' TO *] AND '.$query_field.':'.$tid.' AND its_field_best_coupon_status:1';
