@@ -162,7 +162,7 @@ foreach ($results as $result) {
 
 	$i=$i+1;
 	if ($i>50){
-	echo 'exiting': .$i;
+	echo 'exiting : ' .$i;
 		exit;
 	}
 }
