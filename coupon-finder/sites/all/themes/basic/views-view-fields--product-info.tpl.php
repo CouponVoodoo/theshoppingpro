@@ -53,10 +53,10 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 // $mobile_detect_path = $base_url.'/sites/all/libraries/Mobile_Detect/Mobile_Detect.php';
 // include ($mobile_detect_path);
-require_once '/sites/all/libraries/Mobile_Detect/Mobile_Detect.php';
+/*require_once '/sites/all/libraries/Mobile_Detect/Mobile_Detect.php';
 $detect = new Mobile_Detect;
 if(!$detect->isMobile()){echo 'not mobile';} else {echo 'mobile';}
-
+*/
 
 /** Start of By Ashish to get mixpanel variables */		
 // global $base_url;
