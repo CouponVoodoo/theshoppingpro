@@ -7,6 +7,7 @@ $i=$i+1;
 if ($a=='done'){
 break;
 }
+
 }
 
 
@@ -27,6 +28,6 @@ foreach ($results as $result)
     node_delete_multiple($nids);
 	return 'not bne';
   }
-  else {return 'done'}
+  else {return 'done';}
 
 ?>
