@@ -295,7 +295,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 			}
 		';
 
-		drupal_add_js(array('coupon_overview' => array('coupon_overview_json' => $coupon_overview_json)), array('type' => 'setting', 'scope' => 'footer'));
+		drupal_add_js(array('coupon_overview' => array('coupon_overview_json' => $coupon_overview_json)), array('type' => 'setting', 'scope' => 'footer', 'weight' => '-10'));
 
 ?>
 <!-- ********************* END OF CHART DATA FOR COUPON OVERVIEW ************************  -->
@@ -332,12 +332,12 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 	<div id="coupon_meter"></div> 
 	<?PHP
 		if ($all_count > 2) {
-			drupal_add_js($base_url.'/sites/all/libraries/Fusioncharts/FusionCharts.js',  array('scope' => 'footer'));
+			drupal_add_js($base_url.'/sites/all/libraries/Fusioncharts/FusionCharts.js',  array('scope' => 'footer', 'weight' => '-10'));
 			drupal_add_js("jQuery(window).load(function(){
 				var myChart = new FusionCharts( 'AngularGauge', 'coupon_overview', '105%', '150', '1' );
 				myChart.setJSONData(Drupal.settings.coupon_overview.coupon_overview_json);
 				myChart.render('coupon_meter');
-			});", array('type' => 'inline', 'scope' => 'footer'));
+			});", array('type' => 'inline', 'scope' => 'footer', 'weight' => '-10'));
 		} else {
 	?>
 	<div class='blue_button'><a href="<?php echo $product_link;?>" class='d_view_store'><?php echo get_label('View More From ').substr($brand, 0, 40);?></a></div>
@@ -790,12 +790,12 @@ if ($brand_check != 'Other') {
 			//echo $all_data_json; die();
 
 			// $coupon_data_json .= '"data" : '.$coupon_data.'}';
-			drupal_add_js(array('all_data' => array('all_data_json_js' => $all_data_json)), array('type' => 'setting', 'scope' => 'footer'));
+			drupal_add_js(array('all_data' => array('all_data_json_js' => $all_data_json)), array('type' => 'setting', 'scope' => 'footer', 'weight' => '-10'));
 			drupal_add_js("jQuery(window).load(function(){
 				var myChart = new FusionCharts( 'MSColumn3DLineDY', 'coupon_price_history', '100%', '400', '1' );
 				myChart.setJSONData(Drupal.settings.all_data.all_data_json_js);
 				myChart.render('coupon_price_history_graph');
-			});", array('type' => 'inline', 'scope' => 'footer'));
+			});", array('type' => 'inline', 'scope' => 'footer', 'weight' => '-10'));
 		}
 		
 		/* EVENT TRACKING FOR SEARCH */
@@ -803,17 +803,17 @@ if ($brand_check != 'Other') {
     if (isset($_SESSION['CvGa'])) {
 		drupal_add_js(array('ga_search' => array(			
 				'keyword' => $_SESSION['CvGa']['url']
-			)), array('type' => 'setting', 'scope' => 'footer'));
+			)), array('type' => 'setting', 'scope' => 'footer', 'weight' => '-10'));
 		if($_SESSION['CvGa']['urlStatus'] == 0) {
 			drupal_add_js("jQuery(window).load(function(){
 				ga('send', 'event', 'site-search', 'keyword', Drupal.settings.ga_search.keyword);
 				alert (Drupal.settings.ga_search.keyword);
-			});", array('type' => 'inline', 'scope' => 'footer'));
+			});", array('type' => 'inline', 'scope' => 'footer', 'weight' => '-20'));
 		} else {	
 			drupal_add_js("jQuery(window).load(function(){
 				ga('send', 'event', 'site-search', 'url', Drupal.settings.ga_search.keyword);
 				alert (Drupal.settings.ga_search.keyword);
-			});", array('type' => 'inline', 'scope' => 'footer'));	
+			});", array('type' => 'inline', 'scope' => 'footer', 'weight' => '-20'));	
 		}
 		unset($_SESSION['CvGa']);
     }
