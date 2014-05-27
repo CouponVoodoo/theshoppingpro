@@ -161,7 +161,7 @@ foreach ($results as $result) {
 	echo "\n";
 
 	$i=$i+1;
-	if ($i>25){
+	if ($i>40){
 		exit;
 	}
 }
