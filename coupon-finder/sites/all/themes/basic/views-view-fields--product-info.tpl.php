@@ -811,15 +811,9 @@ if ($brand_check != 'Other') {
 		drupal_add_js(array('ga_search' => array(			
 				'keyword' => $_SESSION['CvGa']['url']
 			)), array('type' => 'setting', 'scope' => 'footer', 'weight' => '-10'));
-		if($_SESSION['CvGa']['urlStatus'] == 0) {
-			drupal_add_js("jQuery(window).load(function(){
-				ga('send', 'event', 'site-search', 'keyword', Drupal.settings.ga_search.keyword);
-				alert (Drupal.settings.ga_search.keyword);
-			});", array('type' => 'inline', 'scope' => 'footer', 'weight' => '-20'));
-		} else {	
+		if($_SESSION['CvGa']['urlStatus'] == 1) 	
 			drupal_add_js("jQuery(window).load(function(){
 				ga('send', 'event', 'site-search', 'url', Drupal.settings.ga_search.keyword);
-				alert (Drupal.settings.ga_search.keyword);
 			});", array('type' => 'inline', 'scope' => 'footer', 'weight' => '-20'));	
 		}
 		unset($_SESSION['CvGa']);
