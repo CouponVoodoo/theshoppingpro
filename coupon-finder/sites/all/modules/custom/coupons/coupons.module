@@ -2310,12 +2310,13 @@ function coupon_pie_color($tid, $vid) {
 }
 
 /**
- * Implements hook_apachesolr_process_results
- * This currently used to track search
+ * Implements hook_apachesolr_process_results to track search
+ * Currently been done via block on live site
  */
+/*
 function coupons_apachesolr_process_results(array &$results, DrupalSolrQueryInterface $query) {
     if (isset($_SESSION['CvGa'])) {
-		/* EVENT TRACKING FOR SEARCH */
+		// EVENT TRACKING FOR SEARCH
 		drupal_add_js(array('ga_search' => array(			
 				'keyword' => $_SESSION['CvGa']['url']
 			)), array('type' => 'setting'));
@@ -2332,4 +2333,5 @@ function coupons_apachesolr_process_results(array &$results, DrupalSolrQueryInte
     }
 }
 
+*/
 
