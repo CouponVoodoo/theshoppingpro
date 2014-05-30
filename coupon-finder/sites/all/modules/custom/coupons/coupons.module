@@ -737,9 +737,6 @@ function coupons_result($raw_url) {
 	  $Ruery = $Query->fetch();
 	  $BrandId = $Ruery->tid;
 	  
-	  var_dump($Ruery);
-	  echo $brand_name;
-	  echo "--------".$BrandId;
 	  
       //$brand_name = 'nike';
       // $vocabulary_name = 'brand';
@@ -748,7 +745,7 @@ function coupons_result($raw_url) {
 	  //echo '===='.$brand_name;
       if($BrandId == ''){
 	$BrandId = coupons_create_taxonomy_term($brand_name, 4);
-	echo "----loop entered----".$BrandId;
+	
       }
 
 
@@ -809,13 +806,13 @@ function coupons_result($raw_url) {
 	
 	node_save($node);
 	global $base_url;
-	
+	/*
 	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
 	
 	$node2 = node_load( $node->nid );
 	$node2->field_page_url[und][0][value] = $urlAlias;
 	node_save($node2);
-	
+	*/
 	if( !empty($node->nid) ){
 	  $response = json_encode( array('ResponseCode' => '1', 'Response' => 'Node added.', "Page_URL" => "$urlAlias") );
 	  echo $response;
