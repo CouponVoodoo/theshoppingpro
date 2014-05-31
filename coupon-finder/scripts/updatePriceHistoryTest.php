@@ -1,7 +1,7 @@
 <?PHP
 
 
-$freq=15;
+$freq=150;
 
 $results = db_query("SELECT distinct entity_id from coupon_finder.priceHistory where updateDate = CURDATE()");
 
