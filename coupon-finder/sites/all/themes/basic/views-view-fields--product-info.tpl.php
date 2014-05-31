@@ -52,9 +52,9 @@ global $base_url;
 $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&p='.$url_path;
 
 /********** detecting if mobile **************/
-$detect = mobile_detect_get_object();
-$is_tablet = $detect->isTablet();
-$is_mobile = $detect->isMobile();
+// $detect = mobile_detect_get_object();
+// $is_tablet = $detect->isTablet();
+// $is_mobile = $detect->isMobile();
 /** Start of By Ashish to get mixpanel variables */		
 // global $base_url;
 // $mixpanel_urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$nid);
@@ -155,7 +155,8 @@ $is_mobile = $detect->isMobile();
 -->
 <?php
 	/**************** HIDING GRAPH FROM MOBILE ********************************/
-	if(!$is_mobile && !$is_tablet){
+	// if(!$is_mobile && !$is_tablet){
+	
 		$full_data_array_std_class = db_query("SELECT updateDate, couponStatus, BestCouponCode, NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
 		$full_data_array = json_decode(drupal_json_encode($full_data_array_std_class), true);
 		$dates = array();
@@ -303,7 +304,7 @@ $is_mobile = $detect->isMobile();
 		';
 
 		drupal_add_js(array('coupon_overview' => array('coupon_overview_json' => $coupon_overview_json)), array('type' => 'setting', 'scope' => 'footer', 'weight' => '-10'));
-	}
+	// }
 ?>
 <!-- ********************* END OF CHART DATA FOR COUPON OVERVIEW ************************  -->
 
@@ -338,7 +339,7 @@ $is_mobile = $detect->isMobile();
 
 	<div id="coupon_meter"></div> 
 	<?PHP
-		if ($all_count > 2 && !$is_tablet && !$is_mobile) {
+		if ($all_count > 2) {
 			drupal_add_js($base_url.'/sites/all/libraries/Fusioncharts/FusionCharts.js',  array('scope' => 'footer', 'weight' => '-10'));
 			drupal_add_js("jQuery(window).load(function(){
 				var myChart = new FusionCharts( 'AngularGauge', 'coupon_overview', '105%', '150', '1' );
@@ -692,7 +693,7 @@ if ($brand_check != 'Other') {
 		
 		//echo $dates_data."\n\n\n".$coupons_data."\n\n\n".$price_data;
 
-		if($node->type == '_product_and_coupon' && $all_count > 2 && !$is_mobile && !$is_tablet) {
+		if($node->type == '_product_and_coupon' && $all_count > 2) {
 ?>
 
 <h4> <a id="price_history"><?php echo get_label('Coupon & Price History For ')." ".$node->field_retailer_product_name['und']['0']['value'];?></a></h4>
