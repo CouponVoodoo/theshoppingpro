@@ -32,6 +32,10 @@ $count=db_query("Insert into priceHistoryBatchData select 0,entity_id,BestCoupon
 echo $count;
 db_query("update coupon_finder.predictorCompiledResultTable set updatePriceHistoryStatus =0")	;
 db_query("update coupon_finder.1Variables set status = status+1 where Serial=3")	;
+
+$total_count = db_query("SELECT count( distinct entity_id) FROM `priceHistory` where `updateDate` = '2014-06-02'")->fetchField();
+$result = 'No. of url updated for price history :'.$total_count;
+mail('team@theshoppingpro.com', 'Update Node Script End', $result);	
 }
 else {echo 'in else loop';
 //db_query("Truncate table priceHistoryBatchData")	;
