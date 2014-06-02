@@ -55,7 +55,7 @@ function custom_api_addproduct($ProInfo){
 		$node->field_brand['und']['0']['tid'] 		  	= $BrandId;
 		$node->field_retailer['und']['0']['tid'] 		  	= $jsonArray->RetailerId;
 		$node->field_category['und'][0]['tid']			= trim( $jsonArray->Category );
-		$node->field_retailer_product_name['und']['0'][value] 	= $jsonArray->Brand.' '.trim( $jsonArray->Product );
+		$node->field_retailer_product_name['und']['0'][value] 	= trim( $jsonArray->Product );
 		$node->field_description['und']['0'][value]	 	  	= null;
 		$node->field_product_price['und']['0'][value]	  	= trim( $jsonArray->ListingPrice );
 		$node->field_product_image['und']['0'][value] 	  	= trim( $jsonArray->ProductImage );
