@@ -3,6 +3,7 @@
 
 $freq=150;
 
+$update = db_query("update coupon_finder.predictorCompiledResultTable set updatePriceHistoryStatus=1 where entity_id is null");
 $results = db_query("SELECT distinct entity_id from coupon_finder.priceHistory where updateDate = CURDATE()");
 
 
