@@ -30,7 +30,7 @@ echo 'updating Count '.$updateCount;
 $count=db_query("Insert into priceHistory select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
 $count=db_query("Insert into priceHistoryBatchData select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
 
-echo $count;
+echo 'count '.$count;
 db_query("update coupon_finder.predictorCompiledResultTable set updatePriceHistoryStatus =0")	;
 db_query("update coupon_finder.1Variables set status = status+1 where Serial=3")	;
 
