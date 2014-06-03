@@ -1681,7 +1681,7 @@ background: none repeat scroll 0 0 #F7971C;
 	border: 5px solid #F7971C; 
 }
 #outerImageContainer{border-radius: 30px !important; border: 15px solid #F7971C; }
-#lightboxFrame{border: 1px solid #red}
+#lightboxFrame{border: none}
 .section-coupon-details-popup{overflow: hidden !important;}
 .popup_copy_coupon a{
 	float:right;
