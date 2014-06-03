@@ -52,9 +52,9 @@ global $base_url;
 $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&p='.$url_path;
 
 /********** detecting if mobile **************/
-// $detect = mobile_detect_get_object();
-// $is_tablet = $detect->isTablet();
-// $is_mobile = $detect->isMobile();
+$detect = mobile_detect_get_object();
+$is_tablet = $detect->isTablet();
+$is_mobile = $detect->isMobile();
 /** Start of By Ashish to get mixpanel variables */		
 // global $base_url;
 // $mixpanel_urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$nid);
@@ -155,8 +155,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 -->
 <?php
 	/**************** HIDING GRAPH FROM MOBILE ********************************/
-	// if(!$is_mobile && !$is_tablet){
-	
+	if(!$is_mobile && !$is_tablet){
 		$full_data_array_std_class = db_query("SELECT updateDate, couponStatus, BestCouponCode, NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
 		$full_data_array = json_decode(drupal_json_encode($full_data_array_std_class), true);
 		$dates = array();
@@ -304,7 +303,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 		';
 
 		drupal_add_js(array('coupon_overview' => array('coupon_overview_json' => $coupon_overview_json)), array('type' => 'setting', 'scope' => 'footer', 'weight' => '-10'));
-	// }
+	}
 ?>
 <!-- ********************* END OF CHART DATA FOR COUPON OVERVIEW ************************  -->
 
@@ -339,7 +338,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 	<div id="coupon_meter"></div> 
 	<?PHP
-		if ($all_count > 2) {
+		if ($all_count > 2 && !$is_tablet && !$is_mobile) {
 			drupal_add_js($base_url.'/sites/all/libraries/Fusioncharts/FusionCharts.js',  array('scope' => 'footer', 'weight' => '-10'));
 			drupal_add_js("jQuery(window).load(function(){
 				var myChart = new FusionCharts( 'AngularGauge', 'coupon_overview', '105%', '150', '1' );
@@ -374,16 +373,19 @@ if ($current_domain != 'cuponation'){
 <div class="product-right" >
 <h4><?php echo get_label('Best Coupon Or Discounts');?></h4>
 <div class="coupon_code1">
-    <?php       
+    <?php    
+		
     if( $CouponStatus == 1 ){
+		$product_page_popup_url = coupon_popup_product_url($best_coupon_code);
 		/** start of changed to display copy coupon right here - uncomment print and comment rest if problem happens **/
          //print coupons_copy_best_coupon($nid);
 		 
 	?>	
 	<div class="search_listing_right">
 		<div class="search_listing_row__<?php print $row->counter; ?> copy_coupon_row">
-			<a href="<?php print $base_url ?>/coupon-redirect?l=bc&nid=<?php print $nid;?>&c=<?php print $best_coupon_code; ?>&p=<?php print $url_path; ?>&s=<?php print $base_url_predictor;?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $best_coupon_code?>" >
-				<span class="copy_coupon">Copy Coupon</span><span></span>
+<!--			<a href="<?php// print $base_url.'/coupon-redirect?l=bc&nid='.$nid.'&c='.$best_coupon_code.'&p='.$url_path.'&s='.$base_url_predictor;?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php// print $row->counter; ?>" data-clipboard-text="<?php// echo $best_coupon_code?>" >  -->
+			<a href="<?php print $base_url.'/coupon-redirect?l=bc&nid='.$nid.'&c='.$best_coupon_code.'&p='.$url_path.'&s='.$base_url_predictor;?>" onclick=window.open('<?php echo coupon_popup_product_url($best_coupon_code); ?>')//;return true; class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $best_coupon_code?>" >
+				<span class="copy_coupon">Show Coupon</span><span></span>
 			</a>
 		</div>		
 	</div>
@@ -393,7 +395,8 @@ if ($current_domain != 'cuponation'){
 		/** end of changed to display copy coupon right here - uncomment print and comment rest if problem happens **/
 		
     }else{
-        echo "<div class='d_view_store'><a class='view_store' href='{$redirect_url}' target='_blank'>".get_label('Buy Now')."</a></div>";
+        // echo "<div class='d_view_store'><a class='view_store' href='{$redirect_url}' onclick=window.open('www.couponvoodoo.com')//;return true;>".get_label('Buy Now')."</a></div>";
+		echo "<div class='d_view_store'><a class='view_store' href='{$redirect_url}' >".get_label('Buy Now')."</a></div>";
 		
     }
     ?>
@@ -693,7 +696,7 @@ if ($brand_check != 'Other') {
 		
 		//echo $dates_data."\n\n\n".$coupons_data."\n\n\n".$price_data;
 
-		if($node->type == '_product_and_coupon' && $all_count > 2) {
+		if($node->type == '_product_and_coupon' && $all_count > 2 && !$is_mobile && !$is_tablet) {
 ?>
 
 <h4> <a id="price_history"><?php echo get_label('Coupon & Price History For ')." ".$node->field_retailer_product_name['und']['0']['value'];?></a></h4>
@@ -819,4 +822,11 @@ if ($brand_check != 'Other') {
 		}
 		unset($_SESSION['CvGa']);
     }
+	/******* TOSHOW COUPON DETAILS IN POP UP *********/
+	if ($_GET['showpop'] == 1) {	
+?>
+		<div id="coupon_details_popup"><a href="<?php print coupon_popup_url($_GET['coupon_code']); ?>" rel='lightframe[|width:600px; height:330px; scrolling: off;]' ></a></div>
+<?php
+		drupal_add_js ("jQuery(document).ready(function() { jQuery('#coupon_details_popup a').trigger('click'); });", array('type' => 'inline', 'scope' => 'footer'));
+	}
 ?>
