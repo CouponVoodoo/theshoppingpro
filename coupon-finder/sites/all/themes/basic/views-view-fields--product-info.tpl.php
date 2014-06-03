@@ -382,14 +382,8 @@ if ($current_domain != 'cuponation'){
 	?>	
 	<div class="search_listing_right">
 		<div class="search_listing_row__<?php print $row->counter; ?> copy_coupon_row">
-			<?php if (arg(1) == 218137) {
-			?>
-			<a href="<?php print $base_url.'/coupon-redirect?l=bc&nid='.$nid.'&c='.$best_coupon_code.'&p='.$url_path.'&s='.$base_url_predictor;?>" onclick=window.open('<?php echo coupon_popup_product_url($best_coupon_code); ?>')//;return true; class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $best_coupon_code?>" >
-			<?php
-			} else {
-			?>
-			<a href="<?php print $base_url ?>/coupon-redirect?l=bc&nid=<?php print $nid;?>&c=<?php print $best_coupon_code; ?>&p=<?php print $url_path; ?>&s=<?php print $base_url_predictor;?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $best_coupon_code?>" >
-			<?php }?>
+<!--			<a href="<?php// print $base_url.'/coupon-redirect?l=bc&nid='.$nid.'&c='.$best_coupon_code.'&p='.$url_path.'&s='.$base_url_predictor;?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php// print $row->counter; ?>" data-clipboard-text="<?php// echo $best_coupon_code?>" >  -->
+		<a href="<?php print $base_url.'/coupon-redirect?l=bc&nid='.$nid.'&c='.$best_coupon_code.'&p='.$url_path.'&s='.$base_url_predictor;?>" onclick=window.open('<?php echo coupon_popup_product_url($best_coupon_code); ?>')//;return true; class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $best_coupon_code?>" >
 			<span class="copy_coupon">Copy Coupon</span><span></span>
 			</a>
 		</div>		
