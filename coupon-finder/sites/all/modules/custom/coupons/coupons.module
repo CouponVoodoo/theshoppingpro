@@ -274,7 +274,7 @@ function coupons_redirect_interim_page() {
 	drupal_add_js("jQuery(window).load(function(){
                   setTimeout(function(){
                       window.location.replace(\"" . $url . "\");
-                  }, 2000);
+                  }, 100);
 				 ga('send', 'event', 'coupon-redirection', 'redirect-page', Drupal.settings.coupons.Event_Id,{
 					'dimension1': Drupal.settings.coupons.User_Guid, 
 					'dimension3': Drupal.settings.coupons.Affiliate_URL, 
@@ -2320,19 +2320,19 @@ function coupon_details_popup(){
 	return theme('coupon_details_popup');
 }
 /****** CREATES THE URL FOR THE COUPON DETAILS POP UP ************/
-function coupon_popup_url($couponcode){
+function coupon_popup_url($couponcode, $coupon_redirect_path){
 global $base_url;
-return $base_url.'/coupon-details-popup?pop=1&coupon_code='.$couponcode;
+return $base_url.'/coupon-details-popup?pop=1&coupon_code='.$couponcode.'&redirect_path='.rawurlencode($coupon_redirect_path);
 }
 
 /****** CREATES THE URL FOR THE PRODUCT PAGE THAT WILL SHOW THE COUPON DETAILS POP UP ************/
-function coupon_popup_product_url($couponcode){
+function coupon_popup_product_url($couponcode, $coupon_redirect_path){
 	global $base_url;
 	$current_path = drupal_get_path_alias();
 	if (strpos($current_path,"?") == false) {
-		return $base_url.'/'.$current_path.'?showpop=1&coupon_code='.$couponcode;
+		return $base_url.'/'.$current_path.'?showpop=1&coupon_code='.$couponcode.'&redirect_path='.rawurlencode($coupon_redirect_path);
 	} else {
-		return $base_url.'/'.$current_path.'&showpop=1&coupon_code='.$couponcode;
+		return $base_url.'/'.$current_path.'&showpop=1&coupon_code='.$couponcode.'&redirect_path='.rawurlencode($coupon_redirect_path);
 	}	
 }
 
