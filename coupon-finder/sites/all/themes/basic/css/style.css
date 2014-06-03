@@ -1669,6 +1669,7 @@ background: none repeat scroll 0 0 #F7971C;
 	margin: 30px 45px;
 	padding: 20px;
 }
+.lose_text {color: #666666; text-align: right; margin: 0px 45px;}
 #bottomNavClose {
 	position: absolute;
 	top: -13px;
@@ -1696,4 +1697,9 @@ background: none repeat scroll 0 0 #F7971C;
 }
 .popup_copy_coupon a.popup_copied_coupon {
   background: #25ade3;
+}
+.popup_copy_coupon a.product_link{
+  background: #25ade3;
+  text-align: center;
+  margin: 0px 45px;
 }
