@@ -772,7 +772,7 @@ img.dollor { left: -225px; position: relative; top: -80px; z-index: 0;}
 .product-detail h2 .field-content{float:left}
 .product-detail h1 .field-content{float:left}
 .product-detail .product-left{ float: left;margin-top: 10px;text-align: center;width: 225px;}
-.product-detail .product-left .field-content{ float: left; height: 175px;text-align: center;width: 200px;margin-top: 10px;}
+.product-detail .product-left .field-content{ float: left; height: 200px;text-align: center;width: 200px;margin-top: 10px;}
 .product-detail .product-right-inner{width:64%;float:left;margin-left:11px}
 .product-detail  .product-right{width:100%;float:left;border:1px solid #e6e6e6;background: #F2F2F2;padding:10px 5px 5px 10px; margin-top: 10px; border-radius:6px;position:relative; box-shadow: 3px 3px 3px #999999}
 .node-type--product-and-coupon .item-list{width:100%;float:left;position:relative}
