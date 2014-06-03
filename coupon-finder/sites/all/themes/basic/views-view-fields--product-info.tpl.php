@@ -378,12 +378,12 @@ if ($current_domain != 'cuponation'){
     if( $CouponStatus == 1 ){
 		/** start of changed to display copy coupon right here - uncomment print and comment rest if problem happens **/
          //print coupons_copy_best_coupon($nid);
-		 
+		 $coupon_redirect_path = $base_url.'/coupon-redirect?l=bc&nid='.$nid.'&c='.$best_coupon_code.'&p='.$url_path.'&s='.$base_url_predictor;
 	?>	
 	<div class="search_listing_right">
 		<div class="search_listing_row__<?php print $row->counter; ?> copy_coupon_row">
 <!--			<a href="<?php// print $base_url.'/coupon-redirect?l=bc&nid='.$nid.'&c='.$best_coupon_code.'&p='.$url_path.'&s='.$base_url_predictor;?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php// print $row->counter; ?>" data-clipboard-text="<?php// echo $best_coupon_code?>" >  -->
-		<a href="<?php print $base_url.'/coupon-redirect?l=bc&nid='.$nid.'&c='.$best_coupon_code.'&p='.$url_path.'&s='.$base_url_predictor;?>" onclick=window.open('<?php echo coupon_popup_product_url($best_coupon_code); ?>')//;return true; class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $best_coupon_code?>" >
+		<a href="<?php print $coupon_redirect_path;?>" onclick=window.open('<?php echo coupon_popup_product_url($best_coupon_code, $coupon_redirect_path); ?>')//;return true; class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $best_coupon_code?>" >
 			<span class="copy_coupon">Copy Coupon</span><span></span>
 			</a>
 		</div>		
@@ -823,7 +823,7 @@ if ($brand_check != 'Other') {
 	/******* TOSHOW COUPON DETAILS IN POP UP *********/
 	if ($_GET['showpop'] == 1) {	
 ?>
-		<div id="coupon_details_popup"><a href="<?php print coupon_popup_url($_GET['coupon_code']); ?>" rel='lightframe[|width:600px; height:330px; scrolling: off;]' ></a></div>
+		<div id="coupon_details_popup"><a href="<?php print coupon_popup_url($_GET['coupon_code'], $coupon_redirect_path); ?>" rel='lightframe[|width:600px; height:400px; scrolling: off;]' ></a></div>
 <?php
 		drupal_add_js ("jQuery(document).ready(function() { jQuery('#coupon_details_popup a').trigger('click'); });", array('type' => 'inline', 'scope' => 'footer'));
 	}
