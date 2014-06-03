@@ -819,4 +819,11 @@ if ($brand_check != 'Other') {
 		}
 		unset($_SESSION['CvGa']);
     }
+	/******* TOSHOW COUPON DETAILS IN POP UP *********/
+	if ($_GET['showpop'] == 1 && arg(1) == 218137) {	
+?>
+		<div id="coupon_details_popup"><a href="<?php print coupon_popup_url($_GET['coupon_code']); ?>" rel='lightframe[|width:600px; height:330px; scrolling: off;]' ></a></div>
+<?php
+		drupal_add_js ("jQuery(document).ready(function() { jQuery('#coupon_details_popup a').trigger('click'); });", array('type' => 'inline', 'scope' => 'footer'));
+	}
 ?>
