@@ -10,13 +10,14 @@ var hasFlash = false;
             hasFlash = true;
         }
     }
+	//hasFlash=false;
     if (hasFlash) {
         copy_coupon_productPage_footer();
     } else {
    click_coupon_footer();
     }
 function click_coupon_footer() {
-	var divArray = document.getElementsByClassName("unlock_coupon");
+	var divArray = document.getElementsByClassName("unlock_coupon")[0];
 	var offer_type = divArray.getAttribute('data-clipboard-text');
 	try {
 		divArray.addEventListener('click', function () {
