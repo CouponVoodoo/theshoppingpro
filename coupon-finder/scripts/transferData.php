@@ -21,7 +21,7 @@ $run = 1;
 	while ($run ==1) {
 		$i++;
 		$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"; //The API TO GET ALL RETAILER COUPON DATA 
-		$json = drupal_http_request($url, array('timeout' => 1200.0));
+		$json = drupal_http_request($url, array('timeout' => 2400.0));
 		//var_dump($json);
 		$json = $json->data;
 		if ($json != 'null') {
@@ -89,7 +89,8 @@ $run = 1;
 			
 			if($i!=1) {
 				mail('team@theshoppingpro.com', 'Data Push Ended With '.$i.' loops', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
-				db_query("UPDATE coupon_finder.1Variables SET Status = 1, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Serial = 1");
+				mail('team@theshoppingpro.com', 'Data Push Ended with final json response:'.$json, gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
+				db_query("UPDATE coupon_finder.1Variables SET Status = 0, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Serial = 1");
 			} else {
 			    
 				mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
