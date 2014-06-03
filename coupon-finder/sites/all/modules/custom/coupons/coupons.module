@@ -43,7 +43,12 @@ function coupons_menu() {
       'access callback' => TRUE,
       'type' => MENU_CALLBACK,
   );
-    
+  $items['coupon-details-popup'] = array(
+      'page callback' => 'coupon_details_popup',
+      'access callback' => TRUE,
+	  'page arguments' => array(),
+      'type' => MENU_CALLBACK,
+  );
   return $items;
 }
 /**
@@ -414,8 +419,11 @@ function coupons_theme() {
       'coupons_taxonomy' => array(
           'template' => 'coupons-taxonomy',
           'variables' => array('data' => null),
-      ),    
-      
+      ),   
+      'coupon_details_popup' => array(
+          'template' => 'coupon-details-popup',
+          'variables' => array('data' => null),
+      ),   	  	  
   );
 
   return $themes;
@@ -745,7 +753,6 @@ function coupons_result($raw_url) {
 	  //echo '===='.$brand_name;
       if($BrandId == ''){
 	$BrandId = coupons_create_taxonomy_term($brand_name, 4);
-	
       }
 
 
@@ -806,13 +813,13 @@ function coupons_result($raw_url) {
 	
 	node_save($node);
 	global $base_url;
-	/*
-	$urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
 	
-	$node2 = node_load( $node->nid );
-	$node2->field_page_url[und][0][value] = $urlAlias;
-	node_save($node2);
-	*/
+	// $urlAlias = $base_url.'/'.drupal_get_path_alias('node/'.$node->nid);
+	
+	// $node2 = node_load( $node->nid );
+	// $node2->field_page_url[und][0][value] = $urlAlias;
+	// node_save($node2);
+	
 	if( !empty($node->nid) ){
 	  $response = json_encode( array('ResponseCode' => '1', 'Response' => 'Node added.', "Page_URL" => "$urlAlias") );
 	  echo $response;
@@ -2018,19 +2025,19 @@ function coupons_cron() {
 		$myntra_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 8 and entity_id is not null")->fetchField();
 		$jabong_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 5 and entity_id is not null")->fetchField();
 		$flipkart_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 13419 and entity_id is not null")->fetchField();
-		$Amazon_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 14782 and entity_id is not null")->fetchField();
-		$null_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE entity_id is null")->fetchField();
-		$all_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable where entity_id is not null")->fetchField();
+		$firstcry_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 3 and entity_id is not null")->fetchField();
+		$amazon_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 14782 and entity_id is not null")->fetchField();
+		$all_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable")->fetchField();
 		$result = $result."Jabong Count: ".$jabong_count."\n\n";
 		$result = $result."Myntra Count: ".$myntra_count."\n\n";
 		$result = $result."Flipkart Count: ".$flipkart_count."\n\n";
-		$result = $result."Amazon Count: ".$Amazon_count."\n\n";
+		$result = $result."Firstcry Count: ".$firstcry_count."\n\n";
+		$result = $result."Amazon Count: ".$amazon_count."\n\n";
 		$result = $result."All Count: ".$all_count."\n\n";
+		$null_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE entity_id is null")->fetchField();
 		$result = $result."Null entity_id count: ".$null_count."\n\n";
-		
 		mail('team@theshoppingpro.com', 'Update Node Script End', $result);	
 		db_query("UPDATE coupon_finder.1Variables SET Status = 0, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Update_Node_Script'");
-		
 	} Else {
 		mail('team@theshoppingpro.com', 'Update Node Script Was Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 	}
@@ -2309,6 +2316,26 @@ function coupon_pie_color($tid, $vid) {
 	}
 }
 
+function coupon_details_popup(){
+	return theme('coupon_details_popup');
+}
+/****** CREATES THE URL FOR THE COUPON DETAILS POP UP ************/
+function coupon_popup_url($couponcode){
+global $base_url;
+return $base_url.'/coupon-details-popup?pop=1&coupon_code='.$couponcode;
+}
+
+/****** CREATES THE URL FOR THE PRODUCT PAGE THAT WILL SHOW THE COUPON DETAILS POP UP ************/
+function coupon_popup_product_url($couponcode){
+	global $base_url;
+	$current_path = drupal_get_path_alias();
+	if (strpos($current_path,"?") == false) {
+		return $base_url.'/'.$current_path.'?showpop=1&coupon_code='.$couponcode;
+	} else {
+		return $base_url.'/'.$current_path.'&showpop=1&coupon_code='.$couponcode;
+	}	
+}
+
 /**
  * Implements hook_apachesolr_process_results to track search
  * Currently been done via block on live site
@@ -2334,4 +2361,3 @@ function coupons_apachesolr_process_results(array &$results, DrupalSolrQueryInte
 }
 
 */
-
