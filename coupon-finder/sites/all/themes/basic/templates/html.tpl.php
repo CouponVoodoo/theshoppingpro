@@ -6,7 +6,8 @@
 //	$current_domain = get_current_domain();
 //	if (($node->field_no_index['und']['0']['value'] == 1 &&  $current_domain == 'cuponation')|| arg(0) == 'search'){
 	$node = node_load(arg(1));
-	if ($node->field_no_index['und']['0']['value'] == 1 || arg(0) == 'search'){
+	
+	if ($node->field_no_index['und']['0']['value'] == 1 || arg(0) == 'search'|| arg(0) == 'coupon-redirect'|| arg(0) == 'coupon-details-popup' || $_GET['showpop'] == 1){
 ?>
 	<META NAME="ROBOTS" CONTENT="NOINDEX, FOLLOW">
 <?php
