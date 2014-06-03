@@ -2322,7 +2322,7 @@ function coupon_details_popup(){
 /****** CREATES THE URL FOR THE COUPON DETAILS POP UP ************/
 function coupon_popup_url($couponcode, $coupon_redirect_path){
 global $base_url;
-return $base_url.'/coupon-details-popup?pop=1&coupon_code='.$couponcode.'&redirect_path='.rawurlencode($coupon_redirect_path);
+return $base_url.'/coupon-details-popup?pop=1&coupon_code='.rawurlencode($couponcode).'&redirect_path='.rawurlencode($coupon_redirect_path);
 }
 
 /****** CREATES THE URL FOR THE PRODUCT PAGE THAT WILL SHOW THE COUPON DETAILS POP UP ************/
@@ -2330,9 +2330,9 @@ function coupon_popup_product_url($couponcode, $coupon_redirect_path){
 	global $base_url;
 	$current_path = drupal_get_path_alias();
 	if (strpos($current_path,"?") == false) {
-		return $base_url.'/'.$current_path.'?showpop=1&coupon_code='.$couponcode.'&redirect_path='.rawurlencode($coupon_redirect_path);
+		return $base_url.'/'.$current_path.'?showpop=1&coupon_code='.rawurlencode($couponcode).'&redirect_path='.rawurlencode($coupon_redirect_path);
 	} else {
-		return $base_url.'/'.$current_path.'&showpop=1&coupon_code='.$couponcode.'&redirect_path='.rawurlencode($coupon_redirect_path);
+		return $base_url.'/'.$current_path.'&showpop=1&coupon_code='.rawurlencode($couponcode).'&redirect_path='.rawurlencode($coupon_redirect_path);
 	}	
 }
 
