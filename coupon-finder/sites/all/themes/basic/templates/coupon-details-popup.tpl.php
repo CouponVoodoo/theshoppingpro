@@ -1,8 +1,8 @@
 <?php 
 global $base_url;
-drupal_add_js(($base_url.'/sites/all/themes/basic/js/zeroclipboard/ZeroClipboard.js'), array('scope' => 'footer'));
-drupal_add_js('https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', array('scope' => 'footer'));
-drupal_add_js(($base_url.'/sites/all/themes/basic/js/popup_copy_coupon.js'), array('scope' => 'footer'));
+drupal_add_js(($base_url.'/sites/all/themes/basic/js/zeroclipboard/ZeroClipboard.js'), array('scope' => 'footer', 'weight' => '-10'));
+drupal_add_js('https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', array('scope' => 'footer', 'weight' => '-10'));
+drupal_add_js(($base_url.'/sites/all/themes/basic/js/popup_copy_coupon.js'), array('scope' => 'footer', 'weight' => '-10'));
 ?>
 
 
