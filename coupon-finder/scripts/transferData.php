@@ -90,7 +90,7 @@ $run = 1;
 			if($i!=1) {
 				mail('team@theshoppingpro.com', 'Data Push Ended With '.$i.' loops', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 				
-				db_query("UPDATE coupon_finder.1Variables SET Status = 0, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Serial = 1");
+				db_query("UPDATE coupon_finder.1Variables SET Status = 1, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Serial = 1");
 				mail('team@theshoppingpro.com', 'Data Push Ended with final json response:'.$json, gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 			} else {
 			    
