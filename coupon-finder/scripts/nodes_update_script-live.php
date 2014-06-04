@@ -163,7 +163,15 @@
 		db_query ("UPDATE coupon_finder.field_revision_field_retailer INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_revision_field_retailer.entity_id SET coupon_finder.field_revision_field_retailer.field_retailer_tid   = coupon_finder.predictorCompiledResultTable.RetailerId");
 	
 		$result = $result."All Fields Except All COupon Info : ".gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600)))."\n\n";
-	
+        
+        drupal_flush_all_caches();
+
+		echo "\n\n APACHE SOLR - STATUS \n\n".time();
+		db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.status = 1 ");
+
+		echo "\n\n APACHE SOLR - CHANGED \n\n".time();
+		db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.changed = ".(time()+(4.5*3600)));
+		
 		echo("\n\n FIELD_BEST_COUPON_INFO_VALUE \n\n").time();
 		db_query ("UPDATE coupon_finder.field_data_field_best_coupon_info INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_data_field_best_coupon_info.entity_id SET coupon_finder.field_data_field_best_coupon_info.field_best_coupon_info_value = coupon_finder.predictorCompiledResultTable.Result ");
 		
@@ -177,12 +185,6 @@
 		echo("\n\n FLUSH ALL CACHE \n\n").time();
 		//cache_clear_all();
 		drupal_flush_all_caches();
-
-		echo "\n\n APACHE SOLR - STATUS \n\n".time();
-		db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.status = 1 ");
-
-		echo "\n\n APACHE SOLR - CHANGED \n\n".time();
-		db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.changed = ".(time()+(4.5*3600)));
 
 		echo("\n\n FINISHED \n\n").time();
 		$result = $result."All Data Updated: ".gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600)))."\n\n";
