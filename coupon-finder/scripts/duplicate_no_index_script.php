@@ -6,7 +6,7 @@ while (1>0){
 $response=main();
 
 if ($response=='restart'){
-echo 'restarting '
+echo 'restarting ';
 main();
 }
 else {
