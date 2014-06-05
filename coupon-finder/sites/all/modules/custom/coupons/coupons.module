@@ -2186,7 +2186,7 @@ function coupon_pie_create_graph($facet, $vid, $query_field, $tid, $depth, $orig
 		$coupon_pie_json = '
 					{
 					  "chart": {
-						"subcaption": "QUICK LINKS - Click on a Category Name to View Products)",
+						"subcaption": "QUICK LINKS - Click on a Category Name to View Products",
 						"bgcolor": "FFFFFF",
 						"pieborderthickness": "1",
 						"piebordercolor": "FFFFFF",
