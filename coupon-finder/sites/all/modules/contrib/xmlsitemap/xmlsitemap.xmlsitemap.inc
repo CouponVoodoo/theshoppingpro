@@ -153,7 +153,7 @@ class XMLSitemapWriter extends XMLWriter {
   public function endDocument() {
     $return = parent::endDocument();
 
-    if (!$this->getStatus()) {
+    if (!$return) {
       throw new XMLSitemapGenerationException(t('Unknown error occurred while writing to file @file.', array('@file' => $this->uri)));
     }
 
