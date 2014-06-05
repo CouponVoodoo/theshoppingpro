@@ -26,7 +26,7 @@ if ($row->Successful=="1") {
     </div>
   </div>
   <div class="row_2">
-    <?php if ($row->Successful=="1") : ?>
+    <?php if ($row->Successful=="1" && $row->Saving > 1) : ?>
 		<label><?php echo get_label('Savings:');?></label>
 		<div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="similar_coupons"><?php print get_label('This coupon helps you save ').get_label('INR ').$row->Saving.get_label(' on ').$row->productName;?></div></div>
     <label><?php echo get_label('Net Price:');?></label>
