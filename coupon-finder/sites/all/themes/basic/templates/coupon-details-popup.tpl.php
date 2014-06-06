@@ -2,11 +2,11 @@
 	global $base_url;
 	$coupon_code = $_GET['coupon_code'];
 	$redirect_path = $_GET['redirect_path'];
-	$coupon_nid = db_query("SELECT MAX(entity_id) FROM field_data_field_coupon_code where field_coupon_code_value =".$coupon_code)->fetchField();
+	$coupon_nid = db_query("SELECT MAX(entity_id) FROM field_data_field_coupon_code where field_coupon_code_value = '".$coupon_code."'")->fetchField();
 	if($coupon_nid > 0){
 		$coupon_retailer_id = db_query("SELECT MAX(field_retailer_tid) FROM field_data_field_retailer where entity_id = ".$coupon_nid)->fetchField();
 	}
-	// echo $coupon_retailer_id.'-'.$coupon_nid;
+	 echo $coupon_retailer_id.'-'.$coupon_nid;
 	switch ($coupon_retailer_id) {
 		case 5:
 			$how_url = 'http://www.couponvoodoo.com/content/how-use-coupon#Jabong';
