@@ -1670,6 +1670,7 @@ background: none repeat scroll 0 0 #F7971C;
 	padding: 20px;
 }
 .lose_text {color: #666666; text-align: right; margin: 0px 45px;}
+.how_to_link{float: right; margin: 0px 45px; clear: both}
 #bottomNavClose {
 	position: absolute;
 	top: -13px;
