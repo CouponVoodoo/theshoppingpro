@@ -9,19 +9,19 @@
 	// echo $coupon_retailer_id.'-'.$coupon_nid;
 	switch ($coupon_retailer_id) {
 		case 5:
-			$how_url = 'http://www.couponvoodoo.com/content/how-use-coupon#Jabong';
+			$how_url = 'http://www.couponvoodoo.com/content/how-use-coupon?qt-how_to_use_a_coupon=0#quickset-how_to_use_a_coupon_3';
 			$coupon_retailer_name = 'Jabong';
 		break;
 		case 13419:
-			$how_url = 'http://www.couponvoodoo.com/content/how-use-coupon#Flipkart';
+			$how_url = 'http://www.couponvoodoo.com/content/how-use-coupon?qt-how_to_use_a_coupon=1#quickset-how_to_use_a_coupon_3';
 			$coupon_retailer_name = 'Flipkart';
 		break;				
 		case 8:
-			$how_url = 'http://www.couponvoodoo.com/content/how-use-coupon#Myntra';
+			$how_url = 'http://www.couponvoodoo.com/content/how-use-coupon?qt-how_to_use_a_coupon=2#quickset-how_to_use_a_coupon_3';
 			$coupon_retailer_name = 'Myntra';
 		break;				
 		case 14782:
-			$how_url = 'http://www.couponvoodoo.com/content/how-use-coupon#Amazon';
+			$how_url = 'http://www.couponvoodoo.com/content/how-use-coupon?qt-how_to_use_a_coupon=3#quickset-how_to_use_a_coupon_3';
 			$coupon_retailer_name = 'Amazon';
 		break;
 		
