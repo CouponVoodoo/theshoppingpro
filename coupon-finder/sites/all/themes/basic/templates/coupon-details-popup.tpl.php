@@ -2,6 +2,34 @@
 	global $base_url;
 	$coupon_code = $_GET['coupon_code'];
 	$redirect_path = $_GET['redirect_path'];
+	
+	$coupon_nid = db_query("SELECT MAX(entity_id) FROM field_data_field_coupon_code where field_coupon_code_value = 'FIRSTTIME30'")->fetchField();
+	if($coupon_nid > 0){
+		$coupon_retailer_id = db_query("SELECT MAX(field_retailer_tid) FROM field_data_field_retailer where entity_id = ".$coupon_nid)->fetchField();
+	}
+	switch ($coupon_retailer_id) {
+		case 5:
+			$how_url = 'http://www.couponvoodoo.com/content/how-use-coupon#Jabong';
+			$coupon_retailer_name = 'Jabong';
+		break;
+		case 13419:
+			$how_url = 'http://www.couponvoodoo.com/content/how-use-coupon#Flipkart';
+			$coupon_retailer_name = 'Flipkart';
+		break;				
+		case 8:
+			$how_url = 'http://www.couponvoodoo.com/content/how-use-coupon#Myntra';
+			$coupon_retailer_name = 'Myntra';
+		break;				
+		case 14782:
+			$how_url = 'http://www.couponvoodoo.com/content/how-use-coupon#Amazon';
+			$coupon_retailer_name = 'Amazon';
+		break;
+		
+		default:
+			$how_url = 'http://www.couponvoodoo.com/content/how-use-coupon';
+			$coupon_retailer_name = 'Others';
+	}
+
 ?>
 <div class="popup_coupon">	
 <?php 
@@ -32,9 +60,11 @@
 		<?php
 			echo "<div class='popup_coupon_details'> Copy this coupon and paste it during the checkout section to avail additional discount</div>";
 	}
+	
 ?>
 	<label class = "lose_text"> Got it? Go ahead and buy now!</label>
 	<?php
 	echo "<div class='popup_copy_coupon'> <a id = 'copy_popup' href='{$redirect_path}' class='product_link' target='_blank'>Visit the Product Page >> </a></div>";
+	echo "<div class = 'how_to_link'> <a href='{$how_url}' target='_blank'>New to coupons? See how to apply</a></div>";
 	?>
 </div>
