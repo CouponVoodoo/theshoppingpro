@@ -7,6 +7,7 @@
 	if($coupon_nid > 0){
 		$coupon_retailer_id = db_query("SELECT MAX(field_retailer_tid) FROM field_data_field_retailer where entity_id = ".$coupon_nid)->fetchField();
 	}
+	echo $coupon_retailer_id.'-'.$coupon_nid;
 	switch ($coupon_retailer_id) {
 		case 5:
 			$how_url = 'http://www.couponvoodoo.com/content/how-use-coupon#Jabong';
