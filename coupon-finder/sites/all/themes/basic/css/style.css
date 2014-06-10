@@ -1709,3 +1709,6 @@ background: none repeat scroll 0 0 #F7971C;
 #lightbox .breadcrumb {display: none;}
 .views-slideshow-controls-text-next {float: right}
 .views-slideshow-controls-text-pause {text-align: center; width: 80%; position: absolute}
+
+#popup-element-0-active .inner{width: 800px !important}
+.block-quick-coupon-viewer {background:#F7971C;border:1px solid #d7d7d7;padding:11px;margin-top:15px;border-radius:8px; color: white; font-weight:bold; box-shadow: 3px 3px 3px #999999}
