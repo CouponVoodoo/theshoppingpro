@@ -33,7 +33,7 @@
 ?>
 <div class="popup_coupon">	
 <?php 
-	if(strpos(strtolower($coupon_code), 'flipkart') > -1) { // checking if code if for flipkart as we will not show copy coupon here
+	if(strpos(strtolower($coupon_code), 'flipkart') > -1 || strpos(strtolower($coupon_code), 'amazon') > -1) { // checking if code if for flipkart as we will not show copy coupon here
 ?>
 		<h4><?php echo get_label("BAZINGA! The following deal has been activated:");?></h4>
 		<div class="popup_coupon_section">
