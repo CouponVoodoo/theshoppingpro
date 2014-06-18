@@ -10,7 +10,7 @@
 	
 
 	If ($run == 1) {
-/*		mail('team@theshoppingpro.com', 'Update Node Script Start', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
+	mail('team@theshoppingpro.com', 'Update Node Script Start', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 		$result = "Start Time: ".gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600)))."\n\n";
 		echo "\n\n START - Entity Id Update \n\n".time();
 		db_query("UPDATE coupon_finder.predictorCompiledResultTable LEFT JOIN coupon_finder.field_data_field_base_url ON coupon_finder.field_data_field_base_url.field_base_url_value = coupon_finder.predictorCompiledResultTable.BaseUrl SET coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_data_field_base_url.entity_id ");
@@ -95,7 +95,7 @@
 
 		echo("\n\n FIELD_BRAND_TID - REVISION \n\n").time();
 		db_query ("UPDATE coupon_finder.field_revision_field_brand INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_revision_field_brand.entity_id SET coupon_finder.field_revision_field_brand.field_brand_tid = coupon_finder.predictorCompiledResultTable.BrandId ");
-*/
+
 		echo("\n\n FIELD_LASTCHECKEDTIME_VALUE \n\n").time();
 		db_query ("UPDATE coupon_finder.field_data_field_lastcheckedtime INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_data_field_lastcheckedtime.entity_id SET coupon_finder.field_data_field_lastcheckedtime.field_lastcheckedtime_value = coupon_finder.predictorCompiledResultTable.LastCheckTime ");
 
