@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------
+
+                     SETUP: How to install the library ?
+
+------------------------------------------------------------------------------
+
+In order to use the Amazon Library you have to put it on your (development) server, and 
+include it in your script. You can put it somewhere in the INCLUDE_PATH, or 
+specify the full path to the "amazon_api_class.php" file.
+
+You have to modify the "aws_signed_request.php" file too. You will need to enter your 
+Amazon Associate ID
+
+ $params["AssociateTag"]     = 'YOUR-ASSOCIATES-ID-HERE';
+
+You will also need to make sure that cURL is installed on your system.
+
+
+More information can be found ar the below url:
+
+http://www.codediesel.com/libraries/amazon-advertising-api-browsenodes/
