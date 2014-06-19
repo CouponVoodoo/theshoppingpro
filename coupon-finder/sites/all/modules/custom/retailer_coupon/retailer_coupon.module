@@ -127,7 +127,7 @@ echo 'No node to process';
 }
 
 function retailer_coupon_cron(){
-db_query("UPDATE coupon_finder.1Variables SET Status = 3, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Updat_PredictorCompiledResultTableDmp_Table'");
+mail('team@theshoppingpro.com', 'step1 ');
 	$run = 1;
 	$i = 0;
 	$Query = db_select('1Variables', 'b')
@@ -137,7 +137,7 @@ db_query("UPDATE coupon_finder.1Variables SET Status = 3, Ref_Value = '".gmdate(
 	$run_check_fetch = $run_check->fetch();
 	$isFirstRun = $run_check_fetch->Status;
 	
-mail('team@theshoppingpro.com', 'step2 '.$isFirstRun);	
+	
     echo $isFirstRun;
 	If ($isFirstRun == 1) {
 		db_query("Truncate table coupon_finder.predictorCompiledResultTableDmp");
