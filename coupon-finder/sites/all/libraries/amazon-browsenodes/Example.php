@@ -9,6 +9,6 @@ $region         = "com"; // or "CA" or "DE" etc.
  
 $obj = new AmazonProductAPI($public_key, $private_key, $region);
 $obj->setMedia("display");
-$obj->getBrowseNodes("229534");
+$obj->getBrowseNodes("1036592");
 
 ?>
