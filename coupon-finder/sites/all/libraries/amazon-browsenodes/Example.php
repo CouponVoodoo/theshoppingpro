@@ -10,7 +10,7 @@ $region         = "com"; // or "CA" or "DE" etc.
 $obj = new AmazonProductAPI($public_key, $private_key, $region);
 //$obj->setMedia("display");
 /* Write the BrowseNodes to a CSV file */
-$obj->setMedia("csv", "./nodes.csv");
+$obj->setMedia("csv", "./sites/all/libraries/amazon-browsenodes/exports/nodes.csv");
 $obj->getBrowseNodes("1036592");
 echo "end";
 
