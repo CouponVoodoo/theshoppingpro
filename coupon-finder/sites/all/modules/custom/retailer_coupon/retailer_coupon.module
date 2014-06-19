@@ -127,7 +127,7 @@ echo 'No node to process';
 }
 
 function retailer_coupon_cron(){
-mail('team@theshoppingpro.com','test-run','test');
+
 	$run = 1;
 	$i = 0;
 	$Query = db_select('1Variables', 'b')
@@ -137,7 +137,7 @@ mail('team@theshoppingpro.com','test-run','test');
 	$run_check_fetch = $run_check->fetch();
 	$isFirstRun = $run_check_fetch->Status;
 	
-	mail('team@theshoppingpro.com','test-run', $isFirstRun);
+
 	
     echo $isFirstRun;
 	If ($isFirstRun == 1) {
