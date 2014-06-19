@@ -12,5 +12,7 @@ $obj = new AmazonProductAPI($public_key, $private_key, $region);
 /* Write the BrowseNodes to a CSV file */
 $obj->setMedia("csv", "./nodes.csv");
 $obj->getBrowseNodes("1036592");
+echo "end";
+
 
 ?>
