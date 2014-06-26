@@ -2027,12 +2027,14 @@ function coupons_cron() {
 		$flipkart_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 13419 and entity_id is not null")->fetchField();
 		$firstcry_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 3 and entity_id is not null")->fetchField();
 		$amazon_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 14782 and entity_id is not null")->fetchField();
+		$fabfurnish_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 14792 and entity_id is not null")->fetchField();
 		$all_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable")->fetchField();
 		$result = $result."Jabong Count: ".$jabong_count."\n\n";
 		$result = $result."Myntra Count: ".$myntra_count."\n\n";
 		$result = $result."Flipkart Count: ".$flipkart_count."\n\n";
 		$result = $result."Firstcry Count: ".$firstcry_count."\n\n";
 		$result = $result."Amazon Count: ".$amazon_count."\n\n";
+		$result = $result."Amazon Count: ".$fabfurnish_count."\n\n";
 		$result = $result."All Count: ".$all_count."\n\n";
 		$null_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE entity_id is null")->fetchField();
 		$result = $result."Null entity_id count: ".$null_count."\n\n";
