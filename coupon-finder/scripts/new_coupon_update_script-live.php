@@ -39,9 +39,14 @@ echo "\n\n START - Entity Id Update \n\n".time();
 		db_query ("UPDATE coupon_finder.field_revision_field_best_coupon_status_display INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_revision_field_best_coupon_status_display.entity_id SET coupon_finder.field_revision_field_best_coupon_status_display.field_best_coupon_status_display_value = coupon_finder.predictorCompiledResultTable.BestCouponDisplay");
 
 		echo("\n\n FLUSH ALL CACHE \n\n").time();
+		
 		//cache_clear_all();
 		drupal_flush_all_caches();
+        echo "\n\n APACHE SOLR - STATUS \n\n".time();
+		db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.status = 1 ");
 
+		echo "\n\n APACHE SOLR - CHANGED \n\n".time();
+		db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.changed = ".(time()+(4.5*3600)));
 		
 
 
