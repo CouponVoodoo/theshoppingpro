@@ -384,7 +384,7 @@ if ($current_domain != 'cuponation'){
 		<div class="search_listing_row__<?php print $row->counter; ?> copy_coupon_row">
 <!--			<a href="<?php// print $base_url.'/coupon-redirect?l=bc&nid='.$nid.'&c='.$best_coupon_code.'&p='.$url_path.'&s='.$base_url_predictor;?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php// print $row->counter; ?>" data-clipboard-text="<?php// echo $best_coupon_code?>" >  -->
 		<a href="<?php print $coupon_redirect_path;?>" onclick=window.open('<?php echo coupon_popup_product_url($best_coupon_code, $coupon_redirect_path); ?>')//;return true; class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $best_coupon_code?>" >
-			<span class="copy_coupon">Copy Coupon</span><span></span>
+			<span class="copy_coupon">Open Offer</span><span></span>
 			</a>
 		</div>		
 	</div>
@@ -518,7 +518,7 @@ if ($current_domain != 'cuponation'){
 
 if (empty($_GET['pop'])) {
 	if ($current_domain == 'couponvoodoo'){
-		$product_description = 'Buy '.strip_tags($fields['field_retailer_product_name']->content).' (CV'.$nid.')'.' at the lowest price with the latest discounts, coupons and offers brought to you by CouponVoodoo. View the list of discount codes below and click "Copy Coupon" to get the code. Also see:';
+		$product_description = 'Buy '.strip_tags($fields['field_retailer_product_name']->content).' (CV'.$nid.')'.' at the lowest price with the latest discounts, coupons and offers brought to you by CouponVoodoo. View the list of discount codes below and click "Open Offer" to get the code. Also see:';
 	} else {
 		$product_description = 'Find the best price for '.strip_tags($fields['field_retailer_product_name']->content).' (CN'.$nid.')'.' with the latest discounts, coupons & offers @ '.$retailer;	
 	}
@@ -623,7 +623,7 @@ if ($brand_check != 'Other') {
 				<div class="search_listing_right">
 				  <div class="search_listing_row__1 copy_coupon_row">
 					<a href="<?php print $base_url ?>/coupon-redirect?l=oc&nid=<?php print $nid;?>&c=<?php print $coupon_code_predictor; ?>&p=<?php print $url_path; ?>&s=<?php print urlencode($url_path);?>" target="_blank" class="unlock_coupon" rel="c_1" data-clipboard-text="<?php echo $coupon_code_predictor?>">
-					  <span class="copy_coupon">Copy Coupon</span><span></span>
+					  <span class="copy_coupon">Open Offer</span><span></span>
 					</a>
 				  </div>
 				</div>

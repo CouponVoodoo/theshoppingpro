@@ -64,7 +64,7 @@ $non_coupon_saving = $mrp - $list_price;
 
 	
 	if( $node->field_best_coupon_status[und][0]['value'] == 1 ){
-        echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>".get_label('Coupons Found')."</div></div>";
+        echo "<div class='coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='coupons_text'>".get_label('Offers Found')."</div></div>";
 		$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value'];	
 		$coupon_code=rawurlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
 	}else{
