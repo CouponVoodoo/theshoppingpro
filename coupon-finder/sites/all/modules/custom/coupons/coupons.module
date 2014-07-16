@@ -1846,6 +1846,7 @@ function coupons_cron() {
 
 	If ($run == 1) {
 		mail('team@theshoppingpro.com', 'Update Node Script Start', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
+		db_query("UPDATE coupon_finder.1Variables SET Status = 0, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Update_Node_Script'");
 		$result = "Start Time: ".gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600)))."\n\n";
 		echo "\n\n START - Entity Id Update \n\n".time();
 		db_query("UPDATE coupon_finder.predictorCompiledResultTable LEFT JOIN coupon_finder.field_data_field_base_url ON coupon_finder.field_data_field_base_url.field_base_url_value = coupon_finder.predictorCompiledResultTable.BaseUrl SET coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_data_field_base_url.entity_id ");
@@ -2029,6 +2030,7 @@ function coupons_cron() {
 		$amazon_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 14782 and entity_id is not null")->fetchField();
 		$fabfurnish_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 14792 and entity_id is not null")->fetchField();
 		$zovi_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 14785 and entity_id is not null")->fetchField();
+		$zivame_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE RetailerId = 14786 and entity_id is not null")->fetchField();
 		$all_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable")->fetchField();
 		$result = $result."Jabong Count: ".$jabong_count."\n\n";
 		$result = $result."Myntra Count: ".$myntra_count."\n\n";
@@ -2037,6 +2039,7 @@ function coupons_cron() {
 		$result = $result."Amazon Count: ".$amazon_count."\n\n";
 		$result = $result."Fabfurnish Count: ".$fabfurnish_count."\n\n";
 		$result = $result."zovi Count: ".$zovi_count."\n\n";
+		$result = $result."zivame Count: ".$zivame_count."\n\n";
 		$result = $result."All Count: ".$all_count."\n\n"; 
 		$null_count = db_query("SELECT count(*) FROM  coupon_finder.predictorCompiledResultTable WHERE entity_id is null")->fetchField();
 		$result = $result."Null entity_id count: ".$null_count."\n\n";
