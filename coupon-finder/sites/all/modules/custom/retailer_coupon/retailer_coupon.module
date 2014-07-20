@@ -189,7 +189,7 @@ function retailer_coupon_cron(){
 				$retailer= trim($jsonArray->retailer);
 				$retailerId= trim($jsonArray->retailerId);
 				$bestCouponDisplay= trim($jsonArray->bestCouponDisplay);
-				
+				$uniq=trim($jsonArray->uniq);
 				$nid = db_insert('predictorCompiledResultTable') // Table name no longer needs {}
 				->fields(array(
 				  'id' => $id,
@@ -214,6 +214,7 @@ function retailer_coupon_cron(){
 				  'Retailer' => $retailer,
 				  'RetailerId' => $retailerId,
 				  'BestCouponDisplay' => $bestCouponDisplay,
+				  'uniq'=>$uniq,
 				))
 				->execute();
 				
