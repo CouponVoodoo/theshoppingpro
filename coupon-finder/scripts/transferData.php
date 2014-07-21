@@ -54,7 +54,7 @@ $run = 1;
 				$retailer= trim($jsonArray->retailer);
 				$retailerId= trim($jsonArray->retailerId);
 				$bestCouponDisplay= trim($jsonArray->bestCouponDisplay);
-				
+				$uniq=trim($jsonArray->uniq);
 				$nid = db_insert('predictorCompiledResultTable') // Table name no longer needs {}
 				->fields(array(
 				  'id' => $id,
@@ -79,6 +79,7 @@ $run = 1;
 				  'Retailer' => $retailer,
 				  'RetailerId' => $retailerId,
 				  'BestCouponDisplay' => $bestCouponDisplay,
+				  'uniq'=>$uniq,
 				))
 				->execute();
 				
