@@ -501,10 +501,10 @@ function custom_api_addproduct($ProInfo){
 	    echo $response;
 		if($_REQUEST['recheck'] == 1){
 			// cache_clear_all('field:node:' . $node->nid, 'cache_field');  // did not work
-			cache_clear_all('content:' . $node->nid . ':' . $node->nid, 'cache_content');
+			//cache_clear_all('content:' . $node->nid . ':' . $node->nid, 'cache_content');
 			//entity_get_controller('node')->resetCache(array($node->nid)); // did not work
 			 //node_save($node); 
-			 //drupal_flush_all_caches();
+			 drupal_flush_all_caches();
 			 //varnish_purge('www.couponvoodoo.com', 'node/'.$node->nid);
 			 //varnish_purge('onlineshopping.cuponation.in', 'node/'.$node->nid);
 			drupal_goto($node_url);
