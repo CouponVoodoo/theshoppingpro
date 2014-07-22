@@ -502,8 +502,8 @@ function custom_api_addproduct($ProInfo){
 		if($_REQUEST['recheck'] == 1){
 			// cache_clear_all('field:node:' . $node->nid, 'cache_field');  // did not work
 			
-			entity_get_controller('node')->resetCache(array($node->nid)); // did not work
-			// node_save($node); 
+			//entity_get_controller('node')->resetCache(array($node->nid)); // did not work
+			 node_save($node); 
 			 //drupal_flush_all_caches();
 			 varnish_purge('www.couponvoodoo.com', 'node/'.$node->nid);
 			 varnish_purge('onlineshopping.cuponation.in', 'node/'.$node->nid);
