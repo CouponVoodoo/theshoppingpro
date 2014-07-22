@@ -96,11 +96,11 @@ if ($row->Successful=="1") {
 	<a href="<?php //print $base_url.'/coupon-redirect?l=oc&os='.$add_tracking.'&nid='.$nid.'&c='.$row->couponCode.'&p='.$url_path.'&s='.urlencode($row->url);?>" target="_blank" class="unlock_coupon" rel="c_<?php //print $row->counter; ?>" data-clipboard-text="<?php //echo $row->couponCode?>">
     -->
     <a href="<?php print $coupon_redirect_path;?>"  onclick=window.open('<?php echo coupon_popup_product_url($row->couponCode, $coupon_redirect_path); ?>')//;return true; class="unlock_coupon" rel="c_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $row->couponCode?>">
-      <span class="copy_coupon">Open Offer</span><span></span>
+      <span class="copy_coupon">Copy Coupon</span><span></span>
     </a>
     <?php else : ?>
     <a href="javascript:" class="unlock_coupon" rel="c_<?php print $row->counter; ?>">
-      <span class="copy_coupon">Open Offer</span><span></span>
+      <span class="copy_coupon">Copy Coupon</span><span></span>
     </a>
     <?php endif; ?>
   </div>
