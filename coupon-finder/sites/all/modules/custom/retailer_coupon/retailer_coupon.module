@@ -128,7 +128,7 @@ echo 'No node to process';
 
 function retailer_coupon_cron(){
 
-	$run = 1;
+	
 	$i = 0;
 	$Query = db_select('1Variables', 'b')
 				 ->fields('b', array('Status') )
@@ -141,6 +141,7 @@ function retailer_coupon_cron(){
 	
     echo $isFirstRun;
 	If ($isFirstRun == 1) {
+	    $run = 1;
 		db_query("Truncate table coupon_finder.predictorCompiledResultTableDmp");
 		db_query("insert into coupon_finder.predictorCompiledResultTableDmp select * from coupon_finder.predictorCompiledResultTable");
 		db_query("Truncate table coupon_finder.predictorCompiledResultTable");
@@ -148,7 +149,8 @@ function retailer_coupon_cron(){
 	}
 
 	
-	If ($isFirstRun == 2) {
+	If ($isFirstRun == 2 || $isFirstRun == 3 ) {
+	    $run = 2;
 		return 'dont run';
 		exit;
 	}
