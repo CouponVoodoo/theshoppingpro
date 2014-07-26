@@ -174,7 +174,7 @@ function coupons_redirect_interim_page() {
 				    $url = $baseurl_redirect.'?&utm_campaign=afts&offer_id=17&aff_id=13273&aff_sub='.$uid1;
 				
 				default:
-					$url = $baseurl_redirect;
+					$url = $baseurl_redirect.'?q='.$network_name_redirect;
 			}
 		} else {
 			switch ($network_name_redirect) {
