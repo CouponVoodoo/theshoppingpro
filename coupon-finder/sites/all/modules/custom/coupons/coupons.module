@@ -172,9 +172,9 @@ function coupons_redirect_interim_page() {
 				break;
 				case "snapdeal":
 				    $url = $baseurl_redirect.'?&utm_campaign=afts&offer_id=17&aff_id=13273&aff_sub='.$uid1;
-				
+				break;
 				default:
-					$url = $baseurl_redirect.'?q='.$network_name_redirect;
+					$url = $baseurl_redirect;
 			}
 		} else {
 			switch ($network_name_redirect) {
