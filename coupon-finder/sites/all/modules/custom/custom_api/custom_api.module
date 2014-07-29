@@ -28,9 +28,10 @@ function custom_api_addproduct($ProInfo){
       $url = "http://54.243.150.171/cpnVodo/simulation/predictorNewNodeCreation.php";
       $json = drupal_http_request($url, array('timeout' => 1200.0));
 	  $json = $json->data;
-	  //var_dump($json);
-	  //exit;
+	  
+	  
 	  $jsonArr = json_decode($json,true);
+	  
 	  foreach($jsonArr as $json){
     	$json = json_encode($json); 
         $jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
@@ -117,6 +118,7 @@ function custom_api_addproduct($ProInfo){
 }*/
      
     $jsonArr = json_decode($json,true);
+	var_dump($jsonArr);exit; 
     if (isset($jsonArray->data[0]->ErrorCode) && ($jsonArray->data[0]->ErrorCode == "2")) {
         form_set_error('url', 'CouponVoodoo only works with the product page url e.g. http://www.jabong.com/giordano-Victory-Black-P9275-Black-Black-Analog-Watch-168021.html for products that are still in stock. Please recheck if the url you entered is that of a product and if so that the product is still in stock.');
       }
