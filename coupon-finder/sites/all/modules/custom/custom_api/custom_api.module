@@ -90,8 +90,8 @@ function custom_api_addproduct($ProInfo){
       $node_url = $base_url.drupal_get_path_alias('node/'.$_REQUEST['id']);
 	  
     }else{
-      $Pageurl = "http://54.243.150.171/nodeCreation.php";    
-      $url = "http://54.243.150.171/nodeCreation.php";
+      $Pageurl = "http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
+      $url ="http://54.243.150.171/CouponAutoWebPhase2.php?q=" .  $baseUrl ;
       
     }
 	// mail('ashishgupta97065@gmail.com', 'URL', print_r($url));
