@@ -21,7 +21,7 @@ function apachesolr_parallel_form_apachesolr_settings_alter(&$form, &$form_state
 
 /**
  * Implements hook_batch_alter().
- * @param array $batch
+ * @param array $batch 
  */
 function apachesolr_parallel_batch_alter(&$batch) {
   if ($batch['sets']['0']['operations']['0']['0'] == 'apachesolr_index_batch_index_entities') {
@@ -196,7 +196,7 @@ function apachesolr_parallel_index_entities($env_id, $limit) {
         httprl_queue_background_callback($callback_options);
 
         // Record the last item position.
-       /* foreach ($rows_in_thread as $row) {
+        foreach ($rows_in_thread as $row) {
           if (!empty($row->status)) {
             if ($row->changed > $max_changed) {
               $max_changed = $row->changed;
@@ -205,8 +205,8 @@ function apachesolr_parallel_index_entities($env_id, $limit) {
               $max_entity_id = $row->entity_id;
             }
           }
-        }*/
-      }
+        }
+      } 
     }
 
     // Only spin up the thread if we've got data to process.
@@ -322,33 +322,7 @@ function apachesolr_parallel_index_get_entities_to_index($env_id, $entity_type, 
   // Find the next batch of entities to index for this entity type.  Note that
   // for ordering we're grabbing the oldest first and then ordering by ID so
   // that we get a definitive order.
-  $query = db_select($table, 'aie')
-    ->fields('aie')
-    ->condition('aie.bundle', $bundles)
-    ->condition('aie.status', 1)
-    ->condition(db_or()
-      ->condition('aie.changed', $last_changed, '>')
-      // Tie breaker for entities that were changed at exactly
-      // the same second as the last indexed entity
-      ->condition(db_and()
-        ->condition('aie.changed', $last_changed, '=')
-        ->condition('aie.entity_id', $last_entity_id, '>')
-      )
-    )
-    // It is important that everything is indexed in order of changed date and
-    // then on entity_id because otherwise the conditions above will not match
-    // correctly
-    ->orderBy('aie.changed', 'ASC')
-    ->orderBy('aie.entity_id', 'ASC')
-    ->addTag('apachesolr_index_' . $entity_type);
-
-  if ($table == 'apachesolr_index_entities') {
-    // Other, entity-specific tables don't need this condition.
-    $query->condition('aie.entity_type', $entity_type);
-  }
-  $query->range(0, $limit);
-  $records = $query->execute();
-  /*$query = "SELECT * FROM {{$table}} aie
+  $query = "SELECT * FROM {{$table}} aie
     WHERE (aie.bundle IN (:bundles))
     AND (
       (aie.changed > :last_changed) OR ((aie.changed <= :last_changed) AND (aie.entity_id > :last_entity_id))
@@ -366,7 +340,7 @@ function apachesolr_parallel_index_get_entities_to_index($env_id, $entity_type, 
   $query .= " ORDER BY aie.entity_id ASC";
   $query = db_query_range($query, $from, $limit, $arguments);
   $records = $query->fetchAllAssoc('entity_id');
-*/
+
   // We omit the status callback since it is very slow.
   return $records;
 }
