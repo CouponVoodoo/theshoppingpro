@@ -325,7 +325,7 @@ function apachesolr_parallel_index_get_entities_to_index($env_id, $entity_type, 
   $query = "SELECT * FROM {{$table}} aie
     WHERE (aie.bundle IN (:bundles))
     AND (
-      (aie.changed > :last_changed) OR ((aie.changed <= :last_changed) AND (aie.entity_id > :last_entity_id))
+      (aie.changed > :last_changed) 
     )";
   $arguments = array(
     ':bundles' => $bundles,
