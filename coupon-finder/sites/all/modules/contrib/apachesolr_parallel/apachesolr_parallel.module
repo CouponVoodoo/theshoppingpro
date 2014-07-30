@@ -323,14 +323,14 @@ function apachesolr_parallel_index_get_entities_to_index($env_id, $entity_type, 
   // for ordering we're grabbing the oldest first and then ordering by ID so
   // that we get a definitive order.
   $query = "SELECT * FROM {{$table}} aie
-    WHERE (aie.bundle IN (:bundles))
-    AND (
-      (aie.changed > :last_changed) 
+    WHERE (aie.bundle IN (:bundles)) and aie.status=1
+    and (
+      (aie.changed > :last_changed) OR ((aie.changed = :last_changed) AND (aie.entity_id > :last_entity_id))
     )";
   $arguments = array(
     ':bundles' => $bundles,
     ':last_changed' => $last_changed,
-    //':last_entity_id' => $last_entity_id,
+    ':last_entity_id' => $last_entity_id,
   );
   if ($table == 'apachesolr_index_entities') {
     // Other, entity-specific tables don't need this condition.
