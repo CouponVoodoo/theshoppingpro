@@ -337,7 +337,7 @@ function apachesolr_parallel_index_get_entities_to_index($env_id, $entity_type, 
     $query .= " AND aie.entity_type = :entity_type";
     $arguments[':entity_type'] = $entity_type;
   }
-  $query .= " ORDER BY aie.changed ASC aie.entity_id ASC";
+  $query .= " ORDER BY aie.changed ASC , aie.entity_id ASC";
   $query = db_query_range($query, $from, $limit, $arguments);
   $records = $query->fetchAllAssoc('entity_id');
 
