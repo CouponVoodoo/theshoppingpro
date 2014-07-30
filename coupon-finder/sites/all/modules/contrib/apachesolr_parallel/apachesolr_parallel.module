@@ -330,7 +330,7 @@ function apachesolr_parallel_index_get_entities_to_index($env_id, $entity_type, 
   $arguments = array(
     ':bundles' => $bundles,
     ':last_changed' => $last_changed,
-    ':last_entity_id' => $last_entity_id,
+    //':last_entity_id' => $last_entity_id,
   );
   if ($table == 'apachesolr_index_entities') {
     // Other, entity-specific tables don't need this condition.
