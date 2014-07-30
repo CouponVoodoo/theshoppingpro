@@ -332,7 +332,7 @@ function apachesolr_parallel_index_get_entities_to_index($env_id, $entity_type, 
     ':last_changed' => $last_changed,
     ':last_entity_id' => $last_entity_id,
   );
-  //OR ((aie.changed <= :last_changed) AND (aie.entity_id > :last_entity_id))
+  //OR ((aie.changed <= :last_changed) AND (aie.entity_id > :last_entity_id)) 
   if ($table == 'apachesolr_index_entities') {
     // Other, entity-specific tables don't need this condition.
     $query .= " AND aie.entity_type = :entity_type";
