@@ -196,7 +196,7 @@ function apachesolr_parallel_index_entities($env_id, $limit) {
         httprl_queue_background_callback($callback_options);
 
         // Record the last item position.
-        foreach ($rows_in_thread as $row) {
+       /* foreach ($rows_in_thread as $row) {
           if (!empty($row->status)) {
             if ($row->changed > $max_changed) {
               $max_changed = $row->changed;
@@ -205,7 +205,7 @@ function apachesolr_parallel_index_entities($env_id, $limit) {
               $max_entity_id = $row->entity_id;
             }
           }
-        }
+        }*/
       } 
     }
 
