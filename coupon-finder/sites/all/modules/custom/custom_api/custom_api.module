@@ -381,7 +381,7 @@ function custom_api_addproduct($ProInfo){
 		echo 'LAST CHECKED TIME: '.$time1;
 		echo nl2br("\n");
 		 -----------------------------------------   */
-		$node->field_affiliateurl['und']['0'][value]	  	!= $field_affiliateurl = trim( $jsonArray->header->AffiliateURL);
+		$node->field_affiliateurl['und']['0'][value]	  	 = trim( $jsonArray->header->AffiliateURL);
 		/*if ($node->field_affiliateurl['und']['0'][value]	  	!= $field_affiliateurl ){
 			db_query("UPDATE {field_data_field_affiliateurl} SET field_affiliateurl_value = :affiliate_url WHERE revision_id = :vid", array(':affiliate_url' =>$field_affiliateurl, ':vid' => $node->vid));
 			db_query("UPDATE {field_revision_field_affiliateurl} SET field_affiliateurl_value = :affiliate_url WHERE revision_id = :vid", array(':affiliate_url' => $field_affiliateurl, ':vid' => $node->vid));
