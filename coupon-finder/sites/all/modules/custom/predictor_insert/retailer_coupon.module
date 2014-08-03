@@ -31,7 +31,7 @@ $table = $_REQUEST['table'];
     echo $isFirstRun;
 	If ($isFirstRun == 1) {
 	    $dmp=$table."Dmp";
-		db_query("Truncate table coupon_finder."$table."Dmp");
+		db_query("Truncate table coupon_finder.".$table."Dmp");
 		db_query("insert into coupon_finder.".$dmp." select * from coupon_finder.".$table);
 		db_query("Truncate table coupon_finder.".$table);
 		db_query("UPDATE coupon_finder.1Variables SET Status = 2, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Insert_'".$table);
