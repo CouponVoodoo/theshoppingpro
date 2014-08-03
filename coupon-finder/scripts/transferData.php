@@ -33,6 +33,7 @@ $run=2;
 	}
 	
 	while ($run ==1) {
+	echo 'inside';
 		$i++;
 		$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php?q=".$table; //The API TO GET ALL RETAILER COUPON DATA 
 		$json = drupal_http_request($url, array('timeout' => 1200.0));
