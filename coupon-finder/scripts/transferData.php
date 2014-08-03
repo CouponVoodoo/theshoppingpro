@@ -2,8 +2,10 @@
 $i = 0;
 	$tables = array("predictorCompiledResultTable", "predictorCompiledResultTableAmazon", "predictorCompiledResultTableFlipkart", "predictorCompiledResultTableSnapdeal");
 	
-	for($x=0;$x<$tables.length;$x++) {
+	for($x=0;$x<count($tables);$x++) {
+	
 	$table=$tables[$x];
+	echo $table;
 	$Query = db_select('1Variables', 'b')
 				 ->fields('b', array('Status') )
 				 ->condition('b.Variable', 'Insert_'.$table, '=');
