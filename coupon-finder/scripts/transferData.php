@@ -27,7 +27,7 @@ $i = 0;
 	
 	If ($isFirstRun == 2  ) {
 	    
-		return 'dont run';
+		// return 'dont run';
 //		exit;
 $run=2;
 	}
