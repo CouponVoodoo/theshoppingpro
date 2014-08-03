@@ -132,7 +132,7 @@ function retailer_coupon_cron(){
 $i = 0;
 	var $tables = ["predictorCompiledResultTable", "predictorCompiledResultTableAmazon", "predictorCompiledResultTableFlipkart", "predictorCompiledResultTableSnapdeal"];
 	
-	for each ($table in $tables) {
+	foreach ($table in $tables) {
 	$Query = db_select('1Variables', 'b')
 				 ->fields('b', array('Status') )
 				 ->condition('b.Variable', 'Insert_'.$table, '=');
