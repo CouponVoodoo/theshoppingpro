@@ -21,14 +21,15 @@ $i = 0;
 		db_query("Truncate table coupon_finder.".$dmp);
 		db_query("insert into coupon_finder.".$dmp." select * from coupon_finder.".$table);
 		db_query("Truncate table coupon_finder.".$table);
-		db_query("UPDATE coupon_finder.1Variables SET Status = 2, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Insert_".$table."'");
+		db_query("UPDATE coupon_finder.1Variables SET Status = 2, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())." WHERE Variable = 'Insert_".$table."'");
 	}
 
 	
 	If ($isFirstRun == 2  ) {
 	    
 		return 'dont run';
-		exit;
+//		exit;
+$run=2;
 	}
 	
 	while ($run ==1) {
@@ -102,8 +103,8 @@ $i = 0;
 			$run = 0;
 			if($i!=1) {
 				mail('team@theshoppingpro.com', 'Data Push Ended With '.$i.' loops', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
-				db_query("UPDATE coupon_finder.1Variables SET Status = 1, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Update_'".$table."'");
-				db_query("UPDATE coupon_finder.1Variables SET Status = 3, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Insert_'".$table."'"); 
+				db_query("UPDATE coupon_finder.1Variables SET Status = 1, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())." WHERE Variable = 'Update_'".$table."'");
+				db_query("UPDATE coupon_finder.1Variables SET Status = 3, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())." WHERE Variable = 'Insert_'".$table."'"); 
 		//		exit;
 			} else {
 				//mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
