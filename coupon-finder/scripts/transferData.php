@@ -1,8 +1,11 @@
 <?php
 $i = 0;
+	$tables = array("predictorCompiledResultTable", "predictorCompiledResultTableAmazon", "predictorCompiledResultTableFlipkart", "predictorCompiledResultTableSnapdeal");
+	
+	foreach($table as $tables) { 
 	$Query = db_select('1Variables', 'b')
 				 ->fields('b', array('Status') )
-				 ->condition('b.Variable', 'Updat_PredictorCompiledResultTableDmp_Table', '=');
+				 ->condition('b.Variable', 'Insert_'.$table, '=');
 	$run_check = $Query->execute();
 	$run_check_fetch = $run_check->fetch();
 	$isFirstRun = $run_check_fetch->Status;
@@ -11,11 +14,11 @@ $i = 0;
 	$run = 1;
     echo $isFirstRun;
 	If ($isFirstRun == 1) {
-	    
-		db_query("Truncate table coupon_finder.predictorCompiledResultTableDmp");
-		db_query("insert into coupon_finder.predictorCompiledResultTableDmp select * from coupon_finder.predictorCompiledResultTable");
-		db_query("Truncate table coupon_finder.predictorCompiledResultTable");
-		db_query("UPDATE coupon_finder.1Variables SET Status = 2, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Updat_PredictorCompiledResultTableDmp_Table'");
+	    $dmp=$table."Dmp";
+		db_query("Truncate table coupon_finder.".$dmp);
+		db_query("insert into coupon_finder.".$dmp." select * from coupon_finder.".$table);
+		db_query("Truncate table coupon_finder.".$table);
+		db_query("UPDATE coupon_finder.1Variables SET Status = 2, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Insert_'".$table);
 	}
 
 	
@@ -27,12 +30,12 @@ $i = 0;
 	
 	while ($run ==1) {
 		$i++;
-		$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php"; //The API TO GET ALL RETAILER COUPON DATA 
+		$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php?q=".$table; //The API TO GET ALL RETAILER COUPON DATA 
 		$json = drupal_http_request($url, array('timeout' => 1200.0));
 		//var_dump($json);
 		$json = $json->data;
 		if ($json != 'null') {
-			if ($i == 1) {mail('team@theshoppingpro.com', 'Data Push Start', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));}
+			if ($i == 1) {mail('team@theshoppingpro.com', 'Data Push Start for '.$table, gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));}
 			$jsonArr = json_decode($json,true);
 			foreach($jsonArr as $json){ 
 				$json = json_encode($json); 
@@ -96,10 +99,12 @@ $i = 0;
 			$run = 0;
 			if($i!=1) {
 				mail('team@theshoppingpro.com', 'Data Push Ended With '.$i.' loops', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
-				db_query("UPDATE coupon_finder.1Variables SET Status = 1, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Serial = 1");
-				db_query("UPDATE coupon_finder.1Variables SET Status = 3, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Updat_PredictorCompiledResultTableDmp_Table'");
+				db_query("UPDATE coupon_finder.1Variables SET Status = 1, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Update_'".$table);
+				db_query("UPDATE coupon_finder.1Variables SET Status = 3, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Insert_'".$table); 
+		//		exit;
 			} else {
-				mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
+				//mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 			}
 		}
-	}
+}
+}
