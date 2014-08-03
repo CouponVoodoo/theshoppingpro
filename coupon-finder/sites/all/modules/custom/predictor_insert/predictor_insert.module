@@ -229,8 +229,9 @@ function predictor_insert_cron(){
 				mail('team@theshoppingpro.com', 'Data Push Ended With '.$i.' loops', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 				db_query("UPDATE coupon_finder.1Variables SET Status = 1, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Update_'".$table);
 				db_query("UPDATE coupon_finder.1Variables SET Status = 3, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Insert_'".$table);
+				exit;
 			} else {
-				mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
+				//mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 			}
 		}
 	}
