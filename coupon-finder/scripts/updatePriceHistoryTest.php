@@ -38,9 +38,7 @@ echo 'count '.$count;
 db_query("update coupon_finder.".$table." set updatePriceHistoryStatus =0")	;
 db_query("update coupon_finder.1Variables set status = status+1 where Serial=3")	;
 
-$total_count = db_query("SELECT count( distinct entity_id) FROM `priceHistory` where `updateDate` = CURDATE()")->fetchField();
-$result = 'No. of url updated for price history :'.$total_count;
-mail('team@theshoppingpro.com', 'Update Price History : ', $result);	
+
 }
 else {echo 'in else loop';
 //db_query("Truncate table priceHistoryBatchData")	;
@@ -49,5 +47,8 @@ db_query("Insert into priceHistory select 0,entity_id,BestCouponStatus,NetPrice,
 db_query("update coupon_finder.".$table." set updatePriceHistoryStatus =0")	;
 db_query("update coupon_finder.1Variables set status = 0 where Serial=3")	;
 }
+$total_count = db_query("SELECT count( distinct entity_id) FROM `priceHistory` where `updateDate` = CURDATE()")->fetchField();
+$result = 'No. of url updated for price history :'.$total_count;
+mail('team@theshoppingpro.com', 'Update Price History : ', $result);	
 }
 ?>
