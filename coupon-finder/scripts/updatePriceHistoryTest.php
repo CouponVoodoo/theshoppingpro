@@ -7,7 +7,7 @@ $tables = array("predictorCompiledResultTable", "predictorCompiledResultTableAma
 	for($x=0;$x<count($tables);$x++) {
 	
 	$table=$tables[$x];
-$update = db_query("update coupon_finder.predictorCompiledResultTable set updatePriceHistoryStatus=1 where entity_id is null");
+$update = db_query("update coupon_finder.".$table". set updatePriceHistoryStatus=1 where entity_id is null");
 $results = db_query("SELECT distinct entity_id from coupon_finder.priceHistory where updateDate = CURDATE()");
 
 
@@ -18,7 +18,7 @@ foreach ($results as $result) {
 	
 	$entity_id = explode(",",$result->entity_id);
 
-            $query = "update coupon_finder.predictorCompiledResultTable set updatePriceHistoryStatus =1 where entity_id = :entity_id";
+            $query = "update coupon_finder.".$table." set updatePriceHistoryStatus =1 where entity_id = :entity_id";
 			$count = db_query($query, array(':entity_id' => $entity_id));
 			//$update=1;
 	}
