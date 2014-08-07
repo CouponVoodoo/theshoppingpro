@@ -243,5 +243,7 @@ $run=2;
 		}
 }
 }
+if ($i>5){
 mail('team@theshoppingpro.com', 'Data Push Ended With '.$i.' loops', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
+}
 }
