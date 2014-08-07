@@ -2,7 +2,11 @@
 
 
 $freq=150;
-
+$tables = array("predictorCompiledResultTable", "predictorCompiledResultTableAmazon", "predictorCompiledResultTableFlipkart", "predictorCompiledResultTableSnapdeal");
+	
+	for($x=0;$x<count($tables);$x++) {
+	
+	$table=$tables[$x];
 $update = db_query("update coupon_finder.predictorCompiledResultTable set updatePriceHistoryStatus=1 where entity_id is null");
 $results = db_query("SELECT distinct entity_id from coupon_finder.priceHistory where updateDate = CURDATE()");
 
@@ -27,11 +31,11 @@ $result as $item) {
 echo 'updating Count '.$updateCount;
 	if ($updateCount < $freq){
 	echo 'updating table';
-$count=db_query("Insert into priceHistory select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
-$count=db_query("Insert into priceHistoryBatchData select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
+$count=db_query("Insert into priceHistory select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from ".$table." where updatePriceHistoryStatus <> 1")	;
+//$count=db_query("Insert into priceHistoryBatchData select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
 
 echo 'count '.$count;
-db_query("update coupon_finder.predictorCompiledResultTable set updatePriceHistoryStatus =0")	;
+db_query("update coupon_finder.".$table." set updatePriceHistoryStatus =0")	;
 db_query("update coupon_finder.1Variables set status = status+1 where Serial=3")	;
 
 $total_count = db_query("SELECT count( distinct entity_id) FROM `priceHistory` where `updateDate` = CURDATE()")->fetchField();
@@ -40,9 +44,10 @@ mail('team@theshoppingpro.com', 'Update Price History : ', $result);
 }
 else {echo 'in else loop';
 //db_query("Truncate table priceHistoryBatchData")	;
-db_query("Insert into priceHistory select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
-$count=db_query("Insert into priceHistoryBatchData select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
-db_query("update coupon_finder.predictorCompiledResultTable set updatePriceHistoryStatus =0")	;
+db_query("Insert into priceHistory select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from ".$table." where updatePriceHistoryStatus <> 1")	;
+//$count=db_query("Insert into priceHistoryBatchData select 0,entity_id,BestCouponStatus,NetPrice,ListPrice,CURDATE(),0,BestCouponCode from predictorCompiledResultTable where updatePriceHistoryStatus <> 1")	;
+db_query("update coupon_finder.".$table." set updatePriceHistoryStatus =0")	;
 db_query("update coupon_finder.1Variables set status = 0 where Serial=3")	;
+}
 }
 ?>
