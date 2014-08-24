@@ -41,6 +41,7 @@ $run=2;
 		$json = drupal_http_request($url, array('timeout' => 1200.0));
 		//var_dump($json);
 		$json = $json->data;
+		var_dump($json);
 		if ($json != 'null') {
 			if ($i == 1) {mail('team@theshoppingpro.com', 'Data Push Start for '.$table, gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));}
 			$jsonArr = json_decode($json,true);
