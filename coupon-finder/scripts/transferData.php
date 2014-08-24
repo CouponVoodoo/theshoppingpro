@@ -42,9 +42,11 @@ $run=2;
 		//var_dump($json);
 		$json = $json->data;
 		var_dump($json);
+		
 		if ($json != 'null') {
 			if ($i == 1) {mail('team@theshoppingpro.com', 'Data Push Start for '.$table, gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));}
 			$jsonArr = json_decode($json,true);
+			var_dump($jsonArr);
 			foreach($jsonArr as $json){ 
 				$json = json_encode($json); 
 				$jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
