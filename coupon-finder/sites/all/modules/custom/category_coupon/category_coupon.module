@@ -46,7 +46,7 @@ function category_coupon_addcoupon($CouponInfo){
 		
 		$query = new EntityFieldQuery();
 		$query->entityCondition('entity_type', 'node')
-		->entityCondition('bundle', 'category_coupon_page')
+		->entityCondition('bundle', 'category_coupon')
 		->fieldCondition('field_category', 'tid', $catID, '=')
 		->fieldCondition('field_coupon_code', 'value', $couponCode, '=');
 		// ->fieldCondition('field_coupon_title', 'value', $couponTitle, '='); // ENSURING COUPON IS UNIQUE THIS MEANS THAT LAST INSTANCE OF THE COUPON WILL GO LIVE - RECHECK IF THATS OK
@@ -62,7 +62,7 @@ function category_coupon_addcoupon($CouponInfo){
 			$node = new stdClass();
 			echo 'inside new';			
 	        $node->language = 'und';
-			$node->type     = 'category_coupon_page';
+			$node->type     = 'category_coupon';
 			$node->uid      = 1; 
 		}
 		else {
