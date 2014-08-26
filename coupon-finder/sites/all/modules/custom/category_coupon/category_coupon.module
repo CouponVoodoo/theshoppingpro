@@ -2,7 +2,7 @@
 /* CREATING AN API FOR UPDATE OF RETAILER COUPON NODES*/
 function category_coupon_menu() {
   $items = array();
-  $items['add-cat-oupon/%'] = array(//this creates a URL that will call this form at "examples/form-example"
+  $items['add-cat-coupon/%'] = array(//this creates a URL that will call this form at "examples/form-example"
       'title' => 'Add Coupons in database', //page title
       'page callback' => 'category_coupon_addcoupon', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
       'page arguments' => array(1),
