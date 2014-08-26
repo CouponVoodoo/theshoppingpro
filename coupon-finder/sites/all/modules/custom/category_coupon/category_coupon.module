@@ -86,7 +86,7 @@ function category_coupon_addcoupon($CouponInfo){
 		$node->field_affiliate_url['und']['0']['value']			= $catUrl;
 		$node->field_weight['und']['0']['value']			= $weight;
 		$node->field_status['und']['0']['value']			= $status;
-		//$node->field_affiliate_url['und']['0']['value']			= $catUrl;
+		$node->field_category['und'][0][tid]			= $catID;
 		// PUSHING IN CATEGORY LINKS 
 				
     		 
