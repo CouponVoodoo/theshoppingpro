@@ -95,3 +95,4 @@ function category_coupon_addcoupon($CouponInfo){
     }
 echo 'No node to process';
 }
+?>
