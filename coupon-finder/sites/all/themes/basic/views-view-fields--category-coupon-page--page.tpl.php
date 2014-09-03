@@ -65,8 +65,11 @@
 echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><span>Likely to Work</span></a></div>"; ?>
 <div >Updated: <?php print $last_checked_time; ?></div>
 <div ><?php print $retailer; ?></div>
-
-<div class="product-right-bottom" itemprop="description">
+		
+	</div>
+	
+	<div class="product-bottom" >
+	<div class="product-right-bottom" itemprop="description">
 <?php
 $retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
 if ($retailer['#type'] == 'link') {
@@ -89,10 +92,10 @@ if ($category_check != 'Other') {
 	print " | ".$fields['field_category']->content;
 	}
 }
-?>
-		
-	</div>
 
+?>
+</div>
+</div>
 	<div class="search_listing_right">
 	
 		  <div class="search_listing_row__1 copy_coupon_row">
