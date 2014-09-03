@@ -64,11 +64,22 @@
 <?php
 echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><span>Likely to Work</span></a></div>"; ?>
 <div >Updated: <?php print $last_checked_time; ?></div>
-<div ><?php print $retailer; ?></div>
+
 		
 	</div>
 	
-	<div class="product-bottom" >
+	
+	<div class="search_listing_right">
+	
+		  <div class="search_listing_row__1 copy_coupon_row">
+			<?php $div_id='ccp_'.$nid ;?>
+			<a href="<?php print $coupon_display_url?>" target="_blank"  class="unlock_best_coupon unlock_coupon" id =" <?php echo'ccp_'.$nid;?> rel="best_1" data-clipboard-text="<?php echo $coupon_code?>" >
+			<?php echo"<span class='copy_coupon'>Copy Coupon</span><span></span></a>"?>
+		  </div>
+	</div>
+</div>
+
+<div class="product-bottom" >
 	<div class="product-right-bottom" itemprop="description">
 <?php
 $retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
@@ -96,13 +107,3 @@ if ($category_check != 'Other') {
 ?>
 </div>
 </div>
-	<div class="search_listing_right">
-	
-		  <div class="search_listing_row__1 copy_coupon_row">
-			<?php $div_id='ccp_'.$nid ;?>
-			<a href="<?php print $coupon_display_url?>" target="_blank"  class="unlock_best_coupon unlock_coupon" id =" <?php echo'ccp_'.$nid;?> rel="best_1" data-clipboard-text="<?php echo $coupon_code?>" >
-			<?php echo"<span class='copy_coupon'>Copy Coupon</span><span></span></a>"?>
-		  </div>
-	</div>
-</div>
-
