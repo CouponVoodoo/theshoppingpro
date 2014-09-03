@@ -56,16 +56,16 @@
 			$coupon_display_url=$base_url."/coupon-redirect?l=cp&nid=".$nid."&t=c&c=".rawurlencode($coupon_code)."&p=".$url_path."&s=".rawurlencode($affiliate_url);
 
 		?>
-			<h2><a rel='no follow' target='_blank'href='<?php print $coupon_display_url ?>' ><?php print $title.' @ '.$retailer; ?></a></h2>
+			<h2><a rel='no follow' target='_blank'href='<?php print $coupon_display_url ?>' ><?php print $title." @ ".$retailer; ?></a></h2>
 			<div >
 
-<?php print $last_checked_time; ?></div>
+
 
 <?php
 echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><span>Likely to Work</span></a></div>"; ?>
-<div ><?php print $coupon_title; ?></div>
-<div ><?php $affiliate_url; ?></div>	
+<div >Updated: <?php print $last_checked_time; ?></div>
 <div ><?php print $retailer; ?></div>
+
 		
 	</div>
 
