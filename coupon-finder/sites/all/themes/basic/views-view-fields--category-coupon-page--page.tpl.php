@@ -1,13 +1,7 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link type="text/css" rel="stylesheet" href="http://www.couponvoodoo.com/sites/default/files/advagg_css/css__BJ6Ou6QsBRtnFTmxaakamOIS8n4QswDP2XnnZ1sxtaM__6IoRHYuSXh6SbzUfNwtQM7aMuzK7qJzxXyTOLAksHnM__qQtXqxbqFl1GP9a-DLPNj9YhuU5petq565QeEYgWHUg.css" media="all" />
-<link type="text/css" rel="stylesheet" href="http://www.couponvoodoo.com/sites/default/files/advagg_css/css__8aLVxUM2XWXQLpjVTPiVFKW6x2NKQWDiKvF_4IrWLr4__pViROYV0v2RHQsaIYJBVpDo3USu9QXZ_BVNsGqQaIzA__qQtXqxbqFl1GP9a-DLPNj9YhuU5petq565QeEYgWHUg.css" media="all" />
-<link type="text/css" rel="stylesheet" href="http://www.couponvoodoo.com/sites/default/files/advagg_css/css__hhMMdr4Yr6fqcDwhwegiAZd1gctDZwmreATftsN8obc__HsXwkowP_SVzaSqFlT_1r0I17yIHF_okdRCxPidtLZE__qQtXqxbqFl1GP9a-DLPNj9YhuU5petq565QeEYgWHUg.css" media="all" />
-<link type="text/css" rel="stylesheet" href="http://www.couponvoodoo.com/sites/default/files/advagg_css/css__OYH4aVrzMLL4MJWoVTWungo92tYPNMXO8p6dUJhSnBc__5qd2ZUe6yFBJi-9bamGMLQAgzR1LvP-voBN_5-xW6FA__qQtXqxbqFl1GP9a-DLPNj9YhuU5petq565QeEYgWHUg.css" media="all" />
-<link type="text/css" rel="stylesheet" href="http://www.couponvoodoo.com/sites/default/files/advagg_css/css__rX6ZUH-CdxM25wZySsf0UFZaw0aGCth6Ra7Ms6jozGQ__q7FeRnDLZWqbAshpjiWwZcTukbgKsl3OueWgkl1UL0M__qQtXqxbqFl1GP9a-DLPNj9YhuU5petq565QeEYgWHUg.css" media="print" /><meta name="viewport" content="width=device-width">
- 
- 
-  
-</head>
+<html>
+
+<link type="text/css" rel="stylesheet" href="http://localhost/learn/sites/all/themes/office-responsive-theme/css/style.css"/>
+
 <body>
 <?php
 
@@ -67,9 +61,12 @@
 
 		?>
 			<h2><a rel='no follow' target='_blank'href='<?php print $coupon_display_url ?>' ><?php print $title; ?></a></h2>
-			<div ><?php print $last_checked_time; ?></div>
-<div class='coupon_status_likely'><img src="sites/all/themes/office-responsive-theme/images/thumbs_up.png" /><span>Likely to Work</span></a></div>
+			<div >
 
+<?php print $last_checked_time; ?></div>
+
+<?php
+echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><span>Likely to Work</span></a></div>"; ?>
 <div ><?php print $coupon_title; ?></div>
 <div ><?php print $retailer; ?></div>
 			
@@ -80,7 +77,7 @@
 		  <div class="search_listing_row__1 copy_coupon_row">
 			<?php $div_id='ccp_'.$nid ;?>
 			<a href="<?php print $coupon_display_url?>" target="_blank"  class="unlock_best_coupon unlock_coupon" id =" <?php echo'ccp_'.$nid;?> rel="best_1" data-clipboard-text="<?php echo $coupon_code?>" >
-			<span class="copy_coupon">Copy Coupon</span><span></span></a>
+			<?php echo"<span class='copy_coupon'>Copy Coupon</span><span></span></a>"?>
 		  </div>
 	</div>
 </div>
