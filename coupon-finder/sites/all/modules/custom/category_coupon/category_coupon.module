@@ -32,7 +32,7 @@ function category_coupon_addcoupon($CouponInfo){
 		$couponInfo = $jsonArray->couponInfo;
 		$retailer = trim($couponInfo->Retailer);
     	$retailerId = trim($couponInfo->RetailerId);
-    	$lastCheckedTime = trim($couponInfo->LastCheckedTime);
+    	$lastCheckedTime = time();
     	$couponCode = trim($couponInfo->CouponCode);
     	$couponTitle = trim($couponInfo->CouponTitle);
     	$couponCodeDesc = trim($couponInfo->CouponCodeDesc);
