@@ -78,3 +78,32 @@ echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme().
 		  </div>
 	</div>
 </div>
+
+<div class="product-bottom" >
+	<div class="product-right-bottom" itemprop="description">
+<?php
+$retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
+if ($retailer['#type'] == 'link') {
+    print '<div class="field-content">' . l(t('More '.$retailer['#title']).' Coupons', $retailer['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
+}
+else {
+    print $fields['field_retailer']->content;
+}
+
+$category_check = strip_tags($fields['field_category']->content);
+
+if ($category_check != 'Other') {
+	$category = $fields['field_category']->handler->view->result[0]->field_field_category[0]['rendered'];
+	if ($category['#type'] == 'link') {
+	// echo " | <div class='category_meta' itemscope itemtype='http://schema.org/offer'><meta  itemprop='category' content='".$fields['field_category']->content."' /></div>";
+	print ' | <div class="field-content">' . l(t('Vieww Discounted '.$category['#title']), $category['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
+	}
+	else {
+	// echo " | <div class='category_meta' itemscope itemtype='http://schema.org/offer'><meta  itemprop='category' content='".$fields['field_category']->content."' /></div>";
+	print " | ".$fields['field_category']->content;
+	}
+}
+
+?>
+</div>
+</div>
