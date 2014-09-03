@@ -56,7 +56,7 @@
 			$coupon_display_url=$base_url."/coupon-redirect?l=cp&nid=".$nid."&t=c&c=".rawurlencode($coupon_code)."&p=".$url_path."&s=".rawurlencode($affiliate_url);
 
 		?>
-			<h2><a rel='no follow' target='_blank'href='<?php print $coupon_display_url ?>' ><?php print $title; ?></a></h2>
+			<h2><a rel='no follow' target='_blank'href='<?php print $coupon_display_url ?>' ><?php print $title.' @ '.$retailer; ?></a></h2>
 			<div >
 
 <?php print $last_checked_time; ?></div>
