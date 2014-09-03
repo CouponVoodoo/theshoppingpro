@@ -36,7 +36,7 @@
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
                         
 			$node = node_load($nid);
-			$affiliate_url = strip_tags(($fields['field_baseurl_coupon']->content));
+			$affiliate_url = $node->field_baseurl_coupon['und']['0']['value'];//strip_tags(($fields['field_baseurl_coupon']->content));
 			global $base_url;
 			
 						
