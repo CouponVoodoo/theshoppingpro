@@ -64,8 +64,9 @@
 <?php
 echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><span>Likely to Work</span></a></div>"; ?>
 <div ><?php print $coupon_title; ?></div>
+<div ><?php var_dump($affiliate_url); ?></div>	
 <div ><?php print $retailer; ?></div>
-		<div ><?php print $affiliate_url; ?></div>	
+		
 	</div>
 
 	<div class="search_listing_right">
