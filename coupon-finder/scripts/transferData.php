@@ -1,6 +1,6 @@
 <?php
 $i = 0;
-	$tables = array("predictorCompiledResultTable", "predictorCompiledResultTableAmazon", "predictorCompiledResultTableFlipkart", "predictorCompiledResultTableSnapdeal");
+	$tables = array("predictorCompiledResultTableAmazon");
 	
 	for($x=0;$x<count($tables);$x++) {
 	
