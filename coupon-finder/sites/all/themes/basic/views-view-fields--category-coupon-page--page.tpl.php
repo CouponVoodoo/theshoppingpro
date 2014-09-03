@@ -1,8 +1,4 @@
-<html>
 
-<link type="text/css" rel="stylesheet" href="http://localhost/learn/sites/all/themes/office-responsive-theme/css/style.css"/>
-
-<body>
 <?php
 
 /**
