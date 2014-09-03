@@ -68,7 +68,7 @@ echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme().
 		
 	</div>
 	
-	
+	</div>
 	<div class="search_listing_right">
 	
 		  <div class="search_listing_row__1 copy_coupon_row">
@@ -77,7 +77,7 @@ echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme().
 			<?php echo"<span class='copy_coupon'>Copy Coupon</span><span></span></a>"?>
 		  </div>
 	</div>
-</div>
+
 
 <div class="product-bottom" >
 	<div class="product-right-bottom" itemprop="description">
