@@ -119,9 +119,10 @@ $url = "http://54.243.150.171/cpnVodo/nodecreation/brandCpnPageNct.php"; //The A
     	$weight = trim($couponInfo->weight);
 		$catUrl = trim($couponInfo->BaseUrl);
 		$brand = trim($couponInfo->Brand);
-		$brandId=taxonomy_get_term_by_name($brand)->tid;
+		$brandId=taxonomy_get_term_by_name($brand);
 		//CHECK IF NODE EXISTS (INCASE OF COUPONS CHECK VIA COUPON CODE AND RETAILER ID ELSE VIA COUPON TITLE AND RETAILER ID
 		echo "offer type: ".$brandId;
+		var_dump($brandId);
 		exit;
 		$query = new EntityFieldQuery();
 		$query->entityCondition('entity_type', 'node')
