@@ -124,8 +124,7 @@ $url = "http://54.243.150.171/cpnVodo/nodecreation/brandCpnPageNct.php"; //The A
 		$brandId = key($term);
 		//CHECK IF NODE EXISTS (INCASE OF COUPONS CHECK VIA COUPON CODE AND RETAILER ID ELSE VIA COUPON TITLE AND RETAILER ID
 		echo "offer type: ".$brandId;
-		var_dump($brandId);
-		exit;
+		
 		$query = new EntityFieldQuery();
 		$query->entityCondition('entity_type', 'node')
 		->entityCondition('bundle', 'brand_coupon')
