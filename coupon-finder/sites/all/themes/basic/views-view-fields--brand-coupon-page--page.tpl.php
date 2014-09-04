@@ -96,11 +96,11 @@ if ($brand_check != 'Other') {
 	$brand = $fields['field_brand']->handler->view->result[0]->field_field_brand[0]['rendered'];
 	if ($brand_check['#type'] == 'link') {
 	// echo " | <div class='category_meta' itemscope itemtype='http://schema.org/offer'><meta  itemprop='category' content='".$fields['field_category']->content."' /></div>";
-	print ' | <div class="field-content">' . l(t('View Discounted '.$brand['#title']). ' Products', $brand['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
+	print ' | <div class="field-content">' . l(t($brand['#title']) , $brand['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
 	}
 	else {
 	// echo " | <div class='category_meta' itemscope itemtype='http://schema.org/offer'><meta  itemprop='category' content='".$fields['field_category']->content."' /></div>";
-	print " | ".$fields['field_brand']->content;
+	print " | View Discounted ".$fields['field_brand']->content.' Products';
 	}
 }
 
