@@ -79,7 +79,6 @@ echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme().
 	</div>
 
 
-<div class="product-bottom" >
 	<div class="product-right-bottom" itemprop="description">
 <?php
 $retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
@@ -105,5 +104,4 @@ if ($brand_check != 'Other') {
 }
 
 ?>
-</div>
 </div>
