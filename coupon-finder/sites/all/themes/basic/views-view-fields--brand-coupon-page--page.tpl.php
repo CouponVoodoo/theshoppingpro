@@ -34,7 +34,7 @@
 			$coupon_title = strip_tags(($fields['field_coupon_title']->content));
 			$title = strip_tags(($fields['field_coupon_title']->content));
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
-                        $brand=$fields['field_brand']->content;
+             $brand=strip_tags(($fields['field_brand']->content));           
 			$node = node_load($nid);
 			$affiliate_url = $node->field_baseurl_coupon['und']['0']['value'];//strip_tags(($fields['field_baseurl_coupon']->content));
 			global $base_url;
@@ -79,6 +79,7 @@ echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme().
 	</div>
 
 
+<div class="product-bottom" >
 	<div class="product-right-bottom" itemprop="description">
 <?php
 $retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
@@ -104,4 +105,5 @@ if ($brand_check != 'Other') {
 }
 
 ?>
+</div>
 </div>
