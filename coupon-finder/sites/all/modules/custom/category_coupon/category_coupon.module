@@ -17,7 +17,7 @@ function category_coupon_menu() {
 function category_coupon_addcoupon($CouponInfo){
 //$retailer = reset(explode('_',$_REQUEST['retailer']));
 //$retailer = reset(explode('_',$urlParam));
-	$url = "http://54.243.150.171/cpnVodo/nodecreation/catCpnPageNct.php"; //The API TO GET ALL RETAILER COUPON DATA 
+	/*$url = "http://54.243.150.171/cpnVodo/nodecreation/catCpnPageNct.php"; //The API TO GET ALL RETAILER COUPON DATA 
 	$json = drupal_http_request($url, array('timeout' => 600.0));
    	$json = $json->data;
     $jsonArr = json_decode($json,true);
@@ -94,7 +94,7 @@ function category_coupon_addcoupon($CouponInfo){
 		echo 'node saved';
     }
 echo 'No node to process';
-
+*/
 
 $url = "http://54.243.150.171/cpnVodo/nodecreation/brandCpnPageNct.php"; //The API TO GET ALL RETAILER COUPON DATA 
 	$json = drupal_http_request($url, array('timeout' => 600.0));
