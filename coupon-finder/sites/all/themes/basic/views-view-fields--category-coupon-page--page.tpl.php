@@ -84,7 +84,8 @@ echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme().
 <?php
 $retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
 if ($retailer['#type'] == 'link') {
-    print '<div class="field-content">' . l(t('More '.$retailer['#title']).' Coupons', $retailer['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
+   print $fields['field_retailer']->content;
+   // print '<div class="field-content">' . l(t('More '.$retailer['#title']).' Coupons', $retailer['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
 }
 else {
     print $fields['field_retailer']->content;
