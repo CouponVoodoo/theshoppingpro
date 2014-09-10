@@ -1110,9 +1110,9 @@ function coupons_block_view($delta = '') {
   $block = array();
   switch ($delta) {
     case 'coupons_block_form':
-	If ($current_domain != 'offers.couponvoodoo'){
+	//If ($current_domain != 'offers.couponvoodoo'){
       $block['content'] = drupal_get_form('coupons_finder_form', false);
-	  }
+	  //}
       break;
 	case 'coupons_taxonomy_description':
 	//print_r(menu_get_object('term', 2));exit;
