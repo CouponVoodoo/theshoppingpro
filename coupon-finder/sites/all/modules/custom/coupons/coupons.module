@@ -2415,7 +2415,7 @@ function coupons_finder_form_for_taxonomy($form, &$form_state) {
   $form['actions']['submit'] = array(
       '#type' => 'submit',
       '#value' => t('Find My Coupons'),
-      '#prefix' => '<div clasdds="submit">',
+      '#prefix' => '<div class="submit">',
       '#suffix' => '</div>',
   );
   return $form;
