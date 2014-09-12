@@ -2427,7 +2427,10 @@ function coupons_finder_form_for_taxonomy_validate($form, &$form_state) {
 
 function coupons_finder_form_for_taxonomy_submit($form, &$form_state) {
   $keyword = $form_state['values']['title'];
-  $result = db_query("SELECT * FROM {taxonomy_term_data} ttd WHERE vid IN (2, 3, 4) AND name LIKE :keyword ORDER BY name, tid LIMIT 1", array(':keyword' => $keyword . '%'))->fetch();
+  $result = db_query("SELECT * FROM {taxonomy_term_data} ttd WHERE vid = 2 AND name LIKE :keyword ORDER BY name, tid LIMIT 1", array(':keyword' => $keyword . '%'))->fetch();
+  if (!$result->vid) {
+    $result = db_query("SELECT * FROM {taxonomy_term_data} ttd WHERE vid IN (3, 4) AND name LIKE :keyword ORDER BY name, tid LIMIT 1", array(':keyword' => $keyword . '%'))->fetch();
+  }
   switch($result->vid) {
     case 2://Retailer
       drupal_goto('rcp/'.$result->name.'/coupons-offers');
