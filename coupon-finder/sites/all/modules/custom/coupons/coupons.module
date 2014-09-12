@@ -1098,6 +1098,10 @@ function coupons_block_info() {
   $blocks['coupons_taxonomy_description'] = array(
       'info' => t('Coupon taxonomy description block.'),
   );
+  $blocks['coupons_finder_taxonomy'] = array(
+      'info' => t('Coupon finder for taxonomy.'),
+  );
+
   return $blocks;
 }
 
@@ -1109,6 +1113,9 @@ function coupons_block_info() {
 function coupons_block_view($delta = '') {
   $block = array();
   switch ($delta) {
+    case 'coupons_finder_taxonomy':
+      $block['content'] = drupal_get_form('coupons_finder_form_for_taxonomy', false);
+      break;
     case 'coupons_block_form': 
 	//If ($current_domain != 'offers.couponvoodoo'){
       $block['content'] = drupal_get_form('coupons_finder_form', false);
@@ -2390,3 +2397,46 @@ function coupons_apachesolr_process_results(array &$results, DrupalSolrQueryInte
 }
 
 */
+
+
+function coupons_finder_form_for_taxonomy($form, &$form_state) {
+  if ($GLOBALS['_domain']['subdomain'] != 'offers.couponvoodoo.com') {
+    return array();
+  }
+  $form['title'] = array(
+      '#title' => '',
+      '#type' => 'textfield',
+      '#size' => 100,
+      '#attributes' => array('placeholder' => t('Brand or Category')),
+      '#maxlength' => 255,
+      '#label_display' => 'hidden',
+  );
+
+  $form['actions']['submit'] = array(
+      '#type' => 'submit',
+      '#value' => t('Find My Coupons'),
+      '#prefix' => '<div clasdds="submit">',
+      '#suffix' => '</div>',
+  );
+  return $form;
+}
+
+function coupons_finder_form_for_taxonomy_validate($form, &$form_state) {
+  
+}
+
+function coupons_finder_form_for_taxonomy_submit($form, &$form_state) {
+  $keyword = $form_state['values']['title'];
+  $result = db_query("SELECT * FROM {taxonomy_term_data} ttd WHERE vid IN (2, 3, 4) AND name LIKE :keyword ORDER BY name, tid LIMIT 1", array(':keyword' => $keyword . '%'))->fetch();
+  switch($result->vid) {
+    case 2://Retailer
+      drupal_goto('rcp/'.$result->name.'/coupons-offers');
+      break;
+    case 3://Categories
+      drupal_goto('ccp/'.$result->tid.'/coupons-offers');      
+      break;
+    case 4://Brand
+      drupal_goto('bcp/'.$result->tid.'/coupons-offers');
+      break;
+  }
+}

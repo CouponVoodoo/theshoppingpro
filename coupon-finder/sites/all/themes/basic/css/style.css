@@ -1715,3 +1715,7 @@ background: none repeat scroll 0 0 #F7971C;
 
 /* Hack to prevent adsense block from blocking copy coupon */
 #block-block-23 {display: inline-block}
+
+#block-coupons-coupons_finder_taxonomy .content .submit input { background: none repeat scroll 0 0 #f7971c; border: medium none; color: #fff; font-weight: bold; padding: 8px 20px 8px; font-size: 14px;}
+#block-coupons-coupons_finder_taxonomy  .form-item, .form-actions { float: left; margin-bottom: 1em; margin-top: 2em;  width: 40%;}
+#block-coupons-coupons_finder_taxonomy .content .submit {float: left;  margin-top: 2em;  width: 13%;}
