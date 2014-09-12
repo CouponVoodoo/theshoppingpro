@@ -2407,7 +2407,7 @@ function coupons_finder_form_for_taxonomy($form, &$form_state) {
       '#title' => '',
       '#type' => 'textfield',
       '#size' => 100,
-      '#attributes' => array('placeholder' => t('Brand or Category')),
+      '#attributes' => array('placeholder' => t('Search for store, brand or category e.g. Jabong, Adidas, Watches')),
       '#maxlength' => 255,
       '#label_display' => 'hidden',
   );
@@ -2429,7 +2429,10 @@ function coupons_finder_form_for_taxonomy_submit($form, &$form_state) {
   $keyword = $form_state['values']['title'];
   $result = db_query("SELECT * FROM {taxonomy_term_data} ttd WHERE vid = 2 AND name LIKE :keyword ORDER BY name, tid LIMIT 1", array(':keyword' => $keyword . '%'))->fetch();
   if (!$result->vid) {
-    $result = db_query("SELECT * FROM {taxonomy_term_data} ttd WHERE vid IN (3, 4) AND name LIKE :keyword ORDER BY name, tid LIMIT 1", array(':keyword' => $keyword . '%'))->fetch();
+    $result = db_query("SELECT * FROM {taxonomy_term_data} ttd WHERE vid = 3 AND name LIKE :keyword ORDER BY name, tid LIMIT 1", array(':keyword' => $keyword . '%'))->fetch();
+  }
+  if (!$result->vid) {
+    $result = db_query("SELECT * FROM {taxonomy_term_data} ttd WHERE vid = 4 AND name LIKE :keyword ORDER BY name, tid LIMIT 1", array(':keyword' => $keyword . '%'))->fetch();
   }
   switch($result->vid) {
     case 2://Retailer
