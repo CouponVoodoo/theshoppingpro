@@ -626,7 +626,7 @@ a.copied_coupon {
                               padding: 10px 20px;}
 .page-coupon-result .block h3 span{font-weight:bold;color:#F7971C;font-size:15px;}
 
-#header #header-region{background:#f2f2f2;text-align:center}
+#header #header-region{/*background:#f2f2f2;*/text-align:center}
 #header #header-region .region-header{max-width:920px;margin:0px auto;}
 #header #coupons-finder-form .form-item-url,
 #header #coupons-finder-form #edit-url,
