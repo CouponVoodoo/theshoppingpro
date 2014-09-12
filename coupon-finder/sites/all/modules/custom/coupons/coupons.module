@@ -437,6 +437,9 @@ function coupons_theme() {
 
 function coupons_finder_form($form, &$form_state, $small = true) {
   global $base_url, $logo, $base_path;
+  if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com') {
+    return array();
+  }
   $current_domain = get_current_domain();
   // Load the modal library and add the modal javascript.
   ctools_include('modal');
