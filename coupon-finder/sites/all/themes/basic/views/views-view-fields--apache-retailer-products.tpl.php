@@ -36,6 +36,9 @@ $retailer = strip_tags($fields['sm_vid_Retailer']->content);
 $brand = strip_tags($fields['field_brand']->content);
 $coupon_status = $node->field_best_coupon_status[und][0]['value'];
 $image = $node->field_product_image['und']['0']['value'];
+if (strpos($node_url,'offers') !== false) {
+    $base_url="http://www.couponvoodoo.com";
+}
 $node_url = $base_url.'/'.drupal_lookup_path('alias',"node/".$nid);
 $product_name = $node->field_retailer_product_name['und']['0']['value'];
 $image_tag = $product_name.' '.$retailer.' coupons';
@@ -44,6 +47,7 @@ $image_tag = $product_name.' '.$retailer.' coupons';
 
 <div class = "similar_left">
 <?php 
+
 $img = "<div class='field field-name-field-product-images field-type-image field-label-above'>
 			<div class='field-items'>
 				<div class='field-item even product_img'>
