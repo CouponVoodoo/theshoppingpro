@@ -36,7 +36,8 @@ $retailer = strip_tags($fields['sm_vid_Retailer']->content);
 $brand = strip_tags($fields['field_brand']->content);
 $coupon_status = $node->field_best_coupon_status[und][0]['value'];
 $image = $node->field_product_image['und']['0']['value'];
-if (strpos($node_url,'offers') !== false) {
+//$burl=$base_url;
+if (strpos($base_url,'offers') !== false) {
     $base_url="http://www.couponvoodoo.com";
 }
 $node_url = $base_url.'/'.drupal_lookup_path('alias',"node/".$nid);
