@@ -16,6 +16,7 @@ regions[footer] = Footer
 regions[page_bottom] = Page bottom
 regions[top_search] = Top search
 regions[main_menu] = Main Menu
+regions[top_menu] = Top Menu
 
 
 

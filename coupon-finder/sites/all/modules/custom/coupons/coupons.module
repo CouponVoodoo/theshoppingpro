@@ -80,6 +80,9 @@ function coupons_menu() {
 	// this function required. please don't remove it until u are not aware fully.
 	// set it to 600 second
 	drupal_set_time_limit(600);
+        if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com') {
+          drupal_add_css(drupal_get_path('theme', 'basic') . '/css/offers.css');
+        }
 	
 }
 
