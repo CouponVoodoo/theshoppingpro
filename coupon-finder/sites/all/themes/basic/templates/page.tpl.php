@@ -13,25 +13,17 @@ $current_domain = get_current_domain();
   
   <header id="header">
    <div class="wrap">
+     <?php if ($page['top_menu']): ?>
+      <div class="top_menu">
+      <?php print render($page['top_menu']) ?>
+      </div>  
+    <?php endif; ?> 
     <?php if ($logo): ?>
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
         <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>"/>
         <!-- <img src="http://10.0.0.108/coupon/sites/default/files/CoupponVoodoo_header_logo_60px2.png" alt="<?php print t('Home'); ?>"/> -->
       </a>
     <?php endif; ?>
-    
-    <?php if ($page['top_menu']): ?>
-      <div class="top_menu">
-      <?php print render($page['top_menu']) ?>
-      </div>  
-    <?php endif; ?>  
-    <?php if ($GLOBALS['_domain']['subdomain'] != 'offers.couponvoodoo.com') { ?>
-    <div class="main_menu">
-    <?php if ($page['main_menu']): ?>
-      <?php print render($page['main_menu']) ?>
-    <?php endif; ?>  
-    </div>
-    <?php } ?>
 
     <?php if ($site_name || $site_slogan): ?>
       <div id="name-and-slogan">
@@ -61,6 +53,13 @@ $current_domain = get_current_domain();
       </div>
     <?php endif; ?>
 </div>
+    <?php if ($GLOBALS['_domain']['subdomain'] != 'offers.couponvoodoo.com') { ?>
+    <div class="main_menu">
+    <?php if ($page['main_menu']): ?>
+      <?php print render($page['main_menu']) ?>
+    <?php endif; ?>  
+    </div>
+    <?php } ?>
   </header> 
     <!-- /header -->
 <?php } ?>
