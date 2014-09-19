@@ -34,7 +34,7 @@
 			$coupon_title = strip_tags(($fields['field_coupon_title']->content));
 			$title = strip_tags(($fields['field_coupon_title']->content));
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
-             $brand=strip_tags(($fields['field_brand']->content));           
+            $brand=strip_tags(($fields['field_brand']->content));           
 			$node = node_load($nid);
 			$affiliate_url = $node->field_baseurl_coupon['und']['0']['value'];//strip_tags(($fields['field_baseurl_coupon']->content));
 			global $base_url;
@@ -75,11 +75,8 @@ echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme().
 			<?php $div_id='ccp_'.$nid ;?>
 			<a href="<?php print $coupon_display_url?>" target="_blank"  class="unlock_best_coupon unlock_coupon" id =" <?php echo'ccp_'.$nid;?> rel="best_1" data-clipboard-text="<?php echo $coupon_code?>" >
 			<?php echo"<span class='copy_coupon'>Copy Coupon</span><span></span></a>"?>
-		  </div>
-	</div>
-
-
-<div class="product-bottom" >
+			
+			<div class="product-bottom" >
 	<div class="product-right-bottom" itemprop="description">
 <?php
 $retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
@@ -108,3 +105,7 @@ if ($brand_check != 'Other') {
 ?>
 </div>
 </div>
+		  </div>
+	</div>
+
+
