@@ -69,7 +69,7 @@ echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme().
 	</div>
 	
 	</div>
-	<div class="search_listing_right">
+	<div class="coupon_page_search_listing_right">
 	
 		  <div class="search_listing_row__1 copy_coupon_row">
 			<?php $div_id='ccp_'.$nid ;?>
