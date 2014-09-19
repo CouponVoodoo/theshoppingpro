@@ -1723,9 +1723,9 @@ else if($view->current_display == 'block_6' &&  $view->name == 'apache_retailer_
 	if (strpos($purl,'rcp') !== false) {
     $splitArr=explode("/",$purl);
 	$retailerName=$splitArr[1];
-	$retailer_name_base = str_replace('.com', "", $retailerName);
-	$retailer_name_base = ucfirst($retailer_name_base);
-$Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 2 and ttd.name = :retailer_name', array(':retailer_name' => $retailer_name));
+	//$retailer_name_base = str_replace('.com', "", $retailerName);
+	//$retailer_name_base = ucfirst($retailer_name_base);
+$Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 2 and ttd.name = :retailer_name', array(':retailer_name' => $retailerName));
 $Ruery = $Query->fetch();
 $retailerId = $Ruery->tid;
 
