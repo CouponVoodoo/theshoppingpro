@@ -1675,7 +1675,7 @@ function coupons_views_pre_build(&$view) {
 	}
 if($view->current_display == 'block_5' &&  $view->name == 'apache_retailer_products' ) {
 	$url=drupal_get_destination();
-	$purl=str_replace('destination=','',$url);
+	$purl=$url['destination'];
 	if (strpos($purl,'ccp') !== false) {
     $splitArr=explode("/",$purl);
 	$catId=$splitArr[1];
