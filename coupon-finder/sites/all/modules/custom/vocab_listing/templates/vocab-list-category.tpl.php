@@ -19,7 +19,7 @@ foreach ($terms as $term) {
 <?php
   } else {
 ?>
-  <div class="vocab-list-term"><?php echo l($term->name, ''); ?></div>
+  <div class="vocab-list-term"><?php echo l($term->name, 'ccp/'.$term->tid.'/coupons-offers', array('query' => array('field_offer_type_tid' => 'All'))); ?></div>
 <?php
   }
 }
