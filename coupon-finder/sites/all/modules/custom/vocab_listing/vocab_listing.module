@@ -3,12 +3,26 @@
 function vocab_listing_menu() {
   $items = array();
 
-  $items['%/list'] = array(
+  $items['term/%/list'] = array(
       'title' => 'Category List',
       'page callback' => '_vocab_get_list',
       'page arguments' => array('coupons_finder_form'),
       'access callback' => TRUE,
       'file' => 'pages.inc',
       'file path' => drupal_get_path('module', 'vocab_listing'),
+  );
+  return $items;
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+function vocab_listing_theme() {
+  return array(
+    'vocab_list_category' => array(
+      'variables' => array('terms' => NULL),
+      'template' => 'templates/vocab-list-category',
+    ),
   );
 }

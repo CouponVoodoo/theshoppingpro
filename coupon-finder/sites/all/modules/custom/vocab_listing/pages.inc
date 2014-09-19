@@ -1,7 +1,7 @@
 <?php
 
 function _vocab_get_list() {
-  switch(arg(0)) {
+  switch(arg(1)) {
     case 'category':
       $vid = 3;
       break;
@@ -14,8 +14,6 @@ function _vocab_get_list() {
     default:
       drupal_access_denied();
   }
-  $result = db_query("SELECT * FROM {taxonomy_term_data} ttd INNER JOIN {taxonomy_term_hierarchy} tth ON 
-    ttd.tid = tth.tid AND tth.parent = 0")->fetchAll();
-  print '<pre>';
-  print_r($result);
+  $terms = taxonomy_get_tree($vid);
+  return theme('vocab_list_category', array('terms' => $terms));
 }

@@ -1,4 +1,4 @@
-name = Vocab Listing
-description= Find the coupon for retailers.
+name = Term Listing
+description= Get the term listing for vocabulary.
 core = "7.x"
 project = "coupons"
