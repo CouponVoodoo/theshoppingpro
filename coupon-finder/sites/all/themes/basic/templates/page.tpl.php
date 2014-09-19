@@ -24,6 +24,15 @@ $current_domain = get_current_domain();
         <!-- <img src="http://10.0.0.108/coupon/sites/default/files/CoupponVoodoo_header_logo_60px2.png" alt="<?php print t('Home'); ?>"/> -->
       </a>
     <?php endif; ?>
+    
+     
+    <?php if ($GLOBALS['_domain']['subdomain'] != 'offers.couponvoodoo.com') { ?>
+    <div class="main_menu">
+    <?php if ($page['main_menu']): ?>
+      <?php print render($page['main_menu']) ?>
+    <?php endif; ?>  
+    </div>
+    <?php } ?>
 
     <?php if ($site_name || $site_slogan): ?>
       <div id="name-and-slogan">
@@ -53,7 +62,7 @@ $current_domain = get_current_domain();
       </div>
     <?php endif; ?>
 </div>
-    <?php if ($GLOBALS['_domain']['subdomain'] != 'offers.couponvoodoo.com') { ?>
+    <?php if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com') { ?>
     <div class="main_menu">
     <?php if ($page['main_menu']): ?>
       <?php print render($page['main_menu']) ?>
@@ -75,13 +84,7 @@ $current_domain = get_current_domain();
   <!-- ______________________ MAIN _______________________ -->
 
   <div id="main" class="clearfix">
-    <?php if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com') { ?>
-    <div class="main_menu">
-    <?php if ($page['main_menu']): ?>
-      <?php print render($page['main_menu']) ?>
-    <?php endif; ?>  
-    </div>
-    <?php } ?>
+    
     <div class="locader">
       <p style="text-align:center; position:relative;"></p>
       <p class="frog_title"> Frugal Froggy At Work (may take a minute or two!)</p>
