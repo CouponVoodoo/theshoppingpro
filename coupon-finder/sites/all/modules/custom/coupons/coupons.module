@@ -1724,9 +1724,12 @@ else if($view->current_display == 'block_6' &&  $view->name == 'apache_retailer_
     $splitArr=explode("/",$purl);
 	$retailerName=$splitArr[1];
 	$retailer_name_base = str_replace('.com', "", $retailerName);
-	$term = taxonomy_get_term_by_name($retailer_name_base);
-	$retailerId=$term->tid;
-	mail('team@theshoppingpro.com', 'test mail',$retailerName.'-'.$retailerId );
+	$retailer_name_base = ucfirst($retailer_name_base);
+$Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 2 and ttd.name = :retailer_name', array(':retailer_name' => $retailer_name));
+$Ruery = $Query->fetch();
+$retailerId = $Ruery->tid;
+
+	mail('team@theshoppingpro.com', 'test mail',$retailer_name_base.'-'.$retailerId );
 }
 	$current_time= time();
 	$show_time=$current_time-(1.5*24*3600);
