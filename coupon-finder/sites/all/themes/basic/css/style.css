@@ -538,6 +538,17 @@ div.ctools-modal-content .modal-content{
 //  margin: ;
 }
 
+.coupon_page_search_listing_right{
+  float: left;
+  margin :30px 0px 0px 0px;
+}
+
+
+.product-detail .coupon_page_search_listing_right{
+//  float: left;
+//  width: 17%;
+//  margin: ;
+}
 
 
 .search_listing_left label{
@@ -789,6 +800,8 @@ img.dollor { left: -225px; position: relative; top: -80px; z-index: 0;}
 .product-right ul li label,.product-bottom .product-left ul li label{float:left;color: #F7971C;font-family: Arial;font-size: 13px;font-style: normal;font-weight: bold;width:139px;padding-right:7px}
 .product-right .coupon_code, .product-right .coupon_code1 {z-index: 0}
 div.view-id-product_info .search_listing_right .unlock_coupon {z-index: 0}
+div.view-id-product_info .coupon_page_search_listing_right .unlock_coupon {z-index: 0}
+
 .view-id-retailer_coupon_page .retailer_coupon_page_row .unlock_best_coupon {z-index: 0}
 .product-bottom .product-left ul li label{ text-align: left;
     width: 65px;}
@@ -1209,10 +1222,13 @@ img{max-width: 100%;}
 	.product-right .coupon_code, .product-right .coupon_code1 {float: left; padding: 0; position: static; text-align: center;}
 	#coupon_search_listing > li {margin-bottom:0;}
 	.search_listing_right {margin-top: 0 !important}
+	.coupon_page_search_listing_right {margin-top: 0 !important}
+	
 	.product-detail h2 .field-content {text-align: center; float: none;}
 	.best_coupon {display: none;}
 	.search_listing_left {width: 90%; padding: 15px 5%}
 	.search_listing_right {margin-top: 0px!important; }
+	.coupon_page_search_listing_right {margin-top: 0px!important; }
 	.unlock_coupon {right: -10px; margin-bottom: 10px;}
 /*****BY ASHISH TO MODIFY LISTING PAGE FOR MOBILE******/
 	.page-taxonomy-term .find_coupon label{display:none} 
