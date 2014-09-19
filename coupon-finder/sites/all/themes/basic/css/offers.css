@@ -31,6 +31,7 @@
   #block-coupons-coupons_finder_taxonomy .content {float: left; width: 100%;}
   .main_menu {margin-top: 10px!important;}
   #header #header-region {width: 100%!important;}
+  .vocab-list-parent .vocab-list-term {width: 50%; float: left;} 
 }
 @media (min-width: 480px) and (max-width: 520px) {
   #block-nice_menus-1 .contextual-links-trigger { margin-top: 32px; }  
@@ -46,8 +47,15 @@
   #block-coupons-coupons_finder_taxonomy .content {float: left; width: 88%;}
   .main_menu {margin-top:10px!important;}
   #header #header-region{width: 100%!important; float: right;}
+  .vocab-list-parent .vocab-list-term {width: 50%; float: left;}
 }
 
+@media (min-width: 521px) and (max-width: 599px){
+  .vocab-list-parent .vocab-list-term {width: 33%; float: left;} 
+}
+@media (min-width: 600px) and (max-width: 850px){
+  .vocab-list-parent .vocab-list-term {width: 25%; float: left;} 
+}
 .view-content .item-list ul li {margin: 0 0 0.25em 1.5em;padding: 0;list-style:none;}
 #header #header-region{width: 67%; float: right;}
 #views-exposed-form-brand-coupon-page-page .views-exposed-form {width: 100%; overflow: hidden;}
