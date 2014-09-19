@@ -4,7 +4,7 @@ function vocab_listing_menu() {
   $items = array();
 
   $items['term/%/list'] = array(
-      'title' => 'Category List',
+      'title' => 'Categories',
       'page callback' => '_vocab_get_list',
       'page arguments' => array('coupons_finder_form'),
       'access callback' => TRUE,

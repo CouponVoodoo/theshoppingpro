@@ -4,10 +4,10 @@ $row = 0;
 foreach ($terms as $term) {
   if (in_array(0, $term->parents)) {
     if ($row == 0) {
-      echo '<div class="">';
+      echo '<div class="vocab-list-parent">';
       $row++;
     } else {
-      echo '</div><div class="">';
+      echo '</div><div class="vocab-list-parent">';
       $row++;
     }
 ?>
@@ -19,7 +19,7 @@ foreach ($terms as $term) {
 <?php
   } else {
 ?>
-  <div><?php echo l($term->name, ''); ?></div>
+  <div class="vocab-list-term"><?php echo l($term->name, ''); ?></div>
 <?php
   }
 }
