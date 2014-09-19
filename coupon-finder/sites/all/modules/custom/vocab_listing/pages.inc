@@ -6,6 +6,7 @@ function _vocab_get_list() {
   }
   switch(arg(1)) {
     case 'category':
+      $template = 'vocab_list_category';
       $vid = 3;
       break;
     case 'brand':
@@ -18,5 +19,5 @@ function _vocab_get_list() {
       drupal_access_denied();
   }
   $terms = taxonomy_get_tree($vid);
-  return theme('vocab_list_category', array('terms' => $terms));
+  return theme($template, array('terms' => $terms));
 }
