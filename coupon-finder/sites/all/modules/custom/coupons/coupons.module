@@ -1725,7 +1725,7 @@ else if($view->current_display == 'block_6' &&  $view->name == 'apache_retailer_
 	$retailerName=$splitArr[1];
 	$term = taxonomy_get_term_by_name($retailerName);
 	$retailerId=$term->tid;
-	
+	mail('team@theshoppingpro.com', 'test mail',$retailerName.'-'.$retailerId );
 }
 	$current_time= time();
 	$show_time=$current_time-(1.5*24*3600);
