@@ -1673,7 +1673,7 @@ function coupons_views_pre_build(&$view) {
 //	$view->display_handler->handlers['filter']['dm_field_lastcheckedtime']->value = $show_time;
 	
 	}
-if($view->current_display == 'block_5' &&  $view->name == 'apache_retailer_products' ) {
+else if($view->current_display == 'block_5' &&  $view->name == 'apache_retailer_products' ) {
 	$url=drupal_get_destination();
 	$purl=$url['destination'];
 	if (strpos($purl,'ccp') !== false) {
@@ -1695,6 +1695,27 @@ if($view->current_display == 'block_5' &&  $view->name == 'apache_retailer_produ
 	
 	}
 	
+else if($view->current_display == 'block_6' &&  $view->name == 'apache_retailer_products' ) {
+	$url=drupal_get_destination();
+	$purl=$url['destination'];
+	if (strpos($purl,'bcp') !== false) {
+    $splitArr=explode("/",$purl);
+	$brandId=$splitArr[1];
+}
+	$current_time= time();
+	$show_time=$current_time-(1.5*24*3600);
+	$show_time=gmdate('Y-m-d\TH:i:s\Z', $show_time);
+	//$string = strtolower(strip_tags($node->field_retailer_product_name['und']['0']['value']));
+	//$string = str_replace(' ', '-', $string);
+	//$string = preg_replace('/[^A-Za-z0-9\-]/', '', $string);
+	//$string = str_replace('-', ' ', $string);
+	//$view->display_handler->handlers['filter']['label']->value = strtolower(strip_tags($node->field_retailer_product_name['und']['0']['value']));
+	//$view->display_handler->handlers['filter']['label']->value = $string;
+//	mail('team@theshoppingpro.com', 'test mail',$purl.'-'.$catId );
+	$view->display_handler->handlers['filter']['im_field_brand']->value = $brandId;
+//	$view->display_handler->handlers['filter']['dm_field_lastcheckedtime']->value = $show_time;
+	
+	}
 	
 }
 
