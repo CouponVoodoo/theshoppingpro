@@ -1723,7 +1723,8 @@ else if($view->current_display == 'block_6' &&  $view->name == 'apache_retailer_
 	if (strpos($purl,'rcp') !== false) {
     $splitArr=explode("/",$purl);
 	$retailerName=$splitArr[1];
-	$term = taxonomy_get_term_by_name($retailerName);
+	$retailer_name_base = str_replace('.com', "", $retailerName);
+	$term = taxonomy_get_term_by_name($retailer_name_base);
 	$retailerId=$term->tid;
 	mail('team@theshoppingpro.com', 'test mail',$retailerName.'-'.$retailerId );
 }
