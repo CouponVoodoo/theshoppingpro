@@ -1,6 +1,9 @@
 <?php
 
 function _vocab_get_list() {
+  if ($GLOBALS['_domain']['subdomain'] != 'offers.couponvoodoo.com') {
+    drupal_access_denied();
+  }
   switch(arg(1)) {
     case 'category':
       $vid = 3;
