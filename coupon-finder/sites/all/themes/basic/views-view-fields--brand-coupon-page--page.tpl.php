@@ -82,10 +82,11 @@ echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme().
 $retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
 if ($retailer['#type'] == 'link') {
     //print $fields['field_retailer']->content;
-	print '<div class="field-content">' . l(t('More '.$retailer['#title']).' Coupons', $retailer['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
+	//print '<div class="field-content">' . l(t('More '.$retailer['#title']).' Coupons', "http://www.couponvoodoo.com".$retailer['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
 }
 else {
-    print $fields['field_retailer']->content;
+print '<div class="field-content"><a href="http://www.couponvoodoo.com"'.$fields['field_retailer']->content.' target="_blank">'.$fields['field_retailer']->content. '</a></div>';
+    //print $fields['field_retailer']->content;
 }
 
 $brand_check = strip_tags($fields['field_brand']->content);
