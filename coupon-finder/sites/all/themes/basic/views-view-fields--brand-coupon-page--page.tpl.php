@@ -83,7 +83,7 @@ $retailer = $fields['field_retailer']->handler->view->result[0]->field_field_ret
 var_dump($retailer['#type'].'-'.$retailer['#href'].'-'.$retailer['#title']);
 if ($retailer['#type'] == 'link') {
     //print $fields['field_retailer']->content;
-	//print '<div class="field-content">' . l(t('More '.$retailer['#title']).' Coupons', "http://www.couponvoodoo.com".$retailer['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
+	print '<div class="field-content"><a href="'.$retailer['#href'].'" target="_blank">'.$retailer['#title']. '</a></div>';
 }
 else {
 //print '<div class="field-content"><a href="http://www.couponvoodoo.com"'.$fields['field_retailer']->content.' target="_blank">'.$fields['field_retailer']->content. '</a></div>';
