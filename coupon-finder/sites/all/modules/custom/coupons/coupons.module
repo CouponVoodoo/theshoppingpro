@@ -1729,7 +1729,7 @@ $Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid =
 $Ruery = $Query->fetch();
 $retailerId = $Ruery->tid;
 
-	mail('team@theshoppingpro.com', 'test mail',$retailer_name_base.'-'.$retailerId );
+	//mail('team@theshoppingpro.com', 'test mail',$retailer_name_base.'-'.$retailerId );
 }
 	$current_time= time();
 	$show_time=$current_time-(1.5*24*3600);
