@@ -80,13 +80,14 @@ echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme().
 	<div class="product-right-bottom" itemprop="description">
 <?php
 $retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
+var_dump($fields['field_retailer']);
 if ($retailer['#type'] == 'link') {
     //print $fields['field_retailer']->content;
 	//print '<div class="field-content">' . l(t('More '.$retailer['#title']).' Coupons', "http://www.couponvoodoo.com".$retailer['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
 }
 else {
 //print '<div class="field-content"><a href="http://www.couponvoodoo.com"'.$fields['field_retailer']->content.' target="_blank">'.$fields['field_retailer']->content. '</a></div>';
-    print "http://www.couponvoodoo.com".$fields['field_retailer']->content;
+    print $fields['field_retailer']->content;
 }
 
 $brand_check = strip_tags($fields['field_brand']->content);
