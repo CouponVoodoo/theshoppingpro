@@ -1,0 +1,4 @@
+name = Vocab Listing
+description= Find the coupon for retailers.
+core = "7.x"
+project = "coupons"

@@ -1,0 +1,14 @@
+<?php
+
+function vocab_listing_menu() {
+  $items = array();
+
+  $items['%/list'] = array(
+      'title' => 'Category List',
+      'page callback' => '_vocab_get_list',
+      'page arguments' => array('coupons_finder_form'),
+      'access callback' => TRUE,
+      'file' => 'pages.inc',
+      'file path' => drupal_get_path('module', 'vocab_listing'),
+  );
+}
