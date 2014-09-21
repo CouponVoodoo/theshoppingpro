@@ -80,7 +80,7 @@ echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme().
 	<div class="product-right-bottom" itemprop="description">
 <?php
 $retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
-var_dump($retailer['#type'].'-'.$retailer['#href'].'-'.$retailer['#title']);
+
 if ($retailer['#type'] == 'link') {
     //print $fields['field_retailer']->content;
 	print '<div class="field-content"><a href="http://www.couponvoodoo.com/'.$retailer['#href'].'" target="_blank">'.$retailer['#title']. '</a></div>';
@@ -96,7 +96,7 @@ if ($brand_check != 'Other') {
 	$brand = $fields['field_brand']->handler->view->result[0]->field_field_brand[0]['rendered'];
 	if ($brand_check['#type'] == 'link') {
 	// echo " | <div class='category_meta' itemscope itemtype='http://schema.org/offer'><meta  itemprop='category' content='".$fields['field_category']->content."' /></div>";
-	print ' | <div class="field-content">' . l(t($brand['#title']), $brand['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
+	print ' | <div class="field-content">' . l(t($brand['#title']), '/dcd'.$brand['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
 	}
 	else {
 	// echo " | <div class='category_meta' itemscope itemtype='http://schema.org/offer'><meta  itemprop='category' content='".$fields['field_category']->content."' /></div>";
