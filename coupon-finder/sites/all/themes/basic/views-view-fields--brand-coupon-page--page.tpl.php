@@ -100,7 +100,7 @@ if ($brand_check != 'Other') {
 	}
 	else {
 	// echo " | <div class='category_meta' itemscope itemtype='http://schema.org/offer'><meta  itemprop='category' content='".$fields['field_category']->content."' /></div>";
-	print " | ".$fields['field_brand']->content;
+	print " | dcxd".$fields['field_brand']->content;
 	}
 }
 
