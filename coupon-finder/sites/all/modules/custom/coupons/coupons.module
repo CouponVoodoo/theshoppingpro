@@ -2512,6 +2512,9 @@ function coupons_finder_form_for_taxonomy_submit($form, &$form_state) {
   if (!$result->vid) {
     $result = db_query("SELECT * FROM {taxonomy_term_data} ttd WHERE vid = 4 AND name LIKE :keyword ORDER BY name, tid LIMIT 1", array(':keyword' => $keyword . '%'))->fetch();
   }
+  if (!$result->vid || $keyword='' || empty($keyword)) {
+  drupal_goto('http://offers.couponvoodoo.com/content/no-results-found');
+  }
   switch($result->vid) {
     case 2://Retailer
       drupal_goto('rcp/'.$result->name.'/coupons-offers');
