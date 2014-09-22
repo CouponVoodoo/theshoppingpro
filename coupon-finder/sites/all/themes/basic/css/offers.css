@@ -16,8 +16,8 @@
 /*category list end*/ 
 /*retail list start*/
 .vocab-list-retail {width: 100%; float: left; margin-top: 10px;}
-.vocab-list-retail .vocab-list-term {border-radius: 10px; box-shadow: 0 0 13px #ccc inset; float: left; padding: 10px; width: 32%; margin: 0 5px;}
-.vocab-list-retail .vocab-list-term a {float: left; margin: 0 auto; width: 100%;}
+.vocab-list-retail .vocab-list-term {display: table; width: 220px; height: 226px; vertical-align: middle; text-align:center; border-radius: 10px; box-shadow: 0 0 13px #ccc inset; -webkit-box-shadow: 0 0 13px #ccc inset; -ms-box-shadow: 0 0 13px #ccc inset; -O-box-shadow: 0 0 13px #ccc inset; float: left; padding: 10px; margin: 5px;}
+.vocab-list-retail .vocab-list-term a {display: table-cell; width: 100%; vertical-align: middle;}
 .vocab-list-retail .vocab-list-term a img{display: block; margin: 0 auto;}
 /*retail list end*/
 /*brands list start*/
@@ -45,7 +45,7 @@
   #header #header-region {width: 100%!important;}
   .vocab-list-parent .vocab-list-term {width: 50%; float: left;} 
   .vocab-list-retail .vocab-list-term {width: 100%;}
-  .vocab-list-brand .vocab-list-term {width: 25%;}
+  .vocab-list-brand .vocab-list-term {width: 33%;}
 }
 @media (min-width: 480px) and (max-width: 520px) {
   #block-nice_menus-1 .contextual-links-trigger { margin-top: 32px; }  
@@ -63,19 +63,19 @@
   #header #header-region{width: 100%!important; float: right;}
   .vocab-list-parent .vocab-list-term {width: 50%; float: left;}
   .vocab-list-retail .vocab-list-term {width: 100%;}
-  .vocab-list-brand .vocab-list-term {width: 25%;}
+  .vocab-list-brand .vocab-list-term {width: 33%;}
 }
 
 @media (min-width: 521px) and (max-width: 599px){
   .vocab-list-parent .vocab-list-term {width: 33%; float: left;} 
   .vocab-list-retail .vocab-list-term {width: 47%;}
-  .vocab-list-brand .vocab-list-term {width: 15%;}
+  .vocab-list-brand .vocab-list-term {width: 25%;}
   .top_menu #nice-menu-3 {width: 41%!important;}
 }
 @media (min-width: 600px) and (max-width: 850px){
   .vocab-list-parent .vocab-list-term {width: 25%; float: left;}
-   .vocab-list-retail .vocab-list-term {width: 32%;}
-  .vocab-list-brand .vocab-list-term {width: 15%;}
+   .vocab-list-retail .vocab-list-term {width: 31%;}
+  .vocab-list-brand .vocab-list-term {width: 25%;}
   .top_menu #nice-menu-3 {width: 41%!important;}
 }
 .view-content .item-list ul li {margin: 0 0 0.25em 1.5em;padding: 0;list-style:none;}
