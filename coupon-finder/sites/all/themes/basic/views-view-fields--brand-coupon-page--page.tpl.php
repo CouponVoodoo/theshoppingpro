@@ -40,7 +40,10 @@
 			$retailer = $field_retailer->handler->view->result[0]->field_field_retailer[0]['rendered'];
 			$affiliate_url = $node->field_baseurl_coupon['und']['0']['value'];//strip_tags(($fields['field_baseurl_coupon']->content));
 			global $base_url;
-			
+			$Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 2 and ttd.name = :retailer_name', array(':retailer_name' => $retailerName));
+    $Ruery = $Query->fetch();
+    $retailerId = $Ruery->tid;
+	$rurl="http://www.couponvoodoo.com/taxonomy/term/".$retailerId;
 						
 ?>
 
@@ -82,10 +85,10 @@ echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme().
 	<div class="product-right-bottom" itemprop="description">
 <?php
 
-var_dump($retailer['#type'].'-'.$retailer['#href'].'-'.$retailer['#title']);
+//var_dump($retailer['#type'].'-'.$retailer['#href'].'-'.$retailer['#title']);
 if ($retailer['#type'] == 'link') {
     //print $fields['field_retailer']->content;
-	print '<div class="field-content"><a href="http://www.couponvoodoo.com/'.$retailer['#href'].'" target="_blank">'.$retailer['#title']. '</a></div>';
+	print '<div class="field-content"><a href="'.$rurl.'" target="_blank">'.$retailerName. '</a></div>';
 }
 else {
 //print '<div class="field-content"><a href="http://www.couponvoodoo.com"'.$fields['field_retailer']->content.' target="_blank">'.$fields['field_retailer']->content. '</a></div>';
