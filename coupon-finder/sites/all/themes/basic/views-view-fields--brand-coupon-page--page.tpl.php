@@ -29,7 +29,7 @@
 			/* GETTING FIELD VALUES*/
 			$url_path = rawurlencode(drupal_get_path_alias());
 			$nid = strip_tags(($fields['nid']->content));
-			$retailer = strip_tags(($fields['field_retailer']->content));
+			$retailerName = strip_tags(($fields['field_retailer']->content));
 			$coupon_code = strip_tags(($fields['field_coupon_code']->content));
 			$coupon_title = strip_tags(($fields['field_coupon_title']->content));
 			$title = strip_tags(($fields['field_coupon_title']->content));
@@ -37,8 +37,8 @@
             $brand=strip_tags(($fields['field_brand']->content));           
 			//$node = node_load($nid);
 			$field_retailer=$fields['field_retailer'];
-			$affiliate_url = $node->field_baseurl_coupon['und']['0']['value'];//strip_tags(($fields['field_baseurl_coupon']->content));
 			$retailer = $field_retailer->handler->view->result[0]->field_field_retailer[0]['rendered'];
+			$affiliate_url = $node->field_baseurl_coupon['und']['0']['value'];//strip_tags(($fields['field_baseurl_coupon']->content));
 			global $base_url;
 			
 						
@@ -58,7 +58,7 @@
 			$coupon_display_url=$base_url."/coupon-redirect?l=cp&nid=".$nid."&t=c&c=".rawurlencode($coupon_code)."&p=".$url_path."&s=".rawurlencode($affiliate_url);
 
 		?>
-			<h2><a rel='no follow' target='_blank'href='<?php print $coupon_display_url ?>' ><?php print $brand." Coupons : ".$title." @ ".$retailer; ?></a></h2>
+			<h2><a rel='no follow' target='_blank'href='<?php print $coupon_display_url ?>' ><?php print $brand." Coupons : ".$title." @ ".$retailerName; ?></a></h2>
 			<div >
 
 
@@ -82,14 +82,14 @@ echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme().
 	<div class="product-right-bottom" itemprop="description">
 <?php
 
-//var_dump($retailer);
+var_dump($retailer['#type'].'-'.$retailer['#href'].'-'.$retailer['#title']);
 if ($retailer['#type'] == 'link') {
     //print $fields['field_retailer']->content;
 	print '<div class="field-content"><a href="http://www.couponvoodoo.com/'.$retailer['#href'].'" target="_blank">'.$retailer['#title']. '</a></div>';
 }
 else {
 //print '<div class="field-content"><a href="http://www.couponvoodoo.com"'.$fields['field_retailer']->content.' target="_blank">'.$fields['field_retailer']->content. '</a></div>';
-    //print $fields['field_retailer']->content;
+    print $fields['field_retailer']->content;
 }
 
 $brand_check = strip_tags($fields['field_brand']->content);
