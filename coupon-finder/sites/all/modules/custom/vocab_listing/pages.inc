@@ -10,14 +10,16 @@ function _vocab_get_list() {
       $vid = 3;
       break;
     case 'brand':
+      $template = 'vocab_list_brand';
       $vid = 4;
       break;
     case 'retail':
+      $template = 'vocab_list_retail';
       $vid = 2;
       break;
     default:
       drupal_access_denied();
   }
-  $terms = taxonomy_get_tree($vid);
+  $terms = taxonomy_get_tree($vid, 0, NULL, TRUE);
   return theme($template, array('terms' => $terms));
 }

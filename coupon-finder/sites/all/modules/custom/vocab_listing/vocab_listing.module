@@ -24,5 +24,13 @@ function vocab_listing_theme() {
       'variables' => array('terms' => NULL),
       'template' => 'templates/vocab-list-category',
     ),
+    'vocab_list_brand' => array(
+      'variables' => array('terms' => NULL),
+      'template' => 'templates/vocab-list-brand',
+    ),
+    'vocab_list_retail' => array(
+      'variables' => array('terms' => NULL),
+      'template' => 'templates/vocab-list-retail',
+    ),
   );
 }
