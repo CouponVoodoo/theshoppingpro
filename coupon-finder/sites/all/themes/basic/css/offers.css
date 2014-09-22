@@ -16,7 +16,7 @@
 /*category list end*/ 
 /*retail list start*/
 .vocab-list-retail {width: 100%; float: left; margin-top: 10px;}
-.vocab-list-retail .vocab-list-term {display: table; width: 220px; height: 226px; vertical-align: middle; text-align:center; border-radius: 10px; box-shadow: 0 0 13px #ccc inset; -webkit-box-shadow: 0 0 13px #ccc inset; -ms-box-shadow: 0 0 13px #ccc inset; -O-box-shadow: 0 0 13px #ccc inset; float: left; padding: 10px; margin: 5px;}
+.vocab-list-retail .vocab-list-term {display: table; width: 229px; height: 226px; vertical-align: middle; text-align:center; border-radius: 10px; box-shadow: 0 0 13px #ccc inset; -webkit-box-shadow: 0 0 13px #ccc inset; -ms-box-shadow: 0 0 13px #ccc inset; -O-box-shadow: 0 0 13px #ccc inset; float: left; padding: 10px; margin: 5px;}
 .vocab-list-retail .vocab-list-term a {display: table-cell; width: 100%; vertical-align: middle;}
 .vocab-list-retail .vocab-list-term a img{display: block; margin: 0 auto;}
 /*retail list end*/
@@ -32,7 +32,8 @@
   #block-coupons-coupons_finder_taxonomy .content .submit input  {padding: 8px 5px;}
   #block-coupons-coupons_finder_taxonomy .content .submit {margin: 0 !important; width: 45%!important;}
   .top_menu {width: 100%!important;}
-  .top_menu #nice-menu-3 {width: 76%!important;}
+  .top_menu #nice-menu-3 {width: 100%!important;}
+  .top_menu #nice-menu-3 a{font-size: 15px;}
   #block-nice_menus-1 .contextual-links-trigger { margin-top: 45px; }
   #edit-field-retailer-tid-wrapper label {width: 30%;}
   #edit-field-retailer-tid-wrapper .views-widget {width: 70%;}
@@ -57,12 +58,12 @@
   #block-coupons-coupons_finder_taxonomy .content .submit {margin: 0 !important;}
   .top_menu {width: 100%!important;}
   #nice-menu-1 .menu-path-nolink ul li span{font-size: 12px;}
-  .top_menu #nice-menu-3 {width: 52%!important;}
+  .top_menu #nice-menu-3 {width: 71%!important;}
   #block-coupons-coupons_finder_taxonomy .content {float: left; width: 88%;}
   .main_menu {margin-top:10px!important;}
   #header #header-region{width: 100%!important; float: right;}
   .vocab-list-parent .vocab-list-term {width: 50%; float: left;}
-  .vocab-list-retail .vocab-list-term {width: 100%;}
+  .vocab-list-retail .vocab-list-term {width: 47%;}
   .vocab-list-brand .vocab-list-term {width: 33%;}
 }
 
@@ -70,13 +71,14 @@
   .vocab-list-parent .vocab-list-term {width: 33%; float: left;} 
   .vocab-list-retail .vocab-list-term {width: 47%;}
   .vocab-list-brand .vocab-list-term {width: 25%;}
-  .top_menu #nice-menu-3 {width: 41%!important;}
+  .top_menu #nice-menu-3 {width: 43%!important;}
 }
 @media (min-width: 600px) and (max-width: 850px){
   .vocab-list-parent .vocab-list-term {width: 25%; float: left;}
-   .vocab-list-retail .vocab-list-term {width: 31%;}
+  .vocab-list-retail .vocab-list-term {width: 47%;}
   .vocab-list-brand .vocab-list-term {width: 25%;}
   .top_menu #nice-menu-3 {width: 41%!important;}
+  .top_menu #nice-menu-3 a{font-size: 15px;}
 }
 .view-content .item-list ul li {margin: 0 0 0.25em 1.5em;padding: 0;list-style:none;}
 #header #header-region{width: 67%; float: right;}
