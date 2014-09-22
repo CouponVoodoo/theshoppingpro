@@ -30,7 +30,7 @@
 global $base_url;
 $product_name =  strip_tags($fields['field_retailer_product_name']->content);
 $nid =  $row->nid;
-$path = $base_url.'/'.drupal_lookup_path('alias',"node/".$nid);
+$path = 'http://www.couponvoodoo.com'.'/'.drupal_lookup_path('alias',"node/".$nid);
 ?>
 <a href='<?php echo $path; ?>'>
 	<div class="ribbon-wrapper-green">
