@@ -67,7 +67,7 @@
 
 
 <?php
-echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><span>Likely to Work</span></a></div>"; ?>
+echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><span>Guaranteed To Work</span></div>"; ?>
 <div >Updated: <?php print $last_checked_time; ?></div>
 
 		
@@ -85,10 +85,10 @@ echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme().
 	<div class="product-right-bottom" itemprop="description">
 <?php
 
-//var_dump($retailer['#type'].'-'.$retailer['#href'].'-'.$retailer['#title']);
+var_dump($retailer['#type'].'-'.$retailer['#href'].'-'.$retailer['#title']);
 if ($retailer['#type'] == 'link') {
     //print $fields['field_retailer']->content;
-	print '<div class="field-content"><a href="'.$rurl.'" target="_blank">'.$retailerName. '</a></div>';
+	print '<div class="field-content"><a href="http://www.couponvoodoo.com/'..'" target="_blank">'.$retailerName. '</a></div>';
 }
 else {
 //print '<div class="field-content"><a href="http://www.couponvoodoo.com"'.$fields['field_retailer']->content.' target="_blank">'.$fields['field_retailer']->content. '</a></div>';

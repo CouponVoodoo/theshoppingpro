@@ -29,13 +29,17 @@
 			/* GETTING FIELD VALUES*/
 			$url_path = rawurlencode(drupal_get_path_alias());
 			$nid = strip_tags(($fields['nid']->content));
-			$retailer = strip_tags(($fields['field_retailer']->content));
+			$retailerName = strip_tags(($fields['field_retailer']->content));
 			$coupon_code = strip_tags(($fields['field_coupon_code']->content));
 			$coupon_title = strip_tags(($fields['field_coupon_title']->content));
 			$title = strip_tags(($fields['field_coupon_title']->content));
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
-                        $cat = strip_tags(($fields['field_category']->content));
-			$node = node_load($nid);
+            $cat = strip_tags(($fields['field_category']->content));
+			//$node = node_load($nid);
+			$Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 2 and ttd.name = :retailer_name', array(':retailer_name' => $retailerName));
+    $Ruery = $Query->fetch();
+    $retailerId = $Ruery->tid;
+	$rurl="http://www.couponvoodoo.com/taxonomy/term/".$retailerId;
 			$affiliate_url = $node->field_baseurl_coupon['und']['0']['value'];//strip_tags(($fields['field_baseurl_coupon']->content));
 			global $base_url;
 			
@@ -56,13 +60,13 @@
 			$coupon_display_url=$base_url."/coupon-redirect?l=cp&nid=".$nid."&t=c&c=".rawurlencode($coupon_code)."&p=".$url_path."&s=".rawurlencode($affiliate_url);
 
 		?>
-			<h2><a rel='no follow' target='_blank'href='<?php print $coupon_display_url ?>' ><?php print $cat." coupons : ".$title." @ ".$retailer; ?></a></h2>
+			<h2><a rel='no follow' target='_blank'href='<?php print $coupon_display_url ?>' ><?php print $cat." coupons : ".$title." @ ".$retailerName; ?></a></h2>
 			<div >
 
 
 
 <?php
-echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><span>Likely to Work</span></a></div>"; ?>
+echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><span>Guaranteed To Work</span></div>"; ?>
 <div >Updated: <?php print $last_checked_time; ?></div>
 
 		
@@ -75,16 +79,15 @@ echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme().
 			<?php $div_id='ccp_'.$nid ;?>
 			<a href="<?php print $coupon_display_url?>" target="_blank"  class="unlock_best_coupon unlock_coupon" id =" <?php echo'ccp_'.$nid;?> rel="best_1" data-clipboard-text="<?php echo $coupon_code?>" >
 			<?php echo"<span class='copy_coupon'>Copy Coupon</span><span></span></a>"?>
-		  </div>
-	</div>
-
-
-<div class="product-bottom" >
+			<div class="product-bottom" >
 	<div class="product-right-bottom" itemprop="description">
+
+
+
 <?php
 $retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
 if ($retailer['#type'] == 'link') {
-   print $fields['field_retailer']->content;
+   print '<div class="field-content"><a href="http://www.couponvoodoo.com/'.$rurl.'" target="_blank">'.$retailerName. '</a></div>';
    // print '<div class="field-content">' . l(t('More '.$retailer['#title']).' Coupons', $retailer['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
 }
 else {
@@ -106,5 +109,8 @@ if ($category_check != 'Other') {
 }
 
 ?>
+
+		  </div>
+	</div>
 </div>
 </div>
