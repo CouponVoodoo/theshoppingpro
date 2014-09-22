@@ -4,7 +4,7 @@
 #block-coupons-coupons_finder_taxonomy .form-item, .form-actions { float: left; width: 74%;}
 #block-coupons-coupons_finder_taxonomy .form-text { padding: 5px; font-size: 16px}
 #block-coupons-coupons_finder_taxonomy .content .submit {float: right; margin-top: 1em; width: 26%; margin-bottom:1em;}
-.main_menu {width:100%!important; float: left; background-color:#ccc; margin-left: 0px!important; margin-top: 0px!important;}
+.main_menu {width:100%!important; float: left; background-color:#878787; margin-left: 0px!important; margin-top: 0px!important;}
 #header .main_menu .region {max-width:940px; margin: 0 auto;}
 #block-nice_menus-1 .content {padding: 10px 0; width:100%!important; float: left;}
 #block-nice_menus-1 .contextual-links-trigger {margin-top: 20px;}
@@ -29,7 +29,7 @@
   .views-widget {width: 70%!important;}
   #nice-menu-1 .menu-path-nolink ul li span{font-size: 12px;}
   #block-coupons-coupons_finder_taxonomy .content {float: left; width: 100%;}
-  .main_menu {margin-top: 10px!important;}
+  .main_menu {margin-top: 5px!important;}
   #header #header-region {width: 100%!important;}
   .vocab-list-parent .vocab-list-term {width: 50%; float: left;} 
 }
