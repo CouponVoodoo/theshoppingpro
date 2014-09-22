@@ -14,13 +14,25 @@
 .vocab-list-parent .vocab-list-term {width: 20%; float: left;} 
 .vocab-list-parent h2{margin-top: 0.75em;} 
 /*category list end*/ 
+/*retail list start*/
+.vocab-list-retail {width: 100%; float: left; margin-top: 10px;}
+.vocab-list-retail .vocab-list-term {border-radius: 10px; box-shadow: 0 0 13px #ccc inset; float: left; padding: 10px; width: 32%; margin: 0 5px;}
+.vocab-list-retail .vocab-list-term a {float: left; margin: 0 auto; width: 100%;}
+.vocab-list-retail .vocab-list-term a img{display: block; margin: 0 auto;}
+/*retail list end*/
+/*brands list start*/
+.vocab-list-brand {width: 100%; float: left; margin-top: 10px;}
+.vocab-list-brand .vocab-list-term {float: left; padding: 10px; width: 15%;}
+.vocab-list-brand .vocab-list-term a {float: left; width: 100%;}
+.vocab-list-brand .vocab-list-term a:link, .vocab-list-brand .vocab-list-term a:visited {color: #f7971c; text-decoration: none;}
+/*brands list end*/
 
 @media (min-width: 240px) and (max-width: 479px) {
   #block-coupons-coupons_finder_taxonomy .form-item, .form-actions { margin: 0px!important; width: 55%!important;}
   #block-coupons-coupons_finder_taxonomy .content .submit input  {padding: 8px 5px;}
   #block-coupons-coupons_finder_taxonomy .content .submit {margin: 0 !important; width: 45%!important;}
   .top_menu {width: 100%!important;}
-  .top_menu #nice-menu-3 {width: 100%!important;}
+  .top_menu #nice-menu-3 {width: 76%!important;}
   #block-nice_menus-1 .contextual-links-trigger { margin-top: 45px; }
   #edit-field-retailer-tid-wrapper label {width: 30%;}
   #edit-field-retailer-tid-wrapper .views-widget {width: 70%;}
@@ -32,6 +44,8 @@
   .main_menu {margin-top: 5px!important;}
   #header #header-region {width: 100%!important;}
   .vocab-list-parent .vocab-list-term {width: 50%; float: left;} 
+  .vocab-list-retail .vocab-list-term {width: 100%;}
+  .vocab-list-brand .vocab-list-term {width: 25%;}
 }
 @media (min-width: 480px) and (max-width: 520px) {
   #block-nice_menus-1 .contextual-links-trigger { margin-top: 32px; }  
@@ -43,18 +57,26 @@
   #block-coupons-coupons_finder_taxonomy .content .submit {margin: 0 !important;}
   .top_menu {width: 100%!important;}
   #nice-menu-1 .menu-path-nolink ul li span{font-size: 12px;}
-  .top_menu #nice-menu-3 {width: 100%!important;}
+  .top_menu #nice-menu-3 {width: 52%!important;}
   #block-coupons-coupons_finder_taxonomy .content {float: left; width: 88%;}
   .main_menu {margin-top:10px!important;}
   #header #header-region{width: 100%!important; float: right;}
   .vocab-list-parent .vocab-list-term {width: 50%; float: left;}
+  .vocab-list-retail .vocab-list-term {width: 100%;}
+  .vocab-list-brand .vocab-list-term {width: 25%;}
 }
 
 @media (min-width: 521px) and (max-width: 599px){
   .vocab-list-parent .vocab-list-term {width: 33%; float: left;} 
+  .vocab-list-retail .vocab-list-term {width: 47%;}
+  .vocab-list-brand .vocab-list-term {width: 15%;}
+  .top_menu #nice-menu-3 {width: 41%!important;}
 }
 @media (min-width: 600px) and (max-width: 850px){
-  .vocab-list-parent .vocab-list-term {width: 25%; float: left;} 
+  .vocab-list-parent .vocab-list-term {width: 25%; float: left;}
+   .vocab-list-retail .vocab-list-term {width: 32%;}
+  .vocab-list-brand .vocab-list-term {width: 15%;}
+  .top_menu #nice-menu-3 {width: 41%!important;}
 }
 .view-content .item-list ul li {margin: 0 0 0.25em 1.5em;padding: 0;list-style:none;}
 #header #header-region{width: 67%; float: right;}
@@ -68,7 +90,7 @@
 #views-exposed-form-brand-coupon-page-page #edit-submit-brand-coupon-page {margin-top: 0px;}
 
 .top_menu {width: 100%; float: right;}
-.top_menu #nice-menu-3 {width: 38%; float: right; border: 0 none; padding-top: 10px;}
+.top_menu #nice-menu-3 {width: 26%; float: right; border: 0 none; padding-top: 10px;}
 .top_menu #nice-menu-3 li {background-color: transparent!important; border: 0 none!important;width:auto !important;}
 .top_menu #nice-menu-3 li a {color: #fff;font-size: 11px;font-weight: normal; line-height: 2px;padding: 0 14px; text-decoration: none;}
 .top_menu #nice-menu-3 li a:hover{color: #f7971c!important;}
