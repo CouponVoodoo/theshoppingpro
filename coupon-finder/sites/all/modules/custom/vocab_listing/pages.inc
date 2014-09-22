@@ -13,11 +13,13 @@ function _vocab_get_list() {
     case 'brand':
       $template = 'vocab_list_brand';
       $vid = 4;
+      drupal_set_title('Top Brands');
       break;
     case 'retail':
       $template = 'vocab_list_retail';
       $vid = 2;
       $load_entities = TRUE;
+      drupal_set_title('Top Online Retailers');
       break;
     default:
       drupal_access_denied();
