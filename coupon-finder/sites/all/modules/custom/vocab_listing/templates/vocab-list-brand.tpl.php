@@ -10,6 +10,7 @@ $ignore_tids = array();
 foreach ($result as $record) {
 //var_dump($record);
 $element = json_encode(array($record));
+var_dump($element);
     $fullJSON = $fullJSON.$element;
 	}
 	$fullJSON = str_replace("][",",",$fullJSON);
