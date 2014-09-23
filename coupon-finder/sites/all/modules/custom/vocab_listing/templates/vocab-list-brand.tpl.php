@@ -23,6 +23,7 @@ $element = json_encode(array($record));
     continue;
   }*/
   $rurl='bcp/'.$datarow['Brand'].'/coupons-offers';
+  echo 'http://offers.couponvoodoo.com/term/brand/list';
   echo $rurl;
   print '<div class="vocab-list-term"><a href="'.$rurl.'" target="_blank">'.$datarow['Brand']. '</a></div>';
 
