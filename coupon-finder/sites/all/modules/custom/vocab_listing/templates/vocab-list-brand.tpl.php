@@ -12,7 +12,7 @@ foreach ($result as $record) {
 $brandId=  $record->BrandId; 
 //var_dump($brandId);
 $brand=  $record->Brand;
-
+echo $brand;
  /* if (in_array($term->tid, $ignore_tids)) {
     continue;
   }*/
