@@ -16,9 +16,8 @@ $brand=  $record->Brand;
  /* if (in_array($term->tid, $ignore_tids)) {
     continue;
   }*/
+ echo '<div class="vocab-list-term">'.$brand.'</div>' ;
+ }
 ?>
-  <div class="vocab-list-term"><?php echo $brand; ?></div>
-<?php
-  }
-?>
-</div>
+  
+  </div>
