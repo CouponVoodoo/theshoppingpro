@@ -16,7 +16,7 @@ $element = json_encode(array($record));
 	$resultsArr = json_decode($fullJSON, true);
 
  foreach($resultsArr as $datarow)
-  {echo $datarow->Brand;
+  {echo $datarow->Brand; 
  /* if (in_array($term->tid, $ignore_tids)) {
     continue;
   }*/
