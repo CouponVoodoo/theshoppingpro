@@ -18,7 +18,7 @@ $brand=  $record->Brand;
   }*/
   
 ?>
-  <div class="vocab-list-term"><?php echo l('sfss', 'bcp/njj/coupons-offers'); 
+  <div class="vocab-list-term"><?php echo l($record->Brand, 'bcp/'.$record->BrandId.'/coupons-offers'); 
   ?></div>
 <?php
   }
