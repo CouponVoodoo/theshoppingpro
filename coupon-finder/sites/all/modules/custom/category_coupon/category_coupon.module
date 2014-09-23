@@ -50,7 +50,7 @@ $url = "http://54.243.150.171/cpnVodo/nodecreation/brandPage.php"; //The API TO 
 				->execute();
 				
 
-}
+}}
 
 function brand_coupon_addcoupon($CouponInfo){
 
