@@ -16,15 +16,15 @@ $element = json_encode(array($record));
 	$fullJSON = str_replace("][",",",$fullJSON);
 	
 	$resultsArr = json_decode($fullJSON, true);
-var_dump($resultsArr);
+//var_dump($resultsArr);
  foreach($resultsArr as $datarow)
-  {echo $datarow->Brand; 
+  {echo $datarow['Brand']; 
  /* if (in_array($term->tid, $ignore_tids)) {
     continue;
   }*/
   
 ?>
-  <div class="vocab-list-term"><?php echo l($datarow->Brand, 'bcp/'.$datarow->BrandId.'/coupons-offers'); 
+  <div class="vocab-list-term"><?php echo l($datarow['Brand'], 'bcp/'.$datarow['Brand'].'/coupons-offers'); 
   ?></div>
 <?php
   }
