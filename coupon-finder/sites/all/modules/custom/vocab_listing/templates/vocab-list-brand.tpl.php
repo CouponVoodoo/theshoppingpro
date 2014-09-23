@@ -2,17 +2,17 @@
 <?php
 $row = 0;
 $ignore_tids = array();
- 
+ echo 'hjghjg';
  /*$result = db_query('SELECT Brand,BrandId from coupon_finder.BrandCoupons');
   // echo 'cxdcadcd';
-  // var_dump($result);
+  // 'hjgjhgjhvar_dump($result);
   $fullJSON='';
 foreach ($result as $record) {
 //var_dump($record);
 $element = json_encode(array($record));
 //var_dump($element);
     $fullJSON = $fullJSON.$element;
-	}
+	} 
 	$fullJSON = str_replace("][",",",$fullJSON);
 	
 	$resultsArr = json_decode($fullJSON, true);
