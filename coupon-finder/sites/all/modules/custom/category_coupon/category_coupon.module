@@ -51,7 +51,7 @@ $url = "http://54.243.150.171/cpnVodo/nodecreation/brandPage.php"; //The API TO 
 				
 
 }
-db_query("UPDATE coupon_finder.BradCoupons LEFT JOIN coupon_finder.taxonomy_term_data ON coupon_finder.taxonomy_term_data.name = coupon_finder.BrandCoupons.Brand SET coupon_finder.BrandCoupons.BrandId = coupon_finder.taxonomy_term_data.tid ");
+db_query("UPDATE coupon_finder.BrandCoupons LEFT JOIN coupon_finder.taxonomy_term_data ON coupon_finder.taxonomy_term_data.name = coupon_finder.BrandCoupons.Brand SET coupon_finder.BrandCoupons.BrandId = coupon_finder.taxonomy_term_data.tid ");
 
 }
 
