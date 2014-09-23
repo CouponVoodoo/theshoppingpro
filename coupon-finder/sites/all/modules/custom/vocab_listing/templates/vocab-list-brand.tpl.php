@@ -8,8 +8,9 @@ $ignore_tids = array();
   // var_dump($result);
 foreach ($result as $record) {
 var_dump($record);
-var_dump($record);
-$brandId=  $record->$brandId; 
+
+$brandId=  $record->BrandId; 
+var_dump($brandId);
 $brand=  $record->Brand;
 
  /* if (in_array($term->tid, $ignore_tids)) {
