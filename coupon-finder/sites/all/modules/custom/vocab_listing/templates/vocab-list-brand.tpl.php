@@ -2,12 +2,20 @@
 <?php
 $row = 0;
 $ignore_tids = array();
-foreach ($terms as $term) {
-  if (in_array($term->tid, $ignore_tids)) {
+ $query = db_select('node', 'n');
+        
+$query->fields('n',array('BrandId'))//SELECT the fields from node
+        
+$result = $query->execute();
+    while($record = $result->fetchAssoc()) {
+        print_r($record);
+    
+ /* if (in_array($term->tid, $ignore_tids)) {
     continue;
-  }
+  }*/
 ?>
-  <div class="vocab-list-term"><?php echo l($term->name, 'bcp/'.$term->tid.'/coupons-offers'); ?></div>
+  <div class="vocab-list-term"><?php print_r($record);//echo l($term->name, 'bcp/'.$term->tid.'/coupons-offers'); 
+  ?></div>
 <?php
   }
 ?>
