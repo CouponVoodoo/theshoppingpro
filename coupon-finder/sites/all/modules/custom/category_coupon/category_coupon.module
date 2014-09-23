@@ -20,7 +20,10 @@ function category_coupon_menu() {
 }
 
 function brand_coupon_addcoupon($CouponInfo){
+
+db_query("Truncate table coupon_finder.BrandCoupons");
 $url = "http://54.243.150.171/cpnVodo/nodecreation/brandCpnPageNct.php"; //The API TO GET ALL RETAILER COUPON DATA 
+
 	$json = drupal_http_request($url, array('timeout' => 600.0));
    	$json = $json->data;
     $jsonArr = json_decode($json,true);
@@ -97,6 +100,17 @@ $url = "http://54.243.150.171/cpnVodo/nodecreation/brandCpnPageNct.php"; //The A
     		 
 		node_save($node);
 		echo 'node saved';
+		$table='BrandCoupons';
+		$nid = db_insert($table) // Table name no longer needs {}
+				->fields(array(
+				  'Brand' => $brand,
+				  'couponCode' => $couponCode,
+				  'couponCodetitle' => '',
+				  'Retailer' => '',
+				  'predictedcouponstatus' => $brandId,
+				  
+				))
+				->execute();
     }
 echo 'No node to process';
 
