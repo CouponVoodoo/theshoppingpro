@@ -18,15 +18,13 @@ $element = json_encode(array($record));
 	$resultsArr = json_decode($fullJSON, true);
 //var_dump($resultsArr);
  foreach($resultsArr as $datarow)
-  {echo $datarow['Brand']; 
+  {//echo $datarow['Brand']; 
  /* if (in_array($term->tid, $ignore_tids)) {
     continue;
   }*/
-  
-?>
-  <div class="vocab-list-term"><?php echo l($datarow['Brand'], 'bcp/'.$datarow['Brand'].'/coupons-offers'); 
-  ?></div>
-<?php
+  $rurl='bcp/'.$datarow['Brand'].'/coupons-offers';
+  print '<div class="vocab-list-term"><a href="'.$rurl.'" target="_blank">'.$datarow['Brand']. '</a></div>';
+
   }
 ?>
 </div>
