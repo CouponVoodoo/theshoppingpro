@@ -12,12 +12,14 @@ foreach ($result as $record) {
 $brandId=  $record->BrandId; 
 //var_dump($brandId);
 $brand=  $record->Brand;
-//echo $brand;
+
  /* if (in_array($term->tid, $ignore_tids)) {
     continue;
   }*/
- echo '<div class="vocab-list-term">'.$brand.'</div>' ;
- }
 ?>
-  
-  </div>
+  <div class="vocab-list-term"><?php echo l('abcd', 'bcp/'.'test'.'/coupons-offers'); 
+  ?></div>
+<?php
+  }
+?>
+</div>
