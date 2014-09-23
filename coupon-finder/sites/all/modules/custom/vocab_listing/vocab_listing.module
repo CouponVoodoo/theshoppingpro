@@ -26,7 +26,7 @@ function vocab_listing_theme() {
     ),
     'vocab_list_brand' => array(
       'variables' => array('terms' => NULL),
-      'template' => 'templates/vocab-list-brand1',
+      'template' => 'templates/vocab-list-brand',
     ),
     'vocab_list_retail' => array(
       'variables' => array('terms' => NULL),
