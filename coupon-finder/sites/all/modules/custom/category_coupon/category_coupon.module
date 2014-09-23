@@ -16,9 +16,41 @@ function category_coupon_menu() {
       'access callback' => TRUE
   ); 
 
-  
+    $items['transfer-brands/%'] = array(//this creates a URL that will call this form at "examples/form-example"
+      'title' => 'transfer brands in database', //page title
+      'page callback' => 'transfer_brand', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
+      'page arguments' => array(1),
+      'access callback' => TRUE
+  ); 
+
   return $items;
 }
+
+function transfer_brand($CouponInfo){
+
+$url = "http://54.243.150.171/cpnVodo/nodecreation/brandPage.php"; //The API TO GET ALL RETAILER COUPON DATA 
+
+	$json = drupal_http_request($url, array('timeout' => 600.0));
+   	$json = $json->data;
+    $jsonArr = json_decode($json,true);
+	echo 'Array Size ------->'.sizeof($jsonArr);
+	// LOOP TO PROCESS EACH RETAILER COUPON RECORD RECEIVED VIA THE API
+	foreach($jsonArr as $json){ 
+		$json = json_encode($json); 
+    	$jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
+    	$jsonArray = json_decode($jsonData);
+		// var_dump($json);
+    	// ASSIGN ALL COUPON DATA TO VARIABLES
+		$brand = $jsonArray->brand;
+		$table='BrandCoupons';
+		$nid = db_insert($table) // Table name no longer needs {}
+				->fields(array(
+				  'Brand' => $brand,
+				 ))
+				->execute();
+				
+
+}}
 
 function brand_coupon_addcoupon($CouponInfo){
 
@@ -101,7 +133,7 @@ $url = "http://54.243.150.171/cpnVodo/nodecreation/brandCpnPageNct.php"; //The A
     		 
 		node_save($node);
 		echo 'node saved';
-	
+	}
 echo 'No node to process';
 
 
