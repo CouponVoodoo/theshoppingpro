@@ -27,7 +27,7 @@ function category_coupon_menu() {
 }
 
 function transfer_brand($CouponInfo){
-
+db_query("truncate table coupon_finder.BrandCoupons");
 $url = "http://54.243.150.171/cpnVodo/nodecreation/brandPage.php"; //The API TO GET ALL RETAILER COUPON DATA 
 
 	$json = drupal_http_request($url, array('timeout' => 600.0));
