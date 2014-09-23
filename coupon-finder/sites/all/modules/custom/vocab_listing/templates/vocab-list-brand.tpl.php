@@ -11,4 +11,4 @@ foreach ($terms as $term) {
 <?php
   }
 ?>
-</div>
+</div>  
