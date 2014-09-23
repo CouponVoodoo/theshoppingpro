@@ -2,14 +2,11 @@
 <?php
 $row = 0;
 $ignore_tids = array();
- $query = db_select('node', 'n');
-        
-$query->fields('n',array('BrandId'))//SELECT the fields from node
-        
-$result = $query->execute();
-    while($record = $result->fetchAssoc()) {
-        print_r($record);
-    
+ 
+ $result = db_query('SELECT BrandId from coupon_finder.BrandCoupons');
+   
+foreach ($result as $record) {
+$brandId=  $record->BrandId; 
  /* if (in_array($term->tid, $ignore_tids)) {
     continue;
   }*/
