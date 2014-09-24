@@ -6,7 +6,10 @@ foreach ($terms as $term) {
   if (in_array($term->tid, $ignore_tids)) {
     continue;
   }
-?> 
+  if (!trim($term->name)) {
+    continue;
+  }
+?>
   <div class="vocab-list-term"><?php echo l($term->name, 'bcp/'.$term->tid.'/coupons-offers'); ?></div>
 <?php
   }
