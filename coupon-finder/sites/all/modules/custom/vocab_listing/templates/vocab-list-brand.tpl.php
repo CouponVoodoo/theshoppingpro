@@ -1,7 +1,7 @@
 <div class="vocab-list vocab-list-brand">
 <?php
 $row = 0;
-$ignore_tids = array(16314,21399,16612,20561,2085621291,15913,16983,21734);
+$ignore_tids = array(16314,21399,16612,20561,2085621291,15913,16983,21734,21291);
 $result = db_query('SELECT Brand,BrandId from coupon_finder.BrandCoupons');
   // echo 'cxdcadcd';
 foreach ($result as $record) {
