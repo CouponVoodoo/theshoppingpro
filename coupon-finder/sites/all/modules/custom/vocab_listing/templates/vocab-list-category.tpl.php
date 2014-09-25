@@ -18,8 +18,10 @@ foreach ($terms as $term) {
 ?>
 <h2>
 <?php
-echo '<img src="http://www.couponvoodoo.com/sites/default/files/46.png" alt="Womens Fashion" >';
-  echo t('%name\'s Fashion', array('%name' => $term->name));
+echo '<div class="m-logo"><img src="http://www.couponvoodoo.com/sites/default/files/46.png" alt="Womens Fashion" ></div>';
+echo '<div class="m-cpn"><p class="ofr-descp">'.$term->name."'s".' Fashion</p> </div>';
+
+  //echo t('%name\'s Fashion', array('%name' => $term->name));
   
 ?>
 </h2>
