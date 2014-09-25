@@ -27,8 +27,10 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$term->name."'s".' Fashion</p> <
 </h2>
 <?php
   } else { 
-?>
-  <div class="vocab-list-term"><?php echo l($term->name, 'ccp/'.$term->tid.'/coupons-offers', array('query' => array('field_offer_type_tid' => 'All'))); ?></div>
+?><div class="imges"> <img src="http://www.couponvoodoo.com/sites/default/files/46.png" alt="Womens Fashion" >
+  <div class="vocab-list-term"><?php echo l($term->name, 'ccp/'.$term->tid.'/coupons-offers', array('query' => array('field_offer_type_tid' => 'All'))); ?>
+  </div>
+  </div>
 <?php
   }
 }
