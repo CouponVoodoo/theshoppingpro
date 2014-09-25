@@ -127,10 +127,10 @@ float: left;
 margin: 0;
 padding: 0;
 } 
-.vocab-list-parent .vocab-list-term a {float: right;!important;
+/*.vocab-list-parent .vocab-list-term a {float: right;!important;
 margin-left: 29px;!important;
 text-align: center;}
-
+*/
 .vocab-list-parent .vocab-list-term {
 width: 100%;
 margin-left: 41px;
