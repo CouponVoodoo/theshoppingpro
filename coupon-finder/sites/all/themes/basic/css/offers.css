@@ -132,11 +132,18 @@ margin-left: 29px;!important;
 text-align: center;}
 
 .vocab-list-parent .vocab-list-term {
-width: 20%;
-float: left;
+width: 100%;
+margin-left: 41px;
+margin-top: -29px;
 } 
 
 .imges img {
-width: 20px;
-height: 20px;
-}
+width: 30px;
+height: 30px;}
+
+.vocab-list-parent .imges {
+width: 20%;
+float: left;
+vertical-align: middle;
+/* margin-top: 6px; */
+margin: 9px 24px;}
