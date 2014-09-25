@@ -134,3 +134,8 @@ text-align: center;}
 width: 20%;
 float: left;
 } 
+
+.imges img {
+width: 20px;
+height: 20px;
+}
