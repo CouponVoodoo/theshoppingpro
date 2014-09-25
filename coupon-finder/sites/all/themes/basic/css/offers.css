@@ -14,6 +14,7 @@
 /*category list start*/
 .vocab-list-parent {width: 100%; float:left; border-bottom: 1px solid #ccc; padding-bottom: 10px!important;}
 .vocab-list-parent .vocab-list-term {width: 20%; float: left;} 
+.vocab-list-parent .imges {width: 20%; float: left;} 
 .vocab-list-parent h2{margin-top: 0.75em;} 
 /*category list end*/ 
 /*retail list start*/
