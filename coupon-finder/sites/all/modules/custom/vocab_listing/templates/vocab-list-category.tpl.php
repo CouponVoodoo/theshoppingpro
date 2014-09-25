@@ -8,6 +8,7 @@ foreach ($terms as $term) {
   }
   if (in_array(0, $term->parents)) {
     if ($row == 0) {
+	var_dump($term);
       echo '<div class="vocab-list-parent">';
       $row++;
     } else {
