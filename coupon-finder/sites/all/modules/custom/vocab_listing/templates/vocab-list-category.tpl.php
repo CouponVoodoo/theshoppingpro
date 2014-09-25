@@ -9,7 +9,7 @@ foreach ($terms as $term) {
   if (in_array(0, $term->parents)) {
     if ($row == 0) {
 	//var_dump($term);
-      echo '<div class="vocab-list-parent"> <img src="http://www.couponvoodoo.com/sites/default/files/46.png" alt="Womens Fashion" >';
+      echo '<div class="vocab-list-parent"> ';
       $row++;
     } else {
       echo '</div><div class="vocab-list-parent">';
@@ -19,6 +19,7 @@ foreach ($terms as $term) {
 <h2>
 <?php
   echo t('%name\'s Fashion', array('%name' => $term->name));
+  echo '<img src="http://www.couponvoodoo.com/sites/default/files/46.png" alt="Womens Fashion" >'
 ?>
 </h2>
 <?php
