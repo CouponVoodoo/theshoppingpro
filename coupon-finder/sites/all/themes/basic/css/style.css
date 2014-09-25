@@ -752,7 +752,7 @@ body.domain-products-cuponation-in #block-block-13{display: none}
   max-width: 200px;
   width: auto;
 }
-  }
+  /*}*/
 
   
   
@@ -1731,3 +1731,54 @@ background: none repeat scroll 0 0 #F7971C;
 
 /* Hack to prevent adsense block from blocking copy coupon */
 #block-block-23 {display: inline-block}
+
+/* Added by Incaendo <http://incaendo.com> -- START */
+.btn-toggle {display: none;}
+@media (min-width: 240px) and (max-width: 479px) {
+  .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
+  .view-home-page-welcome .views-field img {width: 100%!important; max-width:92%!important;}
+  #block-views-home_page_slider-block .ribbon-wrapper-green{right: -27px;}
+  .front #coupons-finder-form #edit-submit {float: none;}
+  .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon {width: 100%!important;}
+  .item-list .pager li {margin: 0px!important;}
+  /*side menu for header start*/
+  #header #header-region {width: 100%; float:left;}
+  #header #logo {width: 75%;}
+  #block-custom_api-custom_coupons {background:none; border-radius:0px; border: 0 none; box-shadow: none; width: 100%; float: left;}
+  .btn-toggle {position: relative; float: right; padding: 9px 10px; margin-top: 8px; margin-right: 15px; margin-bottom: 8px; background-color: #F7971C; background-image: none; border: 1px solid transparent; border-radius: 1px;}
+  .btn-toggle .icon-bar {display: block; width: 22px; height: 2px; border-radius: 1px; background-color: #fff;}
+  .btn-toggle .icon-bar+.icon-bar {margin-top: 4px;}
+  #main_menu_toggle {display:none;} 
+  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 55%; display: block;}
+  .close-btn {float: right; color: rgb(255, 255, 255); margin-right: 10px; font-size: 20px; cursor: pointer;}
+  .filter-btn {width: 21%; float: left; margin-left: 10px;}
+  .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
+  #sidebar-first {display: none;}
+  .sidebar-toggle{background-color: #f2f2f2; padding-top: 10px; display: block; height: 200px; left: 0; min-height: 250px; overflow-x: hidden; overflow-y: scroll; position: absolute; top: 175px; width: 100%; z-index: 5;}
+  /*side menu for header end*/  
+}
+@media (min-width: 480px) and (max-width: 599px) {
+  .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
+  .view-home-page-welcome .views-field img {width: 100%!important; max-width:95%!important;}
+  #block-views-home_page_slider-block .ribbon-wrapper-green{right: -38%;}
+  .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon {width: 48%;}
+  .item-list .pager li {margin: 0px!important;}
+}
+@media (min-width: 600px) and (max-width: 850px){
+  .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
+  .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
+  #block-views-home_page_slider-block .ribbon-wrapper-green{right: -38%;}
+  .front #coupons-finder-form #edit-submit {float: none;}
+  .item-list .pager li {margin: 0px!important;}
+  
+}
+@media (min-width: 750px) and (max-width: 768px){
+  .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
+  .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
+  #block-views-home_page_slider-block .ribbon-wrapper-green{right: -38%;}
+  .front #coupons-finder-form #edit-submit {float: none;}
+  .item-list .pager li {margin: 0px!important;}
+}
+
+
+/* Added by Incaendo <http://incaendo.com> -- End */

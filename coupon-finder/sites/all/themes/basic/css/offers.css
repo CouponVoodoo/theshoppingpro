@@ -9,6 +9,7 @@
 #block-nice_menus-1 .content {padding: 10px 0; width:100%!important; float: left;}
 #block-nice_menus-1 .contextual-links-trigger {margin-top: 20px;}
 #nice-menu-1 .menu-path-nolink ul li span{font-size: 12px; line-height: 30px;}
+.nice_menu1 .content ul li a, .nice_menu1 .content ul li span {line-height: 30px!important;}
 /*category list start*/
 .vocab-list-parent {width: 100%; float:left; border-bottom: 1px solid #ccc; padding-bottom: 10px!important;}
 .vocab-list-parent .vocab-list-term {width: 20%; float: left;} 
@@ -22,10 +23,15 @@
 /*retail list end*/
 /*brands list start*/
 .vocab-list-brand {width: 100%; float: left; margin-top: 10px;}
-.vocab-list-brand .vocab-list-term {float: left; padding: 10px; width: 15%;}
+.vocab-list-brand .vocab-list-term {float: left; padding: 10px; width: 15%; word-break: break-word;}
 .vocab-list-brand .vocab-list-term a {float: left; width: 100%;}
 .vocab-list-brand .vocab-list-term a:link, .vocab-list-brand .vocab-list-term a:visited {color: #f7971c; text-decoration: none;}
 /*brands list end*/
+/*home page slider start
+#block-views-home_page_welcome-block {width: 100%!important;}
+.view-home-page-welcome .views-field img {width: 98%!important; max-width: 100%!important; max-height: 100%!important;}
+div#block-views-home_page_welcome-block, .front div.region-content #block-system-main {height: 400px!important;}
+home page slider end*/
 
 @media (min-width: 240px) and (max-width: 479px) {
   #block-coupons-coupons_finder_taxonomy .form-item, .form-actions { margin: 0px!important; width: 55%!important;}
@@ -47,6 +53,8 @@
   .vocab-list-parent .vocab-list-term {width: 50%; float: left;} 
   .vocab-list-retail .vocab-list-term {width: 100%;}
   .vocab-list-brand .vocab-list-term {width: 33%;}
+  #block-views-home_page_slider-block .ribbon-wrapper-green{right: -27px;}
+  #block-views-home_page_slider-block .views-field img {width: 100%;}
 }
 @media (min-width: 480px) and (max-width: 520px) {
   #block-nice_menus-1 .contextual-links-trigger { margin-top: 32px; }  
@@ -79,7 +87,9 @@
   .vocab-list-brand .vocab-list-term {width: 25%;}
   .top_menu #nice-menu-3 {width: 41%!important;}
   .top_menu #nice-menu-3 a{font-size: 15px;}
+
 }
+
 .view-content .item-list ul li {margin: 0 0 0.25em 1.5em;padding: 0;list-style:none;}
 #header #header-region{width: 67%; float: right;}
 #views-exposed-form-brand-coupon-page-page .views-exposed-form {width: 100%; overflow: hidden;}
