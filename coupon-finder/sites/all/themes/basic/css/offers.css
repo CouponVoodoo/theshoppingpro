@@ -111,14 +111,14 @@ home page slider end*/
 /* Added by Incaendo <http://incaendo.com> -- End */
 
 .m-cpn { 
-width: 410px;
+width: 82%;
 float: left;
-margin: 0;
+margin-bottom: 48px;
 padding: 0;
 }
 .ofr-descp {
 font-weight: normal;
-margin-top: 0px;
+margin-top: 8px;
 }
 .m-logo {
 width: 92px;
@@ -126,3 +126,5 @@ float: left;
 margin: 0;
 padding: 0;
 } 
+
+
