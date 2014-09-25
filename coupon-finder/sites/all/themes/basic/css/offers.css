@@ -126,5 +126,20 @@ float: left;
 margin: 0;
 padding: 0;
 } 
+.vocab-list-parent .vocab-list-term a {float: right;!important;
+margin-left: 29px;!important}
 
-
+.vocab-list-parent .vocab-list-term {
+width: 20%;
+float: right;
+/* margin-left: 3px; */
+border-width: 0 8px 6px;
+border-color: white;
+border-style: dashed;
+border-bottom-style: solid;
+background-color: white;
+background-repeat: no-repeat; 
+background-position: left 2px;
+background-size: 22px 14px;
+float: right;
+} 
