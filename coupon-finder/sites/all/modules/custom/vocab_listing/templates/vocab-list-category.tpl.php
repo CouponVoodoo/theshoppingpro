@@ -26,9 +26,9 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$term->name."'s".' Fashion</p> <
 ?>
 </h2>
 <?php
-  } else {
+  } else { 
 ?>
-  <div style="background-image: url(http://www.couponvoodoo.com/sites/default/files/46.png);" class="vocab-list-term"><?php echo l($term->name, 'ccp/'.$term->tid.'/coupons-offers', array('query' => array('field_offer_type_tid' => 'All'))); ?></div>
+  <div class="vocab-list-term"><?php echo l($term->name, 'ccp/'.$term->tid.'/coupons-offers', array('query' => array('field_offer_type_tid' => 'All'))); ?></div>
 <?php
   }
 }
