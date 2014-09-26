@@ -656,7 +656,7 @@ if ($brand_check != 'Other') {
 
 	
 <?php
-
+/*
 		$full_data_array_std_class = db_query("SELECT updateDate, couponStatus, BestCouponCode, NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
 		$full_data_array = json_decode(drupal_json_encode($full_data_array_std_class), true);
 		$dates = array();
@@ -695,14 +695,15 @@ if ($brand_check != 'Other') {
 		//echo $dates_data."\n\n\n".$coupons_data."\n\n\n".$price_data;
 
 		if($node->type == '_product_and_coupon' && $all_count > 2) {
+		*/
 ?>
 
-<h4> <a id="price_history"><?php echo get_label('Coupon & Price History For ')." ".$node->field_retailer_product_name['und']['0']['value'];?></a></h4>
-<!-- <script type="text/javascript" src="<?php echo $base_url;?>/sites/all/libraries/Fusioncharts/FusionCharts.js"> </script> -->
+<!-- <h4> <a id="price_history"><?php echo get_label('Coupon & Price History For ')." ".$node->field_retailer_product_name['und']['0']['value'];?></a></h4>
+<!-- <script type="text/javascript" src="<?php //echo $base_url;?>/sites/all/libraries/Fusioncharts/FusionCharts.js"> </script> 
 <div id="coupon_price_history_graph"></div> 
-
+-->
 <?php
-		
+		/*
 			$all_data_json = '{
 				  "chart": {
 					"palette": "3",
@@ -806,7 +807,7 @@ if ($brand_check != 'Other') {
 				myChart.render('coupon_price_history_graph');
 			});", array('type' => 'inline', 'scope' => 'footer', 'weight' => '-10'));
 		}
-		
+		*/
 		/* EVENT TRACKING FOR SEARCH */
 		
     if (isset($_SESSION['CvGa'])) {
