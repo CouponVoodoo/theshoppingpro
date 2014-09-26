@@ -156,7 +156,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 <?php
 	/**************** HIDING GRAPH FROM MOBILE ********************************/
 	// if(!$is_mobile && !$is_tablet){
-	/*
+	
 		$full_data_array_std_class = db_query("SELECT updateDate, couponStatus, BestCouponCode, NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
 		$full_data_array = json_decode(drupal_json_encode($full_data_array_std_class), true);
 		$dates = array();
@@ -305,7 +305,6 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 		drupal_add_js(array('coupon_overview' => array('coupon_overview_json' => $coupon_overview_json)), array('type' => 'setting', 'scope' => 'footer', 'weight' => '-10'));
 	// }
-	*/
 ?>
 <!-- ********************* END OF CHART DATA FOR COUPON OVERVIEW ************************  -->
 
@@ -314,9 +313,9 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 <ul>
 <li><a href="#price_summary"><img src="<?php echo $base_url;?>/sites/all/themes/basic/images/price_summary.png" width="48" height="48" border="0"/>Price Summary</a></li>
 <li><a href="#All_Coupons"><img src="<?php echo $base_url;?>/sites/all/themes/basic/images/coupon_list.png" width="48" height="48" border="0"/>Coupon List</a></li>
-<?php// if ($all_count > 2) { ?>
-	<!--><li><a href="#price_history"><img src="<?php echo $base_url;?>/sites/all/themes/basic/images/price_history.png" width="48" height="48" border="0"/>Price History</a></li>-->
-<?php //} ?>
+<?php if ($all_count > 2) { ?>
+	<li><a href="#price_history"><img src="<?php echo $base_url;?>/sites/all/themes/basic/images/price_history.png" width="48" height="48" border="0"/>Price History</a></li>
+<?php } ?>
 <li><a href="<?php echo $base_url;?>/search/site/<?php echo $node->field_retailer_product_name['und']['0']['value']; ?>" target = "_blank"><img src="<?php echo $base_url;?>/sites/all/themes/basic/images/all_similar_products.png" width="48" height="48" border="0"/><?php echo nl2br("\n");?>Similar Products</a></li>
 <li><a href="<?php echo $base_url;?>/search/site/<?php echo $node->field_retailer_product_name['und']['0']['value']; ?>?f[0]=sm_field_best_coupon_status_disp%3AGuaranteed%20Coupons" target = "_blank"><img src="<?php echo $base_url;?>/sites/all/themes/basic/images/similar_with_coupons.png" width="48" height="48" border="0"/>Similar With Coupons</a></li>
 </ul>
@@ -340,7 +339,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 	<div id="coupon_meter"></div> 
 	<?PHP
-/*		if ($all_count > 2) {
+		if ($all_count > 2) {
 			drupal_add_js($base_url.'/sites/all/libraries/Fusioncharts/FusionCharts.js',  array('scope' => 'footer', 'weight' => '-10'));
 			drupal_add_js("jQuery(window).load(function(){
 				var myChart = new FusionCharts( 'AngularGauge', 'coupon_overview', '105%', '150', '1' );
@@ -348,14 +347,11 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 				myChart.render('coupon_meter');
 			});", array('type' => 'inline', 'scope' => 'footer', 'weight' => '-10'));
 		} else {
-	*/?>
-<!--<div class='blue_button'><a href="<?php echo $product_link;?>" class='d_view_store'><?php echo get_label('View More From ').substr($brand, 0, 40);?></a></div>
-	
-	<?php //}
-
 	?>
+	<div class='blue_button'><a href="<?php echo $product_link;?>" class='d_view_store'><?php echo get_label('View More From ').substr($brand, 0, 40);?></a></div>
+	<?php } ?>
 </div>
--->
+
 
 <div class="product-right-inner">
 <h1> <?php 
@@ -660,7 +656,7 @@ if ($brand_check != 'Other') {
 
 	
 <?php
-/*
+
 		$full_data_array_std_class = db_query("SELECT updateDate, couponStatus, BestCouponCode, NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid)->fetchAll();
 		$full_data_array = json_decode(drupal_json_encode($full_data_array_std_class), true);
 		$dates = array();
@@ -699,15 +695,14 @@ if ($brand_check != 'Other') {
 		//echo $dates_data."\n\n\n".$coupons_data."\n\n\n".$price_data;
 
 		if($node->type == '_product_and_coupon' && $all_count > 2) {
-		*/
 ?>
 
-<!--<h4> <a id="price_history"><?php //echo get_label('Coupon & Price History For ')." ".$node->field_retailer_product_name['und']['0']['value'];?></a></h4>
-<!-- <script type="text/javascript" src="<?php //echo $base_url;?>/sites/all/libraries/Fusioncharts/FusionCharts.js"> </script> -->
-<!--<div id="coupon_price_history_graph"></div> -->
+<h4> <a id="price_history"><?php echo get_label('Coupon & Price History For ')." ".$node->field_retailer_product_name['und']['0']['value'];?></a></h4>
+<!-- <script type="text/javascript" src="<?php echo $base_url;?>/sites/all/libraries/Fusioncharts/FusionCharts.js"> </script> -->
+<div id="coupon_price_history_graph"></div> 
 
 <?php
-	/*	
+		
 			$all_data_json = '{
 				  "chart": {
 					"palette": "3",
@@ -811,7 +806,7 @@ if ($brand_check != 'Other') {
 				myChart.render('coupon_price_history_graph');
 			});", array('type' => 'inline', 'scope' => 'footer', 'weight' => '-10'));
 		}
-		*/
+		
 		/* EVENT TRACKING FOR SEARCH */
 		
     if (isset($_SESSION['CvGa'])) {
