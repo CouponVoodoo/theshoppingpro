@@ -1,5 +1,5 @@
 <?php
-
+$DB = new mysqli ('localhost', 'predictor', '123theshoppingpro098');
         $DB->select_db('coupon_finder');
         $results = $DB->query('SHOW TABLE STATUS WHERE Data_free > 0');
         if ($results->num_rows > 0)
