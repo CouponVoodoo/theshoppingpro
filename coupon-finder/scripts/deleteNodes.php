@@ -15,4 +15,3 @@
         $results->close();
 
 $DB->close();
-}
