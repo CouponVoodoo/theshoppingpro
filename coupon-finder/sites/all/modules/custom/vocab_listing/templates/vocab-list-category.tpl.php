@@ -1,7 +1,7 @@
 <div class="vocab-list vocab-list-category">
 <?php
 $row = 0;
-$ignore_tids = array(83, 47, 57, 82, 25, 37, 69, 70, 73, 16, 19, 21, 95, 18);
+$ignore_tids = array(83, 47, 57, 82, 25, 37, 69, 70, 73, 16, 19, 21, 95, 18,22,23,87);
 foreach ($terms as $term) {
   if (in_array($term->tid, $ignore_tids)) {
     continue;
