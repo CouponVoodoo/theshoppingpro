@@ -1736,7 +1736,7 @@ background: none repeat scroll 0 0 #F7971C;
 .btn-toggle {display: none;}
 .filter-btn {display: none;}
 .main_menu {margin-top: 0px!important;}
-.open > ul{display: block!important; visibilty: visible!important;}
+
 .hidden {display: none!important; visibilty: hidden!important;}
 @media (min-width: 240px) and (max-width: 479px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
@@ -1758,7 +1758,7 @@ background: none repeat scroll 0 0 #F7971C;
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
   .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
   #sidebar-first {display: none;}
-  .sidebar-toggle{background-color: #f2f2f2; padding-top: 10px; display: block; height: 200px; left: 0; min-height: 250px; overflow-x: hidden; overflow-y: scroll; position: absolute; top: 175px; width: 100%; z-index: 5;}
+  .sidebar-toggle{background-color: #f2f2f2; padding-top: 10px; display: block!important; height: 200px; left: 0; min-height: 1px; overflow-x: hidden!important; overflow-y: scroll!important; position: absolute; top: 140px; width: 100%!important; z-index: 2;}
   .search-bar-responsive {display: block!important; float: left; margin-bottom: 10px; width: 100%;}
   #coupons-finder-form--2 .form-type-textfield {float: left; margin: 0 0 0 10px; width: 50%;}
   #coupons-finder-form--2 #edit-url--2 { float: left; padding: 5px; width: 100%;}
@@ -1768,6 +1768,7 @@ background: none repeat scroll 0 0 #F7971C;
   .nice_menu1 .content ul li {width: 100%;}
   .search-suggestion {display: none!important;}
   #block-custom_api-custom_coupons {display: none!important;}
+  .open {display: block!important; visibilty: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; position: relative; top: 0; padding-left: 5px;}
   /*side menu for header end*/  
 }
 @media (min-width: 480px) and (max-width: 599px) {
@@ -1788,7 +1789,7 @@ background: none repeat scroll 0 0 #F7971C;
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
   .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
   #sidebar-first {display: none;}
-  .sidebar-toggle{background-color: #f2f2f2; padding-top: 10px; display: block; height: 200px; left: 0; min-height: 250px; overflow-x: hidden; overflow-y: scroll; position: absolute; top: 100px; width: 100%; z-index: 5;}
+  .sidebar-toggle{background-color: #f2f2f2; padding-top: 10px; display: block!important; height: 200px; left: 0; min-height: 1px; overflow-x: hidden!important; overflow-y: scroll!important; position: absolute; top: 140px; width: 100%!important; z-index: 2;}
   .search-bar-responsive {display: block!important; float: left; margin-bottom: 10px; width: 100%;}
   #coupons-finder-form--2 .form-type-textfield {float: left; margin: 0 0 0 10px; width: 65%;}
   #coupons-finder-form--2 #edit-url--2 { float: left; padding: 5px; width: 100%;}
@@ -1798,6 +1799,7 @@ background: none repeat scroll 0 0 #F7971C;
   .nice_menu1 .content ul li {width: 100%;}
   .search-suggestion {display: none!important;}
   #block-custom_api-custom_coupons {display: none!important;}
+  .open {display: block!important; visibilty: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; position: relative; top: 0; padding-left: 5px;}
   /*side menu for header end*/
 }
 @media (min-width: 600px) and (max-width: 850px){
@@ -1807,7 +1809,6 @@ background: none repeat scroll 0 0 #F7971C;
   .front #coupons-finder-form #edit-submit {float: none;}
   .item-list .pager li {margin: 0px!important;}
   .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon {width: 48%;}
-  .nice_menu1 .content ul li {width: 100%;}
   .search-suggestion {display: none!important;}
 }
 @media (min-width: 599px) and (max-width: 750px){
@@ -1823,7 +1824,7 @@ background: none repeat scroll 0 0 #F7971C;
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
   .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
   #sidebar-first {display: none;}
-  .sidebar-toggle{background-color: #f2f2f2; padding-top: 10px; display: block; height: 200px; left: 0; min-height: 250px; overflow-x: hidden; overflow-y: scroll; position: absolute; top: 175px; width: 100%; z-index: 5;}
+  .sidebar-toggle{background-color: #f2f2f2; padding-top: 10px; display: block!important; height: 200px; left: 0; min-height: 1px; overflow-x: hidden!important; overflow-y: scroll!important; position: absolute; top: 140px; width: 100%!important; z-index: 2;}
   .search-bar-responsive {display: block!important; float: left; margin-bottom: 10px; width: 100%;}
   #coupons-finder-form--2 .form-type-textfield {float: left; margin: 0 0 0 10px; width: 50%;}
   #coupons-finder-form--2 #edit-url--2 { float: left; padding: 5px; width: 100%;}
@@ -1832,6 +1833,8 @@ background: none repeat scroll 0 0 #F7971C;
   #coupons-finder-form--2 .form-type-textfield label{display: none;}
   .search-suggestion {display: none!important;}
   #block-custom_api-custom_coupons {display: none!important;}
+  .nice_menu1 .content ul li {width: 100%;}
+  .open {display: block!important; visibilty: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; position: relative; top: 0; padding-left: 5px;}
   /*side menu for header end*/
 }
 @media (min-width: 750px) and (max-width: 768px){
