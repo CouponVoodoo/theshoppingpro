@@ -1735,6 +1735,9 @@ background: none repeat scroll 0 0 #F7971C;
 /* Added by Incaendo <http://incaendo.com> -- START */
 .btn-toggle {display: none;}
 .filter-btn {display: none;}
+.main_menu {margin-top: 0px!important;}
+.open > ul{display: block!important; visibilty: visible!important;}
+.hidden {display: none!important; visibilty: hidden!important;}
 @media (min-width: 240px) and (max-width: 479px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:92%!important;}
@@ -1763,6 +1766,8 @@ background: none repeat scroll 0 0 #F7971C;
   #coupons-finder-form--2 #edit-submit--4 {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
   #coupons-finder-form--2 .form-type-textfield label{display: none;}
   .nice_menu1 .content ul li {width: 100%;}
+  .search-suggestion {display: none!important;}
+  #block-custom_api-custom_coupons {display: none!important;}
   /*side menu for header end*/  
 }
 @media (min-width: 480px) and (max-width: 599px) {
@@ -1773,7 +1778,6 @@ background: none repeat scroll 0 0 #F7971C;
   .item-list .pager li {margin: 0px!important;}
   /*side menu for header start*/
   #header #header-region {width: 100%; float:left;}
-  /*#header #logo {width: 75%;}*/
   #block-custom_api-custom_coupons {background:none; border-radius:0px; border: 0 none; box-shadow: none; width: 100%; float: left;}
   .btn-toggle {display: block; position: relative; float: right; padding: 9px 10px; margin-top: 8px; margin-right: 15px; margin-bottom: 8px; background-color: #F7971C; background-image: none; border: 1px solid transparent; border-radius: 1px;}
   .btn-toggle .icon-bar {display: block; width: 22px; height: 2px; border-radius: 1px; background-color: #fff;}
@@ -1792,6 +1796,8 @@ background: none repeat scroll 0 0 #F7971C;
   #coupons-finder-form--2 #edit-submit--4 {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
   #coupons-finder-form--2 .form-type-textfield label{display: none;}
   .nice_menu1 .content ul li {width: 100%;}
+  .search-suggestion {display: none!important;}
+  #block-custom_api-custom_coupons {display: none!important;}
   /*side menu for header end*/
 }
 @media (min-width: 600px) and (max-width: 850px){
@@ -1802,9 +1808,11 @@ background: none repeat scroll 0 0 #F7971C;
   .item-list .pager li {margin: 0px!important;}
   .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon {width: 48%;}
   .nice_menu1 .content ul li {width: 100%;}
+  .search-suggestion {display: none!important;}
+}
+@media (min-width: 599px) and (max-width: 750px){
   /*side menu for header start*/
   #header #header-region {width: 100%; float:left;}
-  /*#header #logo {width: 75%;}*/
   #block-custom_api-custom_coupons {background:none; border-radius:0px; border: 0 none; box-shadow: none; width: 100%; float: left;}
   .btn-toggle {display: block; position: relative; float: right; padding: 9px 10px; margin-top: 8px; margin-right: 15px; margin-bottom: 8px; background-color: #F7971C; background-image: none; border: 1px solid transparent; border-radius: 1px;}
   .btn-toggle .icon-bar {display: block; width: 22px; height: 2px; border-radius: 1px; background-color: #fff;}
@@ -1822,6 +1830,8 @@ background: none repeat scroll 0 0 #F7971C;
   #coupons-finder-form--2 .submit {float: left; width: 45%;}
   #coupons-finder-form--2 #edit-submit--4 {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
   #coupons-finder-form--2 .form-type-textfield label{display: none;}
+  .search-suggestion {display: none!important;}
+  #block-custom_api-custom_coupons {display: none!important;}
   /*side menu for header end*/
 }
 @media (min-width: 750px) and (max-width: 768px){
