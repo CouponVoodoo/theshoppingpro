@@ -107,7 +107,7 @@ ul.nice-menu li.over li.over li.over ul ul ul,
 ul.nice-menu li.menuparent ul,
 /* For Garland header. */
 #header-region ul.nice-menu li.menuparent ul {
-  overflow: visible !important;
+  /*overflow: visible !important;*/
 }
 
 ul.nice-menu li.menuparent ul iframe,
