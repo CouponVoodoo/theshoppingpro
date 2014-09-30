@@ -1736,8 +1736,6 @@ background: none repeat scroll 0 0 #F7971C;
 .btn-toggle {display: none;}
 .filter-btn {display: none;}
 .main_menu {margin-top: 0px!important;}
-
-.hidden {display: none!important; visibilty: hidden!important;}
 @media (min-width: 240px) and (max-width: 479px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:92%!important;}
@@ -1768,7 +1766,9 @@ background: none repeat scroll 0 0 #F7971C;
   .nice_menu1 .content ul li {width: 100%;}
   .search-suggestion {display: none!important;}
   #block-custom_api-custom_coupons {display: none!important;}
-  .open {display: block!important; visibilty: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; position: relative; top: 0; padding-left: 5px;}
+  .open {display: block!important; visibility: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; top: 0!important; padding-left: 5px;}
+  .hidden {display: none!important; visibility: hidden!important;}
+  ul.nice-menu li.menuparent ul, #header-region ul.nice-menu li.menuparent ul {visibility: hidden!important;}
   /*side menu for header end*/  
 }
 @media (min-width: 480px) and (max-width: 599px) {
@@ -1799,7 +1799,9 @@ background: none repeat scroll 0 0 #F7971C;
   .nice_menu1 .content ul li {width: 100%;}
   .search-suggestion {display: none!important;}
   #block-custom_api-custom_coupons {display: none!important;}
-  .open {display: block!important; visibilty: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; position: relative; top: 0; padding-left: 5px;}
+  .open {display: block!important; visibility: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; top: 0!important; padding-left: 5px;}
+  .hidden {display: none!important; visibility: hidden!important;}
+  ul.nice-menu li.menuparent ul, #header-region ul.nice-menu li.menuparent ul {visibility: hidden!important;}
   /*side menu for header end*/
 }
 @media (min-width: 600px) and (max-width: 850px){
@@ -1834,7 +1836,9 @@ background: none repeat scroll 0 0 #F7971C;
   .search-suggestion {display: none!important;}
   #block-custom_api-custom_coupons {display: none!important;}
   .nice_menu1 .content ul li {width: 100%;}
-  .open {display: block!important; visibilty: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; position: relative; top: 0; padding-left: 5px;}
+  .open {display: block!important; visibility: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; top: 0; padding-left: 5px;}
+  .hidden {display: none!important; visibility: hidden!important;}
+  ul.nice-menu li.menuparent ul, #header-region ul.nice-menu li.menuparent ul {visibility: hidden!important;}
   /*side menu for header end*/
 }
 @media (min-width: 750px) and (max-width: 768px){
