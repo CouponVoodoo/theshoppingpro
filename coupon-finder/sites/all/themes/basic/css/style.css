@@ -1775,6 +1775,7 @@ background: none repeat scroll 0 0 #F7971C;
   .open {display: block!important; visibility: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; top: 0!important; padding-left: 5px; width: 65%!important; overflow-x: hidden!important;}
   .hidden {display: none!important; visibility: hidden!important;}
   /*side menu for header end*/  
+  #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
 }
 @media (min-width: 480px) and (max-width: 599px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
@@ -1807,6 +1808,7 @@ background: none repeat scroll 0 0 #F7971C;
   .open {display: block!important; visibility: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; top: 0!important; padding-left: 5px;  width: 70%!important; overflow-x: hidden!important;}
   .hidden {display: none!important; visibility: hidden!important;}
   /*side menu for header end*/
+  #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
 }
 @media (min-width: 600px) and (max-width: 850px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
@@ -1843,6 +1845,7 @@ background: none repeat scroll 0 0 #F7971C;
   .open {display: block!important; visibility: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; top: 0!important; padding-left: 5px; width: 100%!important; overflow-x: hidden!important;}
   .hidden {display: none!important; visibility: hidden!important;}
   /*side menu for header end*/
+  #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
 }
 @media (min-width: 750px) and (max-width: 768px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
@@ -1850,5 +1853,6 @@ background: none repeat scroll 0 0 #F7971C;
   #block-views-home_page_slider-block .ribbon-wrapper-green{right: -38%;}
   .front #coupons-finder-form #edit-submit {float: none;}
   .item-list .pager li {margin: 0px!important;}
+  #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
 }
 /* Added by Incaendo <http://incaendo.com> -- End */
