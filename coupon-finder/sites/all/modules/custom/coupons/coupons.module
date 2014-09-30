@@ -1950,7 +1950,7 @@ function coupons_cron() {
 	
 
 	If ($run == 1) {
-		mail('team@theshoppingpro.com', 'Update Node Script Start', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
+//		mail('team@theshoppingpro.com', 'Update Node Script Start', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 		db_query("UPDATE coupon_finder.1Variables SET Status = 0, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = '".$update."'");
 		$result = "Start Time: ".gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600)))."\n\n";
 		echo "\n\n START - Entity Id Update \n\n".time();
@@ -2148,7 +2148,7 @@ function coupons_cron() {
 		$result = $result."All Count: ".$all_count."\n\n"; 
 		$null_count = db_query("SELECT count(*) FROM  coupon_finder.".$table." WHERE entity_id is null")->fetchField();
 		$result = $result."Null entity_id count: ".$null_count."\n\n";
-		mail('team@theshoppingpro.com', 'Update Node Script End', $result);	
+		//mail('team@theshoppingpro.com', 'Update Node Script End', $result);	
 		db_query("UPDATE coupon_finder.1Variables SET Status = 0, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = 'Update_Node_Script'");
 	} Else {
 		//mail('team@theshoppingpro.com', 'Update Node Script Was Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));  
