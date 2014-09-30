@@ -32,7 +32,7 @@ $current_domain = get_current_domain();
     </button>
     
      
-    <?php if ($GLOBALS['_domain']['subdomain'] != 'offers.couponvoodoo.com') { ?>
+    <?php if ($GLOBALS['_domain']['subdomain'] != 'offers.couponvoodoo.com' && $GLOBALS['_domain']['subdomain'] != 'buyonline.couponvoodoo.com') { ?>
     <div class="main_menu show-menu" id="main_menu_toggle">
             <span class="close-btn">x</span>
     <?php if ($page['main_menu']): ?>
@@ -77,7 +77,7 @@ $current_domain = get_current_domain();
     </div>
      <?php } ?>
 </div>
-    <?php if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com') { ?>
+    <?php if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com' || $GLOBALS['_domain']['subdomain'] == 'buyonline.couponvoodoo.com') { ?>
     <div class="main_menu">
     <?php if ($page['main_menu']): ?>
       <?php print render($page['main_menu']) ?>
