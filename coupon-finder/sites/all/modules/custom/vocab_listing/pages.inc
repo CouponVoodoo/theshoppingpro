@@ -1,7 +1,7 @@
 <?php
 
 function _vocab_get_list() {
-  if ($GLOBALS['_domain']['subdomain'] != 'offers.couponvoodoo.com') {
+  if ($GLOBALS['_domain']['subdomain'] != 'offers.couponvoodoo.com' || $GLOBALS['_domain']['subdomain'] == 'buyonline.couponvoodoo.com') {
     drupal_access_denied();
   }
   $load_entities = FALSE;
