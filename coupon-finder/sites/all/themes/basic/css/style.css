@@ -1741,6 +1741,7 @@ background: none repeat scroll 0 0 #F7971C;
 #coupons-finder-form--2 .submit {float: left; width: 45%;}
 #coupons-finder-form--2 #edit-submit--4 {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
 #coupons-finder-form--2 .form-type-textfield label{display: none;}
+#header-region {width: 100%; float: left;}
 @media (min-width: 240px) and (max-width: 479px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:92%!important;}
