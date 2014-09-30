@@ -1736,11 +1736,11 @@ background: none repeat scroll 0 0 #F7971C;
 .btn-toggle {display: none;}
 .filter-btn {display: none;}
 .main_menu {margin-top: 0px!important; margin-left: 20px!important;}
-#coupons-finder-form--2 .form-type-textfield {float: left; margin: 0 0 0 10px; width: 50%;}
-#coupons-finder-form--2 #edit-url--2 { float: left; padding: 5px; width: 100%;}
-#coupons-finder-form--2 .submit {float: left; width: 45%;}
-#coupons-finder-form--2 #edit-submit--4 {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
-#coupons-finder-form--2 .form-type-textfield label{display: none;}
+.search-bar-responsive .form-type-textfield {float: left; margin: 0 0 0 10px; width: 50%;}
+.search-bar-responsive #edit-url--2 { float: left; padding: 5px; width: 100%;}
+.search-bar-responsive .submit {float: left; width: 45%;}
+.search-bar-responsive #edit-submit--4 {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
+.search-bar-responsive .form-type-textfield label{display: none;}
 #header-region {width: 100%; float: left;}
 @media (min-width: 240px) and (max-width: 479px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
@@ -1764,11 +1764,11 @@ background: none repeat scroll 0 0 #F7971C;
   #sidebar-first {display: none;}
   .sidebar-toggle{background-color: #f2f2f2; padding-top: 10px; display: block!important; height: 200px; left: 0; min-height: 1px; overflow-x: hidden!important; overflow-y: scroll!important; position: absolute; top: 140px; width: 100%!important; z-index: 2;}
   .search-bar-responsive {display: block!important; float: left; margin-bottom: 10px; width: 100%;}
-  #coupons-finder-form--2 .form-type-textfield {float: left; margin: 0 0 0 10px; width: 50%;}
-  #coupons-finder-form--2 #edit-url--2 { float: left; padding: 5px; width: 100%;}
-  #coupons-finder-form--2 .submit {float: left; width: 45%;}
-  #coupons-finder-form--2 #edit-submit--4 {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
-  #coupons-finder-form--2 .form-type-textfield label{display: none;}
+  .search-bar-responsive .form-type-textfield {float: left; margin: 0 0 0 10px; width: 50%;}
+  .search-bar-responsive #edit-url--2 { float: left; padding: 5px; width: 100%;}
+  .search-bar-responsive .submit {float: left; width: 45%;}
+  .search-bar-responsive #edit-submit--4 {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
+  .search-bar-responsive .form-type-textfield label{display: none;}
   .nice_menu1 .content ul li {width: 100%;}
   .search-suggestion {display: none!important;}
   #block-custom_api-custom_coupons {display: none!important;}
@@ -1797,11 +1797,11 @@ background: none repeat scroll 0 0 #F7971C;
   #sidebar-first {display: none;}
   .sidebar-toggle{background-color: #f2f2f2; padding-top: 10px; display: block!important; height: 270px; left: 0; min-height: 1px; overflow-x: hidden!important; overflow-y: scroll!important; position: absolute; top: 140px; width: 100%!important; z-index: 2;}
   .search-bar-responsive {display: block!important; float: left; margin-bottom: 10px; width: 100%;}
-  #coupons-finder-form--2 .form-type-textfield {float: left; margin: 0 0 0 10px; width: 65%;}
-  #coupons-finder-form--2 #edit-url--2 { float: left; padding: 5px; width: 100%;}
-  #coupons-finder-form--2 .submit {float: left; width: 30%;}
-  #coupons-finder-form--2 #edit-submit--4 {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
-  #coupons-finder-form--2 .form-type-textfield label{display: none;}
+  .search-bar-responsive .form-type-textfield {float: left; margin: 0 0 0 10px; width: 65%;}
+  .search-bar-responsive #edit-url--2 { float: left; padding: 5px; width: 100%;}
+  .search-bar-responsive .submit {float: left; width: 30%;}
+  .search-bar-responsive #edit-submit--4 {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
+  .search-bar-responsive .form-type-textfield label{display: none;}
   .nice_menu1 .content ul li {width: 100%;}
   .search-suggestion {display: none!important;}
   #block-custom_api-custom_coupons {display: none!important;}
@@ -1834,11 +1834,11 @@ background: none repeat scroll 0 0 #F7971C;
   #sidebar-first {display: none;}
   .sidebar-toggle{background-color: #f2f2f2; padding-top: 10px; display: block!important; height: 270px; left: 0; min-height: 1px; overflow-x: hidden!important; overflow-y: scroll!important; position: absolute; top: 140px; width: 100%!important; z-index: 2; box-shadow: 0 0 5px #ccc; -webkit-box-shadow: 0 0 5px #ccc; -o-box-shadow: 0 0 5px #ccc; -ms-box-shadow: 0 0 5px #ccc;}
   .search-bar-responsive {display: block!important; float: left; margin-bottom: 10px; width: 100%;}
-  #coupons-finder-form--2 .form-type-textfield {float: left; margin: 0 0 0 10px; width: 50%;}
-  #coupons-finder-form--2 #edit-url--2 { float: left; padding: 5px; width: 100%;}
-  #coupons-finder-form--2 .submit {float: left; width: 45%;}
-  #coupons-finder-form--2 #edit-submit--4 {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
-  #coupons-finder-form--2 .form-type-textfield label{display: none;}
+  .search-bar-responsive .form-type-textfield {float: left; margin: 0 0 0 10px; width: 50%;}
+  .search-bar-responsive #edit-url--2 { float: left; padding: 5px; width: 100%;}
+  .search-bar-responsive .submit {float: left; width: 45%;}
+  .search-bar-responsive #edit-submit--4 {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
+  .search-bar-responsive .form-type-textfield label{display: none;}
   .search-suggestion {display: none!important;}
   #block-custom_api-custom_coupons {display: none!important;}
   .nice_menu1 .content ul li {width: 100%;}
