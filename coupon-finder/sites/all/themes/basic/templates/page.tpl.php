@@ -24,10 +24,17 @@ $current_domain = get_current_domain();
         <!-- <img src="http://10.0.0.108/coupon/sites/default/files/CoupponVoodoo_header_logo_60px2.png" alt="<?php print t('Home'); ?>"/> -->
       </a>
     <?php endif; ?>
+     
+    <button class="btn-toggle" type="button">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
     
      
     <?php if ($GLOBALS['_domain']['subdomain'] != 'offers.couponvoodoo.com') { ?>
-    <div class="main_menu">
+    <div class="main_menu show-menu" id="main_menu_toggle">
+            <span class="close-btn">x</span>
     <?php if ($page['main_menu']): ?>
       <?php print render($page['main_menu']) ?>
     <?php endif; ?>  
@@ -61,6 +68,14 @@ $current_domain = get_current_domain();
         <?php print render($page['header']); ?>
       </div>
     <?php endif; ?>
+     <div class="search-bar-responsive" style="display: none;">
+     <?php echo render(drupal_get_form('coupons_finder_form')); ?>
+     </div>
+     <?php if (arg(0) == 'sites' && arg(1) == 'search') { ?>
+    <div class="filter-btn">
+      <button type="button" class="filter-toggle">Filter By</button>
+    </div>
+     <?php } ?>
 </div>
     <?php if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com') { ?>
     <div class="main_menu">
@@ -186,7 +201,7 @@ $current_domain = get_current_domain();
   
 	
     <?php if ($page['sidebar_first']): ?>
-      <aside id="sidebar-first" class="column sidebar first">
+      <aside id="sidebar-first" class="column sidebar first sidebar-toggle">
         <?php print render($page['sidebar_first']); ?>
       </aside>
     <?php endif; ?> <!-- /sidebar-first -->

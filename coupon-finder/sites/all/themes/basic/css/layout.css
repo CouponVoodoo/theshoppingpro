@@ -288,3 +288,4 @@ body:before {
   list-style-type: none;
   display: inline-block;
 }
+.one-sidebar.sidebar-first #content {float: right !important;}

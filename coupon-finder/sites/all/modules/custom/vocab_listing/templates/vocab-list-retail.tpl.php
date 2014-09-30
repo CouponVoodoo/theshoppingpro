@@ -1,6 +1,5 @@
 <div class="vocab-list vocab-list-retail">
 <?php
-$row = 0;
 $ignore_tids = array();
 foreach ($terms as $term) {
   if (in_array($term->tid, $ignore_tids)) {

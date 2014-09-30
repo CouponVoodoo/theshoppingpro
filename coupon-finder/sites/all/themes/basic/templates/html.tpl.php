@@ -118,6 +118,32 @@ var google_remarketing_only = true;
 <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/984586909/?value=0&amp;guid=ON&amp;script=0"/>
 </div>
 </noscript>
+<script type="text/javascript">
+  jQuery(document).ready(function(){
+    jQuery(".btn-toggle").click(function(){
+      jQuery("#main_menu_toggle").show(1000);
+    });
+    jQuery(".close-btn").click(function(){
+      jQuery("#main_menu_toggle").hide(1000);
+    });
+    jQuery(".filter-toggle").click(function(){
+      jQuery("#sidebar-first").toggleClass("sidebar-toggle");
+    });
+ 
+    jQuery(".nice_menu1 .content ul li a, .nice_menu1 .content ul li span").click(function(){
+      jQuery(this).siblings('ul').toggleClass("open");
+      jQuery(this).parent("li").siblings("li").toggleClass("hidden");
+    });
+    jQuery(".nice_menu1 .content ul li a, .nice_menu1 .content ul li span").hover(function(){
+      if(jQuery(window).width()>=750){
+        jQuery(this).toggleClass("");
+      } else {
+        jQuery(this).siblings('ul').css({'display': 'none', 'visibility': 'hidden'});
+        return false;
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
