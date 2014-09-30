@@ -71,7 +71,7 @@ $current_domain = get_current_domain();
      <div class="search-bar-responsive" style="display: none;">
      <?php echo render(drupal_get_form('coupons_finder_form')); ?>
      </div>
-     <?php if (arg(0) == 'sites' && arg(1) == 'search') { ?>
+     <?php if (arg(0) == 'search') { ?>
     <div class="filter-btn">
       <button type="button" class="filter-toggle">Filter By</button>
     </div>
@@ -201,7 +201,7 @@ $current_domain = get_current_domain();
   
 	
     <?php if ($page['sidebar_first']): ?>
-      <aside id="sidebar-first" class="column sidebar first sidebar-toggle">
+      <aside id="sidebar-first" class="column sidebar first">
         <?php print render($page['sidebar_first']); ?>
       </aside>
     <?php endif; ?> <!-- /sidebar-first -->
