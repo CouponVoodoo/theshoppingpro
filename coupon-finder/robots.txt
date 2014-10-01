@@ -17,7 +17,17 @@
 # http://www.sxw.org.uk/computing/robots/check.html
  
 #Baiduspider
+User-agent: Baiduspider/2.0
+Disallow: /
+
+#Baiduspider
 User-agent: Baiduspider
+Disallow: /
+
+User-agent: Mail.RU_Bot/2.0
+Disallow: /
+
+User-agent: EasouSpider
 Disallow: /
 
 #Yandex
@@ -26,6 +36,10 @@ Disallow: /
 
 #Yandex
 User-agent: YandexBot
+Disallow: /
+
+#Yandex
+User-agent: DotBot/1.1
 Disallow: /
 
 #Yandex
