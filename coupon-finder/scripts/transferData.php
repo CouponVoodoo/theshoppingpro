@@ -1,6 +1,6 @@
 <?php
 $i = 0;
-	$tables = array("predictorCompiledResultTable");
+	$tables = array("predictorCompiledResultTableSnapdeal");
 	
 	for($x=0;$x<count($tables);$x++) {
 	
