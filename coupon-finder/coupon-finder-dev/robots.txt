@@ -42,7 +42,7 @@ User-agent: YandexBot
 Disallow: /
 
 #Yandex
-User-agent: DotBot/1.1;
+User-agent: DotBot/1.1
 Disallow: /
 
 User-agent: *
