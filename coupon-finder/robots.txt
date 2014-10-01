@@ -39,6 +39,10 @@ User-agent: YandexBot
 Disallow: /
 
 #Yandex
+User-agent: YandexBot/3.0;
+Disallow: /
+
+#Yandex
 User-agent: DotBot/1.1
 Disallow: /
 
