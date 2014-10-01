@@ -15,6 +15,22 @@
 #
 # For syntax checking, see:
 # http://www.sxw.org.uk/computing/robots/check.html
+ 
+#Baiduspider
+User-agent: Baiduspider
+Disallow: /
+
+#Yandex
+User-agent: Yandex
+Disallow: /
+
+#Yandex
+User-agent: YandexBot
+Disallow: /
+
+#Yandex
+User-agent: MJ12bot
+Disallow: /
 
 User-agent: *
 Crawl-delay: 10
@@ -48,6 +64,10 @@ Disallow: /user/register/
 Disallow: /user/password/
 Disallow: /user/login/
 Disallow: /user/logout/
+Disallow: /coupon-redirect/
+Disallow: /add-product/
+Disallow: /add-coupon/
+Disallow: /coupon-details-popup/
 # Paths (no clean URLs)
 Disallow: /?q=admin/
 Disallow: /?q=comment/reply/
@@ -58,3 +78,7 @@ Disallow: /?q=user/password/
 Disallow: /?q=user/register/
 Disallow: /?q=user/login/
 Disallow: /?q=user/logout/
+
+
+
+
