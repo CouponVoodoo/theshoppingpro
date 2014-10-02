@@ -1,6 +1,6 @@
 <?php
 $i = 0;
-	$tables = array("predictorCompiledResultTableflipkart");
+	$tables = array("predictorCompiledResultTableFlipkart");
 	
 	for($x=0;$x<count($tables);$x++) {
 	
