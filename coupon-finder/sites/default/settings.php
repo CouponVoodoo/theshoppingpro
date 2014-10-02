@@ -226,6 +226,9 @@ $databases = array (
   ),
 );
 
+$databases['default']['default']['init_commands'] = array(
+  'isolation' => "SET SESSION tx_isolation='READ-COMMITTED'"
+);
 /**
  * Access control for update.php script.
  *
