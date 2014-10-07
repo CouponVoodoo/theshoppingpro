@@ -926,7 +926,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 .nice_menu1{width:100%;float:left;}
 .nice_menu1 h2{display:none}
 .nice_menu1 .content ul{float:left;margin:0px;padding:0px}
-.nice_menu1 .content ul li{float:left;background:none!important;border:0px;padding:0px}
+.nice_menu1 .content ul li{float:left;background:none!important;border:0px;padding:0px;}
 .nice_menu1 .content ul li a,.nice_menu1 .content ul li span{color:#fff;font-size:17px;line-height:20px;font-weight:normal;padding:0 14px;text-decoration:none;cursor: pointer;}
 .nice_menu1 .content ul li a:hover,.nice_menu1 .content ul li span:hover{color:#f7971c}
 body.domain-cuponation .nice_menu1 .content ul li a:hover,body.domain-cuponation  .nice_menu1 .content ul li span:hover{color:#27486b}
@@ -1747,7 +1747,10 @@ background: none repeat scroll 0 0 #F7971C;
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:92%!important;}
   #block-views-home_page_slider-block .ribbon-wrapper-green{right: -27px;}
   .front #coupons-finder-form #edit-submit {float: none;}
-  .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon {width: 100%!important;}
+  .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon {width: 50%!important; float: left!important; padding: 5px!important; height:447px!important; margin: 0px!important; border-radius: 0px;}
+  .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .no_coupons_found img, .page-search-site #block-system-main .block-inner .node--product-and-coupon .no_coupons_found img, .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found img, .page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found img{width: 20%;}
+  .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .no_coupons_found .no_coupons_text, .page-search-site #block-system-main .block-inner .node--product-and-coupon .no_coupons_found .no_coupons_text, .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found .coupons_text, .page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found .coupons_text, .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found .savings_text, .page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found .savings_text{width: 76%; float: left;}
+  .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-items, .page-search-site #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images .field-items{width: 100%; height:176px}
   .item-list .pager li {margin: 0px!important;}
   /*side menu for header start*/
   #header #header-region {width: 100%; float:left;}
@@ -1769,13 +1772,17 @@ background: none repeat scroll 0 0 #F7971C;
   .search-bar-responsive .submit {float: left; width: 45%;}
   .search-bar-responsive .form-submit {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
   .search-bar-responsive .form-type-textfield label{display: none;}
-  .nice_menu1 .content ul li {width: 100%;}
+  .nice_menu1 .content ul li {width: 100%; border-bottom: 1px solid #646464;}
+  .nice_menu1 .content ul li a, .nice_menu1 .content ul li span {line-height:30px;}
   .search-suggestion {display: none!important;}
   #block-custom_api-custom_coupons {display: none!important;}
   .open {display: block!important; visibility: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; top: 0!important; padding-left: 5px; width: 65%!important; overflow-x: hidden!important;}
   .hidden {display: none!important; visibility: hidden!important;}
   /*side menu for header end*/  
   #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
+  .nice_menu1 .content ul li ul {width: auto;}
+  ul.nice-menu-down ul{left: -60%!important;}
+  ul.nice-menu-down ul li{clear: none!important; float: left; width: 50%!important;}
 }
 @media (min-width: 480px) and (max-width: 599px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
@@ -1795,20 +1802,25 @@ background: none repeat scroll 0 0 #F7971C;
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
   .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
   #sidebar-first {display: none;}
-  .sidebar-toggle{background-color: #f2f2f2; padding-top: 10px; display: block!important; height: 270px; left: 0; min-height: 1px; overflow-x: hidden!important; overflow-y: scroll!important; position: absolute; top: 140px; width: 100%!important; z-index: 2;}
+  .sidebar-toggle{background-color: #f2f2f2; padding-top: 10px; display: block!important; height: 270px; left: 0; min-height: 1px; /*overflow-x: hidden!important; overflow-y: scroll!important;*/ position: absolute; top: 140px; width: 100%!important; z-index: 2;}
   .search-bar-responsive {display: block!important; float: left; margin-bottom: 10px; width: 100%;}
   .search-bar-responsive .form-type-textfield {float: left; margin: 0 0 0 10px; width: 65%;}
   .search-bar-responsive #edit-url--2 { float: left; padding: 5px; width: 100%;}
   .search-bar-responsive .submit {float: left; width: 30%;}
   .search-bar-responsive .form-submit {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
   .search-bar-responsive .form-type-textfield label{display: none;}
-  .nice_menu1 .content ul li {width: 100%;}
+  .nice_menu1 .content ul li {width: 100%; border-bottom: 1px solid #646464;}
+  .nice_menu1 .content ul li a, .nice_menu1 .content ul li span {line-height:30px;}
   .search-suggestion {display: none!important;}
   #block-custom_api-custom_coupons {display: none!important;}
   .open {display: block!important; visibility: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; top: 0!important; padding-left: 5px;  width: 70%!important; overflow-x: hidden!important;}
   .hidden {display: none!important; visibility: hidden!important;}
   /*side menu for header end*/
   #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
+  .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon {width: 50%!important; float: left!important; padding: 5px!important; height:447px!important; margin: 0px!important; border-radius: 0px;}
+  .nice_menu1 .content ul li ul {width: auto;}
+  ul.nice-menu-down ul{left: -120%!important;}
+  ul.nice-menu-down ul li{clear: none!important; float: left; width: 32%!important;}
 }
 @media (min-width: 600px) and (max-width: 850px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
@@ -1841,11 +1853,13 @@ background: none repeat scroll 0 0 #F7971C;
   .search-bar-responsive .form-type-textfield label{display: none;}
   .search-suggestion {display: none!important;}
   #block-custom_api-custom_coupons {display: none!important;}
-  .nice_menu1 .content ul li {width: 100%;}
+  .nice_menu1 .content ul li {width: 100%; border-bottom: 1px solid #646464;}
+  .nice_menu1 .content ul li a, .nice_menu1 .content ul li span {line-height:30px;}
   .open {display: block!important; visibility: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; top: 0!important; padding-left: 5px; width: 100%!important; overflow-x: hidden!important;}
   .hidden {display: none!important; visibility: hidden!important;}
   /*side menu for header end*/
   #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
+  .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon {width: 50%!important; float: left!important; padding: 5px!important; height:447px!important; margin: 0px!important; border-radius: 0px;}
 }
 @media (min-width: 750px) and (max-width: 768px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
