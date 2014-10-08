@@ -1782,7 +1782,7 @@ background: none repeat scroll 0 0 #F7971C;
   .nice_menu1 .content ul li a, .nice_menu1 .content ul li span {line-height:30px;}
   .search-suggestion {display: none!important;}
   #block-custom_api-custom_coupons {display: none!important;}
-  .open {display: block!important; visibility: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; top: 0!important; padding-left: 5px; width: 65%!important; overflow-x: hidden!important;}
+  .open {display: block!important; visibility: visible!important; position: relative!important; top: 0!important; padding-left: 5px!important; width: 65%!important;}
   .hidden {display: none!important; visibility: hidden!important;}
   /*side menu for header end*/  
   #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
@@ -1790,6 +1790,9 @@ background: none repeat scroll 0 0 #F7971C;
   ul.nice-menu-down ul{left: -32%!important;}
   ul.nice-menu-down ul li{clear: none!important; float: left; width: 50%!important;}
   .product_img img {width: 100%!important;}
+  #facetapi-facet-apachesolrsolr-block-itm-field-best-coupon-netpriceaf {margin-left: 10px;}
+  #facetapi-facet-apachesolrsolr-block-itm-field-best-coupon-netpriceaf label {color: #fff;}
+  .block-facetapi input[type="submit"]{margin: 18px 5px 0!important;}
 }
 @media (min-width: 480px) and (max-width: 599px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
@@ -1809,7 +1812,7 @@ background: none repeat scroll 0 0 #F7971C;
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
   .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
   #sidebar-first {display: none;}
-  .sidebar-toggle{background-color: #f2f2f2; padding-top: 10px; display: block!important; height: 270px; left: 0; min-height: 1px; /*overflow-x: hidden!important; overflow-y: scroll!important;*/ position: absolute; top: 140px; width: 100%!important; z-index: 2;}
+  .sidebar-toggle{background-color: #000; padding-top: 10px; display: block!important; right: 0; position: absolute; top: 0px; width: 55%!important; z-index: 2;}
   .search-bar-responsive {display: block!important; float: left; margin-bottom: 10px; width: 100%;}
   .search-bar-responsive .form-type-textfield {float: left; margin: 0 0 0 10px; width: 65%;}
   .search-bar-responsive #edit-url--2 { float: left; padding: 5px; width: 100%;}
@@ -1821,7 +1824,7 @@ background: none repeat scroll 0 0 #F7971C;
   .nice_menu1 .content ul li a, .nice_menu1 .content ul li span {line-height:30px;}
   .search-suggestion {display: none!important;}
   #block-custom_api-custom_coupons {display: none!important;}
-  .open {display: block!important; visibility: visible!important; overflow-y: scroll!important; position: relative!important; min-height: 1px; height: 200px; top: 0!important; padding-left: 5px;  width: 70%!important; overflow-x: hidden!important;}
+  .open {display: block!important; visibility: visible!important; position: relative!important; top: 0!important; padding-left: 5px!important; width: 70%!important;}
   .hidden {display: none!important; visibility: hidden!important;}
   /*side menu for header end*/
   #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
@@ -1833,6 +1836,9 @@ background: none repeat scroll 0 0 #F7971C;
   .page-taxonomy-term #sidebar-first .block-facetapi, .page-search-site #sidebar-first .block-facetapi{background-color:#000; border: 0 none; border-radius: 0; padding: 0px; margin-top: 10px;}
   .page-taxonomy-term #sidebar-first .block-facetapi .block-inner h2, .page-search-site #sidebar-first .block-facetapi .block-inner h2 {color:#fff; margin-top: 10px; padding-left: 10px; text-align: left;}
   .page-taxonomy-term #sidebar-first .block-facetapi .block-inner .content ul li a, .page-search-site #sidebar-first .block-facetapi .block-inner .content ul li a{color: #fff;}
+  #facetapi-facet-apachesolrsolr-block-itm-field-best-coupon-netpriceaf {margin-left: 10px;}
+  #facetapi-facet-apachesolrsolr-block-itm-field-best-coupon-netpriceaf label {color: #fff;}
+  .block-facetapi input[type="submit"]{margin: 18px 5px 0!important;}
 }
 @media (min-width: 600px) and (max-width: 850px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
@@ -1856,7 +1862,7 @@ background: none repeat scroll 0 0 #F7971C;
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
   .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
   #sidebar-first {display: none;}
-  .sidebar-toggle{background-color: #f2f2f2; padding-top: 10px; display: block!important; height: 270px; left: 0; min-height: 1px; overflow-x: hidden!important; overflow-y: scroll!important; position: absolute; top: 140px; width: 100%!important; z-index: 2; box-shadow: 0 0 5px #ccc; -webkit-box-shadow: 0 0 5px #ccc; -o-box-shadow: 0 0 5px #ccc; -ms-box-shadow: 0 0 5px #ccc;}
+  .sidebar-toggle{background-color: #000; padding-top: 10px; display: block!important; right: 0; position: absolute; top: 0px; width: 55%!important; z-index: 2;}
   .search-bar-responsive {display: block!important; float: left; margin-bottom: 10px; width: 100%;}
   .search-bar-responsive .form-type-textfield {float: left; margin: 0 0 0 10px; width: 50%;}
   .search-bar-responsive #edit-url--2 { float: left; padding: 5px; width: 100%;}
@@ -1868,7 +1874,7 @@ background: none repeat scroll 0 0 #F7971C;
   .nice_menu1 .content ul li {width: 100%; border-bottom: 1px solid #646464;}
   .nice_menu1 .content ul li ul li{border-bottom: 0 none;}
   .nice_menu1 .content ul li a, .nice_menu1 .content ul li span {line-height:30px;}
-  .open {display: block!important; visibility: visible!important; position: relative!important; top: 0!important; padding-left: 5px; width: auto!important; overflow-x: hidden!important;}
+  .open {display: block!important; visibility: visible!important; position: relative!important; top: 0!important; padding-left: 5px!important; width: auto!important;}
   .hidden {display: none!important; visibility: hidden!important;}
   /*side menu for header end*/
   #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
@@ -1879,6 +1885,9 @@ background: none repeat scroll 0 0 #F7971C;
   .page-taxonomy-term #sidebar-first .block-facetapi, .page-search-site #sidebar-first .block-facetapi{background-color:#000; border: 0 none; border-radius: 0; padding: 0px; margin-top: 10px;}
   .page-taxonomy-term #sidebar-first .block-facetapi .block-inner h2, .page-search-site #sidebar-first .block-facetapi .block-inner h2 {color:#fff; margin-top: 10px; padding-left: 10px; text-align: left;}
   .page-taxonomy-term #sidebar-first .block-facetapi .block-inner .content ul li a, .page-search-site #sidebar-first .block-facetapi .block-inner .content ul li a{color: #fff;}
+  #facetapi-facet-apachesolrsolr-block-itm-field-best-coupon-netpriceaf {margin-left: 10px;}
+  #facetapi-facet-apachesolrsolr-block-itm-field-best-coupon-netpriceaf label {color: #fff;}
+  .block-facetapi input[type="submit"]{margin: 18px 5px 0!important;}
 }
 @media (min-width: 750px) and (max-width: 768px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
