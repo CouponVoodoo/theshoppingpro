@@ -15,7 +15,9 @@
       <h2 class="block-title"<?php print $title_attributes; ?>><?php print get_block_subject($block->subject); ?></h2>      
     <?php } 
     endif;?>
-
+<?php if (arg(0) == 'search') { ?>
+      <span class="filter-toggle"></span>
+<?php } ?>
 	
 	
     <?php print render($title_suffix); ?>

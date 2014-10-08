@@ -202,7 +202,9 @@ $current_domain = get_current_domain();
 	
     <?php if ($page['sidebar_first']): ?>
       <aside id="sidebar-first" class="column sidebar first">
+        <span class="filter-close-button">X</span>
         <?php print render($page['sidebar_first']); ?>
+        
       </aside>
     <?php endif; ?> <!-- /sidebar-first -->
     
