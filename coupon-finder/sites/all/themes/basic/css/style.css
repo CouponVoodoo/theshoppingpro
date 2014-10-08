@@ -1745,7 +1745,7 @@ background: none repeat scroll 0 0 #F7971C;
 .filter-close-button {display: none;}
 #block-custom_api-custom_coupons .filter-toggle-hide, #block-custom_api-custom_coupons .filter-toggle-show{display: none;}
 .sidebar-toggle .content{display: none;}
-.filter-toggle-btn{display: none;}
+.filter-toggle-btn{display: none!important;}
 @media (min-width: 240px) and (max-width: 479px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:92%!important;}
@@ -1802,7 +1802,9 @@ background: none repeat scroll 0 0 #F7971C;
   .sidebar-toggle .block-facetapi {border-bottom: 1px solid #5d5d5d;}
   .sidebar-toggle .filter-toggle-hide {display: block; color: #fff; float: right; cursor: pointer; padding-right: 10px;}
   .page-taxonomy-term .sidebar-toggle .block-facetapi .block-inner h2, .page-search-site .sidebar-toggle .block-facetapi .block-inner h2{display: inline-block;}
-  .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block;}
+  .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block!important;}
+  .sidebar-toggle #block-block-25 {color: #fff;}
+  .sidebar-toggle #block-block-25 .filter-toggle-btn{display: none!important;}
 }
 @media (min-width: 480px) and (max-width: 599px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
@@ -1853,7 +1855,9 @@ background: none repeat scroll 0 0 #F7971C;
   #block-coupons-coupons_finder_taxonomy .filter-toggle-hide, #block-coupons-coupons_finder_taxonomy .filter-toggle-show{display: none;}
   .sidebar-toggle .block-facetapi {border-bottom: 1px solid #5d5d5d;}
   .page-taxonomy-term .sidebar-toggle .block-facetapi .block-inner h2, .page-search-site .sidebar-toggle .block-facetapi .block-inner h2{display: inline-block;}
-  .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block;}
+  .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block!important;}
+  .sidebar-toggle #block-block-25 {color: #fff;}
+  .sidebar-toggle #block-block-25 .filter-toggle-btn{display: none!important;}
 }
 @media (min-width: 600px) and (max-width: 850px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
@@ -1907,7 +1911,9 @@ background: none repeat scroll 0 0 #F7971C;
   #block-coupons-coupons_finder_taxonomy .filter-toggle-hide, #block-coupons-coupons_finder_taxonomy .filter-toggle-show{display: none;}
   .sidebar-toggle .block-facetapi {border-bottom: 1px solid #5d5d5d;}
   .page-taxonomy-term .sidebar-toggle .block-facetapi .block-inner h2, .page-search-site .sidebar-toggle .block-facetapi .block-inner h2{display: inline-block;}
-  .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block;}
+  .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block!important;}
+  .sidebar-toggle #block-block-25 {color: #fff;}
+  .sidebar-toggle #block-block-25 .filter-toggle-btn{display: none!important;}
 }
 @media (min-width: 750px) and (max-width: 768px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
