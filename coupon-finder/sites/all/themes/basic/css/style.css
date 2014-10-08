@@ -1742,6 +1742,9 @@ background: none repeat scroll 0 0 #F7971C;
 .search-bar-responsive .form-submit {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
 .search-bar-responsive .form-type-textfield label{display: none;}
 #header-region {width: 100%; float: left;}
+.filter-close-button {display: none;}
+#block-custom_api-custom_coupons .filter-toggle-hide, #block-custom_api-custom_coupons .filter-toggle-show{display: none;}
+.sidebar-toggle .content{display: none;}
 @media (min-width: 240px) and (max-width: 479px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:92%!important;}
@@ -1793,6 +1796,10 @@ background: none repeat scroll 0 0 #F7971C;
   #facetapi-facet-apachesolrsolr-block-itm-field-best-coupon-netpriceaf {margin-left: 10px;}
   #facetapi-facet-apachesolrsolr-block-itm-field-best-coupon-netpriceaf label {color: #fff;}
   .block-facetapi input[type="submit"]{margin: 18px 5px 0!important;}
+  .filter-close-button {width:10%; float: right; color: #fff; font-size: 16px; cursor: pointer; display: block;}
+  #block-coupons-coupons_finder_taxonomy .filter-toggle-hide, #block-coupons-coupons_finder_taxonomy .filter-toggle-show{display: none;}
+  .sidebar-toggle .block-facetapi {border-bottom: 1px solid #5d5d5d;}
+  .sidebar-toggle .filter-toggle-hide {display: block; color: #fff; float: right; cursor: pointer; padding-right: 10px;}
 }
 @media (min-width: 480px) and (max-width: 599px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
@@ -1839,6 +1846,9 @@ background: none repeat scroll 0 0 #F7971C;
   #facetapi-facet-apachesolrsolr-block-itm-field-best-coupon-netpriceaf {margin-left: 10px;}
   #facetapi-facet-apachesolrsolr-block-itm-field-best-coupon-netpriceaf label {color: #fff;}
   .block-facetapi input[type="submit"]{margin: 18px 5px 0!important;}
+  .filter-close-button {width:10%; float: right; color: #fff; font-size: 16px; cursor: pointer; display: block;}
+  #block-coupons-coupons_finder_taxonomy .filter-toggle-hide, #block-coupons-coupons_finder_taxonomy .filter-toggle-show{display: none;}
+  .sidebar-toggle .block-facetapi {border-bottom: 1px solid #5d5d5d;}
 }
 @media (min-width: 600px) and (max-width: 850px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
@@ -1888,6 +1898,10 @@ background: none repeat scroll 0 0 #F7971C;
   #facetapi-facet-apachesolrsolr-block-itm-field-best-coupon-netpriceaf {margin-left: 10px;}
   #facetapi-facet-apachesolrsolr-block-itm-field-best-coupon-netpriceaf label {color: #fff;}
   .block-facetapi input[type="submit"]{margin: 18px 5px 0!important;}
+  .filter-close-button {width:10%; float: right; color: #fff; font-size: 16px; cursor: pointer; display: block;}
+  #block-coupons-coupons_finder_taxonomy .filter-toggle-hide, #block-coupons-coupons_finder_taxonomy .filter-toggle-show{display: none;}
+  .sidebar-toggle .block-facetapi {border-bottom: 1px solid #5d5d5d;}
+  
 }
 @media (min-width: 750px) and (max-width: 768px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
