@@ -1,4 +1,3 @@
-<?php ?>
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>">
 
   <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
