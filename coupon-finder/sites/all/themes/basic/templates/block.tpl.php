@@ -16,7 +16,7 @@
     <?php } 
     endif;?>
 <?php if (arg(0) == 'search') { ?>
-      <span class="filter-toggle"></span>
+      <span class="filter-toggle-btn"></span>
 <?php } ?>
 	
 	

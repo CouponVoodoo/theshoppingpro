@@ -142,6 +142,25 @@ var google_remarketing_only = true;
         return false;
       }
     });
+
+jQuery(".filter-toggle-btn").html('[ + ]')
+jQuery(".filter-toggle-btn").show()
+
+jQuery(".filter-toggle-btn").click(function(){
+if(jQuery(this).html() == '[ + ]') {
+jQuery(this).html('[ - ]')
+jQuery(this).parent().find('.content').show()
+} else if(jQuery(this).html() == '[ - ]') {
+jQuery(this).html('[ + ]')
+jQuery(this).parent().find('.content').hide()
+}
+});
+jQuery(".filter-close-button").click(function(){
+
+  jQuery("#sidebar-first").removeClass("sidebar-toggle");
+
+  });
+
   });
 </script>
 
