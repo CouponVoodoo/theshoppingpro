@@ -1,0 +1,5 @@
+name = Category Coupon
+description= Category Coupon Page
+core = "7.x"
+project = "coupons"
+
