@@ -5,7 +5,6 @@ CONTENTS OF THIS FILE
  * Introduction
  * Installation
  * Implementation
- * Drush
 
 
 INTRODUCTION
@@ -36,12 +35,3 @@ checklist. (Note: it is the responsibility of implementing modules to remove
 their own variables on hook_uninstall().)
 
 See checklistapi.api.php for more details.
-
-
-DRUSH
------
-
-Checklist API provides Drush commands. They require Drush 6 or later. To see the
-list of available commands, run `drush --filter=checklistapi`. For more about
-Drush, including installation instructions, visit
-https://github.com/drush-ops/drush.

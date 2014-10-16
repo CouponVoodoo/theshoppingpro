@@ -283,7 +283,7 @@ function apachesolr_search_page_settings_form($form, &$form_state, $search_page 
     '#type' => 'textfield',
     '#required' => TRUE,
     '#maxlength' => 255,
-    '#description' => t('You can use %value to put the value of % in the path into the title and %terms to put the search terms into the title. Please note if you have several active search modules, this refers to the title of the tab instead of that of the page.'),
+    '#description' => 'You can use %value to place the search term in the title',
     '#default_value' => !empty($search_page['page_title']) ? $search_page['page_title'] : '',
   );
 
@@ -660,6 +660,12 @@ function apachesolr_search_get_fields($environment = NULL) {
  * Menu callback - Bias settings form.
  */
 function apachesolr_bias_settings_page($environment = NULL) {
+  // Check if we got an argument as to which environment to load
+  if (is_string($environment)) {
+    $environment = apachesolr_environment_load($environment);
+  }
+
+  // if nothing was given, load the default
   if (empty($environment)) {
     $env_id = apachesolr_default_environment();
     $environment = apachesolr_environment_load($env_id);

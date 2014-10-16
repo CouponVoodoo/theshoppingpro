@@ -122,10 +122,8 @@ class entity_views_handler_field_duration extends views_handler_field {
     if ($this->options['format_interval']) {
       $value = format_interval($value, (int) $this->options['granularity']);
     }
-    // Value sanitization is handled by the wrapper, see
-    // EntityFieldHandlerHelper::get_value().
     return $this->sanitize_value($this->options['prefix'], 'xss') .
-        $value .
+        $this->sanitize_value($value) .
         $this->sanitize_value($this->options['suffix'], 'xss');
   }
 

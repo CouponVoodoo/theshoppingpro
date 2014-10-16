@@ -42,7 +42,7 @@ function popup_ui_confirm($title, $message, $confirm_path, $attributes = array()
         $confirm_path,
         array(
           'attributes' => array(
-            'class' => array('popup-confirm button'),
+            'class' => 'popup-confirm button',
           ),
           'html' => TRUE,
         )

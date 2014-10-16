@@ -1,3 +1,4 @@
+<?php ?>
 <article class="<?php print $classes . ' ' . $zebra; ?>">
   <header>
     <?php print render($title_prefix); ?>

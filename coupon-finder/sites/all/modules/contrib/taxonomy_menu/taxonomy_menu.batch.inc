@@ -40,7 +40,7 @@
  *
  */
 function _taxonomy_menu_insert_link_items_batch($vid) {
-  $terms = taxonomy_get_tree($vid, 0, NULL, TRUE);
+  $terms = taxonomy_get_tree($vid);
   $menu_name = variable_get(_taxonomy_menu_build_variable('vocab_menu', $vid), FALSE);
 
   $batch = array(

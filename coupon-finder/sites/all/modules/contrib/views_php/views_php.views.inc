@@ -41,7 +41,6 @@ function views_php_views_plugins() {
       'php' => array(
         'title' => t('PHP'),
         'help' => t('Use PHP code to grant access.'),
-        'help topic' => '',
         'handler' => 'views_php_plugin_access',
         'uses options' => TRUE,
       ),
@@ -50,7 +49,6 @@ function views_php_views_plugins() {
       'php' => array(
         'title' => t('PHP'),
         'help' => t('Use PHP code to determine whether a should be cached.'),
-        'help topic' => '',
         'handler' => 'views_php_plugin_cache',
         'uses options' => TRUE,
       ),

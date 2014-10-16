@@ -105,3 +105,5 @@ function variable_admin_realm_title($realm) {
   $info = variable_realm_info($realm);
   return isset($info['title']) ? $info['title'] : $realm;
 }
+
+

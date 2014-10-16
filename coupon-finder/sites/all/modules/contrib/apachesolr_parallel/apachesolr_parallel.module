@@ -65,6 +65,7 @@ function apachesolr_parallel_index_batch_index_entities($env_id, $total_limit = 
       $context['sandbox']['max'] = $total_limit;
     }
   }
+
   // We can safely process the apachesolr_cron_limit nodes at a time without a
   // timeout or out of memory error.
   $limit = variable_get('apachesolr_cron_limit', 50);
@@ -117,21 +118,12 @@ function apachesolr_parallel_index_entities_document_wrapper($rows = array(), $e
     $documents_row = apachesolr_index_entities_document($row, $entity_type, $env_id);
     $documents = array_merge($documents_row, $documents);
   }
-file_put_contents('sites/default/files/nitin.log', print_r('doc='.count($documents)."\n", true), FILE_APPEND);
   $indexed = apachesolr_index_send_to_solr($env_id, $documents);
   $documents_submitted = 0;
   if ($indexed !== FALSE) {
     $documents_submitted = count($documents);
   }
-// Check who's the last in line
-      $last_row = end($rows);
 
-      // set our last position to the entity id and changed value so we can
-      // keep track where we left off
-      if (!empty($last_row->changed) && !empty($last_row->entity_id)) {
-        apachesolr_set_last_index_position($env_id, $entity_type, $last_row->changed, $last_row->entity_id);
-      }
-apachesolr_set_last_index_updated($env_id, REQUEST_TIME);
   // Enable all caching again.
   apachesolr_parallel_cache_enable();
 
@@ -162,7 +154,7 @@ function apachesolr_parallel_index_entities($env_id, $limit) {
     $index_position = apachesolr_get_last_index_position($env_id, $entity_type);
     $max_changed = $index_position['last_changed'];
     $max_entity_id = $index_position['last_entity_id'];
-//$max_entity_id = 0;//Changed by Nitin
+
     // Divide the batch into a variable-set number of items per thread.
     $amount_of_cpu = variable_get('apachesolr_parallel_num_cpu', 2);
     $amount_per_thread = round($limit/$amount_of_cpu);
@@ -231,16 +223,9 @@ function apachesolr_parallel_index_entities($env_id, $limit) {
         }
       }
       else {
-//if (count($response) == $amount_of_threads){
         // Update the last item processed.
-file_put_contents('sites/default/files/nitin.log', print_r('max c='.$max_changed ."\n", true), FILE_APPEND);
-file_put_contents('sites/default/files/nitin.log', print_r('max c='.$max_entity_id ."\n", true), FILE_APPEND);
-
-//        apachesolr_set_last_index_position($env_id, $entity_type, $max_changed, $max_entity_id);
-//        apachesolr_set_last_index_updated($env_id, REQUEST_TIME);
-//} else {
-//file_put_contents('sites/default/files/nitin.log', print_r('max ddc='."\n", true), FILE_APPEND);
-//}
+        apachesolr_set_last_index_position($env_id, $entity_type, $max_changed, $max_entity_id);
+        apachesolr_set_last_index_updated($env_id, REQUEST_TIME);
       }
 
       foreach ($return_values as $documents_submitted_per_thread) {
@@ -354,9 +339,7 @@ function apachesolr_parallel_index_get_entities_to_index($env_id, $entity_type, 
   }
   $query .= " ORDER BY aie.entity_id ASC";
   $query = db_query_range($query, $from, $limit, $arguments);
-file_put_contents('sites/default/files/nitin.log', print_r($query, true), FILE_APPEND);
   $records = $query->fetchAllAssoc('entity_id');
-
 
   // We omit the status callback since it is very slow.
   return $records;

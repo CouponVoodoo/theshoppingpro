@@ -143,9 +143,6 @@ abstract class FacetapiWidget {
         ),
         'id' => drupal_html_id("facetapi-facet-$searcher-{$this->realm['name']}-{$this->facet['name']}"),
       ),
-      '#attached' => array(
-        'js' => array(drupal_get_path('module', 'facetapi') . '/facetapi.js'),
-      ),
     );
 
     // Apply sorting algorithms to the render array.
@@ -159,8 +156,6 @@ abstract class FacetapiWidget {
       'facetName' => $this->facet['name'],
       'queryType' => $this->facet['query type'],
       'widget' => $this->settings->settings['widget'],
-      'showMoreText' => $this->settings->settings['facet_more_text'],
-      'showFewerText' => $this->settings->settings['facet_fewer_text'],
     );
 
     return $this;

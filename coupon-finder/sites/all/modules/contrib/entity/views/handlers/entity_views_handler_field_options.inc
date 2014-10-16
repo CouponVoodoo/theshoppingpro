@@ -112,9 +112,8 @@ class entity_views_handler_field_options extends views_handler_field {
     if ($this->options['format_name'] && isset($this->option_list[$value])) {
       $value = $this->option_list[$value];
     }
-    // Sanitization is handled by the wrapper, see
-    // EntityFieldHandlerHelper::get_value().
-    return $value;
+
+    return $this->sanitize_value($value);
   }
 
 }

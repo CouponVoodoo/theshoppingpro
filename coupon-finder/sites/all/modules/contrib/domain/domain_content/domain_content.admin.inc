@@ -42,8 +42,6 @@ function domain_content_page() {
  */
 function domain_content_list() {
   global $user;
-  domain_user_set($user);
-
   $build = array();
   $show_all = user_access('bypass node access') || user_access('review content for all domains');
 
@@ -386,7 +384,7 @@ function domain_content_form() {
   }
   // Only use a tableselect when the current user is able to perform any
   // operations.
-  if (!empty($operations)) {
+  if ($admin_access) {
     $form['nodes'] = array(
       '#type' => 'tableselect',
       '#header' => $header,

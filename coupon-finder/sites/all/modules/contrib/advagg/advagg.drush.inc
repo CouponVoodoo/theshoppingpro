@@ -6,10 +6,13 @@
  */
 
 /**
- * Implements hook_drush_cache_clear().
+ * Implement hook_drush_cache_clear().
+ *
+ * @param $types
+ *   List of cache types that can be cleared.
  */
 function advagg_drush_cache_clear(&$types) {
-  // Add in Advanced CSS/JS Aggregation.
+  // Add in Advanced CSS/JS Aggregation
   $types['advagg'] = 'drush_advagg_smart_cache_flush';
 }
 
