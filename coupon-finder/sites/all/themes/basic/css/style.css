@@ -1747,7 +1747,7 @@ background: none repeat scroll 0 0 #F7971C;
 .sidebar-toggle .content{display: none;}
 .filter-toggle-btn{display: none!important;}
 @media (min-width: 240px) and (max-width: 479px) {
-  .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
+  .flexslider .flex-control-nav {padding-right:10px!important; z-index: 2!important;}
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:92%!important;}
   #block-views-home_page_slider-block .ribbon-wrapper-green{right: -27px;}
   .front #coupons-finder-form #edit-submit {float: none;}
@@ -1765,7 +1765,7 @@ background: none repeat scroll 0 0 #F7971C;
   .btn-toggle .icon-bar {display: block; width: 22px; height: 2px; border-radius: 1px; background-color: #fff;}
   .btn-toggle .icon-bar+.icon-bar {margin-top: 4px;}
   #main_menu_toggle {display:none;} 
-  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 55%; display: block;}
+  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 85%; display: block;}
   .close-btn {float: right; color: rgb(255, 255, 255); margin-right: 10px; font-size: 20px; cursor: pointer;}
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
   .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
@@ -1790,8 +1790,7 @@ background: none repeat scroll 0 0 #F7971C;
   .hidden {display: none!important; visibility: hidden!important;}
   /*side menu for header end*/  
   #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
-  .nice_menu1 .content ul li ul {width: auto!important;}
-  ul.nice-menu-down ul{left: -32%!important;}
+  /*ul.nice-menu-down ul{left: -32%!important;}*/
   ul.nice-menu-down ul li{clear: none!important; float: left; width: 50%!important;}
   .product_img img {width: 100%!important;}
   #facetapi-facet-apachesolrsolr-block-itm-field-best-coupon-netpriceaf {margin-left: 10px;}
@@ -1803,12 +1802,12 @@ background: none repeat scroll 0 0 #F7971C;
   .sidebar-toggle .filter-toggle-hide {display: block; color: #fff; float: right; cursor: pointer; padding-right: 10px;}
   .page-taxonomy-term .sidebar-toggle .block-facetapi .block-inner h2, .page-search-site .sidebar-toggle .block-facetapi .block-inner h2{display: inline-block;}
   .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block!important;}
-  .sidebar-toggle #block-block-25 {color: #fff;}
-  .sidebar-toggle #block-block-25 .filter-toggle-btn{display: none!important;}
-  .sidebar-toggle #block-block-25 .content{display: block!important;}
+  .sidebar-toggle #block-block-25 {display: none;}
+  .nice_menu1 .content ul li ul li a{word-wrap: break-word; width: 100%!important}
+  .nice_menu1 .content ul {width: 100%;}
 }
 @media (min-width: 480px) and (max-width: 599px) {
-  .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
+  .flexslider .flex-control-nav {padding-right:10px!important; z-index: 2!important;}
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:95%!important;}
   #block-views-home_page_slider-block .ribbon-wrapper-green{right: -38%;}
   .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon {width: 48%;}
@@ -1820,7 +1819,7 @@ background: none repeat scroll 0 0 #F7971C;
   .btn-toggle .icon-bar {display: block; width: 22px; height: 2px; border-radius: 1px; background-color: #fff;}
   .btn-toggle .icon-bar+.icon-bar {margin-top: 4px;}
   #main_menu_toggle {display:none;} 
-  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 40%; display: block;}
+  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 85%; display: block;}
   .close-btn {float: right; color: rgb(255, 255, 255); margin-right: 10px; font-size: 20px; cursor: pointer;}
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
   .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
@@ -1842,8 +1841,7 @@ background: none repeat scroll 0 0 #F7971C;
   /*side menu for header end*/
   #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
   .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon {width: 50%!important; float: left!important; padding: 5px!important; height:447px!important; margin: 0px!important; border-radius: 0px;}
-  .nice_menu1 .content ul li ul {width: 400px!important;}
-  ul.nice-menu-down ul{left: -52%!important;}
+  /*ul.nice-menu-down ul{left: -52%!important;}*/
   ul.nice-menu-down ul li{clear: none!important; float: left; width: 32%!important;}
   .sidebar-toggle .region-sidebar-first{padding-top: 10px;}
   .page-taxonomy-term #sidebar-first .block-facetapi, .page-search-site #sidebar-first .block-facetapi{background-color:#000; border: 0 none; border-radius: 0; padding: 0px; margin-top: 10px;}
@@ -1857,13 +1855,13 @@ background: none repeat scroll 0 0 #F7971C;
   .sidebar-toggle .block-facetapi {border-bottom: 1px solid #5d5d5d;}
   .page-taxonomy-term .sidebar-toggle .block-facetapi .block-inner h2, .page-search-site .sidebar-toggle .block-facetapi .block-inner h2{display: inline-block;}
   .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block!important;}
-  .sidebar-toggle #block-block-25 {color: #fff;}
-  .sidebar-toggle #block-block-25 .filter-toggle-btn{display: none!important;}
-  .sidebar-toggle #block-block-25 .content{display: block!important;}
+  .sidebar-toggle #block-block-25 {display: none;}
+  .nice_menu1 .content ul li ul li a{word-wrap: break-word; width: 100%!important}
+  .nice_menu1 .content ul {width: 100%;}
 }
 @media (min-width: 600px) and (max-width: 850px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
-  .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
+  .flexslider .flex-control-nav {padding-right:10px!important; z-index: 2!important;}
   #block-views-home_page_slider-block .ribbon-wrapper-green{right: -38%;}
   .front #coupons-finder-form #edit-submit {float: none;}
   .item-list .pager li {margin: 0px!important;}
@@ -1878,7 +1876,7 @@ background: none repeat scroll 0 0 #F7971C;
   .btn-toggle .icon-bar {display: block; width: 22px; height: 2px; border-radius: 1px; background-color: #fff;}
   .btn-toggle .icon-bar+.icon-bar {margin-top: 4px;}
   #main_menu_toggle {display:none;} 
-  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 55%; display: block;}
+  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 85%; display: block;}
   .close-btn {float: right; color: rgb(255, 255, 255); margin-right: 10px; font-size: 20px; cursor: pointer;}
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
   .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
@@ -1900,7 +1898,6 @@ background: none repeat scroll 0 0 #F7971C;
   /*side menu for header end*/
   #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
   .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon {width: 50%!important; float: left!important; padding: 5px!important; height:447px!important; margin: 0px!important; border-radius: 0px;}
-  .nice_menu1 .content ul li ul {width: auto!important;}
   ul.nice-menu-down ul li{clear: none!important; float: left; width: 32%!important;}
   .sidebar-toggle .region-sidebar-first{padding-top: 10px;}
   .page-taxonomy-term #sidebar-first .block-facetapi, .page-search-site #sidebar-first .block-facetapi{background-color:#000; border: 0 none; border-radius: 0; padding: 0px; margin-top: 10px;}
@@ -1914,13 +1911,13 @@ background: none repeat scroll 0 0 #F7971C;
   .sidebar-toggle .block-facetapi {border-bottom: 1px solid #5d5d5d;}
   .page-taxonomy-term .sidebar-toggle .block-facetapi .block-inner h2, .page-search-site .sidebar-toggle .block-facetapi .block-inner h2{display: inline-block;}
   .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block!important;}
-  .sidebar-toggle #block-block-25 {color: #fff;}
-  .sidebar-toggle #block-block-25 .filter-toggle-btn{display: none!important;}
-  .sidebar-toggle #block-block-25 .content{display: block!important;}
+  .sidebar-toggle #block-block-25 {display: none;}
+  .nice_menu1 .content ul li ul li a{word-wrap: break-word; width: 100%!important}
+  .nice_menu1 .content ul {width: 100%;}
 }
 @media (min-width: 750px) and (max-width: 768px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
-  .flexslider .flex-control-nav {padding-right:10px!important; z-index: 3!important;}
+  .flexslider .flex-control-nav {padding-right:10px!important; z-index: 2!important;}
   #block-views-home_page_slider-block .ribbon-wrapper-green{right: -38%;}
   .front #coupons-finder-form #edit-submit {float: none;}
   .item-list .pager li {margin: 0px!important;}
