@@ -3,6 +3,7 @@
 $results = db_select('node', 'n')->fields('n', array('nid'))
         // run on specific node to test
 		 ->condition('nid', 2476883)
+		 ->condition('realm', 'domain_id')
         ->execute()->fetchAll();
 $nodesProcessed = 0;
 $file = fopen('domain.txt', 'a+');
