@@ -1803,7 +1803,7 @@ background: none repeat scroll 0 0 #F7971C;
   .page-taxonomy-term .sidebar-toggle .block-facetapi .block-inner h2, .page-search-site .sidebar-toggle .block-facetapi .block-inner h2{display: inline-block;}
   .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block!important;}
   .sidebar-toggle #block-block-25 {display: none;}
-  .nice_menu1 .content ul li ul li a{word-wrap: break-word; width: 100%!important}
+  .nice_menu1 .content ul li ul li a{width: 100%!important}
   .nice_menu1 .content ul {width: 100%;}
 }
 @media (min-width: 480px) and (max-width: 599px) {
@@ -1856,7 +1856,7 @@ background: none repeat scroll 0 0 #F7971C;
   .page-taxonomy-term .sidebar-toggle .block-facetapi .block-inner h2, .page-search-site .sidebar-toggle .block-facetapi .block-inner h2{display: inline-block;}
   .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block!important;}
   .sidebar-toggle #block-block-25 {display: none;}
-  .nice_menu1 .content ul li ul li a{word-wrap: break-word; width: 100%!important}
+  .nice_menu1 .content ul li ul li a{width: 100%!important}
   .nice_menu1 .content ul {width: 100%;}
 }
 @media (min-width: 600px) and (max-width: 850px){
@@ -1912,7 +1912,7 @@ background: none repeat scroll 0 0 #F7971C;
   .page-taxonomy-term .sidebar-toggle .block-facetapi .block-inner h2, .page-search-site .sidebar-toggle .block-facetapi .block-inner h2{display: inline-block;}
   .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block!important;}
   .sidebar-toggle #block-block-25 {display: none;}
-  .nice_menu1 .content ul li ul li a{word-wrap: break-word; width: 100%!important}
+  .nice_menu1 .content ul li ul li a{width: 100%!important}
   .nice_menu1 .content ul {width: 100%;}
 }
 @media (min-width: 750px) and (max-width: 768px){
