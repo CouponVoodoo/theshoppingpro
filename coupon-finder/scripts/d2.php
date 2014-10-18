@@ -45,7 +45,43 @@ print "\r\n\r\nNode being processed = $result->nid";
                 ))
                 ->execute();
         print "\r\nData added for node_access table for NID = $result->nid";
-        fwrite($file, "\r\nData added for node_access table for NID = $result->nid");
+       // fwrite($file, "\r\nData added for node_access table for NID = $result->nid");
+	//------------------------------------------------------------------------------------------------------------------------   
+	   
+	   $ifDomainExists = db_select('domain_access', 'da')->condition('gid', 1)->condition('realm', 'domain_id')->condition('nid', $result->nid)->countQuery()->execute()->fetchField();
+
+    if ($ifDomainExists == 0) {
+        // Insert into Domain Access Table
+        db_insert('domain_access')
+                ->fields(array(
+                    'nid' => $result->nid,
+                    'gid' => 1,
+                    'realm' => 'domain_id'
+                ))
+                ->execute();
+        print "\r\nData added for domain_access table for NID = $result->nid";
+    //    fwrite($file, "\r\nData added for domain_access table for NID = $result->nid");
+    }
+    
+    // Check if entry exists in node_access.
+    $ifNodeExists = db_select('node_access', 'na')->condition('gid',1)->condition('realm', 'domain_id')
+            ->condition('nid', $result->nid)->countQuery()->execute()->fetchField();
+    
+    if ($ifNodeExists == 0) {
+        // Insert into Node Access Table
+        db_insert('node_access')
+                ->fields(array(
+                    'nid' => $result->nid,
+                    'gid' => 1,
+                    'realm' => 'domain_id',
+                    'grant_view' => 1,
+                    'grant_update' => 1,
+                    'grant_delete' => 1
+                ))
+                ->execute();
+        print "\r\nData added for node_access table for NID = $result->nid";
+    
+	   
     }
 	print "\r\n\r\nCurrent Nodes Processed = $nodesProcessed";
 	print "\r\n\r\n";
