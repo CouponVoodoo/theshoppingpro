@@ -2,12 +2,11 @@
 
 $results = db_query("SELECT distinct nid from coupon_finder.domain_access where realm='domain_id' and nid = 2476883");
 
-
-
-
 	$nodesProcessed = 0;
-$file = fopen('domain.txt', 'a+');
-foreach ($results as $result) {
+//$file = fopen('domain.txt', 'a+');
+var_dump($results);
+exit;
+/*foreach ($results as $result) {
 	echo 'inside loop';
 	echo $result->nid;
 
@@ -59,5 +58,5 @@ print 'na';
 print "\r\n\r\nTotal Nodes Processed = $nodesProcessed";
 print "\r\n\r\n";
 fwrite($file, "\r\n\r\nTotal Nodes Processed = $nodesProcessed");
-fclose($file);
+fclose($file);*/
 ?>
