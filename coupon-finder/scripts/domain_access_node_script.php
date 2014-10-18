@@ -1,16 +1,15 @@
 <?php
 
-$results = db_select('node', 'n')->fields('n', array('nid'))
-        // run on specific node to test
-		 ->condition('nid', 2476883)
-		 ->condition('realm', 'domain_id')
+$results = db_select('node', 'n')->fields('n', array('nid'))->condition('nid', 2476883)
+		 //->condition('realm', 'domain_id')
         ->execute()->fetchAll();
 $nodesProcessed = 0;
 $file = fopen('domain.txt', 'a+');
 foreach ($results as $result) {
     print "\r\n\r\nNode being processed = $result->nid";
     fwrite($file, "\r\n\r\nNode being processed = $result->nid");
-    
+    exit;
+print 'na';
     // Check if entry exists in domain_access.
     $ifDomainExists = db_select('domain_access', 'da')->condition('gid', 3)->condition('realm', 'domain_id')
             ->condition('nid', $result->nid)->countQuery()->execute()->fetchField();
