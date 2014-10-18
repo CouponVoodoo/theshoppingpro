@@ -1,11 +1,16 @@
 <?php
 
-$results = db_select('node', 'n')->fields('n', array('nid'))->condition('nid', 2476883)
-		 //->condition('realm', 'domain_id')
-        ->execute()->fetchAll();
-$nodesProcessed = 0;
+$results = db_query("SELECT distinct nid from coupon_finder.domain_access where realm='domain_id' and nid = 2476883");
+
+
+
+
+	$nodesProcessed = 0;
 $file = fopen('domain.txt', 'a+');
 foreach ($results as $result) {
+	echo 'inside loop';
+	echo $result->nid;
+
     print "\r\n\r\nNode being processed = $result->nid";
     fwrite($file, "\r\n\r\nNode being processed = $result->nid");
     exit;
