@@ -5,6 +5,10 @@ $results = db_query("SELECT distinct nid from coupon_finder.domain_access where 
 	$nodesProcessed = 0;
 //$file = fopen('domain.txt', 'a+');
 var_dump($results);
-exit;
+
+foreach ($results as $result) {
+	echo 'inside loop';
+	echo $result->nid;
+}
 
 ?>
