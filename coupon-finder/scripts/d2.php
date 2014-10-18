@@ -4,7 +4,7 @@ $results = db_query("SELECT distinct nid from coupon_finder.domain_access where 
 
 	$nodesProcessed = 0;
 //$file = fopen('domain.txt', 'a+');
-var_dump($results);
+//var_dump($results);
 
 foreach ($results as $result) {
 	echo 'inside loop';
