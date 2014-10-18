@@ -130,8 +130,17 @@ function basic_preprocess_html(&$vars) {
 				$nid = arg(1);
 				$node = node_load($nid);
 				if($node->type == '_product_and_coupon') {
-					$node_title = $node->field_retailer_product_name['und']['0']['value'].' @ Rs. '.$node->field_best_coupon_netpriceafters['und']['0']['value'].' | CupoNation';
+				$mrp = $node->field_mrpproductprice['und'][0]['value'];
+				$list_price = $node->field_product_price['und'][0]['value'];
+				$non_coupon_saving = $mrp - $list_price;
+				if ($node->field_best_coupon_saving['und']['0']['value'] > 1) {
+					$node_title = 'Get INR '.$node->field_best_coupon_saving['und']['0']['value'].' off on '.$node->field_retailer_product_name['und']['0']['value'].' @ Rs. '.$node->field_best_coupon_netpriceafters['und']['0']['value'].' | CupoNation';
 					$vars['head_title'] = $node_title;
+					}
+				else if ($non_coupon_saving>0) {
+				$node_title = 'Get INR '.$non_coupon_saving.' off on '.$node->field_retailer_product_name['und']['0']['value'].' @ Rs. '.$node->field_best_coupon_netpriceafters['und']['0']['value'].' | CupoNation';
+					$vars['head_title'] = $node_title;
+				}	
 				} else { 
 					$variables = get_defined_vars();
 					$vars['head_title'] = $variables[vars]['page']['content']['system_main']['nodes'][$nid]['#node']->title;
@@ -151,12 +160,20 @@ function basic_preprocess_html(&$vars) {
 			case "node":
 				$nid = arg(1);
 				$node = node_load($nid);
+				$mrp = $node->field_mrpproductprice['und'][0]['value'];
+				$list_price = $node->field_product_price['und'][0]['value'];
+				$non_coupon_saving = $mrp - $list_price;
 				if($node->type == '_product_and_coupon') {
 					if ($node->field_best_coupon_saving['und']['0']['value'] > 0) {
-						$node_title = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.')| CouponVoodoo';
+                        $node_title = 'Save INR '.$node->field_best_coupon_saving['und']['0']['value'].' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.')| CouponVoodoo';
 						$vars['head_title'] = $node_title;
-					} Else {
+					} 
+					else if ($non_coupon_saving > 0){
 						$node_title = 'Todays coupons for '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.')| CouponVoodoo';
+						$vars['head_title'] = $node_title;					
+					}
+					Else {
+						$node_title = 'Save INR '.$non_coupon_saving.' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.')| CouponVoodoo';
 						$vars['head_title'] = $node_title;					
 					}
 				} else { 
