@@ -46,9 +46,14 @@ print "\r\n\r\nNode being processed = $result->nid";
                 ->execute();
         print "\r\nData added for node_access table for NID = $result->nid";
        // fwrite($file, "\r\nData added for node_access table for NID = $result->nid");
-	//------------------------------------------------------------------------------------------------------------------------   
-	   
-	   $ifDomainExists = db_select('domain_access', 'da')->condition('gid', 1)->condition('realm', 'domain_id')->condition('nid', $result->nid)->countQuery()->execute()->fetchField();
+    }
+	print "\r\n\r\nCurrent Nodes Processed = $nodesProcessed";
+	print "\r\n\r\n";
+    
+    $nodesProcessed++;
+
+	//-----------------------------------------------------------
+	$ifDomainExists = db_select('domain_access', 'da')->condition('gid', 1)->condition('realm', 'domain_id')->condition('nid', $result->nid)->countQuery()->execute()->fetchField();
 
     if ($ifDomainExists == 0) {
         // Insert into Domain Access Table
@@ -64,7 +69,7 @@ print "\r\n\r\nNode being processed = $result->nid";
     }
     
     // Check if entry exists in node_access.
-    $ifNodeExists = db_select('node_access', 'na')->condition('gid',1)->condition('realm', 'domain_id')
+    $ifNodeExists = db_select('node_access', 'na')->condition('gid', 1)->condition('realm', 'domain_id')
             ->condition('nid', $result->nid)->countQuery()->execute()->fetchField();
     
     if ($ifNodeExists == 0) {
@@ -80,14 +85,11 @@ print "\r\n\r\nNode being processed = $result->nid";
                 ))
                 ->execute();
         print "\r\nData added for node_access table for NID = $result->nid";
-    
-	   
+       // fwrite($file, "\r\nData added for node_access table for NID = $result->nid");
     }
-	print "\r\n\r\nCurrent Nodes Processed = $nodesProcessed";
-	print "\r\n\r\n";
-    
-    $nodesProcessed++;
-}
+
+	
+	}
 print "\r\n\r\nTotal Nodes Processed = $nodesProcessed";
 print "\r\n\r\n";
 //fwrite($file, "\r\n\r\nTotal Nodes Processed = $nodesProcessed");
