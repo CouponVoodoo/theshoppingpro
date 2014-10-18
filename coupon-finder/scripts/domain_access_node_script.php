@@ -13,7 +13,7 @@ foreach ($results as $result) {
 
     print "\r\n\r\nNode being processed = $result->nid";
     fwrite($file, "\r\n\r\nNode being processed = $result->nid");
-    exit;
+    exit; 
 print 'na';
     // Check if entry exists in domain_access.
     $ifDomainExists = db_select('domain_access', 'da')->condition('gid', 3)->condition('realm', 'domain_id')
