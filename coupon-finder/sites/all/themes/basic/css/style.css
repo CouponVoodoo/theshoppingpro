@@ -1765,7 +1765,7 @@ background: none repeat scroll 0 0 #F7971C;
   .btn-toggle .icon-bar {display: block; width: 22px; height: 2px; border-radius: 1px; background-color: #fff;}
   .btn-toggle .icon-bar+.icon-bar {margin-top: 4px;}
   #main_menu_toggle {display:none;} 
-  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 85%; display: block;}
+  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 45%; display: block;}
   .close-btn {float: right; color: rgb(255, 255, 255); margin-right: 10px; font-size: 20px; cursor: pointer;}
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
   .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
@@ -1791,7 +1791,7 @@ background: none repeat scroll 0 0 #F7971C;
   /*side menu for header end*/  
   #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
   /*ul.nice-menu-down ul{left: -32%!important;}*/
-  ul.nice-menu-down ul li{clear: none!important; float: left; width: 50%!important;}
+  ul.nice-menu-down ul li{clear: none!important; float: left; width: 100%!important;}
   .product_img img {width: 100%!important;}
   #facetapi-facet-apachesolrsolr-block-itm-field-best-coupon-netpriceaf {margin-left: 10px;}
   #facetapi-facet-apachesolrsolr-block-itm-field-best-coupon-netpriceaf label {color: #fff;}
@@ -1819,7 +1819,7 @@ background: none repeat scroll 0 0 #F7971C;
   .btn-toggle .icon-bar {display: block; width: 22px; height: 2px; border-radius: 1px; background-color: #fff;}
   .btn-toggle .icon-bar+.icon-bar {margin-top: 4px;}
   #main_menu_toggle {display:none;} 
-  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 85%; display: block;}
+  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 45%; display: block;}
   .close-btn {float: right; color: rgb(255, 255, 255); margin-right: 10px; font-size: 20px; cursor: pointer;}
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
   .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
@@ -1842,7 +1842,7 @@ background: none repeat scroll 0 0 #F7971C;
   #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
   .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon {width: 50%!important; float: left!important; padding: 5px!important; height:447px!important; margin: 0px!important; border-radius: 0px;}
   /*ul.nice-menu-down ul{left: -52%!important;}*/
-  ul.nice-menu-down ul li{clear: none!important; float: left; width: 32%!important;}
+  ul.nice-menu-down ul li{clear: none!important; float: left; width: 100%!important;}
   .sidebar-toggle .region-sidebar-first{padding-top: 10px;}
   .page-taxonomy-term #sidebar-first .block-facetapi, .page-search-site #sidebar-first .block-facetapi{background-color:#000; border: 0 none; border-radius: 0; padding: 0px; margin-top: 10px;}
   .page-taxonomy-term #sidebar-first .block-facetapi .block-inner h2, .page-search-site #sidebar-first .block-facetapi .block-inner h2 {color:#fff; margin-top: 10px; padding-left: 10px; text-align: left;}
@@ -1876,7 +1876,7 @@ background: none repeat scroll 0 0 #F7971C;
   .btn-toggle .icon-bar {display: block; width: 22px; height: 2px; border-radius: 1px; background-color: #fff;}
   .btn-toggle .icon-bar+.icon-bar {margin-top: 4px;}
   #main_menu_toggle {display:none;} 
-  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 85%; display: block;}
+  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 45%; display: block;}
   .close-btn {float: right; color: rgb(255, 255, 255); margin-right: 10px; font-size: 20px; cursor: pointer;}
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
   .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
@@ -1898,7 +1898,7 @@ background: none repeat scroll 0 0 #F7971C;
   /*side menu for header end*/
   #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
   .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon {width: 50%!important; float: left!important; padding: 5px!important; height:447px!important; margin: 0px!important; border-radius: 0px;}
-  ul.nice-menu-down ul li{clear: none!important; float: left; width: 32%!important;}
+  ul.nice-menu-down ul li{clear: none!important; float: left; width: 100%!important;}
   .sidebar-toggle .region-sidebar-first{padding-top: 10px;}
   .page-taxonomy-term #sidebar-first .block-facetapi, .page-search-site #sidebar-first .block-facetapi{background-color:#000; border: 0 none; border-radius: 0; padding: 0px; margin-top: 10px;}
   .page-taxonomy-term #sidebar-first .block-facetapi .block-inner h2, .page-search-site #sidebar-first .block-facetapi .block-inner h2 {color:#fff; margin-top: 10px; padding-left: 10px; text-align: left;}
