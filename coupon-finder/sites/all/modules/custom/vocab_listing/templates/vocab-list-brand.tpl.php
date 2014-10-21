@@ -10,8 +10,9 @@ $brand=  $record->Brand;
   $img = 'http://plugin.theshoppingpro.com/banners/Adidas.jpg';
 ?>
   <div class="vocab-list-term">
-    <a href="<?php echo l($brand, 'bcp/'.$brandId.'/coupons-offers'); ?>">
+   <a href="<?php echo url('bcp/'.$brandId.'/coupons-offers', array('query' => array('field_offer_type_tid' => 'All'))); ?>">
       <img src="<?php echo $img; ?>" alt="<?php echo $brand; ?>" />
+    
     </a>
   </div>
 <?php  
