@@ -7,7 +7,7 @@ $brandId=  $record->BrandId;
 $brand=  $record->Brand;
 
   
-  $img = 'plugin.theshoppingpro.com/banners/Adidas.jpg';
+  $img = 'http://plugin.theshoppingpro.com/banners/Adidas.jpg';
 ?>
   <div class="vocab-list-term">
     <a href="<?php echo l($brand, 'bcp/'.$brandId.'/coupons-offers'); ?>">
