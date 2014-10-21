@@ -1,6 +1,6 @@
 <div class="vocab-list vocab-list-retail">
 <?php
-$result = db_query('SELECT Brand,BrandId from coupon_finder.BrandCoupons');
+$result = db_query('SELECT Brand,BrandId from coupon_finder.BrandCoupons where brandid in (7515,9975)');
   // echo 'cxdcadcd';
 foreach ($result as $record) {
 $brandId=  $record->BrandId; 
