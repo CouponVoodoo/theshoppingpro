@@ -18,6 +18,11 @@
 .vocab-list-parent h2{margin-top: 0.75em;} 
 /*category list end*/ 
 /*retail list start*/
+.vocab-list-category-top {width: 100%; float: left; margin-top: 10px;} 
+..vocab-list-category-top .vocab-list-term {display: table; width: 140px; height: 110px; vertical-align: middle; text-align:center; border-radius: 10px; box-shadow: 0 0 13px #ccc inset; -webkit-box-shadow: 0 0 13px #ccc inset; -ms-box-shadow: 0 0 13px #ccc inset; -O-box-shadow: 0 0 13px #ccc inset; float: left; padding: 10px; margin: 8px;}
+..vocab-list-category-top .vocab-list-term a {display: table-cell; width: 100%; vertical-align: middle;}
+..vocab-list-category-top .vocab-list-term a img{display: block; margin: 0 auto;}
+
 .vocab-list-retail {width: 100%; float: left; margin-top: 10px;} 
 .vocab-list-retail .vocab-list-term {display: table; width: 229px; height: 226px; vertical-align: middle; text-align:center; border-radius: 10px; box-shadow: 0 0 13px #ccc inset; -webkit-box-shadow: 0 0 13px #ccc inset; -ms-box-shadow: 0 0 13px #ccc inset; -O-box-shadow: 0 0 13px #ccc inset; float: left; padding: 10px; margin: 5px;}
 .vocab-list-retail .vocab-list-term a {display: table-cell; width: 100%; vertical-align: middle;}
