@@ -1805,6 +1805,7 @@ background: none repeat scroll 0 0 #F7971C;
   .sidebar-toggle #block-block-25 {display: none;}
   .nice_menu1 .content ul li ul li a{width: 100%!important}
   .nice_menu1 .content ul {width: 100%;}
+   ul.nice-menu-down li ul li ul {left: 0px!important;}
 }
 @media (min-width: 480px) and (max-width: 599px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 2!important;}
@@ -1858,6 +1859,7 @@ background: none repeat scroll 0 0 #F7971C;
   .sidebar-toggle #block-block-25 {display: none;}
   .nice_menu1 .content ul li ul li a{width: 100%!important}
   .nice_menu1 .content ul {width: 100%;}
+  ul.nice-menu-down li ul li ul {left: 0px!important;}
 }
 @media (min-width: 600px) and (max-width: 850px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
@@ -1914,6 +1916,8 @@ background: none repeat scroll 0 0 #F7971C;
   .sidebar-toggle #block-block-25 {display: none;}
   .nice_menu1 .content ul li ul li a{width: 100%!important}
   .nice_menu1 .content ul {width: 100%;}
+  ul.nice-menu-down li ul li ul {left: 0px!important;}
+
 }
 @media (min-width: 750px) and (max-width: 768px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
