@@ -1,4 +1,4 @@
-<div class="vocab-list vocab-list-retail">
+<div class="vocab-list .vocab-list-brand-top">
 <?php
 $result = db_query('SELECT Brand,BrandId from coupon_finder.BrandCoupons where brandid in (7458,7476,7495,7502,7515,7543,7605,7608,7614,7622,7632,7636,7639,7659,7668,7826,7939,7980,8021,8232,8892,9613,10200,10320,7559,7600,7701,7754,7979,8146,8352,8480,8651,9561,9795,9800,10133,11067,11844,12021,14213,14412,15315,15794)');
   // echo 'cxdcadcd';
@@ -22,7 +22,7 @@ $brand=  $record->Brand;
 
 <div class="vocab-list vocab-list-brand">
 <?php
-$ignore_tids = array(16314,21399,16612,20561,2085621291,15913,16983,21734,21291);
+$ignore_tids = array(16314,21399,16612,20561,2085,21291,15913,16983,21734,21291);
 $result = db_query('SELECT Brand,BrandId from coupon_finder.BrandCoupons');
   // echo 'cxdcadcd';
 foreach ($result as $record) {
