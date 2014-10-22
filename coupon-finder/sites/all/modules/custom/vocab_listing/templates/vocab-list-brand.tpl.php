@@ -19,7 +19,7 @@ $brand=  $record->Brand;
   }
 ?>
 </div>
-
+<h1 class="title">All Brands								</h1>
 <div class="vocab-list vocab-list-brand">
 <?php
 $ignore_tids = array(16314,21399,16612,20561,2085,21291,15913,16983,21734,21291);
