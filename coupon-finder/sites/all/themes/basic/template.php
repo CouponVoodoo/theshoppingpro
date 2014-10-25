@@ -169,11 +169,12 @@ function basic_preprocess_html(&$vars) {
 						$vars['head_title'] = $node_title;
 					} 
 					else if ($non_coupon_saving > 0){
-						$node_title = 'Todays coupons for '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.')| CouponVoodoo';
+						$node_title = 'Save INR '.$non_coupon_saving.' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.')| CouponVoodoo';
+						
 						$vars['head_title'] = $node_title;					
 					}
 					Else {
-						$node_title = 'Save INR '.$non_coupon_saving.' on '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.')| CouponVoodoo';
+						$node_title = 'Todays coupons for '.$node->field_retailer_product_name['und']['0']['value'].' (CV'.$nid.')| CouponVoodoo';
 						$vars['head_title'] = $node_title;					
 					}
 				} else { 
