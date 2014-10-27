@@ -18,7 +18,14 @@ $non_coupon_saving = $mrp - $list_price;
     <div class="ribbon-wrapper-green">
         <div class="ribbon-green"><?php echo get_label('Save INR ').number_format($node->field_best_coupon_saving['und'][0]['value'],0, '.', ','); ?></div>
 	</div>
-  	<?php } else if( $node->field_best_coupon_status['und']['0'][value] == 1 && $node->field_best_coupon_saving['und'][0]['value'] == 1){ ?> 
+  	<?php }
+else if ($node->field_best_coupon_status['und']['0'][value] == 2 && $node->field_best_coupon_saving['und'][0]['value'] > 1){ 
+?>
+    <div class="ribbon-wrapper-green">
+        <div class="ribbon-orange"><?php echo get_label('Save INR ').number_format($node->field_best_coupon_saving['und'][0]['value'],0, '.', ','); ?></div>
+	</div>
+  	<?php }
+	else if( $node->field_best_coupon_status['und']['0'][value] == 1 && $node->field_best_coupon_saving['und'][0]['value'] == 1){ ?> 
     			<div class="ribbon-wrapper-green">
 					<div class="ribbon-green">Offers</div>
 				</div>
