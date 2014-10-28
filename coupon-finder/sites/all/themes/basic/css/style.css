@@ -1774,6 +1774,7 @@ background: none repeat scroll 0 0 #F7971C;
 #block-custom_api-custom_coupons .filter-toggle-hide, #block-custom_api-custom_coupons .filter-toggle-show{display: none;}
 .sidebar-toggle .content{display: none;}
 .filter-toggle-btn{display: none!important;}
+.nice-menu li.categories{display: none;}
 @media (min-width: 240px) and (max-width: 479px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 2!important;}
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:92%!important;}
@@ -1834,6 +1835,8 @@ background: none repeat scroll 0 0 #F7971C;
   .nice_menu1 .content ul li ul li a{width: 100%!important}
   .nice_menu1 .content ul {width: 100%;}
    ul.nice-menu-down li ul li ul {left: 0px!important;}
+  .nice-menu li.categories{display: block;}
+  .nice-menu li.top-categories{display: none;}
 }
 @media (min-width: 480px) and (max-width: 599px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 2!important;}
@@ -1888,6 +1891,8 @@ background: none repeat scroll 0 0 #F7971C;
   .nice_menu1 .content ul li ul li a{width: 100%!important}
   .nice_menu1 .content ul {width: 100%;}
   ul.nice-menu-down li ul li ul {left: 0px!important;}
+  .nice-menu li.categories{display: block;}
+  .nice-menu li.top-categories{display: none;}
 }
 @media (min-width: 600px) and (max-width: 850px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
@@ -1897,6 +1902,8 @@ background: none repeat scroll 0 0 #F7971C;
   .item-list .pager li {margin: 0px!important;}
   .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon {width: 48%;}
   .search-suggestion {display: none!important;}
+  .nice-menu li.categories{display: block;}
+  .nice-menu li.top-categories{display: none;}
 }
 @media (min-width: 599px) and (max-width: 750px){
   /*side menu for header start*/
@@ -1945,7 +1952,8 @@ background: none repeat scroll 0 0 #F7971C;
   .nice_menu1 .content ul li ul li a{width: 100%!important}
   .nice_menu1 .content ul {width: 100%;}
   ul.nice-menu-down li ul li ul {left: 0px!important;}
-
+  .nice-menu li.categories{display: block;}
+  .nice-menu li.top-categories{display: none;}
 }
 @media (min-width: 750px) and (max-width: 768px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
@@ -1954,5 +1962,7 @@ background: none repeat scroll 0 0 #F7971C;
   .front #coupons-finder-form #edit-submit {float: none;}
   .item-list .pager li {margin: 0px!important;}
   #block-views-00ec0199d474a1291ac845209b1da4fa{display: none!important;}
+  .nice-menu li.categories{display: block;}
+  .nice-menu li.top-categories{display: none;}
 }
 /* Added by Incaendo <http://incaendo.com> -- End */
