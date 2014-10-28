@@ -472,12 +472,21 @@ if ($current_domain != 'cuponation'){
 		$retailer_coupon = node_load($nids[0]);
 		$cuponation_title = $retailer_coupon->field_cuponation_title['und']['0']['value'];
 		if (!empty($result['node']) && !empty($cuponation_title)) {
-			//echo $cuponation_title;
-			echo $cuponation_title;
+		  if ($CouponStatus == 2) {
+		  echo $cuponation_title .' (See coupon description and buy more products to meet the minimum purchase criteria)';
+		  }
+		  else echo $cuponation_title;
+		  }
+		  
 		} else {
+		    if ($CouponStatus == 2) {
+		  echo $best_coupon_description .' (See coupon description and buy more products to meet the minimum purchase criteria)';
+		  }
+		  else echo $best_coupon_description;
 			// print ($fields['field_best_coupon_description']->content); 
-			echo $best_coupon_description;
+			
 		}	
+		
 	} else {
 		// print ($fields['field_best_coupon_description']->content); 
 		echo $best_coupon_description;
