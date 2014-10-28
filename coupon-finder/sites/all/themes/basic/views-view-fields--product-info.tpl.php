@@ -607,11 +607,7 @@ if ($brand_check != 'Other') {
 						<div class="search_listing_row_1 search_listing_row"><div class="saving"><?php print get_label('This coupon helps you save ').get_label('INR ').$saving_predictor.get_label(' on ').strip_tags($fields['field_retailer_product_name']->content);?></div></div>
 						<label><?php echo get_label('Net Price:');?></label>
 						<div class="search_listing_row_1 search_listing_row"><div class="saving"><?php print get_label('INR ').number_format($net_price,0, '.', ',');?></div></div>
-					<?php else if ($successful_predictor=="2") : ?>	
-					    <label><?php echo get_label('Savings:');?></label>
-						<div class="search_listing_row_1 search_listing_row"><div class="saving"><?php print get_label('This coupon helps you save ').get_label('INR ').$saving_predictor.get_label(' on ').strip_tags($fields['field_retailer_product_name']->content).'on meeting the minimum purchase criteria (See coupon description for minimum purchase criteria)' ;?></div></div>
-						<label><?php echo get_label('Net Price:');?></label>
-						<div class="search_listing_row_1 search_listing_row"><div class="saving"><?php print get_label('INR ').number_format($net_price,0, '.', ',');?></div></div>
+						
 					<?php else: ?>
 						<label><?php echo get_label('Savings:');?></label>
 						<div class="search_listing_row_1 search_listing_row"><div class="saving"></div><?php print get_label('This coupon does not work for your product'); ?></div>
