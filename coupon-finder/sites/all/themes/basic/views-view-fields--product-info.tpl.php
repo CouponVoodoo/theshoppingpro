@@ -479,12 +479,20 @@ if ($current_domain != 'cuponation'){
 		  else {echo $cuponation_title;}
 			
 		} else {
+		if ($CouponStatus == 2) {
+		  echo $best_coupon_description ." (See coupon description and buy more products to meet the minimum purchase criteria)";
+		  }
+		  else {echo $best_coupon_description;}
 			// print ($fields['field_best_coupon_description']->content); 
-			echo $best_coupon_description;
+			
 		}	
 	} else {
+	if ($CouponStatus == 2) {
+		  echo $best_coupon_description ." (See coupon description and buy more products to meet the minimum purchase criteria)";
+		  }
+		  else {echo $best_coupon_description;}
 		// print ($fields['field_best_coupon_description']->content); 
-		echo $best_coupon_description;
+		
 	}
 	?></li>
 
