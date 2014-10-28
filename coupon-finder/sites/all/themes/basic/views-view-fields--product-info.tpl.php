@@ -474,7 +474,7 @@ if ($current_domain != 'cuponation'){
 		if (!empty($result['node']) && !empty($cuponation_title)) {
 			//echo $cuponation_title;
 			if ($CouponStatus == 2) {
-		  echo $cuponation_title ." (See coupon description and buy more products to meet the minimum purchase criteria)";
+		  echo $cuponation_title ." (See coupon description to meet the minimum purchase criteria)";
 		  }
 		  else {echo $cuponation_title;}
 			
