@@ -22,7 +22,7 @@ if ($row->Successful=="1") {
 -->
    <div class='description'>
       <label><?php echo get_label('Description:');?></label>
-      <div class="search_listing_row_<?php print $row->counter; ?>' search_listing_row"><?php if ($row->Successful=="2") {print $row->description. " See coupon description and buy more product at retailer to meet minimum purchase criteria)" } else {print $row->description};?></div>
+      <div class="search_listing_row_<?php print $row->counter; ?>' search_listing_row"><?php print $row->description; ?></div>
     </div>
   </div>
   <div class="row_2">
@@ -30,6 +30,11 @@ if ($row->Successful=="1") {
 		<label><?php echo get_label('Savings:');?></label>
 		<div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="similar_coupons"><?php print get_label('This coupon helps you save ').get_label('INR ').$row->Saving.get_label(' on ').$row->productName;?></div></div>
     <label><?php echo get_label('Net Price:');?></label>
+    <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"><?php print get_label('INR ').$net_price;?></div></div>
+	<?php elseif ($row->Successful=="2" && $row->Saving > 1) : ?>
+		<label><?php echo get_label('Savings:');?></label>
+		<div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="similar_coupons"><?php print get_label('This coupon helps you save ').get_label('INR ').$row->Saving.get_label(' on ').$row->productName.' (See coupon description for minimum purchase criteria)';?></div></div>
+		<label><?php echo get_label('Net Price:');?></label>
     <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"><?php print get_label('INR ').$net_price;?></div></div>
     <?php else: ?>
         <label><?php echo get_label('Savings:');?></label>
