@@ -3,7 +3,7 @@ $url_path = rawurlencode(drupal_get_path_alias());
 global $base_url;
 $nid = arg(1);
 $net_price = $row->productPrice - $row->Saving;
-if ($row->Successful=="1" || $row->Successful=="2") {
+if ($row->Successful=="1") {
   $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u67_normal.png";
 
   $best_coupon = !empty($row->BestCoupon) ? '<span class="best_coupon">Best Coupon (Guaranteed To Work)</span>' : '<div class="coupon_status_guaranteed"><img src="'.$image_right.'"><span>Guaranteed To Work</span></div>';
