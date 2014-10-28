@@ -488,7 +488,7 @@ if ($current_domain != 'cuponation'){
 		}	
 	} else {
 	if ($CouponStatus == 2) {
-		  echo $best_coupon_description ." (See coupon description and buy more products to meet the minimum purchase criteria)";
+		  echo $best_coupon_description ." (You need to purchase more products to meet minimum purchase criteria for this coupon)";
 		  }
 		  else {echo $best_coupon_description;}
 		// print ($fields['field_best_coupon_description']->content); 
