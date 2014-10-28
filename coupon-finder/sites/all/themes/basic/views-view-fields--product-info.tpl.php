@@ -473,14 +473,14 @@ if ($current_domain != 'cuponation'){
 		$cuponation_title = $retailer_coupon->field_cuponation_title['und']['0']['value'];
 		if (!empty($result['node']) && !empty($cuponation_title)) {
 			//echo $cuponation_title;
-			echo $cuponation_title;
+			echo $cuponation_title.' (See Coupon description to fulfil minimum purchase criteria for)';
 		} else {
 			// print ($fields['field_best_coupon_description']->content); 
-			echo $best_coupon_description;
+			echo $best_coupon_description.' (See Coupon description to fulfil minimum purchase criteria for)';
 		}	
 	} else {
 		// print ($fields['field_best_coupon_description']->content); 
-		echo $best_coupon_description;
+		echo $best_coupon_description. ' (See Coupon description to fulfil minimum purchase criteria for)';
 	}
 	?></li>
 
@@ -585,7 +585,7 @@ if ($brand_check != 'Other') {
 			$successful_predictor = $predictor_array[$i]["Successful"];
 			$i++; 
 					$net_price = $list_price - $saving_predictor;
-					if ($successful_predictor=="1") {
+					if ($successful_predictor=="1" || $successful_predictor=="2") {
 					  $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u67_normal.png";
 					  $best_coupon = !empty($best_status_predictor) ? '<span class="best_coupon">Best Coupon (Guaranteed To Work)</span>' : '<div class="coupon_status_guaranteed"><img src="'.$image_right.'"><span>Guaranteed To Work</span></div>';
 					}else {
@@ -605,6 +605,11 @@ if ($brand_check != 'Other') {
 					<?php if ($successful_predictor=="1") : ?>
 						<label><?php echo get_label('Savings:');?></label>
 						<div class="search_listing_row_1 search_listing_row"><div class="saving"><?php print get_label('This coupon helps you save ').get_label('INR ').$saving_predictor.get_label(' on ').strip_tags($fields['field_retailer_product_name']->content);?></div></div>
+						<label><?php echo get_label('Net Price:');?></label>
+						<div class="search_listing_row_1 search_listing_row"><div class="saving"><?php print get_label('INR ').number_format($net_price,0, '.', ',');?></div></div>
+					<?php else if ($successful_predictor=="2") : ?>	
+					    <label><?php echo get_label('Savings:');?></label>
+						<div class="search_listing_row_1 search_listing_row"><div class="saving"><?php print get_label('This coupon helps you save ').get_label('INR ').$saving_predictor.get_label(' on ').strip_tags($fields['field_retailer_product_name']->content).'on meeting the minimum purchase criteria (See coupon description for minimum purchase criteria)'. ;?></div></div>
 						<label><?php echo get_label('Net Price:');?></label>
 						<div class="search_listing_row_1 search_listing_row"><div class="saving"><?php print get_label('INR ').number_format($net_price,0, '.', ',');?></div></div>
 					<?php else: ?>
