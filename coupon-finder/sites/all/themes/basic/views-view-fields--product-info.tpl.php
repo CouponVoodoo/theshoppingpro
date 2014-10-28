@@ -481,7 +481,7 @@ if ($current_domain != 'cuponation'){
 		} else {
 			// print ($fields['field_best_coupon_description']->content); 
 			echo $best_coupon_description;
-		}	z
+		}	
 	} else {
 		// print ($fields['field_best_coupon_description']->content); 
 		echo $best_coupon_description;
