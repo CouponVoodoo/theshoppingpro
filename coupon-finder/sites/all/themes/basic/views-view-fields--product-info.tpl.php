@@ -375,7 +375,7 @@ if ($current_domain != 'cuponation'){
 <h4><?php echo get_label('Best Coupon Or Discounts');?></h4>
 <div class="coupon_code1">
     <?php       
-    if( $CouponStatus == 1 ){
+    if( $CouponStatus == 1 || $CouponStatus == 2){
 		/** start of changed to display copy coupon right here - uncomment print and comment rest if problem happens **/
          //print coupons_copy_best_coupon($nid);
 		 $coupon_redirect_path = $base_url.'/coupon-redirect?l=bc&nid='.$nid.'&c='.$best_coupon_code.'&p='.$url_path.'&s='.$base_url_predictor;
@@ -384,7 +384,7 @@ if ($current_domain != 'cuponation'){
 		<div class="search_listing_row__<?php print $row->counter; ?> copy_coupon_row">
 <!--			<a href="<?php// print $base_url.'/coupon-redirect?l=bc&nid='.$nid.'&c='.$best_coupon_code.'&p='.$url_path.'&s='.$base_url_predictor;?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php// print $row->counter; ?>" data-clipboard-text="<?php// echo $best_coupon_code?>" >  -->
 		<a href="<?php print $coupon_redirect_path;?>" onclick=window.open('<?php echo coupon_popup_product_url($best_coupon_code, $coupon_redirect_path); ?>')//;return true; class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $best_coupon_code?>" >
-			<span class="copy_coupon">Open Offer</span><span></span>
+			<span class="copy_coupon">Copy Coupon</span><span></span>
 			</a>
 		</div>		
 	</div>
@@ -405,7 +405,7 @@ if ($current_domain != 'cuponation'){
     <label>Status:</label>
     <?php
 
-		if($CouponStatus == 1 ){
+		if($CouponStatus == 1 || $CouponStatus == 2){
 			echo "<div class='pro_coupons_found'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><div class='pro_coupons_text'>".get_label('Coupons Found')."</div></div>";
 			$affiliate_url_uncoded = $node->field_best_coupon_url['und']['0']['value'];	
 			$coupon_code=rawurlencode ($node->field_best_coupon_couponcode['und']['0'][value]);
@@ -438,7 +438,7 @@ if ($current_domain != 'cuponation'){
 	
 	
 	} else {
-		if ($coupon_saving > 1 && $CouponStatus == 1){
+		if ($coupon_saving > 1 && $CouponStatus > 0){
 				echo "<li> <label>".get_label('List Price:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
 				echo "<li> <label>".get_label('Savings:')."</label>".get_label('INR ').number_format($coupon_saving,0, '.', ',')."</li>";
 				echo "<li> <label>".get_label('Net Price:')."</label><div class='net_price' itemprop='offers' itemscope itemtype='http://schema.org/Offer'><meta  itemprop='category' content='".strip_tags($fields['field_category']->content)."' /><meta itemprop='priceCurrency' content='INR' /><meta itemprop='price' content='".number_format(($list_price-$coupon_saving),0, '.', ',')."'/>".get_label('INR ').number_format($list_price-$coupon_saving,0, '.', ',')."</div></li>";
@@ -458,7 +458,7 @@ if ($current_domain != 'cuponation'){
 	}
 ?>
 
-<?php if( $CouponStatus == 1 ){?>
+<?php if( $CouponStatus == 1 || $CouponStatus == 2 ){?>
 <li><label>Best Coupon:</label><?php 
 /* PRINTING TITLE BASED ON WHETHER THE DOMAIN IS CUPONATION OR NOT*/
 	if ($current_domain == 'cuponation'){
@@ -518,7 +518,7 @@ if ($current_domain != 'cuponation'){
 
 if (empty($_GET['pop'])) {
 	if ($current_domain == 'couponvoodoo'){
-		$product_description = 'Buy '.strip_tags($fields['field_retailer_product_name']->content).' (CV'.$nid.')'.' at the lowest price with the latest discounts, coupons and offers brought to you by CouponVoodoo. View the list of discount codes below and click "Open Offer" to get the code. Also see:';
+		$product_description = 'Buy '.strip_tags($fields['field_retailer_product_name']->content).' (CV'.$nid.')'.' at the lowest price with the latest discounts, coupons and offers brought to you by CouponVoodoo. View the list of discount codes below and click "Copy Coupon" to get the code. Also see:';
 	} else {
 		$product_description = 'Find the best price for '.strip_tags($fields['field_retailer_product_name']->content).' (CN'.$nid.')'.' with the latest discounts, coupons & offers @ '.$retailer;	
 	}
@@ -583,7 +583,7 @@ if ($brand_check != 'Other') {
 			$saving_predictor = $predictor_array[$i]["Saving"];
 			$coupon_description_predictor = $predictor_array[$i]["description"];
 			$successful_predictor = $predictor_array[$i]["Successful"];
-			$i++;
+			$i++; 
 					$net_price = $list_price - $saving_predictor;
 					if ($successful_predictor=="1") {
 					  $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u67_normal.png";
@@ -623,7 +623,7 @@ if ($brand_check != 'Other') {
 				<div class="search_listing_right">
 				  <div class="search_listing_row__1 copy_coupon_row">
 					<a href="<?php print $base_url ?>/coupon-redirect?l=oc&nid=<?php print $nid;?>&c=<?php print $coupon_code_predictor; ?>&p=<?php print $url_path; ?>&s=<?php print urlencode($url_path);?>" target="_blank" class="unlock_coupon" rel="c_1" data-clipboard-text="<?php echo $coupon_code_predictor?>">
-					  <span class="copy_coupon">Open Offer</span><span></span>
+					  <span class="copy_coupon">Copy Coupon</span><span></span>
 					</a>
 				  </div>
 				</div>
