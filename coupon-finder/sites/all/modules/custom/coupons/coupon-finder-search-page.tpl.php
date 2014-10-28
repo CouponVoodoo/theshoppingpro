@@ -31,7 +31,6 @@ if ($row->Successful=="1" || $row->Successful=="2") {
 		<div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="similar_coupons"><?php print get_label('This coupon helps you save ').get_label('INR ').$row->Saving.get_label(' on ').$row->productName;?></div></div>
     <label><?php echo get_label('Net Price:');?></label>
     <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"><?php print get_label('INR ').$net_price;?></div></div>
-	
     <?php else: ?>
         <label><?php echo get_label('Savings:');?></label>
 	<div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="similar_no_coupons"><?php print get_label('This coupon does not work for your product'); ?></div></div>
