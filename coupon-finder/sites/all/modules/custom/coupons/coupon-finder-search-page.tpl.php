@@ -3,7 +3,7 @@ $url_path = rawurlencode(drupal_get_path_alias());
 global $base_url;
 $nid = arg(1);
 $net_price = $row->productPrice - $row->Saving;
-if ($row->Successful=="1") {
+if ($row->Successful=="1" || $row->Successful=="2") {
   $image_right = $base_url. "/". drupal_get_path('theme', 'basic')."/images/u67_normal.png";
 
   $best_coupon = !empty($row->BestCoupon) ? '<span class="best_coupon">Best Coupon (Guaranteed To Work)</span>' : '<div class="coupon_status_guaranteed"><img src="'.$image_right.'"><span>Guaranteed To Work</span></div>';
@@ -22,13 +22,18 @@ if ($row->Successful=="1") {
 -->
    <div class='description'>
       <label><?php echo get_label('Description:');?></label>
-      <div class="search_listing_row_<?php print $row->counter; ?>' search_listing_row"><?php print $row->description;?></div>
+      <div class="search_listing_row_<?php print $row->counter; ?>' search_listing_row"><?php if ($row->Successful=="2") {print $row->description. " See coupon description and buy more product at retailer to meet minimum purchase criteria)" } else {print $row->description};?></div>
     </div>
   </div>
   <div class="row_2">
     <?php if ($row->Successful=="1" && $row->Saving > 1) : ?>
 		<label><?php echo get_label('Savings:');?></label>
 		<div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="similar_coupons"><?php print get_label('This coupon helps you save ').get_label('INR ').$row->Saving.get_label(' on ').$row->productName;?></div></div>
+    <label><?php echo get_label('Net Price:');?></label>
+    <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"><?php print get_label('INR ').$net_price;?></div></div>
+	<?php elseif ($row->Successful=="2" && $row->Saving > 1) : ?>
+		<label><?php echo get_label('Savings:');?></label>
+		<div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="similar_coupons"><?php print get_label('This coupon helps you save ').get_label('INR ').$row->Saving.get_label(' on ').$row->productName,' (See coupon description for minimum purchase criteria)';?></div></div>
     <label><?php echo get_label('Net Price:');?></label>
     <div class="search_listing_row_<?php print $row->counter; ?> search_listing_row"><div class="saving"><?php print get_label('INR ').$net_price;?></div></div>
     <?php else: ?>
