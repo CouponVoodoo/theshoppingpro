@@ -462,7 +462,7 @@ if ($current_domain != 'cuponation'){
 <li><label>Best Coupon:</label><?php 
 /* PRINTING TITLE BASED ON WHETHER THE DOMAIN IS CUPONATION OR NOT*/
 	if ($current_domain == 'cuponation'){
-		$query = new EntityFieldQuery();
+		/*$query = new EntityFieldQuery();
 		$query->entityCondition('entity_type', 'node')
 			->entityCondition('bundle', 'retailer_coupon_page')
 			->fieldCondition('field_retailer', 'tid', $node->field_retailer['und']['0']['tid'], '=')
@@ -470,7 +470,8 @@ if ($current_domain != 'cuponation'){
 		$result = $query->execute();		
 		$nids = array_keys($result['node']);
 		$retailer_coupon = node_load($nids[0]);
-		$cuponation_title = $retailer_coupon->field_cuponation_title['und']['0']['value'];
+		$cuponation_title = $retailer_coupon->field_cuponation_title['und']['0']['value'];*/
+		$cuponation_title=$best_coupon_description;
 		if (!empty($result['node']) && !empty($cuponation_title)) {
 			//echo $cuponation_title;
 			if ($CouponStatus == 2) {
