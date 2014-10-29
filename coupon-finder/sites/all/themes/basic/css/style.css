@@ -1795,7 +1795,7 @@ background: none repeat scroll 0 0 #F7971C;
   .btn-toggle .icon-bar {display: block; width: 22px; height: 2px; border-radius: 1px; background-color: #fff;}
   .btn-toggle .icon-bar+.icon-bar {margin-top: 4px;}
   #main_menu_toggle {display:none;} 
-  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 48%; display: block;}
+  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 55%; display: block;}
   .close-btn {float: right; color: rgb(255, 255, 255); margin-right: 10px; font-size: 20px; cursor: pointer;}
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
   .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
@@ -1844,7 +1844,7 @@ background: none repeat scroll 0 0 #F7971C;
   #header #coupons-finder-form .form-item-url label{display: none!important;}
   #header #coupons-finder-form #edit-url {width: 100%!important;}
   .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .no_coupons_found, .page-search-site #block-system-main .block-inner .node--product-and-coupon .no_coupons_found, .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field, .page-search-site #block-system-main .block-inner .node--product-and-coupon .field, .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found, .page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found {padding-bottom: 0px!important;}
-  .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-items, .page-search-site #block-system-main .block-inner .node--product-and-coupon .field-items {width: 60px; float: left;}
+  .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-items, .page-search-site #block-system-main .block-inner .node--product-and-coupon .field-items {width: 60px; float: left; line-height:2;}
   
 }
 @media (min-width: 480px) and (max-width: 599px) {
@@ -1860,7 +1860,7 @@ background: none repeat scroll 0 0 #F7971C;
   .btn-toggle .icon-bar {display: block; width: 22px; height: 2px; border-radius: 1px; background-color: #fff;}
   .btn-toggle .icon-bar+.icon-bar {margin-top: 4px;}
   #main_menu_toggle {display:none;} 
-  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 45%; display: block;}
+  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 55%; display: block;}
   .close-btn {float: right; color: rgb(255, 255, 255); margin-right: 10px; font-size: 20px; cursor: pointer;}
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
   .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
@@ -1908,7 +1908,7 @@ background: none repeat scroll 0 0 #F7971C;
   #header #coupons-finder-form .form-item-url label{display: none!important;}
   #header #coupons-finder-form #edit-url {width: 100%!important;}
   .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .no_coupons_found, .page-search-site #block-system-main .block-inner .node--product-and-coupon .no_coupons_found, .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field, .page-search-site #block-system-main .block-inner .node--product-and-coupon .field, .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found, .page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found {padding-bottom: 0px!important;}
-  .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-items, .page-search-site #block-system-main .block-inner .node--product-and-coupon .field-items {width: 60px; float: left;}
+  .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-items, .page-search-site #block-system-main .block-inner .node--product-and-coupon .field-items {width: 60px; float: left; line-height:2;}
 }
 @media (min-width: 600px) and (max-width: 850px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
@@ -1929,7 +1929,7 @@ background: none repeat scroll 0 0 #F7971C;
   .btn-toggle .icon-bar {display: block; width: 22px; height: 2px; border-radius: 1px; background-color: #fff;}
   .btn-toggle .icon-bar+.icon-bar {margin-top: 4px;}
   #main_menu_toggle {display:none;} 
-  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 45%; display: block;}
+  .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 55%; display: block;}
   .close-btn {float: right; color: rgb(255, 255, 255); margin-right: 10px; font-size: 20px; cursor: pointer;}
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
   .filter-toggle {width: 100%; text-align: center; position: relative; margin-right: 15px; background-image: none; border: 1px solid transparent; border-radius: 4px; background-color: rgb(247, 151, 28); color: rgb(255, 255, 255); padding: 3px; float: left; margin-bottom: 8px; margin-top: 0px;}
@@ -1976,7 +1976,7 @@ background: none repeat scroll 0 0 #F7971C;
   #header #coupons-finder-form .form-item-url label {display: none!important;}
   #header #coupons-finder-form #edit-url {width: 100%!important;}
   .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .no_coupons_found, .page-search-site #block-system-main .block-inner .node--product-and-coupon .no_coupons_found, .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field, .page-search-site #block-system-main .block-inner .node--product-and-coupon .field, .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .coupons_found, .page-search-site #block-system-main .block-inner .node--product-and-coupon .coupons_found {padding-bottom: 0px!important;}
-  .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-items, .page-search-site #block-system-main .block-inner .node--product-and-coupon .field-items {width: 60px; float: left;}
+  .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-items, .page-search-site #block-system-main .block-inner .node--product-and-coupon .field-items {width: 60px; float: left; line-height:2;}
 }
 @media (min-width: 750px) and (max-width: 768px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
