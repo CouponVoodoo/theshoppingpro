@@ -1813,7 +1813,7 @@ background: none repeat scroll 0 0 #F7971C;
   .search-bar-responsive .form-type-textfield label{display: none;}
   .nice_menu1 .content ul li {width: 100%!important; border-bottom: 1px solid #646464;}
   .nice_menu1 .content ul li ul li{border-bottom:0 none;}
-  .nice_menu1 .content ul li a, .nice_menu1 .content ul li span {line-height:30px; font-size: 13px!important; width: 100%; float:left;}
+  .nice_menu1 .content ul li a, .nice_menu1 .content ul li span {line-height:30px; font-size: 13px!important; width: 100%; float:left; padding: 0 10px!important;}
   .nice_menu1 .content ul li > ul li a, .nice_menu1 .content ul li > ul li span {line-height:30px; font-size: 12px!important; width: 100%; float:left;}
   .nice_menu1 .content ul li > ul li > ul li a, .nice_menu1 .content ul li > ul li > ul li span {line-height:30px; font-size: 11px!important; width: 100%; float:left;}
   .search-suggestion {display: none!important;}
@@ -1836,11 +1836,16 @@ background: none repeat scroll 0 0 #F7971C;
   .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block!important;}
   .sidebar-toggle #block-block-25 {display: none;}
   .nice_menu1 .content ul li ul li a{width: 100%!important; padding: 0 5px!important;}
-  .nice_menu1 .content ul {width: 100%;}
+  .nice_menu1 .content ul {width: 100%!important;}
    ul.nice-menu-down li ul li ul {left: 0px!important;}
   .nice-menu li.categories{display: block;}
   .nice-menu li.top-categories{display: none;}
   .nice_menu1 .content ul li ul > li > span {font-size: 12px!important; width: 100%!important; float: left; padding: 0 5px!important;}
+  #header #coupons-finder-form form-item-url label{display: none!important;}
+  #header #coupons-finder-form #edit-url {width: 100%!important;}
+  .field .field-name-field-product-price .field-type-number-integer .field-label-above {padding-bottom: 0px!important;}
+  .field-type-number-integer .field-label-above .field-items {width: 60px; float: left;}
+  
 }
 @media (min-width: 480px) and (max-width: 599px) {
   .flexslider .flex-control-nav {padding-right:10px!important; z-index: 2!important;}
@@ -1869,7 +1874,7 @@ background: none repeat scroll 0 0 #F7971C;
   .search-bar-responsive .form-type-textfield label{display: none;}
   .nice_menu1 .content ul li {width: 100%!important; border-bottom: 1px solid #646464;}
   .nice_menu1 .content ul li ul li{border-bottom:0 none;}
-  .nice_menu1 .content ul li a, .nice_menu1 .content ul li span {line-height:30px; font-size: 13px!important; width: 100%; float:left;}
+  .nice_menu1 .content ul li a, .nice_menu1 .content ul li span {line-height:30px; font-size: 13px!important; width: 100%; float:left;padding: 0 10px!important;}
   .nice_menu1 .content ul li > ul li a, .nice_menu1 .content ul li > ul li span {line-height:30px; font-size: 12px!important; width: 100%; float:left;}
   .nice_menu1 .content ul li > ul li > ul li a, .nice_menu1 .content ul li > ul li > ul li span {line-height:30px; font-size: 11px!important; width: 100%; float:left;}
   .search-suggestion {display: none!important;}
@@ -1895,11 +1900,15 @@ background: none repeat scroll 0 0 #F7971C;
   .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block!important;}
   .sidebar-toggle #block-block-25 {display: none;}
   .nice_menu1 .content ul li ul li a{width: 100%!important; padding: 0 5px!important;}
-  .nice_menu1 .content ul {width: 100%;}
+  .nice_menu1 .content ul {width: 100%!important;}
   ul.nice-menu-down li ul li ul {left: 0px!important;}
   .nice-menu li.categories{display: block;}
   .nice-menu li.top-categories{display: none;}
   .nice_menu1 .content ul li ul > li > span {font-size: 12px!important; width: 100%!important; float: left; padding: 0 5px!important;}
+  #header #coupons-finder-form form-item-url label{display: none!important;}
+  #header #coupons-finder-form #edit-url {width: 100%!important;}
+  field field-name-field-product-price field-type-number-integer field-label-above {padding-bottom: 0px!important;}
+  .field-type-number-integer .field-label-above .field-items {width: 60px; float: left;}
 }
 @media (min-width: 600px) and (max-width: 850px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
@@ -1936,7 +1945,7 @@ background: none repeat scroll 0 0 #F7971C;
   #block-custom_api-custom_coupons {display: none!important;}
   .nice_menu1 .content ul li {width: 100%!important; border-bottom: 1px solid #646464;}
   .nice_menu1 .content ul li ul li{border-bottom: 0 none;}
-  .nice_menu1 .content ul li a, .nice_menu1 .content ul li span {line-height:30px; font-size: 13px!important; width: 100%; float:left;}
+  .nice_menu1 .content ul li a, .nice_menu1 .content ul li span {line-height:30px; font-size: 13px!important; width: 100%; float:left; padding: 0 10px!important;}
   .nice_menu1 .content ul li > ul li a, .nice_menu1 .content ul li > ul li span {line-height:30px; font-size: 12px!important; width: 100%; float:left;}
   .nice_menu1 .content ul li > ul li > ul li a, .nice_menu1 .content ul li > ul li > ul li span {line-height:30px; font-size: 11px!important; width: 100%; float:left;}
   .open {display: block!important; visibility: visible!important; position: relative!important; top: 0!important; padding-left: 5px!important; width: auto!important;}
@@ -1959,11 +1968,15 @@ background: none repeat scroll 0 0 #F7971C;
   .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block!important;}
   .sidebar-toggle #block-block-25 {display: none;}
   .nice_menu1 .content ul li ul li a{width: 100%!important; padding: 0 5px!important;}
-  .nice_menu1 .content ul {width: 100%;}
+  .nice_menu1 .content ul {width: 100%!important;}
   ul.nice-menu-down li ul li ul {left: 0px!important;}
   .nice-menu li.categories{display: block;}
   .nice-menu li.top-categories{display: none;}
   .nice_menu1 .content ul li ul > li > span {font-size: 12px!important; width: 100%!important; float: left; padding: 0 5px!important;}
+  #header #coupons-finder-form form-item-url label{display: none!important;}
+  #header #coupons-finder-form #edit-url {width: 100%!important;}
+  field field-name-field-product-price field-type-number-integer field-label-above {padding-bottom: 0px!important;}
+  .field-type-number-integer .field-label-above .field-items {width: 60px; float: left;}
 }
 @media (min-width: 750px) and (max-width: 768px){
   .view-home-page-welcome .views-field img {width: 100%!important; max-width:97%!important;}
