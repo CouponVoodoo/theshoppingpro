@@ -1836,7 +1836,7 @@ background: none repeat scroll 0 0 #F7971C;
   .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block!important;}
   .sidebar-toggle #block-block-25 {display: none;}
   .nice_menu1 .content ul li ul li a{width: 100%!important; padding: 0 5px!important;}
-  .nice_menu1 .content ul {width: 100%!important;}
+  .nice_menu1 .content ul {width: 100%!important; padding-right:0px!important;}
    ul.nice-menu-down li ul li ul {left: 0px!important;}
   .nice-menu li.categories{display: block;}
   .nice-menu li.top-categories{display: none;}
@@ -1900,7 +1900,7 @@ background: none repeat scroll 0 0 #F7971C;
   .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block!important;}
   .sidebar-toggle #block-block-25 {display: none;}
   .nice_menu1 .content ul li ul li a{width: 100%!important; padding: 0 5px!important;}
-  .nice_menu1 .content ul {width: 100%!important;}
+  .nice_menu1 .content ul {width: 100%!important; padding-right:0px!important;}
   ul.nice-menu-down li ul li ul {left: 0px!important;}
   .nice-menu li.categories{display: block;}
   .nice-menu li.top-categories{display: none;}
@@ -1968,7 +1968,7 @@ background: none repeat scroll 0 0 #F7971C;
   .sidebar-toggle .filter-toggle-btn {color: #fff; cursor: pointer; float: right; margin-top: 10px; padding-right: 10px; display: block!important;}
   .sidebar-toggle #block-block-25 {display: none;}
   .nice_menu1 .content ul li ul li a{width: 100%!important; padding: 0 5px!important;}
-  .nice_menu1 .content ul {width: 100%!important;}
+  .nice_menu1 .content ul {width: 100%!important; padding-right:0px!important;}
   ul.nice-menu-down li ul li ul {left: 0px!important;}
   .nice-menu li.categories{display: block;}
   .nice-menu li.top-categories{display: none;}
