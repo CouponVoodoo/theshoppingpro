@@ -1385,7 +1385,7 @@ $product_node = node_load($nid);
  /* PRINTING TITLE BASED ON WHETHER THE DOMAIN IS CUPONATION OR NOT*/
 		$current_domain = get_current_domain();
 	//	if ($current_domain == 'cuponation'){
-		$query = new EntityFieldQuery();
+		/*$query = new EntityFieldQuery();
 		$query->entityCondition('entity_type', 'node')
 			->entityCondition('bundle', 'retailer_coupon_page')
 			->fieldCondition('field_retailer', 'tid', $product_node->field_retailer['und']['0']['tid'], '=')
@@ -1394,7 +1394,8 @@ $product_node = node_load($nid);
 		$nids = array_keys($result['node']);
 		$retailer_coupon = node_load($nids[0]);
 		$cuponation_title = $retailer_coupon->field_cuponation_title['und']['0']['value'];
-		$couponvoodoo_title = $retailer_coupon->title;
+		$couponvoodoo_title = $retailer_coupon->title;*/
+		$couponvoodoo_title=$couponvoodoo_title;
 		if (!empty($result['node']) && !empty($couponvoodoo_title)){
 			if ( $current_domain == 'cuponation' && !empty($cuponation_title)){
 				$value->description = $cuponation_title;
