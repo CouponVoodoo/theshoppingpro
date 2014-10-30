@@ -583,13 +583,13 @@ include DRUPAL_ROOT . '/sites/all/modules/contrib/domain/settings.inc';
 //$conf['apc_show_debug'] = TRUE;
 
 // the path to the memcache cache file
-/*require_once(DRUPAL_ROOT .'/sites/all/modules/contrib/memcache/memcache.inc');
-
-$conf['cache_backends'][] = DRUPAL_ROOT . '/sites/all/modules/contrib/memcache/memcache.inc';
+//require_once(DRUPAL_ROOT .'/sites/all/modules/contrib/memcache/memcache.inc');
+$conf['cache_backends'] = array()
+$conf['cache_backends'][] = '/sites/all/modules/contrib/memcache/memcache.inc';
 $conf['cache_default_class'] = 'MemCacheDrupal';
 // The 'cache_form' bin must be assigned no non-volatile storage.
 $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
-#$conf['memcache_servers'] = array('127.0.0.1:11211' => 'default');
+$conf['memcache_servers'] = array('127.0.0.1:11211' => 'default');
 $conf['memcache_bins'] = array('cache' => 'default');
 $conf['memcache_options'] = array(
   Memcached::OPT_COMPRESSION => TRUE,
@@ -599,9 +599,8 @@ $conf['memcache_persistent'] = TRUE;
 $conf['memcache_key_prefix'] = $_SERVER['SERVER_NAME'];*/
 ini_set('memory_limit', -1);
 ini_set('max_execution_time', 300);
-
-
-$conf['cache_backends'] = array(DRUPAL_ROOT . '/sites/all/modules/contrib/varnish/varnish.cache.inc');
+$conf['cache_backends'][] = '/sites/all/modules/contrib/varnish/varnish.cache.inc';
+//$conf['cache_backends'] = array(DRUPAL_ROOT . '/sites/all/modules/contrib/varnish/varnish.cache.inc');
 $conf['page_cache_invoke_hooks'] = FALSE;
 $conf['cache_class_cache_page'] = 'VarnishCache';
 $conf['omit_vary_cookie'] = true;
