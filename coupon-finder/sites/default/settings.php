@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Drupal site-specific configuration file.
@@ -215,9 +214,9 @@ $databases = array (
   array (
     'default' => 
     array (
-      'database' => 'cv1',
-      'username' => 'root',
-      'password' => '',
+      'database' => 'coupon_finder',
+      'username' => 'coupon_finder',
+      'password' => '2c0uPonf!nder$&*',
       'host' => 'localhost',
       'port' => '',
       'driver' => 'mysql',
@@ -234,8 +233,8 @@ $databases['default']['default']['init_commands'] = array(
  *
  * If you are updating your Drupal installation using the update.php script but
  * are not logged in using either an account with the "Administer software
- * updates" permission or the site maintenance account (the account that was 
-* created during installation), you will need to modify the access check
+ * updates" permission or the site maintenance account (the account that was
+ * created during installation), you will need to modify the access check
  * statement below. Change the FALSE to a TRUE to disable the access check.
  * After finishing the upgrade, be sure to open this file again and change the
  * TRUE back to a FALSE!
@@ -572,3 +571,37 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  * Add the domain module setup routine.
  */
 include DRUPAL_ROOT . '/sites/all/modules/contrib/domain/settings.inc';
+
+//Added by Nitin
+#require_once(DRUPAL_ROOT .'/sites/all/modules/contrib/apc/drupal_apc_cache.inc');
+#$conf['cache_backends'] = array('sites/all/modules/contrib/apc/drupal_apc_cache.inc');
+//$conf['cache_class_cache'] = 'DrupalAPCCache';
+//$conf['cache_class_cache_bootstrap'] = 'DrupalAPCCache';
+#$conf['cache_default_class'] = 'DrupalAPCCache';
+#$conf['page_cache_without_database'] = TRUE;
+#$conf['page_cache_invoke_hooks'] = FALSE;
+//$conf['apc_show_debug'] = TRUE;
+
+// the path to the memcache cache file
+/*require_once(DRUPAL_ROOT .'/sites/all/modules/contrib/memcache/memcache.inc');
+
+$conf['cache_backends'][] = DRUPAL_ROOT . '/sites/all/modules/contrib/memcache/memcache.inc';
+$conf['cache_default_class'] = 'MemCacheDrupal';
+// The 'cache_form' bin must be assigned no non-volatile storage.
+$conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+#$conf['memcache_servers'] = array('127.0.0.1:11211' => 'default');
+$conf['memcache_bins'] = array('cache' => 'default');
+$conf['memcache_options'] = array(
+  Memcached::OPT_COMPRESSION => TRUE,
+  Memcached::OPT_BINARY_PROTOCOL => TRUE,
+  );
+$conf['memcache_persistent'] = TRUE;
+$conf['memcache_key_prefix'] = $_SERVER['SERVER_NAME'];*/
+ini_set('memory_limit', -1);
+ini_set('max_execution_time', 300);
+
+
+$conf['cache_backends'] = array(DRUPAL_ROOT . '/sites/all/modules/contrib/varnish/varnish.cache.inc');
+$conf['page_cache_invoke_hooks'] = FALSE;
+$conf['cache_class_cache_page'] = 'VarnishCache';
+$conf['omit_vary_cookie'] = true;
