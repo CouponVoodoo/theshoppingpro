@@ -1,6 +1,6 @@
 <?php
 $i = 0;
-	$tables = array("predictorCompiledResultTableiAmazon");
+	$tables = array("predictorCompiledResultTableAmazon");
 	
 	for($x=0;$x<count($tables);$x++) {
 	
