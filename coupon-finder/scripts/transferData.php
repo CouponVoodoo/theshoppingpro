@@ -117,9 +117,9 @@ try {
 			} else {
 				//mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 			}
-}		}
+}		
 } catch (Exception $e) {
 var_dump($e); 
-    }
+    }}
 
 }
