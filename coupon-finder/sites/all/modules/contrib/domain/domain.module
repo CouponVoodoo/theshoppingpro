@@ -1926,7 +1926,7 @@ function domain_get_node_domains($nodes) {
     $array = TRUE;
   }
   mail('lavesh626@gmail.com', 'tTest', var_dump($node_ids));
-  mail('lavesh626@gmail.com', 'nid', var_dump($node->nid));
+  mail('lavesh626@gmail.com', 'nid', $node->nid);
   // If not an array, just return the requested data.
   if (!$array && isset($lookup[$nodes])) {
     return $lookup[$nodes];
@@ -1938,8 +1938,8 @@ function domain_get_node_domains($nodes) {
   // While this should return records for every node, we cannot guarantee success.
   
     
-      $records[520841]['domain_id'][1] = 1;
-	  $records[520841]['domain_id'][3] = 3;
+      $records[$node->nid]['domain_id'][1] = 1;
+	  $records[$node->nid]['domain_id'][3] = 3;
     
     
   
