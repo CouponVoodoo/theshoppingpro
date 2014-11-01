@@ -1697,8 +1697,13 @@ function domain_goto($domain) {
  */
 function domain_node_load($nodes, $types) {
   // Get the domain data.
+  
   $domains = domain_get_node_domains($nodes);
   foreach ($nodes as $node) {
+  if ($node->nid==520841){
+  mail('lavesh626@gmail.com', 'URLTest', var_dump($nodes);
+  mail('lavesh626@gmail.com', 'typeTest', var_dump($types);
+  }
     // Cannot load if the node has not been created yet.
     if (!isset($node->nid)) {
       continue;
