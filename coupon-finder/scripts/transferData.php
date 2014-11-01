@@ -1,6 +1,6 @@
 <?php
 $i = 0;
-	$tables = array("predictorCompiledResultTableFlipkart");
+	$tables = array("predictorCompiledResultTableiAmazon");
 	
 	for($x=0;$x<count($tables);$x++) {
 	
@@ -37,6 +37,7 @@ $run=1;
 	while ($run ==1) {
 	echo 'inside';
 		$i++;
+try {
 		$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php?q=".$table; //The API TO GET ALL RETAILER COUPON DATA 
 		$json = drupal_http_request($url, array('timeout' => 1200.0));
 		//var_dump($json);
@@ -102,6 +103,7 @@ $run=1;
 				  'uniq'=>$uniq,
 				))
 				->execute();
+
 				
 			}
 		} Else {
@@ -115,6 +117,9 @@ $run=1;
 			} else {
 				//mail('team@theshoppingpro.com', 'Data Push Did Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));
 			}
-		}
-}
+}		}
+} catch (Exception $e) {
+var_dump($e); 
+    }
+
 }
