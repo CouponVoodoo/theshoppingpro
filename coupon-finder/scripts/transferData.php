@@ -13,8 +13,8 @@ $i = 0;
 	$run_check_fetch = $run_check->fetch();
 	$isFirstRun = $run_check_fetch->Status;
 	
- 
-	$run = 1;
+ 	$isFirstRun ==1;
+	$run = 1; 
     echo $isFirstRun;
 	If ($isFirstRun == 1) {
 	    $dmp=$table."Dmp";
