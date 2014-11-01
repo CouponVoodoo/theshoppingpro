@@ -1910,7 +1910,7 @@ function domain_get_node_domains($nodes) {
   
   foreach ($nodes as $node) {
   
-  if ($node->nid==520841){
+  if (sizeof($nodes)==1){
   if ($node->type=='_product_and_coupon'){
   
   
@@ -1925,8 +1925,7 @@ function domain_get_node_domains($nodes) {
     $node_ids = $nodes;
     $array = TRUE;
   }
-  mail('lavesh626@gmail.com', 'tTest', var_dump($node_ids));
-  mail('lavesh626@gmail.com', 'nid', $node->nid);
+  
   // If not an array, just return the requested data.
   if (!$array && isset($lookup[$nodes])) {
     return $lookup[$nodes];
