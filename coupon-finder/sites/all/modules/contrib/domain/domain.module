@@ -1702,11 +1702,6 @@ function domain_node_load($nodes, $types) {
   
   foreach ($nodes as $node) {
   
-  if ($node->nid==520841){
-  mail('lavesh626@gmail.com', 'URLTest', var_dump($nodes));
-  mail('lavesh626@gmail.com', 'tTest', $node->type);
-  
-  }
   
     // Cannot load if the node has not been created yet.
     if (!isset($node->nid)) {
@@ -1912,6 +1907,59 @@ function domain_get_path_match($path) {
 function domain_get_node_domains($nodes) {
   $lookup = &drupal_static(__FUNCTION__, array());
   // Ensure we form our data properly.
+  
+  foreach ($nodes as $node) {
+  
+  if ($node->nid==520841){
+  mail('lavesh626@gmail.com', 'URLTest', var_dump($nodes));
+  
+  
+  if (!is_array($nodes)) {
+    $node_ids[$nodes] = $nodes;
+    $array = FALSE;
+  }
+  else {
+    $node_ids = $nodes;
+    $array = TRUE;
+  }
+  mail('lavesh626@gmail.com', 'tTest', var_dump($node_ids));
+  // If not an array, just return the requested data.
+  if (!$array && isset($lookup[$nodes])) {
+    return $lookup[$nodes];
+  }
+  // Set the proper value for the node, but include a default.
+  $domains = array('domain_id' => array(), 'domain_site' => FALSE);
+  $records = array();
+  
+  // While this should return records for every node, we cannot guarantee success.
+  
+    
+      $records[520841]['domain_id'][1] = 1;
+	  $records[520841]['domain_id'][3] = 3;
+    
+    
+  
+  // Run through the nodes and ensure they have proper data.
+  foreach ($node_ids as $nid => $value) {
+    $lookup[$nid] = $domains;
+    foreach (array('domain_id', 'domain_site') as $key) {
+      if (isset($records[$nid][$key])) {
+        $lookup[$nid][$key] = $records[$nid][$key];
+      }
+    }
+  }
+  // Return all data or just a single node?
+  if ($array) {
+    return $lookup;
+  }
+  if (isset($lookup[$nodes])) {
+    return $lookup[$nodes];
+  }
+  return $domains;
+  
+  }
+  }
+  
   if (!is_array($nodes)) {
     $node_ids[$nodes] = $nodes;
     $array = FALSE;
