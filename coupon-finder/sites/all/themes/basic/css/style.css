@@ -1763,7 +1763,7 @@ background: none repeat scroll 0 0 #F7971C;
 /* Added by Incaendo <http://incaendo.com> -- START */
 .btn-toggle {display: none;}
 .filter-btn {display: none;}
-.main_menu {margin-top: 0px!important; margin-left: 20px!important;}
+.main_menu {margin-top: 0px!important; margin-left: 20px;}
 .search-bar-responsive .form-type-textfield {float: left; margin: 0 0 0 10px; width: 50%;}
 .search-bar-responsive #edit-url--2 { float: left; padding: 5px; width: 100%;}
 .search-bar-responsive .submit {float: left; width: 45%;}
