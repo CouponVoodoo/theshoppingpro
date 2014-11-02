@@ -932,7 +932,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 body.domain-cuponation .nice_menu1 .content ul li a:hover,body.domain-cuponation  .nice_menu1 .content ul li span:hover{color:#27486b}
 body.domain-cuponation-couponvoodoo-com .nice_menu1 .content ul li a:hover,body.domain-cuponation-couponvoodoo-com .nice_menu1 .content ul li span:hover{color:#27486b}
 body.domain-products-cuponation-in .nice_menu1 .content ul li a:hover,body.domain-products-cuponation-in .nice_menu1 .content ul li span:hover{color:#27486b}
-.nice_menu1 .content ul li ul{background:#000;border:0px!important;padding:10px;width:270px; z-index:9999;}
+.nice_menu1 .content ul li ul{background:#000;border:0px!important;padding:10px;width:270px; z-index:9999!important;}
 body.domain-cuponation .nice_menu1 .content ul li ul{background:#51a7da;}
 body.domain-cuponation-couponvoodoo-com .nice_menu1 .content ul li ul{background:#51a7da;}
 body.domain-products-cuponation-in .nice_menu1 .content ul li ul{background:#51a7da;}
