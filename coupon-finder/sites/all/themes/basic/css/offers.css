@@ -98,7 +98,7 @@ home page slider end*/
 
 }
 
-.view-content .item-list ul li {margin: 0 0 0.25em 1.5em;padding: 0;list-style:none;}
+.view-content .item-list ul li {margin: 0 0 0.25em 0;padding: 0;list-style:none;}
 #header #header-region{width: 67%; float: right;}
 #views-exposed-form-brand-coupon-page-page .views-exposed-form {width: 100%; overflow: hidden;}
 #views-exposed-form-brand-coupon-page-page .views-exposed-widgets {width: 100%; Overflow: hidden; padding-bottom: 10px;background-color:#eee;}
