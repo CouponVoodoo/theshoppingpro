@@ -5,6 +5,7 @@
 #block-coupons-coupons_finder_taxonomy .form-item, .form-actions { float: left; width: 74%;}
 #block-coupons-coupons_finder_taxonomy .form-text { padding: 5px; font-size: 16px}
 #block-coupons-coupons_finder_taxonomy .content .submit {float: right; margin-top: 1em; width: 26%; margin-bottom:1em;}
+.nice_menu1 .content ul li ul {margin-top: 15px !important}
 .main_menu {width:100%!important; float: left; background-color:#878787; margin-left: 0px!important; margin-top: 0px!important;}
 #header .main_menu .region {max-width:940px; margin: 0 auto;}
 #block-nice_menus-1 .content {padding: 10px 0; width:100%!important; float: left;}
