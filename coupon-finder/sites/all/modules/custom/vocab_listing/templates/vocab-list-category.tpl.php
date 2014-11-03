@@ -16,6 +16,7 @@ foreach ($terms as $term) {
       $row++;
     }
 ?>
+<h4>Click on a category to find coupons and deals related to it.</h4>
 <h2>
 <?php
 $Curl="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
