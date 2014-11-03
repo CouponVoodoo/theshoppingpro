@@ -77,7 +77,7 @@ echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_them
 	</div>
 	<div class="coupon_page_search_listing_right">
 	
-		  <div class="search_listing_row__1 copy_coupon_row">
+		  <div class="search_listing_row__1 copy_coupon_row" style="z-index:0!important;">
 			<?php $div_id='ccp_'.$nid ;?>
 			<a href="<?php print $coupon_display_url?>" target="_blank"  class="unlock_best_coupon unlock_coupon" id =" <?php echo'ccp_'.$nid;?> rel="best_1" data-clipboard-text="<?php echo $coupon_code?>" >
 			<?php echo"<span class='copy_coupon'>Copy Coupon</span><span></span></a>"?>
