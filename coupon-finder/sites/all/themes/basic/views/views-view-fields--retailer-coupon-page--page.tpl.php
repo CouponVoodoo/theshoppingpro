@@ -33,6 +33,7 @@ $current_domain = get_current_domain();
 			$retailer = strip_tags($fields['field_retailer']->content);
 			$offer_type = strip_tags($fields['field_offer_type']->content);
 			$coupon_title = strip_tags($fields['field_coupon_title']->content);
+			$coupon_code = str_replace(" ","_",$coupon_code);
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
  			$node = node_load($nid);
 			// $affiliate_url = strip_tags($fields['field_affiliate_url']->content);
