@@ -150,12 +150,20 @@ function basic_preprocess_html(&$vars) {
 				$retailer_name = str_replace('.com','',arg(1));
 				$vars['head_title'] = 'Save Big Via '.$retailer_name.' Coupons | Cuponation';
 			break;
+			case "ccp":
+				$retailer_name = str_replace('.com','',arg(1));
+				$vars['head_title'] = 'Save Big Via '.$retailer_name.' Coupons | Cuponation';
+			break;
 		}
 	} Else {
 	switch ($content_type) {
 			case "rcp":
 				$retailer_name = str_replace('.com','',arg(1));
 				$vars['head_title'] = 'Latest '.$retailer_name.' Coupons - Save Upto 50% | Couponvoodoo';
+			break;
+			case "ccp":
+				$retailer_name = str_replace('.com','',arg(1));
+				$vars['head_title'] = 'Latest '.$retailer_name.' Coupons - Save Upto 50% | Couponvoodoo';	
 			break;
 			case "node":
 				$nid = arg(1);
