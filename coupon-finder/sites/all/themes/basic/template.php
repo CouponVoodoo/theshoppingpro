@@ -154,9 +154,11 @@ function basic_preprocess_html(&$vars) {
 	} Else {
 	switch ($content_type) {
 			case "term":
-				$vars['head_title'] = 'Latest working coupons from leading online stores in India '.date("F Y").'  | Couponvoodoo';
+			    $term = taxonomy_term_load(arg(1));
+                $retailer_name = $term->name;
+				$vars['head_title'] = 'Latest '.$retailer_name.' coupons from leading online stores in India '.date("F Y").'  | Couponvoodoo';
 			break;
-			case "":
+			case "rcp":
 				$retailer_name = str_replace('.com','',arg(1));
 				$vars['head_title'] = 'Latest '.$retailer_name.' Coupons - Save Upto 50% | Couponvoodoo';
 			break;
