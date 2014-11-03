@@ -542,7 +542,7 @@ div.ctools-modal-content .modal-content{
 
 .coupon_page_search_listing_right{
   float: left;
-  margin :-142px -20px 0px 524px;
+  margin :-139px -20px 0px 524px;
 }
 
 
@@ -802,8 +802,9 @@ img.dollor { left: -225px; position: relative; top: -80px; z-index: 0;}
 .product-right ul li label,.product-bottom .product-left ul li label{float:left;color: #F7971C;font-family: Arial;font-size: 13px;font-style: normal;font-weight: bold;width:139px;padding-right:7px}
 .product-right .coupon_code, .product-right .coupon_code1 {z-index: 0}
 div.view-id-product_info .search_listing_right .unlock_coupon {z-index: 0}
+.coupon_page_search_listing_right .copy_coupon_row {z-index: 0}
 div.view-id-product_info .coupon_page_search_listing_right .unlock_coupon {z-index: 0}
-
+.view-id-retailer_coupon_page .brand_coupon_page_row .unlock_best_coupon {z-index: 0}
 .view-id-retailer_coupon_page .retailer_coupon_page_row .unlock_best_coupon {z-index: 0}
 .product-bottom .product-left ul li label{ text-align: left;
     width: 65px;}
@@ -1334,6 +1335,15 @@ img{max-width: 100%;}
 }
 .coupon_listing_left {min-height: 86px;width: 72%;padding: 15px;float:left;margin:0 0 10px 0;}
 .retailer_coupon_page_row {
+list-style: none;
+background-color: #f2f2f2;
+border: 1px solid #d7d7d7;
+margin-bottom: 15px;
+display: table;
+width: 100%;
+padding: 20px;
+}
+.brand_coupon_page_row {
 list-style: none;
 background-color: #f2f2f2;
 border: 1px solid #d7d7d7;
