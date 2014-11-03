@@ -30,7 +30,8 @@
 			$url_path = rawurlencode(drupal_get_path_alias());
 			$nid = strip_tags(($fields['nid']->content));
 			$retailerName = strip_tags(($fields['field_retailer']->content));
-			$coupon_code = strip_tags(($fields['field_coupon_code']->content)));
+			$coupon_code = strip_tags(($fields['field_coupon_code']->content));
+			$coupon_code = str_replace(" ","_",$$coupon_code);
 			$coupon_title = strip_tags(($fields['field_coupon_title']->content));
 			$title = strip_tags(($fields['field_coupon_title']->content));
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
@@ -51,13 +52,12 @@
 	<div class="search_listing_left">
 		<?php
 
-						echo $coupon_code;
+						
 		if (!isset($_COOKIE['CV_User_GUID'])) {
 				$CV_User_GUID = 'NOT_SET';
 			} Else {
 				$CV_User_GUID = $_COOKIE['CV_User_GUID'];		
 			}
-			$coupon_code = str_replace('%20','_',str_replace(' ','_',$coupon_code));
 			$coupon_display_url=$base_url."/coupon-redirect?l=cp&nid=".$nid."&t=c&c=".rawurlencode($coupon_code)."&p=".$url_path."&s=".rawurlencode($affiliate_url);
 
 		?>
@@ -78,8 +78,8 @@ echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_them
 	
 		  <div class="search_listing_row__1 copy_coupon_row">
 			<?php $div_id='ccp_'.$nid ;?>
-			<a href="<?php print $coupon_display_url?>" target="_blank"  class="unlock_best_coupon unlock_coupon" id =" <?php echo'ccp_'.$nid;?> rel="best_1" data-clipboard-text="<?php echo $coupon_code;?>" >
-			<?php echo"<span class='copy_coupon'>"<?php str_replace('%20','_',str_replace(' ','_',$coupon_code));;?>"Copy Coupon</span><span></span></a>"?>
+			<a href="<?php print $coupon_display_url?>" target="_blank"  class="unlock_best_coupon unlock_coupon" id =" <?php echo'ccp_'.$nid;?> rel="best_1" data-clipboard-text="<?php echo $coupon_code?>" >
+			<?php echo"<span class='copy_coupon'>Copy Coupon</span><span></span></a>"?>
 			<div class="product-bottom" >
 	<div class="product-right-bottom" itemprop="description">
 
