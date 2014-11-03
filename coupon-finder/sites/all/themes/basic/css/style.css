@@ -1331,7 +1331,7 @@ img{max-width: 100%;}
 	margin-top: 10px; 
 	display: inline-block;
 }
-
+.coupon_listing_left {min-height: 86px;width: 72%;padding: 15px;float:left;margin:0 0 10px 0;}
 .retailer_coupon_page_row {
 list-style: none;
 background-color: #f2f2f2;
@@ -1339,7 +1339,7 @@ border: 1px solid #d7d7d7;
 margin-bottom: 15px;
 display: table;
 width: 100%;
-padding: 20px;
+padding: 0px;
 }
 .coupon-page-description{
 	text-align: justify;
