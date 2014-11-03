@@ -1681,7 +1681,7 @@ else if($view->current_display == 'block_5' &&  $view->name == 'apache_retailer_
     $splitArr=explode("/",$purl);
 	$catNm=str_replace('-', ' ', $splitArr[1]);
 	$term = taxonomy_get_term_by_name($catNm);
-	$catId = key($term);
+	$catId = $term->tid;
 	echo $catId;
 }
 	$current_time= time();
