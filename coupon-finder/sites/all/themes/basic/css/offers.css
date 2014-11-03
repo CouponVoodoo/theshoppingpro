@@ -5,7 +5,7 @@
 #block-coupons-coupons_finder_taxonomy .form-item, .form-actions { float: left; width: 74%;}
 #block-coupons-coupons_finder_taxonomy .form-text { padding: 5px; font-size: 16px}
 #block-coupons-coupons_finder_taxonomy .content .submit {float: right; margin-top: 1em; width: 26%; margin-bottom:1em;}
-.nice_menu1 .content ul li ul {margin-top: 15px ; z-index:9999!important}
+.nice_menu1 .content ul li ul {margin-top: 15px ; z-index:9999;}
 .main_menu {width:100%!important; float: left; background-color:#878787; margin-left: 0px!important; margin-top: 0px!important;}
 #header .main_menu .region {max-width:940px; margin: 0 auto;}
 #block-nice_menus-1 .content {padding: 10px 0; width:100%!important; float: left;}
@@ -13,7 +13,7 @@
 #nice-menu-1 .menu-path-nolink ul li span{font-size: 12px; line-height: 30px;}
 .nice_menu1 .content ul li a, .nice_menu1 .content ul li span {line-height: 30px!important;}
 /*category list start*/
-.vocab-list-parent {width: 100%; float:left; border-bottom: 1px solid #ccc; padding-bottom: 10px!important;}
+.vocab-list-parent {width: 100%; float:left; border-bottom: 1px solid #ccc; padding-bottom: 10px!important; margin-top:10px;}
 .vocab-list-parent .vocab-list-term {width: 20%; float: left;} 
 .vocab-list-parent .imges {width: 20%; float: left;} 
 .vocab-list-parent h2{margin-top: 0.75em;} 
