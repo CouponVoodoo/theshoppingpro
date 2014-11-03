@@ -31,7 +31,7 @@
 			$nid = strip_tags(($fields['nid']->content));
 			$retailerName = strip_tags(($fields['field_retailer']->content));
 			$coupon_code = strip_tags(($fields['field_coupon_code']->content));
-			$coupon_code = str_replace(" ","_",$$coupon_code);
+			$coupon_code = str_replace(" ","_",$coupon_code);
 			$coupon_title = strip_tags(($fields['field_coupon_title']->content));
 			$title = strip_tags(($fields['field_coupon_title']->content));
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
