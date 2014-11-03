@@ -1680,7 +1680,7 @@ else if($view->current_display == 'block_5' &&  $view->name == 'apache_retailer_
 	if (strpos($purl,'ccp') !== false) {
     $splitArr=explode("/",$purl);
 	$catNm=str_replace('-', ' ', $splitArr[1]);
-	$term = taxonomy_term_load($catNm);
+	$term = taxonomy_get_term_by_name($catNm);
 	$catId = key($term);
 	echo $catId;
 }
