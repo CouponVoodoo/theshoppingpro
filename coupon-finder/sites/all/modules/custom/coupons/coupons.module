@@ -1682,7 +1682,7 @@ else if($view->current_display == 'block_5' &&  $view->name == 'apache_retailer_
 	$catNm=str_replace('-', ' ', $splitArr[1]);
 	$term = taxonomy_term_load($catNm);
 	$catId = key($term);
-	echo 
+	echo $catId;
 }
 	$current_time= time();
 	$show_time=$current_time-(1.5*24*3600);
