@@ -1679,10 +1679,7 @@ else if($view->current_display == 'block_5' &&  $view->name == 'apache_retailer_
 	$purl=$url['destination'];
 	if (strpos($purl,'ccp') !== false) {
     $splitArr=explode("/",$purl);
-	$catNm=str_replace('-', ' ', $splitArr[1]);
-	$term = taxonomy_get_term_by_name($catNm);
-	$catId = $term->tid;
-	echo $catId;
+	$catId=$splitArr[1];
 }
 	$current_time= time();
 	$show_time=$current_time-(1.5*24*3600);
