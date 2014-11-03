@@ -154,7 +154,7 @@ function basic_preprocess_html(&$vars) {
 	} Else {
 	switch ($content_type) {
 			case "term":
-				$vars['head_title'] = 'Latest coupons from leading online stores in India '.date("F Y").'  | Couponvoodoo';
+				$vars['head_title'] = 'Latest working coupons from leading online stores in India '.date("F Y").'  | Couponvoodoo';
 			break;
 			case "":
 				$retailer_name = str_replace('.com','',arg(1));
