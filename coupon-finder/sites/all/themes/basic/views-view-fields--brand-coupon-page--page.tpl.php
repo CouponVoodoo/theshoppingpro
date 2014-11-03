@@ -50,7 +50,7 @@
 
 
 <div class="retailer_coupon_page_row">
-	<div class="coupon_listing_left">
+	<div class="search_listing_left">
 		<?php
 
 						
