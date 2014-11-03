@@ -507,7 +507,7 @@ div.ctools-modal-content .modal-content{
 #modal-content  .submit{
   text-align:center;
 }
-
+.copy_coupon_row {z-index=0!important;}
 #coupon_search_listing > li{list-style:none;  background-color: #F2F2F2;
                             border: 1px solid #D7D7D7;margin-bottom:15px;
                             display: table;
@@ -520,10 +520,11 @@ div.ctools-modal-content .modal-content{
 #coupon_search_listing > li .row_1{margin-bottom:10px;}
 .search_listing_left{
   min-height: 86px;
-  width: 75%;
+  width: 73%;
   padding: 15px;
   float:left;
   margin:0 0 10px 0;
+  
 }
 
 .search_listing_right{
