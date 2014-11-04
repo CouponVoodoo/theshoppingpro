@@ -1679,15 +1679,15 @@ else if($view->current_display == 'block_5' &&  $view->name == 'apache_retailer_
 	$purl=$url['destination'];
 	if (strpos($purl,'ccp') !== false) {
     $splitArr=explode("/",$purl);
-	mail('lavesh@theshoppingpro.com', 'purl',$purl );
+	//mail('lavesh@theshoppingpro.com', 'purl',$purl );
 	$alias='c/'.$splitArr[1];
-	mail('lavesh@theshoppingpro.com', 'alias',$alias );
+	//mail('lavesh@theshoppingpro.com', 'alias',$alias );
 	$path=drupal_lookup_path('source',$alias);
-	mail('lavesh@theshoppingpro.com', 'path',$path );
+	//mail('lavesh@theshoppingpro.com', 'path',$path );
 $tid = explode('/',$path);
-mail('lavesh@theshoppingpro.com', 'tid',$tid );
+//mail('lavesh@theshoppingpro.com', 'tid',$tid );
 $tid1=$tid[2];
-mail('lavesh@theshoppingpro.com', 'tid1',$tid1 );
+//mail('lavesh@theshoppingpro.com', 'tid1',$tid1 );
 
 }
 	$current_time= time();
