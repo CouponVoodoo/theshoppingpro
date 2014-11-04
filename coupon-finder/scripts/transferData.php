@@ -51,9 +51,10 @@ try{		$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySq
 			if ($i == 1) {mail('team@theshoppingpro.com', 'Data Push Start for '.$table, gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));}
 			$jsonArr = json_decode($json,true);
 			
-			try {
+			
 			//var_dump($jsonArr);
 			foreach($jsonArr as $json){ 
+			try {
 				$json = json_encode($json); 
 				$jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
 				$jsonArray = json_decode($jsonData);
