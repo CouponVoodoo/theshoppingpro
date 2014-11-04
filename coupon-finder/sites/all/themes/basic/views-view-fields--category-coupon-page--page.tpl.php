@@ -29,6 +29,7 @@
 			/* GETTING FIELD VALUES*/
 			$url_path = rawurlencode(drupal_get_path_alias());
 			$nid = strip_tags(($fields['nid']->content));
+			var_dump($fields);
 			$retailerName = strip_tags(($fields['field_retailer']->content));
 			$coupon_code = strip_tags(($fields['field_coupon_code']->content));
 			$coupon_code = str_replace(" ","_",$coupon_code);
@@ -36,7 +37,7 @@
 			$title = strip_tags(($fields['field_coupon_title']->content));
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
             $cat = strip_tags(($fields['field_category']->content));
-			var_dump($fields);
+			
 			//$node = node_load($nid);
 			$Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 2 and ttd.name = :retailer_name', array(':retailer_name' => $retailerName));
     $Ruery = $Query->fetch();
