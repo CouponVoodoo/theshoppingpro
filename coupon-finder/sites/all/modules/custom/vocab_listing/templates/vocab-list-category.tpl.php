@@ -26,7 +26,7 @@ $name = $term->name;
 if ($name!='Electronics') {
 $name= $name."'s".' Fashion';
 }
-$cname='Offers by Categories for '.$name;
+$cname='Popular offers and coupons for '.$name;
 echo '<div class="m-logo"><img src="'.$Curl.'" alt="'.$cname.'" ></div>';
 echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
 
