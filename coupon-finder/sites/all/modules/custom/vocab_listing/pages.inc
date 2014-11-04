@@ -9,7 +9,7 @@ function _vocab_get_list() {
     case 'category':
       $template = 'vocab_list_category';
       $vid = 3;
-	  drupal_set_title('Browse Coupons, Offers & Deals by Categorues');
+	  drupal_set_title('Browse Coupons, Offers & Deals by Categories');
       break;
     case 'brand':
       $template = 'vocab_list_brand';
