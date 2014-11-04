@@ -1951,7 +1951,7 @@ background: none repeat scroll 0 0 #F7971C;
   .search-bar-responsive {display: block!important; float: left; margin-bottom: 10px; width: 100%;}
   .search-bar-responsive .form-type-textfield {float: left; margin: 0 0 0 10px; width: 50%;}
   .search-bar-responsive #edit-url--2 { float: left; padding: 5px; width: 100%;}
-  .search-bar-responsive .submit {float: left; width: 45%;}
+  .search-bar-responsive .submit {float: left; width: 45%;margin-top:2px;}
   .search-bar-responsive .form-submit {background-color: rgb(247, 151, 28); border: medium none; color: #fff; float: left; font-weight: bold; margin-left: 5px; padding: 6px; width: 95%;}
   .search-bar-responsive .form-type-textfield label{display: none;}
   .search-suggestion {display: none!important;}
