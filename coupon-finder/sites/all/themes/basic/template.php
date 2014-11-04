@@ -156,7 +156,7 @@ function basic_preprocess_html(&$vars) {
 			case "term":
 			    $term = taxonomy_term_load(arg(1));
                 $retailer_name = $term->name;
-				$vars['head_title'] = 'Latest '.$retailer_name.' coupons from leading online stores in India '.date("F Y").'  | Couponvoodoo';
+				$vars['head_title'] = 'Latest '.arg(1).' coupons from leading online stores in India '.date("F Y").'  | Couponvoodoo';
 			break;
 			case "rcp":
 				$retailer_name = str_replace('.com','',arg(1));
