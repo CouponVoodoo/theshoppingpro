@@ -158,14 +158,7 @@ function basic_preprocess_html(&$vars) {
                 //$retailer_name = $term->name;
 				$vars['head_title'] = 'Latest coupons from leading online stores in India '.date("F Y").'  | Couponvoodoo';
 			break;
-			case "ccp":
-				//$retailer_name = str_replace('-','',str_replace('Eyecare','',str_replace('Electronics','',str_replace('home-kitchen','',str_replace('baby-kids','',str_replace('men','',str_replace('women','',arg(1))))))));
-				$alias=$splitArr[1];
-	$path=drupal_lookup_path('source',$alias);
-$tid = explode('/',$path);
-$tid1=$tid[2];$term = taxonomy_term_load($tid1);$retailer_name = $term->name;
-				$vars['head_title'] = $retailer_name.' Coupons, Discounts, Offers & Deals';
-			break;
+			
 			case "rcp":
 				$retailer_name = str_replace('.com','',arg(1));
 				$vars['head_title'] = 'Latest '.$retailer_name.' Coupons - Save Upto 50% | Couponvoodoo';
