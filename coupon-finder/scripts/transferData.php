@@ -17,6 +17,7 @@ $i = 0;
 	$run = 1; 
     echo $isFirstRun;
 	If ($isFirstRun == 1) {
+	
 	    $dmp=$table."Dmp";
 		$insert='Insert_'.$table;
 		$update='Update_'.$table;
@@ -38,17 +39,19 @@ $run=1;
 	echo 'inside';
 		$i++;
 try {
-		$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php?q=".$table; //The API TO GET ALL RETAILER COUPON DATA 
+try{		$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySql.php?q=".$table; //The API TO GET ALL RETAILER COUPON DATA 
 		$json = drupal_http_request($url, array('timeout' => 1200.0));
 		//var_dump($json);
 		$json = $json->data;
 //		var_dump($json);
-		
+	} catch (Exception $e) {
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+}	
 		if ($json != 'null') {
 			if ($i == 1) {mail('team@theshoppingpro.com', 'Data Push Start for '.$table, gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));}
 			$jsonArr = json_decode($json,true);
 			
-			
+			try {
 			//var_dump($jsonArr);
 			foreach($jsonArr as $json){ 
 				$json = json_encode($json); 
@@ -106,7 +109,9 @@ try {
 				))
 				->execute();
 
-				
+				} catch (Exception $e) {
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
 			}
 		} Else {
 			// no urls to process
