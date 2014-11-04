@@ -1,5 +1,5 @@
 <p></p>
-<h4>Click on a category to find coupons, offers & deals available at major online stores like Flipkart, Snapdeal, Jabong, Amazon, Myntra etc.</h4>
+<h3> style="font-size: 13px;" Click on a category to find coupons, offers & deals available at major online stores like Flipkart, Snapdeal, Jabong, Amazon, Myntra etc.</h3>
 <div class="vocab-list vocab-list-category">
 <?php
 $row = 0;
