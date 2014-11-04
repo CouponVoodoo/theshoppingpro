@@ -1,9 +1,9 @@
 <p></p>
-<h4>Click on a category to find coupons and deals related to it.</h4>
+<h4>Click on a category to find coupons, offers & deals available at major online stores like Flipkart, Snapdeal, Jabong, Amazon, Myntra etc.</h4>
 <div class="vocab-list vocab-list-category">
 <?php
 $row = 0;
-$ignore_tids = array(83, 47, 57, 82, 25, 37, 69, 70, 73, 16, 19, 21, 95, 18,22,23,87);
+$ignore_tids = array(83, 47, 57, 82, 25, 37, 69, 70, 73, 16, 19, 21, 95, 18,22,23,87,7400);
 foreach ($terms as $term) {
   if (in_array($term->tid, $ignore_tids)) {
     continue;
@@ -22,8 +22,13 @@ foreach ($terms as $term) {
 <h2>
 <?php
 $Curl="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
-echo '<div class="m-logo"><img src="'.$Curl.'" alt="Womens Fashion" ></div>';
-echo '<div class="m-cpn"><p class="ofr-descp">'.$term->name."'s".' Fashion</p> </div>';
+$name = $term->name;
+if ($name!='Electronics') {
+$name= $name."'s".' Fashion';
+}
+$cname='Offers by Categories for '.$name;
+echo '<div class="m-logo"><img src="'.$Curl.'" alt="'.$cname.'" ></div>';
+echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
 
   //echo t('%name\'s Fashion', array('%name' => $term->name));
   
