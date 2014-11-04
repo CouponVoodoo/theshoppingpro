@@ -25,11 +25,11 @@
  * @ingroup views_templates
  */
 ?>
-<?php
+<?php 
 			/* GETTING FIELD VALUES*/
 			$url_path = rawurlencode(drupal_get_path_alias());
 			$nid = strip_tags(($fields['nid']->content));
-			var_dump($fields['nid']);
+			//var_dump($fields['nid']);
 			$retailerName = strip_tags(($fields['field_retailer']->content));
 			$coupon_code = strip_tags(($fields['field_coupon_code']->content));
 			$coupon_code = str_replace(" ","_",$coupon_code);
