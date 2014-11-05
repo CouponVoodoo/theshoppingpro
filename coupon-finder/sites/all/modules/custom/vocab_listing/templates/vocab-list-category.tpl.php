@@ -6,6 +6,8 @@ $row = 0;
 $ignore_tids = array(83, 47, 57, 82, 25, 37, 69, 70, 73, 16, 19, 21, 95, 18,22,23,87,7400);
 foreach ($terms as $term) {
   if (in_array($term->tid, $ignore_tids)) {
+  $Mname = $term->name;
+$Mnamealias=str_replace('--','-',str_replace(' ','-',str_replace('&','',$term->name)));
     continue;
   }
   if (in_array(0, $term->parents)) {
@@ -23,7 +25,7 @@ foreach ($terms as $term) {
 <?php
 $Curl="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
 $Pname = $term->name;
-$Pnamealias=str_replace(' ','-',str_replace('&','',$term->name));
+$Pnamealias=str_replace('--','-',str_replace(' ','-',str_replace('&','',$term->name)));
 if ($Pname!='Electronics') {
 $name= $Pname."'s".' Fashion';
 }
@@ -38,7 +40,7 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
 <?php
   } else { 
   
-  $alias=$Pnamealias.'-'.str_replace(' ','-',str_replace('&','',$term->name));
+  $alias=$Pnamealias.'-'.str_replace('--','-',str_replace(' ','-',str_replace('&','',$term->name)));
   $url="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
 ?><div class="imges"> <img src=<?php print $url;?> alt=<?php print $term->name .'coupons, offers & deals';?> >
   <div class="vocab-list-term"><?php echo l($term->name, 'ccp/'.$alias.'/coupons-offers', array('query' => array('field_offer_type_tid' => 'All'))); ?>
