@@ -39,16 +39,22 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
 </h2>
 <?php
   } else { 
- // var_dump( $term->parents);
-  //echo in_array(0, $term->parents);
-  //echo '---';
+  
+  /*if ($term->name=='Bags'){
+  
+  
+  var_dump( $term->parents);
+ echo in_array(0, $term->parents);
+ echo '---';
+ echo $term->parents[0];
+  }*/
   if ($term->parents) {
   //echo $term->parents[0];
     if (in_array($term->parents[0], $ignore_tids)) {
 	  $MnameAlias=str_replace('--','-',str_replace(' ','-',str_replace('&','',$mname[$term->parents[0]])));
 	}
   }
-  //else $MnameAlias='';
+  else $MnameAlias='';
   
   $alias=$Pnamealias.'-'.$MnameAlias.'-'.str_replace('--','-',str_replace(' ','-',str_replace('&','',$term->name)));
   //echo $alias;
