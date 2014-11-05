@@ -41,13 +41,13 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
   } else { 
   
   if ($term->name=='Bags'){
-  
+  /*
   
   var_dump( $term->parents);
  echo in_array(0, $term->parents);
  echo '---';
  echo $term->parents[0];
- echo $mname[$term->parents[0];
+ echo $mname[$term->parents[0];*/
   }
   if ($term->parents) {
   //echo $term->parents[0];
