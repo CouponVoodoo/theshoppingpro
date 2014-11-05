@@ -15,7 +15,7 @@ break;
 
 
 function main(){
-$results = db_query("select distinct(nid) as nid FROM node where type in ('brand_coupon') order by nid desc LIMIT 500");
+$results = db_query("select distinct(nid) as nid FROM node where type in ('category_coupon') order by nid desc LIMIT 500");
 
 
 foreach ($results as $result) 
