@@ -41,7 +41,7 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
   } else { 
   var_dump( $term->parents);
   echo in_array(0, $term->parents);
-  
+  echo '---';
   if (in_array(0, $term->parents)) {
   echo $term->parents[0];
     if (in_array($term->parents[0], $ignore_tids)) {
@@ -49,6 +49,7 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
 	}
   }
   else $MnameAlias='';
+  exit;
   $alias=$Pnamealias.'-'.$MnameAlias.'-'.str_replace('--','-',str_replace(' ','-',str_replace('&','',$term->name)));
   $url="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
 ?><div class="imges"> <img src=<?php print $url;?> alt=<?php print $term->name .'coupons, offers & deals';?> >
