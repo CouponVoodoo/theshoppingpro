@@ -40,14 +40,15 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
 <?php
   } else { 
   
-  /*if ($term->name=='Bags'){
+  if ($term->name=='Bags'){
   
   
   var_dump( $term->parents);
  echo in_array(0, $term->parents);
  echo '---';
  echo $term->parents[0];
-  }*/
+ echo $mname[$term->parents[0];
+  }
   if ($term->parents) {
   //echo $term->parents[0];
     if (in_array($term->parents[0], $ignore_tids)) {
@@ -65,6 +66,7 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
   </div>
   </div>
 <?php
+$MnameAlias='';
   }
 }
 if ($row != 0) {
