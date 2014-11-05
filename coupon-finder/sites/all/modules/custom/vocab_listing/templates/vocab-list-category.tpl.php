@@ -49,8 +49,10 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
 	}
   }
   else $MnameAlias='';
-  exit;
+  
   $alias=$Pnamealias.'-'.$MnameAlias.'-'.str_replace('--','-',str_replace(' ','-',str_replace('&','',$term->name)));
+  echo $alias;
+  exit;
   $url="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
 ?><div class="imges"> <img src=<?php print $url;?> alt=<?php print $term->name .'coupons, offers & deals';?> >
   <div class="vocab-list-term"><?php echo l($term->name, 'ccp/'.$alias.'/coupons-offers', array('query' => array('field_offer_type_tid' => 'All'))); ?>
