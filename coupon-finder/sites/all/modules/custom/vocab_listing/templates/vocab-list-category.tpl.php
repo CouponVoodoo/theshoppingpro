@@ -7,7 +7,7 @@ $mname = array();
 $ignore_tids = array(83, 47, 57, 82, 25, 37, 69, 70, 73, 16, 19, 21, 95, 18,22,23,87,7400);
 foreach ($terms as $term) {
   if (in_array($term->tid, $ignore_tids)) {
-  echo ($term->tid);
+  
   $mname[$term->tid]=$term->name;
     continue;
   }
@@ -52,7 +52,10 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
  echo $mname[$term->parents[0];*/  }
   if ($term->parents) {
   //echo $term->parents[0];
+  echo 'out';
     if (in_array($term->parents[0], $ignore_tids)) {
+	echo term->name.'__'.$term->parents[0];
+	
 	if (!empty($mname[$term->parents[0]])){
 	  $MnameAlias=str_replace('--','-',str_replace(' ','-',str_replace('&','',$mname[$term->parents[0]])));
 	  }
