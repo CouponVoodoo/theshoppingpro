@@ -63,8 +63,9 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
 	  echo $MnameAlias;
 	  
 	}
+	else $MnameAlias='';
   }
-  else $MnameAlias='';
+  
   
   $alias=$Pnamealias.'-'.$MnameAlias.'-'.str_replace('--','-',str_replace(' ','-',str_replace('&','',$term->name)));
   //echo $alias;
