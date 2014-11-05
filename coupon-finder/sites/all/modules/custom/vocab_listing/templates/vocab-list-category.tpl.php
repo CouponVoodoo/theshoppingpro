@@ -7,6 +7,7 @@ $mname = array();
 $ignore_tids = array(83, 47, 57, 82, 25, 37, 69, 70, 73, 16, 19, 21, 95, 18,22,23,87,7400);
 foreach ($terms as $term) {
   if (in_array($term->tid, $ignore_tids)) {
+  echo ($term->tid);
   $mname[$term->tid]=$term->name;
     continue;
   }
