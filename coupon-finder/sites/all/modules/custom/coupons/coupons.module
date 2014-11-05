@@ -1680,7 +1680,7 @@ else if($view->current_display == 'block_5' &&  $view->name == 'apache_retailer_
 	if (strpos($purl,'ccp') !== false) {
     $splitArr=explode("/",$purl);
 	//mail('lavesh@theshoppingpro.com', 'purl',$purl );
-	$alias='c/'.$splitArr[1].'coupons';
+	$alias='c/'.$splitArr[1].'-coupons';
 	//mail('lavesh@theshoppingpro.com', 'alias',$alias );
 	$path=drupal_lookup_path('source',$alias);
 	//mail('lavesh@theshoppingpro.com', 'path',$path );
