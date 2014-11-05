@@ -52,7 +52,12 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
   if ($term->parents) {
   //echo $term->parents[0];
     if (in_array($term->parents[0], $ignore_tids)) {
+	if (!empty($mname[$term->parents[0]])){
 	  $MnameAlias=str_replace('--','-',str_replace(' ','-',str_replace('&','',$mname[$term->parents[0]])));
+	  }
+	  else $MnameAlias='';
+	  echo $MnameAlias;
+	  
 	}
   }
   else $MnameAlias='';
