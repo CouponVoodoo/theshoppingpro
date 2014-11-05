@@ -39,23 +39,23 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
 </h2>
 <?php
   } else { 
-  var_dump( $term->parents);
-  echo in_array(0, $term->parents);
-  echo '---';
+ // var_dump( $term->parents);
+  //echo in_array(0, $term->parents);
+  //echo '---';
   if ($term->parents) {
-  echo $term->parents[0];
+  //echo $term->parents[0];
     if (in_array($term->parents[0], $ignore_tids)) {
 	  $MnameAlias=str_replace('--','-',str_replace(' ','-',str_replace('&','',$mname[$term->parents[0]])));
 	}
   }
-  else $MnameAlias='';
+  //else $MnameAlias='';
   
   $alias=$Pnamealias.'-'.$MnameAlias.'-'.str_replace('--','-',str_replace(' ','-',str_replace('&','',$term->name)));
-  echo $alias;
-  exit;
+  //echo $alias;
+  //exit;
   $url="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
 ?><div class="imges"> <img src=<?php print $url;?> alt=<?php print $term->name .'coupons, offers & deals';?> >
-  <div class="vocab-list-term"><?php echo l($term->name, 'ccp/'.$alias.'/coupons-offers', array('query' => array('field_offer_type_tid' => 'All'))); ?>
+  <div class="vocab-list-term"><?php echo l($term->name, 'ccp/'.str_replace('--','-',$alias).'/coupons-offers', array('query' => array('field_offer_type_tid' => 'All'))); ?>
   </div>
   </div>
 <?php
