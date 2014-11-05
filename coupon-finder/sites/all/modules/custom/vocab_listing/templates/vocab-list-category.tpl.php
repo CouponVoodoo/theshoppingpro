@@ -66,7 +66,7 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
   </div>
   </div>
 <?php
-$MnameAlias='';
+
   }
 }
 if ($row != 0) {
