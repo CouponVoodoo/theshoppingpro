@@ -1708,7 +1708,8 @@ $tid1=$tid[2];
 else if($view->current_display == 'block_6' &&  $view->name == 'apache_retailer_products' ) {
 	$url=drupal_get_destination();
 	$purl=$url['destination'];
-	if (strpos($purl,'ccp') !== false) {
+	//mail('lavesh@theshoppingpro.com', 'purl',$purl );
+	if (strpos($purl,'bcp') !== false) {
     $splitArr=explode("/",$purl);
 	
 	$alias='b/'.$splitArr[1].'-coupons';
