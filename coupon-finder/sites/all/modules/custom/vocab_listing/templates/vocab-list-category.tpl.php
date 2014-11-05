@@ -37,8 +37,7 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
 </h2>
 <?php
   } else { 
-  var_dump($term->parents[0]);
-  exit;
+  
   $alias=$Pnamealias.'-'.str_replace(' ','-',str_replace('&','',$term->name));
   $url="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
 ?><div class="imges"> <img src=<?php print $url;?> alt=<?php print $term->name .'coupons, offers & deals';?> >
