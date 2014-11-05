@@ -59,7 +59,7 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
   }
   
   
-  $alias=$Pnamealias.'-'.$MnameAlias.'-'.str_replace('--','-',str_replace(' ','-',str_replace('&','',$term->name)));
+  $alias=$Pnamealias.'-'.$MnameAlias.'-'.str_replace('--','-',str_replace(' ','-',str_replace(',','',str_replace('&','',$term->name))));
   //echo $alias;
   //exit;
   $url="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
