@@ -117,11 +117,11 @@ if ($brand_check != 'Other') {
 </div>
 		  </div>
 	</div>
+<?php
 if ($_GET['showpop'] == 1) {	
 ?>
 		<div id="coupon_details_popup"><a href="<?php print coupon_popup_url($_GET['coupon_code'], $coupon_redirect_path); ?>" rel='lightframe[|width:600px; height:450px; scrolling: off;]' ></a></div>
 <?php
 		drupal_add_js ("jQuery(document).ready(function() { jQuery('#coupon_details_popup a').trigger('click'); });", array('type' => 'inline', 'scope' => 'footer'));
 	}
-	?>
-
+	?> 
