@@ -104,15 +104,16 @@ $current_domain = get_current_domain();
 	
 		  <div class="search_listing_row__1 copy_coupon_row">
 			<?php $div_id='rcp_'.$nid ;?>
-			<a href="<?php print $coupon_display_url?>" target="_blank"  class="unlock_best_coupon unlock_coupon" id = <?php echo'rcp_'.$nid;?> rel="best_1" data-clipboard-text="<?php echo $coupon_code?>" >
-				  
-				 <?php if($offer_type == 'Coupons') {?>
+			
+			<a href="<?php print $coupon_display_url;?>" onclick=window.open('<?php echo coupon_popup_product_url($coupon_code, $coupon_display_url); ?>')//;return true; class="unlock_best_coupon unlock_coupon" rel="best_<?php print $nid; ?>" data-clipboard-text="<?php echo $coupon_code?>" >
+			<?php if($offer_type == 'Coupons') {?>
 					<span class="copy_coupon">Copy Coupon</span><span></span>
 				<?php } else { ?>
 					<span class="copy_coupon">Activate Deal</span><span></span>
 				<?php }
 				?>
-			</a>
+			</a>	
+
 		  </div>
 	</div>
 
@@ -206,3 +207,12 @@ $current_domain = get_current_domain();
 	?>
 </div>
 <?php  }?>
+
+<?php
+if ($_GET['showpop'] == 1) {	
+?>
+		<div id="coupon_details_popup"><a href="<?php print coupon_popup_url($_GET['coupon_code'], $coupon_redirect_path); ?>" rel='lightframe[|width:600px; height:450px; scrolling: off;]' ></a></div>
+<?php
+		drupal_add_js ("jQuery(document).ready(function() { jQuery('#coupon_details_popup a').trigger('click'); });", array('type' => 'inline', 'scope' => 'footer'));
+	}
+	?>
