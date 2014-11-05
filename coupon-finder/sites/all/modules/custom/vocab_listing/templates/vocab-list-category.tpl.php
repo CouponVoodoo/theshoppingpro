@@ -22,8 +22,7 @@ foreach ($terms as $term) {
 
 <h2>
 <?php
-var_dump($term);
-exit;
+
 $Curl="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
 $Pname = $term->name;
 $Pnamealias=str_replace('--','-',str_replace(' ','-',str_replace('&','',$term->name)));
@@ -40,6 +39,8 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
 </h2>
 <?php
   } else { 
+  var_dump($term);
+exit;
   if (in_array($term->, $ignore_tids)) {
   $Mname = $term->name;
 $Mnamealias=str_replace('--','-',str_replace(' ','-',str_replace('&','',$term->name)));
