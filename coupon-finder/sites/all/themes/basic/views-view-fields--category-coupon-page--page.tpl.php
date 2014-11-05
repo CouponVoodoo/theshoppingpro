@@ -83,7 +83,7 @@ echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_them
 		  <div class="search_listing_row__1 copy_coupon_row">
 			<?php $div_id='ccp_'.$nid ;?>
 			<a href="<?php print $coupon_display_url?>" target="_blank"  class="unlock_best_coupon unlock_coupon" id =" <?php echo'ccp_'.$nid;?> rel="best_1" data-clipboard-text="<?php echo $coupon_code?>" >
-			<?php echo"<span class='copy_coupon'>".arg(1)."</span><span></span></a>"?>
+			<?php echo"<span class='copy_coupon'>Copy Coupon</span><span></span></a>"?>
 			<div class="product-bottom" >
 	<div class="product-right-bottom" itemprop="description">
 
@@ -106,7 +106,8 @@ if ($category_check != 'Other') {
 	if ($category['#type'] == 'link') {
 	// echo " | <div class='category_meta' itemscope itemtype='http://schema.org/offer'><meta  itemprop='category' content='".$fields['field_category']->content."' /></div>";
 	//$aliasPath=drupal_lookup_path example('source',
-	print ' | <div class="field-content">' . l(t($category['#title']), 'http://www.couponvoodoo.com/'.$category['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
+	$curl='c/'.arg(1).'-coupons';
+	print ' | <div class="field-content">' . l(t($category['#title']), 'http://www.couponvoodoo.com/'.$curl, array('attributes' => array('target' => '_blank'))) . '</div>';
 	}
 	else {
 	// echo " | <div class='category_meta' itemscope itemtype='http://schema.org/offer'><meta  itemprop='category' content='".$fields['field_category']->content."' /></div>";
