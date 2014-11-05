@@ -22,9 +22,10 @@ foreach ($terms as $term) {
 <h2>
 <?php
 $Curl="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
-$name = $term->name;
-if ($name!='Electronics') {
-$name= $name."'s".' Fashion';
+$Pname = $term->name;
+$Pnamealias=str_replace(' ','-',str_replace('&','',$term->name));
+if ($Pname!='Electronics') {
+$name= $Pname."'s".' Fashion';
 }
 $cname='Popular offers and coupons for '.$name;
 echo '<div class="m-logo"><img src="'.$Curl.'" alt="'.$cname.'" ></div>';
@@ -36,11 +37,11 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
 </h2>
 <?php
   } else { 
-  var_dump($term);
-  exit;
+  
+  $alias=$Pnamealias.'-'.str_replace(' ','-',str_replace('&','',$term->name));
   $url="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
-?><div class="imges"> <img src=<?php print $url;?> alt="Womens Fashion" >
-  <div class="vocab-list-term"><?php echo l($term->name, 'ccp/'.$term->tid.'/coupons-offers', array('query' => array('field_offer_type_tid' => 'All'))); ?>
+?><div class="imges"> <img src=<?php print $url;?> alt=<?php print $term->name .'coupons, offers & deals';?> >
+  <div class="vocab-list-term"><?php echo l($term->name, 'ccp/'.$alias.'/coupons-offers', array('query' => array('field_offer_type_tid' => 'All'))); ?>
   </div>
   </div>
 <?php
