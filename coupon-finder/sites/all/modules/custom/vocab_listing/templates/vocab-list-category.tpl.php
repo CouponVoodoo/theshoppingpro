@@ -10,7 +10,7 @@ foreach ($terms as $term) {
   }
   if (in_array(0, $term->parents)) {
     if ($row == 0) {
-	//var_dump($term);
+	
       echo '<div class="vocab-list-parent"> ';
       $row++;
     } else {
@@ -36,6 +36,8 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
 </h2>
 <?php
   } else { 
+  var_dump($term);
+  exit;
   $url="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
 ?><div class="imges"> <img src=<?php print $url;?> alt="Womens Fashion" >
   <div class="vocab-list-term"><?php echo l($term->name, 'ccp/'.$term->tid.'/coupons-offers', array('query' => array('field_offer_type_tid' => 'All'))); ?>
