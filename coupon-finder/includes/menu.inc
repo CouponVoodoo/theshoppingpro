@@ -449,7 +449,7 @@ function menu_get_item($path = NULL, $router_item = NULL) {
   $modpath=$path;
   if (!isset($path)) {
     $path = $_GET['q'];
-	if ($path=='node/2506623') {
+	
 	//echo 'inside';
 	$fullDomain= $_SERVER['HTTP_HOST']; 
   if (stripos($fullDomain,'cuponation') != false){
@@ -466,8 +466,7 @@ function menu_get_item($path = NULL, $router_item = NULL) {
   
   $textPath=$textPathArr[1];
   $modpath=$domain.'/'.$textPath;
-  echo $modpath;
-  }
+  
   }
   
   
