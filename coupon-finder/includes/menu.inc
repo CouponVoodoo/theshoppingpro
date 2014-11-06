@@ -446,9 +446,30 @@ function menu_set_item($path, $router_item) {
  */
 function menu_get_item($path = NULL, $router_item = NULL) {
   $router_items = &drupal_static(__FUNCTION__);
+  $modpath=$path;
   if (!isset($path)) {
     $path = $_GET['q'];
+	if ($path=='node/37077') {
+	//echo 'inside';
+	$fullDomain= $_SERVER['HTTP_HOST']; 
+  if (stripos($fullDomain,'cuponation') != false){
+		$domain= 'cuponation';
+		
+	} else if (stripos($fullDomain,'offer') != false){
+		$domain= 'offers';
+	}
+	else {
+	$domain= 'couponvoodoo';
+	}
+  
+  $textPathArr=explode('/',$_SERVER['REQUEST_URI']);
+  
+  $textPath=$textPathArr[1];
+  $modpath=$domain.'/'.$textPath;
   }
+  }
+  
+  
   if (isset($router_item)) {
     $router_items[$path] = $router_item;
   }
@@ -459,17 +480,23 @@ function menu_get_item($path = NULL, $router_item = NULL) {
       menu_rebuild();
     }
     $original_map = arg(NULL, $path);
-
+   
     $parts = array_slice($original_map, 0, MENU_MAX_PARTS);
+	
+   
     $ancestors = menu_get_ancestors($parts);
+	
+   
+	
     //$router_item = db_query_range('SELECT * FROM {menu_router} WHERE path IN (:ancestors) ORDER BY fit DESC', 0, 1, array(':ancestors' => $ancestors))->fetchAssoc();
-	 $cid = "menu_item:" . hash('sha256', $path);
-    if ($cached = cache_get($cid, 'cache_menu')) {
+	 $did = "menu_item:" . hash('sha256', $modpath);
+    if ($cached = cache_get($did, 'cache_menu')) {
       $router_item = $cached->data;
     }
     else {
-      $router_item = db_query_range('SELECT * FROM {menu_router} WHERE path IN (:ancestors) ORDER BY fit DESC', 0, 1, array(':ancestors' => $ancestors))->fetchAssoc();
-      cache_set($cid, $router_item, 'cache_menu');
+	
+    $router_item = db_query_range('SELECT * FROM {menu_router} WHERE path IN (:ancestors) ORDER BY fit DESC', 0, 1, array(':ancestors' => $ancestors))->fetchAssoc();
+      cache_set($did, $router_item, 'cache_menu');
     }
  
 
