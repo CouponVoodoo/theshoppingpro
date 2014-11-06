@@ -463,14 +463,14 @@ function menu_get_item($path = NULL, $router_item = NULL) {
     $parts = array_slice($original_map, 0, MENU_MAX_PARTS);
     $ancestors = menu_get_ancestors($parts);
     //$router_item = db_query_range('SELECT * FROM {menu_router} WHERE path IN (:ancestors) ORDER BY fit DESC', 0, 1, array(':ancestors' => $ancestors))->fetchAssoc();
-	 $cid = "menu_item:" . hash('sha256', $path);
-    if ($cached = cache_get($cid, 'cache_menu')) {
-      $router_item = $cached->data;
-    }
-    else {
+	// $cid = "menu_item:" . hash('sha256', $path);
+    //if ($cached = cache_get($cid, 'cache_menu')) {
+     // $router_item = $cached->data;
+    //}
+    //else {
       $router_item = db_query_range('SELECT * FROM {menu_router} WHERE path IN (:ancestors) ORDER BY fit DESC', 0, 1, array(':ancestors' => $ancestors))->fetchAssoc();
-      cache_set($cid, $router_item, 'cache_menu');
-    }
+      //cache_set($cid, $router_item, 'cache_menu');
+    //}
  
 
     if ($router_item) {
