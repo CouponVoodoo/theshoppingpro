@@ -466,6 +466,7 @@ function menu_get_item($path = NULL, $router_item = NULL) {
   
   $textPath=$textPathArr[1];
   $modpath=$domain.'/'.$textPath;
+  echo $modpath;
   }
   }
   
