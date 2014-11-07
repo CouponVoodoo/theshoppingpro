@@ -1636,7 +1636,7 @@ drupal_add_js("jQuery(document).ready(function($){
 
 
 
-//function coupons_views_query_alter(&$view, &$query) {
+}
 
 /* THIS CONTROLS THE RIGHT HAND SIDE SIMILAR PRODUCT WIDGET ON PRODUCT PAGE pARTS ARE COMMENTED SINCE 2 BLOCKS ON SAME PAGE CONFLICT*/
 function coupons_views_pre_build(&$view) {
@@ -1657,7 +1657,10 @@ function coupons_views_pre_build(&$view) {
   }
 */
 /* THIS POWERS SIMILAR PRODUCTS - LOWER CASE IS IMPORTANT*/
+if($view->current_display == 'block' &&  $view->name == 'home_page_welcome' ) {
 
+
+}
   if($view->current_display == 'block_4' &&  $view->name == 'apache_retailer_products' ) {
 	$nid = arg(1);
 	$node = node_load($nid);
@@ -1790,9 +1793,10 @@ function get_current_domain(){
 	global $base_url;
 	if (stripos($base_url,'cuponation') != false){
 		return 'cuponation';
-	} else {
-		return 'couponvoodoo';
+	} else if (stripos($base_url,'offers') != false){
+		return 'offers';
 	}
+	else 'couponvoodoo';
 }
 
 /* BY ASHISH TO CHANGE STATIC CONTENT BASIS THE DOMAIN*/
