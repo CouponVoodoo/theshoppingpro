@@ -1207,10 +1207,10 @@ img{max-width: 100%;}
 #header #block-nice_menus-1 #nice-menu-1 > li > a{}
 
 @media all and (max-width: 1230px){
-#block-fb_likebox-0.block-fb-likebox {display: none}
+#block-fb_likebox-0.block-fb-likebox {display: none;}
 .zopim-chat {display: none;}
 .float_bar{display: none;}
-
+#block-views-home_page_retailers-block {display: none;}
 }
 
 
