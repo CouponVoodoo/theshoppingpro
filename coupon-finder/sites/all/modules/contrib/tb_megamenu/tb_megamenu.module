@@ -235,9 +235,18 @@ function tb_megamenu_block_view($delta = 0) {
     drupal_add_js(drupal_get_path('module', 'tb_megamenu') . '/js/tb-megamenu-frontend.js');
     drupal_add_js(drupal_get_path('module', 'tb_megamenu') . '/js/tb-megamenu-touch.js');
   }
+  
+  $cid = 'tb_megamenu:' . $delta;
+  if ($cached = cache_get($cid, 'cache_block')) {
+    $markup = $cached->data;
+  }
+  else {
+    $markup = theme('tb_megamenu', array('menu_name' => $delta));
+    cache_set($cid, $markup, 'cache_block');
+  }
+
   return array('content' => array(
-    '#type' => 'markup',
-    '#markup' =>  theme('tb_megamenu', array('menu_name' => $delta))
+    '#markup' => $markup,
   ));
 }
 
