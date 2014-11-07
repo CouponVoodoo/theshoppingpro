@@ -1220,10 +1220,11 @@ img{max-width: 100%;}
     .one-sidebar.sidebar-first #content{max-width: 65%;}
     .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon, .page-search-site #block-system-main .block-inner .node--product-and-coupon{width: 220px;}
 	.zopim-chat {display: none;}
+	#block-views-home_page_retailers-block {display: none;}
 }
 @media all and (max-width: 900px){
     .footer_logos table{width: 100%;}
-	
+	#block-views-home_page_retailers-block {display: none;}
     .main_menu{margin-left: 5px; margin-top: 0;}
     #header #logo{padding-left: 10px;}
     .front #coupons-finder-form{width: 100%;}
@@ -1234,10 +1235,12 @@ img{max-width: 100%;}
     .main_menu{width: 100%; margin-left: 0;}
     #header #block-nice_menus-1{margin-top: 0;}
 	.zopim-chat {display: none;}
+	#block-views-home_page_retailers-block {display: none;}
 }
 
 @media all and (max-width: 700px){
 	.zopim-chat {display: none;}
+	#block-views-home_page_retailers-block {display: none;}
 	#block-coupons-coupons_taxonomy_description {display: none;}
 	#sidebar-second {display: none;}
 	.page-taxonomy-term #block-system-main .block-inner .content{text-align: center;}
