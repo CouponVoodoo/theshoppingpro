@@ -1790,8 +1790,11 @@ function get_current_domain(){
 	global $base_url;
 	if (stripos($base_url,'cuponation') != false){
 		return 'cuponation';
-	} else {
-		return 'couponvoodoo';
+	} else if (stripos($base_url,'offer') != false){
+		return 'offers';
+	}
+	else {
+	return 'couponvoodoo';
 	}
 }
 
