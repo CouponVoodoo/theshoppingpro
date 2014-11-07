@@ -1223,7 +1223,7 @@ img{max-width: 100%;}
 }
 @media all and (max-width: 900px){
     .footer_logos table{width: 100%;}
-	#block-views-home_page_retailers-block {display: none;}
+	
     .main_menu{margin-left: 5px; margin-top: 0;}
     #header #logo{padding-left: 10px;}
     .front #coupons-finder-form{width: 100%;}
