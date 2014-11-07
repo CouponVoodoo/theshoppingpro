@@ -220,6 +220,8 @@ function tb_megamenu_theme($existing, $type, $theme, $path) {
 /*
  * Implementation of hook_block_view()
  */
+ 
+
 function tb_megamenu_block_view($delta = 0) {
   static $added_js_css = false;
   if(!$added_js_css) {
@@ -235,8 +237,8 @@ function tb_megamenu_block_view($delta = 0) {
     drupal_add_js(drupal_get_path('module', 'tb_megamenu') . '/js/tb-megamenu-frontend.js');
     drupal_add_js(drupal_get_path('module', 'tb_megamenu') . '/js/tb-megamenu-touch.js');
   }
-  
-  $cid = 'tb_megamenu:' . $delta;
+  $domain=get_current_domain();
+  $cid = 'tb_megamenu:' .$domain.':'. $delta;
   if ($cached = cache_get($cid, 'cache_block')) {
     $markup = $cached->data;
   }
