@@ -1,5 +1,5 @@
 <?php
-
+echo 'hghgh';
 /**
  * @file
  * Default simple view template to all the fields as a row.
@@ -28,15 +28,16 @@
 $current_domain = get_current_domain();
 			/* GETTING FIELD VALUES*/
 			$url_path = rawurlencode(drupal_get_path_alias());
-			
+			echo ($url_path);
 			$nid = strip_tags($fields['nid']->content);
 			$retailer = strip_tags($fields['field_retailer']->content);
 			$offer_type = strip_tags($fields['field_offer_type']->content);
+			echo ($offer_type);
 			$coupon_title = strip_tags($fields['field_coupon_title']->content);
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
  			$node = node_load($nid);
 			// $affiliate_url = strip_tags($fields['field_affiliate_url']->content);
-			$affiliate_url = $node->field_affiliate_url['und']['0']['value'];
+			$affiliate_url = 'couponvoodoo.com';//$node->field_affiliate_url['und']['0']['value'];
 			// echo 'cuponation-title'.$node->field_cuponation_title['und']['0']['value'];
 			if ($current_domain == 'cuponation' && !empty($node->field_cuponation_title['und']['0']['value'])){
 				$title = $node->field_cuponation_title['und']['0']['value'];
