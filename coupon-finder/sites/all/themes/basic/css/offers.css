@@ -5,6 +5,14 @@
 #block-coupons-coupons_finder_taxonomy .form-text { padding: 5px; font-size: 16px}
 #block-coupons-coupons_finder_taxonomy .content .submit {float: right; margin-top: 1em; width: 26%; margin-bottom:1em;}
 
+.tb-megamenu {background: #878787!important;}
+
+.nav > li > a:hover,.tb-megamenu .dropdown-menu,.tb-megamenu .nav li.dropdown.open.active > .dropdown-toggle, .tb-megamenu .nav li.dropdown.open > .dropdown-toggle,.tb-megamenu .nav > .active > a:focus,.tb-megamenu .dropdown-menu .active > a,
+.tb-megamenu .dropdown-menu .active > a:hover,.tb-megamenu .nav-collapse,.tb-megamenu .nav-collapse .nav > li > a:hover,
+.tb-megamenu .nav-collapse .nav > li > a:focus,.tb-megamenu .nav-collapse .nav > li.active > a:hover,
+.tb-megamenu .nav-collapse .nav > li.active > a:focus,.tb-megamenu .nav-collapse .dropdown-menu { background-color: #878787!important;  }
+
+.tb-megamenu .nav > li > a {border-right: 1px solid #878787!important; padding: 9px 24px!important;}
 
 
 
