@@ -237,7 +237,7 @@ function tb_megamenu_block_view($delta = 0) {
     drupal_add_js(drupal_get_path('module', 'tb_megamenu') . '/js/tb-megamenu-frontend.js');
     drupal_add_js(drupal_get_path('module', 'tb_megamenu') . '/js/tb-megamenu-touch.js');
   }
-  $domain=get_current_domain();
+ /* $domain=get_current_domain();
   $cid = 'tb_megamenu:' .$domain.':'. $delta;
   
   if ($cached = cache_get($cid, 'cache_block')) {
@@ -246,8 +246,8 @@ function tb_megamenu_block_view($delta = 0) {
   else {
     $markup = theme('tb_megamenu', array('menu_name' => $delta));
     cache_set($cid, $markup, 'cache_block');
-  }
-
+  }*/
+  $markup = theme('tb_megamenu', array('menu_name' => $delta));
   return array('content' => array(
     '#markup' => $markup,
   ));
