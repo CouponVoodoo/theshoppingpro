@@ -1817,7 +1817,7 @@ background: none repeat scroll 0 0 #F7971C;
   #header #logo {width: 75%;}
   #block-custom_api-custom_coupons {background:none; border-radius:0px; border: 0 none; box-shadow: none; width: 100%; float: left;}
 
-  #main_menu_toggle {display:none;} 
+ 
   .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 55%; display: block;}
   .close-btn {float: right; color: rgb(255, 255, 255); margin-right: 10px; font-size: 20px; cursor: pointer;}
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
@@ -1879,7 +1879,7 @@ background: none repeat scroll 0 0 #F7971C;
   /*side menu for header start*/
   #header #header-region {width: 100%; float:left;}
   #block-custom_api-custom_coupons {background:none; border-radius:0px; border: 0 none; box-shadow: none; width: 100%; float: left;}
-  #main_menu_toggle {display:none;} 
+ 
   .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 55%; display: block;}
   .close-btn {float: right; color: rgb(255, 255, 255); margin-right: 10px; font-size: 20px; cursor: pointer;}
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
@@ -1945,7 +1945,7 @@ background: none repeat scroll 0 0 #F7971C;
   /*side menu for header start*/
   #header #header-region {width: 100%; float:left;}
   #block-custom_api-custom_coupons {background:none; border-radius:0px; border: 0 none; box-shadow: none; width: 100%; float: left;}
-  #main_menu_toggle {display:none;} 
+  
   .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 55%; display: block;}
   .close-btn {float: right; color: rgb(255, 255, 255); margin-right: 10px; font-size: 20px; cursor: pointer;}
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
