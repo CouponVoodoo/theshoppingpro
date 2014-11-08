@@ -1387,7 +1387,7 @@
   }
 .tb-megamenu .nav-collapse {
     background: #000;
-    margin-top: 10px;
+    margin-top: 27px;
 	position: absolute;
 	top: 27px;
 	width: 100%;
@@ -1428,7 +1428,7 @@
     border-top: 1px solid #222;
     border-bottom: 0;
     font-weight: normal;
-    padding: 10px 20px;
+    padding: 1px 2px;
   }
 .tb-megamenu .nav-collapse .dropdown-menu a:hover,
 .tb-megamenu .nav-collapse .dropdown-menu a:focus {
