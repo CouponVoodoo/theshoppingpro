@@ -932,8 +932,6 @@ body.domain-products-cuponation-in .tb-megamenu {background: #51a7da;}
 body.domain-products-cuponation-in .tb-megamenu .nav > li > a {border-right: 1px solid #51a7da;}
 
 
-
-body.domain-products-cuponation-in .tb-megamenu .dropdown-menu .active > a:hover,.tb-megamenu .nav-collapse,.tb-megamenu .nav-collapse .nav > li > a:hover { background-color: #51a7da;  }
 body.domain-products-cuponation-in .tb-megamenu .nav-collapse .nav > li > a:focus,.tb-megamenu .nav-collapse .nav > li.active > a:hover { background-color: #51a7da;  }
 body.domain-products-cuponation-in .tb-megamenu .nav-collapse .nav > li.active > a:focus ,.tb-megamenu .nav-collapse .dropdown-menu{ background-color: #51a7da;  }
 
