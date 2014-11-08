@@ -929,6 +929,7 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 body.domain-cuponation .tb-megamenu {background: #51a7da;}
 body.domain-cuponation-couponvoodoo-com .tb-megamenu {background: #51a7da;}
 body.domain-products-cuponation-in .tb-megamenu {background: #51a7da;}
+
 body.domain-cuponation .tb-megamenu .nav > li > a:hover,.tb-megamenu .dropdown-menu,.tb-megamenu .nav li.dropdown.open.active > .dropdown-toggle, .tb-megamenu .nav li.dropdown.open > .dropdown-toggle,.tb-megamenu .nav > .active > a:focus,.tb-megamenu .dropdown-menu .active > a,
 .tb-megamenu .dropdown-menu .active > a:hover,.tb-megamenu .nav-collapse,.tb-megamenu .nav-collapse .nav > li > a:hover,
 .tb-megamenu .nav-collapse .nav > li > a:focus,.tb-megamenu .nav-collapse .nav > li.active > a:hover,
@@ -939,11 +940,8 @@ body.domain-products-cuponation-in .tb-megamenu .nav > li > a:hover,.tb-megamenu
 .tb-megamenu .nav-collapse .nav > li > a:focus,.tb-megamenu .nav-collapse .nav > li.active > a:hover,
 .tb-megamenu .nav-collapse .nav > li.active > a:focus ,.tb-megamenu .nav-collapse .dropdown-menu{ background-color: #51a7da;  }
 
-body.domain-cuponation-couponvoodoo-com .tb-megamenu .nav > li > a:hover,.tb-megamenu .nav li.dropdown.open.active > .dropdown-toggle,.tb-megamenu .nav li.dropdown.open > .dropdown-toggle,.tb-megamenu .dropdown-menu,.tb-megamenu .nav > .active > a:focus,.tb-megamenu .dropdown-menu .active > a,
-.tb-megamenu .dropdown-menu .active > a:hover,.tb-megamenu .nav-collapse,.tb-megamenu .nav-collapse .nav > li > a:hover,
-.tb-megamenu .nav-collapse .nav > li > a:focus,.tb-megamenu .nav-collapse .nav > li.active > a:hover,
-.tb-megamenu .nav-collapse .nav > li.active > a:focus ,.tb-megamenu .nav-collapse .dropdown-menu { background-color: #51a7da;  }
-
+body.domain-cuponation .tb-megamenu .nav > li > a {border-right: 1px solid #51a7da;}
+body.domain-products-cuponation-in .tb-megamenu .nav > li > a {border-right: 1px solid #51a7da;}
 
 .nice_menu2{float:left;}
 
