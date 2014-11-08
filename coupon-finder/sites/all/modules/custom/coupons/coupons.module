@@ -1375,7 +1375,7 @@ $product_node = node_load($nid);
     $coupons = array();  
     foreach ($jsonArray as $key => $value) {	//url replaced by sanjay
       if (is_object($value)) {
-        if ($value->Successful =="1") {
+        if ($value->Successful =="1") { 
           $is_success = false;
         }
         $i++;
