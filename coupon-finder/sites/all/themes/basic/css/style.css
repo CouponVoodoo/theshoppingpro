@@ -926,7 +926,8 @@ h1.title{font:bold 30px/32px arial;color:#f7971c;margin-bottom:0px;}
 #header #logo{float:left}
 .wrap{margin:0 auto; max-width:940px;}
 .main_menu{float:left; margin-left:15px; width: auto; margin-top: 35px}
-body.domain-cuponation .tb-megamenu {background: #51a7da;}
+
+body.domain-products-cuponation-in .tb-megamenu {background: #51a7da;}
 
 
 body.domain-cuponation .tb-megamenu .nav > li > a:hover,.tb-megamenu .dropdown-menu,.tb-megamenu .nav li.dropdown.open.active > .dropdown-toggle, .tb-megamenu .nav li.dropdown.open > .dropdown-toggle,.tb-megamenu .nav > .active > a:focus,.tb-megamenu .dropdown-menu .active > a,
