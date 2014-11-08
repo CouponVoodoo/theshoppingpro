@@ -237,12 +237,9 @@ function tb_megamenu_block_view($delta = 0) {
     drupal_add_js(drupal_get_path('module', 'tb_megamenu') . '/js/tb-megamenu-frontend.js');
     drupal_add_js(drupal_get_path('module', 'tb_megamenu') . '/js/tb-megamenu-touch.js');
   }
-  $domain=get_current_domain();
-  $cid = 'tb_megamenu:' .$domain.':'. $delta;
-  echo $domain;
+  
+  $cid = 'tb_megamenu:' .$_SERVER["SERVER_NAME"].':'. $delta;
   echo $cid;
-  global $base_url;
-  var_dump($_SERVER["SERVER_NAME"]) ;
   if ($cached = cache_get($cid, 'cache_block')) {
     $markup = $cached->data;
   }
