@@ -239,7 +239,8 @@ function tb_megamenu_block_view($delta = 0) {
   }
   $domain=get_current_domain();
   $cid = 'tb_megamenu:' .$domain.':'. $delta;
-  
+  echo $domain;
+  echo $cid;
   if ($cached = cache_get($cid, 'cache_block')) {
     $markup = $cached->data;
   }
