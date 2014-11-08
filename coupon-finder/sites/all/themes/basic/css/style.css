@@ -1299,7 +1299,6 @@ img{max-width: 100%;}
 	.page-search-site .find_coupon .submit {width: 100%;}
 
 
-
 @media all and (max-width: 652px){
     .find_coupon .whatisthis{top: 48px;}
 }
@@ -1816,10 +1815,11 @@ background: none repeat scroll 0 0 #F7971C;
   #header #header-region {width: 100%; float:left;}
   #header #logo {width: 75%;}
   #block-custom_api-custom_coupons {background:none; border-radius:0px; border: 0 none; box-shadow: none; width: 100%; float: left;}
+  /*lavesh*/
   .tb-megamenu .btn:first-child {display: block; position: relative; float: right; padding: 9px 10px; margin-top: 8px; margin-right: 15px; margin-bottom: 8px; background-color: #F7971C; background-image: none; border: 1px solid transparent; border-radius: 1px;}
   .tb-megamenu .btn:first-child .icon-bar {display: block; width: 22px; height: 2px; border-radius: 1px; background-color: #fff;}
   .tb-megamenu .btn:first-child .icon-bar+.icon-bar {margin-top: 4px;}
- 
+  .tb-megamenu .open {width: 99%!important;}
   .show-menu {position: absolute; z-index: 3; background: none repeat scroll 0% 0% rgb(0, 0, 0); top: 5px; right: 0px; width: 55%; display: block;}
   .close-btn {float: right; color: rgb(255, 255, 255); margin-right: 10px; font-size: 20px; cursor: pointer;}
   .filter-btn {display: block; width: 21%; float: left; margin-left: 10px;}
