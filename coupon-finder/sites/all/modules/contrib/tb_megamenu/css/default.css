@@ -135,7 +135,7 @@
 }
 .tb-megamenu .tb-block .block-title {
   font-size: 12px;
-  color: #333;
+  color: #fff;
   display: block;
   line-height: 20px;
   margin: 0 0 15px;
@@ -240,7 +240,7 @@
 }
 .tb-megamenu .dropdown-menu li > a {
   clear: both;
-  color: #333;
+  color: #fff;
   display: block;
   line-height: 20px;
   font-weight: normal;
@@ -1106,7 +1106,7 @@
   }
 .tb-megamenu .span8 .row [class*="span"] {
     margin-left: 4.1322314049587%;
-    *margin-left: 4.0785833362892%;
+    *margin-left: 4.07858fff62892%;
   }
 .tb-megamenu .span8 .row [class*="span"]:first-child {
     margin-left: 0;
@@ -1316,7 +1316,7 @@
 }
 .tb-megamenu .row .span33,
 .tb-megamenu .row-fluid .span33 {
-  width: 33.3333%;
+  width: 33.fff3%;
   float: left;
 }
 .tb-megamenu .row .span25,
@@ -1606,7 +1606,7 @@
 }
 
 .tb-megamenu .block-view-demo .views-field-field-image img {
-  border: 1px solid #333;
+  border: 1px solid #fff;
   margin: 0 20px 0 0;
   max-width: none !important;
   padding: 4px;
@@ -1614,7 +1614,7 @@
 }
 
 .tb-megamenu .block-view-demo .item-list ul li {
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #fff;
   margin: 0;
   min-height: 60px;
   padding: 10px 0;
