@@ -20,15 +20,15 @@
 .tb-megamenu .nav > li > a {
   border-right: 1px solid #222;
   border-top: 0;
-  color: #white;
+  color: #fff;
   font-size: 17px!important;
   padding: 0px 9px;
   text-shadow: none;
 }
 .tb-megamenu .nav > li > a:focus,
 .tb-megamenu .nav > li > a:hover {
-  background-color: #white;  
-  color: #white;  
+  background-color: #000;  
+  color: #fff;  
   text-decoration: none;
   text-shadow: none;
   outline: none;
@@ -36,8 +36,8 @@
 .tb-megamenu .nav > .active > a,
 .tb-megamenu .nav > .active > a:hover,
 .tb-megamenu .nav > .active > a:focus {
-  background-color: #white;
-  color: #white;
+  background-color: #000000;
+  color: #fff;
   text-shadow: none; 
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -49,7 +49,7 @@
   float: left;
   padding: 10px;
   margin: 0;
-  color: #white;
+  color: #fff;
   text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
   background-color: #e8e8e8;  
   *background-color: #d9d9d9;
@@ -63,7 +63,7 @@
 .tb-megamenu .btn-navbar.active,
 .tb-megamenu .btn-navbar.disabled,
 .tb-megamenu .btn-navbar[disabled] {
-  color: #white;
+  color: #fff;
   background-color: #d9d9d9;
   *background-color: #cccccc;
 }
@@ -112,13 +112,13 @@
   background-color: transparent;
 }
 .tb-megamenu .nav li.dropdown.open > .dropdown-toggle {
-  background-color: #black; 
-  color: #white;
+  background-color: #000000; 
+  color: #fff;
 }
 .tb-megamenu .nav li.dropdown.active > .dropdown-toggle,
 .tb-megamenu .nav li.dropdown.open.active > .dropdown-toggle {
-  background-color: #black;
-  color: #white;
+  background-color: #000000;
+  color: #fff;
 }
 .tb-megamenu .mega-inner {
   padding: 10px;
@@ -164,7 +164,7 @@
   font-size: 100%;
   background: none;
   font: inherit;
-  white-space: normal;
+  fff-space: normal;
 }
 .tb-megamenu .tb-block ul li a:hover,
 .tb-megamenu .tb-block ul li a:focus,
@@ -206,7 +206,7 @@
   float: left;
   min-width: 160px;
   list-style: none;
-  background-color: #white;
+  background-color: #000;
   border: 1px solid #ccc;
   border: 1px solid rgba(0,0,0,0.2);
   border-bottom: 3px solid #e65855;
@@ -236,7 +236,7 @@
   *margin: -5px 0 5px;
   overflow: hidden;
   background-color: #e5e5e5;
-  border-bottom: 1px solid #white;
+  border-bottom: 1px solid #fff;
 }
 .tb-megamenu .dropdown-menu li > a {
   clear: both;
@@ -246,7 +246,7 @@
   font-weight: normal;
   padding: 3px 20px;
   text-shadow: none;
-  white-space: nowrap;
+  fff-space: nowrap;
 }
 .tb-megamenu .dropdown-menu li > a:hover,
 .tb-megamenu .dropdown-menu li > a:focus,
@@ -254,7 +254,7 @@
   background-color: inherit;  
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  color: #white;
+  color: #fff;
   text-decoration: none;
 }
 .tb-megamenu .dropdown-menu .active > a,
@@ -262,7 +262,7 @@
   color: #eee;
   text-decoration: none;
   outline: 0;
-  background-color: #white;
+  background-color: #000;
 }
 .tb-megamenu .dropdown-menu .disabled > a,
 .tb-megamenu .dropdown-menu .disabled > a:hover {
@@ -283,7 +283,7 @@
 .tb-megamenu .nav li.dropdown.active > .dropdown-toggle,
 .tb-megamenu .nav li.dropdown.open.active > .dropdown-toggle,
 .tb-megamenu .nav > li.dropdown.open.active > a:hover {
-  background-color: #white; 
+  background-color: #000; 
   border-color: #444;
   color: #eee;
 }
@@ -1404,7 +1404,7 @@
 .tb-megamenu .nav-collapse .dropdown-menu a {
     border-bottom: 1px solid #222;
 	border-right: none;	
-	color: #white;
+	color: #fff;
     text-shadow: none;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -1415,14 +1415,14 @@
   }
 .tb-megamenu .nav-collapse .nav > li > a:hover,
 .tb-megamenu .nav-collapse .nav > li > a:focus {
-    background-color: #white;
+    background-color: #000;
     background-image: none;
     filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-	color: #white;
+	color: #fff;
   }
 .tb-megamenu .nav-collapse .nav > li.active > a:hover,
 .tb-megamenu .nav-collapse .nav > li.active > a:focus {
-  background-color: #white;
+  background-color: #000;
 }
 .tb-megamenu .nav-collapse .dropdown-menu a {
     border-top: 1px solid #222;
@@ -1462,7 +1462,7 @@
     display: none;
   }
 .tb-megamenu .tb-block .block-title {
-  color: #white;
+  color: #fff;
 }
 }
 
