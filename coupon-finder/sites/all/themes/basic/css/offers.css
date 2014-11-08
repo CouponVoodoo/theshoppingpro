@@ -5,7 +5,7 @@
 #block-coupons-coupons_finder_taxonomy .form-text { padding: 5px; font-size: 16px}
 #block-coupons-coupons_finder_taxonomy .content .submit {float: right; margin-top: 1em; width: 26%; margin-bottom:1em;}
 
-.tb-megamenu {background: #878787;}
+.tb-megamenu {background: #878787!important;}
 
 .nav > li > a:hover,.tb-megamenu .dropdown-menu,.tb-megamenu .nav li.dropdown.open.active > .dropdown-toggle, .tb-megamenu .nav li.dropdown.open > .dropdown-toggle,.tb-megamenu .nav > .active > a:focus,.tb-megamenu .dropdown-menu .active > a,
 .tb-megamenu .dropdown-menu .active > a:hover,.tb-megamenu .nav-collapse,.tb-megamenu .nav-collapse .nav > li > a:hover,
