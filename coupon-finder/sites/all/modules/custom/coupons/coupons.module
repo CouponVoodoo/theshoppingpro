@@ -1667,6 +1667,11 @@ function coupons_views_pre_build(&$view) {
     $lastCheckTime = strtotime(date("j F Y"));
 	//$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value = $lastCheckTime;
   }
+  if($view->current_display == 'page' &&  $view->name == 'retailer_coupon_page' ) {
+    $lastCheckTime = strtotime(date("j F Y"));
+	dpq($view->build_info['query']);
+	//$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value = $lastCheckTime;
+  }
  
   if($view->current_display == 'block_4' &&  $view->name == 'apache_retailer_products' ) {
 	$nid = arg(1);
