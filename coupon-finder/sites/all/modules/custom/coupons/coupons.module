@@ -1658,12 +1658,6 @@ function coupons_views_pre_build(&$view) {
 */
 /* THIS POWERS SIMILAR PRODUCTS - LOWER CASE IS IMPORTANT*/
  
-  if($view->current_display == 'page' &&  $view->name == 'retailer_coupon_page' ) {
-    $lastCheckTime = strtotime(date("j F Y"));
-	var_dump($view);
-	//$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value = $lastCheckTime;
-	echo $lastCheckTime;
-  }
   
   if($view->current_display == 'page' &&  $view->name == 'category_coupon_page' ) {
     $lastCheckTime = strtotime(date("j F Y"));
