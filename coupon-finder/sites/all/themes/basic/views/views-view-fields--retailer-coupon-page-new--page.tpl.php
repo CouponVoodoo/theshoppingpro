@@ -1,5 +1,6 @@
+
 <?php
-echo 'hghgh';
+
 /**
  * @file
  * Default simple view template to all the fields as a row.
@@ -24,36 +25,30 @@ echo 'hghgh';
  * @ingroup views_templates
  */
 ?>
-<?php
-$current_domain = get_current_domain();
+<?php 
 			/* GETTING FIELD VALUES*/
 			$url_path = rawurlencode(drupal_get_path_alias());
-			echo ($url_path);
-			$nid = strip_tags($fields['nid']->content);
-			$retailer = strip_tags($fields['field_retailer']->content);
-			$offer_type = strip_tags($fields['field_offer_type']->content);
-			echo ($offer_type);
-			$coupon_title = strip_tags($fields['field_coupon_title']->content);
+			$nid = strip_tags(($fields['nid']->content));
+			//var_dump($fields['nid']);
+			$retailerName = strip_tags(($fields['field_retailer']->content));
+			$coupon_code = strip_tags(($fields['field_coupon_code']->content));
+			$coupon_code = str_replace(" ","_",$coupon_code);
+			$coupon_title = strip_tags(($fields['field_coupon_title']->content));
+			$title = strip_tags(($fields['field_coupon_title']->content));
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
- 			$node = node_load($nid);
-			// $affiliate_url = strip_tags($fields['field_affiliate_url']->content);
-			$affiliate_url = 'couponvoodoo.com';//$node->field_affiliate_url['und']['0']['value'];
-			// echo 'cuponation-title'.$node->field_cuponation_title['und']['0']['value'];
-			if ($current_domain == 'cuponation' && !empty($node->field_cuponation_title['und']['0']['value'])){
-				$title = $node->field_cuponation_title['und']['0']['value'];
-				$display = 1;
-			} else {
-				if( $current_domain == 'couponvoodoo'){
-					$title = $fields['title']->content;
-					$display = 1;
-				} else {
-					$display = 0;
-				}
-			}
+  //          $cat = strip_tags(($fields['field_category']->content));
+			//$cat=$view->get_title();
+			//$cat=str_replace('Coupons, Discounts, Offers & Deals','',$cat);
+			//$node = node_load($nid);
+			$rurl='http://www.couponvoodoo.com/r/'.str_replace('.','',$retailerName).'-coupons?f[0]=im_field_category%3A'.$cat;
+			//$Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 2 and ttd.name = :retailer_name', array(':retailer_name' => $retailerName));
+    //$Ruery = $Query->fetch();
+    //$retailerId = $Ruery->tid;
+	//$rurl="http://www.couponvoodoo.com/taxonomy/term/".$retailerId;
+			$affiliate_url = $node->field_baseurl_coupon['und']['0']['value'];//strip_tags(($fields['field_baseurl_coupon']->content));
+			global $base_url;
 			
-			
-	If ($display ==1) {
-
+						
 ?>
 
 
@@ -61,148 +56,65 @@ $current_domain = get_current_domain();
 	<div class="search_listing_left">
 		<?php
 
-			// $affiliate_url = 'http://track.in.omgpm.com/?AID=387355&MID=304697&PID=9170&CID=3697672&WID=43135&uid=homePage&r=http%3A%2F%2Fwww.jabong.com';
-			$status = strip_tags($fields['field_status']->content);
-			$weight = $fields['field_weight']->content;
-			if ($offer_type == 'Coupons') {
-				$coupon_code = strip_tags($fields['field_coupon_code']->content);
-			} else {
-				$coupon_code = 'Deal-Activated';
-			}
-			/* CREATING REDIRECT PAGE PATH*/
-			global $base_url;
-			if (!isset($_COOKIE['CV_User_GUID'])) {
+						
+		if (!isset($_COOKIE['CV_User_GUID'])) {
 				$CV_User_GUID = 'NOT_SET';
 			} Else {
 				$CV_User_GUID = $_COOKIE['CV_User_GUID'];		
 			}
 			$coupon_display_url=$base_url."/coupon-redirect?l=cp&nid=".$nid."&t=c&c=".rawurlencode($coupon_code)."&p=".$url_path."&s=".rawurlencode($affiliate_url);
-		?>
-			<h2><a rel='no follow' target='_blank'href='<?php print $coupon_display_url ?>' ><?php print $title; ?></a></h2>
-			<div > 
-			
-					
-			<?php 
-				if ($status == '2'){
-					echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><span>Guaranteed To Work</span></div>";
-				}else {
-						if (strtolower($retailer) == 'jabong.com' || strtolower($retailer) == 'myntra.com' || strtolower($retailer) == 'flipkart.com') {
-								if ($status == '1') {
-									echo "<div class='coupon_status_likely'><img src='".base_path().path_to_theme()."/images/thumbs_up.png' /><span>Likely to Work</span></a></div>";
-								} else {
-									echo "<div class='coupon_status_unlikely'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><span>Unlikely to Work</span></div>";
-								}
-						}
-				} 
-				?>
-			</div>
-			<div >Updated: <?php print $last_checked_time; ?></div>
-			<div >Offer Type: <?php print $offer_type; ?></div>
-	</div>
 
-	<div class="search_listing_right">
+		?>
+			<h2><a rel='no follow' target='_blank'href='<?php print $coupon_display_url ?>' ><?php print $retailerName." coupons : ".$title." @ ".$retailerName; ?></a></h2>
+			<div >
+
+
+
+<?php
+echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><span>Guaranteed To Work</span></div>"; ?>
+<div >Updated: <?php print $last_checked_time; ?></div>
+
+		
+	</div>
+	
+	</div>
+	<div class="coupon_page_search_listing_right">
 	
 		  <div class="search_listing_row__1 copy_coupon_row">
-			<?php $div_id='rcp_'.$nid ;?>
-			<a href="<?php print $coupon_display_url?>" target="_blank"  class="unlock_best_coupon unlock_coupon" id = <?php echo'rcp_'.$nid;?> rel="best_1" data-clipboard-text="<?php echo $coupon_code?>" >
-				  
-				 <?php if($offer_type == 'Coupons') {?>
-					<span class="copy_coupon">Copy Coupon</span><span></span>
-				<?php } else { ?>
-					<span class="copy_coupon">Activate Deal</span><span></span>
-				<?php }
-				?>
-			</a>
+			<?php $div_id='ccp_'.$nid ;?>
+<a href="<?php print $coupon_display_url;?>" onclick=window.open('<?php echo coupon_popup_product_url($coupon_code, $coupon_display_url); ?>')//;return true; class="unlock_best_coupon unlock_coupon" rel="best_<?php print $nid; ?>" data-clipboard-text="<?php echo $coupon_code?>" >
+			<span class="copy_coupon">Copy Coupon</span><span></span>
+			</a>	
+	
+			<div class="product-bottom" >
+	<div class="product-right-bottom" itemprop="description">
+
+
+
+<?php
+$retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
+if ($retailer['#type'] == 'link') {
+   print '<div class="field-content"><a href="'.$rurl.'" target="_blank">'.$retailerName. '</a></div>';
+   // print '<div class="field-content">' . l(t('More '.$retailer['#title']).' Coupons', $retailer['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
+}
+else {
+    print $fields['field_retailer']->content;
+}
+
+$category_check = 'Other';
+
+
+?>
+
 		  </div>
 	</div>
-
-	<?php 
-	$enable = 'no'; // category display enabled?
-	if ($current_domain == 'couponvoodoo' && $enable == 'yes') {
-		if (strtolower($retailer) == 'jabong.com' || strtolower($retailer) == 'myntra.com' || strtolower($retailer) == 'flipkart.com') {
-	?>
-
-			<div class="retailer_coupon_category_list">
-			<?php
-							
-						// echo "<div class='view_store_coupon_page'><a target='_blank' class='view_store_coupon_page' href='{$coupon_display_url}' >View Store</a></div>";
-						
-						$node = node_load($nid);
-						$field_collection = $node->field_category_links_multi;
-						if(!empty($field_collection)){ 
-					?> <div class="category_list_message">This coupon has been checked for the following categories @ <?php print $retailer; ?>. So what will you buy today?</div> 
-						
-					<?php
-					$men_categories = array();
-					$women_categories = array();
-						foreach ($node->field_category_links_multi['und'] as $oneRow) {
-							$row = field_collection_item_load($oneRow['value']);
-							$fc_affiliate_url = strip_tags(trim($row->field_link_affiliate_url_multi['und']['0']['value']));
-							$fc_category_id = $row->field_link_category_id_multi['und'][0][tid];
-							/*CONVERTING ID TO NAME */
-							$term = taxonomy_term_load($fc_category_id);
-							$term_name = $term->name;
-							$fc_coupon_display_url = $base_url."/coupon-redirect?t=c&l=cpc&nid=".$nid."&s=".rawurlencode($fc_affiliate_url)."&c=".rawurlencode($coupon_code);
-		//					$full_category_name = '';
-									$parent_terms = taxonomy_get_parents_all($fc_category_id);
-									foreach($parent_terms as $parent) {
-										$parent_parents = taxonomy_get_parents_all($parent->tid);
-		//							  	$full_category_name = $parent->name.' > '.$full_category_name;
-									  
-										  if ($parent_parents != false) {
-											//this is top parent term
-											$top_parent_term = $parent;
-											$top_parent_name = $top_parent_term->name;
-										  }
-									}
-									
-		//					echo $top_parent_name;
-							if (strtolower($top_parent_name) =='men'){
-								$men_categories_element = array (
-									"Term_Name" => $term_name,
-									"Term_URL" => $fc_coupon_display_url,
-									"Top_Parent_Name" => $top_parent_name
-								);
-		//						echo 'men';
-								array_push($men_categories,$men_categories_element);
-							} else {
-								if (strtolower($top_parent_name) =='women'){
-									$women_categories_element = array (
-										"Term_Name" => $term_name,
-										"Term_URL" => $fc_coupon_display_url,
-										"Top_Parent_Name" => $top_parent_name
-									);
-		//							echo 'women';
-									array_push($women_categories,$women_categories_element);
-								}
-							}
-						//var_dump ($men_categories);
-							}
-							?> <div class="category_list_header"> Men Products: </div><?php
-							foreach ($men_categories as $men){
-								$term_name = $men['Term_Name'];
-								$term_url = $men['Term_URL'];
-								$term_top_parent = $men['Top_Parent_Name'];
-								?>
-										<div class="category_link_button"><a rel='no follow' target='_blank'href='<?php print $term_url ?>' ><?php print $term_name ;?></a></div> 
-								<?php		
-							}
-							
-							?> <div class="category_list_header"> Women Products: </div><?php
-							foreach ($women_categories as $women){
-								$term_name = $women['Term_Name'];
-								$term_url = $women['Term_URL'];
-								$term_top_parent = $women['Top_Parent_Name'];
-								?>
-									<div class="category_link_button"><a rel='no follow' target='_blank'href='<?php print $term_url ?>' ><?php print $term_name ;?></a></div> 
-								<?php		
-							}
-						}							  
-					?>
-			</div>
-	<?php
-		}
+</div>
+</div>
+<?php
+if ($_GET['showpop'] == 1) {	
+?>
+		<div id="coupon_details_popup"><a href="<?php print coupon_popup_url($_GET['coupon_code'], $coupon_redirect_path); ?>" rel='lightframe[|width:600px; height:450px; scrolling: off;]' ></a></div>
+<?php
+		drupal_add_js ("jQuery(document).ready(function() { jQuery('#coupon_details_popup a').trigger('click'); });", array('type' => 'inline', 'scope' => 'footer'));
 	}
 	?>
-</div>
-<?php  }?>
