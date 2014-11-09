@@ -84,7 +84,7 @@ echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_them
 	</div>
 	
 	</div>
-	<div class="coupon_page_search_listing_right">
+	<div class="search_listing_right">
 	
 		  <div class="search_listing_row__1 copy_coupon_row">
 			<?php $div_id='rcp_'.$nid ;?>
