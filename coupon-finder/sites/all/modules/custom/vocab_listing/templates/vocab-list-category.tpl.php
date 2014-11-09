@@ -26,7 +26,7 @@ foreach ($terms as $term) {
 <?php
 $Curl="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
 $Pname = $term->name;
-$Pnamealias=str_replace('--','-',str_replace(' ','-',str_replace('&','',$term->name)));
+$Pnamealias=str_replace('--','-',str_replace(' ','-',str_replace('&','',trim($term->name))));
 if ($Pname!='Electronics') {
 $name= $Pname."'s".' Fashion';
 }
@@ -49,7 +49,7 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
 	//echo $term->name.'__'.$term->parents[0];
 	
 	if (!empty($mname[$term->parents[0]])){
-	  $MnameAlias=str_replace('--','-',str_replace(' ','-',str_replace('&','',$mname[$term->parents[0]])));
+	  $MnameAlias=str_replace('--','-',str_replace(' ','-',str_replace('&','',trim($mname[$term->parents[0]]))));
 	  }
 	  else $MnameAlias='';
 	  //echo $MnameAlias;
@@ -59,7 +59,7 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
   }
   
   
-  $alias=$Pnamealias.'-'.$MnameAlias.'-'.str_replace('--','-',str_replace(' ','-',str_replace(',','',str_replace('&','',$term->name))));
+  $alias=$Pnamealias.'-'.$MnameAlias.'-'.str_replace('--','-',str_replace(' ','-',str_replace(',','',str_replace('&','',trim($term->name)))));
   //echo $alias;
   //exit;
   $url="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
