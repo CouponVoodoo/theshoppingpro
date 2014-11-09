@@ -80,10 +80,10 @@ echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_them
 	</div>
 	<div class="coupon_page_search_listing_right">
 	
-		  <div class="search_listing_row__1 copy_coupon_row">
+		  <div style="margin-top:14px;" class="search_listing_row__1 copy_coupon_row">
 			<?php $div_id='rcp_'.$nid ;?>
 <a href="<?php print $coupon_display_url;?>" onclick=window.open('<?php echo coupon_popup_product_url($coupon_code, $coupon_display_url); ?>')//;return true; class="unlock_best_coupon unlock_coupon" rel="best_<?php print $nid; ?>" data-clipboard-text="<?php echo $coupon_code?>" >
-			<span style="margin-top:14px;" class="copy_coupon">Copy Coupon</span><span></span>
+			<span class="copy_coupon">Copy Coupon</span><span></span>
 			</a>	
 	
 			<div class="product-bottom" >
