@@ -108,7 +108,7 @@ echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_them
 <?php
 $retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
 if ($retailer['#type'] == 'link') {
-   print '<div class="field-content"><a href="'.$rurl.'" target="_blank">'.$retailerName. '</a></div>';
+   print '<div class="field-content"><a href="'.$rurl.'" target="_blank">'.'Discounted '.$retailerName. ' Products</a></div>';
    // print '<div class="field-content">' . l(t('More '.$retailer['#title']).' Coupons', $retailer['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
 }
 else {
