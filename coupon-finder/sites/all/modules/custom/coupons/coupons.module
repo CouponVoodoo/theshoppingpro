@@ -2557,15 +2557,15 @@ function coupons_finder_form_for_taxonomy_submit($form, &$form_state) {
       break;
     case 3://Categories
 	  $alias= drupal_lookup_path('alias',$result->tid) ;
-	  $name=str_replace('-coupons',explode('/',$alias));
+	  $name=explode('/',$alias);
 	  
-      drupal_goto('ccp/'.$name[1].'/coupons-offers');      
+      drupal_goto('ccp/'.trim(str_replace('-coupons','',$name[1])).'/coupons-offers');      
       break;
     case 4://Brand
 	$alias= drupal_lookup_path('alias',$result->tid) ;
-	  $name=str_replace('-coupons',explode('/',$alias));
+	  $name=explode('/',$alias);
 	  
-      drupal_goto('bcp/'.$name[1].'/coupons-offers');      
+      drupal_goto('bcp/'.trim(str_replace('-coupons','',$name[1])).'/coupons-offers');      
       break;
   }
 }
