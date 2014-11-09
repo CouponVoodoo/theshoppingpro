@@ -64,7 +64,7 @@ echo '<div class="m-cpn"><p class="ofr-descp">'.$cname.'</p> </div>';
   //exit;
   $url="http://plugin.theshoppingpro.com/banners/men-fashion/".$term->tid.".png";
 ?><div class="imges"> <img src=<?php print $url;?> alt=<?php print $term->name .'coupons, offers & deals';?> >
-  <div class="vocab-list-term"><?php echo l($term->name, 'ccp/'.str_replace('--','-',$alias).'/coupons-offers', array('query' => array('field_offer_type_tid' => 'All'))); ?>
+  <div class="vocab-list-term"><?php echo l($term->name, 'ccp/'.trim(str_replace('--','-',$alias)).'/coupons-offers', array('query' => array('field_offer_type_tid' => 'All'))); ?>
   </div>
   </div>
 <?php

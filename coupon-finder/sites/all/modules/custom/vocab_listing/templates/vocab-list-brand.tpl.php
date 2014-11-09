@@ -8,7 +8,7 @@ $result = db_query('SELECT Brand,BrandId from coupon_finder.BrandCoupons where b
 foreach ($result as $record) {
 $brandId=  $record->BrandId; 
 $brand=  $record->Brand;
-$alias=str_replace('--','-',str_replace('&','',str_replace(' ','-',$brand)));
+$alias=trim(str_replace('--','-',str_replace('&','',str_replace(' ','-',$brand))));
   
   $img = 'http://plugin.theshoppingpro.com/banners/brandLogo/'.$brandId.'.jpg';
 ?>
