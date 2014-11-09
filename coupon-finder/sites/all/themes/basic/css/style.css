@@ -803,6 +803,7 @@ img.dollor { left: -225px; position: relative; top: -80px; z-index: 0;}
 .product-right .coupon_code, .product-right .coupon_code1 {z-index: 0}
 div.view-id-product_info .search_listing_right .unlock_coupon {z-index: 0}
 .coupon_page_search_listing_right .copy_coupon_row a{z-index: 0}
+.search_listing_row__1 copy_coupon_row a{z-index: 0}
 div.view-id-product_info .coupon_page_search_listing_right .unlock_coupon {z-index: 0}
 .view-id-retailer_coupon_page .brand_coupon_page_row .unlock_best_coupon {z-index: 0}
 .view-id-retailer_coupon_page .retailer_coupon_page_row .unlock_best_coupon {z-index: 0}
