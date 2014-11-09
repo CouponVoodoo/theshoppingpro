@@ -36,11 +36,16 @@
 			$coupon_title = strip_tags(($fields['field_coupon_title']->content));
 			$title = strip_tags(($fields['field_coupon_title']->content));
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
+			if ($offer_type == 'Coupons') {
+				$coupon_code = strip_tags($fields['field_coupon_code']->content);
+			} else {
+				$coupon_code = 'Deal-Activated';
+			}
   //          $cat = strip_tags(($fields['field_category']->content));
 			//$cat=$view->get_title();
 			//$cat=str_replace('Coupons, Discounts, Offers & Deals','',$cat);
 			//$node = node_load($nid);
-			$rurl='http://www.couponvoodoo.com/r/'.str_replace('.','',$retailerName).'-coupons?f[0]=im_field_category%3A'.$cat;
+			$rurl='http://www.couponvoodoo.com/r/'.str_replace('.','',$retailerName).'-coupons
 			//$Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 2 and ttd.name = :retailer_name', array(':retailer_name' => $retailerName));
     //$Ruery = $Query->fetch();
     //$retailerId = $Ruery->tid;
@@ -84,6 +89,12 @@ echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_them
 			<?php $div_id='rcp_'.$nid ;?>
 <a href="<?php print $coupon_display_url;?>" onclick=window.open('<?php echo coupon_popup_product_url($coupon_code, $coupon_display_url); ?>')//;return true; class="unlock_best_coupon unlock_coupon" rel="best_<?php print $nid; ?>" data-clipboard-text="<?php echo $coupon_code?>" >
 			<span class="copy_coupon">Copy Coupon</span><span></span>
+			<?php if($offer_type == 'Coupons') {?>
+					<span class="copy_coupon">Copy Coupon</span><span></span>
+				<?php } else { ?>
+					<span class="copy_coupon">Activate Deal</span><span></span>
+				<?php }
+				?>
 			</a>	
 	
 			<div class="product-bottom" >
