@@ -40,14 +40,19 @@
 			//$cat=$view->get_title();
 			//$cat=str_replace('Coupons, Discounts, Offers & Deals','',$cat);
 			//$node = node_load($nid);
-			$rurl='http://www.couponvoodoo.com/r/'.str_replace('.','',$retailerName).'-coupons
+			$rurl='http://www.couponvoodoo.com/r/'.str_replace('.','',$retailerName).'-coupons?f[0]=im_field_category%3A'.$cat;
 			//$Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 2 and ttd.name = :retailer_name', array(':retailer_name' => $retailerName));
     //$Ruery = $Query->fetch();
     //$retailerId = $Ruery->tid;
 	//$rurl="http://www.couponvoodoo.com/taxonomy/term/".$retailerId;
 			$affiliate_url = $node->field_baseurl_coupon['und']['0']['value'];//strip_tags(($fields['field_baseurl_coupon']->content));
 			global $base_url;
-			
+					$offer_type = strip_tags($fields['field_offer_type']->content);
+if ($offer_type == 'Coupons') {
+				$coupon_code = strip_tags($fields['field_coupon_code']->content);
+			} else {
+				$coupon_code = 'Deal-Activated';
+			}			
 						
 ?>
 
@@ -73,6 +78,7 @@
 <?php
 echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><span>Guaranteed To Work</span></div>"; ?>
 <div >Updated: <?php print $last_checked_time; ?></div>
+<div >Offer Type: <?php print $offer_type; ?></div>
 
 		
 	</div>
@@ -83,10 +89,18 @@ echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_them
 		  <div style="margin-top:14px;" class="search_listing_row__1 copy_coupon_row">
 			<?php $div_id='rcp_'.$nid ;?>
 <a href="<?php print $coupon_display_url;?>" onclick=window.open('<?php echo coupon_popup_product_url($coupon_code, $coupon_display_url); ?>')//;return true; class="unlock_best_coupon unlock_coupon" rel="best_<?php print $nid; ?>" data-clipboard-text="<?php echo $coupon_code?>" >
-			<span class="copy_coupon">Copy Coupon</span><span></span>
+				 <?php if($offer_type == 'Coupons') {?>
+					<span class="copy_coupon">Copy Coupon</span><span></span>
+				<?php } else { ?>
+					<span class="copy_coupon">Activate Deal</span><span></span>
+				<?php }
+				?>
+			
+			
 			</a>	
 	
 			<div class="product-bottom" >
+			
 	<div class="product-right-bottom" itemprop="description">
 
 
