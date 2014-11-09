@@ -2553,13 +2553,19 @@ function coupons_finder_form_for_taxonomy_submit($form, &$form_state) {
   }
   switch($result->vid) {
     case 2://Retailer
-      drupal_goto('rcp/'.$result->name.'/coupons-offers');
+      drupal_goto('rcp/'.trim($result->name).'/coupons-offers');
       break;
     case 3://Categories
-      drupal_goto('ccp/'.$result->tid.'/coupons-offers');      
+	  $alias= drupal_lookup_path('alias',$result->tid) ;
+	  $name=str_replace('-coupons',explode('/',$alias));
+	  
+      drupal_goto('ccp/'.$name[1].'/coupons-offers');      
       break;
     case 4://Brand
-      drupal_goto('bcp/'.$result->tid.'/coupons-offers');
+	$alias= drupal_lookup_path('alias',$result->tid) ;
+	  $name=str_replace('-coupons',explode('/',$alias));
+	  
+      drupal_goto('bcp/'.$name[1].'/coupons-offers');      
       break;
   }
 }
