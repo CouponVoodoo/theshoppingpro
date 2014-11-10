@@ -684,10 +684,42 @@ function get_domain($url)
 
 
 function coupons_finder_form_submit($form, &$form_state) {
+if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com') {
+$keyword = $form_state['values']['title'];
+  $result = db_query("SELECT * FROM {taxonomy_term_data} ttd WHERE vid = 2 AND name LIKE :keyword ORDER BY name, tid LIMIT 1", array(':keyword' => $keyword . '%'))->fetch();
+  if (!$result->vid) {
+    $result = db_query("SELECT * FROM {taxonomy_term_data} ttd WHERE vid = 3 AND name LIKE :keyword ORDER BY name, tid LIMIT 1", array(':keyword' => $keyword . '%'))->fetch();
+  }
+  if (!$result->vid) {
+    $result = db_query("SELECT * FROM {taxonomy_term_data} ttd WHERE vid = 4 AND name LIKE :keyword ORDER BY name, tid LIMIT 1", array(':keyword' => $keyword . '%'))->fetch();
+  }
+  if (!$result->vid || $keyword='' || empty($keyword)) {
+  drupal_goto('http://offers.couponvoodoo.com/content/no-results-found');
+  }
+  switch($result->vid) {
+    case 2://Retailer
+      drupal_goto('rcp/'.trim($result->name).'/coupons-offers');
+      break;
+    case 3://Categories
+	  $alias= drupal_lookup_path('alias','taxonomy/term/'.$result->tid) ;
+	  $name=explode('/',$alias);
+	  
+      drupal_goto('ccp/'.trim(str_replace('-coupons','',$name[1])).'/coupons-offers');      
+      break;
+    case 4://Brand
+	$alias= drupal_lookup_path('alias','taxonomy/term/'.$result->tid) ;
+	  $name=explode('/',$alias);
+	  
+      drupal_goto('bcp/'.trim(str_replace('-coupons','',$name[1])).'/coupons-offers');      
+      break;
+  }
+  }
+  else {
   $redirect = 'coupon-result/' . rawurlencode($form_state['values']['url']);
   $form_state['redirect'] = $redirect;
   if ($form_state['ajax']) {
     $form_state['ajax_commands'][] = ctools_ajax_command_redirect($redirect);
+  }
   }
 }
 
