@@ -1665,9 +1665,9 @@ function coupons_views_pre_build(&$view) {
     $lastCheckTime = strtotime(date("j F Y"));
 	
 	//var_dump($lastCheckTime);
-	//var_dump($view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value);
+	var_dump($view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value);
 	$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value = (string)$lastCheckTime;
-	//var_dump($view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value); 
+	var_dump($view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value); 
   }
   if($view->current_display == 'page' &&  $view->name == 'brand_coupon_page' ) {
     $lastCheckTime = strtotime(date("j F Y"));
