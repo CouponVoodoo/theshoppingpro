@@ -1663,17 +1663,17 @@ function coupons_views_pre_build(&$view) {
   
   if($view->current_display == 'page' &&  $view->name == 'category_coupon_page' ) {
     $lastCheckTime = strtotime(date("j F Y"));
-	var_dump($lastCheckTime);
-	$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value = $lastCheckTime;
+	//var_dump($lastCheckTime);
+	//$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value = $lastCheckTime;
   }
   if($view->current_display == 'page' &&  $view->name == 'brand_coupon_page' ) {
     $lastCheckTime = strtotime(date("j F Y"));
-	$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value = $lastCheckTime;
+	//$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value = $lastCheckTime;
   }
   if($view->current_display == 'page' &&  $view->name == 'retailer_coupon_page' ) {
     $lastCheckTime = strtotime(date("j F Y"));
 	//dpq($view->build_info['query']);
-	$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value = $lastCheckTime;
+	//$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value = $lastCheckTime;
   }
  
   if($view->current_display == 'block_4' &&  $view->name == 'apache_retailer_products' ) {
