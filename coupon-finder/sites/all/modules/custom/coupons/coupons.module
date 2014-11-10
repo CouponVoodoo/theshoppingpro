@@ -442,9 +442,12 @@ function coupons_theme() {
 
 function coupons_finder_form($form, &$form_state, $small = true) {
   global $base_url, $logo, $base_path;
-  /*if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com') {
-    return array();
-  }*/
+  if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com') {
+   $placeholder=array('class' => array('apachesolr-autocomplete','unprocessed'), 'placeholder' => t('Brand, Category or Retailer'));
+  }
+  else {
+  $placeholder=array('class' => array('apachesolr-autocomplete','unprocessed'), 'placeholder' => t('Product Name, Brand or URL'));
+  }
   $current_domain = get_current_domain();
   // Load the modal library and add the modal javascript.
   ctools_include('modal');
@@ -468,7 +471,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
         '#title' => t('Got it? Try it Out'),
         '#type' => 'textfield',
         '#size' => 70,
-        '#attributes' => array('class' => array('apachesolr-autocomplete', 'unprocessed'), 'placeholder' => t('Enter a search term or a product url')),
+        '#attributes' => $placeholder,
         '#maxlength' => 255,
     );
 
