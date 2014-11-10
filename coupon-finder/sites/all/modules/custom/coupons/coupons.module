@@ -490,7 +490,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
       '#title' => t('Try Another Product'),
       '#type' => 'textfield',
       '#size' => 100,
-      '#attributes' => array('class' => array('apachesolr-autocomplete','unprocessed'), 'placeholder' => t('Product Name, Brand or URL')),
+      '#attributes' => $placeholder,
       '#maxlength' => 255,
   );
 
