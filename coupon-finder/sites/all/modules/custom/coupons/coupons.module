@@ -2562,7 +2562,7 @@ function coupons_finder_form_for_taxonomy_submit($form, &$form_state) {
       drupal_goto('ccp/'.$alias.'/coupons-offers');      
       break;
     case 4://Brand
-	$alias= drupal_lookup_path('alias',$result->tid) ;
+	$alias= drupal_lookup_path('alias','taxonomy/term/'.$result->tid) ;
 	  $name=explode('/',$alias);
 	  
       drupal_goto('bcp/'.trim(str_replace('-coupons','',$name[1])).'/coupons-offers');      
