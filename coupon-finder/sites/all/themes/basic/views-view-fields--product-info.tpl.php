@@ -470,20 +470,20 @@ if ($current_domain != 'cuponation'){
 		$result = $query->execute();		
 		$nids = array_keys($result['node']);
 		$retailer_coupon = node_load($nids[0]);
-		$cuponation_title = $retailer_coupon->field_cuponation_title['und']['0']['value'];*/
+		$cuponation_title = $retailer_coupon->field_cuponation_title['und']['0']['value'];
 		//$cuponation_title=$best_coupon_description;
 		if (!empty($result['node']) && !empty($cuponation_title)) {
 			//echo $cuponation_title;
 			if ($CouponStatus == 2) {
-		  echo $cuponation_title ." (See coupon description to meet the minimum purchase criteria)";
+		  echo "Super Saver: ".$cuponation_title ." (See coupon description to meet the minimum purchase criteria)";
 		  }
-		  else {echo $cuponation_title;}
+		  else {echo "Super Saver: ".$cuponation_title;}
 			
 		} else {
 		if ($CouponStatus == 2) {
-		  echo 'Super Saver '.$best_coupon_description ." (See coupon description to meet the minimum purchase criteria)";
+		  echo "Super Saver: ".$best_coupon_description ." (See coupon description to meet the minimum purchase criteria)";
 		  }
-		  else {echo 'Super Saver '.$best_coupon_description;}
+		  else {echo "Super Saver: ".$best_coupon_description;}
 			// print ($fields['field_best_coupon_description']->content); 
 			
 		}	
