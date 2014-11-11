@@ -481,9 +481,9 @@ if ($current_domain != 'cuponation'){
 			
 		} else {
 		if ($CouponStatus == 2) {
-		  echo 'Sale:'.$best_coupon_description ." (See coupon description to meet the minimum purchase criteria)";
+		  echo 'Super Saver '.$best_coupon_description ." (See coupon description to meet the minimum purchase criteria)";
 		  }
-		  else {echo $best_coupon_description;}
+		  else {echo 'Super Saver '.$best_coupon_description;}
 			// print ($fields['field_best_coupon_description']->content); 
 			
 		}	
