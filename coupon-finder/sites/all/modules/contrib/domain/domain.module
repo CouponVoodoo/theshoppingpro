@@ -1907,7 +1907,7 @@ function domain_get_path_match($path) {
 function domain_get_node_domains($nodes) {
   $lookup = &drupal_static(__FUNCTION__, array());
   // Ensure we form our data properly.
-  
+  /*
   foreach ($nodes as $node) {
   
   if (sizeof($nodes)==1){
@@ -1962,7 +1962,7 @@ function domain_get_node_domains($nodes) {
   
   }
   }
-  }
+  }*/
   if (!is_array($nodes)) {
     $node_ids[$nodes] = $nodes;
     $array = FALSE;
