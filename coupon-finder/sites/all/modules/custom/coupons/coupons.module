@@ -2,6 +2,8 @@
 //http://plugin.theshoppingpro.com/CouponAutoWebPhase2.php?q=http://shopping.indiatimes.com/fashion/dresses/styletoss-black-plain-women-dress-1538/10846/p_B1863455
 //java -jar start.jar
 //http://54.243.150.171/CouponAutoWebPhase2.php?q=http://www.jabong.com/Puma-917-Mid-20-Ind-Blue-Sneakers-362539.html
+
+
 //http://54.243.150.171/CouponAutoWebPhase2.php?q=http://www.jabong.com/z-collection-Blue-Belly-Shoes-368804.html
 //http://54.243.150.171/CouponAutoWebPhase2.php?q=www.jabong.com/people-Grey-Melange-Graphic-T-Shirt-362304.html
 //http://54.243.150.171/CouponAutoWebPhase2.php?q=http://www.jabong.com/people-Ruffle-Sleeve-Off-White-Printed-Top-362324.html
@@ -441,7 +443,10 @@ function coupons_theme() {
 function coupons_finder_form($form, &$form_state, $small = true) {
   global $base_url, $logo, $base_path;
   if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com') {
-    return array();
+   $placeholder=array('class' => array('apachesolr-autocomplete','unprocessed'), 'placeholder' => t('Brand, Category or Retailer'));
+  }
+  else {
+  $placeholder=array('class' => array('apachesolr-autocomplete','unprocessed'), 'placeholder' => t('Product Name, Brand or URL'));
   }
   $current_domain = get_current_domain();
   // Load the modal library and add the modal javascript.
@@ -466,7 +471,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
         '#title' => t('Got it? Try it Out'),
         '#type' => 'textfield',
         '#size' => 70,
-        '#attributes' => array('class' => array('apachesolr-autocomplete', 'unprocessed'), 'placeholder' => t('Enter a search term or a product url')),
+        '#attributes' => $placeholder,
         '#maxlength' => 255,
     );
 
@@ -485,7 +490,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
       '#title' => t('Try Another Product'),
       '#type' => 'textfield',
       '#size' => 100,
-      '#attributes' => array('class' => array('apachesolr-autocomplete','unprocessed'), 'placeholder' => t('Product Name, Brand or URL')),
+      '#attributes' => $placeholder,
       '#maxlength' => 255,
   );
 
@@ -497,16 +502,6 @@ function coupons_finder_form($form, &$form_state, $small = true) {
       
 	  
   );
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 
   
   if ($small) {
@@ -1375,7 +1370,7 @@ $product_node = node_load($nid);
     $coupons = array();  
     foreach ($jsonArray as $key => $value) {	//url replaced by sanjay
       if (is_object($value)) {
-        if ($value->Successful =="1") {
+        if ($value->Successful =="1") { 
           $is_success = false;
         }
         $i++;
@@ -1657,7 +1652,26 @@ function coupons_views_pre_build(&$view) {
   }
 */
 /* THIS POWERS SIMILAR PRODUCTS - LOWER CASE IS IMPORTANT*/
-
+ 
+  
+  if($view->current_display == 'page' &&  $view->name == 'category_coupon_page' ) {
+    $lastCheckTime = strtotime(date("j F Y"))-(16*3600);
+	
+	//var_dump($lastCheckTime);
+	//var_dump($view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value);
+	$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value['value'] = (string)$lastCheckTime;
+//	var_dump($view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value); 
+  }
+  if($view->current_display == 'page' &&  $view->name == 'brand_coupon_page' ) {
+      $lastCheckTime = strtotime(date("j F Y"))-(16*3600);
+	$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value = (string)$lastCheckTime;
+  }
+  if($view->current_display == 'page' &&  $view->name == 'retailer_coupon_page' ) {
+     $lastCheckTime = strtotime(date("j F Y"))-(16*3600);
+	//dpq($view->build_info['query']);
+	$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value = (string)$lastCheckTime;
+  }
+ 
   if($view->current_display == 'block_4' &&  $view->name == 'apache_retailer_products' ) {
 	$nid = arg(1);
 	$node = node_load($nid);
@@ -1790,8 +1804,11 @@ function get_current_domain(){
 	global $base_url;
 	if (stripos($base_url,'cuponation') != false){
 		return 'cuponation';
-	} else {
-		return 'couponvoodoo';
+	} else if (stripos($base_url,'offers.couponvoodoo') != false){
+		return 'offers';
+	}
+	else {
+	return 'couponvoodoo';
 	}
 }
 
@@ -2535,13 +2552,19 @@ function coupons_finder_form_for_taxonomy_submit($form, &$form_state) {
   }
   switch($result->vid) {
     case 2://Retailer
-      drupal_goto('rcp/'.$result->name.'/coupons-offers');
+      drupal_goto('rcp/'.trim($result->name).'/coupons-offers');
       break;
     case 3://Categories
-      drupal_goto('ccp/'.$result->tid.'/coupons-offers');      
+	  $alias= drupal_lookup_path('alias','taxonomy/term/'.$result->tid) ;
+	  $name=explode('/',$alias);
+	  
+      drupal_goto('ccp/'.trim(str_replace('-coupons','',$name[1])).'/coupons-offers');      
       break;
     case 4://Brand
-      drupal_goto('bcp/'.$result->tid.'/coupons-offers');
+	$alias= drupal_lookup_path('alias','taxonomy/term/'.$result->tid) ;
+	  $name=explode('/',$alias);
+	  
+      drupal_goto('bcp/'.trim(str_replace('-coupons','',$name[1])).'/coupons-offers');      
       break;
   }
 }
