@@ -502,15 +502,6 @@ function coupons_finder_form($form, &$form_state, $small = true) {
 
   
   
-  
-  
-  
-  
-  
-  
-  
-
-  
   if ($small) {
     // $form['url']['#suffix'] = '<div class="whatisthis"><a href="http://www.couponvoodoo.com/content/whats-product-url" target="_blank">Whats this?</a></div>';
     
@@ -569,6 +560,7 @@ function coupons_validate_url($url) {
 }
 
 function coupons_finder_form_validate($form, &$form_state) {
+echo 'validate';
 	$urlStatus = coupons_validate_url( $form_state['values']['url'] );
     /* adding variables to push tp GA event on page load */    
 	$_SESSION['CvGa']['url'] = $form_state['values']['url'];
