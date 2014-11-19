@@ -1725,9 +1725,9 @@ $term = taxonomy_term_load($catId);
 $name = $term->name;
 
 //$term = taxonomy_get_term($catId);
-var_dump($catId);
+var_dump($name);
 $title = 'Working Coupons for '.$name;
-	$view->set_title($title);
+	$view->build_info['title'] = $title;;
 	
 	//var_dump($view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value);
 	$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value['value'] = (string)$lastCheckTime;
