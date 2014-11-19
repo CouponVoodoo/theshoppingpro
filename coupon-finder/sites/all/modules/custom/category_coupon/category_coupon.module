@@ -232,7 +232,7 @@ echo $couponCode;
     		 
 		node_save($node);
 		echo 'node saved';
-		exit;
+		//exit;
     }
 echo 'No node to process';
 
