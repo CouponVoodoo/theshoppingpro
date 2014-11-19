@@ -1714,13 +1714,17 @@ function coupons_views_pre_build(&$view) {
  if($view->current_display == 'block_1' &&  $view->name == 'category_coupon_page' ) {
     $lastCheckTime = strtotime(date("j F Y"))-(16*3600);
 	$nid = arg(1);
-	var_dump($view->get_title());
+	
 	
 	$result = db_query('SELECT n.field_category_tid FROM {field_data_field_category} n where n.entity_id=:nid', array(':nid' => $nid));
 // Result is returned as a iterable object that returns a stdClass object on each iteration
 foreach ($result as $record) {
 $catId=$record->field_category_tid;
 }
+$term = taxonomy_get_term($catId);
+$title = 'Working Coupons for '.$term;
+	$view->set_title($title);
+	
 	//var_dump($view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value);
 	$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value['value'] = (string)$lastCheckTime;
 	$view->display_handler->handlers['filter']['field_category_tid']->value[0] = $catId;
