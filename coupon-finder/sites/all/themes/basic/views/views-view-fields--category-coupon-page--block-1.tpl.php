@@ -25,7 +25,7 @@
  */
 ?>
 
-<h4> <a id="Category_Coupons"><?php echo get_label('Results For All Coupons Of This Product');?></a></h4>
+<h4> <a id="Category_Coupons"><?php var_dump($row);?></a></h4>
 	<ul id="coupon_search_listing" class="custom-coupon_search_listing"><li id="search_listing_li_row_1" class="search_listing_row_li first">
 	<?php
 	var_dump($row);
