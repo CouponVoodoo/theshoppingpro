@@ -690,7 +690,7 @@ function get_domain($url)
 
 function coupons_finder_form_submit($form, &$form_state) {
 if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com') {
-   $keyword = $form_state['values']['title'];
+   $keyword = $form_state['values']['url'];
   $result = db_query("SELECT * FROM {taxonomy_term_data} ttd WHERE vid = 2 AND name LIKE :keyword ORDER BY name, tid LIMIT 1", array(':keyword' => $keyword . '%'))->fetch();
   if (!$result->vid) {
     $result = db_query("SELECT * FROM {taxonomy_term_data} ttd WHERE vid = 3 AND name LIKE :keyword ORDER BY name, tid LIMIT 1", array(':keyword' => $keyword . '%'))->fetch();
