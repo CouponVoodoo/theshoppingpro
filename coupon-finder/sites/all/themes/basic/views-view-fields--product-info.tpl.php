@@ -506,7 +506,7 @@ if ($current_domain != 'cuponation'){
 <?php } else { ?>
 <div class='blue_button'><a href="<?php echo 'http://offers.couponvoodoo.com/rcp/'.str_replace(" ", "-", $retailer).'/coupons-offers';?>" class='d_view_store'><?php echo get_label('View All Coupons For ').$retailer;?></a></div>
 <div class='blue_button'><a href="<?php 
-$alias= drupal_lookup_path('alias', 'taxonomy/term/'.$node->field_category['und'][0]['tid'];
+$alias= drupal_lookup_path('alias', 'taxonomy/term/'.$node->field_category['und'][0]['tid']);
 $termArr=explode('/',$alias);
 $term=trim(str_replace("-coupons",$termArr));
 echo 'http://offers.couponvoodoo.com/rcp/'.$term.'/coupons-offers';?>" class='d_view_store'><?php echo get_label('View All Coupons For ').strip_tags($fields['field_category']->content);?></a></div>
