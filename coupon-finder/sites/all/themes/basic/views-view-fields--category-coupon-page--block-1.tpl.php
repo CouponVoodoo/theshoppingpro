@@ -23,7 +23,89 @@
  *
  * @ingroup views_templates
  */
+ $url_path = rawurlencode(drupal_get_path_alias());
+			$nid = strip_tags(($fields['nid']->content));
+			//var_dump($fields['nid']);
+			$retailerName = strip_tags(($fields['field_retailer']->content));
+			$coupon_code = strip_tags(($fields['field_coupon_code']->content));
+			$coupon_code = str_replace(" ","_",$coupon_code);
+			$coupon_title = strip_tags(($fields['field_coupon_title']->content));
+			$title = strip_tags(($fields['field_coupon_title']->content));
+			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
+            $cat = strip_tags(($fields['field_category']->content));
+			//$cat=$view->get_title();
+			//$cat=str_replace('Coupons, Discounts, Offers & Deals','',$cat);
+			//$node = node_load($nid);
+			$rurl='http://www.couponvoodoo.com/r/'.str_replace('.','',$retailerName).'-coupons?f[0]=im_field_category%3A'.$cat;
+			//$Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 2 and ttd.name = :retailer_name', array(':retailer_name' => $retailerName));
+    //$Ruery = $Query->fetch();
+    //$retailerId = $Ruery->tid;
+	//$rurl="http://www.couponvoodoo.com/taxonomy/term/".$retailerId;
+			$affiliate_url = $node->field_baseurl_coupon['und']['0']['value'];//strip_tags(($fields['field_baseurl_coupon']->content));
+			global $base_url;
+			
+			
 ?>
+<h4> <a id="All_Coupons"><?php echo get_label('Results For All Coupons Of This Product');?></a></h4>
+		<div >
+
+
+
+<?php
+
+echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_theme()."/images/u67_normal.png' /><span>Guaranteed To Work</span></div>"; ?>
+<div >Updated: <?php print $last_checked_time; ?></div>
+
+		
+	</div>
+	
+	</div>
+	<div class="coupon_page_search_listing_right">
+	
+		  <div class="search_listing_row__1 copy_coupon_row">
+			<?php $div_id='ccp_'.$nid ;?>
+<a href="<?php print $coupon_display_url;?>" onclick=window.open('<?php echo coupon_popup_product_url($coupon_code, $coupon_display_url); ?>')//;return true; class="unlock_best_coupon unlock_coupon" rel="best_<?php print $nid; ?>" data-clipboard-text="<?php echo $coupon_code?>" >
+			<span class="copy_coupon">Copy Coupon</span><span></span>
+			</a>	
+	
+			<div class="product-bottom" >
+	<div class="product-right-bottom" itemprop="description">
+
+
+
+<?php
+$retailer = $fields['field_retailer']->handler->view->result[0]->field_field_retailer[0]['rendered'];
+if ($retailer['#type'] == 'link') {
+   print '<div class="field-content"><a href="'.$rurl.'" target="_blank">'.$retailerName. '</a></div>';
+   // print '<div class="field-content">' . l(t('More '.$retailer['#title']).' Coupons', $retailer['#href'], array('attributes' => array('target' => '_blank'))) . '</div>';
+}
+else {
+    print $fields['field_retailer']->content;
+}
+
+$category_check = strip_tags($fields['field_category']->content);
+
+if ($category_check != 'Other') {
+	$category = $fields['field_category']->handler->view->result[0]->field_field_category[0]['rendered'];
+	if ($category['#type'] == 'link') {
+	// echo " | <div class='category_meta' itemscope itemtype='http://schema.org/offer'><meta  itemprop='category' content='".$fields['field_category']->content."' /></div>";
+	//$aliasPath=drupal_lookup_path example('source',
+	$curl='c/'.arg(1).'-coupons';
+	print ' | <div class="field-content">' . l(t($category['#title']), 'http://www.couponvoodoo.com/'.$curl, array('attributes' => array('target' => '_blank'))) . '</div>';
+	}
+	else {
+	// echo " | <div class='category_meta' itemscope itemtype='http://schema.org/offer'><meta  itemprop='category' content='".$fields['field_category']->content."' /></div>";
+	print " | ".$fields['field_category']->content;
+	}
+}
+
+?>
+
+		  </div>
+	</div>
+</div>
+</div>
+
 
 <h4> <a id="Category_Coupons"><?php var_dump($row);?></a></h4>
 	<ul id="coupon_search_listing" class="custom-coupon_search_listing"><li id="search_listing_li_row_1" class="search_listing_row_li first">
