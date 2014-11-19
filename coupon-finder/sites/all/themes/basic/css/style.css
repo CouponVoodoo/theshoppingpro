@@ -1353,7 +1353,7 @@ border: 1px solid #d7d7d7;
 margin-bottom: 15px;
 display: table;
 width: 100%;
-padding: 20px;
+padding: 10px;
 }
 .brand_coupon_page_row {
 list-style: none;
@@ -1368,7 +1368,7 @@ padding: 0px;
 	text-align: justify;
 	color: #666666;
 }
-
+.view-content .item-list ul li {margin: 0 0 0.25em 0;padding: 0;list-style:none;}
 .page-rcp h1{display: none}
 .page-rcp .field-label{display: none}
 .page-rcp .field-items{text-align: justify, color: #999999}
