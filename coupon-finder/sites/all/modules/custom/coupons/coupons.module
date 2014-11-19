@@ -1721,8 +1721,8 @@ function coupons_views_pre_build(&$view) {
 foreach ($result as $record) {
 $catId=$record->field_category_tid;
 }
-$term = taxonomy_get_term($catId);
-var_dump($term);
+//$term = taxonomy_get_term($catId);
+var_dump($catId);
 //$title = 'Working Coupons for '.$term;
 	//$view->set_title($title);
 	
