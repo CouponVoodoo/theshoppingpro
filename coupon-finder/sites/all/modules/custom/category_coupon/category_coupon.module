@@ -201,13 +201,14 @@ echo $couponCode;
 			echo $couponCode;
 			var_dump($nids[0]);
 			$node = node_load($nids[0]);
-			node_delete_multiple($nids);
+			/*node_delete_multiple($nids);
 			$node = new stdClass();
 			echo 'inside new';	
 echo $couponCode;			
 	        $node->language = 'und';
 			$node->type     = 'category_coupon';
 			$node->uid      = 1; 
+			*/
 			
 		}
 		
