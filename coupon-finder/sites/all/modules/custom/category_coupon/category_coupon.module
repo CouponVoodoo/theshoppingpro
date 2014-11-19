@@ -203,7 +203,7 @@ echo $couponCode;
 			$node = node_load($nids[0]);
 			
 		}
-		exit;
+		
 		// COMMON PROCESS FOR UPDATE AND NEW NODE SINCE NODE IS NOW IDENTIFIED / CREATED
 		// PUSHING IN MAIN DATA (I.E. ALL EXCEPT CATEGORY LINKS) 
 		$node->title = $couponTitle.' @ '.ucfirst($retailer);
@@ -224,6 +224,7 @@ echo $couponCode;
     		 
 		node_save($node);
 		echo 'node saved';
+		exit;
     }
 echo 'No node to process';
 
