@@ -562,6 +562,9 @@ function coupons_validate_url($url) {
 }
 
 function coupons_finder_form_validate($form, &$form_state) {
+ if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com') {
+    return array();
+  }
 	$urlStatus = coupons_validate_url( $form_state['values']['url'] );
     /* adding variables to push tp GA event on page load */    
 	$_SESSION['CvGa']['url'] = $form_state['values']['url'];
