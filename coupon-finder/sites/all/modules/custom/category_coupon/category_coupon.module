@@ -189,7 +189,8 @@ function category_coupon_addcoupon($CouponInfo){
     	if (empty($result['node'])) {
 			// CREATING NODE SINCE IT DOES NOT EXIST	
 			$node = new stdClass();
-			echo 'inside new';			
+			echo 'inside new';	
+echo $couponCode;			
 	        $node->language = 'und';
 			$node->type     = 'category_coupon';
 			$node->uid      = 1; 
@@ -197,10 +198,12 @@ function category_coupon_addcoupon($CouponInfo){
 		else {
 			// LOADING THE IDENTIFIED NODE & DELETING ALL CATEGORY LINK VALUES
 			echo 'inside update';
+			echo $couponCode;
 			var_dump($nids[0]);
 			$node = node_load($nids[0]);
 			
 		}
+		exit;
 		// COMMON PROCESS FOR UPDATE AND NEW NODE SINCE NODE IS NOW IDENTIFIED / CREATED
 		// PUSHING IN MAIN DATA (I.E. ALL EXCEPT CATEGORY LINKS) 
 		$node->title = $couponTitle.' @ '.ucfirst($retailer);
