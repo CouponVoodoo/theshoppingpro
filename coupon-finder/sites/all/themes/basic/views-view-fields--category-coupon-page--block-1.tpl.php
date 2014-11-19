@@ -46,8 +46,18 @@
 			
 			
 ?>
-<h4> <a id="All_Coupons"><?php echo get_label('Results For All Coupons Of This Product');?></a></h4>
-		<div >
+
+		<div class="retailer_coupon_page_row">
+	<div class="search_listing_left">
+		<?php
+
+						
+			$coupon_display_url=$base_url."/coupon-redirect?l=cp&nid=".$nid."&t=c&c=".rawurlencode($coupon_code)."&p=".$url_path."&s=".rawurlencode($affiliate_url);
+
+		?>
+			<h2><a rel='no follow' target='_blank'href='<?php print $coupon_display_url ?>' ><?php print $cat." coupons : ".$title." @ ".$retailerName; ?></a></h2>
+			<div >
+
 
 
 
