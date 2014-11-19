@@ -1721,10 +1721,13 @@ function coupons_views_pre_build(&$view) {
 foreach ($result as $record) {
 $catId=$record->field_category_tid;
 }
+$term = taxonomy_term_load($catId);
+$name = $term->name;
+
 //$term = taxonomy_get_term($catId);
 var_dump($catId);
-//$title = 'Working Coupons for '.$term;
-	//$view->set_title($title);
+$title = 'Working Coupons for '.$name;
+	$view->set_title($title);
 	
 	//var_dump($view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value);
 	$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value['value'] = (string)$lastCheckTime;
