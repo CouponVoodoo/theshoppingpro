@@ -509,7 +509,7 @@ if ($current_domain != 'cuponation'){
 $alias= drupal_lookup_path('alias', 'taxonomy/term/'.$node->field_category['und'][0]['tid']);
 $termArr=explode("/",$alias);
 $term=trim(str_replace("-coupons",'',$termArr[1]));
-echo 'http://offers.couponvoodoo.com/rcp/'.$term.'/coupons-offers';?>" class='d_view_store'><?php echo get_label('View All Coupons For ').strip_tags($fields['field_category']->content);?></a></div>
+echo 'http://offers.couponvoodoo.com/ccp/'.$term.'/coupons-offers';?>" class='d_view_store'><?php echo get_label('View All Coupons For ').strip_tags($fields['field_category']->content);?></a></div>
 <?php }?>
 
 </ul>
