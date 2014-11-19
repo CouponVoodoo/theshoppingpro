@@ -1714,10 +1714,10 @@ function coupons_views_pre_build(&$view) {
  if($view->current_display == 'block_1' &&  $view->name == 'category_coupon_page' ) {
     $lastCheckTime = strtotime(date("j F Y"))-(16*3600);
 	
-	//var_dump($lastCheckTime);
+	var_dump($view->display_handler->handlers['filter']['field_category_tid ']);
 	//var_dump($view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value);
 	$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value['value'] = (string)$lastCheckTime;
-	$view->display_handler->handlers['filter']['field_category_tid ']->value['value'] = 43;
+	//$view->display_handler->handlers['filter']['field_category_tid ']->value['value'] = 43;
 //	var_dump($view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value); 
   }
   if($view->current_display == 'page' &&  $view->name == 'brand_coupon_page' ) {
