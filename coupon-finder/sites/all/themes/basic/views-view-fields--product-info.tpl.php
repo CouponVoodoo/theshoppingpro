@@ -425,8 +425,11 @@ if ($current_domain != 'cuponation'){
     ?>
 </li>
 <?php if ( $time_gap > (1.5 * 24 * 3600)) {?>
-	<div class="custom_link_inner"><span style= "color: red; font-weight: bold"><?php echo get_label('Data is more than 24hrs old: ');?></span><a onclick="locader('<?php echo $base_root.base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>')" class="active">Recheck Now</a></div>
-<?php } ?>
+	<div class="custom_link_inner"><span style= "color: red; font-weight: bold"><?php echo get_label('Data is more than 24hrs old: ');?></span>
+	</div>
+<?php } 
+
+?>
 
 
 
@@ -502,7 +505,7 @@ if ($current_domain != 'cuponation'){
 <div class='blue_button'><a href="#All_Coupons" class='d_view_store'><?php echo get_label('View All Tested Coupons For Product '); ?></a></div>
 <?php } else { ?>
 <div class='blue_button'><a href="<?php echo 'http://offers.couponvoodoo.com/rcp/'.str_replace(" ", "-", $retailer).'/coupons-offers';?>" class='d_view_store'><?php echo get_label('View All Coupons For ').$retailer;?></a></div>
-
+<div class='blue_button'><a href="<?php echo 'http://offers.couponvoodoo.com/rcp/'.$node->field_category['und'][0]['tid'].'/coupons-offers';?>" class='d_view_store'><?php echo get_label('View All Coupons For ').strip_tags($fields['field_category']->content);?></a></div>
 <?php }?>
 
 </ul>
