@@ -444,9 +444,11 @@ function coupons_finder_form($form, &$form_state, $small = true) {
   global $base_url, $logo, $base_path;
   if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com') {
    $placeholder=array('class' => array('apachesolr-autocomplete','unprocessed'), 'placeholder' => t('Brand, Category or Retailer'));
+   $suffix='</br>- Retailers like Flipkart, Jabong, Myntra etc</div></div>';
   }
   else {
   $placeholder=array('class' => array('apachesolr-autocomplete','unprocessed'), 'placeholder' => t('Product Name, Brand or URL'));
+  $suffix='</br>- Product Names like Nike Ballista</div></div>';
   }
   $current_domain = get_current_domain();
   // Load the modal library and add the modal javascript.
@@ -498,7 +500,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
       '#type' => 'submit',
       '#prefix' => '<div class="submit">',
       '#value' => t('Find My Coupons'),
-	  '#suffix' => '</br><div class="search-suggestion"> <bold> Suggested Searches: </bold></br>- Brands like Nike, Titan, Levis </br>- Categories like Watches, Shoes </br>- Product Names like Nike Ballista</div></div>',
+	  '#suffix' => '</br><div class="search-suggestion"> <bold> Suggested Searches: </bold></br>- Brands like Nike, Titan, Levis </br>- Categories like Watches, Shoes '.$suffix,
       
 	  
   );
