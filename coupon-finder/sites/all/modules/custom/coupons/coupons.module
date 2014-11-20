@@ -2626,7 +2626,16 @@ function coupons_finder_form_for_taxonomy_submit($form, &$form_state) {
       drupal_goto('rcp/'.trim($result->name).'/coupons-offers');
       break;
     case 3://Categories
-	  $alias= drupal_lookup_path('alias','taxonomy/term/'.$result->tid) ;
+	$tid=$result->tid;
+	switch($result->tid) {
+	case 82:
+	  $tid=15554;
+	  break;
+	case 83:
+	  $tid=15558;
+	  break;  
+	}
+	  $alias= drupal_lookup_path('alias','taxonomy/term/'.$tid) ;
 	  $name=explode('/',$alias);
 	  
       drupal_goto('ccp/'.trim(str_replace('-coupons','',$name[1])).'/coupons-offers');      
