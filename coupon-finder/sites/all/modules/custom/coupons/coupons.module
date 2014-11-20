@@ -1734,15 +1734,7 @@ $title = 'Working Coupons for '.$name;
 	//$view->display_handler->handlers['filter']['field_category_tid']->value[0] = $catId;
 //	var_dump($view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value); 
   }
-  if($view->current_display == 'page' &&  $view->name == 'brand_coupon_page' ) {
-      $lastCheckTime = strtotime(date("j F Y"))-(16*3600);
-	$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value = (string)$lastCheckTime;
-  }
-  if($view->current_display == 'page' &&  $view->name == 'retailer_coupon_page' ) {
-     $lastCheckTime = strtotime(date("j F Y"))-(16*3600);
-	//dpq($view->build_info['query']);
-	$view->display_handler->handlers['filter']['field_field_coupon_expiry_value']->value = (string)$lastCheckTime;
-  }
+  
   if($view->current_display == 'block_4' &&  $view->name == 'apache_retailer_products' ) {
 	$nid = arg(1);
 	$node = node_load($nid);
