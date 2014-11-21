@@ -39,6 +39,7 @@
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
             $brand=strip_tags(($fields['field_brand']->content));           
 			//$node = node_load($nid);
+			
 			$field_retailer=$fields['field_retailer'];
 /*	echo "<pre>";
 			var_dump($fields['field_brand']->handler->view->result[0]->_field_data['nid']['entity']->field_brand['und'][0]['tid']);
@@ -51,7 +52,7 @@
     //$retailerId = $Ruery->tid;
 	//$rurl="http://www.couponvoodoo.com/taxonomy/term/".$retailerId;
 	$rurl='http://www.couponvoodoo.com/r/'.str_replace('.','',$retailerName).'-coupons?f[0]=im_field_brand%3A'.$brandId;
-		if ($coupon_title != '')  {				
+		if ($coupon_title != '' && $last_checked_time > strtotime(date("j F Y"))-(16*3600))  {				
 ?>
 
 
