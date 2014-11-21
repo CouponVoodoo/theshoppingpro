@@ -38,9 +38,9 @@
             $brand=strip_tags(($fields['field_brand']->content));           
 			//$node = node_load($nid);
 			$field_retailer=$fields['field_retailer'];
-	echo "<pre>";
+/*	echo "<pre>";
 			var_dump($fields['field_brand']->handler->view->result[0]->_field_data['nid']['entity']->field_brand['und'][0]['tid']);
-			echo "</pre>";
+			echo "</pre>";*/
 			$affiliate_url = $node->field_baseurl_coupon['und']['0']['value'];//strip_tags(($fields['field_baseurl_coupon']->content));
 			global $base_url;
 			$brandId=$fields['field_brand']->handler->view->result[0]->_field_data['nid']['entity']->field_brand['und'][0]['tid'];
