@@ -39,7 +39,7 @@
             $cat = strip_tags(($fields['field_category']->content));
 			//$cat=$view->get_title();
 			echo "<pre>";
-			var_dump($fields['field_category']->handler->view->result[0]);
+			var_dump($fields['field_category']->handler->view->result[0]->_field_data);
 			echo "</pre>";
 			$catid=$fields['field_category']->handler->field_info['id']; 
 			//$cat=str_replace('Coupons, Discounts, Offers & Deals','',$cat);
