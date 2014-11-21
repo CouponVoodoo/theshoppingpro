@@ -33,7 +33,7 @@
 			$coupon_code = strip_tags(($fields['field_coupon_code']->content));
 			$coupon_code = str_replace(" ","_",$coupon_code);
 			$coupon_title = strip_tags(($fields['field_coupon_title']->content));
-			var_dump($coupon_title);
+			
 			
 			$title = strip_tags(($fields['field_coupon_title']->content));
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
