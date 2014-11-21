@@ -90,7 +90,7 @@ echo "<div class='coupon_status_guaranteed'><img src='".base_path().path_to_them
 			<?php $div_id='rcp_'.$nid ;?>
 <a href="<?php print $coupon_display_url;?>" onclick=window.open('<?php echo coupon_popup_product_url($coupon_code, $coupon_display_url); ?>')//;return true; class="unlock_best_coupon unlock_coupon" rel="best_<?php print $nid; ?>" data-clipboard-text="<?php echo $coupon_code?>" >
 				 <?php if($offer_type == 'Coupons') {?>
-					<span class="copy_coupon">Copy Coupon</span><span></span>
+					<span class="copy_coupon">Open Offer</span><span></span>
 				<?php } else { ?>
 					<span class="copy_coupon">Activate Deal</span><span></span>
 				<?php }
