@@ -39,15 +39,16 @@
 			//$node = node_load($nid);
 			$field_retailer=$fields['field_retailer'];
 	echo "<pre>";
-			var_dump($fields['field_brand']->handler->view->result[0]);
+			var_dump($fields['field_brand']->handler->view->result[0]->_field_data['nid']['entity']->field_brand['und'][0]['tid']);
 			echo "</pre>";
 			$affiliate_url = $node->field_baseurl_coupon['und']['0']['value'];//strip_tags(($fields['field_baseurl_coupon']->content));
 			global $base_url;
+			$brandId=$fields['field_brand']->handler->view->result[0]->_field_data['nid']['entity']->field_brand['und'][0]['tid'];
 			//$Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 2 and ttd.name = :retailer_name', array(':retailer_name' => $retailerName));
     //$Ruery = $Query->fetch();
     //$retailerId = $Ruery->tid;
 	//$rurl="http://www.couponvoodoo.com/taxonomy/term/".$retailerId;
-	$rurl='http://www.couponvoodoo.com/r/'.str_replace('.','',$retailerName).'-coupons?f[0]=im_field_brand%3A'.$brand;
+	$rurl='http://www.couponvoodoo.com/r/'.str_replace('.','',$retailerName).'-coupons?f[0]=im_field_brand%3A'.$brandId;
 						
 ?>
 
