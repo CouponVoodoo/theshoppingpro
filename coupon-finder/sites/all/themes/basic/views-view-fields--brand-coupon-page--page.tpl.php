@@ -34,6 +34,7 @@
 			$coupon_code = str_replace(" ","_",$coupon_code);
 			$coupon_title = strip_tags(($fields['field_coupon_title']->content));
 			var_dump($coupon_title);
+			
 			$title = strip_tags(($fields['field_coupon_title']->content));
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
             $brand=strip_tags(($fields['field_brand']->content));           
@@ -50,7 +51,7 @@
     //$retailerId = $Ruery->tid;
 	//$rurl="http://www.couponvoodoo.com/taxonomy/term/".$retailerId;
 	$rurl='http://www.couponvoodoo.com/r/'.str_replace('.','',$retailerName).'-coupons?f[0]=im_field_brand%3A'.$brandId;
-						
+		if ($coupon_title != '')  {				
 ?>
 
 
@@ -129,5 +130,6 @@ if ($_GET['showpop'] == 1) {
 		<div id="coupon_details_popup"><a href="<?php print coupon_popup_url($_GET['coupon_code'], $coupon_redirect_path); ?>" rel='lightframe[|width:600px; height:450px; scrolling: off;]' ></a></div>
 <?php
 		drupal_add_js ("jQuery(document).ready(function() { jQuery('#coupon_details_popup a').trigger('click'); });", array('type' => 'inline', 'scope' => 'footer'));
+	}
 	}
 	?> 
