@@ -38,7 +38,7 @@
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
             $cat = strip_tags(($fields['field_category']->content));
 			//$cat=$view->get_title();
-			var_dump($fields['field_category']->handler);
+			var_dump($fields['field_category']->handler->result);
 			$catid=$fields['field_category']->handler->field_info['id']; 
 			//$cat=str_replace('Coupons, Discounts, Offers & Deals','',$cat);
 			//$node = node_load($nid);
