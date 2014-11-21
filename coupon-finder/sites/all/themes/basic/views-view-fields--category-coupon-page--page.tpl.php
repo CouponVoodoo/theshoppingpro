@@ -38,7 +38,7 @@
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
             $cat = strip_tags(($fields['field_category']->content));
 			//$cat=$view->get_title();
-			var_dump($fields['field_category']->handler);
+			var_dump($fields['field_category']->handler->items);
 			//$cat=str_replace('Coupons, Discounts, Offers & Deals','',$cat);
 			//$node = node_load($nid);
 			$rurl='http://www.couponvoodoo.com/r/'.str_replace('.','',$retailerName).'-coupons?f[0]=im_field_category%3A'.$cat;
