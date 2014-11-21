@@ -50,7 +50,7 @@
 			//$Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 2 and ttd.name = :retailer_name', array(':retailer_name' => $retailerName));
     //$Ruery = $Query->fetch();
     //$retailerId = $Ruery->tid;
-	var_dump(strtotime($last_checked_time )) ;
+	//var_dump(strtotime($last_checked_time )) ;
 	//$rurl="http://www.couponvoodoo.com/taxonomy/term/".$retailerId;
 	$rurl='http://www.couponvoodoo.com/r/'.str_replace('.','',$retailerName).'-coupons?f[0]=im_field_brand%3A'.$brandId;
 		if ($coupon_title != '' )  {				

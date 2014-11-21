@@ -38,9 +38,9 @@
 			$last_checked_time = strip_tags(($fields['field_field_coupon_expiry']->content));
             $cat = strip_tags(($fields['field_category']->content));
 			//$cat=$view->get_title();
-			echo "<pre>";
+			//echo "<pre>";
 			//var_dump($fields['field_category']->handler->view->result[0]->_field_data['nid']['entity']->field_category['und'][0]['tid']);
-			echo "</pre>";
+			//echo "</pre>";
 			$catid=$fields['field_category']->handler->view->result[0]->_field_data['nid']['entity']->field_category['und'][0]['tid']; 
 			//$cat=str_replace('Coupons, Discounts, Offers & Deals','',$cat);
 			//$node = node_load($nid);
@@ -52,7 +52,7 @@
 			$affiliate_url = $node->field_baseurl_coupon['und']['0']['value'];//strip_tags(($fields['field_baseurl_coupon']->content));
 			global $base_url;
 			
-						
+	if ($coupon_title != '' )  {										
 ?>
 
 
@@ -133,5 +133,6 @@ if ($_GET['showpop'] == 1) {
 		<div id="coupon_details_popup"><a href="<?php print coupon_popup_url($_GET['coupon_code'], $coupon_redirect_path); ?>" rel='lightframe[|width:600px; height:450px; scrolling: off;]' ></a></div>
 <?php
 		drupal_add_js ("jQuery(document).ready(function() { jQuery('#coupon_details_popup a').trigger('click'); });", array('type' => 'inline', 'scope' => 'footer'));
+	}
 	}
 	?>
