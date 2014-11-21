@@ -39,9 +39,9 @@
             $cat = strip_tags(($fields['field_category']->content));
 			//$cat=$view->get_title();
 			echo "<pre>";
-			var_dump($fields['field_category']->handler->view->result[0]->_field_data['nid']['entity']->field_category['und'][0]['tid']);
+			//var_dump($fields['field_category']->handler->view->result[0]->_field_data['nid']['entity']->field_category['und'][0]['tid']);
 			echo "</pre>";
-			$catid=$fields['field_category']->handler->field_info['id']; 
+			$catid=$fields['field_category']->handler->view->result[0]->_field_data['nid']['entity']->field_category['und'][0]['tid']; 
 			//$cat=str_replace('Coupons, Discounts, Offers & Deals','',$cat);
 			//$node = node_load($nid);
 			$rurl='http://www.couponvoodoo.com/r/'.str_replace('.','',$retailerName).'-coupons?f[0]=im_field_category%3A'.$catid;
