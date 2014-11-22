@@ -1,5 +1,5 @@
 <?php
-function domain_xmlsitemap_customlinks_form_alter(&$form, &$form_state, $form_id ) {
+function xmlsitemap_custom_xmlsitemap_customlinks_form_alter(&$form, &$form_state, $form_id ) {
 	if (strstr($form_id, 'xmlsitemap_custom_edit_link_form')) {
 		$link = $form_state['build_info']['args'][0];
 
@@ -25,7 +25,7 @@ function domain_xmlsitemap_customlinks_form_alter(&$form, &$form_state, $form_id
  */
 
 
-function domain_xmlsitemap_customlinks_query_xmlsitemap_generate_alter(QueryAlterableInterface $query) {
+function xmlsitemap_custom_xmlsitemap_customlinks_query_xmlsitemap_generate_alter(QueryAlterableInterface $query) {
   $sitemap = $query->getMetaData('sitemap');
   if (!isset($sitemap->context['domain'])) {
     return;
