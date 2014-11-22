@@ -125,7 +125,23 @@ function xmlsitemap_custom_edit_link_form($form, &$form_state, $link = array()) 
     '#markup' => l(t('Cancel'), 'admin/config/search/xmlsitemap/custom'),
     '#weight' => 10,
   );
+$link = $form_state['build_info']['args'][0];
 
+
+		$domains = domain_domains();
+		$options = array();
+
+
+		$options['domain_0'] = t('All Domains');
+		foreach ($domains as $domain) {
+			$options["domain_".$domain['domain_id']] = $domain['path'];
+		}
+		$form['subtype'] = array(
+			'#type' => 'select',
+			'#title' => t('Domain'),
+			'#options' => $options,
+			'#default_value' => ((!empty($link['subtype'])) ? $link['subtype'] : 'domain_0')
+		);
   return $form;
 }
 
