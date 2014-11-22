@@ -1,0 +1,54 @@
+<?php
+function domain_xmlsitemap_customlinks_form_alter(&$form, &$form_state, $form_id ) {
+	if (strstr($form_id, 'xmlsitemap_custom_edit_link_form')) {
+		$link = $form_state['build_info']['args'][0];
+
+
+		$domains = domain_domains();
+		$options = array();
+
+
+		$options['domain_0'] = t('All Domains');
+		foreach ($domains as $domain) {
+			$options["domain_".$domain['domain_id']] = $domain['path'];
+		}
+		$form['subtype'] = array(
+			'#type' => 'select',
+			'#title' => t('Domain'),
+			'#options' => $options,
+			'#default_value' => ((!empty($link['subtype'])) ? $link['subtype'] : 'domain_0')
+		);
+	}
+}
+/**
+ * Implements hook_query_TAG_alter().
+ */
+
+
+function domain_xmlsitemap_customlinks_query_xmlsitemap_generate_alter(QueryAlterableInterface $query) {
+  $sitemap = $query->getMetaData('sitemap');
+  if (!isset($sitemap->context['domain'])) {
+    return;
+  }
+
+
+  
+  
+  $custom_link_domain_condition = db_or();
+  $custom_link_domain_condition->condition('type', 'custom', '!='); // exlude initially all custom
+  $custom_link_domain_condition->condition(
+  		db_and()->condition('type', 'custom', '=')
+  				->condition(db_or()
+  					->condition('subtype', 'domain_0', '=')
+  					->condition('subtype', 'domain_'.$sitemap->context['domain'])
+  				)
+  );
+
+
+  
+  
+
+
+  $query->condition($custom_link_domain_condition);
+  
+}
