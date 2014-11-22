@@ -125,23 +125,7 @@ function xmlsitemap_custom_edit_link_form($form, &$form_state, $link = array()) 
     '#markup' => l(t('Cancel'), 'admin/config/search/xmlsitemap/custom'),
     '#weight' => 10,
   );
-$link = $form_state['build_info']['args'][0];
 
-
-		$domains = domain_domains();
-		$options = array();
-
-
-		$options['domain_0'] = t('All Domains');
-		foreach ($domains as $domain) {
-			$options["domain_".$domain['domain_id']] = $domain['path'];
-		}
-		$form['subtype'] = array(
-			'#type' => 'select',
-			'#title' => t('Domain'),
-			'#options' => $options,
-			'#default_value' => ((!empty($link['subtype'])) ? $link['subtype'] : 'domain_0')
-		);
   return $form;
 }
 
@@ -171,8 +155,6 @@ function xmlsitemap_custom_edit_link_form_validate($form, &$form_state) {
     form_set_error('loc', t('The custom link %link is either invalid or it cannot be accessed by anonymous users.', array('%link' => $link['loc'])));
   }
 }
-
-
 
 function xmlsitemap_custom_edit_link_form_submit($form, &$form_state) {
   $link = $form_state['values'];
@@ -212,22 +194,3 @@ function xmlsitemap_custom_delete_link_form_submit($form, &$form_state) {
   watchdog('xmlsitemap', 'The custom link for %loc has been deleted.', array('%loc' => $link['loc']), WATCHDOG_NOTICE);
   $form_state['redirect'] = 'admin/config/search/xmlsitemap/custom';
 }
-
-function xmlsitemap_custom_query_xmlsitemap_generate_alter(QueryAlterableInterface $query) {
-  $sitemap = $query->getMetaData('sitemap');
-  if (!isset($sitemap->context['domain'])) {
-    return;
-  }
-
-
-  
-  
-  $custom_link_domain_condition = db_or();
-  $custom_link_domain_condition->condition('type', 'custom', '!='); // exlude initially all custom
-  $custom_link_domain_condition->condition(
-  		db_and()->condition('type', 'custom', '=')
-  				->condition(db_or()
-  					->condition('subtype', 'domain_0', '=')
-  					->condition('subtype', 'domain_'.$sitemap->context['domain'])
-  				)
-  );
