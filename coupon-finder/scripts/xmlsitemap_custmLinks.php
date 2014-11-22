@@ -17,7 +17,7 @@ foreach ($terms as $term) {
       echo '<div class="vocab-list-parent"> ';
       $row++;
     } else {
-      echo '</div><div class="vocab-list-parent">';
+  
       $row++;
     }
 
@@ -63,7 +63,7 @@ foreach ($results as $result)
      $num= $result->num;
 	
   }
-  if ($num ==1 || $num =='1'){
+  if ($num !=1 || $num !='1'){
   $link = array(
   'type' => 'custom',
   'id' => db_query("SELECT MAX(id) FROM {xmlsitemap} WHERE type = 'custom'")->fetchField() + 1,
@@ -72,7 +72,7 @@ foreach ($results as $result)
   'language' => 'und',
   'changefreq' => '86400',
 );
-xmlsitemap_link_save($link);
+//xmlsitemap_link_save($link);
 exit;
   }
   }
