@@ -72,8 +72,10 @@ foreach ($results as $result)
   'language' => 'und',
   'changefreq' => '86400',
 );
-//xmlsitemap_link_save($link);
-exit;
+xmlsitemap_link_save($link);
+echo 'Added'
+//exit;
   }
+  echo 'ignored';
   }
 }
