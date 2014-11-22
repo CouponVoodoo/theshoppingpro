@@ -1,5 +1,46 @@
 
 <?php
+$ignore_tids = array(16314,21399,16612,20561,2085,21291,15913,16983,21734,21291,16764,16975,16963,17735,17975,26033,16777,16966,16969,19831,17723,10306);
+$result = db_query('SELECT Brand,BrandId from coupon_finder.BrandCoupons');
+  // echo 'cxdcadcd';
+foreach ($result as $record) {
+$brandId=  $record->BrandId; 
+$brand=  $record->Brand;
+$alias=str_replace('--','-',str_replace('&','',str_replace(' ','-',$brand)));
+//foreach ($terms as $term) { 
+ if (in_array($brandId, $ignore_tids)) {
+    continue;
+  }
+  if (!trim($brand)) {
+    continue;
+  }
+  $url = 'bcp/'.$alias.'/coupons-offers';
+$results = db_query("select count(*) as num FROM xmlsitemap where loc = '".$url."'");
+
+
+foreach ($results as $result) 
+  {
+     $num= $result->num;
+	
+  }
+  if ($num !=1 || $num !='1'){
+  $link = array(
+  'type' => 'custom',
+  'id' => db_query("SELECT MAX(id) FROM {xmlsitemap} WHERE type = 'custom'")->fetchField() + 1,
+  'loc' => $url,
+  'priority' => '0.9',
+  'language' => 'und',
+  'changefreq' => '86400',
+);
+xmlsitemap_link_save($link);
+echo 'Added';
+//exit;
+  }
+  echo 'ignored';
+
+  }
+
+function categorySitemap(){
 $row = 0;
 $mname = array();
 $terms = taxonomy_get_tree(3, 0, NULL, TRUE);
@@ -78,4 +119,5 @@ echo 'Added';
   }
   echo 'ignored';
   }
+}
 }
