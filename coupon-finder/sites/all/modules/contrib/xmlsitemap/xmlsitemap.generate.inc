@@ -148,13 +148,23 @@ function xmlsitemap_generate_chunk(stdClass $sitemap, XMLSitemapWriter $writer, 
 
   $last_url = '';
   $link_count = 0;
-
+if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com') {
+$query = db_select('xmlsitemap', 'x');
+  $query->fields('x', array('loc', 'lastmod', 'changefreq', 'changecount', 'priority', 'language', 'access', 'status'));
+  $query->condition('x.access', 1);
+  $query->condition('x.status', 1);
+  $query->condition('x.type', 'custom');
+  $query->orderBy('x.language', 'DESC');
+  $query->orderBy('x.loc');
+}
+else {
   $query = db_select('xmlsitemap', 'x');
   $query->fields('x', array('loc', 'lastmod', 'changefreq', 'changecount', 'priority', 'language', 'access', 'status'));
   $query->condition('x.access', 1);
   $query->condition('x.status', 1);
   $query->orderBy('x.language', 'DESC');
   $query->orderBy('x.loc');
+  }
   $query->addTag('xmlsitemap_generate');
   $query->addMetaData('sitemap', $sitemap);
 
