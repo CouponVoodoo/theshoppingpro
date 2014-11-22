@@ -73,7 +73,7 @@ foreach ($results as $result)
   'changefreq' => '86400',
 );
 xmlsitemap_link_save($link);
-echo 'Added'
+echo 'Added';
 //exit;
   }
   echo 'ignored';
