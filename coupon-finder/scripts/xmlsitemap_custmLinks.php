@@ -37,7 +37,9 @@ xmlsitemap_link_save($link);
 echo 'Added';
 //exit;
   }
+  else {
   echo 'ignored';
+  }
 
   }
 
