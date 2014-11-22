@@ -16,7 +16,7 @@ $alias=str_replace('--','-',str_replace('&','',str_replace(' ','-',$brand)));
   }
   $url = 'bcp/'.$alias.'/coupons-offers';
   $url=trim(str_replace("'",'',$url));
-$results = db_query("select count(*) as num FROM xmlsitemap where loc = '".$url.'"');
+$results = db_query("select count(*) as num FROM xmlsitemap where loc = '".$url."'");
 
 
 foreach ($results as $result) 
