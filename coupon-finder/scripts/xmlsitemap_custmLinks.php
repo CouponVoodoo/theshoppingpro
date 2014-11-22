@@ -54,7 +54,7 @@ $cname='Popular offers and coupons for '.$name;
   $alias=$Pnamealias.'-'.$MnameAlias.'-'.str_replace('--','-',str_replace(' ','-',str_replace(',','',str_replace('&','',trim($term->name)))));
   //echo $alias;
   $url ='ccp/'.trim(str_replace('--','-',$alias)).'/coupons-offers';
-  //exit;
+  echo $url;
 $results = db_query("select count(*) as num FROM xmlsitemap where loc = '".$url."'");
 
 
@@ -75,5 +75,5 @@ foreach ($results as $result)
 xmlsitemap_link_save($link);
 exit;
   }
-  
+  }
 }
