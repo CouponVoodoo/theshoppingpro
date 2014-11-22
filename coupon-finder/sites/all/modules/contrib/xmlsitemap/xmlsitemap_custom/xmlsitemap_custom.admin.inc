@@ -172,6 +172,8 @@ function xmlsitemap_custom_edit_link_form_validate($form, &$form_state) {
   }
 }
 
+
+
 function xmlsitemap_custom_edit_link_form_submit($form, &$form_state) {
   $link = $form_state['values'];
   xmlsitemap_link_save($link);
@@ -210,3 +212,22 @@ function xmlsitemap_custom_delete_link_form_submit($form, &$form_state) {
   watchdog('xmlsitemap', 'The custom link for %loc has been deleted.', array('%loc' => $link['loc']), WATCHDOG_NOTICE);
   $form_state['redirect'] = 'admin/config/search/xmlsitemap/custom';
 }
+
+function xmlsitemap_custom_query_xmlsitemap_generate_alter(QueryAlterableInterface $query) {
+  $sitemap = $query->getMetaData('sitemap');
+  if (!isset($sitemap->context['domain'])) {
+    return;
+  }
+
+
+  
+  
+  $custom_link_domain_condition = db_or();
+  $custom_link_domain_condition->condition('type', 'custom', '!='); // exlude initially all custom
+  $custom_link_domain_condition->condition(
+  		db_and()->condition('type', 'custom', '=')
+  				->condition(db_or()
+  					->condition('subtype', 'domain_0', '=')
+  					->condition('subtype', 'domain_'.$sitemap->context['domain'])
+  				)
+  );
