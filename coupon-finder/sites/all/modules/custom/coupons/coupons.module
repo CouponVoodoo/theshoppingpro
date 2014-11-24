@@ -1675,7 +1675,7 @@ function coupons_views_query_alter(&$view, &$query) {
   echo 'jmhmhjmhjmj';
   if ($view->name == 'home_page_retailers' && $view->current_display == 'block_2') {
     // Traverse through the 'where' part of the query.
-    
+    var_dump($query->where[1]['conditions'][0]);
 		var_dump($query->where[1]['conditions'][1]);
     
       }
