@@ -1668,7 +1668,7 @@ drupal_add_js("jQuery(document).ready(function($){
   } */ 
 }
 
-function hook_views_query_alter(&$view, &$query) {
+function cusom_views_query_alter(&$view, &$query) {
   // (Example assuming a view with an exposed filter on node title.)
   // If the input for the title filter is a positive integer, filter against
   // node ID instead of node title.
