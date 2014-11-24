@@ -1679,7 +1679,7 @@ function coupons_views_query_alter(&$view, &$query) {
       foreach ($condition_group['conditions'] as &$condition) {
         // If this is the part of the query filtering on title, chang the
         // condition to filter on node ID.
-		var_dump($view->query->condition['field']);
+		var_dump($view->query);
 		//$view->query->condition['field'] = "CASE FIELD_NAME WHEN 'apple' THEN 1 WHEN 'zebra' THEN 2 WHEN 'banna' THEN 3 ELSE 4 END";
         if ($condition['field'] == 'taxonomy_term_data.tid') {
           $condition = array(
