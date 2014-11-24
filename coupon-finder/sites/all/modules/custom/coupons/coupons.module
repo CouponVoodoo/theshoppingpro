@@ -1680,13 +1680,13 @@ function coupons_views_query_alter(&$view, &$query) {
         // If this is the part of the query filtering on title, chang the
         // condition to filter on node ID.
 		var_dump($condition['field']);
-        /*if ($condition['field'] == 'node.title') {
+        if ($condition['field'] == 'taxonomy_term_data.tid') {
           $condition = array(
-            'field' => 'node.nid',
-            'value' => $view->exposed_raw_input['title'],
-            'operator' => '=',
+            'field' => 'taxonomy_term_data.tid',
+            'value' => 7515,
+            'operator' => 'in',
           );
-        }*/
+        }
       }
     }
   }
