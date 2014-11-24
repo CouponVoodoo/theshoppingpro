@@ -1683,8 +1683,8 @@ function coupons_views_query_alter(&$view, &$query) {
         if ($condition['field'] == 'taxonomy_term_data.tid') {
           $condition = array(
             'field' => 'taxonomy_term_data.tid',
-            'value' => 7515,
-            'operator' => '=',
+            'value' => (7515),
+            'operator' => 'IN',
           );
         }
       }
