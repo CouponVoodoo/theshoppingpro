@@ -1684,7 +1684,7 @@ function coupons_views_query_alter(&$view, &$query) {
           $condition = array(
             'field' => 'taxonomy_term_data.tid',
             'value' => 7515,
-            'operator' => 'in',
+            'operator' => 'IN',
           );
         }
       }
