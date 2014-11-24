@@ -1679,6 +1679,7 @@ function coupons_views_query_alter(&$view, &$query) {
     var_dump($query->where[1]['conditions'][0]);
 		
     $query->where[1]['conditions'][1]['value']=$tidArr;
+	$query->where[1]['conditions'][1]['operator']='in';
 	var_dump($query->where[1]['conditions'][1]);
       }
     } 
