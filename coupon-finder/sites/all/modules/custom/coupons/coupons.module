@@ -1675,25 +1675,12 @@ function coupons_views_query_alter(&$view, &$query) {
   echo 'jmhmhjmhjmj';
   if ($view->name == 'home_page_retailers' && $view->current_display == 'block_2') {
     // Traverse through the 'where' part of the query.
-    foreach ($query->where as &$condition_group) {
-      foreach ($condition_group['conditions'] as &$condition) {
-        // If this is the part of the query filtering on title, chang the
-        // condition to filter on node ID.
-		
-		//$view->query->condition['field'] = "CASE FIELD_NAME WHEN 'apple' THEN 1 WHEN 'zebra' THEN 2 WHEN 'banna' THEN 3 ELSE 4 END";
-        if ($condition['field'] == 'taxonomy_term_data.tid') {
-		var_dump($query->where[1]);
-          $condition = array(
-            'field' => 'taxonomy_term_data.tid',
-            'value' => '(7515)',
-            'operator' => 'IN',
-          );
-        }
+    
+		var_dump($query->where[1]['conditions'][1]);
+    
       }
     } 
-  }
-}
-
+  
 //function coupons_views_query_alter(&$view, &$query) {
 
 /* THIS CONTROLS THE RIGHT HAND SIDE SIMILAR PRODUCT WIDGET ON PRODUCT PAGE pARTS ARE COMMENTED SINCE 2 BLOCKS ON SAME PAGE CONFLICT*/
