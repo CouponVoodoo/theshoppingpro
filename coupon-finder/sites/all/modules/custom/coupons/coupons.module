@@ -1672,6 +1672,7 @@ function cusom_views_query_alter(&$view, &$query) {
   // (Example assuming a view with an exposed filter on node title.)
   // If the input for the title filter is a positive integer, filter against
   // node ID instead of node title.
+  echo 'jmhmhjmhjmj';
   if ($view->name == 'home_page_retailers' && $view->current_display == 'block_2') {
     // Traverse through the 'where' part of the query.
     foreach ($query->where as &$condition_group) {
