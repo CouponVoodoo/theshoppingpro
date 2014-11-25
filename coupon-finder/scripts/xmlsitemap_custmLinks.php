@@ -1,5 +1,9 @@
 
 <?php
+retaileSitemap();
+updateBrandSitemap();
+categorySitemap();
+function retaileSitemap(){
 $terms = taxonomy_get_tree(2, 0, NULL, TRUE);
 $ignore_tids = array();
 foreach ($terms as $term) {
@@ -33,7 +37,7 @@ echo 'Added';
   echo 'ignored';
   }
   }
-  
+  }
 function updateBrandSitemap(){
 $ignore_tids = array(16314,21399,16612,20561,2085,21291,15913,16983,21734,21291,16764,16975,16963,17735,17975,26033,16777,16966,16969,19831,17723,10306);
 $result = db_query('SELECT Brand,BrandId from coupon_finder.BrandCoupons');
