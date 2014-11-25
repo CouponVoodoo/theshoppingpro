@@ -86,9 +86,11 @@ Disallow: /coupon-redirect/
 Disallow: /add-product/
 Disallow: /add-coupon/
 Disallow: /c/
+Disallow: /taxonomy/term/
 Disallow: /theshoppingpro/
 Disallow: /coupon-details-popup/
 # Paths (no clean URLs)
+Disallow: /?q=admin/
 Disallow: /?q=admin/
 Disallow: /?q=comment/reply/
 Disallow: /?q=filter/tips/
