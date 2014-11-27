@@ -36,7 +36,10 @@
 			//$cat=$view->get_title();
 			//$cat=str_replace('Coupons, Discounts, Offers & Deals','',$cat);
 			//$node = node_load($nid);
-			$rurl='http://www.couponvoodoo.com/r/'.str_replace('.','',$retailerName).'-coupons?f[0]=im_field_category%3A'.$cat;
+			$catid=$fields['field_category']->handler->view->result[0]->_field_data['nid']['entity']->field_category['und'][0]['tid']; 
+			//$cat=str_replace('Coupons, Discounts, Offers & Deals','',$cat);
+			//$node = node_load($nid);
+			$rurl='http://www.couponvoodoo.com/r/'.str_replace('.','',$retailerName).'-coupons?f[0]=im_field_category%3A'.$catid;
 			//$Query=db_query('SELECT ttd.tid FROM {taxonomy_term_data} AS ttd WHERE ttd.vid = 2 and ttd.name = :retailer_name', array(':retailer_name' => $retailerName));
     //$Ruery = $Query->fetch();
     //$retailerId = $Ruery->tid;
@@ -101,6 +104,11 @@ if ($category_check != 'Other') {
 	// echo " | <div class='category_meta' itemscope itemtype='http://schema.org/offer'><meta  itemprop='category' content='".$fields['field_category']->content."' /></div>";
 	//$aliasPath=drupal_lookup_path example('source',
 	$curl='c/'.arg(1).'-coupons';
+	$alias= drupal_lookup_path('alias','taxonomy/term/'.arg(1)) ;
+	$curl=$alias;
+			//$cat=str_replace('Coupons, Discounts, Offers & Deals','',$cat);
+			//$node = node_load($nid);
+			
 	print ' | <div class="field-content">' . l(t($category['#title']), 'http://www.couponvoodoo.com/'.$curl, array('attributes' => array('target' => '_blank'))) . '</div>';
 	}
 	else {
