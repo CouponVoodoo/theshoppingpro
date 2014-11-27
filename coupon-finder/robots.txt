@@ -84,7 +84,7 @@ Disallow: /user/login/
 Disallow: /user/logout/
 Disallow: /coupon-redirect/
 Disallow: /coupon-redirect
-Disallow: /add-product
+Disallow: /add-product 
 Disallow: /add-product/
 Disallow: /add-coupon/
 Disallow: /c/
