@@ -103,7 +103,7 @@ if ($category_check != 'Other') {
 	if ($category['#type'] == 'link') {
 	// echo " | <div class='category_meta' itemscope itemtype='http://schema.org/offer'><meta  itemprop='category' content='".$fields['field_category']->content."' /></div>";
 	//$aliasPath=drupal_lookup_path example('source',
-	$curl='c/'.arg(1).'-coupons';
+	//$curl='c/'.arg(1).'-coupons';
 	$alias= drupal_lookup_path('alias','taxonomy/term/'.$catid) ;
 	$curl=$alias;
 			//$cat=str_replace('Coupons, Discounts, Offers & Deals','',$cat);
