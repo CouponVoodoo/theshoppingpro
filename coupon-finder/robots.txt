@@ -93,6 +93,7 @@ Disallow: /theshoppingpro/
 Disallow: /coupon-details-popup/
 # Paths (no clean URLs)
 Disallow: /?q=admin/
+Disallow: /?showpop=1
 Disallow: /?q=comment/reply/
 Disallow: /?q=filter/tips/
 Disallow: /?q=node/add/
