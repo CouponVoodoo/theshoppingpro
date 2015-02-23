@@ -368,7 +368,8 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 
 if ($current_domain != 'cuponation'){
 ?>
-	<div class="custom_link">Last Checked : <?php echo strip_tags($fields['field_lastcheckedtime']->content); ?> | <a onclick="locader('<?php echo $base_root.base_path() ?>add-product/u/?url=<?php echo strip_tags($fields['field_base_url']->content);?>&recheck=1&id=<?php echo $fields['nid']->content; ?>')" class="active">Recheck Now</a></div>
+	<div class="custom_link">Last Checked : <?php echo strip_tags($fields['field_lastcheckedtime']->content); ?> </div>
+	
 <?php } ?>
 
 <div class="product-right" >
@@ -416,7 +417,8 @@ if ($current_domain != 'cuponation'){
 			$coupon_code='Savings_Found';
 		} Else {
 				// echo "<div class='pro_no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='pro_no_coupons_text'>No Discounts</div></div>";
-				echo "<div class='pro_no_coupons_found'><div class='pro_no_coupons_text'>".get_label('No Discounts')."</div></div>";
+				//echo "<div class='pro_no_coupons_found'><div class='pro_no_coupons_text'>".get_label('No Discounts')."</div></div>";
+				echo "<div class='pro_no_coupons_found'><div class='pro_no_coupons_text'>The product is already at its best price</div></div>";
 				$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
 				$coupon_code='No_Discounts';
 			}
@@ -454,7 +456,7 @@ if ($current_domain != 'cuponation'){
 					
 			} else {
 				echo "<li> <label>".get_label('MRP:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
-				echo "<li> <label>".get_label('Savings:')."</label>-</li>";
+				echo "<li> <label>".get_label('Savings:')."</label>".$node->field_retailer_product_name['und']['0']['value']." is already at its <b>Best Price</b>. No Coupon/Deal is required for the product";
 				echo "<li> <label>".get_label('Net Price:')."</label><div class='net_price' itemprop='offers' itemscope itemtype='http://schema.org/Offer'><meta  itemprop='category' content='".strip_tags($fields['field_category']->content)."' /><meta itemprop='priceCurrency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</div></li>";	
 			}
 		}
@@ -478,13 +480,13 @@ if ($current_domain != 'cuponation'){
 		if (!empty($result['node']) && !empty($cuponation_title)) {
 			//echo $cuponation_title;
 			if ($CouponStatus == 2) {
-		  echo "Super Saver: ".$cuponation_title ." (See coupon description to meet the minimum purchase criteria)";
+		  echo "Super Saver: ".$cuponation_title ." (See coupon description to meet the minimum purchase criteria). Also find below other working coupons/deal for ".$node->field_retailer_product_name['und']['0']['value'];
 		  }
 		  else {echo "Super Saver: ".$cuponation_title;}
 			
 		} else {
 		if ($CouponStatus == 2) {
-		  echo "Super Saver: ".$best_coupon_description ." (See coupon description to meet the minimum purchase criteria)";
+		  echo "Super Saver: ".$best_coupon_description ." (See coupon description to meet the minimum purchase criteria). Also find below other working coupons/deal for ".$node->field_retailer_product_name['und']['0']['value'];
 		  }
 		  else {echo "Super Saver: ".$best_coupon_description;}
 			// print ($fields['field_best_coupon_description']->content); 
@@ -492,9 +494,9 @@ if ($current_domain != 'cuponation'){
 		}	
 	} else {
 	if ($CouponStatus == 2) {
-		  echo $best_coupon_description ." ( See coupon description to meet minimum purchase criteria for this coupon)";
+		  echo $best_coupon_description ." (See coupon description to meet minimum purchase criteria for this coupon). Also find below other working coupons/deal for ".$node->field_retailer_product_name['und']['0']['value'];
 		  }
-		  else {echo $best_coupon_description;}
+		  else {echo $best_coupon_description." Also find below other working coupons/deal for ".$node->field_retailer_product_name['und']['0']['value'];}
 		// print ($fields['field_best_coupon_description']->content); 
 		
 	}
@@ -502,14 +504,14 @@ if ($current_domain != 'cuponation'){
 
 
 
-<div class='blue_button'><a href="#All_Coupons" class='d_view_store'><?php echo get_label('View All Tested Coupons For Product '); ?></a></div>
+<div class='blue_button'><a href="#All_Coupons" class='d_view_store'><?php echo 'View All Tested Coupons For this Product '; ?></a></div>
 <?php } else { ?>
-<div class='blue_button'><a href="<?php echo 'http://offers.couponvoodoo.com/rcp/'.str_replace(" ", "-", $retailer).'/coupons-offers';?>" class='d_view_store'><?php echo get_label('View All Coupons For ').$retailer;?></a></div>
+<div class='blue_button'><a href="<?php echo 'http://offers.couponvoodoo.com/rcp/'.str_replace(" ", "-", $retailer).'/coupons-offers';?>" class='d_view_store'><?php echo 'Click to View '.$retailer' Coupons';?></a></div>
 <div class='blue_button'><a href="<?php 
 $alias= drupal_lookup_path('alias', 'taxonomy/term/'.$node->field_category['und'][0]['tid']);
 $termArr=explode("/",$alias);
 $term=trim(str_replace("-coupons",'',$termArr[1]));
-echo 'http://offers.couponvoodoo.com/ccp/'.$term.'/coupons-offers';?>" class='d_view_store'><?php echo get_label('View All Coupons For ').strip_tags($fields['field_category']->content);?></a></div>
+echo 'http://offers.couponvoodoo.com/ccp/'.$term.'/coupons-offers';?>" class='d_view_store'><?php echo 'Click to View '.strip_tags($fields['field_category']->content)' Coupons';?></a></div>
 <?php }?>
 
 </ul>
