@@ -36,6 +36,10 @@ $node = node_load($nid);
 $mrp = $node->field_mrpproductprice['und'][0]['value'];
 $list_price = $node->field_product_price['und'][0]['value'];
 $retailer = strip_tags($fields['field_retailer']->content);
+if ($retailer=='flipkart' || $retailer=='snapdeal') {
+$couponAction='Activate Deal';
+}
+else $couponAction='Copy Coupon';
 $retailer_name_predictor = str_replace(".com", "", $retailer);
 $brand = strip_tags($fields['field_brand']->content);
 $category_id = $node->field_category['und'][0]['tid'];
@@ -384,7 +388,7 @@ if ($current_domain != 'cuponation'){
 		<div class="search_listing_row__<?php print $row->counter; ?> copy_coupon_row">
 <!--			<a href="<?php// print $base_url.'/coupon-redirect?l=bc&nid='.$nid.'&c='.$best_coupon_code.'&p='.$url_path.'&s='.$base_url_predictor;?>" target="_blank" class="unlock_best_coupon unlock_coupon" rel="best_<?php// print $row->counter; ?>" data-clipboard-text="<?php// echo $best_coupon_code?>" >  -->
 		<a href="<?php print $coupon_redirect_path;?>" onclick=window.open('<?php echo coupon_popup_product_url($best_coupon_code, $coupon_redirect_path); ?>')//;return true; class="unlock_best_coupon unlock_coupon" rel="best_<?php print $row->counter; ?>" data-clipboard-text="<?php echo $best_coupon_code?>" >
-			<span class="copy_coupon">Copy Coupon</span><span></span>
+			<span class="copy_coupon"><?php print $couponAction;?></span><span></span>
 			</a>
 		</div>		
 	</div>
@@ -651,7 +655,7 @@ if ($brand_check != 'Other') {
 				<div class="search_listing_right">
 				  <div class="search_listing_row__1 copy_coupon_row">
 					<a href="<?php print $base_url ?>/coupon-redirect?l=oc&nid=<?php print $nid;?>&c=<?php print $coupon_code_predictor; ?>&p=<?php print $url_path; ?>&s=<?php print urlencode($url_path);?>" target="_blank" class="unlock_coupon" rel="c_1" data-clipboard-text="<?php echo $coupon_code_predictor?>">
-					  <span class="copy_coupon">Copy Coupon</span><span></span>
+					  <span class="copy_coupon"><?php print $couponAction;?></span><span></span>
 					</a>
 				  </div>
 				</div>
