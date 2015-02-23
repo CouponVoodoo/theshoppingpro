@@ -454,7 +454,7 @@ if ($current_domain != 'cuponation'){
 					
 			} else {
 				echo "<li> <label>".get_label('MRP:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
-				echo "<li> <label>".get_label('Savings:')."</label>".$node->field_retailer_product_name['und']['0']['value']." is already at its <b>Best Price</b>. No Coupon/Deal is required for the product</li>";
+				echo "<li> <label>".get_label('Savings:')."</label>".$node->field_retailer_product_name['und']['0']['value']." is already at its <i>Best Price</i>. No Coupon/Deal is required for the product</li>";
 				echo "<li> <label>".get_label('Net Price:')."</label><div class='net_price' itemprop='offers' itemscope itemtype='http://schema.org/Offer'><meta  itemprop='category' content='".strip_tags($fields['field_category']->content)."' /><meta itemprop='priceCurrency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</div></li>";	
 			}
 		}
@@ -484,9 +484,9 @@ if ($current_domain != 'cuponation'){
 			
 		} else {
 		if ($CouponStatus == 2) {
-		  echo "Super Saver: ".$best_coupon_description ." (See coupon description to meet the minimum purchase criteria) Also find below other working coupons/deal for ".$node->field_retailer_product_name['und']['0']['value'];
+		  echo "Super Saver: ".$best_coupon_description ." (See coupon description to meet the minimum purchase criteria) Also find below other working coupons/deals for ".$node->field_retailer_product_name['und']['0']['value'];
 		  }
-		  else {echo "Super Saver: ".$best_coupon_description." Also find below other working coupons/deal for ".$node->field_retailer_product_name['und']['0']['value'];
+		  else {echo "Super Saver: ".$best_coupon_description." Also find below other working coupons/deals for ".$node->field_retailer_product_name['und']['0']['value'];
 		  }
 			// print ($fields['field_best_coupon_description']->content); 
 			
@@ -495,7 +495,8 @@ if ($current_domain != 'cuponation'){
 	if ($CouponStatus == 2) {
 		  echo $best_coupon_description ." ( See coupon description to meet minimum purchase criteria for this coupon)";
 		  }
-		  else {echo $best_coupon_description;}
+		  else {echo $best_coupon_description." Also find below other working coupons/deals for ".$node->field_retailer_product_name['und']['0']['value'];
+		  }
 		// print ($fields['field_best_coupon_description']->content); 
 		
 	}
