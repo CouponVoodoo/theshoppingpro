@@ -39,7 +39,7 @@ $retailer = strip_tags($fields['field_retailer']->content);
 if ($retailer=='flipkart' || $retailer=='snapdeal') {
 $couponAction='Activate Deal';
 }
-else $couponAction='Copy Coupon';
+else $couponAction=$retailer;
 $retailer_name_predictor = str_replace(".com", "", $retailer);
 $brand = strip_tags($fields['field_brand']->content);
 $category_id = $node->field_category['und'][0]['tid'];
