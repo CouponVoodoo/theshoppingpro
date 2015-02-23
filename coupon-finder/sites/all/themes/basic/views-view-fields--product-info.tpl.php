@@ -416,7 +416,7 @@ if ($current_domain != 'cuponation'){
 			$coupon_code='Savings_Found';
 		} Else {
 				// echo "<div class='pro_no_coupons_found'><img src='".base_path().path_to_theme()."/images/u6_normal.png' /><div class='pro_no_coupons_text'>No Discounts</div></div>";
-				echo "<div class='pro_no_coupons_found'><div class='pro_no_coupons_text'>This product is already at its best price</div></div>";
+				echo "<div class='pro_no_coupons_found'><div class='pro_no_coupons_text'>Product is already at its best price</div></div>";
 				$affiliate_url_uncoded = $node->field_affiliateurl['und']['0']['value'];
 				$coupon_code='No_Discounts';
 			}
