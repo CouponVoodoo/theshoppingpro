@@ -454,7 +454,7 @@ if ($current_domain != 'cuponation'){
 					
 			} else {
 				echo "<li> <label>".get_label('MRP:')."</label>".get_label('INR ').number_format($list_price,0, '.', ',')."</li>";
-				echo "<li> <label>".get_label('Savings:')."</label>-</li>";
+				echo "<li> <label>".get_label('Savings:')."</label>".$node->field_retailer_product_name['und']['0']['value']." is already at its <b>Best Price</b>. No Coupon/Deal is required for the product</li>";
 				echo "<li> <label>".get_label('Net Price:')."</label><div class='net_price' itemprop='offers' itemscope itemtype='http://schema.org/Offer'><meta  itemprop='category' content='".strip_tags($fields['field_category']->content)."' /><meta itemprop='priceCurrency' content='INR' /><meta itemprop='price' content='".number_format($list_price,0, '.', ',')."'/>".get_label('INR ').number_format($list_price,0, '.', ',')."</div></li>";	
 			}
 		}
