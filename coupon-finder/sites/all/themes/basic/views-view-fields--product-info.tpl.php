@@ -36,10 +36,10 @@ $node = node_load($nid);
 $mrp = $node->field_mrpproductprice['und'][0]['value'];
 $list_price = $node->field_product_price['und'][0]['value'];
 $retailer = strip_tags($fields['field_retailer']->content);
-if ($retailer=='flipkart' || $retailer=='snapdeal') {
+if ($retailer=='Flipkart' || $retailer=='Snapdeal') {
 $couponAction='Activate Deal';
 }
-else $couponAction=$retailer;
+else $couponAction='Copy Coupon';
 $retailer_name_predictor = str_replace(".com", "", $retailer);
 $brand = strip_tags($fields['field_brand']->content);
 $category_id = $node->field_category['und'][0]['tid'];
