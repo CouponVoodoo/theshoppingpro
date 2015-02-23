@@ -545,7 +545,12 @@ echo 'http://offers.couponvoodoo.com/ccp/'.$term.'/coupons-offers';?>" class='d_
 
 if (empty($_GET['pop'])) {
 	if ($current_domain == 'couponvoodoo'){
-		$product_description = 'Buy '.strip_tags($fields['field_retailer_product_name']->content).' (CV'.$nid.')'.' at the lowest price with the latest discounts, coupons and offers brought to you by CouponVoodoo. View the list of discount codes below and click "Copy Coupon" to get the code. Also see:';
+	if ($retailer=='Flipkart' || $retailer=='Snapdeal'){
+	$product_description = 'Buy '.strip_tags($fields['field_retailer_product_name']->content).' (CV'.$nid.')'.' at the best price with the latest discounts, deals and offers brought to you by CouponVoodoo. View the list of deals and offers below and click "Activate Deal". Also see:';
+	}
+	else {
+		$product_description = 'Buy '.strip_tags($fields['field_retailer_product_name']->content).' (CV'.$nid.')'.' at the best price with the latest discounts, coupons and offers brought to you by CouponVoodoo. View the list of discount codes below and click "Copy Coupon" to get the code. Also see:';
+		}
 	} else {
 		$product_description = 'Find the best price for '.strip_tags($fields['field_retailer_product_name']->content).' (CN'.$nid.')'.' with the latest discounts, coupons & offers @ '.$retailer;	
 	}
