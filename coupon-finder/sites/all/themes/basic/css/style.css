@@ -360,9 +360,27 @@ body.domain-products-cuponation-in #header{background: #51a7da;}
   float: right;
   width: 50%;
 }
+
+#header #coupons-finder-form [type="submit"] 
+{
+  height: 30px;
+margin: 0px auto;
+display: inline-block;
+background: #F7971C;
+color: white;
+border: none;
+font-weight: bold;
+font-size: 14px;
+padding: 4px 11px;
+margin: 0px 0px;
+margin-right: 39px;
+text-decoration: none;
+border-radius: 3px;
+}
+
+
 .front #coupons-finder-form  #edit-submit,
 #modal-content  .submit input[type="submit"],
-#header #coupons-finder-form [type="submit"],
 .front #coupons-finder-form  #edit-view_video
 {
   height: 40px;
@@ -648,7 +666,7 @@ a.copied_coupon {
 #header #coupons-finder-form .form-item-url
 {display:inline-block;}
 #header #coupons-finder-form label{color:#F7971C}
-#header #coupons-finder-form #edit-url{width:600px;height:40px; padding: 10px;}
+#header #coupons-finder-form #edit-url{width:400px;height:30px; padding: 0px;}
 
 
 /*Redirecting page*/
