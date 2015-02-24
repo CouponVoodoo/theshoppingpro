@@ -953,8 +953,8 @@ body.domain-products-cuponation-in .tb-megamenu .nav-collapse .dropdown-menu { b
 .nice_menu2{float:left;}
 
 /******Find coupon*********/
-.find_coupon{background:none repeat scroll 0 0 #F2F2F2; box-shadow: 3px 3px 3px #999999; padding:10px 20px 10px 20px; border:1px solid #D7D7D7; border-radius:8px; position:relative}
-.find_coupon .submit{display: inline-block;float: center}
+.find_coupon{background:none repeat scroll 0 0 ; box-shadow: 3px 3px 3px #999999; padding:0px 0px 6px 0px; position:relative; margin-left: 257px;}
+.find_coupon .submit{display: inline-block;float: left}
 .find_coupon .submit input[type="submit"],.find_coupon .view_video a{  background: none repeat scroll 0 0 #F7971C;
     border: medium none;
     color: white;
@@ -966,11 +966,12 @@ body.domain-products-cuponation-in .tb-megamenu .nav-collapse .dropdown-menu { b
     line-height: 24px;
     margin: 0 5px;
     padding: 0 9px;
-    text-decoration: none;}
+    text-decoration: none;
+	}
 .find_coupon .view_video{display: inline-block;float: right;width: 38%;}
 .find_coupon .view_video a#edit-view_video{float:left;}
 .find_coupon  label{ color: #666666;font-size: 13px;font-style: normal;font-weight: normal;text-decoration: none;margin-bottom:5px}
-.find_coupon .form-type-textfield{width:88%;margin-top:0px; float: left; position: relative; z-index: 1;}
+.find_coupon .form-type-textfield{width:68%;margin-top:0px; float: left; position: relative; z-index: 1;}
 .find_coupon .form-type-textfield input{width:99%;padding:3px 0 3px 5px;}
 /* .find_coupon .whatisthis a{  float: right;
     position: absolute;
