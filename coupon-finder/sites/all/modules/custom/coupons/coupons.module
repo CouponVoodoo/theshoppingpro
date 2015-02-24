@@ -499,7 +499,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
   $form['actions']['submit'] = array(
       '#type' => 'submit',
       '#prefix' => '<div class="submit">',
-      '#value' => t('Find My Coupons'),
+      '#value' => $search,
 	  '#suffix' => '</br><div class="search-suggestion"> <bold> Suggested Searches: </bold></br>- Brands like Nike, Titan, Levis </br>- Categories like Watches, Shoes '.$suffix,
       
 	  
