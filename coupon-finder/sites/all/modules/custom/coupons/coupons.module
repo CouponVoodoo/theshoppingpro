@@ -445,10 +445,12 @@ function coupons_finder_form($form, &$form_state, $small = true) {
   if ($GLOBALS['_domain']['subdomain'] == 'offers.couponvoodoo.com') {
    $placeholder=array('class' => array('apachesolr-autocomplete','unprocessed'), 'placeholder' => t('Brand, Category or Retailer'));
    $suffix='</br>- Retailers like Flipkart, Jabong, Myntra etc</div></div>';
+   $search='Find My Coupons';
   }
   else {
-  $placeholder=array('class' => array('apachesolr-autocomplete','unprocessed'), 'placeholder' => t('Product Name, Brand or URL'));
+  $placeholder=array('class' => array('apachesolr-autocomplete','unprocessed'), 'placeholder' => t('Product Name, Brand, Category or Retailer'));
   $suffix='</br>- Product Names like Nike Ballista</div></div>';
+  $search='Search';
   }
   $current_domain = get_current_domain();
   // Load the modal library and add the modal javascript.
@@ -457,8 +459,6 @@ function coupons_finder_form($form, &$form_state, $small = true) {
   ctools_modal_add_js();
 
   if ($form_state['ajax']) {
-
-
     $form['video'] = array(
  //       '#markup' => '<iframe style= "margin:0px auto;
  //       text-align:center;
@@ -481,7 +481,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
         '#type' => 'submit',
         '#prefix' => '<div class="submit">',
         '#suffix' => '</div>',
-        '#value' => t('Find My Coupons')		
+        '#value' => $search
     );
 
 
@@ -509,7 +509,7 @@ function coupons_finder_form($form, &$form_state, $small = true) {
   if ($small) {
     // $form['url']['#suffix'] = '<div class="whatisthis"><a href="http://www.couponvoodoo.com/content/whats-product-url" target="_blank">Whats this?</a></div>';
     
-	$form['url']['#title'] = t(get_label('Go Ahead! Give It A Try!'));
+	$form['url']['#title'] = '';
     if ($current_domain == 'couponvoodoo') {
 		// $form['url']['#description'] = t('Try It: <a href="' . $base_url . '/c/men-shoes-other-footwear-coupons" target="_blank">Mens Shoes</a>, <a href="' . $base_url . '/c/women-watches-coupons" target="_blank">Womens Watches</a>, <a href="' . $base_url . '/b/reebok-coupons" target="_blank">Reebok</a>, <a href="' . $base_url . '/b/nike-coupons" target="_blank">Nike</a>, <a href="' . $base_url . '/rcp/Jabong.com/coupons-offers" target="_blank">Jabong</a>, <a href="' . $base_url . '/rcp/myntracom/coupons-offers" target="_blank">Myntra</a>');
 /*		$form['actions']['view_video'] = array(
