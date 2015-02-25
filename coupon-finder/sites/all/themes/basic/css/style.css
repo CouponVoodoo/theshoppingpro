@@ -1149,7 +1149,7 @@ body.domain-products-cuponation-in .tb-megamenu .nav-collapse .dropdown-menu { b
 .retailer_product_right .product_img img { max-height: 200px; max-width: 110px;width: auto; text-align: center; padding: 0px !important;}
 .retailer_product_right h2 {width=100%;}
 .node--product-and-coupon .d_view_store{width:100%;float:left;text-align:center;margin-top:15px;background:none repeat scroll 0 0 #F7971C;border-radius:15px}
-.product_info .d_view_store{width:100%;float:left;text-align:center;margin-top:11px; padding: 10px; line-height: 15px !important; display:block}
+.product_info .d_view_store{width:100%;float:left;text-align:center;margin-top:11px; height:75px padding: 10px; line-height: 15px !important; display:block}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .d_view_store a,.page-search-site #block-system-main .block-inner .node--product-and-coupon .d_view_store a{color:#fff;font-size:13px!important;font-weight:bold;line-height:30px!important;text-decoration:none!important;}
 .product_info .d_view_store a{ background: none repeat scroll 0 0 #F7971C; color: #FFFFFF;font-size: 13px !important;font-weight: bold;line-height: 30px !important;padding: 8px 26px;text-decoration: none !important;border-radius:13px}
 .similar_right .d_view_store a{ background: none repeat scroll 0 0 #F7971C; color: #FFFFFF;font-size: 13px !important;font-weight: bold;line-height: 30px !important;padding: 7px 15px;text-decoration: none !important;border-radius:13px}
