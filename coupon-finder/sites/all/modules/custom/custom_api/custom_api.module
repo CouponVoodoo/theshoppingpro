@@ -541,13 +541,13 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $current_time= time(); 
    $boost_time=$current_time-(48*3600);
    $hide_time=$current_time-(200*3600);
-   var_dump('test test test test');
+   //var_dump('test test test test');
    $termid = arg(2);
 	$term = taxonomy_term_load($termid);
 	$vid = $term->vid;
 
    if ($vid == 3 OR $vid == 4){
-   var_dump('nsde nsde nsde nsde');
+   //var_dump('nsde nsde nsde nsde');
    $boost_time=$current_time-(1500*3600);
    $hide_time=$current_time-(1500*3600);
    }
