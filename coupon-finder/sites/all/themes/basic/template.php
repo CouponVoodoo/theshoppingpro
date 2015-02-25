@@ -540,12 +540,12 @@ function basic_menu_local_tasks(&$variables) {
  */
 
 function basic_apachesolr_search_noresults(&$variables) {
-drupal_not_found();
+
   return t('</br> </br> </br> Whoops! No result found. Kindly: </br> </br><ul>
 <li>Check spellings or remove filters</li>
 <li>Remove special characters</li>
 <li>Visit the <a href="/search/site">All Products Page</a></li>
-</ul>');
+</ul>'). drupal_not_found();
 }
 
 
