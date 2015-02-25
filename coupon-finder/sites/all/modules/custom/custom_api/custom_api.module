@@ -546,9 +546,9 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
 	$term = taxonomy_term_load($termid);
 	$vid = $term->vid;
 
-   if ($vid == 3 OR $vid == 4){
+   if ($vid == 3 ){
    //var_dump('nsde nsde nsde nsde');
-   $boost_time=$current_time-(1500*3600);
+   $boost_time=$current_time-(48*3600);
    $hide_time=$current_time-(1500*3600);
    }
    $solr_boost_time=gmdate('Y-m-d\TH:i:s\Z', $boost_time);
