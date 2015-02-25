@@ -1156,7 +1156,7 @@ body.domain-products-cuponation-in .tb-megamenu .nav-collapse .dropdown-menu { b
 .node--product-and-coupon .blue_button{width:100%;float:left;text-align:center;background:none repeat scroll 0 0 #F7971C;border-radius:15px}
 .node--product-and-coupon .blue_button{width:100%;float:left;text-align:center;background:none repeat scroll 0 0 #F7971C;border-radius:15px}
 .product_info .blue_button{width:100%;float:left;text-align:center;margin-top:17px;margin-bottom: 19px;}
-#coupon_meter {margin-bottom:20px;}
+#coupon_meter {margin-bottom:2px;}
 .blue_button a{ background: none repeat scroll 0 0 #25ade3; color: #FFFFFF;font-size: 13px !important;font-weight: bold;line-height: 30px !important;padding: 0px 15px;text-decoration: none !important;border-radius:13px; float:lefttext-align: center;}
 .page-taxonomy-term #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images ,.page-search-site #block-system-main .block-inner .node--product-and-coupon .field-name-field-product-images {float: left;text-align: center; width: 100%;}
 .product_info .coupon_code1 .d_view_store a{padding:8px 14px}
