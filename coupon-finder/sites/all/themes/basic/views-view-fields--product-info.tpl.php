@@ -694,7 +694,7 @@ if ($brand_check != 'Other') {
 	
 <?php
 
-		$full_data_array_std_class = db_query("SELECT updateDate, couponStatus, BestCouponCode, NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid." order by updateDate desc limit 15")->fetchAll();
+		$full_data_array_std_class = db_query("SELECT updateDate, couponStatus, BestCouponCode, NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid." order by updateDate desc limit 30")->fetchAll();
 		$full_data_array = json_decode(drupal_json_encode($full_data_array_std_class), true);
 		if ($nid==132820 ||$nid=='132820') {
 		//var_dump($full_data_array);
