@@ -1316,7 +1316,7 @@ img{max-width: 100%;}
 	.page-search-site .find_coupon .form-type-textfield .description {display: none;}
 	.page-search-site .find_coupon .form-type-textfield {width: 100%}
 	.page-search-site .find_coupon .view_video {display: none; width: 50%}
-	.page-search-site .find_coupon .submit {width: 100%;}
+/*	.page-search-site .find_coupon .submit {width: 100%;} */
 
 
 @media all and (max-width: 652px){
