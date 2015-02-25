@@ -739,6 +739,7 @@ if ($brand_check != 'Other') {
 
 <h4> <a id="price_history"><?php echo get_label('Coupon & Price History For ')." ".$node->field_retailer_product_name['und']['0']['value'];?></a></h4>
 <!-- <script type="text/javascript" src="<?php echo $base_url;?>/sites/all/libraries/Fusioncharts/FusionCharts.js"> </script> -->
+<p> <?php echo "Below graph shows the price history of ".$node->field_retailer_product_name['und']['0']['value']." in past 30 days with an accuracy of 90%. The Price includes the saving avalable via coupon or deal at that time. The graph is to assist the user in maiking there buying decisions";?></p>
 <div id="coupon_price_history_graph"></div> 
 
 <?php
