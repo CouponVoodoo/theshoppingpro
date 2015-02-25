@@ -482,15 +482,15 @@ if ($current_domain != 'cuponation'){
 		if (!empty($result['node']) && !empty($cuponation_title)) {
 			//echo $cuponation_title;
 			if ($CouponStatus == 2) {
-		  echo "Super Saver: ".$cuponation_title ." (See coupon description to meet the minimum purchase criteria) Also find below other working coupons/deals for ".$node->field_retailer_product_name['und']['0']['value'];
+		  echo "Super Saver: ".$cuponation_title ." (See coupon description to meet the minimum purchase criteria). Also find below more coupons/deals for ".$node->field_retailer_product_name['und']['0']['value'];
 		  }
 		  else {echo "Super Saver: ".$cuponation_title;}
 			
 		} else {
 		if ($CouponStatus == 2) {
-		  echo "Super Saver: ".$best_coupon_description ." (See coupon description to meet the minimum purchase criteria) Also find below other working coupons/deals for ".$node->field_retailer_product_name['und']['0']['value'];
+		  echo "Super Saver: ".$best_coupon_description ." (See coupon description to meet the minimum purchase criteria). Also find below more coupons/deals for ".$node->field_retailer_product_name['und']['0']['value'];
 		  }
-		  else {echo "Super Saver: ".$best_coupon_description." Also find below other working coupons/deals for ".$node->field_retailer_product_name['und']['0']['value'];
+		  else {echo "Super Saver: ".$best_coupon_description.". Also find below more coupons/deals for ".$node->field_retailer_product_name['und']['0']['value'];
 		  }
 			// print ($fields['field_best_coupon_description']->content); 
 			
@@ -499,7 +499,7 @@ if ($current_domain != 'cuponation'){
 	if ($CouponStatus == 2) {
 		  echo $best_coupon_description ." ( See coupon description to meet minimum purchase criteria for this coupon)";
 		  }
-		  else {echo $best_coupon_description." Also find below other working coupons/deals for ".$node->field_retailer_product_name['und']['0']['value'];
+		  else {echo $best_coupon_description.". Also find below more coupons/deals for ".$node->field_retailer_product_name['und']['0']['value'];
 		  }
 		// print ($fields['field_best_coupon_description']->content); 
 		
