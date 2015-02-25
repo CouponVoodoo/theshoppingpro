@@ -542,9 +542,13 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $boost_time=$current_time-(48*3600);
    $hide_time=$current_time-(200*3600);
    
+   $termid = arg(2);
+	$term = taxonomy_term_load($termid);
+	$vid = $term->vid;
+
    if ($vid == 3 OR $vid == 4){
-   $boost_time=$current_time-(150000*3600);
-   $hide_time=$current_time-(150000*3600);
+   $boost_time=$current_time-(1500*3600);
+   $hide_time=$current_time-(1500*3600);
    }
    $solr_boost_time=gmdate('Y-m-d\TH:i:s\Z', $boost_time);
    $solr_hide_time=gmdate('Y-m-d\TH:i:s\Z', $hide_time);
@@ -562,10 +566,7 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
 	}
   // $query->addFilter('sm_field_retailer_product_name', $VALUE);
    
-	$termid = arg(2);
-	$term = taxonomy_term_load($termid);
-	$vid = $term->vid;
-
+	
 /** BY ASHISH TO SORT BRAND AND CATEGORIES BY SAVINGS*/
 /*
 if ($vid == 3 OR $vid == 4){
