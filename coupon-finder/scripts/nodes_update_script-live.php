@@ -1,6 +1,6 @@
 <?PHP
 
-	$tables = array("predictorCompiledResultTable", "predictorCompiledResultTableAmazon", "predictorCompiledResultTableFlipkart", "predictorCompiledResultTableSnapdeal");
+	$tables = array("predictorCompiledResultTable");
 	
 	for($x=0;$x<count($tables);$x++) {
 	
@@ -23,7 +23,7 @@
 	$run_check = $Query->execute();
 	$run_check_fetch = $run_check->fetch();
 	$run = $run_check_fetch->Status;
-	
+	$run=1;
 	
 
 	If ($run == 1) {
@@ -31,7 +31,7 @@
 		db_query("UPDATE coupon_finder.1Variables SET Status = 0, Ref_Value = '".gmdate('Y-m-d\TH:i:s\Z', time())."' WHERE Variable = '".$update."'");
 		$result = "Start Time: ".gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600)))."\n\n";
 		echo "\n\n START - Entity Id Update \n\n".time();
-		db_query("UPDATE coupon_finder.".$table." LEFT JOIN coupon_finder.field_data_field_base_url ON coupon_finder.field_data_field_base_url.field_base_url_value = coupon_finder.".$table.".BaseUrl SET coupon_finder.".$table.".entity_id = coupon_finder.field_data_field_base_url.entity_id ");
+		/*db_query("UPDATE coupon_finder.".$table." LEFT JOIN coupon_finder.field_data_field_base_url ON coupon_finder.field_data_field_base_url.field_base_url_value = coupon_finder.".$table.".BaseUrl SET coupon_finder.".$table.".entity_id = coupon_finder.field_data_field_base_url.entity_id ");
 		echo "\n\n END - Entity Id Update \n\n".time();
 		$result = $result."Entity Update: ".gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600)))."\n\n";
 		echo "\n\n BRAND - GETTING TID FROM NAME \n\n".time();
@@ -181,7 +181,7 @@
 		db_query ("UPDATE coupon_finder.field_revision_field_retailer INNER JOIN coupon_finder.".$table." ON coupon_finder.".$table.".entity_id = coupon_finder.field_revision_field_retailer.entity_id SET coupon_finder.field_revision_field_retailer.field_retailer_tid   = coupon_finder.".$table.".RetailerId");
 	
 		$result = $result."All Fields Except All COupon Info : ".gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600)))."\n\n";
-	
+	*/
 		echo("\n\n FIELD_BEST_COUPON_INFO_VALUE \n\n").time();
 		db_query ("UPDATE coupon_finder.field_data_field_best_coupon_info INNER JOIN coupon_finder.".$table." ON coupon_finder.".$table.".entity_id = coupon_finder.field_data_field_best_coupon_info.entity_id SET coupon_finder.field_data_field_best_coupon_info.field_best_coupon_info_value = coupon_finder.".$table.".Result ");
 		
@@ -196,7 +196,7 @@
 		//cache_clear_all();
 		drupal_flush_all_caches();
 		varnish_purge_all_pages();
-
+/*
 		echo "\n\n APACHE SOLR - STATUS \n\n".time();
 		db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.".$table." ON coupon_finder.".$table.".entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.status = 1 ");
 
@@ -205,6 +205,7 @@
 		//db_query ("UPDATE coupon_finder.apachesolr_index_entities_node INNER JOIN coupon_finder.".$table." ON coupon_finder.".$table.".entity_id = coupon_finder.apachesolr_index_entities_node.entity_id SET coupon_finder.apachesolr_index_entities_node.changed = 1402131957");
 		echo("\n\n FINISHED \n\n").time();
 		$result = $result."All Data Updated: ".gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600)))."\n\n";
+		*/
 		$myntra_count = db_query("SELECT count(*) FROM  coupon_finder.".$table." WHERE RetailerId = 8 and entity_id is not null")->fetchField();
 		$jabong_count = db_query("SELECT count(*) FROM  coupon_finder.".$table." WHERE RetailerId = 5 and entity_id is not null")->fetchField();
 		$flipkart_count = db_query("SELECT count(*) FROM  coupon_finder.".$table." WHERE RetailerId = 13419 and entity_id is not null")->fetchField();
