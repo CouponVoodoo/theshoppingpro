@@ -543,8 +543,8 @@ function custom_api_apachesolr_query_prepare(DrupalSolrQueryInterface $query) {
    $hide_time=$current_time-(200*3600);
    
    if ($vid == 3 OR $vid == 4){
-   $boost_time=$current_time-(1500*3600);
-   $hide_time=$current_time-(1500*3600);
+   $boost_time=$current_time-(150000*3600);
+   $hide_time=$current_time-(150000*3600);
    }
    $solr_boost_time=gmdate('Y-m-d\TH:i:s\Z', $boost_time);
    $solr_hide_time=gmdate('Y-m-d\TH:i:s\Z', $hide_time);
