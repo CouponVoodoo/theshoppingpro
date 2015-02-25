@@ -601,7 +601,7 @@ if ($brand_check != 'Other') {
 </div>
 
 </div>
-<h4> <a id="All_Coupons"><?php echo get_label('Results For All Coupons Of This Product');?></a></h4>
+<h4> <a id="All_Coupons"><?php echo 'More Coupons for '.strip_tags($fields['field_retailer_product_name']->content);?></a></h4>
 <?php
 	/** If predictor then the other coupons comes via the predictor array**/
 	$i = 0;
