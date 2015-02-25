@@ -161,7 +161,7 @@ $redirect_url = $base_url.'/coupon-redirect/?l=olp&nid='.$nid.'&c=Link_Click'.'&
 	/**************** HIDING GRAPH FROM MOBILE ********************************/
 	// if(!$is_mobile && !$is_tablet){
 	
-		$full_data_array_std_class = db_query("Select * from (SELECT updateDate, couponStatus, BestCouponCode, NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid." order by updateDate desc limit 15) order by updateDate asc")->fetchAll();
+		$full_data_array_std_class = db_query("Select * from (SELECT updateDate, couponStatus, BestCouponCode, NetPriceAfterSaving FROM {priceHistory} WHERE entity_id = ".$nid." order by updateDate desc limit 15) as a order by updateDate asc")->fetchAll();
 		$full_data_array = json_decode(drupal_json_encode($full_data_array_std_class), true);
 		$dates = array();
 		$coupons = array();
