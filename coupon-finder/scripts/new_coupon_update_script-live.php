@@ -8,7 +8,7 @@ echo "\n\n START - Entity Id Update \n\n".time();
 		db_query ("UPDATE coupon_finder.field_data_field_product_price INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_data_field_product_price.entity_id SET coupon_finder.field_data_field_product_price.field_product_price_value = coupon_finder.predictorCompiledResultTable.ListPrice");
 
 echo("\n\n FIELD_PRODUCT_PRICE_VALUE - REVISION \n\n").time();
-db_query ("UPDATE coupon_finder.field_revision_field_product_price INNER JOIN coupon_finder_march2nd.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_revision_field_product_price.entity_id SET coupon_finder.field_revision_field_product_price.field_product_price_value = coupon_finder.predictorCompiledResultTable.ListPrice");
+db_query ("UPDATE coupon_finder.field_revision_field_product_price INNER JOIN coupon_finder.predictorCompiledResultTable ON coupon_finder.predictorCompiledResultTable.entity_id = coupon_finder.field_revision_field_product_price.entity_id SET coupon_finder.field_revision_field_product_price.field_product_price_value = coupon_finder.predictorCompiledResultTable.ListPrice");
 
 		echo("\n\n FIELD_BEST_COUPON_COUPONCODE_VALUE - REVISION \n\n").time();
 		db_query ("UPDATE coupon_finder.field_revision_field_best_coupon_couponcode INNER JOIN coupon_finder.predictorCompiledResultTableFlipkart ON coupon_finder.predictorCompiledResultTableFlipkart.entity_id = coupon_finder.field_revision_field_best_coupon_couponcode.entity_id SET coupon_finder.field_revision_field_best_coupon_couponcode.field_best_coupon_couponcode_value = coupon_finder.predictorCompiledResultTableFlipkart.BestCouponCode ");
