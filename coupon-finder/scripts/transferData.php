@@ -34,8 +34,9 @@ $i = 0;
 //		exit;
 $run=1;
 	}
-	
+	$uniq=0;
 	while ($run ==1) {
+	$uniq=$uniq+1;
 	echo 'inside';
 		$i++;
 try {
@@ -51,7 +52,7 @@ try{		$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySq
 			if ($i == 1) {mail('team@theshoppingpro.com', 'Data Push Start for '.$table, gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));}
 			$jsonArr = json_decode($json,true);
 			
-			$uniq=1;
+			
 			//var_dump($jsonArr);
 			foreach($jsonArr as $json){ 
 			try {
