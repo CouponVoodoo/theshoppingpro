@@ -51,10 +51,11 @@ try{		$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySq
 			if ($i == 1) {mail('team@theshoppingpro.com', 'Data Push Start for '.$table, gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));}
 			$jsonArr = json_decode($json,true);
 			
-			
+			$uniq=1;
 			//var_dump($jsonArr);
 			foreach($jsonArr as $json){ 
 			try {
+			$uniq=$uniq+1;
 				$json = json_encode($json); 
 				$jsonData = preg_replace("/[\\n\\r]+/", " ", $json);
 				$jsonArray = json_decode($jsonData);
@@ -81,7 +82,7 @@ try{		$url = "http://54.243.150.171/cpnVodo/SimulationWithoutAutomatn/pustToMySq
 				$retailer= trim($jsonArray->retailer);
 				$retailerId= trim($jsonArray->retailerId);
 				$bestCouponDisplay= trim($jsonArray->bestCouponDisplay);
-				$uniq=trim($jsonArray->uniq);
+//				$uniq=trim($jsonArray->uniq);
 				$nid = db_insert($table) // Table name no longer needs {}
 				->fields(array(
 				  'id' => $id,
