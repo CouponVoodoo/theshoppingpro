@@ -1,5 +1,5 @@
 <?PHP
-$tables = array("predictorCompiledResultTable", "predictorCompiledResultTableAmazon", "predictorCompiledResultTableFlipkart", "predictorCompiledResultTableSnapdeal");
+$tables = array( "predictorCompiledResultTableAmazon");
 	
 	for($x=0;$x<count($tables);$x++) {
 	
@@ -229,5 +229,5 @@ $tables = array("predictorCompiledResultTable", "predictorCompiledResultTableAma
 	} Else {
 		//mail('team@theshoppingpro.com', 'Update Node Script Was Not Run', gmdate('Y-m-d\TH:i:s\Z', (time()+(5.5*3600))));  
 	}
-
+}
 ?>
