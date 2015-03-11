@@ -173,10 +173,12 @@ function coupons_redirect_interim_page() {
 				break;
 				case "jabong":
 					//$url = $baseurl_redirect.$part2_redirect.'&AffExtParam1='.$uid1;
+				//	http://tyroo.go2cloud.org/aff_c?offer_id=25&aff_id=31&aff_sub=CHKR3468903
 					$url = $baseurl_redirect.'?&subid='.$uid1.'#Q80C41v43gn09';
 				break;
 				case "snapdeal":
-				    $url = $baseurl_redirect.'?&utm_campaign=afts&offer_id=17&aff_id=13273&aff_sub='.$uid1;
+				  $url = $baseurl_redirect.'?&utm_source=aff_prog&utm_campaign=afts&offer_id=17&aff_id=3762&aff_sub=CHKR3468468';
+				  //$url = $baseurl_redirect.'?&utm_campaign=afts&offer_id=17&aff_id=13273&aff_sub='.$uid1;
 				break;
 				default:
 					$url = $baseurl_redirect;
